@@ -359,7 +359,7 @@ namespace MoreMountains.TopDownEngine
 			if ( _controller.Grounded
 			     && (_controller.CurrentMovement.magnitude > IdleThreshold)
 			     && ( _movement.CurrentState == CharacterStates.MovementStates.Idle))
-			{				
+			{
 				_movement.ChangeState(CharacterStates.MovementStates.Walking);	
 				PlayAbilityStartSfx();	
 				PlayAbilityUsedSfx();
