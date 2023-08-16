@@ -348,7 +348,7 @@ namespace MoreMountains.TopDownEngine
 			}
 			if (ReplaceMousePointer)
 			{
-				Cursor.visible = false;
+				Cursor.visible = true;
 			}
 			else
 			{
