@@ -68,13 +68,13 @@ namespace MoreMountains.Tools
 		/// <returns>The pooled game object.</returns>
 		public override GameObject GetPooledGameObject()
 		{
-			// we go through the pool looking for an inactive object
-			for (int i=0; i< _objectPool.PooledGameObjects.Count; i++)
+            // we go through the pool looking for an inactive object
+            for (int i=0; i< _objectPool.PooledGameObjects.Count; i++)
 			{
 				if (!_objectPool.PooledGameObjects[i].gameObject.activeInHierarchy)
 				{
-					// if we find one, we return it
-					return _objectPool.PooledGameObjects[i];
+                    // if we find one, we return it
+                    return _objectPool.PooledGameObjects[i];
 				}
 			}
 			// if we haven't found an inactive object (the pool is empty), and if we can extend it, we add one new object to the pool, and return it		
@@ -92,7 +92,7 @@ namespace MoreMountains.Tools
 		/// <returns>The one object to the pool.</returns>
 		protected virtual GameObject AddOneObjectToThePool()
 		{
-			if (GameObjectToPool == null)
+            if (GameObjectToPool == null)
 			{
 				Debug.LogWarning("The "+gameObject.name+" ObjectPooler doesn't have any GameObjectToPool defined.", gameObject);
 				return null;

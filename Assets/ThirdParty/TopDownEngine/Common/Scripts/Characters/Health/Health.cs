@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
+using UnityEditor.EditorTools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An event triggered every time health values change, for other classes to listen to
-	/// </summary>
-	public struct HealthChangeEvent
+    /// <summary>
+    /// An event triggered every time health values change, for other classes to listen to
+    /// </summary>
+    public struct HealthChangeEvent
 	{
 		public Health AffectedHealth;
 		public float NewHealth;
@@ -36,13 +37,14 @@ namespace MoreMountains.TopDownEngine
 	[AddComponentMenu("TopDown Engine/Character/Core/Health")] 
 	public class Health : MMMonoBehaviour
 	{
-		[MMInspectorGroup("Bindings", true, 3)]
+        [MMInspectorGroup("Bindings", true, 3)]
 
 		/// the model to disable (if set so)
 		[Tooltip("the model to disable (if set so)")]
 		public GameObject Model;
-		
-		[MMInspectorGroup("Status", true, 29)]
+        public GameObject enemy;
+
+        [MMInspectorGroup("Status", true, 29)]
 
 		/// the current health of the character
 		[MMReadOnly]
@@ -210,9 +212,9 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Awake()
 		{
-			Initialization();
+            Initialization();
 			InitializeCurrentHealth();
-		}
+        }
 
 		/// <summary>
 		/// On Start we grab our animator
@@ -940,8 +942,13 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (DestroyOnDeath)
 				{
-					gameObject.SetActive(false);
-				}                
+					enemy.gameObject.SendMessage("OnTargetReached");
+
+                    //gameObject.SetActive(false);
+                    
+                    //여기에 오브젝트 회수 메소드가 들어가야함
+                    //CreateManager.Instance.ReturnPool(gameObject.GetComponent<Slime>());
+                }                
 			}
 			else
 			{
@@ -949,14 +956,14 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		#region HealthManipulationAPIs
-		
+        #region HealthManipulationAPIs
 
-		/// <summary>
-		/// Sets the current health to the specified new value, and updates the health bar
-		/// </summary>
-		/// <param name="newValue"></param>
-		public virtual void SetHealth(float newValue)
+
+        /// <summary>
+        /// Sets the current health to the specified new value, and updates the health bar
+        /// </summary>
+        /// <param name="newValue"></param>
+        public virtual void SetHealth(float newValue)
 		{
 			CurrentHealth = newValue;
 			UpdateHealthBar(false);

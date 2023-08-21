@@ -70,7 +70,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual bool CreateWaitingPool()
 		{
-			if (!MutualizeWaitingPools)
+            if (!MutualizeWaitingPools)
 			{
 				// we create a container that will hold all the instances we create
 				_waitingPool = new GameObject(DetermineObjectPoolName());
