@@ -73,7 +73,7 @@ namespace MoreMountains.Tools
 		/// the name of the target gameobject
 		public GameObject Target;
 		/// the current character's movement state
-		public T CurrentState { get; protected set; }
+		public T CurrentState { get; set; }
 		/// the character's movement state before entering the current one
 		public T PreviousState { get; protected set; }
 

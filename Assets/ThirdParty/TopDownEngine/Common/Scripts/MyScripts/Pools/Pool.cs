@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Redcode.Pools
+namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// Helper class to create generic pools.

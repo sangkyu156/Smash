@@ -12,6 +12,8 @@ namespace MoreMountains.TopDownEngine
 	[AddComponentMenu("TopDown Engine/Weapons/Melee Weapon")]
 	public class MeleeWeapon : Weapon
 	{
+		Animator animator;
+
 		/// the possible shapes for the melee weapon's damage area
 		public enum MeleeDamageAreaShapes { Rectangle, Circle, Box, Sphere }
 		public enum MeleeDamageAreaModes { Generated, Existing }
@@ -99,11 +101,23 @@ namespace MoreMountains.TopDownEngine
 		protected Vector3 _gizmoOffset;
 		protected DamageOnTouch _damageOnTouch;
 		protected GameObject _damageArea;
+		GameObject findObject;
 
-		/// <summary>
-		/// Initialization
-		/// </summary>
-		public override void Initialization()
+        private void Awake()
+        {
+
+        }
+
+        protected override void Start()
+        {
+            findObject = transform.parent.gameObject.transform.parent.gameObject;
+            animator = findObject.GetComponentInChildren<Animator>();
+        }
+
+        /// <summary>
+        /// Initialization
+        /// </summary>
+        public override void Initialization()
 		{
 			base.Initialization();
 
@@ -211,12 +225,20 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When the weapon is used, we trigger our attack routine
-		/// </summary>
-		public override void WeaponUse()
+        /// <summary>
+        /// When the weapon is used, we trigger our attack routine
+        /// </summary>
+        public override void WeaponUse()
 		{
-			base.WeaponUse();
+            //animator.GetBool("qwe") == true 이고 공격1을 누른지 0.5~1초 사이이면 애니메이터 'Blend' +1 
+            //위에가 아니면 'Blend' = 0;
+            if (animator.GetBool("qwe") == true)
+			{
+                Debug.Log("공격");
+            }
+            Debug.Log("공격2");
+
+            base.WeaponUse();
 			StartCoroutine(MeleeWeaponAttack());
 		}
 

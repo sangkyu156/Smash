@@ -942,12 +942,11 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (DestroyOnDeath)
 				{
-					enemy.gameObject.SendMessage("OnTargetReached");
+                    //오브젝트 회수
+                    enemy.gameObject.SendMessage("OnTargetReached");
+					//CreateManager.Instance.ReturnPool(this);
 
                     //gameObject.SetActive(false);
-                    
-                    //여기에 오브젝트 회수 메소드가 들어가야함
-                    //CreateManager.Instance.ReturnPool(gameObject.GetComponent<Slime>());
                 }                
 			}
 			else

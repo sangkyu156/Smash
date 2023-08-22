@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Redcode.Pools
+namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// Interface for pool's objects. <br/>

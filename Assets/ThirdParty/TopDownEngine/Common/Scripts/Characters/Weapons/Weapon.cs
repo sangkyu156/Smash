@@ -153,44 +153,44 @@ namespace MoreMountains.TopDownEngine
 		/// the ID of the weapon to pass to the animator
 		[Tooltip("the ID of the weapon to pass to the animator")]
 		public int WeaponAnimationID = 0;
-		/// the name of the weapon's idle animation parameter : this will be true all the time except when the weapon is being used
-		[Tooltip("the name of the weapon's idle animation parameter : this will be true all the time except when the weapon is being used")]
+        /// 무기의 유휴 애니메이션 매개변수 이름: 무기가 사용되는 경우를 제외하고는 항상 true입니다.
+        [Tooltip("the name of the weapon's idle animation parameter : this will be true all the time except when the weapon is being used")]
 		public string IdleAnimationParameter;
-		/// the name of the weapon's start animation parameter : true at the frame where the weapon starts being used
-		[Tooltip("the name of the weapon's start animation parameter : true at the frame where the weapon starts being used")]
+        /// 무기의 시작 애니메이션 매개변수 이름: 무기가 사용되기 시작하는 프레임에서 true
+        [Tooltip("the name of the weapon's start animation parameter : true at the frame where the weapon starts being used")]
 		public string StartAnimationParameter;
-		/// the name of the weapon's delay before use animation parameter : true when the weapon has been activated but hasn't been used yet
-		[Tooltip("the name of the weapon's delay before use animation parameter : true when the weapon has been activated but hasn't been used yet")]
+        /// 사용 전 무기의 지연 이름 애니메이션 매개변수: 무기가 활성화되었지만 아직 사용되지 않은 경우 true
+        [Tooltip("the name of the weapon's delay before use animation parameter : true when the weapon has been activated but hasn't been used yet")]
 		public string DelayBeforeUseAnimationParameter;
-		/// the name of the weapon's single use animation parameter : true at each frame the weapon activates (shoots)
-		[Tooltip("the name of the weapon's single use animation parameter : true at each frame the weapon activates (shoots)")]
+        /// 무기의 일회용 애니메이션 매개변수 이름: 무기가 활성화(발사)되는 각 프레임에서 true
+        [Tooltip("the name of the weapon's single use animation parameter : true at each frame the weapon activates (shoots)")]
 		public string SingleUseAnimationParameter;
-		/// the name of the weapon's in use animation parameter : true at each frame the weapon has started firing but hasn't stopped yet
-		[Tooltip("the name of the weapon's in use animation parameter : true at each frame the weapon has started firing but hasn't stopped yet")]
+        /// 사용 중인 무기의 이름 애니메이션 매개변수: 무기가 발사를 시작했지만 아직 멈추지 않은 각 프레임에서 true
+        [Tooltip("the name of the weapon's in use animation parameter : true at each frame the weapon has started firing but hasn't stopped yet")]
 		public string UseAnimationParameter;
-		/// the name of the weapon's delay between each use animation parameter : true when the weapon is in use
-		[Tooltip("the name of the weapon's delay between each use animation parameter : true when the weapon is in use")]
+        /// 각 사용 애니메이션 매개변수 사이의 무기 지연 이름: 무기가 사용 중인 경우 true
+        [Tooltip("the name of the weapon's delay between each use animation parameter : true when the weapon is in use")]
 		public string DelayBetweenUsesAnimationParameter;
-		/// the name of the weapon stop animation parameter : true after a shot and before the next one or the weapon's stop 
-		[Tooltip("the name of the weapon stop animation parameter : true after a shot and before the next one or the weapon's stop ")]
+        /// 무기 정지 애니메이션 매개변수의 이름: 사격 후와 다음 사격 또는 무기 정지 전 true
+        [Tooltip("the name of the weapon stop animation parameter : true after a shot and before the next one or the weapon's stop ")]
 		public string StopAnimationParameter;
-		/// the name of the weapon reload start animation parameter
-		[Tooltip("the name of the weapon reload start animation parameter")]
+        /// 무기 재장전 시작 애니메이션 매개변수의 이름
+        [Tooltip("the name of the weapon reload start animation parameter")]
 		public string ReloadStartAnimationParameter;
-		/// the name of the weapon reload animation parameter
-		[Tooltip("the name of the weapon reload animation parameter")]
+        /// 무기 재장전 애니메이션 매개변수의 이름
+        [Tooltip("the name of the weapon reload animation parameter")]
 		public string ReloadAnimationParameter;
-		/// the name of the weapon reload end animation parameter
-		[Tooltip("the name of the weapon reload end animation parameter")]
+        /// 무기 재장전 종료 애니메이션 매개변수의 이름
+        [Tooltip("the name of the weapon reload end animation parameter")]
 		public string ReloadStopAnimationParameter;
-		/// the name of the weapon's angle animation parameter
-		[Tooltip("the name of the weapon's angle animation parameter")]
+        /// 무기 재장전 종료 애니메이션 매개변수의 이름
+        [Tooltip("the name of the weapon's angle animation parameter")]
 		public string WeaponAngleAnimationParameter;
-		/// the name of the weapon's angle animation parameter, adjusted so it's always relative to the direction the character is currently facing
-		[Tooltip("the name of the weapon's angle animation parameter, adjusted so it's always relative to the direction the character is currently facing")]
+        /// 무기의 각도 애니메이션 매개변수 이름. 항상 캐릭터가 현재 향하고 있는 방향을 기준으로 조정됩니다.
+        [Tooltip("the name of the weapon's angle animation parameter, adjusted so it's always relative to the direction the character is currently facing")]
 		public string WeaponAngleRelativeAnimationParameter;
-		/// the name of the parameter to send to true as long as this weapon is equipped, used or not. While all the other parameters defined here are updated by the Weapon class itself, and passed to the weapon and character, this one will be updated by CharacterHandleWeapon only."
-		[Tooltip("the name of the parameter to send to true as long as this weapon is equipped, used or not. While all the other parameters defined here are updated by the Weapon class itself, and passed to the weapon and character, this one will be updated by CharacterHandleWeapon only.")]
+        /// 이 무기가 장착되어 있거나 사용되지 않는 한 true로 보낼 매개변수의 이름입니다. 여기에 정의된 다른 모든 매개변수는 Weapon 클래스 자체에 의해 업데이트되고 무기와 캐릭터에 전달되지만 이 매개변수는 CharacterHandleWeapon에 의해서만 업데이트됩니다.
+        [Tooltip("the name of the parameter to send to true as long as this weapon is equipped, used or not. While all the other parameters defined here are updated by the Weapon class itself, and passed to the weapon and character, this one will be updated by CharacterHandleWeapon only.")]
 		public string EquippedAnimationParameter;
         
 		[MMInspectorGroup("Feedbacks", true, 18)]

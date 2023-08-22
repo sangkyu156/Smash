@@ -5010,6 +5010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 1622653139896216}
+  enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
   InitialHealth: 1

@@ -57,7 +57,7 @@ MonoBehaviour:
   BurstLength: 3
   BurstTimeBetweenShots: 0.1
   MagazineBased: 0
-  MagazineSize: 30
+  MagazineSize: 0
   AutoReload: 0
   NoInputReload: 0
   ReloadTime: 2
@@ -87,7 +87,7 @@ MonoBehaviour:
   StartAnimationParameter: Sword
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
-  UseAnimationParameter: 
+  UseAnimationParameter: qwe
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
   ReloadStartAnimationParameter: 
@@ -108,21 +108,21 @@ MonoBehaviour:
   Flipped: 0
   MeleeDamageAreaMode: 0
   DamageAreaShape: 2
-  AreaOffset: {x: 0, y: 0.7, z: 0.9}
-  AreaSize: {x: 0.8, y: 0.8, z: 1.4}
+  AreaOffset: {x: 0, y: 0.7, z: 1.4}
+  AreaSize: {x: 0.9, y: 0.9, z: 2}
   TriggerFilter: 195
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}
   ExistingDamageArea: {fileID: 0}
-  InitialDelay: 0
-  ActiveDuration: 0.3
+  InitialDelay: 0.15
+  ActiveDuration: 0.18
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 8192
   MinDamageCaused: 30
   MaxDamageCaused: 30
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2, z: 0}
+  Knockback: 1
+  KnockbackForce: {x: 0, y: 2, z: 10}
   KnockbackDirection: 0
   InvincibilityDuration: 0.5
   CanDamageOwner: 0

@@ -47,12 +47,14 @@ namespace MoreMountains.Tools
 				return;
 			}
 
-			parameter = Animator.StringToHash(parameterName);
+            parameter = Animator.StringToHash(parameterName);
 
 			if (animator.MMHasParameterOfType(parameterName, type))
 			{
 				parameterList.Add(parameter);
 			}
+
+
 		}
 
 		/// <summary>
@@ -119,12 +121,12 @@ namespace MoreMountains.Tools
 		/// <param name="value">If set to <c>true</c> value.</param>
 		public static bool UpdateAnimatorBool(Animator animator, int parameter, bool value, HashSet<int> parameterList, bool performSanityCheck = true)
 		{
-			if (performSanityCheck && !parameterList.Contains(parameter))
+            if (performSanityCheck && !parameterList.Contains(parameter))
 			{
 				return false;
 			}
 			animator.SetBool(parameter, value);
-			return true;
+            return true;
 		}
 
 		/// <summary>
