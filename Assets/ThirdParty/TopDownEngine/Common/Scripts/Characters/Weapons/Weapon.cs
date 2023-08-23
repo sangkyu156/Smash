@@ -283,11 +283,14 @@ namespace MoreMountains.TopDownEngine
 		protected int _equippedAnimationParameter;
 		protected float _lastShootRequestAt = -float.MaxValue;
 		protected float _lastTurnWeaponOnAt = -float.MaxValue;
+        protected float attackDelayTime = 0.65f;
+        protected float attackComboTime = 0.5f;
+        protected Animator animator;
 
-		/// <summary>
-		/// On start we initialize our weapon
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// On start we initialize our weapon
+        /// </summary>
+        protected virtual void Start()
 		{
 			if (InitializeOnStart)
 			{
@@ -436,8 +439,16 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Update()
 		{
-			FlipWeapon();
-			ApplyOffset();       
+            if (attackComboTime > 0)
+				attackComboTime -= Time.deltaTime;
+			else if(attackComboTime <= 0 && animator.GetInteger("Combo") != 0)
+			{
+                animator.SetInteger("Combo", 0);
+				Debug.Log("콤보 0 으로만듬");
+			}
+
+            FlipWeapon();
+			ApplyOffset();
 		}
 
 		/// <summary>
@@ -513,12 +524,18 @@ namespace MoreMountains.TopDownEngine
 			ResetMovementMultiplier();
 		}
 
-		/// <summary>
-		/// When the weapon starts we switch to a delay or shoot based on our weapon's settings
-		/// </summary>
-		public virtual void CaseWeaponStart()
+        /// <summary>
+        /// 무기가 시작되면 무기 설정에 따라 지연 또는 발사로 전환됩니다.
+        /// </summary>
+        public virtual void CaseWeaponStart()
 		{
-			if (DelayBeforeUse > 0)
+			Time.timeScale = 0.1f;
+            if (InputAuthorized == true)
+                Invoke("AttackAllow", attackDelayTime);
+
+            InputAuthorized = false;
+
+            if (DelayBeforeUse > 0)
 			{
 				_delayBeforeUseCounter = DelayBeforeUse;
 				WeaponState.ChangeState(WeaponStates.WeaponDelayBeforeUse);
@@ -529,10 +546,36 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// If we're in delay before use, we wait until our delay is passed and then request a shoot
-		/// </summary>
-		public virtual void CaseWeaponDelayBeforeUse()
+        //attackDelayTime 뒤에 공격 가능하도록
+		public virtual void AttackAllow()
+		{
+            InputAuthorized = true;
+
+            //switch (animator.GetInteger("Combo"))
+            //{
+            //    case 0: animator.SetInteger("Combo", 1); attackComboTime = 0.3f + 0.6f; break;
+            //    case 1: animator.SetInteger("Combo", 2); attackComboTime = 0.3f + 0.6f; break;
+            //    case 2: animator.SetInteger("Combo", 0); break;
+            //}
+
+        }
+
+        //콤보 파라미터 변경
+        public virtual void ComboChange()
+		{
+            switch (animator.GetInteger("Combo"))
+            {
+                case 0: animator.SetInteger("Combo", 1); break;
+                case 1: animator.SetInteger("Combo", 2); break;
+                case 2: animator.SetInteger("Combo", 0); Debug.Log("콤보 0 으로만듬"); break;
+            }
+			Debug.Log("콤보 변경함");
+        }
+
+        /// <summary>
+        /// If we're in delay before use, we wait until our delay is passed and then request a shoot
+        /// </summary>
+        public virtual void CaseWeaponDelayBeforeUse()
 		{
 			_delayBeforeUseCounter -= Time.deltaTime;
 			if (_delayBeforeUseCounter <= 0)
@@ -582,7 +625,7 @@ namespace MoreMountains.TopDownEngine
 		public virtual void CaseWeaponStop()
 		{
 			WeaponState.ChangeState(WeaponStates.WeaponIdle);
-		}
+        }
 
 		/// <summary>
 		/// If a reload is needed, we mention it and switch to idle
@@ -650,14 +693,14 @@ namespace MoreMountains.TopDownEngine
 				WeaponState.ChangeState(WeaponStates.WeaponInterrupted);
 			}
 		}
-        
-        
 
 
-		/// <summary>
-		/// Determines whether or not the weapon can fire
-		/// </summary>
-		public virtual IEnumerator ShootRequestCo()
+
+
+        /// <summary>
+        /// 무기가 발사될 수 있는지 여부를 결정합니다.
+        /// </summary>
+        public virtual IEnumerator ShootRequestCo()
 		{
 			if (Time.time - _lastShootRequestAt < TimeBetweenUses)
 			{
@@ -752,10 +795,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When the weapon is used, plays the corresponding sound
-		/// </summary>
-		public virtual void WeaponUse()
+        /// <summary>
+        /// 무기 사용 시 해당 소리가 재생됩니다.
+        /// </summary>
+        public virtual void WeaponUse()
 		{
 			ApplyRecoil();
 			TriggerWeaponUsedFeedback();

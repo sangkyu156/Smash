@@ -12,8 +12,6 @@ namespace MoreMountains.TopDownEngine
 	[AddComponentMenu("TopDown Engine/Weapons/Melee Weapon")]
 	public class MeleeWeapon : Weapon
 	{
-		Animator animator;
-
 		/// the possible shapes for the melee weapon's damage area
 		public enum MeleeDamageAreaShapes { Rectangle, Circle, Box, Sphere }
 		public enum MeleeDamageAreaModes { Generated, Existing }
@@ -225,22 +223,16 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
+
+
         /// <summary>
-        /// When the weapon is used, we trigger our attack routine
+        /// 무기가 사용되면 공격 루틴이 시작됩니다.
         /// </summary>
         public override void WeaponUse()
 		{
-            //animator.GetBool("qwe") == true 이고 공격1을 누른지 0.5~1초 사이이면 애니메이터 'Blend' +1 
-            //위에가 아니면 'Blend' = 0;
-            if (animator.GetBool("qwe") == true)
-			{
-                Debug.Log("공격");
-            }
-            Debug.Log("공격2");
-
             base.WeaponUse();
 			StartCoroutine(MeleeWeaponAttack());
-		}
+        }
 
 		/// <summary>
 		/// Triggers an attack, turning the damage area on and then off
@@ -256,7 +248,9 @@ namespace MoreMountains.TopDownEngine
 			yield return new WaitForSeconds(ActiveDuration);
 			DisableDamageArea();
 			_attackInProgress = false;
-		}
+			
+            ComboChange();//콤보 파라미터 변경
+        }
 
 		/// <summary>
 		/// Enables the damage area.
