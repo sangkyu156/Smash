@@ -283,8 +283,8 @@ namespace MoreMountains.TopDownEngine
 		protected int _equippedAnimationParameter;
 		protected float _lastShootRequestAt = -float.MaxValue;
 		protected float _lastTurnWeaponOnAt = -float.MaxValue;
-        protected float attackDelayTime = 0.65f;
-        protected float attackComboTime = 0.5f;
+        protected float attackComboTime = 0.3f;
+		protected float exitTime = 0.84f;
         protected Animator animator;
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace MoreMountains.TopDownEngine
 					if (_ownerAnimator == null)
 					{
 						_ownerAnimator = CharacterHandleWeapon.gameObject.GetComponentInParent<Animator>();
-					}
+                    }
 				}
 			}
 		}
@@ -439,14 +439,6 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Update()
 		{
-            if (attackComboTime > 0)
-				attackComboTime -= Time.deltaTime;
-			else if(attackComboTime <= 0 && animator.GetInteger("Combo") != 0)
-			{
-                animator.SetInteger("Combo", 0);
-				Debug.Log("콤보 0 으로만듬");
-			}
-
             FlipWeapon();
 			ApplyOffset();
 		}
@@ -529,11 +521,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void CaseWeaponStart()
 		{
-			Time.timeScale = 0.1f;
-            if (InputAuthorized == true)
-                Invoke("AttackAllow", attackDelayTime);
-
-            InputAuthorized = false;
+            StartCoroutine(CheckAnimationState());
 
             if (DelayBeforeUse > 0)
 			{
@@ -550,14 +538,7 @@ namespace MoreMountains.TopDownEngine
 		public virtual void AttackAllow()
 		{
             InputAuthorized = true;
-
-            //switch (animator.GetInteger("Combo"))
-            //{
-            //    case 0: animator.SetInteger("Combo", 1); attackComboTime = 0.3f + 0.6f; break;
-            //    case 1: animator.SetInteger("Combo", 2); attackComboTime = 0.3f + 0.6f; break;
-            //    case 2: animator.SetInteger("Combo", 0); break;
-            //}
-
+			//Debug.Log("공격버튼 활성화");
         }
 
         //콤보 파라미터 변경
@@ -565,16 +546,63 @@ namespace MoreMountains.TopDownEngine
 		{
             switch (animator.GetInteger("Combo"))
             {
-                case 0: animator.SetInteger("Combo", 1); break;
+                case 0: animator.SetInteger("Combo", 1); attackComboTime = 0.3f; break;
                 case 1: animator.SetInteger("Combo", 2); break;
-                case 2: animator.SetInteger("Combo", 0); Debug.Log("콤보 0 으로만듬"); break;
+                case 2: animator.SetInteger("Combo", 0); break;
             }
-			Debug.Log("콤보 변경함");
+
+            AttackAllow();
         }
 
-        /// <summary>
-        /// If we're in delay before use, we wait until our delay is passed and then request a shoot
-        /// </summary>
+		public virtual IEnumerator CheckAnimationState()
+		{
+            while (animator.GetInteger("Combo") == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+			{
+                InputAuthorized = false;
+                yield return new WaitForSecondsRealtime(0.75f);
+                animator.SetInteger("Combo", 1);
+                InputAuthorized = true;
+                yield return new WaitForSecondsRealtime(0.3f);
+                animator.SetInteger("Combo", 0);
+				yield break;
+            }
+
+			while (animator.GetInteger("Combo") == 1 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack02_1"))
+			{
+                //Debug.Log("2 실행");
+                InputAuthorized = false;
+                yield return new WaitForSecondsRealtime(0.75f);
+                animator.SetInteger("Combo", 2);
+                InputAuthorized = true;
+                yield return new WaitForSecondsRealtime(0.3f);
+                animator.SetInteger("Combo", 0);
+                yield break;
+            }
+
+			while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
+			{
+                //Debug.Log("3 실행");
+                InputAuthorized = false;
+                yield return new WaitForSecondsRealtime(0.75f);
+                animator.SetInteger("Combo", 0);
+                InputAuthorized = true;
+                yield break;
+            }
+
+			//while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < exitTime)
+			//{
+			//	//Debug.Log($"[exitTime 0.8일때] A = {animator.GetCurrentAnimatorStateInfo(0).normalizedTime}, exitTime = {exitTime}");
+			//             //애니메이션 재생 중 실행되는 부분
+			//             yield return null;
+			//}
+
+			//애니메이션 완료 후 실행되는 부분
+		}
+
+
+            /// <summary>
+            /// If we're in delay before use, we wait until our delay is passed and then request a shoot
+            /// </summary>
         public virtual void CaseWeaponDelayBeforeUse()
 		{
 			_delayBeforeUseCounter -= Time.deltaTime;

@@ -16,14 +16,14 @@ namespace MoreMountains.Tools
 
 		public enum AxisTypes { Positive, Negative }
 
-		/// <summary>
-		/// Takes an axis and returns a ButtonState depending on whether the axis is pressed or not (useful for xbox triggers for example), and when you need to use an axis/trigger as a binary thing
-		/// </summary>
-		/// <returns>The axis as button.</returns>
-		/// <param name="axisName">Axis name.</param>
-		/// <param name="threshold">Threshold value below which the button is off or released.</param>
-		/// <param name="currentState">Current state of the axis.</param>
-		public static ButtonStates ProcessAxisAsButton (string axisName, float threshold, ButtonStates currentState, AxisTypes AxisType = AxisTypes.Positive)
+        /// <summary>
+        /// 축을 가져와서 축을 눌렀는지 여부(예를 들어 xbox 트리거에 유용함)와 축/트리거를 바이너리로 사용해야 하는 경우에 따라 ButtonState를 반환합니다.
+        /// </summary>
+        /// <returns>The axis as button.</returns>
+        /// <param name="axisName">Axis name.</param>
+        /// <param name="threshold">Threshold value below which the button is off or released.</param>
+        /// <param name="currentState">Current state of the axis.</param>
+        public static ButtonStates ProcessAxisAsButton (string axisName, float threshold, ButtonStates currentState, AxisTypes AxisType = AxisTypes.Positive)
 		{
 			float axisValue = Input.GetAxis (axisName);
 			ButtonStates returnState;
@@ -55,10 +55,10 @@ namespace MoreMountains.Tools
 			return returnState;
 		}
 
-		/// <summary>
-		/// IM button, short for InputManager button, a class used to handle button states, whether mobile or actual keys
-		/// </summary>
-		public class IMButton
+        /// <summary>
+        /// IM 버튼(InputManager 버튼의 약자), 모바일 키이든 실제 키이든 버튼 상태를 처리하는 데 사용되는 클래스
+        /// </summary>
+        public class IMButton
 		{
 			/// a state machine used to store button states
 			public MMStateMachine<MMInput.ButtonStates> State {get;protected set;}

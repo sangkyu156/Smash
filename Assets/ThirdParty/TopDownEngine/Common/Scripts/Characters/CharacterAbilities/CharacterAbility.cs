@@ -204,10 +204,10 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-		/// <summary>
-		/// Internal method to check if an input manager is present or not
-		/// </summary>
-		protected virtual void InternalHandleInput()
+        /// <summary>
+        /// 입력 관리자가 있는지 확인하는 내부 방법
+        /// </summary>
+        protected virtual void InternalHandleInput()
 		{
 			if (_inputManager == null) { return; }
 			_horizontalInput = _inputManager.PrimaryMovement.x;
@@ -215,10 +215,10 @@ namespace MoreMountains.TopDownEngine
 			HandleInput();
 		}
 
-		/// <summary>
-		/// Called at the very start of the ability's cycle, and intended to be overridden, looks for input and calls methods if conditions are met
-		/// </summary>
-		protected virtual void HandleInput()
+        /// <summary>
+        /// 능력 주기의 맨 처음에 호출되고 재정의되도록 의도되었으며 조건이 충족되면 입력 및 호출 방법을 찾습니다.
+        /// </summary>
+        protected virtual void HandleInput()
 		{
 
 		}
@@ -233,10 +233,10 @@ namespace MoreMountains.TopDownEngine
 		}
 
 
-		/// <summary>
-		/// The first of the 3 passes you can have in your ability. Think of it as EarlyUpdate() if it existed
-		/// </summary>
-		public virtual void EarlyProcessAbility()
+        /// <summary>
+        /// 당신의 능력으로 가질 수 있는 3가지 패스 중 첫 번째 패스입니다. 존재하는 경우 EarlyUpdate()로 생각하십시오.
+        /// </summary>
+        public virtual void EarlyProcessAbility()
 		{
 			InternalHandleInput();
 		}

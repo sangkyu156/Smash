@@ -108,8 +108,8 @@ MonoBehaviour:
   Flipped: 0
   MeleeDamageAreaMode: 0
   DamageAreaShape: 2
-  AreaOffset: {x: 0, y: 0.7, z: 1.4}
-  AreaSize: {x: 0.9, y: 0.9, z: 2}
+  AreaOffset: {x: 0, y: 0.7, z: 1.6}
+  AreaSize: {x: 0.9, y: 0.9, z: 2.2}
   TriggerFilter: 195
   HitDamageableFeedback: {fileID: 0}
   HitNonDamageableFeedback: {fileID: 0}

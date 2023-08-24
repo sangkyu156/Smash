@@ -80,8 +80,8 @@ namespace MoreMountains.TopDownEngine
 		public MMInput.IMButton CrouchButton { get; protected set; }
 		/// the shoot button
 		public MMInput.IMButton ShootButton { get; protected set; }
-		/// the activate button, used for interactions with zones
-		public MMInput.IMButton InteractButton { get; protected set; }
+        /// 영역과의 상호 작용에 사용되는 활성화 버튼
+        public MMInput.IMButton InteractButton { get; protected set; }
 		/// the shoot button
 		public MMInput.IMButton SecondaryShootButton { get; protected set; }
 		/// the reload button
@@ -237,10 +237,10 @@ namespace MoreMountains.TopDownEngine
 			ProcessButtonStates();
 		}
 
-		/// <summary>
-		/// At update, we check the various commands and update our values and states accordingly.
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 업데이트 시 다양한 명령을 확인하고 그에 따라 값과 상태를 업데이트합니다.
+        /// </summary>
+        protected virtual void Update()
 		{		
 			if (!IsMobile && InputDetectionActive)
 			{	
@@ -268,10 +268,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// If we're not on mobile, watches for input changes, and updates our buttons states accordingly
-		/// </summary>
-		protected virtual void GetInputButtons()
+        /// <summary>
+        /// 모바일을 사용하지 않는 경우 입력 변경을 관찰하고 그에 따라 버튼 상태를 업데이트합니다.
+        /// </summary>
+        protected virtual void GetInputButtons()
 		{
 			foreach(MMInput.IMButton button in ButtonList)
 			{

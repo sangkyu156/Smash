@@ -242,14 +242,12 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (_attackInProgress) { yield break; }
 
-			_attackInProgress = true;
+            _attackInProgress = true;
 			yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
 			yield return new WaitForSeconds(ActiveDuration);
 			DisableDamageArea();
 			_attackInProgress = false;
-			
-            ComboChange();//콤보 파라미터 변경
         }
 
 		/// <summary>

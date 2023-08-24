@@ -492,24 +492,24 @@ namespace MoreMountains.TopDownEngine
 				
 		}
 
-		/// <summary>
-		/// We do this every frame. This is separate from Update for more flexibility.
-		/// </summary>
-		protected virtual void EveryFrame()
+        /// <summary>
+        /// 우리는 매 프레임마다 이 작업을 수행합니다. 이는 유연성을 높이기 위해 업데이트와 별개입니다.
+        /// </summary>
+        protected virtual void EveryFrame()
 		{
-			// we process our abilities
-			EarlyProcessAbilities();
+            // 우리는 우리의 능력을 처리합니다
+            EarlyProcessAbilities();
 			ProcessAbilities();
 			LateProcessAbilities();
 
-			// we send our various states to the animator.		 
-			UpdateAnimators ();
+            // 다양한 상태를 애니메이터에게 보냅니다. 
+            UpdateAnimators();
 		}
 
-		/// <summary>
-		/// Calls all registered abilities' Early Process methods
-		/// </summary>
-		protected virtual void EarlyProcessAbilities()
+        /// <summary>
+        /// 등록된 모든 능력의 EarlyProcess 메소드를 호출합니다.
+        /// </summary>
+        protected virtual void EarlyProcessAbilities()
 		{
 			foreach (CharacterAbility ability in _characterAbilities)
 			{
@@ -520,10 +520,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Calls all registered abilities' Process methods
-		/// </summary>
-		protected virtual void ProcessAbilities()
+        /// <summary>
+        /// 등록된 모든 능력의 처리 방법을 호출합니다.
+        /// </summary>
+        protected virtual void ProcessAbilities()
 		{
 			foreach (CharacterAbility ability in _characterAbilities)
 			{
@@ -534,10 +534,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Calls all registered abilities' Late Process methods
-		/// </summary>
-		protected virtual void LateProcessAbilities()
+        /// <summary>
+        /// 등록된 모든 능력의 Late Process 메소드를 호출합니다.
+        /// </summary>
+        protected virtual void LateProcessAbilities()
 		{
 			foreach (CharacterAbility ability in _characterAbilities)
 			{
@@ -549,10 +549,10 @@ namespace MoreMountains.TopDownEngine
 		}
 
 
-		/// <summary>
-		/// This is called at Update() and sets each of the animators parameters to their corresponding State values
-		/// </summary>
-		protected virtual void UpdateAnimators()
+        /// <summary>
+        /// 이는 Update()에서 호출되며 각 애니메이터 매개변수를 해당 상태 값으로 설정합니다.
+        /// </summary>
+        protected virtual void UpdateAnimators()
 		{
 			UpdateAnimationRandomNumber();
 

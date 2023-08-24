@@ -20,13 +20,13 @@ namespace MoreMountains.Tools
 		protected bool _enteredState = false;
 		protected float _initialSpeed;
 
-		/// <summary>
-		/// On state enter, we modify our speed and start position
-		/// </summary>
-		/// <param name="animator"></param>
-		/// <param name="stateInfo"></param>
-		/// <param name="layerIndex"></param>
-		public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        /// <summary>
+        /// 상태 진입 시 속도와 시작 위치를 수정합니다.
+        /// </summary>
+        /// <param name="animator"></param>
+        /// <param name="stateInfo"></param>
+        /// <param name="layerIndex"></param>
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			base.OnStateEnter(animator, stateInfo, layerIndex);
 

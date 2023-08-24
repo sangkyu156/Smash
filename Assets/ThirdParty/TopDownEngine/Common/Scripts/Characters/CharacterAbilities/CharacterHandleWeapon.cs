@@ -123,11 +123,12 @@ namespace MoreMountains.TopDownEngine
 		protected int _weaponEquippedIDAnimationParameter;
 		protected CharacterGridMovement _characterGridMovement;
 		protected List<WeaponModel> _weaponModels;
+        
 
-		/// <summary>
-		/// Sets the weapon attachment
-		/// </summary>
-		protected override void PreInitialization()
+        /// <summary>
+        /// Sets the weapon attachment
+        /// </summary>
+        protected override void PreInitialization()
 		{
 			base.PreInitialization();
 			// filler if the WeaponAttachment has not been set
@@ -220,10 +221,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Gets input and triggers methods based on what's been pressed
-		/// </summary>
-		protected override void HandleInput()
+        /// <summary>
+        /// 누른 항목에 따라 입력 및 트리거 메서드를 가져옵니다.
+        /// </summary>
+        protected override void HandleInput()
 		{
 			if (!AbilityAuthorized
 			    || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal)

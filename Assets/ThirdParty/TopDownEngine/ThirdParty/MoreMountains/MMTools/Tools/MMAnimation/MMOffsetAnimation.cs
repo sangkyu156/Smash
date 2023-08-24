@@ -58,10 +58,10 @@ namespace MoreMountains.Tools
 			OffsetCurrentAnimation();
 		}
 
-		/// <summary>
-		/// offsets the target animation
-		/// </summary>
-		public virtual void OffsetCurrentAnimation()
+        /// <summary>
+        /// 대상 애니메이션을 오프셋합니다.
+        /// </summary>
+        public virtual void OffsetCurrentAnimation()
 		{
 			_stateInfo = _animator.GetCurrentAnimatorStateInfo(AnimationLayerID);
 			_animator.Play(_stateInfo.fullPathHash, -1, Random.Range(MinimumRandomRange, MaximumRandomRange));
