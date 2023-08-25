@@ -69,8 +69,8 @@ namespace MoreMountains.TopDownEngine
 		[MMReadOnly] [Tooltip("the owner of the DamageOnTouch zone")]
 		public GameObject Owner;
 
-		/// Defines on what triggers the damage should be applied, by default on enter and stay (both 2D and 3D) but this field will let you exclude triggers if needed
-		[Tooltip(
+        /// 기본적으로 입력 및 유지(2D 및 3D 모두) 시 피해를 적용해야 하는 트리거를 정의하지만 이 필드를 사용하면 필요한 경우 트리거를 제외할 수 있습니다.
+        [Tooltip(
 			"Defines on what triggers the damage should be applied, by default on enter and stay (both 2D and 3D) but this field will let you exclude triggers if needed")]
 		public TriggerAndCollisionMask TriggerFilter = AllowedTriggerCallbacks;
 
@@ -563,13 +563,13 @@ namespace MoreMountains.TopDownEngine
 			Colliding(collider.gameObject);
 		}
 
-		#endregion
-		
-		/// <summary>
-		/// When colliding, we apply the appropriate damage
-		/// </summary>
-		/// <param name="collider"></param>
-		protected virtual void Colliding(GameObject collider)
+        #endregion
+
+        /// <summary>
+        /// 충돌 시 적절한 피해를 입힙니다.
+        /// </summary>
+        /// <param name="collider"></param>
+        protected virtual void Colliding(GameObject collider)
 		{
 			if (!EvaluateAvailability(collider))
 			{
@@ -621,11 +621,11 @@ namespace MoreMountains.TopDownEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Describes what happens when colliding with a damageable object
-		/// </summary>
-		/// <param name="health">Health.</param>
-		protected virtual void OnCollideWithDamageable(Health health)
+        /// <summary>
+        /// 손상될 수 있는 물체와 충돌할 때 어떤 일이 일어나는지 설명합니다.
+        /// </summary>
+        /// <param name="health">Health.</param>
+        protected virtual void OnCollideWithDamageable(Health health)
 		{
 			_collidingHealth = health;
 

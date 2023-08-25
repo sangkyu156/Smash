@@ -250,10 +250,10 @@ namespace MoreMountains.TopDownEngine
 			_attackInProgress = false;
         }
 
-		/// <summary>
-		/// Enables the damage area.
-		/// </summary>
-		protected virtual void EnableDamageArea()
+        /// <summary>
+        /// 피해 지역을 활성화합니다.
+        /// </summary>
+        protected virtual void EnableDamageArea()
 		{
 			if (_damageAreaCollider2D != null)
 			{
@@ -281,10 +281,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When selected, we draw a bunch of gizmos
-		/// </summary>
-		protected virtual void OnDrawGizmosSelected()
+        /// <summary>
+        /// 선택하면 여러 기즈모를 그립니다.
+        /// </summary>
+        protected virtual void OnDrawGizmosSelected()
 		{
 			if (!Application.isPlaying)
 			{
@@ -320,10 +320,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On disable we set our flag to false
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// 비활성화 시 플래그를 false로 설정합니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			_attackInProgress = false;
 		}

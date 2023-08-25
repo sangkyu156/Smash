@@ -344,11 +344,11 @@ namespace MoreMountains.TopDownEngine
 		{
 			_initialPosition = this.transform.position;
 		}
-		
-		/// <summary>
-		/// Initializes health to either initial or current values
-		/// </summary>
-		public virtual void InitializeCurrentHealth()
+
+        /// <summary>
+        /// 상태를 초기 값 또는 현재 값으로 초기화합니다.
+        /// </summary>
+        public virtual void InitializeCurrentHealth()
 		{
 			if (MasterHealth == null)
 			{
@@ -391,13 +391,13 @@ namespace MoreMountains.TopDownEngine
 			CancelInvoke();
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Returns true if this Health component can be damaged this frame, and false otherwise
-		/// </summary>
-		/// <returns></returns>
-		public virtual bool CanTakeDamageThisFrame()
+        /// <summary>
+        /// 이 Health 구성 요소가 이번 프레임에 손상될 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool CanTakeDamageThisFrame()
 		{
 			// if the object is invulnerable, we do nothing and exit
 			if (Invulnerable || ImmuneToDamage)
@@ -409,9 +409,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				return false;
 			}
-			
-			// if we're already below zero, we do nothing and exit
-			if ((CurrentHealth <= 0) && (InitialHealth != 0))
+
+            // 이미 0보다 낮으면 아무것도 하지 않고 종료합니다.
+            if ((CurrentHealth <= 0) && (InitialHealth != 0))
 			{
 				return false;
 			}
@@ -943,8 +943,7 @@ namespace MoreMountains.TopDownEngine
 				if (DestroyOnDeath)
 				{
                     //오브젝트 회수
-                    enemy.gameObject.SendMessage("OnTargetReached");
-					//CreateManager.Instance.ReturnPool(this);
+					CreateManager.Instance.ReturnPool(this.gameObject.GetComponent<Slime>());
 
                     //gameObject.SetActive(false);
                 }                

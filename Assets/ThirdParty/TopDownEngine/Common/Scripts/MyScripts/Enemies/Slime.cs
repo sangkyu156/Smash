@@ -33,15 +33,6 @@ namespace MoreMountains.TopDownEngine
 
         }
 
-        //오브젝트 비활성화
-        public void OnTargetReached()
-        {
-            if (gameObject.activeSelf)
-            {
-                CreateManager.Instance.ReturnPool(this);
-            }
-        }
-
         public override void OnCreatedInPool()
         {
             base.OnCreatedInPool();

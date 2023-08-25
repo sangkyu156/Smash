@@ -21,10 +21,10 @@ namespace MoreMountains.Tools
 		public List<MMSimpleObjectPooler> Owner { get; set; }
 		private void OnDestroy() { Owner?.Remove(this); }
 
-		/// <summary>
-		/// Fills the object pool with the gameobject type you've specified in the inspector
-		/// </summary>
-		public override void FillObjectPool()
+        /// <summary>
+        /// 인스펙터에서 지정한 게임 객체 유형으로 객체 풀을 채웁니다.
+        /// </summary>
+        public override void FillObjectPool()
 		{
 			if (GameObjectToPool == null)
 			{

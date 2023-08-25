@@ -190,6 +190,11 @@ namespace MoreMountains.TopDownEngine
 		protected int _initialMaximumLives;
 		protected int _initialCurrentLives;
 
+		//내가 만든 변수
+		//public Character player_Charcter;
+		public GameObject player_GameObject;
+		public GameObject skillPostion;
+
 		/// <summary>
 		/// On Awake we initialize our list of points of entry
 		/// </summary>
@@ -566,5 +571,27 @@ namespace MoreMountains.TopDownEngine
 			this.MMEventStopListening<TopDownEngineEvent> ();
 			this.MMEventStopListening<TopDownEnginePointEvent> ();
 		}
-	}
+
+		//레벨매니져한테 캐릭터형 받아와서 오브젝트형으로 바꾸기
+		public void playerTypeChange(Character player)
+		{
+			player_GameObject = player.transform.gameObject;
+        }
+
+        //스킬,아이템 활성화 직전에 skillPostion 자리움겨놓기
+		public void SetSkillPostion()
+		{
+            skillPostion.transform.position = player_GameObject.transform.position;
+
+			//마우스 방향보도록 지정
+			Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane GroupPlane = new Plane(Vector3.up, Vector3.zero);
+            float rayLength;
+            if (GroupPlane.Raycast(cameraRay, out rayLength))
+            {
+                Vector3 pointTolook = cameraRay.GetPoint(rayLength);
+                skillPostion.transform.LookAt(new Vector3(pointTolook.x, transform.position.y, pointTolook.z));
+            }
+        }
+    }
 }

@@ -65,10 +65,10 @@ namespace MoreMountains.Tools
 			
 		}
 
-		/// <summary>
-		/// Creates the waiting pool or tries to reuse one if there's already one available
-		/// </summary>
-		protected virtual bool CreateWaitingPool()
+        /// <summary>
+        /// 대기 풀을 생성하거나 이미 사용 가능한 풀이 있는 경우 재사용을 시도합니다.
+        /// </summary>
+        protected virtual bool CreateWaitingPool()
 		{
             if (!MutualizeWaitingPools)
 			{

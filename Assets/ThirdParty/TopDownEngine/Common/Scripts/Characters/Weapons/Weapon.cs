@@ -559,7 +559,7 @@ namespace MoreMountains.TopDownEngine
             while (animator.GetInteger("Combo") == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
 			{
                 InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.75f);
+                yield return new WaitForSecondsRealtime(0.78f);
                 animator.SetInteger("Combo", 1);
                 InputAuthorized = true;
                 yield return new WaitForSecondsRealtime(0.3f);
@@ -569,9 +569,8 @@ namespace MoreMountains.TopDownEngine
 
 			while (animator.GetInteger("Combo") == 1 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack02_1"))
 			{
-                //Debug.Log("2 실행");
                 InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.75f);
+                yield return new WaitForSecondsRealtime(0.78f);
                 animator.SetInteger("Combo", 2);
                 InputAuthorized = true;
                 yield return new WaitForSecondsRealtime(0.3f);
@@ -581,9 +580,9 @@ namespace MoreMountains.TopDownEngine
 
 			while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
 			{
-                //Debug.Log("3 실행");
+				CreateManager.Instance.ThirdAttackSpawn();
                 InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.75f);
+                yield return new WaitForSecondsRealtime(0.78f);
                 animator.SetInteger("Combo", 0);
                 InputAuthorized = true;
                 yield break;
@@ -591,7 +590,6 @@ namespace MoreMountains.TopDownEngine
 
 			//while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < exitTime)
 			//{
-			//	//Debug.Log($"[exitTime 0.8일때] A = {animator.GetCurrentAnimatorStateInfo(0).normalizedTime}, exitTime = {exitTime}");
 			//             //애니메이션 재생 중 실행되는 부분
 			//             yield return null;
 			//}

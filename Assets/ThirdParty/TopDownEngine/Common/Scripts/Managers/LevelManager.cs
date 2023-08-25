@@ -186,10 +186,10 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-		/// <summary>
-		/// Instantiate playable characters based on the ones specified in the PlayerPrefabs list in the LevelManager's inspector.
-		/// </summary>
-		protected virtual void InstantiatePlayableCharacters()
+        /// <summary>
+        /// LevelManager 인스펙터의 PlayerPrefabs 목록에 지정된 캐릭터를 기반으로 재생 가능한 캐릭터를 인스턴스화합니다.
+        /// </summary>
+        protected virtual void InstantiatePlayableCharacters()
 		{
 			Players = new List<Character> ();
 
@@ -198,9 +198,9 @@ namespace MoreMountains.TopDownEngine
 				Players.Add(GameManager.Instance.PersistentCharacter);
 				return;
 			}
-			
-			// we check if there's a stored character in the game manager we should instantiate
-			if (GameManager.Instance.StoredCharacter != null)
+
+            // 게임 관리자에 인스턴스화해야 할 저장된 캐릭터가 있는지 확인합니다.
+            if (GameManager.Instance.StoredCharacter != null)
 			{
 				Character newPlayer = Instantiate(GameManager.Instance.StoredCharacter, _initialSpawnPointPosition, Quaternion.identity);
 				newPlayer.name = GameManager.Instance.StoredCharacter.name;
@@ -226,9 +226,11 @@ namespace MoreMountains.TopDownEngine
 				{
 					Character newPlayer = Instantiate (playerPrefab, _initialSpawnPointPosition, Quaternion.identity);
 					newPlayer.name = playerPrefab.name;
-					Players.Add(newPlayer);
+                    Players.Add(newPlayer);
 
-					if (playerPrefab.CharacterType != Character.CharacterTypes.Player)
+                    GameManager.Instance.playerTypeChange(newPlayer);
+
+                    if (playerPrefab.CharacterType != Character.CharacterTypes.Player)
 					{
 						Debug.LogWarning ("LevelManager : The Character you've set in the LevelManager isn't a Player, which means it's probably not going to move. You can change that in the Character component of your prefab.");
 					}

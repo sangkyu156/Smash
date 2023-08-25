@@ -7,12 +7,11 @@ using Random = UnityEngine.Random;
 
 namespace  MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class meant to spawn objects (usually item pickers, but not necessarily)
-	/// The spawn can be triggered by any script, at any time, and comes with automatic hooks
-	/// to trigger loot on damage or death
-	/// </summary>
-	public class Loot : TopDownMonoBehaviour
+    /// <summary>
+    /// 개체를 생성하기 위한 클래스(일반적으로 항목 선택기이지만 반드시 그런 것은 아님) 
+	/// 생성은 언제든지 모든 스크립트에 의해 트리거될 수 있으며 손상이나 사망 시 전리품을 트리거하는 자동 후크가 함께 제공됩니다.
+    /// </summary>
+    public class Loot : TopDownMonoBehaviour
 	{
 		/// the possible modes by which loot can be defined 
 		public enum LootModes { Unique, LootTable, LootTableScriptableObject }
@@ -145,11 +144,11 @@ namespace  MoreMountains.TopDownEngine
 		protected Collider[] _overlapBox;
 		protected MMSimpleObjectPooler _simplePooler;
 		protected MMMultipleObjectPooler _multipleObjectPooler;
-        
-		/// <summary>
-		/// On Awake we grab the health component if there's one, and initialize our loot table
-		/// </summary>
-		protected virtual void Awake()
+
+        /// <summary>
+        /// Awake에서는 건강 구성 요소가 있으면 가져오고 전리품 테이블을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			_health = this.gameObject.GetComponentInParent<Health>();
 			InitializeLootTable();

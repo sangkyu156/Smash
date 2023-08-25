@@ -71,12 +71,20 @@ namespace MoreMountains.TopDownEngine
         }
 
         //오브젝트 생성
+        public void ThirdAttackSpawn()
+        {
+            ThirdAttack thirdAttack = poolManager.GetFromPool<ThirdAttack>();
+        }
         public void SlimeSpawn()
         {
             Slime slime = poolManager.GetFromPool<Slime>();
         }
 
         //오브젝트 회수
+        public void ReturnPool(ThirdAttack clone)
+        {
+            poolManager.TakeToPool<ThirdAttack>(clone.idName, clone);
+        }
         public void ReturnPool(Slime clone)
         {
             poolManager.TakeToPool<Slime>(clone.idName, clone);
