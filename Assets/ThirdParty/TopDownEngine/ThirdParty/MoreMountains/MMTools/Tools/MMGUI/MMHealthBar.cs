@@ -120,8 +120,8 @@ namespace MoreMountains.Tools
 		/// the mode the bar should follow the target in
 		[Tooltip("the mode the bar should follow the target in")]
 		public MMFollowTarget.UpdateModes FollowTargetMode = MMFollowTarget.UpdateModes.LateUpdate;
-		/// if this is true, the drawn health bar will be nested below the MMHealthBar
-		[Tooltip("if this is true, the drawn health bar will be nested below the MMHealthBar")]
+        /// 이것이 사실이라면 그려진 체력 바는 MMHealthBar 아래에 중첩됩니다.
+        [Tooltip("if this is true, the drawn health bar will be nested below the MMHealthBar")]
 		public bool NestDrawnHealthBar = false;
 		/// if this is true, a MMBillboard component will be added to the progress bar to make sure it always looks towards the camera
 		[Tooltip("if this is true, a MMBillboard component will be added to the progress bar to make sure it always looks towards the camera")]
@@ -163,10 +163,10 @@ namespace MoreMountains.Tools
 		protected Image _delayedImage = null;
 		protected bool _finalHideStarted = false;
 
-		/// <summary>
-		/// On Start, creates or sets the health bar up
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// 시작 시 체력 표시줄을 생성하거나 설정합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			Initialization();
 		}
@@ -210,10 +210,10 @@ namespace MoreMountains.Tools
 			return _progressBar.gameObject.activeInHierarchy;
 		}
 
-		/// <summary>
-		/// Initializes the bar (handles visibility, parenting, initial value
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// 막대를 초기화합니다(가시성, 양육, 초기 값 처리)
+        /// </summary>
+        public virtual void Initialization()
 		{
 			_finalHideStarted = false;
 
@@ -256,10 +256,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Draws the health bar.
-		/// </summary>
-		protected virtual void DrawHealthBar()
+        /// <summary>
+        /// 체력바를 그립니다.
+        /// </summary>
+        protected virtual void DrawHealthBar()
 		{
 			GameObject newGameObject = new GameObject();
 			SceneManager.MoveGameObjectToScene(newGameObject, this.gameObject.scene);
@@ -418,10 +418,10 @@ namespace MoreMountains.Tools
 			}            
 		}
 
-		/// <summary>
-		/// Updates the colors of the different bars
-		/// </summary>
-		protected virtual void UpdateDrawnColors()
+        /// <summary>
+        /// 다양한 막대의 색상을 업데이트합니다.
+        /// </summary>
+        protected virtual void UpdateDrawnColors()
 		{
 			if (HealthBarType != HealthBarTypes.Drawn)
 			{

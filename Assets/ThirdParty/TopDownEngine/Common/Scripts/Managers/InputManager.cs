@@ -76,7 +76,7 @@ namespace MoreMountains.TopDownEngine
 		public MMInput.IMButton RunButton { get; protected set; }
 		/// the dash button
 		public MMInput.IMButton DashButton { get; protected set; }
-		/// the crouch button
+		/// the ¿õÅ©¸² button
 		public MMInput.IMButton CrouchButton { get; protected set; }
 		/// the shoot button
 		public MMInput.IMButton ShootButton { get; protected set; }

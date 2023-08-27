@@ -13,6 +13,7 @@ namespace MoreMountains.TopDownEngine
         TopDownController3D topDown;
         AIBrain brain;
         Character character;
+        CharacterHandleWeapon characterHandleWeapon;
         Vector3 ranPostion = Vector3.zero;
 
         private void Awake()
@@ -21,6 +22,7 @@ namespace MoreMountains.TopDownEngine
             topDown = GetComponent<TopDownController3D>();
             brain = GetComponent<AIBrain>();
             character = GetComponent<Character>();
+            characterHandleWeapon = GetComponent<CharacterHandleWeapon>();
         }
 
         void Start()
@@ -54,6 +56,7 @@ namespace MoreMountains.TopDownEngine
             topDown.enabled = true;
             brain.enabled = true;
             character.ConditionState.CurrentState = CharacterStates.CharacterConditions.Normal;
+            characterHandleWeapon.Setup();
         }
 
         Vector3 RandomPostion()

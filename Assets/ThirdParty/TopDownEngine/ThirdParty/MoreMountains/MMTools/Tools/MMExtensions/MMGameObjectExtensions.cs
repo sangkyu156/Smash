@@ -26,13 +26,13 @@ namespace MoreMountains.Tools
 			return component;
 		}
 
-		/// <summary>
-		/// Grabs a component without allocating memory uselessly
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="this"></param>
-		/// <returns></returns>
-		public static T MMGetComponentNoAlloc<T>(this GameObject @this) where T : Component
+        /// <summary>
+        /// 쓸데없이 메모리를 할당하지 않고 구성 요소를 잡습니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="this"></param>
+        /// <returns></returns>
+        public static T MMGetComponentNoAlloc<T>(this GameObject @this) where T : Component
 		{
 			@this.GetComponents(typeof(T), m_ComponentCache);
 			Component component = m_ComponentCache.Count > 0 ? m_ComponentCache[0] : null;

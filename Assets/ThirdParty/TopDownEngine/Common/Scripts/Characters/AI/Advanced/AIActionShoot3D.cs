@@ -143,10 +143,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Activates the weapon
-		/// </summary>
-		protected virtual void Shoot()
+        /// <summary>
+        /// 무기를 활성화합니다
+        /// </summary>
+        protected virtual void Shoot()
 		{
 			if (_numberOfShoots < 1)
 			{
@@ -161,17 +161,17 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When entering the state we reset our shoot counter and grab our weapon
-		/// </summary>
-		public override void OnEnterState()
+        /// <summary>
+        /// 상태에 들어가면 사격 카운터를 재설정하고 무기를 잡습니다.
+        /// </summary>
+        public override void OnEnterState()
 		{
 			base.OnEnterState();
 			_numberOfShoots = 0;
 			_shooting = true;
 			_weaponAim = TargetHandleWeaponAbility.CurrentWeapon.gameObject.MMGetComponentNoAlloc<WeaponAim>();
 			_projectileWeapon = TargetHandleWeaponAbility.CurrentWeapon.gameObject.MMGetComponentNoAlloc<ProjectileWeapon>();
-		}
+        }
 
 		/// <summary>
 		/// When exiting the state we make sure we're not shooting anymore

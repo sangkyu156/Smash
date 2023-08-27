@@ -7,10 +7,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This class will allow you to trigger zooms on your cinemachine camera by sending MMCameraZoomEvents from any other class
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Cinemachine/MMCinemachineZoom")]
+    /// <summary>
+    /// 이 클래스를 사용하면 다른 클래스에서 MMCameraZoomEvents를 전송하여 시네마머신 카메라에서 확대/축소를 트리거할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Cinemachine/MMCinemachineZoom")]
 	#if MM_CINEMACHINE
 	[RequireComponent(typeof(Cinemachine.CinemachineVirtualCamera))]
 	#endif
@@ -54,8 +54,8 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public float TestDuration = 0.05f;
 
 		[MMFInspectorButton("TestZoom")]
-		/// an inspector button to test the zoom in play mode
-		public bool TestZoomButton;
+        /// 재생 모드에서 확대/축소를 테스트하는 검사기 버튼
+        public bool TestZoomButton;
 
 		public virtual float GetTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime; }
 		public virtual float GetDeltaTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime; }
@@ -76,27 +76,47 @@ namespace MoreMountains.FeedbacksForThirdParty
 		protected float _reachedDestinationTimestamp;
 		protected bool _destinationReached = false;
 		protected float _zoomStartedAt = 0f;
+		//내가만든 변수
+        //public float scrollSpeed = 30000.0f;
 
-		/// <summary>
-		/// On Awake we grab our virtual camera
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// On Awake we grab our virtual camera
+        /// </summary>
+        protected virtual void Awake()
 		{
 			_virtualCamera = this.gameObject.GetComponent<Cinemachine.CinemachineVirtualCamera>();
 			_initialFieldOfView = _virtualCamera.m_Lens.FieldOfView;
-		}	
-        
-		/// <summary>
-		/// On Update if we're zooming we modify our field of view accordingly
-		/// </summary>
-		protected virtual void Update()
+		}
+
+        /// <summary>
+        /// 업데이트 시 확대/축소하는 경우 이에 따라 시야를 수정합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
-			if (!_zooming)
+			float scroll = Input.GetAxis("Mouse ScrollWheel");
+			if(scroll != 0)
+                _zooming = true;
+
+            if (!_zooming)
 			{
 				return;
 			}
 
-			_elapsedTime = GetTime() - _zoomStartedAt;
+			if(_virtualCamera.m_Lens.FieldOfView <= 20f && scroll > 0)
+			{
+				_virtualCamera.m_Lens.FieldOfView = 20f;
+            }
+			else if(_virtualCamera.m_Lens.FieldOfView >= 40f && scroll < 0)
+			{
+				_virtualCamera.m_Lens.FieldOfView = 40f;
+            }
+			else
+			{
+				_virtualCamera.m_Lens.FieldOfView -= (scroll*10);
+            }
+
+
+            _elapsedTime = GetTime() - _zoomStartedAt;
 			if (_elapsedTime <= _transitionDuration)
 			{
 				float t = MMMaths.Remap(_elapsedTime, 0f, _transitionDuration, 0f, 1f);
@@ -126,14 +146,14 @@ namespace MoreMountains.FeedbacksForThirdParty
 			}
 		}
 
-		/// <summary>
-		/// A method that triggers the zoom, ideally only to be called via an event, but public for convenience
-		/// </summary>
-		/// <param name="mode"></param>
-		/// <param name="newFieldOfView"></param>
-		/// <param name="transitionDuration"></param>
-		/// <param name="duration"></param>
-		public virtual void Zoom(MMCameraZoomModes mode, float newFieldOfView, float transitionDuration, float duration, bool useUnscaledTime, bool relative = false, MMTweenType tweenType = null)
+        /// <summary>
+        /// 이상적으로는 이벤트를 통해서만 호출되지만 편의상 공개되는 확대/축소를 트리거하는 메서드입니다.
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <param name="newFieldOfView"></param>
+        /// <param name="transitionDuration"></param>
+        /// <param name="duration"></param>
+        public virtual void Zoom(MMCameraZoomModes mode, float newFieldOfView, float transitionDuration, float duration, bool useUnscaledTime, bool relative = false, MMTweenType tweenType = null)
 		{
 			if (_zooming)
 			{
@@ -187,11 +207,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 			Zoom(TestMode, TestFieldOfView, TestTransitionDuration, TestDuration, false);
 		}
 
-		/// <summary>
-		/// When we get an MMCameraZoomEvent we call our zoom method 
-		/// </summary>
-		/// <param name="zoomEvent"></param>
-		public virtual void OnCameraZoomEvent(MMCameraZoomModes mode, float newFieldOfView, float transitionDuration, float duration, MMChannelData channelData, 
+        /// <summary>
+        /// MMCameraZoomEvent를 받으면 확대/축소 메서드를 호출합니다.
+        /// </summary>
+        /// <param name="zoomEvent"></param>
+        public virtual void OnCameraZoomEvent(MMCameraZoomModes mode, float newFieldOfView, float transitionDuration, float duration, MMChannelData channelData, 
 			bool useUnscaledTime, bool stop = false, bool relative = false, bool restore = false, MMTweenType tweenType = null)
 		{
 			if (!MMChannel.Match(channelData, ChannelMode, Channel, MMChannelDefinition))
