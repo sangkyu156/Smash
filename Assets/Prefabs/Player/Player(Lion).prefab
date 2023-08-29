@@ -75658,7 +75658,6 @@ GameObject:
   - component: {fileID: 8559072239916869737}
   - component: {fileID: 7472231101599574862}
   - component: {fileID: 2562400733818169436}
-  - component: {fileID: 6141494111603147817}
   m_Layer: 10
   m_Name: Player(Lion)
   m_TagString: Player
@@ -76030,7 +76029,7 @@ MonoBehaviour:
   InputAuthorized: 1
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 15
+  WalkSpeed: 4
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -76063,7 +76062,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  RunSpeed: 8
+  RunSpeed: 10
   AutoRun: 0
   AutoRunThreshold: 0.6
 --- !u!114 &3692082337052759111
@@ -76241,34 +76240,6 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
---- !u!114 &6141494111603147817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3592368184742829874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3a6b93e81b7b864eb7822396117fc52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartSfx: {fileID: 0}
-  AbilityInProgressSfx: {fileID: 0}
-  AbilityStopSfx: {fileID: 0}
-  AbilityStartFeedbacks: {fileID: 0}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  BlockingWeaponStates: 
-  RotationSpace: 0
-  RotationForward: {x: 0, y: 0, z: 1}
-  RotationAxis: {x: 0, y: 1, z: 0}
-  CameraRotationSpeed: 3
-  CameraInterpolationSpeed: 0.2
-  InputAuthorized: 1
-  AutoSetupInputManager: 1
 --- !u!1 &3602021572252484768
 GameObject:
   m_ObjectHideFlags: 0

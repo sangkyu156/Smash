@@ -4,6 +4,8 @@ using Cinemachine;
 #endif
 using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
+using DG.Tweening;
+using System;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
@@ -77,7 +79,9 @@ namespace MoreMountains.FeedbacksForThirdParty
 		protected bool _destinationReached = false;
 		protected float _zoomStartedAt = 0f;
 		//내가만든 변수
-        //public float scrollSpeed = 30000.0f;
+		public float rotateSpeed = 15f;
+        Vector2 clickPoint;
+
 
         /// <summary>
         /// On Awake we grab our virtual camera
@@ -93,28 +97,13 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// </summary>
         protected virtual void Update()
 		{
-			float scroll = Input.GetAxis("Mouse ScrollWheel");
-			if(scroll != 0)
-                _zooming = true;
+			MyZoom();
+			MyRotate();
 
             if (!_zooming)
 			{
 				return;
 			}
-
-			if(_virtualCamera.m_Lens.FieldOfView <= 20f && scroll > 0)
-			{
-				_virtualCamera.m_Lens.FieldOfView = 20f;
-            }
-			else if(_virtualCamera.m_Lens.FieldOfView >= 40f && scroll < 0)
-			{
-				_virtualCamera.m_Lens.FieldOfView = 40f;
-            }
-			else
-			{
-				_virtualCamera.m_Lens.FieldOfView -= (scroll*10);
-            }
-
 
             _elapsedTime = GetTime() - _zoomStartedAt;
 			if (_elapsedTime <= _transitionDuration)
@@ -145,6 +134,44 @@ namespace MoreMountains.FeedbacksForThirdParty
 				}   
 			}
 		}
+
+		public void MyZoom()
+		{
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+            if (_virtualCamera.m_Lens.FieldOfView <= 20f && scroll > 0)
+            {
+                _virtualCamera.m_Lens.FieldOfView = 20f;
+            }
+            else if (_virtualCamera.m_Lens.FieldOfView >= 40f && scroll < 0)
+            {
+                _virtualCamera.m_Lens.FieldOfView = 40f;
+            }
+            else
+            {
+                _virtualCamera.m_Lens.FieldOfView -= (scroll * 10);
+            }
+        }
+
+		public void MyRotate()
+		{
+            if (Input.GetMouseButtonDown(1))
+                clickPoint = Input.mousePosition;
+
+			if(Input.GetMouseButton(1))
+			{
+                Vector3 position = Camera.main.ScreenToViewportPoint((Vector2)Input.mousePosition - clickPoint);
+
+                float moveX = position.x * rotateSpeed;
+
+                if (moveX > 5f)
+                    moveX = 5f;
+                else if (moveX < -5f)
+                    moveX = -5f;
+
+                _virtualCamera.transform.RotateAround(_virtualCamera.Follow.transform.position, Vector3.up, moveX);
+            }
+        }
 
         /// <summary>
         /// 이상적으로는 이벤트를 통해서만 호출되지만 편의상 공개되는 확대/축소를 트리거하는 메서드입니다.
