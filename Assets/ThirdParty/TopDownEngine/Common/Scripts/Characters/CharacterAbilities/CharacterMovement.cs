@@ -437,7 +437,13 @@ namespace MoreMountains.TopDownEngine
 			_movementVector.y = 0f;
 			_movementVector.z = _lerpedInput.y;
 
-			if (InterpolateMovementSpeed)
+            Quaternion v3Rotation = Quaternion.Euler(0f, cinemachineVirtualCamera.transform.eulerAngles.y, 0f);
+
+            _movementVector = v3Rotation * _movementVector;
+
+            Debug.Log($"v3Rotation = {v3Rotation}, _movementVector = {_movementVector}, _movementVector = {_movementVector}");
+
+            if (InterpolateMovementSpeed)
 			{
 				_movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * ContextSpeedMultiplier * MovementSpeedMultiplier, interpolationSpeed * Time.deltaTime);
 			}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 using System.Linq;
+using static MoreMountains.TopDownEngine.Character;
 
 namespace MoreMountains.TopDownEngine
 {	
@@ -120,9 +121,11 @@ namespace MoreMountains.TopDownEngine
 		protected float _horizontalInput;
 		protected bool _startFeedbackIsPlaying = false;
 		protected List<CharacterHandleWeapon> _handleWeaponList;
+        //내가만든 변수
+        public GameObject cinemachineVirtualCamera;
 
-		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
-		public virtual string HelpBoxText() { return ""; }
+        /// This method is only used to display a helpbox text at the beginning of the ability's inspector
+        public virtual string HelpBoxText() { return ""; }
 
 		/// <summary>
 		/// On awake we proceed to pre initializing our ability
@@ -130,7 +133,18 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Awake()
 		{
 			PreInitialization ();
-		}
+
+            if (_character.CharacterType == CharacterTypes.Player)
+            {
+                GameObject[] obj3 = GameObject.FindGameObjectsWithTag("MainCamera");
+
+                for (int i = 0; i < obj3.Length; i++)
+                {
+                    if (obj3[i].name == "CM vcam1")
+                        cinemachineVirtualCamera = obj3[i];
+                }
+            }
+        }
 
 		/// <summary>
 		/// On Start(), we call the ability's intialization
