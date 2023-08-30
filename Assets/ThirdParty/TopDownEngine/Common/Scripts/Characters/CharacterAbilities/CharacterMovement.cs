@@ -441,8 +441,6 @@ namespace MoreMountains.TopDownEngine
 
             _movementVector = v3Rotation * _movementVector;
 
-            Debug.Log($"v3Rotation = {v3Rotation}, _movementVector = {_movementVector}, _movementVector = {_movementVector}");
-
             if (InterpolateMovementSpeed)
 			{
 				_movementSpeed = Mathf.Lerp(_movementSpeed, MovementSpeed * ContextSpeedMultiplier * MovementSpeedMultiplier, interpolationSpeed * Time.deltaTime);

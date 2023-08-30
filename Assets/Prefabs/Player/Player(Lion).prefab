@@ -19985,6 +19985,7 @@ GameObject:
   - component: {fileID: 8985486385602234329}
   - component: {fileID: 4641521019216852906}
   - component: {fileID: 420918175711132021}
+  - component: {fileID: 3867546452035018530}
   m_Layer: 0
   m_Name: Sword01
   m_TagString: Untagged
@@ -20057,6 +20058,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3867546452035018530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968224963166855771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1040863680118375343
 GameObject:
   m_ObjectHideFlags: 0
@@ -39792,6 +39805,7 @@ GameObject:
   - component: {fileID: 6551751767936685656}
   - component: {fileID: 5512087800503022127}
   - component: {fileID: 5662848865490514198}
+  - component: {fileID: 1578825569768780601}
   m_Layer: 0
   m_Name: Sword06
   m_TagString: Untagged
@@ -39864,6 +39878,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1578825569768780601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548432437925828377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694093346404251440
 GameObject:
   m_ObjectHideFlags: 0
@@ -39972,6 +39998,7 @@ GameObject:
   - component: {fileID: 159778398124726703}
   - component: {fileID: 8074357690535394093}
   - component: {fileID: 1326970290620311473}
+  - component: {fileID: 3229617677333648669}
   m_Layer: 0
   m_Name: Sword03
   m_TagString: Untagged
@@ -40044,6 +40071,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3229617677333648669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046177733436586620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2053298388076897425
 GameObject:
   m_ObjectHideFlags: 0
@@ -40055,6 +40094,7 @@ GameObject:
   - component: {fileID: 6188278355937460532}
   - component: {fileID: 5922489600517529106}
   - component: {fileID: 7243043044175459648}
+  - component: {fileID: 7121642805480681076}
   m_Layer: 0
   m_Name: Shield05
   m_TagString: Untagged
@@ -40127,6 +40167,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7121642805480681076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053298388076897425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2074556230913583505
 GameObject:
   m_ObjectHideFlags: 0
@@ -50003,6 +50055,7 @@ GameObject:
   - component: {fileID: 764284923552458612}
   - component: {fileID: 9179514974792990313}
   - component: {fileID: 5974329312634336693}
+  - component: {fileID: 8903118411420662817}
   m_Layer: 0
   m_Name: Shield04
   m_TagString: Untagged
@@ -50075,6 +50128,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8903118411420662817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159961221374257739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2240924691838362542
 GameObject:
   m_ObjectHideFlags: 0
@@ -50118,6 +50183,7 @@ GameObject:
   - component: {fileID: 6341215447841215086}
   - component: {fileID: 5200858589463908814}
   - component: {fileID: 3205283381054790467}
+  - component: {fileID: 6506215931446983938}
   m_Layer: 0
   m_Name: Sword05
   m_TagString: Untagged
@@ -50190,6 +50256,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6506215931446983938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352438087498677554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2363405910966742789
 GameObject:
   m_ObjectHideFlags: 0
@@ -55163,6 +55241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6746927293743036720}
   - component: {fileID: 4178063545049603973}
+  - component: {fileID: 8664016614079889622}
   m_Layer: 0
   m_Name: Body5
   m_TagString: Untagged
@@ -55306,6 +55385,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.013449818, z: 0.49032643}
     m_Extent: {x: 0.8761492, y: 0.38114217, z: 0.55540764}
   m_DirtyAABB: 0
+--- !u!114 &8664016614079889622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2719063981030412085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2789495489921475031
 GameObject:
   m_ObjectHideFlags: 0
@@ -60356,6 +60447,7 @@ GameObject:
   - component: {fileID: 67245074420898145}
   - component: {fileID: 4884572760158900503}
   - component: {fileID: 5761088723941452965}
+  - component: {fileID: 5708378245822464247}
   m_Layer: 0
   m_Name: Shield06
   m_TagString: Untagged
@@ -60428,6 +60520,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5708378245822464247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978002606951468257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3003674198278392080
 GameObject:
   m_ObjectHideFlags: 0
@@ -65640,6 +65744,7 @@ GameObject:
   - component: {fileID: 3917894309661869531}
   - component: {fileID: 4280391917478277760}
   - component: {fileID: 8317632610164911137}
+  - component: {fileID: 5162698344079389517}
   m_Layer: 0
   m_Name: Shield02
   m_TagString: Untagged
@@ -65712,6 +65817,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5162698344079389517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476001621333910163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3510143653154841437
 GameObject:
   m_ObjectHideFlags: 0
@@ -75658,6 +75775,7 @@ GameObject:
   - component: {fileID: 8559072239916869737}
   - component: {fileID: 7472231101599574862}
   - component: {fileID: 2562400733818169436}
+  - component: {fileID: 8360474285873403586}
   m_Layer: 10
   m_Name: Player(Lion)
   m_TagString: Player
@@ -75859,6 +75977,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   RotationMode: 3
   CharacterRotationAuthorized: 1
   ShouldRotateToFaceMovementDirection: 1
@@ -75899,6 +76018,7 @@ MonoBehaviour:
   BlockingMovementStates: 07000000
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   ForcedCrouch: 0
   CrawlAuthorized: 1
   CrawlSpeed: 2
@@ -75932,6 +76052,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   JumpProportionalToPress: 1
   MinimumPressTime: 0.4
   JumpForce: 800
@@ -75963,6 +76084,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   DashMode: 1
   DashSpace: 0
   DashDirection: {x: 0, y: 0, z: 1}
@@ -76025,6 +76147,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   Movement: 0
   InputAuthorized: 1
   AnalogInput: 0
@@ -76062,6 +76185,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   RunSpeed: 10
   AutoRun: 0
   AutoRunThreshold: 0.6
@@ -76086,6 +76210,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   PreventJumpInButtonActivatedZone: 1
   ButtonActivatedZone: {fileID: 0}
 --- !u!114 &6260078356795352493
@@ -76109,6 +76234,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   MuteSfxTrackSounds: 1
   MuteUITrackSounds: 0
   MuteMusicTrackSounds: 0
@@ -76140,6 +76266,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   Mode: 1
   TimeScale: 0.5
   OneTimeDuration: 1
@@ -76220,6 +76347,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   InitialWeapon: {fileID: 4082960705789421048, guid: 028b7e8fb99d1f04691afb0fed36e556,
     type: 3}
   CanPickupWeapons: 1
@@ -76240,6 +76368,559 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
+--- !u!114 &8360474285873403586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592368184742829874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 6696459048546047871}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 7669771032648766676}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 8316280615775073340}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 280150223230001460}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 2451429278119781440}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 4178063545049603973}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 4739575033266552828}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 8389332402854445998}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 293071421573859247}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 2697456865032876361}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 2173707040020918589}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 5582807509685499909}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 709382077213665389}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 5873512076047999164}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 2573950126304155588}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 569368345354787669}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 2835286042162953158}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 8317632610164911137}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 445730902363352615}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 5974329312634336693}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 7243043044175459648}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 5761088723941452965}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 1113480219042991941}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 7274988817189164848}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 420918175711132021}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 4512920991240579069}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 1326970290620311473}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 4399601497525728127}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 3205283381054790467}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 5662848865490514198}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 0
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 6523799348520522280}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 8647565959687125858}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  renderStyle: 2
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 0
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1 &3602021572252484768
 GameObject:
   m_ObjectHideFlags: 0
@@ -76250,6 +76931,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984600200346878063}
   - component: {fileID: 6696459048546047871}
+  - component: {fileID: 3275265304584402916}
   m_Layer: 0
   m_Name: Badger
   m_TagString: Untagged
@@ -76393,6 +77075,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.12885676, z: 0.74320835}
     m_Extent: {x: 0.35191274, y: 0.5467014, z: 0.5280368}
   m_DirtyAABB: 0
+--- !u!114 &3275265304584402916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602021572252484768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3748770768646594547
 GameObject:
   m_ObjectHideFlags: 0
@@ -76466,6 +77160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2942450182961513821}
   - component: {fileID: 293071421573859247}
+  - component: {fileID: 7227463131264053286}
   m_Layer: 0
   m_Name: Body8
   m_TagString: Untagged
@@ -76609,6 +77304,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000059604645, y: -0.0027139783, z: 0.4186727}
     m_Extent: {x: 0.87724, y: 0.3728106, z: 0.4873909}
   m_DirtyAABB: 0
+--- !u!114 &7227463131264053286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834430795792052984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3835472803466738738
 GameObject:
   m_ObjectHideFlags: 0
@@ -81558,6 +82265,7 @@ GameObject:
   - component: {fileID: 5370578249956294982}
   - component: {fileID: 756292205596113700}
   - component: {fileID: 1113480219042991941}
+  - component: {fileID: 8830794380605132376}
   m_Layer: 0
   m_Name: Shield07
   m_TagString: Untagged
@@ -81630,6 +82338,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8830794380605132376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900397973251693104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3900710671694193244
 GameObject:
   m_ObjectHideFlags: 0
@@ -86696,6 +87416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6301241414620927568}
   - component: {fileID: 7669771032648766676}
+  - component: {fileID: 5067145788047909809}
   m_Layer: 0
   m_Name: Body1
   m_TagString: Untagged
@@ -86839,6 +87560,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000014901161, y: 0.026102379, z: 0.4292097}
     m_Extent: {x: 0.8761492, y: 0.34544224, z: 0.4899643}
   m_DirtyAABB: 0
+--- !u!114 &5067145788047909809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996926353393064686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4140673609929910226
 GameObject:
   m_ObjectHideFlags: 0
@@ -86849,6 +87582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2348775752708204667}
   - component: {fileID: 4739575033266552828}
+  - component: {fileID: 6125563795961880946}
   m_Layer: 0
   m_Name: Body6
   m_TagString: Untagged
@@ -86992,6 +87726,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.0183267, z: 0.41442516}
     m_Extent: {x: 0.87674475, y: 0.33157992, z: 0.47730216}
   m_DirtyAABB: 0
+--- !u!114 &6125563795961880946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140673609929910226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4160375210854304194
 GameObject:
   m_ObjectHideFlags: 0
@@ -92798,6 +93544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634778929888009283}
   - component: {fileID: 2697456865032876361}
+  - component: {fileID: 2439531121359102474}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Untagged
@@ -92941,6 +93688,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.103063524, z: 0.8631376}
     m_Extent: {x: 0.492281, y: 0.51998854, z: 0.7317697}
   m_DirtyAABB: 0
+--- !u!114 &2439531121359102474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403479318771296591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4585897849621055661
 GameObject:
   m_ObjectHideFlags: 0
@@ -97886,6 +98645,7 @@ GameObject:
   - component: {fileID: 6653824608543948846}
   - component: {fileID: 3962438890629708173}
   - component: {fileID: 4399601497525728127}
+  - component: {fileID: 1180679427168243526}
   m_Layer: 0
   m_Name: Sword04
   m_TagString: Untagged
@@ -97958,6 +98718,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1180679427168243526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644632296417017863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4678496967458016930
 GameObject:
   m_ObjectHideFlags: 0
@@ -97968,6 +98740,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4032270961574813262}
   - component: {fileID: 8389332402854445998}
+  - component: {fileID: 5027805310630634516}
   m_Layer: 0
   m_Name: Body7
   m_TagString: Untagged
@@ -98111,6 +98884,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.022162735, z: 0.43452165}
     m_Extent: {x: 0.87674475, y: 0.34450227, z: 0.49271634}
   m_DirtyAABB: 0
+--- !u!114 &5027805310630634516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678496967458016930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4694721159468603874
 GameObject:
   m_ObjectHideFlags: 0
@@ -108051,6 +108836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1849405583064259602}
   - component: {fileID: 569368345354787669}
+  - component: {fileID: 4180670793257092948}
   m_Layer: 0
   m_Name: Rat
   m_TagString: Untagged
@@ -108194,6 +108980,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.30190188, z: 0.8055754}
     m_Extent: {x: 0.5016712, y: 0.7109763, z: 0.5906284}
   m_DirtyAABB: 0
+--- !u!114 &4180670793257092948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4868816104726023626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4870252988136611859
 GameObject:
   m_ObjectHideFlags: 0
@@ -108204,6 +109002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035676613644885371}
   - component: {fileID: 709382077213665389}
+  - component: {fileID: 808012504556884719}
   m_Layer: 0
   m_Name: Lizard
   m_TagString: Untagged
@@ -108347,6 +109146,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.2290933, z: 0.7571069}
     m_Extent: {x: 0.27156624, y: 0.6394836, z: 0.609511}
   m_DirtyAABB: 0
+--- !u!114 &808012504556884719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870252988136611859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5045261674302353906
 GameObject:
   m_ObjectHideFlags: 0
@@ -108495,6 +109306,7 @@ GameObject:
   - component: {fileID: 8636647159127689354}
   - component: {fileID: 8829310855827403500}
   - component: {fileID: 4512920991240579069}
+  - component: {fileID: 8953071364535894550}
   m_Layer: 0
   m_Name: Sword02
   m_TagString: Untagged
@@ -108567,6 +109379,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8953071364535894550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5319930546292575890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411240955254945310
 GameObject:
   m_ObjectHideFlags: 0
@@ -118489,6 +119313,7 @@ GameObject:
   - component: {fileID: 550678104011482784}
   - component: {fileID: 6257157622254396824}
   - component: {fileID: 445730902363352615}
+  - component: {fileID: 4966623372331383828}
   m_Layer: 0
   m_Name: Shield03
   m_TagString: Untagged
@@ -118561,6 +119386,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4966623372331383828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692520719009588418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5777917104114576260
 GameObject:
   m_ObjectHideFlags: 0
@@ -118718,6 +119555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012966183904458453}
   - component: {fileID: 2573950126304155588}
+  - component: {fileID: 4269834694662784293}
   m_Layer: 0
   m_Name: Rabit
   m_TagString: Untagged
@@ -118861,6 +119699,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000013411045, y: 0.22252013, z: 0.8753932}
     m_Extent: {x: 0.49619746, y: 0.5931275, z: 0.7210199}
   m_DirtyAABB: 0
+--- !u!114 &4269834694662784293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333899746715609012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6402532747182875283
 GameObject:
   m_ObjectHideFlags: 0
@@ -128926,6 +129776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8422283640768225960}
   - component: {fileID: 5873512076047999164}
+  - component: {fileID: 3582992431455516094}
   m_Layer: 0
   m_Name: Owl
   m_TagString: Untagged
@@ -129069,6 +129920,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.22026965, z: 0.6854594}
     m_Extent: {x: 0.33064008, y: 0.5401044, z: 0.60441196}
   m_DirtyAABB: 0
+--- !u!114 &3582992431455516094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6841607555331404594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6936665943897000261
 GameObject:
   m_ObjectHideFlags: 0
@@ -129213,6 +130076,7 @@ GameObject:
   - component: {fileID: 7977656927045103425}
   - component: {fileID: 9185989089138711446}
   - component: {fileID: 7274988817189164848}
+  - component: {fileID: 1338950080865261020}
   m_Layer: 0
   m_Name: Shield08
   m_TagString: Untagged
@@ -129285,6 +130149,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1338950080865261020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7342775459724601891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7508475077564686176
 GameObject:
   m_ObjectHideFlags: 0
@@ -129327,6 +130203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2163895691170387662}
   - component: {fileID: 5582807509685499909}
+  - component: {fileID: 5777188073186281228}
   m_Layer: 0
   m_Name: Lion
   m_TagString: Untagged
@@ -129470,6 +130347,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.2594686, z: 0.7459141}
     m_Extent: {x: 0.30647027, y: 0.6521194, z: 0.61884534}
   m_DirtyAABB: 0
+--- !u!114 &5777188073186281228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788484047342091511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7913010664112412451
 GameObject:
   m_ObjectHideFlags: 0
@@ -129480,6 +130369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402254869868402073}
   - component: {fileID: 280150223230001460}
+  - component: {fileID: 6565455922101253209}
   m_Layer: 0
   m_Name: Body3
   m_TagString: Untagged
@@ -129623,6 +130513,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000011920929, y: 0.012763262, z: 0.4310083}
     m_Extent: {x: 0.8773975, y: 0.36168954, z: 0.49371222}
   m_DirtyAABB: 0
+--- !u!114 &6565455922101253209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913010664112412451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7931215959860914331
 GameObject:
   m_ObjectHideFlags: 0
@@ -134802,6 +135704,7 @@ GameObject:
   - component: {fileID: 8314578303182819431}
   - component: {fileID: 1063898917765449858}
   - component: {fileID: 2835286042162953158}
+  - component: {fileID: 361995246943442922}
   m_Layer: 0
   m_Name: Shield01
   m_TagString: Untagged
@@ -134874,6 +135777,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &361995246943442922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398673494832604482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8415395909301522848
 GameObject:
   m_ObjectHideFlags: 0
@@ -134884,6 +135799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8454651534426452060}
   - component: {fileID: 2173707040020918589}
+  - component: {fileID: 4540835132606850680}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -135027,6 +135943,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000013411045, y: 0.18322994, z: 0.7808105}
     m_Extent: {x: 0.3866909, y: 0.6060846, z: 0.6964998}
   m_DirtyAABB: 0
+--- !u!114 &4540835132606850680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415395909301522848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8454811872562421844
 GameObject:
   m_ObjectHideFlags: 0
@@ -135038,6 +135966,7 @@ GameObject:
   - component: {fileID: 5857809032213510804}
   - component: {fileID: 437138051696874027}
   - component: {fileID: 8647565959687125858}
+  - component: {fileID: 8109534458305444172}
   m_Layer: 0
   m_Name: Sword08
   m_TagString: Untagged
@@ -135113,6 +136042,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8109534458305444172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454811872562421844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8472318206655310289
 GameObject:
   m_ObjectHideFlags: 0
@@ -140789,6 +141730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6103878126651605095}
   - component: {fileID: 8316280615775073340}
+  - component: {fileID: 6659735787860945684}
   m_Layer: 0
   m_Name: Body2
   m_TagString: Untagged
@@ -140932,6 +141874,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000059604645, y: -0.010121018, z: 0.4331373}
     m_Extent: {x: 0.87614924, y: 0.38315192, z: 0.49646628}
   m_DirtyAABB: 0
+--- !u!114 &6659735787860945684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512045429782434810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8533406738960940798
 GameObject:
   m_ObjectHideFlags: 0
@@ -140942,6 +141896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050250514114554592}
   - component: {fileID: 2451429278119781440}
+  - component: {fileID: 294561824914310454}
   m_Layer: 0
   m_Name: Body4
   m_TagString: Untagged
@@ -141085,6 +142040,18 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000000059604645, y: 0.00015187263, z: 0.42849278}
     m_Extent: {x: 0.87614924, y: 0.35189986, z: 0.49192715}
   m_DirtyAABB: 0
+--- !u!114 &294561824914310454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533406738960940798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8567643065572792281
 GameObject:
   m_ObjectHideFlags: 0
@@ -146756,6 +147723,7 @@ GameObject:
   - component: {fileID: 966950414985928061}
   - component: {fileID: 4324994245813816424}
   - component: {fileID: 6523799348520522280}
+  - component: {fileID: 3412965702050851005}
   m_Layer: 0
   m_Name: Sword07
   m_TagString: Untagged
@@ -146828,6 +147796,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3412965702050851005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9113135926365136765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9160325284268121259
 GameObject:
   m_ObjectHideFlags: 0
