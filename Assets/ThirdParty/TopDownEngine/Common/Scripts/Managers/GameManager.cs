@@ -194,11 +194,16 @@ namespace MoreMountains.TopDownEngine
 		//public Character player_Charcter;
 		public GameObject player_GameObject;
 		public GameObject skillPostion;
+		public Transform uiCanvas;
 
-		/// <summary>
-		/// On Awake we initialize our list of points of entry
-		/// </summary>
-		protected override void Awake()
+        ResourceManager _resource = new ResourceManager();
+
+        public static ResourceManager Resource { get { return Instance._resource; } }
+
+        /// <summary>
+        /// On Awake we initialize our list of points of entry
+        /// </summary>
+        protected override void Awake()
 		{
 			base.Awake ();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
