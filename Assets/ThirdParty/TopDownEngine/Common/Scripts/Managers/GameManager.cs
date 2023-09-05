@@ -69,7 +69,7 @@ namespace MoreMountains.TopDownEngine
 			e.EventType = eventType;
 			e.OriginCharacter = originCharacter;
 			MMEventManager.TriggerEvent(e);
-		}
+        }
 	} 
 
 	/// <summary>
@@ -117,10 +117,10 @@ namespace MoreMountains.TopDownEngine
 		NoPauseMenu
 	}
 
-	/// <summary>
-	/// A class to store points of entry into levels, one per level.
-	/// </summary>
-	public class PointsOfEntryStorage
+    /// <summary>
+    /// 레벨당 하나씩 레벨에 대한 진입점을 저장하는 클래스입니다.
+    /// </summary>
+    public class PointsOfEntryStorage
 	{
 		public string LevelName;
 		public int PointOfEntryIndex;
@@ -191,10 +191,10 @@ namespace MoreMountains.TopDownEngine
 		protected int _initialCurrentLives;
 
 		//내가 만든 변수
-		//public Character player_Charcter;
 		public GameObject player_GameObject;
 		public GameObject skillPostion;
 		public Transform uiCanvas;
+        public Define.Stage stage = Define.Stage.Stage00;
 
         ResourceManager _resource = new ResourceManager();
 
@@ -217,7 +217,7 @@ namespace MoreMountains.TopDownEngine
 			Application.targetFrameRate = TargetFrameRate;
 			_initialCurrentLives = CurrentLives;
 			_initialMaximumLives = MaximumLives;
-		}
+        }
 					
 		/// <summary>
 		/// this method resets the whole game manager
@@ -315,8 +315,8 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 
-			// if time is not already stopped		
-			if (Time.timeScale>0.0f)
+            // 시간이 아직 멈추지 않았다면		
+            if (Time.timeScale>0.0f)
 			{
 				MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, 0f, 0f, false, 0f, true);
 				Instance.Paused=true;
@@ -360,14 +360,14 @@ namespace MoreMountains.TopDownEngine
 			}
 			LevelManager.Instance.ToggleCharacterPause();
 		}
-        
-		/// <summary>
-		/// Stores the points of entry for the level whose name you pass as a parameter.
-		/// </summary>
-		/// <param name="levelName">Level name.</param>
-		/// <param name="entryIndex">Entry index.</param>
-		/// <param name="exitIndex">Exit index.</param>
-		public virtual void StorePointsOfEntry(string levelName, int entryIndex, Character.FacingDirections facingDirection)
+
+        /// <summary>
+        /// 매개변수로 전달한 이름의 레벨에 대한 진입점을 저장합니다.
+        /// </summary>
+        /// <param name="levelName">Level name.</param>
+        /// <param name="entryIndex">Entry index.</param>
+        /// <param name="exitIndex">Exit index.</param>
+        public virtual void StorePointsOfEntry(string levelName, int entryIndex, Character.FacingDirections facingDirection)
 		{
 			if (PointsOfEntry.Count > 0)
 			{
@@ -597,6 +597,11 @@ namespace MoreMountains.TopDownEngine
                 Vector3 pointTolook = cameraRay.GetPoint(rayLength);
                 skillPostion.transform.LookAt(new Vector3(pointTolook.x, transform.position.y, pointTolook.z));
             }
+        }
+
+		public void SetCurrentStage(Define.Stage stage_)
+		{
+            stage = stage_;
         }
     }
 }

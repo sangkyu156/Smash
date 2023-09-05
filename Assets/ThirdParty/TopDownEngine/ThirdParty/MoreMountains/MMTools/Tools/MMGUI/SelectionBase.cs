@@ -5,10 +5,10 @@ using System;
 namespace MoreMountains.Tools
 {	
 	[SelectionBase]
-	/// <summary>
-	/// Add this component to an object and it'll always get selection in scene view, even if you select one of its children
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/SelectionBase")]
+    /// <summary>
+    /// 이 구성요소를 객체에 추가하면 하위 항목 중 하나를 선택하더라도 장면 보기에서 항상 선택됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/SelectionBase")]
 	public class SelectionBase : MonoBehaviour 
 	{
 

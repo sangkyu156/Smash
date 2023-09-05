@@ -147,12 +147,12 @@ namespace MoreMountains.Tools
 			#endif
 		}
 
-		/// <summary>
-		/// Triggers an event. All instances that are subscribed to it will receive it (and will potentially act on it).
-		/// </summary>
-		/// <param name="newEvent">The event to trigger.</param>
-		/// <typeparam name="MMEvent">The 1st type parameter.</typeparam>
-		public static void TriggerEvent<MMEvent>( MMEvent newEvent ) where MMEvent : struct
+        /// <summary>
+        /// 이벤트를 트리거합니다. 이를 구독하는 모든 인스턴스가 이를 수신합니다.(그리고 잠재적으로 이에 따라 조치를 취할 것입니다).
+        /// </summary>
+        /// <param name="newEvent">The event to trigger.</param>
+        /// <typeparam name="MMEvent">The 1st type parameter.</typeparam>
+        public static void TriggerEvent<MMEvent>( MMEvent newEvent ) where MMEvent : struct
 		{
 			List<MMEventListenerBase> list;
 			if( !_subscribersList.TryGetValue( typeof( MMEvent ), out list ) )

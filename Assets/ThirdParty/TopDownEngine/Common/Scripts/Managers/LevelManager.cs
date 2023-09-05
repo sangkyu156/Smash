@@ -41,8 +41,8 @@ namespace MoreMountains.TopDownEngine
 		public CheckPoint CurrentCheckpoint;
 
 		[Header("Points of Entry")]
-		/// A list of this level's points of entry, which can be used from other levels as initial targets
-		[Tooltip("A list of this level's points of entry, which can be used from other levels as initial targets")]
+        /// 다른 레벨에서 초기 목표로 사용할 수 있는 이 레벨의 진입점 목록입니다.
+        [Tooltip("A list of this level's points of entry, which can be used from other levels as initial targets")]
 		public Transform[] PointsOfEntry;
         				
 		[Space(10)]
@@ -53,8 +53,8 @@ namespace MoreMountains.TopDownEngine
 		public float IntroFadeDuration=1f;
 
 		public float SpawnDelay = 0f;
-		/// duration of the fade to black at the end of the level (in seconds)
-		[Tooltip("the duration of the fade to black at the end of the level (in seconds)")]
+        /// 레벨 끝에서 검은색으로 페이드되는 기간(초)
+        [Tooltip("the duration of the fade to black at the end of the level (in seconds)")]
 		public float OutroFadeDuration=1f;
 		/// the ID to use when triggering the event (should match the ID on the fader you want to use)
 		[Tooltip("the ID to use when triggering the event (should match the ID on the fader you want to use)")]
@@ -80,8 +80,8 @@ namespace MoreMountains.TopDownEngine
 		/// the method to use to load the destination level
 		[Tooltip("the method to use to load the destination level")]
 		public MMLoadScene.LoadingSceneModes LoadingSceneMode = MMLoadScene.LoadingSceneModes.MMSceneLoadingManager;
-		/// the name of the MMSceneLoadingManager scene you want to use
-		[Tooltip("the name of the MMSceneLoadingManager scene you want to use")]
+        /// 사용하려는 MMSceneLoadingManager 장면의 이름
+        [Tooltip("the name of the MMSceneLoadingManager scene you want to use")]
 		[MMEnumCondition("LoadingSceneMode", (int) MMLoadScene.LoadingSceneModes.MMSceneLoadingManager)]
 		public string LoadingSceneName = "LoadingScreen";
 		/// the settings to use when loading the scene in additive mode
@@ -310,31 +310,31 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-		/// <summary>
-		/// Gets the player to the specified level
-		/// </summary>
-		/// <param name="levelName">Level name.</param>
-		public virtual void GotoLevel(string levelName)
+        /// <summary>
+        /// 플레이어를 지정된 레벨로 끌어옵니다.
+        /// </summary>
+        /// <param name="levelName">Level name.</param>
+        public virtual void GotoLevel(string levelName)
 		{
 			TriggerEndLevelEvents();
 			StartCoroutine(GotoLevelCo(levelName));
 		}
 
-		/// <summary>
-		/// Triggers end of level events
-		/// </summary>
-		public virtual void TriggerEndLevelEvents()
+        /// <summary>
+        /// 레벨 종료 이벤트를 트리거합니다.
+        /// </summary>
+        public virtual void TriggerEndLevelEvents()
 		{
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelEnd, null);
 			MMGameEvent.Trigger("Save");
 		}
 
-		/// <summary>
-		/// Waits for a short time and then loads the specified level
-		/// </summary>
-		/// <returns>The level co.</returns>
-		/// <param name="levelName">Level name.</param>
-		protected virtual IEnumerator GotoLevelCo(string levelName)
+        /// <summary>
+        /// 잠시 기다린 후 지정된 레벨을 로드합니다.
+        /// </summary>
+        /// <returns>The level co.</returns>
+        /// <param name="levelName">Level name.</param>
+        protected virtual IEnumerator GotoLevelCo(string levelName)
 		{
 			if (Players != null && Players.Count > 0)
 			{ 

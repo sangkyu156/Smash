@@ -174,12 +174,12 @@ namespace MoreMountains.Tools
 				settings.BeforeEntryFadeDelay, settings.EntryFadeDuration, settings.AfterEntryFadeDelay, settings.BeforeExitFadeDelay,
 				settings.ExitFadeDuration, settings.EntryFadeTween, settings.ExitFadeTween, settings.ProgressBarSpeed, settings.FadeMode, settings.UnloadMethod, settings.AntiSpillSceneName);
 		}
-        
-		/// <summary>
-		/// Call this static method to load a scene from anywhere
-		/// </summary>
-		/// <param name="sceneToLoadName">Level name.</param>
-		public static void LoadScene(string sceneToLoadName, string loadingSceneName = "MMAdditiveLoadingScreen", 
+
+        /// <summary>
+        /// 어디에서나 장면을 로드하려면 이 정적 메서드를 호출하세요.
+        /// </summary>
+        /// <param name="sceneToLoadName">Level name.</param>
+        public static void LoadScene(string sceneToLoadName, string loadingSceneName = "MMAdditiveLoadingScreen", 
 			ThreadPriority threadPriority = ThreadPriority.High, bool secureLoad = true,
 			bool interpolateProgress = true,
 			float beforeEntryFadeDelay = 0f,

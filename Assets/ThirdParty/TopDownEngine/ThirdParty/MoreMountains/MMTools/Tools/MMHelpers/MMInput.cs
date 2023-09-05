@@ -60,8 +60,8 @@ namespace MoreMountains.Tools
         /// </summary>
         public class IMButton
 		{
-			/// a state machine used to store button states
-			public MMStateMachine<MMInput.ButtonStates> State {get;protected set;}
+            /// 버튼 상태를 저장하는 데 사용되는 상태 머신
+            public MMStateMachine<MMInput.ButtonStates> State {get;protected set;}
 			/// the unique ID of this button
 			public string ButtonID;
 

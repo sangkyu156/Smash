@@ -32,7 +32,9 @@ namespace MoreMountains.TopDownEngine
             if (createTime > 1.5f)
             {
                 createTime = 0;
-                SlimeSpawn();
+                //SlimeSpawn();
+                if (GameManager.Instance.stage == Define.Stage.Stage01)
+                    SlimeSpawn();
             }
         }
 

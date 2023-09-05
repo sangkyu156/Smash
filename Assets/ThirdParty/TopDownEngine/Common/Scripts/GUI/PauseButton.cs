@@ -15,28 +15,28 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		public virtual void PauseButtonAction()
 		{
-			// we trigger a Pause event for the GameManager and other classes that could be listening to it too
-			StartCoroutine(PauseButtonCo());
+            // GameManager 및 이를 수신할 수 있는 다른 클래스에 대해 Pause 이벤트를 트리거합니다.
+            StartCoroutine(PauseButtonCo());
 
-		}	
+		}
 
-		/// <summary>
-		/// Unpauses the game via an UnPause event
-		/// </summary>
-		public virtual void UnPause()
+        /// <summary>
+        /// UnPause 이벤트를 통해 게임 일시정지를 해제합니다.
+        /// </summary>
+        public virtual void UnPause()
 		{
 			StartCoroutine(PauseButtonCo());
 		}
 
-		/// <summary>
-		/// A coroutine used to trigger the pause event
-		/// </summary>
-		/// <returns></returns>
-		protected virtual IEnumerator PauseButtonCo()
+        /// <summary>
+        /// 일시 중지 이벤트를 트리거하는 데 사용되는 코루틴
+        /// </summary>
+        /// <returns></returns>
+        protected virtual IEnumerator PauseButtonCo()
 		{
 			yield return null;
-			// we trigger a Pause event for the GameManager and other classes that could be listening to it too
-			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.TogglePause, null);
+            // GameManager 및 이를 수신할 수 있는 다른 클래스에 대해 Pause 이벤트를 트리거합니다.
+            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.TogglePause, null);
 		}
 
 	}

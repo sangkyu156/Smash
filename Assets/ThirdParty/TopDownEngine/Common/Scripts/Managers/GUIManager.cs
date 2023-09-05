@@ -173,11 +173,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Sets the pause screen on or off.
-		/// </summary>
-		/// <param name="state">If set to <c>true</c>, sets the pause.</param>
-		public virtual void SetPauseScreen(bool state)
+        /// <summary>
+        /// 일시 정지 화면을 켜거나 끄도록 설정합니다.
+        /// </summary>
+        /// <param name="state">If set to <c>true</c>, sets the pause.</param>
+        public virtual void SetPauseScreen(bool state)
 		{
 			if (PauseScreen != null)
 			{

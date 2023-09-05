@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4686427862288184314}
   m_Layer: 0
-  m_Name: Skills
+  m_Name: SkillPostion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6690980687595719588
 Transform:
   m_ObjectHideFlags: 0
@@ -83,6 +83,12 @@ MonoBehaviour:
       type: 3}
     _count: 0
     _container: {fileID: 0}
+    _nonLazy: 0
+  - _name: ThirdAttack
+    _component: {fileID: 5120255349619399407, guid: 8d76cd7aee714464f83ab57c1fbbb514,
+      type: 3}
+    _count: 0
+    _container: {fileID: 4686427862288184314}
     _nonLazy: 0
 --- !u!114 &645788025580861019
 MonoBehaviour:

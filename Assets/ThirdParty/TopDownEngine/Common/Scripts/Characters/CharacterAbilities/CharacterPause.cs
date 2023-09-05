@@ -38,10 +38,10 @@ namespace MoreMountains.TopDownEngine
 		public UnityEvent OnUnpause;
 
 
-		/// <summary>
-		/// Every frame, we check the input to see if we need to pause/unpause the game
-		/// </summary>
-		protected override void HandleInput()
+        /// <summary>
+        /// 매 프레임마다 입력을 확인하여 게임을 일시 중지/일시 중지 해제해야 하는지 확인합니다.
+        /// </summary>
+        protected override void HandleInput()
 		{
 			if (_inputManager.PauseButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
 			{
@@ -49,10 +49,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// If the pause button has been pressed, we change the pause state
-		/// </summary>
-		protected virtual void TriggerPause()
+        /// <summary>
+        /// 일시정지 버튼을 누르면 일시정지 상태가 변경됩니다.
+        /// </summary>
+        protected virtual void TriggerPause()
 		{
 			if (_condition.CurrentState == CharacterStates.CharacterConditions.Dead)
 			{
@@ -63,8 +63,8 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 			PlayAbilityStartFeedbacks();
-			// we trigger a Pause event for the GameManager and other classes that could be listening to it too
-			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.TogglePause, null);
+			// GameManager 및 이를 수신할 수 있는 다른 클래스에 대해 Pause 이벤트를 트리거합니다.
+            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.TogglePause, null);
 		}
 
 		/// <summary>

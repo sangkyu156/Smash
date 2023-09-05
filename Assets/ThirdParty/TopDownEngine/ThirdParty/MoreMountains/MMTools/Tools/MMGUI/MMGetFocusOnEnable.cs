@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this helper to an object and focus will be set to it on Enable
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/MMGetFocusOnEnable")]
+    /// <summary>
+    /// 이 도우미를 개체에 추가하면 활성화 시 포커스가 해당 개체로 설정됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/MMGetFocusOnEnable")]
 	public class MMGetFocusOnEnable : MonoBehaviour
 	{
 		protected virtual void OnEnable()

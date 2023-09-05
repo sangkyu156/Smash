@@ -71,11 +71,11 @@ namespace MoreMountains.Tools
 
 		protected static MMTweenType _tween;
 
-		/// <summary>
-		/// Call this static method to load a scene from anywhere
-		/// </summary>
-		/// <param name="sceneToLoad">Level name.</param>
-		public static void LoadScene(string sceneToLoad)
+        /// <summary>
+        /// 어디에서나 장면을 로드하려면 이 정적 메서드를 호출하세요.
+        /// </summary>
+        /// <param name="sceneToLoad">Level name.</param>
+        public static void LoadScene(string sceneToLoad)
 		{
 			_sceneToLoad = sceneToLoad;					
 			Application.backgroundLoadingPriority = ThreadPriority.High;

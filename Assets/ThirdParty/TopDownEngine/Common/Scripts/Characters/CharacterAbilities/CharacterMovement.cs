@@ -437,9 +437,12 @@ namespace MoreMountains.TopDownEngine
 			_movementVector.y = 0f;
 			_movementVector.z = _lerpedInput.y;
 
-            Quaternion v3Rotation = Quaternion.Euler(0f, cinemachineVirtualCamera.transform.eulerAngles.y, 0f);
+			if (gameObject.tag == "Player")
+			{
+                Quaternion v3Rotation = Quaternion.Euler(0f, cinemachineVirtualCamera.transform.eulerAngles.y, 0f);
 
-            _movementVector = v3Rotation * _movementVector;
+                _movementVector = v3Rotation * _movementVector;
+            }
 
             if (InterpolateMovementSpeed)
 			{
