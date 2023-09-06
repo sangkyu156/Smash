@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 7354398527338855826}
   - component: {fileID: 1372233644901796871}
   - component: {fileID: 3446226498736918648}
+  - component: {fileID: 5043676079874723422}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -407,6 +408,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5043676079874723422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867573617911090690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1b75e906950c4db82c9d511c6341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBaseID: game:button:setup
 --- !u!1 &885040538025423751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1040,7 @@ GameObject:
   - component: {fileID: 8527874437870733643}
   - component: {fileID: 6242967772925445956}
   - component: {fileID: 6903365255685506492}
+  - component: {fileID: 7116210545323003666}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1150,6 +1165,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7116210545323003666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677022943081453009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1b75e906950c4db82c9d511c6341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBaseID: game:button:resume
 --- !u!1 &5067698842293179208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1189,6 @@ GameObject:
   - component: {fileID: 2656631345668193181}
   - component: {fileID: 5702523016401986951}
   - component: {fileID: 768041246930655018}
-  - component: {fileID: 3756765119719846886}
   m_Layer: 5
   m_Name: PauseSplash
   m_TagString: Untagged
@@ -1227,18 +1254,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3756765119719846886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5067698842293179208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0999ff087450db4485140c83cca6931, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5383029485506302394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,6 +1376,7 @@ GameObject:
   - component: {fileID: 7791755796457285333}
   - component: {fileID: 8760857991321531315}
   - component: {fileID: 8582344308166887253}
+  - component: {fileID: 2702759607957009863}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1485,6 +1501,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2702759607957009863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114119797220108452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1b75e906950c4db82c9d511c6341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBaseID: game:button:restart
 --- !u!1 &7201506630776197587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2080,6 +2109,7 @@ GameObject:
   - component: {fileID: 3755335458765104686}
   - component: {fileID: 6640080356173094802}
   - component: {fileID: 7275012764813442358}
+  - component: {fileID: 4263704121599099361}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2204,6 +2234,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4263704121599099361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328824788197192128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e1b75e906950c4db82c9d511c6341f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBaseID: game:button:gototown
 --- !u!1 &8569445365026213966
 GameObject:
   m_ObjectHideFlags: 0

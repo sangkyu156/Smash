@@ -596,6 +596,7 @@ namespace MoreMountains.TopDownEngine
             {
                 Vector3 pointTolook = cameraRay.GetPoint(rayLength);
                 skillPostion.transform.LookAt(new Vector3(pointTolook.x, transform.position.y, pointTolook.z));
+				skillPostion.transform.rotation = Quaternion.Euler(0, skillPostion.transform.rotation.eulerAngles.y, skillPostion.transform.rotation.eulerAngles.z);
             }
         }
 

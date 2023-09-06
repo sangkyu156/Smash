@@ -6,5 +6,5 @@ public class Setup : MonoBehaviour
     {
         Korean, Japanese, English
     }
-    static public Language language = Language.Japanese;
+    static public Language language = Language.Korean;
 }
