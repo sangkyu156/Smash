@@ -782,6 +782,8 @@ GameObject:
   - component: {fileID: 7026328564111507204}
   - component: {fileID: 506435284158125889}
   - component: {fileID: 6640507280058183292}
+  - component: {fileID: 1623332344800255383}
+  - component: {fileID: 1047284365989948182}
   m_Layer: 13
   m_Name: Slime
   m_TagString: Untagged
@@ -984,6 +986,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   RotationMode: 3
   CharacterRotationAuthorized: 1
   ShouldRotateToFaceMovementDirection: 1
@@ -1024,6 +1027,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   Movement: 0
   InputAuthorized: 1
   AnalogInput: 0
@@ -1337,10 +1341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 0}
   States:
-  - StateName: MoveTowardsTarget
+  - StateName: PathfindToTarget
     Actions:
       array:
-      - {fileID: 5029714473648914485}
+      - {fileID: 1623332344800255383}
       - {fileID: 506435284158125889}
     Transitions:
       array:
@@ -1357,7 +1361,7 @@ MonoBehaviour:
     Transitions:
       array:
       - Decision: {fileID: 7026328564111507204}
-        TrueState: MoveTowardsTarget
+        TrueState: PathfindToTarget
         FalseState: 
   TimeInThisState: 0
   Target: {fileID: 0}
@@ -1493,6 +1497,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
   InitialWeapon: {fileID: 8206781405544776144, guid: 2010e70f9d1865045a5a7ddbd7fda675,
     type: 3}
   CanPickupWeapons: 1
@@ -1513,6 +1518,55 @@ MonoBehaviour:
   MaximumBufferDuration: 0.25
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
+--- !u!114 &1623332344800255383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912768112907194514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3320c9b468b2c8a4692e20ae1e813732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  MinimumDelayBeforeUpdatingTarget: 0.3
+--- !u!114 &1047284365989948182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912768112907194514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443ebf149b5f47147a1076bea95f5134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartSfx: {fileID: 0}
+  AbilityInProgressSfx: {fileID: 0}
+  AbilityStopSfx: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
+  cinemachineVirtualCamera: {fileID: 0}
+  Target: {fileID: 0}
+  DistanceToWaypointThreshold: 1
+  ClosestPointThreshold: 3
+  MinimumDelayBeforePollingNavmesh: 0.1
+  PathRefreshMode: 0
+  RefreshSpeedThreshold: 1
+  RefreshInterval: 2
+  DebugDrawPath: 0
+  Waypoints: []
+  NextWaypointIndex: 0
+  NextWaypointDirection: {x: 0, y: 0, z: 0}
+  DistanceToNextWaypoint: 0
 --- !u!1 &1993539059278861789
 GameObject:
   m_ObjectHideFlags: 0
