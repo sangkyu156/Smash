@@ -396,5 +396,11 @@ namespace UnityEditor.AI
             if (view != null)
                 view.MoveToView(go.transform);
         }
+
+        //실시간으로 건물 지었을때 내비메쉬 업데트하려고 내가 만든 함수
+        public void NavMeshLiveUpdate()
+        {
+            NavMeshAssetManager.instance.StartBakingSurfaces(targets);
+        }
     }
 }

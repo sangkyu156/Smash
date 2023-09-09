@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5507536522796591174}
   - component: {fileID: 265686560525864442}
   - component: {fileID: 6696957099232332031}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8567345574153345325}
   - component: {fileID: 2395895428654621481}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Flowers_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

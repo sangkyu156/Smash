@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4365036153939272781}
   - component: {fileID: 2188594406120407756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Flowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 324560310311686943}
   - component: {fileID: 7070130923438361685}
   - component: {fileID: 1373114431604521049}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

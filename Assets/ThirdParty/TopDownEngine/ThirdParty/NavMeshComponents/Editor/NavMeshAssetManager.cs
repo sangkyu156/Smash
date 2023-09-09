@@ -101,7 +101,7 @@ namespace UnityEditor.AI
 
         public void StartBakingSurfaces(UnityEngine.Object[] surfaces)
         {
-            // Remove first to avoid double registration of the callback
+            // 콜백의 이중 등록을 방지하려면 먼저 제거하세요.
             EditorApplication.update -= UpdateAsyncBuildOperations;
             EditorApplication.update += UpdateAsyncBuildOperations;
 

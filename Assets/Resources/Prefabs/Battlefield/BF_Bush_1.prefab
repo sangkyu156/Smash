@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3532005823333848512}
   - component: {fileID: 6132442261406560130}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Bush_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3423020512095809881}
   - component: {fileID: 6160747423530943950}
   - component: {fileID: 2722909411747829815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 1124342704659356639}
   - component: {fileID: 8028514184863748362}
   - component: {fileID: 7063507618709273213}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 3312199457341023960}
   - component: {fileID: 4382750285907611390}
   - component: {fileID: 2125125005510159359}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

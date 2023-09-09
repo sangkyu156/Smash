@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284757418813517030}
   - component: {fileID: 6499089210246176882}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Grass_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 7173258419868957493}
   - component: {fileID: 4771088706036708297}
   - component: {fileID: 6700591609571383272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

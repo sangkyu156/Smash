@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEditor.AI;
+using UnityEngine.AI;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -35,6 +37,11 @@ namespace MoreMountains.TopDownEngine
                 //SlimeSpawn();
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
+            }
+
+            if(Input.GetKeyDown(KeyCode.J))
+            {
+                UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //NavMeshAssetManager.instance.StartBakingSurfaces(targets);
             }
         }
 

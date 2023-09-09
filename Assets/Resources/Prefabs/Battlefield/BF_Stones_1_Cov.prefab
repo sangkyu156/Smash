@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4054997529126006454}
   - component: {fileID: 1369950560185215008}
   - component: {fileID: 4185621479357696165}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5269416172958071461}
   - component: {fileID: 8242402909863038287}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Stones_1_Cov
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7978837682289697419}
   - component: {fileID: 1603930071587002404}
   - component: {fileID: 5419597008701264276}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

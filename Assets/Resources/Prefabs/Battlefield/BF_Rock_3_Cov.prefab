@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4859053134774066422}
   - component: {fileID: 641205160109299497}
   - component: {fileID: 1240133396247264124}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3493378279044426020}
   - component: {fileID: 2154395270247424340}
   - component: {fileID: 1419808645269617707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7260464401302479843}
   - component: {fileID: 2999861410930106880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Rock_3_Cov
   m_TagString: Untagged
   m_Icon: {fileID: 0}

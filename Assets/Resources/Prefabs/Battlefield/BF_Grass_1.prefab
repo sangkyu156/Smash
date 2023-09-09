@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6720850086481256346}
   - component: {fileID: 7625695773186590224}
   - component: {fileID: 6539881130908939632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5078847292598449665}
   - component: {fileID: 5655185750188933731}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Grass_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

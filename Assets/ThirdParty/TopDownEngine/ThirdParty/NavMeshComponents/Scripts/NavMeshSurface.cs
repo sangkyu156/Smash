@@ -2,6 +2,7 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 #endif
 
 namespace UnityEngine.AI
@@ -68,12 +69,12 @@ namespace UnityEngine.AI
         float m_VoxelSize;
         public float voxelSize { get { return m_VoxelSize; } set { m_VoxelSize = value; } }
 
-        // Currently not supported advanced options
+        // 현재 지원되지 않는 고급 옵션
         [SerializeField]
         bool m_BuildHeightMesh;
         public bool buildHeightMesh { get { return m_BuildHeightMesh; } set { m_BuildHeightMesh = value; } }
 
-        // Reference to whole scene navmesh data asset.
+        // 전체 장면 내비메시 데이터 자산에 대한 참조입니다.
         [UnityEngine.Serialization.FormerlySerializedAs("m_BakedNavMeshData")]
         [SerializeField]
         NavMeshData m_NavMeshData;
@@ -91,6 +92,9 @@ namespace UnityEngine.AI
             get { return s_NavMeshSurfaces; }
         }
 
+        //내가만든 변수
+
+
         void OnEnable()
         {
             Register(this);
@@ -101,6 +105,17 @@ namespace UnityEngine.AI
         {
             RemoveData();
             Unregister(this);
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.J))
+            {
+                RemoveData();
+                BuildNavMesh();
+                //UpdateNavMesh(m_NavMeshData);
+                Debug.Log("j누름");
+            }
         }
 
         public void AddData()
@@ -160,8 +175,8 @@ namespace UnityEngine.AI
         {
             var sources = CollectSources();
 
-            // Use unscaled bounds - this differs in behaviour from e.g. collider components.
-            // But is similar to reflection probe - and since navmesh data has no scaling support - it is the right choice here.
+            // 크기 조정되지 않은 경계를 사용하십시오. 이는 예를 들어 동작이 다릅니다. 충돌기 구성 요소.
+            // 그러나 반사 프로브와 유사하며 내비메시 데이터에는 스케일링 지원이 없으므로 여기서는 올바른 선택입니다.
             var sourcesBounds = new Bounds(m_Center, Abs(m_Size));
             if (m_CollectObjects == CollectObjects.All || m_CollectObjects == CollectObjects.Children)
             {
@@ -185,8 +200,8 @@ namespace UnityEngine.AI
         {
             var sources = CollectSources();
 
-            // Use unscaled bounds - this differs in behaviour from e.g. collider components.
-            // But is similar to reflection probe - and since navmesh data has no scaling support - it is the right choice here.
+            // 크기 조정되지 않은 경계를 사용하십시오. 이는 예를 들어 동작이 다릅니다. 충돌기 구성 요소.
+            // 그러나 반사 프로브와 유사하며 내비메시 데이터에는 스케일링 지원이 없으므로 여기서는 올바른 선택입니다.
             var sourcesBounds = new Bounds(m_Center, Abs(m_Size));
             if (m_CollectObjects == CollectObjects.All || m_CollectObjects == CollectObjects.Children)
                 sourcesBounds = CalculateWorldBounds(sources);

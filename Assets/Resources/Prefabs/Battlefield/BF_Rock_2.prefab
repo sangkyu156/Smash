@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572588613680473004}
   - component: {fileID: 1490300670411242294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Rock_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 557444682733912566}
   - component: {fileID: 2551975163734135734}
   - component: {fileID: 1234450725890118406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 8712899492048727188}
   - component: {fileID: 2580890854600900952}
   - component: {fileID: 5454993477253863428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

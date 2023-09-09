@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 784829974241680097}
   - component: {fileID: 3394781196857988374}
   - component: {fileID: 584454580047012776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2604650928821871415}
   - component: {fileID: 4081943641749451238}
   - component: {fileID: 9164595987932148663}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3353346105380720389}
   - component: {fileID: 8337069029643246964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Cliff_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

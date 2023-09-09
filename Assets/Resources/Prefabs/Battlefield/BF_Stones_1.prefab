@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6244920951699601456}
   - component: {fileID: 4103441893144811128}
   - component: {fileID: 2927875346642839873}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8566412463672565985}
   - component: {fileID: 2932702042935488183}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Stones_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 964022161490168512}
   - component: {fileID: 5691444052617673202}
   - component: {fileID: 2093037561066901561}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5681783763322664734}
   - component: {fileID: 3729212639306692752}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BF_Mushrooms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 5511332213896056661}
   - component: {fileID: 721221067938180263}
   - component: {fileID: 6616098692603755837}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
