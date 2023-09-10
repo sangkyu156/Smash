@@ -5,7 +5,7 @@ using UnityEditor.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 #endif
 
-namespace UnityEngine.AI.TopDown
+namespace UnityEngine.AI
 {
     public enum CollectObjects
     {

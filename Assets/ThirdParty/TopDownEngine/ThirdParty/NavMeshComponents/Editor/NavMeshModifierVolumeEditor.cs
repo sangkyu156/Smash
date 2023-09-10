@@ -1,6 +1,6 @@
 using UnityEditor.IMGUI.Controls;
 using UnityEditorInternal;
-using UnityEngine.AI.TopDown;
+using UnityEngine.AI;
 using UnityEngine;
 
 namespace UnityEditor.AI.TopDown

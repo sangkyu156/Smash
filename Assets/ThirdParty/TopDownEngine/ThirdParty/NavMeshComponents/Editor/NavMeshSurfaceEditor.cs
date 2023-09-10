@@ -7,7 +7,7 @@ using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.IMGUI.Controls;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
-using UnityEngine.AI.TopDown;
+using UnityEngine.AI;
 using UnityEngine;
 
 namespace UnityEditor.AI.TopDown

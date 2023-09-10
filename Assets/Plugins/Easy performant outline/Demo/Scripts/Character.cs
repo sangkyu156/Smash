@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI.TopDown;
+using UnityEngine.AI;
 #pragma warning disable CS0649
 
 namespace EPOOutline.Demo

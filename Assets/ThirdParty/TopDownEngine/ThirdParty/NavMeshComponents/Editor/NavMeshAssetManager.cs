@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
-using UnityEngine.AI.TopDown;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 namespace UnityEditor.AI.TopDown
 {

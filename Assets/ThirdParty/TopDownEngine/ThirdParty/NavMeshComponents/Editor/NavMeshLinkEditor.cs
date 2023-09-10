@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI.TopDown;
+using UnityEngine.AI;
 
 namespace UnityEditor.AI.TopDown
 {

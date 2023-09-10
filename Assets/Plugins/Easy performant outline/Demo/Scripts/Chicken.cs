@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI.TopDown;
+using UnityEngine.AI;
 
 #if EPO_DOTWEEN
 using DG.Tweening;
