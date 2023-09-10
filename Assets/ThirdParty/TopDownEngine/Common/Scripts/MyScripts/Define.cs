@@ -8,4 +8,9 @@ public class Define
     {
         Stage00, Stage01 = 1, Stage02, Stage03, Stage04, Stage05, Stage06, Stage07, Stage08, Stage09, Stage10
     }
+
+    public enum Scenes
+    {
+        Title, Village, LevelSelect, Battlefield
+    }
 }

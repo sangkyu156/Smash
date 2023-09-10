@@ -195,6 +195,7 @@ namespace MoreMountains.TopDownEngine
 		public GameObject skillPostion;
 		public Transform uiCanvas;
         public Define.Stage stage = Define.Stage.Stage00;
+		public Define.Scenes scenes = Define.Scenes.Title;
 
         ResourceManager _resource = new ResourceManager();
 

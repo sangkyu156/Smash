@@ -33,26 +33,13 @@ namespace MoreMountains.TopDownEngine
             if (createTime > 1.5f)
             {
                 createTime = 0;
-                //SlimeSpawn();
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
             }
         }
 
-        static public void Init()
-        {
-            if (c_instance == null)
-            {
-                //GameObject go = GameObject.Find("@CreateManager");
-                //if (go == null)
-                //{
-                //    go = Instantiate("Object/CreateManager");
-                //}
+        //바리게이트 돌멩이 프리펩 0~4개 랜덤으로 생성
 
-                //DontDestroyOnLoad(go);
-                //c_instance = go.GetComponent<CreateManager>();
-            }
-        }
 
         static public T Load<T>(string path) where T : Object
         {
