@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 
 #if EPO_DOTWEEN
 using DG.Tweening;
@@ -22,7 +22,7 @@ namespace EPOOutline.Demo
 
         private Outlinable outlinable;
 
-        private NavMeshAgent agent;
+        private UnityEngine.AI.NavMeshAgent agent;
 
         private Animator animator;
 
@@ -32,7 +32,7 @@ namespace EPOOutline.Demo
 
         private void Awake()
         {
-            agent = GetComponent<NavMeshAgent>();
+            agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             outlinable = GetComponent<Outlinable>();
             animator = GetComponent<Animator>();
             if (!alwaysActive)
@@ -91,7 +91,7 @@ namespace EPOOutline.Demo
 
         private IEnumerator UpdateChicken()
         {
-            var path = new NavMeshPath();
+            var path = new UnityEngine.AI.NavMeshPath();
             while (true)
             {
                 animator.CrossFade("Walk In Place", 0.1f);
@@ -99,8 +99,8 @@ namespace EPOOutline.Demo
                 var point = Random.insideUnitCircle;
                 var shift = new Vector3(point.x, 0, point.y) * searchRadius;
 
-                NavMeshHit hit;
-                if (!NavMesh.SamplePosition(transform.position + shift, out hit, searchRadius, -1))
+                UnityEngine.AI.NavMeshHit hit;
+                if (!UnityEngine.AI.NavMesh.SamplePosition(transform.position + shift, out hit, searchRadius, -1))
                 {
                     yield return null;
                     continue;
@@ -108,7 +108,7 @@ namespace EPOOutline.Demo
 
                 Debug.DrawLine(transform.position, hit.position, Color.yellow, 3.0f);
 
-                if (!NavMesh.CalculatePath(transform.position, hit.position, -1, path))
+                if (!UnityEngine.AI.NavMesh.CalculatePath(transform.position, hit.position, -1, path))
                 {
                     yield return null;
                     continue;
@@ -116,7 +116,7 @@ namespace EPOOutline.Demo
 
                 agent.destination = hit.position;
 
-                while (agent.pathStatus != NavMeshPathStatus.PathComplete)
+                while (agent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathComplete)
                     yield return null;
 
                 var timeToWait = (agent.remainingDistance / agent.speed) * 1.5f;

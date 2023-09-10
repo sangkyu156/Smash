@@ -54,7 +54,7 @@ namespace MoreMountains.TopDownEngine
 		/// the current path
 		[MMReadOnly]
 		[Tooltip("the current path")]
-		public NavMeshPath AgentPath;
+		public UnityEngine.AI.NavMeshPath AgentPath;
 		/// a list of waypoints the character will go through
 		[MMReadOnly]
 		[Tooltip("a list of waypoints the character will go through")]
@@ -85,14 +85,14 @@ namespace MoreMountains.TopDownEngine
 		protected Vector3 _lastValidTargetPosition;
 		protected Vector3 _closestStartNavmeshPosition;
 		protected Vector3 _closestTargetNavmeshPosition;
-		protected NavMeshHit _navMeshHit;
+		protected UnityEngine.AI.NavMeshHit _navMeshHit;
 		protected bool _pathFound;
 		protected float _lastRequestAt = -Single.MaxValue;
 
 		protected override void Initialization()
 		{
 			base.Initialization();
-			AgentPath = new NavMeshPath();
+			AgentPath = new UnityEngine.AI.NavMeshPath();
 			_lastValidTargetPosition = this.transform.position;
 			Array.Resize(ref Waypoints, 5);
 		}
@@ -207,26 +207,26 @@ namespace MoreMountains.TopDownEngine
 			
 			// we find the closest position to the starting position on the navmesh
 			_closestStartNavmeshPosition = startingPosition;
-			if (NavMesh.SamplePosition(startingPosition, out _navMeshHit, ClosestPointThreshold, NavMesh.AllAreas))
+			if (UnityEngine.AI.NavMesh.SamplePosition(startingPosition, out _navMeshHit, ClosestPointThreshold, UnityEngine.AI.NavMesh.AllAreas))
 			{
 				_closestStartNavmeshPosition = _navMeshHit.position;
 			}
                 
 			// we find the closest position to the target position on the navmesh
 			_closestTargetNavmeshPosition = targetPosition;
-			if (NavMesh.SamplePosition(targetPosition, out _navMeshHit, ClosestPointThreshold, NavMesh.AllAreas))
+			if (UnityEngine.AI.NavMesh.SamplePosition(targetPosition, out _navMeshHit, ClosestPointThreshold, UnityEngine.AI.NavMesh.AllAreas))
 			{
 				_closestTargetNavmeshPosition = _navMeshHit.position;
 			}
 
-			_pathFound = NavMesh.CalculatePath(_closestStartNavmeshPosition, _closestTargetNavmeshPosition, NavMesh.AllAreas, AgentPath);
+			_pathFound = UnityEngine.AI.NavMesh.CalculatePath(_closestStartNavmeshPosition, _closestTargetNavmeshPosition, UnityEngine.AI.NavMesh.AllAreas, AgentPath);
 			if (_pathFound)
 			{
 				_lastValidTargetPosition = _closestTargetNavmeshPosition;
 			}
 			else
 			{
-				NavMesh.CalculatePath(startingPosition, _lastValidTargetPosition, NavMesh.AllAreas, AgentPath);
+				UnityEngine.AI.NavMesh.CalculatePath(startingPosition, _lastValidTargetPosition, UnityEngine.AI.NavMesh.AllAreas, AgentPath);
 			}
 
 			// Waypoints = AgentPath.corners;

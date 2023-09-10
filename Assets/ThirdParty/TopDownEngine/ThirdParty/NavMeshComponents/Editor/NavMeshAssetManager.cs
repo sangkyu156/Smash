@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 using UnityEngine;
+using UnityEngine.AI;
 
-namespace UnityEditor.AI
+namespace UnityEditor.AI.TopDown
 {
     public class NavMeshAssetManager : ScriptableSingleton<NavMeshAssetManager>
     {

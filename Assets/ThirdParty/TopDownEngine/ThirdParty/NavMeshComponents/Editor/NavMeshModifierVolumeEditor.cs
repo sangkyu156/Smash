@@ -1,9 +1,9 @@
 using UnityEditor.IMGUI.Controls;
 using UnityEditorInternal;
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 using UnityEngine;
 
-namespace UnityEditor.AI
+namespace UnityEditor.AI.TopDown
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(NavMeshModifierVolume))]

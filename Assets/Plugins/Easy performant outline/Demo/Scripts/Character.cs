@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 #pragma warning disable CS0649
 
 namespace EPOOutline.Demo
@@ -12,7 +12,7 @@ namespace EPOOutline.Demo
         private AudioSource walkSource;
 
         [SerializeField]
-        private NavMeshAgent agent;
+        private UnityEngine.AI.NavMeshAgent agent;
 
         [SerializeField]
         private Animator characterAnimator;

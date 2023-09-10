@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace UnityEngine.AI
+namespace UnityEngine.AI.TopDown
 {
     [ExecuteInEditMode]
     [AddComponentMenu("Navigation/NavMeshModifier", 32)]
