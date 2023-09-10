@@ -107,17 +107,6 @@ namespace UnityEngine.AI
             Unregister(this);
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.J))
-            {
-                RemoveData();
-                BuildNavMesh();
-                //UpdateNavMesh(m_NavMeshData);
-                Debug.Log("j´©¸§");
-            }
-        }
-
         public void AddData()
         {
 #if UNITY_EDITOR

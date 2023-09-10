@@ -38,11 +38,6 @@ namespace MoreMountains.TopDownEngine
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
             }
-
-            if(Input.GetKeyDown(KeyCode.J))
-            {
-                UnityEditor.AI.NavMeshBuilder.BuildNavMesh(); //NavMeshAssetManager.instance.StartBakingSurfaces(targets);
-            }
         }
 
         static public void Init()
