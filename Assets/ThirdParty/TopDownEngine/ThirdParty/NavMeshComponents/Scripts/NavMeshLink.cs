@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace UnityEngine.AI
+namespace UnityEngine.AI.TopDown
 {
     [ExecuteInEditMode]
     [DefaultExecutionOrder(-101)]

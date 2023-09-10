@@ -7,10 +7,10 @@ using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.IMGUI.Controls;
 using UnityEditor.SceneManagement;
 using UnityEditorInternal;
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 using UnityEngine;
 
-namespace UnityEditor.AI
+namespace UnityEditor.AI.TopDown
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(NavMeshSurface))]
@@ -99,7 +99,7 @@ namespace UnityEditor.AI
 
             serializedObject.Update();
 
-            var bs = NavMesh.GetSettingsByID(m_AgentTypeID.intValue);
+            var bs = UnityEngine.AI.NavMesh.GetSettingsByID(m_AgentTypeID.intValue);
 
             if (bs.agentTypeID != -1)
             {
@@ -397,7 +397,7 @@ namespace UnityEditor.AI
                 view.MoveToView(go.transform);
         }
 
-        //½Ç½Ã°£À¸·Î °Ç¹° Áö¾úÀ»¶§ ³»ºñ¸Þ½¬ ¾÷µ¥Æ®ÇÏ·Á°í ³»°¡ ¸¸µç ÇÔ¼ö
+        //ï¿½Ç½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
         public void NavMeshLiveUpdate()
         {
             NavMeshAssetManager.instance.StartBakingSurfaces(targets);

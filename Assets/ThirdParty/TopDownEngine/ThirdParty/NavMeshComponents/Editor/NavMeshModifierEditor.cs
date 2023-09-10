@@ -1,6 +1,6 @@
-using UnityEngine.AI;
+using UnityEngine.AI.TopDown;
 
-namespace UnityEditor.AI
+namespace UnityEditor.AI.TopDown
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(NavMeshModifier))]
