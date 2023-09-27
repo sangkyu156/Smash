@@ -28,8 +28,8 @@ namespace MoreMountains.TopDownEngine
 		public bool WeaponCurrentlyActive = true;
 
 		[MMInspectorGroup("Use", true, 10)]
-		/// if this is true, this weapon will be able to read input (usually via the CharacterHandleWeapon ability), otherwise player input will be disabled
-		[Tooltip("if this is true, this weapon will be able to read input (usually via the CharacterHandleWeapon ability), otherwise player input will be disabled")]
+        /// 이것이 사실이라면 이 무기는 입력을 읽을 수 있으며(보통 CharacterHandleWeapon 기능을 통해), 그렇지 않으면 플레이어 입력이 비활성화됩니다.
+        [Tooltip("이것이 사실이라면 이 무기는 입력을 읽을 수 있으며(보통 CharacterHandleWeapon 기능을 통해), 그렇지 않으면 플레이어 입력이 비활성화됩니다.")]
 		public bool InputAuthorized = true;
 		/// is this weapon on semi or full auto ?
 		[Tooltip("is this weapon on semi or full auto ?")]

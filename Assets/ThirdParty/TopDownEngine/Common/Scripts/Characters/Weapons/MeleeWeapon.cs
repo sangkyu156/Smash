@@ -234,11 +234,11 @@ namespace MoreMountains.TopDownEngine
 			StartCoroutine(MeleeWeaponAttack());
         }
 
-		/// <summary>
-		/// Triggers an attack, turning the damage area on and then off
-		/// </summary>
-		/// <returns>The weapon attack.</returns>
-		protected virtual IEnumerator MeleeWeaponAttack()
+        /// <summary>
+        /// 공격을 유발하여 피해 영역을 켰다가 끕니다.
+        /// </summary>
+        /// <returns>무기 공격.</returns>
+        protected virtual IEnumerator MeleeWeaponAttack()
 		{
 			if (_attackInProgress) { yield break; }
 
@@ -255,14 +255,18 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void EnableDamageArea()
 		{
-			if (_damageAreaCollider2D != null)
+            //현제 실행되고 있는 에니메이션 이름이 "Attack03_1"이 아닐때만 피해 지역 활성화 (3타 때문)
+            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
 			{
-				_damageAreaCollider2D.enabled = true;
-			}
-			if (_damageAreaCollider != null)
-			{
-				_damageAreaCollider.enabled = true;
-			}
+                if (_damageAreaCollider2D != null)
+                {
+                    _damageAreaCollider2D.enabled = true;
+                }
+                if (_damageAreaCollider != null)
+                {
+                    _damageAreaCollider.enabled = true;
+                }
+            }
 		}
 
 
