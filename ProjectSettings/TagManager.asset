@@ -10,6 +10,7 @@ TagManager:
   - World
   - NoMask
   - NavMesh
+  - Level
   layers:
   - Default
   - TransparentFX
