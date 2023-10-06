@@ -26,10 +26,7 @@ namespace MoreMountains.TopDownEngine
         {
             level = GameObject.FindWithTag("Level");
 
-            for (int i = 0;i < 2000;i++)
-            {
-                BarricadeRock_1();
-            }
+            BarricadeRockCreation();
 
             if (GameManager.Instance.scenes == Define.Scenes.Battlefield)
             {
@@ -37,7 +34,7 @@ namespace MoreMountains.TopDownEngine
 
                 BarricadeRockCreation();
 
-                
+
             }
         }
 
@@ -51,28 +48,79 @@ namespace MoreMountains.TopDownEngine
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
             }
+
+            if(Input.GetKeyDown(KeyCode.H))
+            {
+                BarricadeRockCreation();
+            }
         }
 
         //바리게이트 돌멩이 프리펩 0~4개 랜덤으로 생성
         void BarricadeRockCreation()
         {
-            BarricadeRock_1();
+            int randomNumber = Random.Range(0, 100);
+            Debug.Log($"{randomNumber}");
 
+            if (randomNumber >= 0 && randomNumber <=  44) //45%
+            {
+
+            }
+            else if (randomNumber >= 45 && randomNumber <= 74) //30%
+            {
+
+            }
+            else if (randomNumber >= 75 && randomNumber <= 89) //15%
+            {
+
+            }
+            else if (randomNumber >= 90 && randomNumber <= 99) //10%
+            {
+                BarricadeRock_1();
+                BarricadeRock_2();
+                BarricadeRock_3();
+                BarricadeRock_4();
+            }
             //돌 생성후 네비매쉬 굽기
         }
 
         void BarricadeRock_1()
         {
             //1번 돌맹이 생성 범위(x축을 -7,-8, ... , -31, -32 으로 정하고 그에따라 z축도 결정해준다.)
-            //1.x축이 - 32일때 z축은 -32~32 까지
-            //2.x축이 - 31일떄 z축은 -31~31 까지
-            //...
-            //마지막.축이 - 7일때 z축은 -7~7 까지
             int posX = Random.Range(-7, -33);
             int posZ = Random.Range(posX, -posX);
 
             GameObject barricadeRock_1 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
-            barricadeRock_1.transform.position = new Vector3(posX, 0, posZ);
+            barricadeRock_1.transform.position = new Vector3(posX, -1.2f, posZ);
+        }
+
+        void BarricadeRock_2()
+        {
+            //2번 돌맹이 생성 범위(z축을 7,8, ... , 31, 32 으로 정하고 그에따라 x축도 결정해준다.)
+            int posZ = Random.Range(7, 33);
+            int posX = Random.Range((-posZ)+2, posZ-1);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
+
+            GameObject barricadeRock_2 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            barricadeRock_2.transform.position = new Vector3(posX, -1.2f, posZ);
+        }
+
+        void BarricadeRock_3()
+        {
+            //3번 돌맹이 생성 범위(x축을 7,8, ... , 31, 32 으로 정하고 그에따라 z축도 결정해준다.)
+            int posX = Random.Range(7, 33);
+            int posZ = Random.Range(-posX, posX);
+
+            GameObject barricadeRock_3 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            barricadeRock_3.transform.position = new Vector3(posX, -1.2f, posZ);
+        }
+
+        void BarricadeRock_4()
+        {
+            //4번 돌맹이 생성 범위(z축을 -7,-8, ... , -31, -32 으로 정하고 그에따라 x축도 결정해준다.)
+            int posZ = Random.Range(-7, -33);
+            int posX = Random.Range(posZ+3, (-posZ)-2);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
+
+            GameObject barricadeRock_4 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            barricadeRock_4.transform.position = new Vector3(posX, -1.2f, posZ);
         }
 
         static public T Load<T>(string path) where T : Object
