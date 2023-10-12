@@ -20,6 +20,7 @@ MonoBehaviour:
   Consumable: 1
   ConsumeQuantity: 1
   Equippable: 1
+  EquippableIfInventoryIsFull: 1
   MoveWhenEquipped: 0
   Droppable: 0
   CanMoveObject: 1
@@ -37,6 +38,8 @@ MonoBehaviour:
   Description: A long-barreled firearm designed to shoot a straight-walled cartridge
   Icon: {fileID: 2130535880278150251, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
   Prefab: {fileID: 7083706273319224486, guid: 02fadec34ca113040bfb587f3f848c1a, type: 3}
+  ForcePrefabDropQuantity: 0
+  PrefabDropQuantity: 1
   DropProperties:
     Shape: 0
     NormalToSpawnPlane: {x: 0, y: 0, z: 1}

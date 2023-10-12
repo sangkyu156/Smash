@@ -143,8 +143,8 @@ namespace MoreMountains.InventoryEngine
 		public KeyCode ToggleInventoryKey = KeyCode.I;
 		/// the alt key used to open/close the inventory
 		public KeyCode ToggleInventoryAltKey = KeyCode.Joystick1Button6;
-		/// the key used to open the inventory
-		public KeyCode OpenInventoryKey;
+        /// 인벤토리를 여는 데 사용되는 키
+        public KeyCode OpenInventoryKey;
 		/// the key used to close the inventory
 		public KeyCode CloseInventoryKey;
 		/// the alt key used to open/close the inventory
@@ -375,10 +375,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Opens or closes the inventory panel based on its current status
-		/// </summary>
-		public virtual void ToggleInventory()
+        /// <summary>
+        /// 현재 상태에 따라 인벤토리 패널을 열거나 닫습니다.
+        /// </summary>
+        public virtual void ToggleInventory()
 		{
 			if (InventoryIsOpen)
 			{
@@ -390,10 +390,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Opens the inventory panel
-		/// </summary>
-		public virtual void OpenInventory()
+        /// <summary>
+        /// 인벤토리 패널을 엽니다.
+        /// </summary>
+        public virtual void OpenInventory()
 		{
 			if (CloseList.Count > 0)
 			{
@@ -435,13 +435,13 @@ namespace MoreMountains.InventoryEngine
 			StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
 		}
 
-		/// <summary>
-		/// Handles the inventory related inputs and acts on them.
+        /// <summary>
+        /// 재고 관련 입력을 처리하고 이에 따라 조치를 취합니다.
 		/// </summary>
 		protected virtual void HandleInventoryInput()
 		{
-			// if we don't have a current inventory display, we do nothing and exit
-			if (_currentInventoryDisplay == null)
+            // 현재 재고 표시가 없으면 아무것도 하지 않고 종료합니다.
+            if (_currentInventoryDisplay == null)
 			{
 				return;
 			}
@@ -470,10 +470,10 @@ namespace MoreMountains.InventoryEngine
 				_equipKeyPressed = Input.GetKeyDown(EquipKey) || Input.GetKeyDown(EquipAltKey);
 				_useKeyPressed = Input.GetKeyDown(UseKey) || Input.GetKeyDown(UseAltKey);
 				_dropKeyPressed = Input.GetKeyDown(DropKey) || Input.GetKeyDown(DropAltKey);
-			#endif
-			
-			// if the user presses the 'toggle inventory' key
-			if (_toggleInventoryKeyPressed)
+#endif
+
+            // 사용자가 '인벤토리 전환' 키를 누르면
+            if (_toggleInventoryKeyPressed)
 			{
 				ToggleInventory();
 			}

@@ -218,10 +218,10 @@ namespace MoreMountains.Tools
 	/// </summary>
 	public interface MMEventListenerBase { };
 
-	/// <summary>
-	/// A public interface you'll need to implement for each type of event you want to listen to.
-	/// </summary>
-	public interface MMEventListener<T> : MMEventListenerBase
+    /// <summary>
+    /// 듣고 싶은 각 이벤트 유형에 대해 구현해야 하는 공개 인터페이스입니다.
+    /// </summary>
+    public interface MMEventListener<T> : MMEventListenerBase
 	{
 		void OnMMEvent( T eventType );
 	}

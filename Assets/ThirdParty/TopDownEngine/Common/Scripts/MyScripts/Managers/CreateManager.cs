@@ -24,9 +24,9 @@ namespace MoreMountains.TopDownEngine
 
         void Start()
         {
-            level = GameObject.FindWithTag("Level");
+            //level = GameObject.FindWithTag("Level");
 
-            BarricadeRockCreation();
+            //BarricadeRockCreation();
 
             if (GameManager.Instance.scenes == Define.Scenes.Battlefield)
             {

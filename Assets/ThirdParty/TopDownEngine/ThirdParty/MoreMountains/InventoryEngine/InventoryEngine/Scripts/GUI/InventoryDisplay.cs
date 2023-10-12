@@ -27,11 +27,11 @@ namespace MoreMountains.InventoryEngine
 
 		protected Inventory _targetInventory = null;
 
-		/// <summary>
-		/// Grabs the target inventory based on its name
-		/// </summary>
-		/// <value>The target inventory.</value>
-		public Inventory TargetInventory 
+        /// <summary>
+        /// 이름에 따라 대상 인벤토리를 확보합니다.
+        /// </summary>
+        /// <value>The target inventory.</value>
+        public Inventory TargetInventory 
 		{ 
 			get 
 			{ 
@@ -225,10 +225,10 @@ namespace MoreMountains.InventoryEngine
 			DrawInventoryContent();
 		}
 
-		/// <summary>
-		/// On Awake, initializes the various lists used to keep track of the content of the inventory
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// Awake에서는 인벤토리 내용을 추적하는 데 사용되는 다양한 목록을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			_contentLastUpdate = new List<ItemQuantity>();		
 			SlotContainer = new List<InventorySlot>() ;		
