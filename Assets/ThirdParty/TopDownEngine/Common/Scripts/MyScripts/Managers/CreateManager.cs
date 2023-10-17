@@ -10,6 +10,7 @@ namespace MoreMountains.TopDownEngine
     {
         PoolManager poolManager; //오브젝트 풀링 매니져
         GameObject level; //Battlefield 씬 맵
+        GameObject bfManager; //BattlefieldManager
 
         static CreateManager c_instance; // 유일성이 보장된다       
         static public CreateManager Instance { get { /*Init();*/ return c_instance; } } // 유일한 매니저를 갖고온다
@@ -25,12 +26,14 @@ namespace MoreMountains.TopDownEngine
         void Start()
         {
             //level = GameObject.FindWithTag("Level");
+            //bfManager = GameObject.FindWithTag("BattlefieldManager");
 
             //BarricadeRockCreation();
 
             if (GameManager.Instance.scenes == Define.Scenes.Battlefield)
             {
                 level = GameObject.FindWithTag("Level");
+                bfManager = GameObject.FindWithTag("BattlefieldManager");
 
                 BarricadeRockCreation();
 
@@ -59,19 +62,51 @@ namespace MoreMountains.TopDownEngine
         void BarricadeRockCreation()
         {
             int randomNumber = Random.Range(0, 100);
-            Debug.Log($"{randomNumber}");
+            int randomNumber2 = Random.Range(0, 4);
+            Debug.Log($"randomNumber - {randomNumber}, randomNumber2 - {randomNumber2}");
 
             if (randomNumber >= 0 && randomNumber <=  44) //45%
             {
-
+                
+                switch (randomNumber2)
+                {
+                    case 0:
+                        BarricadeRock_1(); break;
+                    case 1:
+                        BarricadeRock_2(); break;
+                    case 2:
+                        BarricadeRock_3(); break;
+                    case 3:
+                        BarricadeRock_4(); break;
+                }
             }
             else if (randomNumber >= 45 && randomNumber <= 74) //30%
             {
-
+                switch (randomNumber2)
+                {
+                    case 0:
+                        BarricadeRock_1(); BarricadeRock_3(); break;
+                    case 1:
+                        BarricadeRock_2(); BarricadeRock_4(); break;
+                    case 2:
+                        BarricadeRock_2(); BarricadeRock_3(); break;
+                    case 3:
+                        BarricadeRock_1(); BarricadeRock_4(); break;
+                }
             }
             else if (randomNumber >= 75 && randomNumber <= 89) //15%
             {
-
+                switch (randomNumber2)
+                {
+                    case 0:
+                        BarricadeRock_1(); BarricadeRock_2(); BarricadeRock_3(); break;
+                    case 1:
+                        BarricadeRock_2(); BarricadeRock_3(); BarricadeRock_4(); break;
+                    case 2:
+                        BarricadeRock_3(); BarricadeRock_4(); BarricadeRock_1(); break;
+                    case 3:
+                        BarricadeRock_4(); BarricadeRock_1(); BarricadeRock_2(); break;
+                }
             }
             else if (randomNumber >= 90 && randomNumber <= 99) //10%
             {
@@ -81,6 +116,7 @@ namespace MoreMountains.TopDownEngine
                 BarricadeRock_4();
             }
             //돌 생성후 네비매쉬 굽기
+            bfManager.GetComponent<BattlefieldManager>().NavMeshBake();
         }
 
         void BarricadeRock_1()
