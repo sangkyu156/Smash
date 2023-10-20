@@ -3,6 +3,7 @@ using MoreMountains.Tools;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 	using UnityEngine.InputSystem;
 #endif
@@ -138,7 +139,7 @@ namespace MoreMountains.InventoryEngine
 					interactions: "Press(behavior=2)"));
 		#else
 		[Header("Key Mapping")]
-		[MMInformation("Here you need to set the various key bindings you prefer. There are some by default but feel free to change them.", MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("여기서는 원하는 다양한 키 바인딩을 설정해야 합니다. 기본적으로 일부가 있지만 자유롭게 변경할 수 있습니다.", MMInformationAttribute.InformationType.Info, false)]
 		/// the key used to open/close the inventory
 		public KeyCode ToggleInventoryKey = KeyCode.I;
 		/// the alt key used to open/close the inventory
@@ -179,6 +180,9 @@ namespace MoreMountains.InventoryEngine
 		public string PrevInvKey = "page up";
 		/// the alt key used to go to the previous inventory
 		public string PrevInvAltKey = "joystick button 5";
+
+		//내가 만든 변수
+		public TextMeshProUGUI money;
 		#endif
 
 		[Header("Close Bindings")] 
@@ -215,9 +219,9 @@ namespace MoreMountains.InventoryEngine
 		/// returns the active slot
 		public InventorySlot CurrentlySelectedInventorySlot { get; set; }
 
-		[Header("State")] 
-		/// if this is true, the associated inventory is open, closed otherwise
-		[MMReadOnly]
+		[Header("State")]
+        /// 이것이 사실이면 관련 인벤토리가 열려 있고, 그렇지 않으면 닫혀 있습니다.
+        [MMReadOnly]
 		public bool InventoryIsOpen;
 
 		protected CanvasGroup _canvasGroup;
@@ -276,10 +280,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Every frame, we check for input for the inventory, the hotbars and we check the current selection
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 매 프레임마다 인벤토리, 단축바에 대한 입력을 확인하고 현재 선택을 확인합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			HandleInventoryInput();
 			HandleHotbarsInput();
@@ -287,10 +291,10 @@ namespace MoreMountains.InventoryEngine
 			HandleButtons();
 		}
 
-		/// <summary>
-		/// Every frame, we check and store what object is currently selected
-		/// </summary>
-		protected virtual void CheckCurrentlySelectedSlot()
+        /// <summary>
+        /// 매 프레임마다 현재 선택된 객체가 무엇인지 확인하고 저장합니다.
+        /// </summary>
+        protected virtual void CheckCurrentlySelectedSlot()
 		{
 			_currentSelection = EventSystem.current.currentSelectedGameObject;
 			if (_currentSelection == null)
@@ -304,10 +308,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Will turn inventory controls interactable or not based on the currently selected slot, if ManageButtons is set to true
-		/// </summary>
-		protected virtual void HandleButtons()
+        /// <summary>
+        /// ManageButtons가 true로 설정된 경우 현재 선택된 슬롯을 기반으로 인벤토리 제어를 상호 작용 가능하게 설정하거나 해제합니다.
+        /// </summary>
+        protected virtual void HandleButtons()
 		{
 			if (!ManageButtons)
 			{
@@ -408,8 +412,8 @@ namespace MoreMountains.InventoryEngine
 				_canvasGroup.blocksRaycasts = true;
 			}
 
-			// we open our inventory
-			MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
+            // 우리는 인벤토리를 엽니다
+            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
 			MMGameEvent.Trigger("inventoryOpens");
 			InventoryIsOpen = true;
 

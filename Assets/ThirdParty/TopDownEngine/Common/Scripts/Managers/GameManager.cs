@@ -7,24 +7,24 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A list of the possible TopDown Engine base events
-	/// LevelStart : triggered by the LevelManager when a level starts
-	///	LevelComplete : can be triggered when the end of a level is reached
-	/// LevelEnd : same thing
-	///	Pause : triggered when a pause is starting
-	///	UnPause : triggered when a pause is ending and going back to normal
-	///	PlayerDeath : triggered when the player character dies
-	///	RespawnStarted : triggered when the player character respawn sequence starts
-	///	RespawnComplete : triggered when the player character respawn sequence ends
-	///	StarPicked : triggered when a star bonus gets picked
-	///	GameOver : triggered by the LevelManager when all lives are lost
-	/// CharacterSwap : triggered when the character gets swapped
-	/// CharacterSwitch : triggered when the character gets switched
-	/// Repaint : triggered to ask for a UI refresh
-	/// TogglePause : triggered to request a pause (or unpause)
-	/// </summary>
-	public enum TopDownEngineEventTypes
+    /// <summary>
+    /// 가능한 TopDown 엔진 기본 이벤트 목록
+    /// LevelStart : 레벨이 시작될 때 LevelManager에 의해 트리거됩니다.
+    ///	LevelComplete : 레벨 끝에 도달하면 트리거될 수 있습니다.
+    /// LevelEnd : 같은 것
+    ///	Pause : 일시정지가 시작될 때 트리거됨
+    ///	UnPause : 일시정지가 끝나고 정상으로 돌아갈 때 트리거됩니다.
+    ///	PlayerDeath : 플레이어 캐릭터가 죽을 때 발동
+    ///	RespawnStarted : 플레이어 캐릭터 리스폰 시퀀스가 ​​시작될 때 트리거됩니다.
+    ///	RespawnComplete : 플레이어 캐릭터 리스폰 시퀀스가 ​​종료되면 트리거됩니다.
+    ///	StarPicked : 별 보너스가 선택되면 트리거됩니다.
+    ///	GameOver : 모든 생명이 손실될 때 LevelManager에 의해 트리거됩니다.
+    /// CharacterSwap : 캐릭터가 바뀔 때 발동
+    /// CharacterSwitch : 캐릭터가 바뀔 때 발동
+    /// Repaint : UI 새로 고침을 요청하도록 트리거됨
+    /// TogglePause : 일시중지(또는 일시중지 해제)를 요청하도록 트리거됨
+    /// </summary>
+    public enum TopDownEngineEventTypes
 	{
 		SpawnCharacterStarts,
 		LevelStart,
@@ -198,8 +198,10 @@ namespace MoreMountains.TopDownEngine
 		public Define.Scenes scenes = Define.Scenes.Title;
 
         ResourceManager _resource = new ResourceManager();
+		DataManager _data = new DataManager();
 
         public static ResourceManager Resource { get { return Instance._resource; } }
+		public static DataManager Data { get { return Instance._data; } }
 
         /// <summary>
         /// On Awake we initialize our list of points of entry
