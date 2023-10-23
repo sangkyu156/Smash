@@ -89,8 +89,8 @@ namespace MoreMountains.TopDownEngine
 
 		/// associated camera and input manager
 		public InputManager LinkedInputManager { get; protected set; }
-		/// the animator associated to this character
-		public Animator _animator { get; protected set; }
+        /// 이 캐릭터와 관련된 애니메이터
+        public Animator _animator { get; protected set; }
 		/// a list of animator parameters
 		public HashSet<int> _animatorParameters { get; set; }
 		/// this character's orientation 2D ability
