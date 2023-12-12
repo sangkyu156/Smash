@@ -145,7 +145,7 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Awake()
 		{		
 			Initialization();
-		}
+        }
 
 		/// <summary>
 		/// Gets and stores input manager, camera and components
@@ -489,8 +489,7 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Update()
 		{		
 			EveryFrame();
-				
-		}
+        }
 
         /// <summary>
         /// 우리는 매 프레임마다 이 작업을 수행합니다. 이는 유연성을 높이기 위해 업데이트와 별개입니다.

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This Decision will return true if the current Brain's Target is within the specified range, false otherwise.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDistanceToTarget")]
+    /// <summary>
+    /// 이 결정은 현재 Brain 목표가 지정된 범위 내에 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDistanceToTarget")]
 	public class AIDecisionDistanceToTarget : AIDecision
 	{
 		/// The possible comparison modes

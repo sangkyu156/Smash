@@ -96,9 +96,9 @@ namespace MoreMountains.TopDownEngine
 		/// whether the character is being applied a forced rotation
 		[Tooltip("whether the character is being applied a forced rotation")]
 		public bool ForcedRotation = false;
-		/// the forced rotation applied by an external script
-		[MMCondition("ForcedRotation", true)]
-		[Tooltip("the forced rotation applied by an external script")]
+        /// 외부 스크립트에 의해 적용된 강제 회전
+        [MMCondition("ForcedRotation", true)]
+		[Tooltip("외부 스크립트에 의해 적용된 강제 회전")]
 		public Vector3 ForcedRotationDirection;
 
 		public Vector3 RelativeSpeed { get { return _relativeSpeed; } }
@@ -212,19 +212,19 @@ namespace MoreMountains.TopDownEngine
 		}
 
 
-		/// <summary>
-		/// Rotates the player model to face the current direction
-		/// </summary>
-		protected virtual void RotateToFaceMovementDirection()
+        /// <summary>
+        /// 현재 방향을 향하도록 플레이어 모델을 회전합니다.
+        /// </summary>
+        protected virtual void RotateToFaceMovementDirection()
 		{
-			// if we're not supposed to face our direction, we do nothing and exit
-			if (!ShouldRotateToFaceMovementDirection) { return; }
+            // 우리 방향을 향하지 않아야 한다면 아무것도 하지 않고 나가면 됩니다.
+            if (!ShouldRotateToFaceMovementDirection) { return; }
 			if ((RotationMode != RotationModes.MovementDirection) && (RotationMode != RotationModes.Both)) { return; }
 
 			_currentDirection = ForcedRotation || _controllerIsNull ? ForcedRotationDirection : _controller.CurrentDirection;
 
-			// if the rotation mode is instant, we simply rotate to face our direction
-			if (MovementRotationSpeed == RotationSpeeds.Instant)
+            // 회전 모드가 순간적이면 단순히 방향을 향하도록 회전합니다.
+            if (MovementRotationSpeed == RotationSpeeds.Instant)
 			{
 				if (_currentDirection != Vector3.zero)
 				{

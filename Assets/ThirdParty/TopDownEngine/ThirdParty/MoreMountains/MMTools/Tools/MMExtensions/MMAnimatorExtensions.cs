@@ -108,18 +108,18 @@ namespace MoreMountains.Tools
 		{
 			animator.SetFloat(parameterName, value);
 		}
-        
-		#endregion
 
-		// INT PARAMETER METHODS -------------------------------------------------------------------------------------------------------------------------------------------------------------
+        #endregion
 
-		// <summary>
-		/// Updates the animator bool.
-		/// </summary>
-		/// <param name="animator">Animator.</param>
-		/// <param name="parameterName">Parameter name.</param>
-		/// <param name="value">If set to <c>true</c> value.</param>
-		public static bool UpdateAnimatorBool(Animator animator, int parameter, bool value, HashSet<int> parameterList, bool performSanityCheck = true)
+        // INT PARAMETER METHODS -------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        // <summary>
+        /// 애니메이터 부울을 업데이트합니다.
+        /// </summary>
+        /// <param name="animator">Animator.</param>
+        /// <param name="parameterName">Parameter name.</param>
+        /// <param name="value">If set to <c>true</c> value.</param>
+        public static bool UpdateAnimatorBool(Animator animator, int parameter, bool value, HashSet<int> parameterList, bool performSanityCheck = true)
 		{
             if (performSanityCheck && !parameterList.Contains(parameter))
 			{

@@ -52,10 +52,10 @@ namespace MoreMountains.Tools
 			MMSaveLoadManager.Save(this.Settings, _saveFileName, _saveFolderName);
 		}
 
-		/// <summary>
-		/// Loads the sound settings from file (if found)
-		/// </summary>
-		public virtual void LoadSoundSettings()
+        /// <summary>
+        /// 파일에서 사운드 설정을 로드합니다(찾은 경우).
+        /// </summary>
+        public virtual void LoadSoundSettings()
 		{
 			if (Settings.OverrideMixerSettings)
 			{

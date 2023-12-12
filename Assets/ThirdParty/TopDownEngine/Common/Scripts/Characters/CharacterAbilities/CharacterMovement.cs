@@ -466,12 +466,12 @@ namespace MoreMountains.TopDownEngine
 			}
             
 			_controller.SetMovement (_movementVector);
-		} 
+		}
 
-		/// <summary>
-		/// Every frame, checks if we just hit the ground, and if yes, changes the state and triggers a particle effect
-		/// </summary>
-		protected virtual void CheckJustGotGrounded()
+        /// <summary>
+        /// 매 프레임마다 방금 땅에 닿았는지 확인하고, 그렇다면 상태를 변경하고 입자 효과를 트리거합니다.
+        /// </summary>
+        protected virtual void CheckJustGotGrounded()
 		{
 			// if the character just got grounded
 			if (_controller.JustGotGrounded)

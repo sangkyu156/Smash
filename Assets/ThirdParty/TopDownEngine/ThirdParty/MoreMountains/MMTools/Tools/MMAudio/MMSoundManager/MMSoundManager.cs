@@ -7,30 +7,30 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple yet powerful sound manager, that will let you play sounds with an event based approach and performance in mind.
-	/// 
-	/// Features :
-	/// 
-	/// - Play/stop/pause/resume/free sounds
-	/// - Full control : loop, volume, pitch, pan, spatial blend, bypasses, priority, reverb, doppler level, spread, rolloff mode, distance
-	/// - 2D & 3D spatial support
-	/// - Built-in pooling, automatically recycle a set of audio sources for maximum performance
-	/// - Built in audio mixer and groups, with ready-made tracks (Master, Music, SFX, UI), and options to play on more groups if needed
-	/// - Stop/pause/resume/free entire tracks
-	/// - Stop/pause/resume/free all sounds at once
-	/// - Mute / set volume entire tracks
-	/// - Save and load settings, with auto save / auto load mechanics built-in
-	/// - Fade in/out sounds
-	/// - Fade in/out tracks
-	/// - Solo mode : play a sound with one or all tracks muted, then unmute them automatically afterwards
-	/// - PlayOptions struct
-	/// - Option to have sounds persist across scene loads and from scene to scene
-	/// - Inspector controls for tracks (volume, mute, unmute, play, pause, stop, resume, free, number of sounds)
-	/// - MMSfxEvents
-	/// - MMSoundManagerEvents : mute track, control track, save, load, reset, stop persistent sounds 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Audio/MMSoundManager")]
+    /// <summary>
+    /// 이벤트 기반 접근 방식과 성능을 염두에 두고 사운드를 재생할 수 있는 간단하면서도 강력한 사운드 관리자입니다.
+    /// 
+    /// Features :
+    /// 
+    /// - 재생/중지/일시 정지/재개/무료 사운드
+    /// - Full control : loop, volume, pitch, pan, spatial blend, bypasses, priority, reverb, doppler level, spread, rolloff mode, distance
+    /// - 2D 및 3D 공간 지원
+    /// - 내장된 풀링, 최대 성능을 위해 오디오 소스 세트를 자동으로 재활용
+    /// - 미리 만들어진 트랙(마스터, 음악, SFX, UI) 및 필요한 경우 더 많은 그룹에서 재생할 수 있는 옵션이 포함된 오디오 믹서 및 그룹 내장
+    /// - 전체 트랙 중지/일시 중지/재개/무료
+    /// - 모든 소리를 한 번에 중지/일시 중지/재개/해제
+    /// - 전체 트랙 음소거/볼륨 설정
+    /// - 자동 저장/자동 로드 메커니즘이 내장되어 설정 저장 및 로드
+    /// - 페이드 인/아웃 사운드
+    /// - 페이드 인/아웃 트랙
+    /// - 솔로 모드: 하나 또는 모든 트랙이 음소거된 상태에서 사운드를 재생한 다음 나중에 자동으로 음소거 해제
+    /// - PlayOptions 구조체
+    /// - 장면 로드 전체와 장면 간에 사운드가 지속되도록 하는 옵션
+    /// - 트랙 검사기 제어(볼륨, 음소거, 음소거 해제, 재생, 일시 정지, 중지, 재개, 무료, 사운드 수)
+    /// - MMSfx이벤트
+    /// - MMSoundManagerEvents: 트랙 음소거, 트랙 제어, 저장, 로드, 재설정, 지속적인 사운드 중지
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Audio/MMSoundManager")]
 	public class MMSoundManager : MMPersistentSingleton<MMSoundManager>, 
 		MMEventListener<MMSoundManagerTrackEvent>, 
 		MMEventListener<MMSoundManagerEvent>,
@@ -63,22 +63,22 @@ namespace MoreMountains.Tools
 		protected Dictionary<AudioSource, Coroutine> _fadeSoundCoroutines;
 		protected Dictionary<MMSoundManagerTracks, Coroutine> _fadeTrackCoroutines;
 
-		#region Initialization
+        #region 초기화
 
-		/// <summary>
-		/// On Awake we initialize our manager
-		/// </summary>
-		protected override void Awake()
+        /// <summary>
+        /// On Awake we initialize our manager
+        /// </summary>
+        protected override void Awake()
 		{
 			base.Awake();
 			InitializeSoundManager();
 		}
-        
-		/// <summary>
-		/// On Start we load and apply our saved settings if needed.
-		/// This is done on Start and not Awake because of a bug in Unity's AudioMixer API
-		/// </summary>
-		protected virtual void Start()
+
+        /// <summary>
+        /// 시작 시 필요한 경우 저장된 설정을 로드하고 적용합니다.
+        /// 이는 Unity AudioMixer API의 버그로 인해 Awake가 아닌 시작 시 수행됩니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			if ((settingsSo != null) && (settingsSo.Settings.AutoLoad))
 			{

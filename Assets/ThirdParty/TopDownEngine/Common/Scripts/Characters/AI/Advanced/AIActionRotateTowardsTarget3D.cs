@@ -10,40 +10,41 @@ namespace MoreMountains.TopDownEngine
 	public class AIActionRotateTowardsTarget3D : AIAction
 	{
 		[Header("Lock Rotation")]
-		/// whether or not to lock the X rotation. If set to false, the model will rotate on the x axis, to aim up or down 
-		[Tooltip("whether or not to lock the X rotation. If set to false, the model will rotate on the x axis, to aim up or down")]
+        /// X 회전을 잠글지 여부입니다. false로 설정하면 모델이 x축을 기준으로 회전하여 위 또는 아래를 조준합니다.
+        [Tooltip("X 회전을 잠글지 여부입니다. false로 설정하면 모델이 x축을 기준으로 회전하여 위 또는 아래를 조준합니다.")]
 		public bool LockRotationX = false;
 
 		protected CharacterOrientation3D _characterOrientation3D;
 		protected Vector3 _targetPosition;
 		protected bool _originalForcedRotation;
 
-		/// <summary>
-		/// On init we grab our CharacterOrientation3D ability
-		/// </summary>
-		public override void Initialization()
+        /// <summary>
+        /// 초기화 시 CharacterOrientation3D 기능을 확보합니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();
 			_characterOrientation3D = this.gameObject.GetComponentInParent<Character>()?.FindAbility<CharacterOrientation3D>();
 		}
 
-		/// <summary>
-		/// On PerformAction we move
-		/// </summary>
-		public override void PerformAction()
+        /// <summary>
+        /// PerformAction에서 우리는 움직입니다.
+        /// </summary>
+        public override void PerformAction()
 		{
 			Rotate();
 		}
 
-		/// <summary>
-		/// Makes the orientation 3D ability rotate towards the brain target
-		/// </summary>
-		protected virtual void Rotate()
+        /// <summary>
+        /// 방향 3D 능력이 brain 목표를 향해 회전하도록 만듭니다.
+        /// </summary>
+        protected virtual void Rotate()
 		{
 			if (_brain.Target == null)
 			{
-				return;
+                Debug.Log("1");
+                return;
 			}
 			_targetPosition = _brain.Target.transform.position;
 			if (LockRotationX)
@@ -51,7 +52,8 @@ namespace MoreMountains.TopDownEngine
 				_targetPosition.y = this.transform.position.y;
 			}
 			_characterOrientation3D.ForcedRotationDirection = (_targetPosition - this.transform.position).normalized;
-		}
+            Debug.Log("2");
+        }
 
 		/// <summary>
 		/// On enter state we reset our flag

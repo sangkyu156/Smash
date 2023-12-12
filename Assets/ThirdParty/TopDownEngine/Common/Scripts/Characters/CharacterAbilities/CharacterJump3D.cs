@@ -105,10 +105,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On process ability, we check if we should stop the jump
-		/// </summary>
-		public override void ProcessAbility()
+        /// <summary>
+        /// 처리 능력에 대해서는 점프를 멈춰야 하는지 확인합니다.
+        /// </summary>
+        public override void ProcessAbility()
 		{
 			if (_controller.JustGotGrounded)
 			{
