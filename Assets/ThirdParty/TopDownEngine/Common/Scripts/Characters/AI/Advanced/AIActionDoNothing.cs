@@ -13,16 +13,24 @@ namespace MoreMountains.TopDownEngine
 	public class AIActionDoNothing : AIAction
 	{
 		public GameObject model;
-		public Transform RrotationFix;
+        Vector3 rotationFix = new Vector3(100, 0, 100);
+        protected CharacterOrientation3D _characterOrientation3D;
+
+        new private void Awake()
+        {
+            _characterOrientation3D = this.gameObject.GetComponentInParent<Character>()?.FindAbility<CharacterOrientation3D>();
+        }
+
+
         /// <summary>
         /// On PerformAction we do nothing
         /// </summary>
         public override void PerformAction()
 		{
-			if(this.gameObject.layer == 24 && RrotationFix != null)
+			if(this.gameObject.layer == 24 && rotationFix != null)
             {
-				model.transform.LookAt(RrotationFix);
-				Debug.Log("들어옴");
+                _characterOrientation3D.ForcedRotationDirection = rotationFix;
+                Debug.Log("들어옴");
 			}
 		}
 	}

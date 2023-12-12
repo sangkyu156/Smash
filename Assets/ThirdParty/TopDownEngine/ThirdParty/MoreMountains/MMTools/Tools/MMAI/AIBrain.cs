@@ -37,10 +37,10 @@ namespace MoreMountains.Tools
 		public bool ResetBrainOnEnable = false;
 
 		[Header("Frequencies")]
-		/// the frequency (in seconds) at which to perform actions (lower values : higher frequency, high values : lower frequency but better performance)
+		/// 작업을 수행하는 빈도(초)(낮은 값: 높은 빈도, 높은 값: 빈도는 낮지만 성능은 더 좋음)
 		public float ActionsFrequency = 0f;
-		/// the frequency (in seconds) at which to evaluate decisions
-		public float DecisionFrequency = 0f;
+        /// 결정을 평가하는 빈도(초)
+        public float DecisionFrequency = 0f;
         
 		/// whether or not to randomize the action and decision frequencies
 		public bool RandomizeFrequencies = false;

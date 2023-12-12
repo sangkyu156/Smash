@@ -515,6 +515,7 @@ MonoBehaviour:
   skillPostion: {fileID: 0}
   uiCanvas: {fileID: 3452700874313715105}
   stage: 0
+  scenes: 0
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0
@@ -10944,7 +10945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1734572836
 MonoBehaviour:
   m_ObjectHideFlags: 0

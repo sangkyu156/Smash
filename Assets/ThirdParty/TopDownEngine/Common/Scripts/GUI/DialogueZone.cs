@@ -5,21 +5,21 @@ using System;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class used to store dialogue lines info
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 대사 정보를 저장하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class DialogueElement
 	{
 		[Multiline]
 		public string DialogueLine;
 	}
 
-	/// <summary>
-	/// Add this class to an empty component. It requires a Collider or Collider2D, set to "is trigger". 
-	/// You can then customize the dialogue zone through the inspector.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/GUI/Dialogue Zone")]
+    /// <summary>
+    /// 이 클래스를 빈 구성 요소에 추가합니다. "is Trigger"로 설정된 Collider 또는 Collider2D가 필요합니다.
+    /// 그런 다음 검사기를 통해 대화 영역을 사용자 정의할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/GUI/Dialogue Zone")]
 	public class DialogueZone : ButtonActivated
 	{
 		[Header("Dialogue Look")]
@@ -45,50 +45,50 @@ namespace MoreMountains.TopDownEngine
         
 		[Header("Dialogue Speed (in seconds)")]
 
-		/// the duration of the in and out fades
-		[Tooltip("the duration of the in and out fades")]
+        /// 인 및 아웃 페이드의 지속 시간
+        [Tooltip("the duration of the in and out fades")]
 		public float FadeDuration = 0.2f;
-		/// the time between two dialogues 
-		[Tooltip("the time between two dialogues ")]
+        /// 두 대화 사이의 시간
+        [Tooltip("the time between two dialogues ")]
 		public float TransitionTime = 0.2f;
 
 		[Header("Dialogue Position")]
 
-		/// the distance from the top of the box collider the dialogue box should appear at
-		[Tooltip("the distance from the top of the box collider the dialogue box should appear at")]
+        /// 대화 상자가 나타나야 하는 상자 충돌체 상단으로부터의 거리
+        [Tooltip("the distance from the top of the box collider the dialogue box should appear at")]
 		public Vector3 Offset = Vector3.zero;
-		/// if this is true, the dialogue boxes will follow the zone's position
-		[Tooltip("if this is true, the dialogue boxes will follow the zone's position")]
+        /// 이것이 사실이라면 대화 상자는 영역의 위치를 ​​따릅니다.
+        [Tooltip("if this is true, the dialogue boxes will follow the zone's position")]
 		public bool BoxesFollowZone = false;
 
 		[Header("Player Movement")]
 
-		/// if this is set to true, the character will be able to move while dialogue is in progress
-		[Tooltip("if this is set to true, the character will be able to move while dialogue is in progress")]
+        /// true로 설정하면 대화가 진행되는 동안 캐릭터가 움직일 수 있습니다.
+        [Tooltip("if this is set to true, the character will be able to move while dialogue is in progress")]
 		public bool CanMoveWhileTalking = true;
 
 		[Header("Press button to go from one message to the next ?")]
 
-		/// whether or not this zone is handled by a button or not
-		[Tooltip("whether or not this zone is handled by a button or not")]
+        /// 이 영역이 버튼으로 처리되는지 여부
+        [Tooltip("whether or not this zone is handled by a button or not")]
 		public bool ButtonHandled = true;
-		/// duration of the message. only considered if the box is not button handled
-		[Header("Only if the dialogue is not button handled :")]
+        /// 메시지의 지속 시간. 상자가 버튼으로 처리되지 않은 경우에만 고려됩니다.
+        [Header("Only if the dialogue is not button handled :")]
 		[Range(1, 100)]
 		[Tooltip("The duration for which the message should be displayed, in seconds. only considered if the box is not button handled")]
 		public float MessageDuration = 3f;
         
 		[Header("Activations")]
-		/// true if can be activated more than once
-		[Tooltip("true if can be activated more than once")]
+        /// 두 번 이상 활성화할 수 있으면 true
+        [Tooltip("true if can be activated more than once")]
 		public bool ActivableMoreThanOnce = true;
-		/// if the zone is activable more than once, how long should it remain inactive between up times?
-		[Range(1, 100)]
+        /// 영역이 두 번 이상 활성화 가능한 경우 가동 시간 사이에 얼마나 오랫동안 비활성 상태로 유지되어야 합니까?
+        [Range(1, 100)]
 		[Tooltip("if the zone is activable more than once, how long should it remain inactive between up times?")]
 		public float InactiveTime = 2f;
 
-		/// the dialogue lines
-		[Tooltip("the dialogue lines")]
+        /// 대사
+        [Tooltip("the dialogue lines")]
 		public DialogueElement[] Dialogue;
 
 		/// private variables

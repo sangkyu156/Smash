@@ -171,8 +171,8 @@ namespace MoreMountains.TopDownEngine
 		/// a UnityEvent to trigger when this zone gets exited
 		[Tooltip("a UnityEvent to trigger when this zone gets exited")]
 		public UnityEvent OnExit;
-		/// a UnityEvent to trigger when a character is within the zone
-		[Tooltip("a UnityEvent to trigger when a character is within the zone")]
+        /// 캐릭터가 영역 내에 있을 때 트리거되는 UnityEvent
+        [Tooltip("a UnityEvent to trigger when a character is within the zone")]
 		public UnityEvent OnStay;
 
 		protected Animator _buttonPromptAnimator;
@@ -317,7 +317,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				OnStay.Invoke();
 			}
-		}
+
+			//여기에 버튼이 활성화 됐을때만 화면 따라다니도록 만들어야함
+        }
 
 		/// <summary>
 		/// Activates the zone
