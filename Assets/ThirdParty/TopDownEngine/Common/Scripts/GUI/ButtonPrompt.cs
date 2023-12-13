@@ -4,6 +4,7 @@ using UnityEngine;
 using MoreMountains.Tools;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -38,7 +39,10 @@ namespace MoreMountains.TopDownEngine
 
 		protected Color _tempColor;
 
-		public virtual void Initialization()
+        //내가만든 변수
+        protected GameObject _NPCInventory;
+
+        public virtual void Initialization()
 		{
 			ContainerCanvasGroup.alpha = 0f;
 		}
@@ -67,6 +71,11 @@ namespace MoreMountains.TopDownEngine
 			}
 			ContainerCanvasGroup.alpha = 0f;
 			StartCoroutine(MMFade.FadeCanvasGroup(ContainerCanvasGroup, FadeInDuration, 1f, true));
+            if(_NPCInventory == null)
+			{
+				_NPCInventory = GameObject.FindWithTag("InventoryCanvas");
+            }
+            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen = true;
 		}
 
 		public virtual void Hide()
@@ -76,7 +85,8 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 			_hideCoroutine = StartCoroutine(HideCo());
-		}
+            Debug.Log("안보여짐");
+        }
 
 		protected virtual IEnumerator HideCo()
 		{

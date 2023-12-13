@@ -43,7 +43,6 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (_brain.Target == null)
 			{
-                Debug.Log("1");
                 return;
 			}
 			_targetPosition = _brain.Target.transform.position;
@@ -52,7 +51,6 @@ namespace MoreMountains.TopDownEngine
 				_targetPosition.y = this.transform.position.y;
 			}
 			_characterOrientation3D.ForcedRotationDirection = (_targetPosition - this.transform.position).normalized;
-            Debug.Log("2");
         }
 
 		/// <summary>

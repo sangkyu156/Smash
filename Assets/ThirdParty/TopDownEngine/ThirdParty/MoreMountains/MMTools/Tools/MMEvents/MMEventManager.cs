@@ -11,11 +11,11 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// MMGameEvents are used throughout the game for general game events (game started, game ended, life lost, etc.)
-	/// </summary>
-	public struct MMGameEvent
+{
+    /// <summary>
+    /// MMGameEvents는 게임 전반에 걸쳐 일반 게임 이벤트(게임 시작, 게임 종료, 사망 등)에 사용됩니다.
+    /// </summary>
+    public struct MMGameEvent
 	{
 		public string EventName;
 		public MMGameEvent(string newName)

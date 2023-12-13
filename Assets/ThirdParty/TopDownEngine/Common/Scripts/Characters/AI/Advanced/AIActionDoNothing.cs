@@ -30,7 +30,6 @@ namespace MoreMountains.TopDownEngine
 			if(this.gameObject.layer == 24 && rotationFix != null)
             {
                 _characterOrientation3D.ForcedRotationDirection = rotationFix;
-                Debug.Log("들어옴");
 			}
 		}
 	}

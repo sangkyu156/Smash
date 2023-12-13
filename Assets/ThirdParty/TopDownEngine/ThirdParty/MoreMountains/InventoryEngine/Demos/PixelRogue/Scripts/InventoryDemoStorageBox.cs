@@ -16,12 +16,14 @@ namespace MoreMountains.InventoryEngine
 		public virtual void OpenStorage(string playerID)
 		{
 			TargetCanvasGroup.alpha = 1;
+			Debug.Log("인벤 열림");
 		}
 
 		public virtual void CloseStorage(string playerID)
 		{
 			TargetCanvasGroup.alpha = 0;
-		}
+            Debug.Log("인벤 닫힘");
+        }
 		
 		public virtual void OnTriggerEnter(Collider collider)
 		{

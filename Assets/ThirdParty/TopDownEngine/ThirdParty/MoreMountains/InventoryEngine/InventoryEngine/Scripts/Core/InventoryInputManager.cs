@@ -21,11 +21,13 @@ namespace MoreMountains.InventoryEngine
 		/// The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button
 		[Tooltip("The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button")]
 		public CanvasGroup TargetInventoryContainer;
-		/// The main inventory display
-		[Tooltip("The main inventory display")] 
+        // 내가만든 변수 (플레이어가 NPC근처가서 'E'키 누르면 나오는 상점)
+        public CanvasGroup NPC_TargetInventoryContainer;
+        /// 주요 재고 표시
+        [Tooltip("The main inventory display")] 
 		public InventoryDisplay TargetInventoryDisplay;
-		/// The Fader that will be used under it when opening/closing the inventory
-		[Tooltip("The Fader that will be used under it when opening/closing the inventory")]
+        /// 인벤토리 열기/닫기 시 그 아래에 사용될 페이더입니다.
+        [Tooltip("The Fader that will be used under it when opening/closing the inventory")]
 		public CanvasGroup Overlay;
 
 		[Header("Overlay")] 
@@ -180,14 +182,11 @@ namespace MoreMountains.InventoryEngine
 		public string PrevInvKey = "page up";
 		/// the alt key used to go to the previous inventory
 		public string PrevInvAltKey = "joystick button 5";
-
-		//내가 만든 변수
-		public TextMeshProUGUI money;
 		#endif
 
-		[Header("Close Bindings")] 
-		/// a list of other inventories that should get force-closed when this one opens
-		public List<string> CloseList;
+		[Header("Close Bindings")]
+        /// 이 인벤토리가 열릴 때 강제 종료되어야 하는 다른 인벤토리 목록
+        public List<string> CloseList;
 
 		public enum ManageButtonsModes { Interactable, SetActive }
         
@@ -223,8 +222,10 @@ namespace MoreMountains.InventoryEngine
         /// 이것이 사실이면 관련 인벤토리가 열려 있고, 그렇지 않으면 닫혀 있습니다.
         [MMReadOnly]
 		public bool InventoryIsOpen;
+        public bool NPCInventoryIsOpen; //내가만든 변수
+        public bool ButtonPromptIsOpen; //내가만든 변수
 
-		protected CanvasGroup _canvasGroup;
+        protected CanvasGroup _canvasGroup;
 		protected GameObject _currentSelection;
 		protected InventorySlot _currentInventorySlot;
 		protected List<InventoryHotbar> _targetInventoryHotbars;
@@ -237,7 +238,8 @@ namespace MoreMountains.InventoryEngine
 		private bool _isDropButtonNotNull;
 		
 		protected bool _toggleInventoryKeyPressed;
-		protected bool _openInventoryKeyPressed;
+		protected bool _toggleNPCInventoryKeyPressed;
+        protected bool _openInventoryKeyPressed;
 		protected bool _closeInventoryKeyPressed;
 		protected bool _cancelKeyPressed;
 		protected bool _prevInvKeyPressed;
@@ -249,10 +251,13 @@ namespace MoreMountains.InventoryEngine
 		protected bool _dropKeyPressed;
 		protected bool _hotbarInputPressed = false;
 
-		/// <summary>
-		/// On start, we grab references and prepare our hotbar list
-		/// </summary>
-		protected virtual void Start()
+        //내가 만든 변수
+        public TextMeshProUGUI money;
+
+        /// <summary>
+        /// On start, we grab references and prepare our hotbar list
+        /// </summary>
+        protected virtual void Start()
 		{
 			_isDropButtonNotNull = DropButton != null;
 			_isMoveButtonNotNull = MoveButton != null;
@@ -262,7 +267,9 @@ namespace MoreMountains.InventoryEngine
 			_isEquipUseButtonNotNull = EquipUseButton != null;
 			_currentInventoryDisplay = TargetInventoryDisplay;
 			InventoryIsOpen = false;
-			_targetInventoryHotbars = new List<InventoryHotbar>();
+			NPCInventoryIsOpen = false;
+            ButtonPromptIsOpen = false;
+            _targetInventoryHotbars = new List<InventoryHotbar>();
 			_canvasGroup = GetComponent<CanvasGroup>();
 			foreach (InventoryHotbar go in FindObjectsOfType(typeof(InventoryHotbar)) as InventoryHotbar[])
 			{
@@ -271,7 +278,8 @@ namespace MoreMountains.InventoryEngine
 			if (HideContainerOnStart)
 			{
 				if (TargetInventoryContainer != null) { TargetInventoryContainer.alpha = 0; }
-				if (Overlay != null) { Overlay.alpha = OverlayInactiveOpacity; }
+                if (NPC_TargetInventoryContainer != null) { NPC_TargetInventoryContainer.alpha = 0; }
+                if (Overlay != null) { Overlay.alpha = OverlayInactiveOpacity; }
 				EventSystem.current.sendNavigationEvents = false;
 				if (_canvasGroup != null)
 				{
@@ -394,6 +402,19 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
+        //NPC 인벤토리 패널을 열거나 닫는다
+        public virtual void NPCToggleInventory()
+        {
+            if (NPCInventoryIsOpen)
+            {
+                CloseNPCInventory();
+            }
+            else
+            {
+                OpenNPCInventory();
+            }
+        }
+
         /// <summary>
         /// 인벤토리 패널을 엽니다.
         /// </summary>
@@ -406,14 +427,14 @@ namespace MoreMountains.InventoryEngine
 					MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloseRequest, null, "", null, 0, 0, playerID);
 				}
 			}
-            
+
 			if (_canvasGroup != null)
 			{
 				_canvasGroup.blocksRaycasts = true;
 			}
 
-            // 우리는 인벤토리를 엽니다
-            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
+			// 우리는 인벤토리를 엽니다
+			MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
 			MMGameEvent.Trigger("inventoryOpens");
 			InventoryIsOpen = true;
 
@@ -421,10 +442,34 @@ namespace MoreMountains.InventoryEngine
 			StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
 		}
 
-		/// <summary>
-		/// Closes the inventory panel
-		/// </summary>
-		public virtual void CloseInventory()
+        // 상점 패널을 엽니다.
+        public virtual void OpenNPCInventory()
+		{
+            if (CloseList.Count > 0)
+            {
+                foreach (string playerID in CloseList)
+                {
+                    MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloseRequest, null, "", null, 0, 0, playerID); //다른 팝업창 다닫기
+                }
+            }
+
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.blocksRaycasts = true; //클릭시 반응 하게 만들기
+            }
+
+            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
+            MMGameEvent.Trigger("inventoryOpens");
+            NPCInventoryIsOpen = true;
+
+            StartCoroutine(MMFade.FadeCanvasGroup(NPC_TargetInventoryContainer, 0.2f, 1f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
+        }
+
+        /// <summary>
+        /// Closes the inventory panel
+        /// </summary>
+        public virtual void CloseInventory()
 		{
 			if (_canvasGroup != null)
 			{
@@ -438,6 +483,22 @@ namespace MoreMountains.InventoryEngine
 			StartCoroutine(MMFade.FadeCanvasGroup(TargetInventoryContainer, 0.2f, 0f));
 			StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
 		}
+
+        //상점 패널을 닫습니다.
+        public virtual void CloseNPCInventory()
+		{
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.blocksRaycasts = false;
+            }
+            // we close our inventory
+            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloses, null, TargetInventoryDisplay.TargetInventoryName, null, 0, 0, TargetInventoryDisplay.PlayerID);
+            MMGameEvent.Trigger("inventoryCloses");
+            NPCInventoryIsOpen = false;
+
+            StartCoroutine(MMFade.FadeCanvasGroup(NPC_TargetInventoryContainer, 0.2f, 0f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
+        }
 
         /// <summary>
         /// 재고 관련 입력을 처리하고 이에 따라 조치를 취합니다.
@@ -464,6 +525,7 @@ namespace MoreMountains.InventoryEngine
 				_dropKeyPressed = DropKey.action.WasPressedThisFrame();
 			#else
 				_toggleInventoryKeyPressed = Input.GetKeyDown(ToggleInventoryKey) || Input.GetKeyDown(ToggleInventoryAltKey);
+				_toggleNPCInventoryKeyPressed = Input.GetKeyDown(KeyCode.E);
 				_openInventoryKeyPressed = Input.GetKeyDown(OpenInventoryKey);
 				_closeInventoryKeyPressed = Input.GetKeyDown(CloseInventoryKey);
 				_cancelKeyPressed = (Input.GetKeyDown(CancelKey)) || (Input.GetKeyDown(CancelKeyAlt));
@@ -482,7 +544,12 @@ namespace MoreMountains.InventoryEngine
 				ToggleInventory();
 			}
 
-			if (_openInventoryKeyPressed)
+			if(_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen)
+			{
+				NPCToggleInventory();
+            }
+
+            if (_openInventoryKeyPressed)
 			{
 				OpenInventory();
 			}

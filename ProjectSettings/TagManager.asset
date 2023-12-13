@@ -12,6 +12,7 @@ TagManager:
   - NavMesh
   - Level
   - BattlefieldManager
+  - InventoryCanvas
   layers:
   - Default
   - TransparentFX

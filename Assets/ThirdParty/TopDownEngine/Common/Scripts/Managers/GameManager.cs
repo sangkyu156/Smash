@@ -166,8 +166,8 @@ namespace MoreMountains.TopDownEngine
 		public int Points;
 
 		[Header("Pause")]
-		/// if this is true, the game will automatically pause when opening an inventory
-		[Tooltip("if this is true, the game will automatically pause when opening an inventory")]
+        /// 이것이 사실이라면 인벤토리를 열 때 게임이 자동으로 일시 중지됩니다.
+        [Tooltip("if this is true, the game will automatically pause when opening an inventory")]
 		public bool PauseGameWhenInventoryOpens = true;
 		/// true if the game is currently paused
 		public bool Paused { get; set; } 
@@ -308,10 +308,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Pauses the game or unpauses it depending on the current state
-		/// </summary>
-		public virtual void Pause(PauseMethods pauseMethod = PauseMethods.PauseMenu, bool unpauseIfPaused = true)
+        /// <summary>
+        /// 현재 상태에 따라 게임을 일시 중지하거나 일시 중지를 해제합니다.
+        /// </summary>
+        public virtual void Pause(PauseMethods pauseMethod = PauseMethods.PauseMenu, bool unpauseIfPaused = true)
 		{	
 			if ((pauseMethod == PauseMethods.PauseMenu) && _inventoryOpen)
 			{
@@ -490,11 +490,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Catches MMGameEvents and acts on them, playing the corresponding sounds
-		/// </summary>
-		/// <param name="gameEvent">MMGameEvent event.</param>
-		public virtual void OnMMEvent(MMGameEvent gameEvent)
+        /// <summary>
+        /// MMGameEvents를 포착하고 그에 따라 작동하여 해당 사운드를 재생합니다.
+        /// </summary>
+        /// <param name="gameEvent">MMGameEvent event.</param>
+        public virtual void OnMMEvent(MMGameEvent gameEvent)
 		{
 			switch (gameEvent.EventName)
 			{

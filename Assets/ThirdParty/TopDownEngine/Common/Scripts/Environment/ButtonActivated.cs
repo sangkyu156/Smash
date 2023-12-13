@@ -4,6 +4,7 @@ using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using DG.Tweening;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 using UnityEngine.InputSystem;
 #endif
@@ -187,8 +188,11 @@ namespace MoreMountains.TopDownEngine
 		protected Character _currentCharacter;
 		protected bool _staying = false;
 		protected Coroutine _autoActivationCoroutine;
-        
-		public bool AutoActivationInProgress { get; set; }
+
+		//내가만든 변수
+		protected GameObject _mainCamera;
+
+        public bool AutoActivationInProgress { get; set; }
 		public float AutoActivationStartedAt { get; set; }
 		public bool InputActionPerformed
 		{
@@ -318,7 +322,14 @@ namespace MoreMountains.TopDownEngine
 				OnStay.Invoke();
 			}
 
-			//여기에 버튼이 활성화 됐을때만 화면 따라다니도록 만들어야함
+			//버튼이 활성화 됐을때만 화면 따라다니도록
+			if(_buttonPrompt != null)
+			{
+                if (_buttonPrompt.gameObject.activeSelf)
+                {
+					_buttonPrompt.transform.LookAt(_mainCamera.transform);
+                }
+            }
         }
 
 		/// <summary>
@@ -360,23 +371,24 @@ namespace MoreMountains.TopDownEngine
 			DeniedFeedback?.PlayFeedbacks(this.transform.position);
 		}
 
-		/// <summary>
-		/// Shows the button A prompt.
-		/// </summary>
-		public virtual void ShowPrompt()
+        /// <summary>
+        /// 버튼 A 프롬프트를 표시합니다.
+        /// </summary>
+        public virtual void ShowPrompt()
 		{
 			if (!UseVisualPrompt || _promptHiddenForever || (ButtonPromptPrefab == null))
 			{
 				return;
 			}
-            
-			// we add a blinking A prompt to the top of the zone
-			if (_buttonPrompt == null)
+
+            // 영역 상단에 깜박이는 A 프롬프트를 추가합니다.
+            if (_buttonPrompt == null)
 			{
 				_buttonPrompt = (ButtonPrompt)Instantiate(ButtonPromptPrefab);
 				_buttonPrompt.Initialization();
 				_buttonPromptAnimator = _buttonPrompt.gameObject.MMGetComponentNoAlloc<Animator>();
-			}
+				_mainCamera = GameObject.FindWithTag("MainCamera");
+            }
 			
 			if (_collider != null)
 			{
