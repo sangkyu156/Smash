@@ -10,17 +10,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace MoreMountains.InventoryEngine
 {	
 	[RequireComponent(typeof(InventoryDisplay))]
-	/// <summary>
-	/// A component that will handle the playing of songs when paired with an InventoryDisplay
-	/// </summary>
-	public class InventorySoundPlayer : MonoBehaviour, MMEventListener<MMInventoryEvent>
+    /// <summary>
+    /// InventoryDisplay와 페어링될 때 노래 재생을 처리하는 구성 요소
+    /// </summary>
+    public class InventorySoundPlayer : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		public enum Modes { Direct, Event }
 
-		[Header("Settings")] 
-		/// the mode to choose to play sounds. Direct will play an audiosource, event will call a MMSfxEvent,
-		/// meant to be caught by a MMSoundManager 
-		public Modes Mode = Modes.Direct;
+		[Header("Settings")]
+        /// 사운드 재생을 선택하는 모드입니다. Direct는 오디오 소스를 재생하고, 이벤트는 MMSoundManager에 의해 포착되는 MMSfxEvent를 호출합니다.
+        public Modes Mode = Modes.Direct;
 		
 		[Header("Sounds")]
 		[MMInformation("Here you can define the default sounds that will get played when interacting with this inventory.",MMInformationAttribute.InformationType.Info,false)]
@@ -47,10 +46,10 @@ namespace MoreMountains.InventoryEngine
 		protected string _targetPlayerID;
 		protected AudioSource _audioSource;
 
-		/// <summary>
-		/// On Start we setup our player and grab a few references for future use.
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작 시 플레이어를 설정하고 나중에 사용할 수 있도록 몇 가지 참고 자료를 가져옵니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			SetupInventorySoundPlayer ();
 			_audioSource = GetComponent<AudioSource> ();
@@ -58,18 +57,18 @@ namespace MoreMountains.InventoryEngine
 			_targetPlayerID = this.gameObject.MMGetComponentNoAlloc<InventoryDisplay> ().PlayerID;
 		}
 
-		/// <summary>
-		/// Setups the inventory sound player.
-		/// </summary>
-		public virtual void SetupInventorySoundPlayer()
+        /// <summary>
+        /// 인벤토리 사운드 플레이어를 설정합니다.
+        /// </summary>
+        public virtual void SetupInventorySoundPlayer()
 		{
 			AddAudioSource ();			
 		}
 
-		/// <summary>
-		/// Adds an audio source component if needed.
-		/// </summary>
-		protected virtual void AddAudioSource()
+        /// <summary>
+        /// 필요한 경우 오디오 소스 구성 요소를 추가합니다.
+        /// </summary>
+        protected virtual void AddAudioSource()
 		{
 			if (GetComponent<AudioSource>() == null)
 			{
@@ -77,11 +76,11 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Plays the sound specified in the parameter string
-		/// </summary>
-		/// <param name="soundFx">Sound fx.</param>
-		public virtual void PlaySound(string soundFx)
+        /// <summary>
+        /// 매개변수 문자열에 지정된 사운드를 재생합니다.
+        /// </summary>
+        /// <param name="soundFx">Sound fx.</param>
+        public virtual void PlaySound(string soundFx)
 		{
 			if (soundFx==null || soundFx=="")
 			{
@@ -142,14 +141,14 @@ namespace MoreMountains.InventoryEngine
 					MMSfxEvent.Trigger(soundToPlay, null, volume, 1);	
 				}
 			}
-		}		
+		}
 
-		/// <summary>
-		/// Plays the sound fx specified in parameters at the desired volume
-		/// </summary>
-		/// <param name="soundFx">Sound fx.</param>
-		/// <param name="volume">Volume.</param>
-		public virtual void PlaySound(AudioClip soundFx,float volume)
+        /// <summary>
+        /// 매개변수에 지정된 사운드 FX를 원하는 볼륨으로 재생합니다.
+        /// </summary>
+        /// <param name="soundFx">Sound fx.</param>
+        /// <param name="volume">Volume.</param>
+        public virtual void PlaySound(AudioClip soundFx,float volume)
 		{
 			if (soundFx != null)
 			{
@@ -162,13 +161,13 @@ namespace MoreMountains.InventoryEngine
 					MMSfxEvent.Trigger(soundFx, null, volume, 1);
 				}
 			}
-		}	
+		}
 
-		/// <summary>
-		/// Catches MMInventoryEvents and acts on them, playing the corresponding sounds
-		/// </summary>
-		/// <param name="inventoryEvent">Inventory event.</param>
-		public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
+        /// <summary>
+        /// MMInventoryEvents를 포착하고 그에 따라 작동하여 해당 사운드를 재생합니다.
+        /// </summary>
+        /// <param name="inventoryEvent">Inventory event.</param>
+        public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
 		{
 			// if this event doesn't concern our inventory display, we do nothing and exit
 			if (inventoryEvent.TargetInventoryName != _targetInventoryName)
@@ -237,18 +236,18 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// OnEnable, we start listening to MMInventoryEvents.
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// OnEnable을 사용하면 MMInventoryEvents 수신이 시작됩니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			this.MMEventStartListening<MMInventoryEvent>();
 		}
 
-		/// <summary>
-		/// OnDisable, we stop listening to MMInventoryEvents.
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// OnDisable을 사용하면 MMInventoryEvents 수신이 중지됩니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			this.MMEventStopListening<MMInventoryEvent>();
 		}

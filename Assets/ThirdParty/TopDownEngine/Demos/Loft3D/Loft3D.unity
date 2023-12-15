@@ -4350,6 +4350,11 @@ MonoBehaviour:
   GameOverScene: 
   Points: 0
   PauseGameWhenInventoryOpens: 1
+  player_GameObject: {fileID: 0}
+  skillPostion: {fileID: 0}
+  uiCanvas: {fileID: 0}
+  stage: 0
+  scenes: 0
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0
@@ -4685,14 +4690,16 @@ MonoBehaviour:
     m_Bits: 2097920
   m_UseGeometry: 1
   m_DefaultArea: 0
+  m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
-  m_BuildHeightMesh: 0
+  m_VoxelSize: 0.13333334
+  m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f3be6d7d246feaf4e91af06eb7475bc4, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!4 &627456237
 Transform:
   m_ObjectHideFlags: 0
@@ -16264,6 +16271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoCrateShotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 1505116969277348, guid: ab276bc89a17eb24d8faf299d2863aac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4520606749762380, guid: ab276bc89a17eb24d8faf299d2863aac, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -16307,6 +16318,16 @@ PrefabInstance:
     - target: {fileID: 4520606749762380, guid: ab276bc89a17eb24d8faf299d2863aac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333012937075186, guid: ab276bc89a17eb24d8faf299d2863aac,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333012937075186, guid: ab276bc89a17eb24d8faf299d2863aac,
+        type: 3}
+      propertyPath: ScaleActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

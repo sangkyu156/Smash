@@ -4,73 +4,73 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Add this component to an object so it can be picked and added to an inventory
-	/// </summary>
-	public class ItemPicker : MonoBehaviour 
+{
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 선택하여 인벤토리에 추가할 수 있습니다.
+    /// </summary>
+    public class ItemPicker : MonoBehaviour 
 	{
 		[Header("Item to pick")]
-		/// the item that should be picked 
-		[MMInformation("Add this component to a Trigger box collider 2D and it'll make it pickable, and will add the specified item to its target inventory. Just drag a previously created item into the slot below. For more about how to create items, have a look at the documentation. Here you can also specify how many of that item should be picked when picking the object.",MMInformationAttribute.InformationType.Info,false)]
-		public InventoryItem Item ;
+        /// 골라야 할 아이템
+        [MMInformation("이 구성 요소를 Trigger box Collider 2D에 추가하면 선택 가능하게 되고 지정된 항목이 대상 인벤토리에 추가됩니다. 이전에 생성된 항목을 아래 슬롯으로 드래그하기만 하면 됩니다. 항목을 만드는 방법에 대한 자세한 내용은 설명서를 참조하세요. 여기서는 개체를 선택할 때 해당 항목 중 몇 개를 선택해야 하는지 지정할 수도 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+		public InventoryItem Item;
 		
 		[Header("Pick Quantity")]
-		/// the initial quantity of that item that should be added to the inventory when picked
-		[Tooltip("the initial quantity of that item that should be added to the inventory when picked")]
+        /// 피킹 시 재고에 추가되어야 하는 해당 품목의 초기 수량
+        [Tooltip("피킹 시 재고에 추가되어야 하는 해당 품목의 초기 수량")]
 		public int Quantity = 1;
-		/// the current quantity of that item that should be added to the inventory when picked
-		[MMReadOnly]
-		[Tooltip("the current quantity of that item that should be added to the inventory when picked")]
+        /// 피킹 시 재고에 추가되어야 하는 해당 품목의 현재 수량
+        [MMReadOnly]
+		[Tooltip("피킹 시 재고에 추가되어야 하는 해당 품목의 현재 수량")]
 		public int RemainingQuantity = 1;
 		
 		[Header("Conditions")]
-		/// if you set this to true, a character will be able to pick this item even if its inventory is full
-		[Tooltip("if you set this to true, a character will be able to pick this item even if its inventory is full")]
+        /// true로 설정하면 인벤토리가 가득 차 있어도 캐릭터가 이 아이템을 선택할 수 있습니다.
+        [Tooltip("true로 설정하면 인벤토리가 가득 차 있어도 캐릭터가 이 아이템을 선택할 수 있습니다.")]
 		public bool PickableIfInventoryIsFull = false;
-		/// if you set this to true, the object will be disabled when picked
-		[Tooltip("if you set this to true, the object will be disabled when picked")]
+        /// 이것을 true로 설정하면 객체를 선택할 때 객체가 비활성화됩니다.
+        [Tooltip("이것을 true로 설정하면 객체를 선택할 때 객체가 비활성화됩니다.")]
 		public bool DisableObjectWhenDepleted = false;
-		/// if this is true, this object will only be allowed to be picked by colliders with a Player tag
-		[Tooltip("if this is true, this object will only be allowed to be picked by colliders with a Player tag")]
+        /// 이것이 사실이라면 이 객체는 플레이어 태그가 있는 충돌체에 의해서만 선택될 수 있습니다.
+        [Tooltip("이것이 사실이라면 이 객체는 플레이어 태그가 있는 충돌체에 의해서만 선택될 수 있습니다.")]
 		public bool RequirePlayerTag = true;
 
 		protected int _pickedQuantity = 0;
 		protected Inventory _targetInventory;
 
-		/// <summary>
-		/// On Start we initialize our item picker
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작 시 항목 선택기를 초기화합니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			Initialization ();
 		}
 
-		/// <summary>
-		/// On Init we look for our target inventory
-		/// </summary>
-		protected virtual void Initialization()
+        /// <summary>
+        /// Init에서는 목표 인벤토리를 찾습니다.
+        /// </summary>
+        protected virtual void Initialization()
 		{
 			FindTargetInventory (Item.TargetInventoryName);
 			ResetQuantity();
 		}
 
-		/// <summary>
-		/// Resets the remaining quantity to the initial quantity
-		/// </summary>
-		public virtual void ResetQuantity()
+        /// <summary>
+        /// 남은 수량을 초기 수량으로 재설정합니다.
+        /// </summary>
+        public virtual void ResetQuantity()
 		{
 			RemainingQuantity = Quantity;
 		}
-        
-		/// <summary>
-		/// Triggered when something collides with the picker
-		/// </summary>
-		/// <param name="collider">Other.</param>
-		public virtual void OnTriggerEnter(Collider collider)
+
+        /// <summary>
+        /// 무언가가 피커와 충돌할 때 트리거됩니다.
+        /// </summary>
+        /// <param name="collider">Other.</param>
+        public virtual void OnTriggerEnter(Collider collider)
 		{
-			// if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
-			if (RequirePlayerTag && (!collider.CompareTag("Player")))
+            // 선택기와 충돌하는 것이 CharacterBehavior가 아닌 경우 아무것도 하지 않고 종료합니다.
+            if (RequirePlayerTag && (!collider.CompareTag("Player")))
 			{
 				return;
 			}
@@ -85,14 +85,14 @@ namespace MoreMountains.InventoryEngine
 			Pick(Item.TargetInventoryName, playerID);
 		}
 
-		/// <summary>
-		/// Triggered when something collides with the picker
-		/// </summary>
-		/// <param name="collider">Other.</param>
-		public virtual void OnTriggerEnter2D (Collider2D collider) 
+        /// <summary>
+        /// 무언가가 피커와 충돌할 때 트리거됩니다.
+        /// </summary>
+        /// <param name="collider">Other.</param>
+        public virtual void OnTriggerEnter2D (Collider2D collider) 
 		{
-			// if what's colliding with the picker ain't a characterBehavior, we do nothing and exit
-			if (RequirePlayerTag && (!collider.CompareTag("Player")))
+            // 선택기와 충돌하는 것이 CharacterBehavior가 아닌 경우 아무것도 하지 않고 종료합니다.
+            if (RequirePlayerTag && (!collider.CompareTag("Player")))
 			{
 				return;
 			}
@@ -105,35 +105,35 @@ namespace MoreMountains.InventoryEngine
 			}
 
 			Pick(Item.TargetInventoryName, playerID);
-		}		
+		}
 
-		/// <summary>
-		/// Picks this item and adds it to its target inventory
-		/// </summary>
-		public virtual void Pick()
+        /// <summary>
+        /// 이 항목을 선택하여 대상 인벤토리에 추가합니다.
+        /// </summary>
+        public virtual void Pick()
 		{
 			Pick(Item.TargetInventoryName);
 		}
 
-		/// <summary>
-		/// Picks this item and adds it to the target inventory specified as a parameter
-		/// </summary>
-		/// <param name="targetInventoryName">Target inventory name.</param>
-		public virtual void Pick(string targetInventoryName, string playerID = "Player1")
+        /// <summary>
+        /// 이 아이템을 선택하고 매개변수로 지정된 대상 인벤토리에 추가합니다.
+        /// </summary>
+        /// <param name="targetInventoryName">Target inventory name.</param>
+        public virtual void Pick(string targetInventoryName, string playerID = "Player1")
 		{
-			FindTargetInventory(targetInventoryName, playerID);
+			FindTargetInventory(targetInventoryName, playerID);// 넣을 인벤 찾기
 			if (_targetInventory == null)
 			{
 				return;
 			}
 
-			if (!Pickable()) 
+			if (!Pickable()) //인벤에 넣을수 있는지 확인
 			{
 				PickFail ();
 				return;
 			}
 
-			DetermineMaxQuantity ();
+			DetermineMaxQuantity (); //최대수량 체크
 			if (!Application.isPlaying)
 			{
 				if (!Item.ForceSlotIndex)
@@ -144,51 +144,51 @@ namespace MoreMountains.InventoryEngine
 				{
 					_targetInventory.AddItemAt(Item, 1, Item.TargetIndex);
 				}
-			}				
+			}
 			else
 			{
 				MMInventoryEvent.Trigger(MMInventoryEventType.Pick, null, Item.TargetInventoryName, Item, _pickedQuantity, 0, playerID);
-			}				
+			}
 			if (Item.Pick(playerID))
 			{
 				RemainingQuantity = RemainingQuantity - _pickedQuantity;
 				PickSuccess();
 				DisableObjectIfNeeded();
-			}			
+			}
 		}
 
-		/// <summary>
-		/// Describes what happens when the object is successfully picked
-		/// </summary>
-		protected virtual void PickSuccess()
+        /// <summary>
+        /// 개체가 성공적으로 선택되면 어떤 일이 발생하는지 설명합니다.
+        /// </summary>
+        protected virtual void PickSuccess()
 		{
 			
 		}
 
-		/// <summary>
-		/// Describes what happens when the object fails to get picked (inventory full, usually)
-		/// </summary>
-		protected virtual void PickFail()
+        /// <summary>
+        /// 개체를 선택하지 못한 경우(보통 인벤토리가 가득 찼을 때) 어떻게 되는지 설명합니다.
+        /// </summary>
+        protected virtual void PickFail()
 		{
 
 		}
 
-		/// <summary>
-		/// Disables the object if needed.
-		/// </summary>
-		protected virtual void DisableObjectIfNeeded()
+        /// <summary>
+        /// 필요한 경우 개체를 비활성화합니다.
+        /// </summary>
+        protected virtual void DisableObjectIfNeeded()
 		{
-			// we desactivate the gameobject
-			if (DisableObjectWhenDepleted && RemainingQuantity <= 0)
+            // 게임오브젝트를 비활성화합니다
+            if (DisableObjectWhenDepleted && RemainingQuantity <= 0)
 			{
 				gameObject.SetActive(false);	
 			}
 		}
 
-		/// <summary>
-		/// Determines the max quantity of item that can be picked from this
-		/// </summary>
-		protected virtual void DetermineMaxQuantity()
+        /// <summary>
+        /// 이 항목에서 선택할 수 있는 항목의 최대 수량을 결정합니다.
+        /// </summary>
+        protected virtual void DetermineMaxQuantity()
 		{
 			_pickedQuantity = _targetInventory.NumberOfStackableSlots (Item.ItemID, Item.MaximumStack);
 			if (RemainingQuantity < _pickedQuantity)
@@ -197,15 +197,15 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Returns true if this item can be picked, false otherwise
-		/// </summary>
-		public virtual bool Pickable()
+        /// <summary>
+        /// 이 항목을 선택할 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Pickable()
 		{
 			if (!PickableIfInventoryIsFull && _targetInventory.NumberOfFreeSlots == 0)
 			{
-				// we make sure that there isn't a place where we could store it
-				int spaceAvailable = 0;
+                // 우리는 그것을 보관할 수 있는 장소가 없는지 확인합니다
+                int spaceAvailable = 0;
 				List<int> list = _targetInventory.InventoryContains(Item.ItemID);
 				if (list.Count > 0)
 				{
@@ -228,11 +228,11 @@ namespace MoreMountains.InventoryEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Finds the target inventory based on its name
-		/// </summary>
-		/// <param name="targetInventoryName">Target inventory name.</param>
-		public virtual void FindTargetInventory(string targetInventoryName, string playerID = "Player1")
+        /// <summary>
+        /// 이름을 기준으로 대상 인벤토리를 찾습니다.
+        /// </summary>
+        /// <param name="targetInventoryName">Target inventory name.</param>
+        public virtual void FindTargetInventory(string targetInventoryName, string playerID = "Player1")
 		{
 			_targetInventory = null;
 			if (targetInventoryName == null)

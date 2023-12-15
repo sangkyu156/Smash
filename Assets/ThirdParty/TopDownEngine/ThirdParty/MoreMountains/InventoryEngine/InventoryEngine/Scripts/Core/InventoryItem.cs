@@ -16,11 +16,11 @@ namespace MoreMountains.InventoryEngine
 	}
 	
 	[Serializable]
-	/// <summary>
-	/// Base class for inventory items, meant to be extended.
-	/// Will handle base properties and drop spawn
-	/// </summary>
-	public class InventoryItem : ScriptableObject 
+    /// <summary>
+    /// 확장될 예정인 인벤토리 아이템의 기본 클래스입니다.
+    /// 기본 속성을 처리하고 드롭 생성을 수행합니다.
+    /// </summary>
+    public class InventoryItem : ScriptableObject 
 	{
 		[Header("ID and Target")]
 		/// the (unique) ID of the item
@@ -29,8 +29,8 @@ namespace MoreMountains.InventoryEngine
 		/// the inventory name into which this item will be stored
 		[Tooltip("the inventory name into which this item will be stored")]
 		public string TargetInventoryName = "MainInventory";
-		/// if this is true, the item won't be added anywhere's there's room in the inventory, but instead at the specified TargetIndex slot
-		[Tooltip("if this is true, the item won't be added anywhere's there's room in the inventory, but instead at the specified TargetIndex slot")]
+        /// 이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.
+        [Tooltip("이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.")]
 		public bool ForceSlotIndex = false;
 		/// if ForceSlotIndex is true, this is the index at which the item will be added in the target inventory
 		[Tooltip("if ForceSlotIndex is true, this is the index at which the item will be added in the target inventory")]

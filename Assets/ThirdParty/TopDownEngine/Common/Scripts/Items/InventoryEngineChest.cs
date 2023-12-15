@@ -45,10 +45,10 @@ namespace MoreMountains.TopDownEngine
 			_animator.SetTrigger ("OpenChest");
 		}
 
-		/// <summary>
-		/// Puts all the items in the associated pickers into the player's inventories
-		/// </summary>
-		protected virtual void PickChestContents()
+        /// <summary>
+        /// 연결된 선택기에 있는 모든 항목을 플레이어의 인벤토리에 넣습니다.
+        /// </summary>
+        protected virtual void PickChestContents()
 		{
 			if (_itemPickerList.Length == 0)
 			{

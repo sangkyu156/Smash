@@ -6,20 +6,20 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// This class handles the display of the items in an inventory and will trigger the various things you can do with an item (equip, use, etc.)
-	/// </summary>
-	public class InventorySlot : Button
+{
+    /// <summary>
+    /// 이 클래스는 인벤토리의 아이템 표시를 처리하고 아이템으로 할 수 있는 다양한 작업(장착, 사용 등)을 실행합니다.
+    /// </summary>
+    public class InventorySlot : Button
 	{
-		/// the sprite used as a background for the slot while an item is being moved
-		public Sprite MovedSprite;
-		/// the inventory display this slot belongs to
-		public InventoryDisplay ParentInventoryDisplay;
-		/// the slot's index (its position in the inventory array)
-		public int Index;
-		/// whether or not this slot is currently enabled and can be interacted with
-		public bool SlotEnabled=true;
+        /// 아이템이 이동되는 동안 슬롯의 배경으로 사용되는 스프라이트
+        public Sprite MovedSprite;
+        /// 이 슬롯이 속한 인벤토리 표시
+        public InventoryDisplay ParentInventoryDisplay;
+        /// 슬롯의 인덱스(인벤토리 배열에서의 위치)
+        public int Index;
+        /// 이 슬롯이 현재 활성화되어 있고 상호 작용할 수 있는지 여부
+        public bool SlotEnabled=true;
 		public Image TargetImage;
 		public CanvasGroup TargetCanvasGroup;
 		public RectTransform TargetRectTransform;
@@ -38,22 +38,22 @@ namespace MoreMountains.InventoryEngine
 			TargetCanvasGroup = this.gameObject.GetComponent<CanvasGroup>();
 			TargetRectTransform = this.gameObject.GetComponent<RectTransform>();
 		}
-		
-		/// <summary>
-		/// On Start, we start listening to click events on that slot
-		/// </summary>
-		protected override void Start()
+
+        /// <summary>
+        /// 시작 시 해당 슬롯의 클릭 이벤트를 듣기 시작합니다.
+        /// </summary>
+        protected override void Start()
 		{
 			base.Start();
 			this.onClick.AddListener(SlotClicked);
 		}
 
-		/// <summary>
-		/// If there's an item in this slot, draws its icon inside.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		/// <param name="index">Index.</param>
-		public virtual void DrawIcon(InventoryItem item, int index)
+        /// <summary>
+        /// 이 슬롯에 항목이 있으면 내부에 해당 아이콘을 그립니다.
+        /// </summary>
+        /// <param name="item">Item.</param>
+        /// <param name="index">Index.</param>
+        public virtual void DrawIcon(InventoryItem item, int index)
 		{
 			if (ParentInventoryDisplay != null)
 			{				
@@ -93,11 +93,11 @@ namespace MoreMountains.InventoryEngine
 			IconImage.gameObject.SetActive(false);
 		}
 
-		/// <summary>
-		/// When that slot gets selected (via a mouse over or a touch), triggers an event for other classes to act on
-		/// </summary>
-		/// <param name="eventData">Event data.</param>
-		public override void OnSelect(BaseEventData eventData)
+        /// <summary>
+        /// 해당 슬롯이 선택되면(마우스 오버 또는 터치를 통해) 다른 클래스가 작동할 이벤트가 트리거됩니다.
+        /// </summary>
+        /// <param name="eventData">Event data.</param>
+        public override void OnSelect(BaseEventData eventData)
 		{
 			base.OnSelect(eventData);
 			if (ParentInventoryDisplay != null)
@@ -107,10 +107,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// When that slot gets clicked, triggers an event for other classes to act on
-		/// </summary>
-		public virtual void SlotClicked () 
+        /// <summary>
+        /// 해당 슬롯을 클릭하면 다른 클래스가 조치를 취할 수 있는 이벤트가 트리거됩니다.
+        /// </summary>
+        public virtual void SlotClicked () 
 		{
 			if (ParentInventoryDisplay != null)
 			{
@@ -128,42 +128,41 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Selects the item in this slot for a movement, or moves the currently selected one to that slot
-		/// This will also swap both objects if possible
-		/// </summary>
-		public virtual void Move()
+        /// <summary>
+        /// 이동을 위해 이 슬롯의 항목을 선택하거나 현재 선택된 항목을 해당 슬롯으로 이동합니다. 또한 가능하면 두 개체를 모두 교체합니다.
+        /// </summary>
+        public virtual void Move()
 		{
 			if (!SlotEnabled) { return; }
-			
-			// if we're not already moving an object
-			if (InventoryDisplay.CurrentlyBeingMovedItemIndex == -1)
+
+            // 아직 객체를 움직이고 있지 않은 경우
+            if (InventoryDisplay.CurrentlyBeingMovedItemIndex == -1)
 			{
-				// if the slot we're on is empty, we do nothing
-				if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
+                // 우리가 있는 슬롯이 비어 있으면 아무것도 하지 않습니다.
+                if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 				{
 					MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 					return;
 				}
 				if (ParentInventoryDisplay.TargetInventory.Content[Index].CanMoveObject)
 				{
-					// we change the background image
-					TargetImage.sprite = ParentInventoryDisplay.MovedSlotImage;
+                    // 배경 이미지를 변경합니다
+                    TargetImage.sprite = ParentInventoryDisplay.MovedSlotImage;
 					InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = ParentInventoryDisplay;
 					InventoryDisplay.CurrentlyBeingMovedItemIndex = Index;
 				}
 			}
-			// if we ARE moving an object
-			else
-			{
+            // 물체를 움직이고 있다면
+            else
+            {
 				bool moveSuccessful = false;
-				// we move the object to a new slot. 
-				if (ParentInventoryDisplay == InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay)
+                // 객체를 새 슬롯으로 이동합니다.
+                if (ParentInventoryDisplay == InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay)
 				{
 					if (!ParentInventoryDisplay.TargetInventory.MoveItem(InventoryDisplay.CurrentlyBeingMovedItemIndex, Index))
 					{
-						// if the move couldn't be made (non empty destination slot for example), we play a sound
-						MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
+                        // 이동할 수 없는 경우(예: 비어 있지 않은 대상 슬롯) 소리를 재생합니다.
+                        MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 						moveSuccessful = false;
 					}
 					else
@@ -181,8 +180,8 @@ namespace MoreMountains.InventoryEngine
 					{
 						if (!InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay.TargetInventory.MoveItemToInventory(InventoryDisplay.CurrentlyBeingMovedItemIndex, ParentInventoryDisplay.TargetInventory, Index))
 						{
-							// if the move couldn't be made (non empty destination slot for example), we play a sound
-							MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
+                            // 이동할 수 없는 경우(예: 비어 있지 않은 대상 슬롯) 소리를 재생합니다.
+                            MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 							moveSuccessful = false;
 						}
 						else
@@ -194,45 +193,45 @@ namespace MoreMountains.InventoryEngine
 
 				if (moveSuccessful)
 				{
-					// if the move could be made, we reset our currentlyBeingMoved pointer
-					InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
+                    // 이동할 수 있으면 현재BeingMoved 포인터를 재설정합니다.
+                    InventoryDisplay.CurrentlyBeingMovedItemIndex = -1;
 					InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = null;
 					MMInventoryEvent.Trigger(MMInventoryEventType.Move, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 				}
 			}
 		}
 
-		/// <summary>
-		/// Consume one unity of the item in this slot, triggering a sound and whatever behaviour has been defined for this item being used
-		/// </summary>
-		public virtual void Use()
+        /// <summary>
+        /// 이 슬롯에 있는 아이템 1개를 소비하여 소리를 발생시키고 사용 중인 이 아이템에 대해 정의된 모든 동작을 실행합니다.
+        /// </summary>
+        public virtual void Use()
 		{
 			if (!SlotEnabled) { return; }
 			MMInventoryEvent.Trigger(MMInventoryEventType.UseRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}
 
-		/// <summary>
-		/// Equip this item if possible.
-		/// </summary>
-		public virtual void Equip()
+        /// <summary>
+        /// 가능하다면 이 아이템을 장착하세요.
+        /// </summary>
+        public virtual void Equip()
 		{
 			if (!SlotEnabled) { return; }
 			MMInventoryEvent.Trigger(MMInventoryEventType.EquipRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}
 
-		/// <summary>
-		/// Unequip this item if possible.
-		/// </summary>
-		public virtual void UnEquip()
+        /// <summary>
+        /// 가능하다면 이 아이템을 장착 해제하세요.
+        /// </summary>
+        public virtual void UnEquip()
 		{
 			if (!SlotEnabled) { return; }
 			MMInventoryEvent.Trigger(MMInventoryEventType.UnEquipRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}
 
-		/// <summary>
-		/// Drops this item.
-		/// </summary>
-		public virtual void Drop()
+        /// <summary>
+        /// 이 아이템을 떨어뜨립니다.
+        /// </summary>
+        public virtual void Drop()
 		{
 			if (!SlotEnabled) { return; }
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
@@ -252,30 +251,30 @@ namespace MoreMountains.InventoryEngine
 			}            
 		}
 
-		/// <summary>
-		/// Disables the slot.
-		/// </summary>
-		public virtual void DisableSlot()
+        /// <summary>
+        /// 슬롯을 비활성화합니다.
+        /// </summary>
+        public virtual void DisableSlot()
 		{
 			this.interactable = false;
 			SlotEnabled = false;
 			TargetCanvasGroup.alpha = _disabledAlpha;
 		}
 
-		/// <summary>
-		/// Enables the slot.
-		/// </summary>
-		public virtual void EnableSlot()
+        /// <summary>
+        /// 슬롯을 활성화합니다.
+        /// </summary>
+        public virtual void EnableSlot()
 		{
 			this.interactable = true;
 			SlotEnabled = true;
 			TargetCanvasGroup.alpha = _enabledAlpha;
 		}
 
-		/// <summary>
-		/// Returns true if the item at this slot can be equipped, false otherwise
-		/// </summary>
-		public virtual bool Equippable()
+        /// <summary>
+        /// 이 슬롯의 아이템을 장착할 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Equippable()
 		{
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 			{
@@ -291,10 +290,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Returns true if the item at this slot can be used, false otherwise
-		/// </summary>
-		public virtual bool Usable()
+        /// <summary>
+        /// 이 슬롯의 아이템을 사용할 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Usable()
 		{
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 			{
@@ -308,12 +307,12 @@ namespace MoreMountains.InventoryEngine
 			{
 				return true;
 			}
-		}	
+		}
 
-		/// <summary>
-		/// Returns true if the item at this slot can be dropped, false otherwise
-		/// </summary>
-		public virtual bool Movable()
+        /// <summary>
+        /// 이 슬롯에 아이템을 떨어뜨릴 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Movable()
 		{
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 			{
@@ -327,12 +326,12 @@ namespace MoreMountains.InventoryEngine
 			{
 				return true;
 			}
-		}	
+		}
 
-		/// <summary>
-		/// Returns true if the item at this slot can be dropped, false otherwise
-		/// </summary>
-		public virtual bool Droppable()
+        /// <summary>
+        /// 이 슬롯에 아이템을 떨어뜨릴 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Droppable()
 		{
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 			{
@@ -346,12 +345,12 @@ namespace MoreMountains.InventoryEngine
 			{
 				return true;
 			}
-		}	
+		}
 
-		/// <summary>
-		/// Returns true if the item at this slot can be dropped, false otherwise
-		/// </summary>
-		public virtual bool Unequippable()
+        /// <summary>
+        /// 이 슬롯에 아이템을 떨어뜨릴 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Unequippable()
 		{
 			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
 			{

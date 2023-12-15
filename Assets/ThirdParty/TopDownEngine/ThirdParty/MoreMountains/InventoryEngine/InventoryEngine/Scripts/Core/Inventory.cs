@@ -169,39 +169,39 @@ namespace MoreMountains.InventoryEngine
 			Owner = newOwner;
 		}
 
-		/// <summary>
-		/// Tries to add an item of the specified type. Note that this is name based.
-		/// </summary>
-		/// <returns><c>true</c>, if item was added, <c>false</c> if it couldn't be added (item null, inventory full).</returns>
-		/// <param name="itemToAdd">Item to add.</param>
-		public virtual bool AddItem(InventoryItem itemToAdd, int quantity)
+        /// <summary>
+        /// 지정된 유형의 항목을 추가하려고 시도합니다. 이는 이름 기반이라는 점에 유의하세요.
+        /// </summary>
+        /// <returns><c>true</c>, if item was added, <c>false</c> if it couldn't be added (item null, inventory full).</returns>
+        /// <param name="itemToAdd">Item to add.</param>
+        public virtual bool AddItem(InventoryItem itemToAdd, int quantity)
 		{
-			// if the item to add is null, we do nothing and exit
-			if (itemToAdd == null)
+            // 추가할 항목이 null이면 아무것도 하지 않고 종료합니다.
+            if (itemToAdd == null)
 			{
 				Debug.LogWarning(this.name + " : The item you want to add to the inventory is null");
 				return false;
 			}
 
 			List<int> list = InventoryContains(itemToAdd.ItemID);
-			// if there's at least one item like this already in the inventory and it's stackable
-			if (list.Count > 0 && itemToAdd.MaximumStack > 1)
+            // 이미 인벤토리에 이와 같은 항목이 하나 이상 있고 쌓을 수 있는 경우
+            if (list.Count > 0 && itemToAdd.MaximumStack > 1)
 			{
-				// we store items that match the one we want to add
-				for (int i = 0; i < list.Count; i++)
+                // 추가하려는 항목과 일치하는 항목을 저장합니다.
+                for (int i = 0; i < list.Count; i++)
 				{
-					// if there's still room in one of these items of this kind in the inventory, we add to it
-					if (Content[list[i]].Quantity < itemToAdd.MaximumStack)
+                    // 인벤토리에 이런 종류의 항목 중 하나에 아직 공간이 있으면 추가합니다.
+                    if (Content[list[i]].Quantity < itemToAdd.MaximumStack)
 					{
-						// we increase the quantity of our item
-						Content[list[i]].Quantity += quantity;
-						// if this exceeds the maximum stack
-						if (Content[list[i]].Quantity > Content[list[i]].MaximumStack)
+                        // 우리는 품목의 수량을 늘립니다.
+                        Content[list[i]].Quantity += quantity;
+                        // 최대 스택을 초과하는 경우
+                        if (Content[list[i]].Quantity > Content[list[i]].MaximumStack)
 						{
 							InventoryItem restToAdd = itemToAdd;
 							int restToAddQuantity = Content[list[i]].Quantity - Content[list[i]].MaximumStack;
-							// we clamp the quantity and add the rest as a new item
-							Content[list[i]].Quantity = Content[list[i]].MaximumStack;
+                            // 수량을 고정하고 나머지를 새 항목으로 추가합니다.
+                            Content[list[i]].Quantity = Content[list[i]].MaximumStack;
 							AddItem(restToAdd, restToAddQuantity);
 						}
 						MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
@@ -209,37 +209,41 @@ namespace MoreMountains.InventoryEngine
 					}
 				}
 			}
-			// if we've reached the max size of our inventory, we don't add the item
-			if (NumberOfFilledSlots >= Content.Length)
+            // 인벤토리의 최대 크기에 도달하면 항목을 추가하지 않습니다.
+            if (NumberOfFilledSlots >= Content.Length)
 			{
 				return false;
 			}
+
 			while (quantity > 0)
 			{
-				if (quantity > itemToAdd.MaximumStack)
+                Debug.Log("아이템 추가");
+                if (quantity > itemToAdd.MaximumStack)
 				{
 					AddItem(itemToAdd, itemToAdd.MaximumStack);
 					quantity -= itemToAdd.MaximumStack;
-				}
+                    Debug.Log("아이템 추가2");
+                }
 				else
 				{
 					AddItemToArray(itemToAdd, quantity);
 					quantity = 0;
-				}
+                    Debug.Log("아이템 추가3");
+                }
 			}
-			// if we're still here, we add the item in the first available slot
-			MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
+            // 아직 여기에 있다면 사용 가능한 첫 번째 슬롯에 항목을 추가합니다.
+            MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
 			return true;
 		}
-        
-		/// <summary>
-		/// Adds the specified quantity of the specified item to the inventory, at the destination index of choice
-		/// </summary>
-		/// <param name="itemToAdd"></param>
-		/// <param name="quantity"></param>
-		/// <param name="destinationIndex"></param>
-		/// <returns></returns>
-		public virtual bool AddItemAt(InventoryItem itemToAdd, int quantity, int destinationIndex)
+
+        /// <summary>
+        /// 지정된 항목의 지정된 수량을 선택한 대상 색인의 인벤토리에 추가합니다.
+        /// </summary>
+        /// <param name="itemToAdd"></param>
+        /// <param name="quantity"></param>
+        /// <param name="destinationIndex"></param>
+        /// <returns></returns>
+        public virtual bool AddItemAt(InventoryItem itemToAdd, int quantity, int destinationIndex)
 		{
 			int tempQuantity = quantity;
 			
@@ -726,13 +730,13 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Equips the item at the specified slot 
-		/// </summary>
-		/// <param name="item">Item.</param>
-		/// <param name="index">Index.</param>
-		/// <param name="slot">Slot.</param>
-		public virtual void EquipItem(InventoryItem item, int index, InventorySlot slot = null)
+        /// <summary>
+        /// 지정된 슬롯에 아이템을 장착합니다.
+        /// </summary>
+        /// <param name="item">Item.</param>
+        /// <param name="index">Index.</param>
+        /// <param name="slot">Slot.</param>
+        public virtual void EquipItem(InventoryItem item, int index, InventorySlot slot = null)
 		{
 			if (InventoryType == Inventory.InventoryTypes.Main)
 			{

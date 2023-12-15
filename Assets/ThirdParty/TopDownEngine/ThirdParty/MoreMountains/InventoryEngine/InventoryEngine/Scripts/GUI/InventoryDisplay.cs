@@ -14,14 +14,14 @@ using UnityEditor;
 namespace MoreMountains.InventoryEngine
 {	
 	[SelectionBase]
-	/// <summary>
-	/// A component that handles the visual representation of an Inventory, allowing the user to interact with it
-	/// </summary>
-	public class InventoryDisplay : MonoBehaviour, MMEventListener<MMInventoryEvent>
+    /// <summary>
+    /// 사용자가 인벤토리와 상호작용할 수 있도록 인벤토리의 시각적 표현을 처리하는 구성요소
+    /// </summary>
+    public class InventoryDisplay : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		[Header("Binding")]
-		/// the name of the inventory to display
-		[MMInformation("An InventoryDisplay is a component that will handle the visualization of the data contained in an Inventory. Start by specifying the name of the inventory you want to display.",MMInformationAttribute.InformationType.Info,false)]
+        /// 표시할 인벤토리 이름
+        [MMInformation("InventoryDisplay는 Inventory에 포함된 데이터의 시각화를 처리하는 구성 요소입니다. 표시하려는 인벤토리의 이름을 지정하여 시작하세요.", MMInformationAttribute.InformationType.Info,false)]
 		public string TargetInventoryName = "MainInventory";
 		public string PlayerID = "Player1";
 
@@ -30,7 +30,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// 이름에 따라 대상 인벤토리를 확보합니다.
         /// </summary>
-        /// <value>The target inventory.</value>
+        /// <value>대상 인벤토리</value>
         public Inventory TargetInventory 
 		{ 
 			get 
@@ -67,126 +67,126 @@ namespace MoreMountains.InventoryEngine
 		}
 
 		[Header("Inventory Size")]
-		/// the number of rows to display
-		[MMInformation("An InventoryDisplay presents an inventory's data in slots containing one item each, and displayed in a grid. Here you can set how many rows and columns of slots you want. Once you're happy with your settings, you can press the 'auto setup' button at the bottom of this inspector to see your changes.",MMInformationAttribute.InformationType.Info,false)]
+        /// 표시할 행 수
+        [MMInformation("InventoryDisplay는 각각 하나의 항목이 포함된 슬롯에 인벤토리 데이터를 표시하고 그리드에 표시합니다. 여기에서 원하는 슬롯의 행과 열 수를 설정할 수 있습니다. 설정에 만족하면 이 검사기 하단에 있는 '자동 설정' 버튼을 눌러 변경 사항을 확인할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public int NumberOfRows = 3;
-		/// the number of columns to display
-		public int NumberOfColumns = 2;
+        /// 표시할 열 수
+        public int NumberOfColumns = 2;
 
-		/// the total number of slots in this inventory
-		public int InventorySize { get { return NumberOfRows * NumberOfColumns; } set {} }		
+        /// 이 인벤토리의 총 슬롯 수
+        public int InventorySize { get { return NumberOfRows * NumberOfColumns; } set {} }		
 
 		[Header("Equipment")]
-		[MMInformation("If this displays the contents of an Equipment Inventory, you should bind here a Choice Inventory. A Choice Inventory is the inventory in which you'll pick items for your equipment. Usually the Choice Inventory is the Main Inventory. Again, if this is an equipment inventory, you can specify what class of items you want to authorize.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("장비 인벤토리의 내용이 표시되면 여기에 선택 인벤토리를 바인딩해야 합니다. 선택 인벤토리는 장비에 대한 아이템을 선택하는 인벤토리입니다. 일반적으로 선택 인벤토리가 주 인벤토리입니다. 다시 말하지만, 이것이 장비 인벤토리인 경우 승인하려는 항목 클래스를 지정할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public InventoryDisplay TargetChoiceInventory;
 		public ItemClasses ItemClass;
 
 		[Header("Behaviour")]
-		/// if this is true, we'll draw slots even if they don't contain an object. Otherwise we don't draw them
-		[MMInformation("If you set this to true, empty slots will be drawn, otherwise they'll be hidden from the player.",MMInformationAttribute.InformationType.Info,false)]
+        /// 이것이 사실이라면 객체가 포함되어 있지 않더라도 슬롯을 그릴 것입니다. 그렇지 않으면 우리는 그것들을 그리지 않습니다
+        [MMInformation("이것이 사실이라면 객체가 포함되어 있지 않더라도 슬롯을 그릴 것입니다. 그렇지 않으면 우리는 그것들을 그리지 않습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public bool DrawEmptySlots=true;
-		/// if this is true, the Player will be allowed to move objects from another inventory to this one, using the Move button
-		[MMInformation("if this is true, the Player will be allowed to move objects from another inventory to this one, using the Move button.",MMInformationAttribute.InformationType.Info,false)]
+        /// 이것이 사실이라면 플레이어는 이동 버튼을 사용하여 다른 인벤토리의 개체를 이 인벤토리로 이동할 수 있습니다.
+        [MMInformation("이것이 사실이라면 플레이어는 이동 버튼을 사용하여 다른 인벤토리의 개체를 이 인벤토리로 이동할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public bool AllowMovingObjectsToThisInventory = false;
 
 		[Header("Inventory Padding")]
-		[MMInformation("Here you can define the padding between the borders of the inventory panel and the slots.",MMInformationAttribute.InformationType.Info,false)]
-		/// The internal margin between the top of the inventory panel and the first slots
-		public int PaddingTop = 20;
-		/// The internal margin between the right of the inventory panel and the last slots
-		public int PaddingRight = 20;
-		/// The internal margin between the bottom of the inventory panel and the last slots
-		public int PaddingBottom = 20;
-		/// The internal margin between the left of the inventory panel and the first slots
-		public int PaddingLeft = 20;
+		[MMInformation("여기서 인벤토리 패널의 테두리와 슬롯 사이의 패딩을 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// 인벤토리 패널 상단과 첫 번째 슬롯 사이의 내부 여백
+        public int PaddingTop = 20;
+        /// 인벤토리 패널 오른쪽과 마지막 슬롯 사이의 내부 여백
+        public int PaddingRight = 20;
+        /// 인벤토리 패널 하단과 마지막 슬롯 사이의 내부 여백
+        public int PaddingBottom = 20;
+        /// 인벤토리 패널 왼쪽과 첫 번째 슬롯 사이의 내부 여백
+        public int PaddingLeft = 20;
 
 		[Header("Slots")]
 		[MMInformation(
-			"When pressing the auto setup button at the bottom of this inventory, the InventoryDisplay will fill itself with slots ready to display your inventory's contents. Here you can define the slot's size, margins, and define the images to use when the slot is empty, filled, etc.",
+            "이 인벤토리 하단에 있는 자동 설정 버튼을 누르면 InventoryDisplay가 인벤토리의 콘텐츠를 표시할 준비가 된 슬롯으로 채워집니다. 여기에서 슬롯의 크기, 여백을 정의하고 슬롯이 비어 있거나 채워졌을 때 사용할 이미지를 정의할 수 있습니다.",
 			MMInformationAttribute.InformationType.Info, false)]
-		/// the game object to use as a Slot. If left empty, one will be automatically created at runtime  
-		public InventorySlot SlotPrefab;
-		/// the horizontal and vertical size of the slots
-		public Vector2 SlotSize = new Vector2(50,50);
-		/// the size of the icon in each slot
-		public Vector2 IconSize = new Vector2(30,30);
-		/// the horizontal and vertical margin to apply between slots rows and columns
-		public Vector2 SlotMargin = new Vector2(5,5);
-		/// The image to set as the background of each slot when the slot is empty
-		public Sprite EmptySlotImage;
-		/// The image to set as the background of each slot when the slot is not empty
-		public Sprite FilledSlotImage;
-		/// The image to set as the background of each slot when the slot is highlighted
-		public Sprite HighlightedSlotImage;
-		/// The image to set as the background of each slot when the slot is pressed
-		public Sprite PressedSlotImage;
-		/// The image to set as the background of each slot when the slot is disabled
-		public Sprite DisabledSlotImage;
-		/// The image to set as the background of each slot when the item in the slot is being moved around
-		public Sprite MovedSlotImage;
-		/// The type of the image (sliced, normal, tiled...)
-		public Image.Type SlotImageType;
+        /// 슬롯으로 사용할 게임 개체입니다. 비워두면 런타임 시 자동으로 생성됩니다.
+        public InventorySlot SlotPrefab;
+        /// 슬롯의 수평 및 수직 크기
+        public Vector2 SlotSize = new Vector2(50,50);
+        /// 각 슬롯의 아이콘 크기
+        public Vector2 IconSize = new Vector2(30,30);
+        /// 슬롯 행과 열 사이에 적용할 수평 및 수직 여백
+        public Vector2 SlotMargin = new Vector2(5,5);
+        /// 슬롯이 비어있을 때 각 슬롯의 배경으로 설정할 이미지입니다.
+        public Sprite EmptySlotImage;
+        /// 슬롯이 비어 있지 않을 때 각 슬롯의 배경으로 설정할 이미지입니다.
+        public Sprite FilledSlotImage;
+        /// 슬롯 하이라이트 시 각 슬롯의 배경으로 설정할 이미지입니다.
+        public Sprite HighlightedSlotImage;
+        /// 슬롯을 눌렀을 때 각 슬롯의 배경으로 설정할 이미지입니다.
+        public Sprite PressedSlotImage;
+        /// 슬롯 비활성화 시 각 슬롯의 배경으로 설정할 이미지
+        public Sprite DisabledSlotImage;
+        /// 슬롯에 있는 아이템이 이동할 때 각 슬롯의 배경으로 설정할 이미지입니다.
+        public Sprite MovedSlotImage;
+        /// 이미지 유형(슬라이스, 일반, 타일...)
+        public Image.Type SlotImageType;
 		
 		[Header("Navigation")]
-		[MMInformation("Here you can decide whether or not you want to use the built-in navigation system (allowing the player to move from slot to slot using keyboard arrows or a joystick), and whether or not this inventory display panel should be focused whent the scene starts. Usually you'll want your main inventory to get focus.",MMInformationAttribute.InformationType.Info,false)]
-		/// if true, the engine will automatically create bindings to navigate through the different slots using keyboard or gamepad.
-		public bool EnableNavigation = true;
-		/// if this is true, this inventory display will get the focus on start
-		public bool GetFocusOnStart = false;
+		[MMInformation("여기에서 내장 내비게이션 시스템(플레이어가 키보드 화살표나 조이스틱을 사용하여 슬롯에서 슬롯으로 이동할 수 있음)을 사용할지 여부와 장면이 시작될 때 이 인벤토리 표시 패널에 초점을 맞출지 여부를 결정할 수 있습니다. . 일반적으로 주요 인벤토리에 집중하기를 원할 것입니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// true인 경우 엔진은 키보드나 게임패드를 사용하여 다양한 슬롯을 탐색하기 위한 바인딩을 자동으로 생성합니다.
+        public bool EnableNavigation = true;
+        /// 이것이 사실이라면 이 인벤토리 표시는 시작 시 초점을 맞춥니다.
+        public bool GetFocusOnStart = false;
 
 		[Header("Title Text")]
-		[MMInformation("Here you can decide to display (or not) a title next to your inventory display panel. For it you can specify the title, font, font size, color etc.",MMInformationAttribute.InformationType.Info,false)]
-		/// if true, will display the panel's title
-		public bool DisplayTitle=true;
-		/// the title for the inventory that will be displayed
-		public string Title;
-		/// the font used to display the quantity
-		public Font TitleFont;
-		/// the font size to use 
-		public int TitleFontSize=20;
-		/// the color to display the quantity in
-		public Color TitleColor = Color.black;
-		/// the padding (distance to the slot's edge)
-		public Vector3 TitleOffset=Vector3.zero;
-		/// where the quantity should be displayed
-		public TextAnchor TitleAlignment = TextAnchor.LowerRight;
+		[MMInformation("여기에서 인벤토리 표시 패널 옆에 제목을 표시할지 여부를 결정할 수 있습니다. 이를 위해 제목, 글꼴, 글꼴 크기, 색상 등을 지정할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// true인 경우 패널 제목이 표시됩니다.
+        public bool DisplayTitle=true;
+        /// 표시될 인벤토리의 제목
+        public string Title;
+        /// 수량을 표시하는 데 사용되는 글꼴
+        public Font TitleFont;
+        /// 사용할 글꼴 크기
+        public int TitleFontSize=20;
+        /// 수량을 표시할 색상
+        public Color TitleColor = Color.black;
+        /// 패딩(슬롯 가장자리까지의 거리)
+        public Vector3 TitleOffset=Vector3.zero;
+        /// 수량을 표시해야 하는 위치
+        public TextAnchor TitleAlignment = TextAnchor.LowerRight;
 
 		[Header("Quantity Text")]
-		[MMInformation("If your inventory contains stacked items (more than one item of a certain sort in a single slot, like coins or potions maybe) you'll probably want to display the quantity next to the item's icon. For that, you can specify here the font to use, the color, and position of that quantity text.",MMInformationAttribute.InformationType.Info,false)]
-		/// the font used to display the quantity
-		public Font QtyFont;
-		/// the font size to use 
-		public int QtyFontSize=12;
-		/// the color to display the quantity in
-		public Color QtyColor = Color.black;
-		/// the padding (distance to the slot's edge)
-		public float QtyPadding=10f;
-		/// where the quantity should be displayed
-		public TextAnchor QtyAlignment = TextAnchor.LowerRight;
+		[MMInformation("인벤토리에 쌓인 항목(동전이나 물약과 같이 단일 슬롯에 특정 종류의 항목이 두 개 이상)으로 포함된 경우 항목 아이콘 옆에 수량을 표시하고 싶을 것입니다. 이를 위해 여기서 사용할 글꼴, 색상, 해당 수량 텍스트의 위치를 ​​지정할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// 수량을 표시하는 데 사용되는 글꼴
+        public Font QtyFont;
+        /// 사용할 글꼴 크기
+        public int QtyFontSize=12;
+        /// 수량을 표시할 색상
+        public Color QtyColor = Color.black;
+        /// 패딩(슬롯 가장자리까지의 거리)
+        public float QtyPadding=10f;
+        /// 수량을 표시해야 하는 위치
+        public TextAnchor QtyAlignment = TextAnchor.LowerRight;
 
 		[Header("Extra Inventory Navigation")]
-		[MMInformation("The InventoryInputManager comes with controls allowing you to go from one inventory panel to the next. Here you can define what inventory the player should go to from this panel when pressing the previous or next inventory button.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("InventoryInputManager에는 한 인벤토리 패널에서 다음 패널로 이동할 수 있는 컨트롤이 제공됩니다. 여기에서는 이전 또는 다음 인벤토리 버튼을 누를 때 플레이어가 이 패널에서 이동해야 하는 인벤토리를 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public InventoryDisplay PreviousInventory;
 		public InventoryDisplay NextInventory;
 
-		/// the grid layout used to display the inventory in rows and columns
-		public GridLayoutGroup InventoryGrid { get; protected set; }
-		/// the gameobject used to display the inventory's name
-		public InventoryDisplayTitle InventoryTitle { get; protected set; }
-		/// the main panel
-		public RectTransform InventoryRectTransform { get { return GetComponent<RectTransform>(); }}
-		/// an internal list of slots
-		public List<InventorySlot> SlotContainer { get; protected set; }	
-		/// the inventory the focus should return to after an action
-		public InventoryDisplay ReturnInventory { get; protected set; }	
-		/// whether this inventory display is open or not
-		public bool IsOpen { get; protected set; }
+        /// 행과 열에 인벤토리를 표시하는 데 사용되는 그리드 레이아웃
+        public GridLayoutGroup InventoryGrid { get; protected set; }
+        /// 인벤토리 이름을 표시하는 데 사용되는 게임오브젝트
+        public InventoryDisplayTitle InventoryTitle { get; protected set; }
+        /// 메인 패널
+        public RectTransform InventoryRectTransform { get { return GetComponent<RectTransform>(); }}
+        /// 내부 슬롯 목록
+        public List<InventorySlot> SlotContainer { get; protected set; }
+        /// 작업 후 포커스가 반환되어야 하는 인벤토리
+        public InventoryDisplay ReturnInventory { get; protected set; }
+        /// 이 재고 표시가 열려 있는지 여부
+        public bool IsOpen { get; protected set; }
 		
 		public bool InEquipSelection { get; set; }
 
-		/// the item currently being moved
+        /// 현재 이동 중인 항목
 
-		public static InventoryDisplay CurrentlyBeingMovedFromInventoryDisplay;
+        public static InventoryDisplay CurrentlyBeingMovedFromInventoryDisplay;
 		public static int CurrentlyBeingMovedItemIndex = -1;
 
 		protected List<ItemQuantity> _contentLastUpdate;	
@@ -195,10 +195,10 @@ namespace MoreMountains.InventoryEngine
 		protected InventorySlot _currentlySelectedSlot;
 		protected InventorySlot _slotPrefab = null;
 
-		/// <summary>
-		/// Creates and sets up the inventory display (usually called via the inspector's dedicated button)
-		/// </summary>
-		public virtual void SetupInventoryDisplay()
+        /// <summary>
+        /// 재고 디스플레이 생성 및 설정(보통 검사관의 전용 버튼을 통해 호출됨)
+        /// </summary>
+        public virtual void SetupInventoryDisplay()
 		{
 			if (TargetInventoryName == "")
 			{
@@ -239,10 +239,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Redraws the inventory display's contents when needed (usually after a change in the target inventory)
-		/// </summary>
-		protected virtual void RedrawInventoryDisplay()
+        /// <summary>
+        /// 필요할 때 인벤토리 표시 내용을 다시 그립니다(보통 대상 인벤토리가 변경된 후).
+        /// </summary>
+        protected virtual void RedrawInventoryDisplay()
 		{
 			InitializeSprites();
 			AddGridLayoutGroup();
@@ -250,22 +250,22 @@ namespace MoreMountains.InventoryEngine
 			FillLastUpdateContent();	
 		}
 
-		/// <summary>
-		/// Initializes the sprites.
-		/// </summary>
-		protected virtual void InitializeSprites()
+        /// <summary>
+        /// 스프라이트를 초기화합니다.
+        /// </summary>
+        protected virtual void InitializeSprites()
 		{
-			// we create a spriteState to specify our various button states
-			_spriteState.disabledSprite = DisabledSlotImage;
+            // 다양한 버튼 상태를 지정하기 위해 spriteState를 만듭니다.
+            _spriteState.disabledSprite = DisabledSlotImage;
 			_spriteState.selectedSprite = HighlightedSlotImage;
 			_spriteState.highlightedSprite = HighlightedSlotImage;
 			_spriteState.pressedSprite = PressedSlotImage;
 		}
 
-		/// <summary>
-		/// Adds and sets up the inventory title child object
-		/// </summary>
-		protected virtual void DrawInventoryTitle()
+        /// <summary>
+        /// 인벤토리 제목 하위 개체를 추가하고 설정합니다.
+        /// </summary>
+        protected virtual void DrawInventoryTitle()
 		{
 			if (!DisplayTitle)
 			{
@@ -303,10 +303,10 @@ namespace MoreMountains.InventoryEngine
 			InventoryTitle.raycastTarget = false;
 		}
 
-		/// <summary>
-		/// Adds a grid layout group if there ain't one already
-		/// </summary>
-		protected virtual void AddGridLayoutGroup()
+        /// <summary>
+        /// 그리드 레이아웃 그룹이 아직 없는 경우 추가합니다.
+        /// </summary>
+        protected virtual void AddGridLayoutGroup()
 		{
 			if (GetComponentInChildren<InventoryDisplayGrid>() == null)
 			{
@@ -329,10 +329,10 @@ namespace MoreMountains.InventoryEngine
 			InventoryGrid.spacing = SlotMargin;
 		}
 
-		/// <summary>
-		/// Resizes the inventory panel, taking into account the number of rows/columns, the padding and margin
-		/// </summary>
-		protected virtual void ResizeInventoryDisplay()
+        /// <summary>
+        /// 행/열 수, 패딩 및 여백을 고려하여 인벤토리 패널의 크기를 조정합니다.
+        /// </summary>
+        protected virtual void ResizeInventoryDisplay()
 		{
 
 			float newWidth = PaddingLeft + SlotSize.x * NumberOfColumns + SlotMargin.x * (NumberOfColumns-1) + PaddingRight;
@@ -345,10 +345,10 @@ namespace MoreMountains.InventoryEngine
 			InventoryGrid.GetComponent<RectTransform>().sizeDelta = newSize;
 		}
 
-		/// <summary>
-		/// Draws the content of the inventory (slots and icons)
-		/// </summary>
-		protected virtual void DrawInventoryContent ()             
+        /// <summary>
+        /// 인벤토리의 내용(슬롯 및 아이콘)을 그립니다.
+        /// </summary>
+        protected virtual void DrawInventoryContent ()             
 		{            
 			if (SlotContainer != null)
 			{
@@ -358,13 +358,13 @@ namespace MoreMountains.InventoryEngine
 			{
 				SlotContainer = new List<InventorySlot>();
 			}
-			// we initialize our sprites 
-			if (EmptySlotImage==null)
+            // 스프라이트를 초기화합니다
+            if (EmptySlotImage==null)
 			{
 				InitializeSprites();
 			}
-			// we remove all existing slots
-			foreach (InventorySlot slot in transform.GetComponentsInChildren<InventorySlot>())
+            // 기존 슬롯을 모두 제거합니다.
+            foreach (InventorySlot slot in transform.GetComponentsInChildren<InventorySlot>())
 			{	 			
 				if (!Application.isPlaying)
 				{
@@ -375,8 +375,8 @@ namespace MoreMountains.InventoryEngine
 					Destroy(slot.gameObject);
 				}				
 			}
-			// for each slot we create the slot and its content
-			for (int i = 0; i < TargetInventory.Content.Length; i ++) 
+            // 각 슬롯에 대해 슬롯과 해당 콘텐츠를 생성합니다.
+            for (int i = 0; i < TargetInventory.Content.Length; i ++) 
 			{    
 				DrawSlot(i);
 			}
@@ -401,10 +401,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// If the content has changed, we draw our inventory panel again
-		/// </summary>
-		protected virtual void ContentHasChanged()
+        /// <summary>
+        /// 콘텐츠가 변경된 경우 인벤토리 패널을 다시 그립니다.
+        /// </summary>
+        protected virtual void ContentHasChanged()
 		{
 			if (!(Application.isPlaying))
 			{
@@ -424,10 +424,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Fills the last content of the update.
-		/// </summary>
-		protected virtual void FillLastUpdateContent()		
+        /// <summary>
+        /// 업데이트의 마지막 내용을 채웁니다.
+        /// </summary>
+        protected virtual void FillLastUpdateContent()		
 		{		
 			_contentLastUpdate.Clear();		
 			_comparison.Clear();
@@ -444,18 +444,18 @@ namespace MoreMountains.InventoryEngine
 			}	
 		}
 
-		/// <summary>
-		/// Draws the content of the inventory (slots and icons)
-		/// </summary>
-		protected virtual void UpdateInventoryContent ()             
+        /// <summary>
+        /// 인벤토리의 내용(슬롯 및 아이콘)을 그립니다.
+        /// </summary>
+        protected virtual void UpdateInventoryContent ()             
 		{      
 			if (_contentLastUpdate == null || _contentLastUpdate.Count == 0)
 			{
 				FillLastUpdateContent();
 			}
 
-			// we compare our current content with the one in storage to look for changes
-			for (int i = 0; i < TargetInventory.Content.Length; i ++) 
+            // 현재 콘텐츠와 저장소에 있는 콘텐츠를 비교하여 변경 사항을 찾습니다.
+            for (int i = 0; i < TargetInventory.Content.Length; i ++) 
 			{
 				if ((TargetInventory.Content[i] == null) && (_contentLastUpdate[i].ItemID != null))
 				{
@@ -483,16 +483,16 @@ namespace MoreMountains.InventoryEngine
 			FillLastUpdateContent();
 		}
 
-		/// <summary>
-		/// Updates the slot's content and appearance
-		/// </summary>
-		/// <param name="i">The index.</param>
-		protected virtual void UpdateSlot(int i)
+        /// <summary>
+        /// 슬롯의 내용과 모양을 업데이트합니다.
+        /// </summary>
+        /// <param name="i">The index.</param>
+        protected virtual void UpdateSlot(int i)
 		{
 			
 			if (SlotContainer.Count < i)
 			{
-				Debug.LogWarning ("It looks like your inventory display wasn't properly initialized. If you're not triggering any Load events, you may want to mark your inventory as non persistent in its inspector. Otherwise, you may want to reset and empty saved inventories and try again.");
+				Debug.LogWarning ("인벤토리 표시가 제대로 초기화되지 않은 것 같습니다. Load 이벤트를 트리거하지 않는 경우 해당 검사기에서 인벤토리를 비지속성으로 표시할 수 있습니다. 그렇지 않으면 저장된 인벤토리를 재설정하고 비운 후 다시 시도할 수 있습니다.");
 			}
 
 			if (SlotContainer.Count <= i)
@@ -504,8 +504,8 @@ namespace MoreMountains.InventoryEngine
 			{
 				return;
 			}
-			// we update the slot's bg image
-			if (!InventoryItem.IsNull(TargetInventory.Content[i]))
+            // 슬롯의 bg 이미지를 업데이트합니다.
+            if (!InventoryItem.IsNull(TargetInventory.Content[i]))
 			{
 				SlotContainer[i].TargetImage.sprite = FilledSlotImage;   
 			}
@@ -515,8 +515,8 @@ namespace MoreMountains.InventoryEngine
 			}
 			if (!InventoryItem.IsNull(TargetInventory.Content[i]))
 			{
-				// we redraw the icon
-				SlotContainer[i].DrawIcon(TargetInventory.Content[i],i);
+                // 아이콘을 다시 그립니다
+                SlotContainer[i].DrawIcon(TargetInventory.Content[i],i);
 			}
 			else
 			{
@@ -524,10 +524,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Creates the slot prefab to use in all slot creations
-		/// </summary>
-		protected virtual void InitializeSlotPrefab()
+        /// <summary>
+        /// 모든 슬롯 생성에 사용할 슬롯 프리팹을 생성합니다.
+        /// </summary>
+        protected virtual void InitializeSlotPrefab()
 		{
 			if (SlotPrefab != null)
 			{
@@ -584,11 +584,11 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Draws the slot and its content (icon, quantity...).
-		/// </summary>
-		/// <param name="i">The index.</param>
-		protected virtual void DrawSlot(int i)
+        /// <summary>
+        /// 슬롯과 해당 내용(아이콘, 수량...)을 그립니다.
+        /// </summary>
+        /// <param name="i">The index.</param>
+        protected virtual void DrawSlot(int i)
 		{
 			if (!DrawEmptySlots)
 			{
@@ -632,10 +632,10 @@ namespace MoreMountains.InventoryEngine
 			theSlot.DrawIcon(TargetInventory.Content[i],i);
 		}
 
-		/// <summary>
-		/// Setups the slot navigation using Unity's GUI built-in system, so that the user can move using the left/right/up/down arrows
-		/// </summary>
-		protected virtual void SetupSlotNavigation()
+        /// <summary>
+        /// 사용자가 왼쪽/오른쪽/위/아래 화살표를 사용하여 이동할 수 있도록 Unity의 GUI 내장 시스템을 사용하여 슬롯 탐색을 설정합니다.
+        /// </summary>
+        protected virtual void SetupSlotNavigation()
 		{
 			if (!EnableNavigation)
 			{
@@ -649,8 +649,8 @@ namespace MoreMountains.InventoryEngine
 					return;
 				}
 				Navigation navigation = SlotContainer[i].navigation;
-				// we determine where to go when going up
-				if (i - NumberOfColumns >= 0) 
+                // 우리는 올라갈 때 어디로 갈지 정한다
+                if (i - NumberOfColumns >= 0) 
 				{
 					navigation.selectOnUp = SlotContainer[i-NumberOfColumns];
 				}
@@ -658,8 +658,8 @@ namespace MoreMountains.InventoryEngine
 				{
 					navigation.selectOnUp=null;
 				}
-				// we determine where to go when going down
-				if (i+NumberOfColumns < SlotContainer.Count) 
+                // 내려갈 때 어디로 갈지 우리가 정해요
+                if (i+NumberOfColumns < SlotContainer.Count) 
 				{
 					navigation.selectOnDown = SlotContainer[i+NumberOfColumns];
 				}
@@ -667,8 +667,8 @@ namespace MoreMountains.InventoryEngine
 				{
 					navigation.selectOnDown=null;
 				}
-				// we determine where to go when going left
-				if ((i%NumberOfColumns != 0) && (i>0))
+                // 우리는 왼쪽으로 갈 때 어디로 갈지 결정합니다
+                if ((i%NumberOfColumns != 0) && (i>0))
 				{
 					navigation.selectOnLeft = SlotContainer[i-1];
 				}
@@ -676,8 +676,8 @@ namespace MoreMountains.InventoryEngine
 				{
 					navigation.selectOnLeft=null;
 				}
-				// we determine where to go when going right
-				if (((i+1)%NumberOfColumns != 0)  && (i<SlotContainer.Count - 1))
+                // 우리는 오른쪽으로 갈 때 어디로 가야할지 결정합니다
+                if (((i+1)%NumberOfColumns != 0)  && (i<SlotContainer.Count - 1))
 				{
 					navigation.selectOnRight = SlotContainer[i+1];
 				}
@@ -689,10 +689,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>		
-		/// Sets the focus on the first item of the inventory		
-		/// </summary>		
-		public virtual void Focus()		
+        /// <summary>		
+        /// 인벤토리의 첫 번째 항목에 초점을 설정합니다.		
+        /// </summary>		
+        public virtual void Focus()		
 		{
 			if (!EnableNavigation)
 			{
@@ -714,29 +714,29 @@ namespace MoreMountains.InventoryEngine
 			}			
 		}
 
-		/// <summary>
-		/// Returns the currently selected inventory slot
-		/// </summary>
-		/// <returns>The selected inventory slot.</returns>
-		public virtual InventorySlot CurrentlySelectedInventorySlot()
+        /// <summary>
+        /// 현재 선택된 인벤토리 슬롯을 반환합니다.
+        /// </summary>
+        /// <returns>The selected inventory slot.</returns>
+        public virtual InventorySlot CurrentlySelectedInventorySlot()
 		{
 			return _currentlySelectedSlot;
 		}
 
-		/// <summary>
-		/// Sets the currently selected slot
-		/// </summary>
-		/// <param name="slot">Slot.</param>
-		public virtual void SetCurrentlySelectedSlot(InventorySlot slot)
+        /// <summary>
+        /// 현재 선택된 슬롯을 설정합니다.
+        /// </summary>
+        /// <param name="slot">Slot.</param>
+        public virtual void SetCurrentlySelectedSlot(InventorySlot slot)
 		{
 			_currentlySelectedSlot = slot;
 		}
 
-		/// <summary>
-		/// Goes to the previous (-1) or next (1) inventory, based on the int direction passed in parameter.
-		/// </summary>
-		/// <param name="direction">Direction.</param>
-		public virtual InventoryDisplay GoToInventory(int direction)
+        /// <summary>
+        /// 매개변수에 전달된 int 방향에 따라 이전(-1) 또는 다음(1) 인벤토리로 이동합니다.
+        /// </summary>
+        /// <param name="direction">Direction.</param>
+        public virtual InventoryDisplay GoToInventory(int direction)
 		{
 			if (direction==-1)
 			{
@@ -758,19 +758,19 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Sets the return inventory display
-		/// </summary>
-		/// <param name="inventoryDisplay">Inventory display.</param>
-		public virtual void SetReturnInventory(InventoryDisplay inventoryDisplay)
+        /// <summary>
+        /// 반품 재고 표시를 설정합니다.
+        /// </summary>
+        /// <param name="inventoryDisplay">Inventory display.</param>
+        public virtual void SetReturnInventory(InventoryDisplay inventoryDisplay)
 		{
 			ReturnInventory = inventoryDisplay;
 		}
 
-		/// <summary>
-		/// If possible, returns the focus to the current return inventory focus (after equipping an item, usually)
-		/// </summary>
-		public virtual void ReturnInventoryFocus()
+        /// <summary>
+        /// 가능하다면 현재 반품 인벤토리 포커스로 포커스를 되돌립니다. (보통 아이템 장착 후)
+        /// </summary>
+        public virtual void ReturnInventoryFocus()
 		{
 			if (ReturnInventory == null)
 			{
@@ -785,11 +785,11 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Disables all the slots in the inventory display, except those from a certain class
-		/// </summary>
-		/// <param name="itemClass">Item class.</param>
-		public virtual void DisableAllBut(ItemClasses itemClass)
+        /// <summary>
+        /// 특정 클래스의 슬롯을 제외한 인벤토리 표시의 모든 슬롯을 비활성화합니다.
+        /// </summary>
+        /// <param name="itemClass">Item class.</param>
+        public virtual void DisableAllBut(ItemClasses itemClass)
 		{
 			for (int i=0; i < SlotContainer.Count;i++)
 			{
@@ -804,10 +804,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Enables back all slots (usually after having disabled some of them)
-		/// </summary>
-		public virtual void ResetDisabledStates()
+        /// <summary>
+        /// 모든 슬롯을 다시 활성화합니다(일반적으로 일부 슬롯을 비활성화한 후).
+        /// </summary>
+        public virtual void ResetDisabledStates()
 		{
 			for (int i=0; i<SlotContainer.Count;i++)
 			{
@@ -815,14 +815,14 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Catches MMInventoryEvents and acts on them
-		/// </summary>
-		/// <param name="inventoryEvent">Inventory event.</param>
-		public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
+        /// <summary>
+        /// MMInventoryEvents를 포착하고 이에 대한 조치를 취합니다.
+        /// </summary>
+        /// <param name="inventoryEvent">Inventory event.</param>
+        public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
 		{
-			// if this event doesn't concern our inventory display, we do nothing and exit
-			if (inventoryEvent.TargetInventoryName != this.TargetInventoryName)
+            // 이 이벤트가 재고 표시와 관련이 없으면 아무것도 하지 않고 종료됩니다.
+            if (inventoryEvent.TargetInventoryName != this.TargetInventoryName)
 			{
 				return;
 			}
@@ -846,7 +846,6 @@ namespace MoreMountains.InventoryEngine
 				case MMInventoryEventType.Move:
 					this.ReturnInventoryFocus();
 					UpdateSlot(inventoryEvent.Index);
-
 					break;
 
 				case MMInventoryEventType.ItemUsed:
@@ -856,19 +855,19 @@ namespace MoreMountains.InventoryEngine
 				case MMInventoryEventType.EquipRequest:
 					if (this.TargetInventory.InventoryType == Inventory.InventoryTypes.Equipment)
 					{
-						// if there's no target inventory set we do nothing and exit
-						if (TargetChoiceInventory == null)
+                        // 목표 재고가 설정되어 있지 않으면 아무것도 하지 않고 종료합니다.
+                        if (TargetChoiceInventory == null)
 						{
 							Debug.LogWarning ("InventoryEngine Warning : " + this + " has no choice inventory associated to it.");
 							return;
 						}
-						// we disable all the slots that don't match the right type
-						TargetChoiceInventory.DisableAllBut (this.ItemClass);
-						// we set the focus on the target inventory
-						TargetChoiceInventory.Focus ();
+                        // 올바른 유형과 일치하지 않는 모든 슬롯을 비활성화합니다.
+                        TargetChoiceInventory.DisableAllBut (this.ItemClass);
+                        // 목표 인벤토리에 초점을 맞췄습니다.
+                        TargetChoiceInventory.Focus ();
 						TargetChoiceInventory.InEquipSelection = true;
-						// we set the return focus inventory
-						TargetChoiceInventory.SetReturnInventory (this);
+                        // 반환 초점 인벤토리를 설정했습니다.
+                        TargetChoiceInventory.SetReturnInventory (this);
 					}
 					break;
 				
@@ -916,18 +915,18 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// On Enable, we start listening for MMInventoryEvents
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// 활성화하면 MMInventoryEvents 수신을 시작합니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			this.MMEventStartListening<MMInventoryEvent>();
 		}
 
-		/// <summary>
-		/// On Disable, we stop listening for MMInventoryEvents
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// 비활성화되면 MMInventoryEvents 수신이 중지됩니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			this.MMEventStopListening<MMInventoryEvent>();
 		}
