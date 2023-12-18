@@ -5059,6 +5059,12 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114419475569264490, guid: d4529f47989526241929319abfdfc29d,
+        type: 3}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cd89b7e9c427dd44bc210e583aade65,
+        type: 2}
     - target: {fileID: 114893584720601648, guid: d4529f47989526241929319abfdfc29d,
         type: 3}
       propertyPath: m_Enabled

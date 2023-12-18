@@ -44,7 +44,7 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Start()
 		{
 			Initialization ();
-		}
+        }
 
         /// <summary>
         /// Init에서는 목표 인벤토리를 찾습니다.

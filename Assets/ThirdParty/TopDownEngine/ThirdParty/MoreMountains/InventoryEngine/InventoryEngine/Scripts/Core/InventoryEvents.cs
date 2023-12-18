@@ -21,8 +21,8 @@ namespace MoreMountains.InventoryEngine
 		public InventorySlot Slot;
 		/// the name of the inventory where the event happened
 		public string TargetInventoryName;
-		/// the item involved in the event
-		public InventoryItem EventItem;
+        /// 이벤트에 참여하는 아이템
+        public InventoryItem EventItem;
 		/// the quantity involved in the event
 		public int Quantity;
 		/// the index inside the inventory at which the event happened

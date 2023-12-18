@@ -26,8 +26,8 @@ namespace MoreMountains.InventoryEngine
 		/// the (unique) ID of the item
 		[Tooltip("the (unique) ID of the item")]
 		public string ItemID;
-		/// the inventory name into which this item will be stored
-		[Tooltip("the inventory name into which this item will be stored")]
+        /// 이 아이템이 저장될 인벤토리 이름
+        [Tooltip("이 아이템이 저장될 인벤토리 이름")]
 		public string TargetInventoryName = "MainInventory";
         /// 이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.
         [Tooltip("이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.")]

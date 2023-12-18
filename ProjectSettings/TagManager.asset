@@ -13,6 +13,7 @@ TagManager:
   - Level
   - BattlefieldManager
   - InventoryCanvas
+  - NPCInventory
   layers:
   - Default
   - TransparentFX

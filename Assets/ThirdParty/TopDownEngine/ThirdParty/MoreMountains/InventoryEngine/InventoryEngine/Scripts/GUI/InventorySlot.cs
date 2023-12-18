@@ -61,7 +61,8 @@ namespace MoreMountains.InventoryEngine
 				{
 					SetIcon(item.Icon);
 					SetQuantity(item.Quantity);
-				}
+                    Debug.Log("아이템 그림");
+                }
 				else
 				{
 					DisableIconAndQuantity();

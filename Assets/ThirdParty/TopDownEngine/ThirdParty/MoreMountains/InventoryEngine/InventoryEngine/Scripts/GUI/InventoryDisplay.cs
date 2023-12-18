@@ -195,6 +195,9 @@ namespace MoreMountains.InventoryEngine
 		protected InventorySlot _currentlySelectedSlot;
 		protected InventorySlot _slotPrefab = null;
 
+		//테스트
+		public InventoryItem test;
+
         /// <summary>
         /// 재고 디스플레이 생성 및 설정(보통 검사관의 전용 버튼을 통해 호출됨)
         /// </summary>
@@ -239,10 +242,16 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-        /// <summary>
-        /// 필요할 때 인벤토리 표시 내용을 다시 그립니다(보통 대상 인벤토리가 변경된 후).
-        /// </summary>
-        protected virtual void RedrawInventoryDisplay()
+		protected virtual void Start()
+		{
+   //         MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, test, 0, 0, PlayerID);
+			//Debug.Log($"test.ItemName = {test.ItemName}");
+        }
+
+		/// <summary>
+		/// 필요할 때 인벤토리 표시 내용을 다시 그립니다(보통 대상 인벤토리가 변경된 후).
+		/// </summary>
+		protected virtual void RedrawInventoryDisplay()
 		{
 			InitializeSprites();
 			AddGridLayoutGroup();

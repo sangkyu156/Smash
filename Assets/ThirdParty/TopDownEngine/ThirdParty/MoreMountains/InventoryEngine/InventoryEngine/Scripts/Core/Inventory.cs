@@ -231,9 +231,10 @@ namespace MoreMountains.InventoryEngine
                     Debug.Log("아이템 추가3");
                 }
 			}
-            // 아직 여기에 있다면 사용 가능한 첫 번째 슬롯에 항목을 추가합니다.
-            MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
-			return true;
+			// 아직 여기에 있다면 사용 가능한 첫 번째 슬롯에 항목을 추가합니다.
+			MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
+			Debug.Log("아이템 추가4");
+            return true;
 		}
 
         /// <summary>
