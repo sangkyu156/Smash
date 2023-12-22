@@ -10,60 +10,60 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace MoreMountains.InventoryEngine
 {
 	[Serializable]
-	/// <summary>
-	/// Base inventory class. 
-	/// Will handle storing items, saving and loading its content, adding items to it, removing items, equipping them, etc.
-	/// </summary>
-	public class Inventory : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEventListener<MMGameEvent>
+    /// <summary>
+    /// 인벤토리 기본 클래스.
+    /// 아이템 저장, 콘텐츠 저장 및 로드, 아이템 추가, 아이템 제거, 장착 등을 처리합니다.
+    /// </summary>
+    public class Inventory : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEventListener<MMGameEvent>
 	{
 		public static List<Inventory> RegisteredInventories;
-        
-		/// The different possible inventory types, main are regular, equipment will have special behaviours (use them for slots where you put the equipped weapon/armor/etc).
-		public enum InventoryTypes { Main, Equipment }
 
-		[Header("Player ID")] 
-		/// a unique ID used to identify the owner of this inventory
-		[Tooltip("a unique ID used to identify the owner of this inventory")]
+        /// 가능한 다양한 인벤토리 유형은 기본이며, 장비는 특별한 동작을 갖습니다(장착된 무기/방어구 등을 넣는 슬롯에 사용).
+        public enum InventoryTypes { Main, Equipment }
+
+		[Header("Player ID")]
+        /// 이 인벤토리의 소유자를 식별하는 데 사용되는 고유 ID
+        [Tooltip("이 인벤토리의 소유자를 식별하는 데 사용되는 고유 ID")]
 		public string PlayerID = "Player1";
 
-		/// the complete list of inventory items in this inventory
-		[Tooltip("This is a realtime view of your Inventory's contents. Don't modify this list via the inspector, it's visible for control purposes only.")]
+        /// 이 인벤토리에 있는 인벤토리 항목의 전체 목록
+        [Tooltip("이는 인벤토리 내용을 실시간으로 보여줍니다. 검사기를 통해 이 목록을 수정하지 마십시오. 제어 목적으로만 표시됩니다.")]
 		[MMReadOnly]
 		public InventoryItem[] Content;
 
 		[Header("Inventory Type")]
-		/// whether this inventory is a main inventory or equipment one
-		[Tooltip("Here you can define your inventory's type. Main are 'regular' inventories. Equipment inventories will be bound to a certain item class and have dedicated options.")]
+        /// 이 인벤토리가 주 인벤토리인지 장비 인벤토리인지 여부
+        [Tooltip("여기에서 인벤토리 유형을 정의할 수 있습니다. 메인은 'regular' 재고입니다. 장비 인벤토리는 특정 아이템 클래스에 귀속되며 전용 옵션을 갖습니다.")]
 		public InventoryTypes InventoryType = InventoryTypes.Main;
 
 		[Header("Target Transform")]
-		[Tooltip("The TargetTransform is any transform in your scene at which objects dropped from the inventory will spawn.")]
-		/// the transform at which objects will be spawned when dropped
-		public Transform TargetTransform;
+		[Tooltip("TargetTransform은 인벤토리에서 떨어진 개체가 생성되는 장면의 모든 변환입니다.")]
+        /// 객체를 떨어뜨렸을 때 생성될 변환
+        public Transform TargetTransform;
 
-		[Header("Persistence")]
-		[Tooltip("Here you can define whether or not this inventory should respond to Load and Save events. If you don't want to have your inventory saved to disk, set this to false. You can also have it reset on start, to make sure it's always empty at the start of this level.")]
-		/// whether this inventory will be saved and loaded
-		public bool Persistent = true;
-		/// whether or not this inventory should be reset on start
-		public bool ResetThisInventorySaveOnStart = false;
+		[Header("Persistence(고집)")]
+		[Tooltip("여기서 이 인벤토리가 로드 및 저장 이벤트에 응답해야 하는지 여부를 정의할 수 있습니다. 인벤토리를 디스크에 저장하지 않으려면 false로 설정하세요. 또한 시작 시 재설정하여 이 레벨이 시작될 때 항상 비어 있도록 할 수도 있습니다.")]
+        /// 이 인벤토리가 저장되고 로드되는지 여부
+        public bool Persistent = true;
+        /// 시작 시 이 인벤토리를 재설정해야 하는지 여부
+        public bool ResetThisInventorySaveOnStart = false;
         
 		[Header("Debug")]
-		/// If true, will draw the contents of the inventory in its inspector
-		[Tooltip("The Inventory component is like the database and controller part of your inventory. It won't show anything on screen, you'll need also an InventoryDisplay for that. Here you can decide whether or not you want to output a debug content in the inspector (useful for debugging).")]
+        /// true인 경우 검사기에서 인벤토리의 내용을 그립니다.
+        [Tooltip("인벤토리 구성 요소는 인벤토리의 데이터베이스 및 컨트롤러 부분과 같습니다. 화면에는 아무것도 표시되지 않으므로 InventoryDisplay도 필요합니다. 여기에서 검사기에서 디버그 콘텐츠를 출력할지 여부를 결정할 수 있습니다(디버깅에 유용함).")]
 		public bool DrawContentInInspector = false;
 
-		/// the owner of the inventory (for games where you have multiple characters)
-		public GameObject Owner { get; set; }
+        /// 인벤토리 소유자(여러 캐릭터가 있는 게임의 경우)
+        public GameObject Owner { get; set; }
 
-		/// The number of free slots in this inventory
-		public int NumberOfFreeSlots => Content.Length - NumberOfFilledSlots;
+        /// 이 인벤토리의 여유 슬롯 수
+        public int NumberOfFreeSlots => Content.Length - NumberOfFilledSlots;
 
-		/// whether or not the inventory is full (doesn't have any remaining free slots)
-		public bool IsFull => NumberOfFreeSlots <= 0;
+        /// 인벤토리가 가득 차 있는지 여부(남은 여유 슬롯이 없음)
+        public bool IsFull => NumberOfFreeSlots <= 0;
 
-		/// The number of filled slots 
-		public int NumberOfFilledSlots
+        /// 채워진 슬롯 수
+        public int NumberOfFilledSlots
 		{
 			get
 			{
@@ -107,13 +107,13 @@ namespace MoreMountains.InventoryEngine
 		public static string _saveFolderName = "InventoryEngine/";
 		public static string _saveFileExtension = ".inventory";
 
-		/// <summary>
-		/// Returns (if found) an inventory matching the searched name and playerID
-		/// </summary>
-		/// <param name="inventoryName"></param>
-		/// <param name="playerID"></param>
-		/// <returns></returns>
-		public static Inventory FindInventory(string inventoryName, string playerID)
+        /// <summary>
+        /// 검색된 이름 및 플레이어 ID와 일치하는 인벤토리를 반환합니다(발견된 경우).
+        /// </summary>
+        /// <param name="inventoryName"></param>
+        /// <param name="playerID"></param>
+        /// <returns></returns>
+        public static Inventory FindInventory(string inventoryName, string playerID)
 		{
 			if (inventoryName == null)
 			{
@@ -130,18 +130,28 @@ namespace MoreMountains.InventoryEngine
 			return null;
 		}
 
-		/// <summary>
-		/// On Awake we register this inventory
-		/// </summary>
-		protected virtual void Awake()
+		//테스트
+		public InventoryItem testItem;
+
+        IEnumerator addItemTest(InventoryItem item, int ss)
+		{
+			yield return null;
+			AddItem(item, ss);
+        }
+
+        /// <summary>
+        /// Awake에서는 이 인벤토리를 등록합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			RegisterInventory();
-		}
+			StartCoroutine(addItemTest(testItem, 1));
+        }
 
-		/// <summary>
-		/// Registers this inventory so other scripts can access it later on
-		/// </summary>
-		protected virtual void RegisterInventory()
+        /// <summary>
+        /// 나중에 다른 스크립트에서 액세스할 수 있도록 이 인벤토리를 등록합니다.
+        /// </summary>
+        protected virtual void RegisterInventory()
 		{
 			if (RegisteredInventories == null)
 			{
@@ -160,11 +170,11 @@ namespace MoreMountains.InventoryEngine
 			RegisteredInventories.Add(this);
 		}
 
-		/// <summary>
-		/// Sets the owner of this inventory, useful to apply the effect of an item for example.
-		/// </summary>
-		/// <param name="newOwner">New owner.</param>
-		public virtual void SetOwner(GameObject newOwner)
+        /// <summary>
+        /// 예를 들어 아이템의 효과를 적용하는 데 유용한 이 인벤토리의 소유자를 설정합니다.
+        /// </summary>
+        /// <param name="newOwner">New owner.</param>
+        public virtual void SetOwner(GameObject newOwner)
 		{
 			Owner = newOwner;
 		}
@@ -172,14 +182,14 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// 지정된 유형의 항목을 추가하려고 시도합니다. 이는 이름 기반이라는 점에 유의하세요.
         /// </summary>
-        /// <returns><c>true</c>, if item was added, <c>false</c> if it couldn't be added (item null, inventory full).</returns>
+        /// <returns><c>true</c>, 항목이 추가된 경우, <c>false</c> 추가할 수 없는 경우(아이템 없음, 인벤토리 가득 참)</returns>
         /// <param name="itemToAdd">Item to add.</param>
         public virtual bool AddItem(InventoryItem itemToAdd, int quantity)
 		{
             // 추가할 항목이 null이면 아무것도 하지 않고 종료합니다.
             if (itemToAdd == null)
 			{
-				Debug.LogWarning(this.name + " : The item you want to add to the inventory is null");
+				Debug.LogWarning(this.name + " : 인벤토리에 추가하려는 항목이 null입니다.");
 				return false;
 			}
 
@@ -267,29 +277,29 @@ namespace MoreMountains.InventoryEngine
             
 			Content[destinationIndex] = itemToAdd.Copy();
 			Content[destinationIndex].Quantity = tempQuantity;
-            
-			// if we're still here, we add the item in the first available slot
-			MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
+
+            // 아직 여기에 있다면 사용 가능한 첫 번째 슬롯에 항목을 추가합니다.
+            MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
 			return true;
 		}
 
-		/// <summary>
-		/// Tries to move the item at the first parameter slot to the second slot
-		/// </summary>
-		/// <returns><c>true</c>, if item was moved, <c>false</c> otherwise.</returns>
-		/// <param name="startIndex">Start index.</param>
-		/// <param name="endIndex">End index.</param>
-		public virtual bool MoveItem(int startIndex, int endIndex)
+        /// <summary>
+        /// 첫 번째 매개변수 슬롯의 항목을 두 번째 슬롯으로 이동하려고 합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 항목이 이동된 경우, <c>false</c> 아닐경우.</returns>
+        /// <param name="startIndex">Start index.</param>
+        /// <param name="endIndex">End index.</param>
+        public virtual bool MoveItem(int startIndex, int endIndex)
 		{
 			bool swap = false;
-			// if what we're trying to move is null, this means we're trying to move an empty slot
-			if (InventoryItem.IsNull(Content[startIndex]))
+            // 이동하려는 항목이 null이면 이는 빈 슬롯을 이동하려고 한다는 의미입니다.
+            if (InventoryItem.IsNull(Content[startIndex]))
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to move an empty slot.");
+				Debug.LogWarning("InventoryEngine : 빈 슬롯을 이동하려고 합니다.");
 				return false;
 			}
-			// if both objects are swappable, we'll swap them
-			if (Content[startIndex].CanSwapObject)
+            // 두 객체가 모두 교체 가능하면 교체하겠습니다.
+            if (Content[startIndex].CanSwapObject)
 			{
 				if (!InventoryItem.IsNull(Content[endIndex]))
 				{
@@ -299,24 +309,24 @@ namespace MoreMountains.InventoryEngine
 					}
 				}
 			}
-			// if the target slot is empty
-			if (InventoryItem.IsNull(Content[endIndex]))
+            // 대상 슬롯이 비어 있는 경우
+            if (InventoryItem.IsNull(Content[endIndex]))
 			{
-				// we create a copy of our item to the destination
-				Content[endIndex] = Content[startIndex].Copy();
-				// we remove the original
-				RemoveItemFromArray(startIndex);
-				// we mention that the content has changed and the inventory probably needs a redraw if there's a GUI attached to it
-				MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
+                // 우리는 목적지에 항목의 복사본을 만듭니다
+                Content[endIndex] = Content[startIndex].Copy();
+                // 우리는 원본을 제거합니다
+                RemoveItemFromArray(startIndex);
+                // 콘텐츠가 변경되었으며 GUI가 첨부된 경우 인벤토리를 다시 그려야 할 수도 있다고 언급했습니다.
+                MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
 				return true;
 			}
 			else
 			{
-				// if we can swap objects, we'll try and do it, otherwise we return false as the slot we target is not null
-				if (swap)
+                // 객체를 교환할 수 있으면 시도해 보겠습니다. 그렇지 않으면 대상 슬롯이 null이 아니므로 false를 반환합니다.
+                if (swap)
 				{
-					// we swap our items
-					InventoryItem tempItem = Content[endIndex].Copy();
+                    // 우리는 물건을 교환한다
+                    InventoryItem tempItem = Content[endIndex].Copy();
 					Content[endIndex] = Content[startIndex].Copy();
 					Content[startIndex] = tempItem;
 					MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
@@ -329,33 +339,33 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// This method lets you move the item at startIndex to the chosen targetInventory, at an optional endIndex there
-		/// </summary>
-		/// <param name="startIndex"></param>
-		/// <param name="targetInventory"></param>
-		/// <param name="endIndex"></param>
-		/// <returns></returns>
-		public virtual bool MoveItemToInventory(int startIndex, Inventory targetInventory, int endIndex = -1)
+        /// <summary>
+        /// 이 방법을 사용하면 startIndex의 항목을 선택한 targetInventory(선택 사항인 endIndex)로 이동할 수 있습니다.
+        /// </summary>
+        /// <param name="startIndex"></param>
+        /// <param name="targetInventory"></param>
+        /// <param name="endIndex"></param>
+        /// <returns></returns>
+        public virtual bool MoveItemToInventory(int startIndex, Inventory targetInventory, int endIndex = -1)
 		{
-			// if what we're trying to move is null, this means we're trying to move an empty slot
-			if (InventoryItem.IsNull(Content[startIndex]))
+            // 이동하려는 항목이 null이면 이는 빈 슬롯을 이동하려고 한다는 의미입니다.
+            if (InventoryItem.IsNull(Content[startIndex]))
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to move an empty slot.");
+				Debug.LogWarning("InventoryEngine : 빈 슬롯을 이동하려고 합니다.");
 				return false;
 			}
-            
-			// if our destination isn't empty, we exit too
-			if ( (endIndex >=0) && (!InventoryItem.IsNull(targetInventory.Content[endIndex])) )
+
+            // 목적지가 비어 있지 않으면 우리도 떠납니다.
+            if ( (endIndex >=0) && (!InventoryItem.IsNull(targetInventory.Content[endIndex])) )
 			{
-				Debug.LogWarning("InventoryEngine : the destination slot isn't empty, can't move.");
+				Debug.LogWarning("InventoryEngine : 대상 슬롯이 비어 있지 않아 이동할 수 없습니다.");
 				return false;
 			}
 
 			InventoryItem itemToMove = Content[startIndex].Copy();
-            
-			// if we've specified a destination index, we use it, otherwise we add normally
-			if (endIndex >= 0)
+
+            // 대상 인덱스를 지정했다면 이를 사용하고, 그렇지 않으면 정상적으로 추가합니다.
+            if (endIndex >= 0)
 			{
 				targetInventory.AddItemAt(itemToMove, itemToMove.Quantity, endIndex);    
 			}
@@ -363,28 +373,28 @@ namespace MoreMountains.InventoryEngine
 			{
 				targetInventory.AddItem(itemToMove, itemToMove.Quantity);
 			}
-            
-			// we then remove from the original inventory
-			RemoveItem(startIndex, itemToMove.Quantity);
+
+            // 그런 다음 원래 인벤토리에서 제거합니다.
+            RemoveItem(startIndex, itemToMove.Quantity);
 
 			return true;
 		}
 
-		/// <summary>
-		/// Removes the specified item from the inventory.
-		/// </summary>
-		/// <returns><c>true</c>, if item was removed, <c>false</c> otherwise.</returns>
-		/// <param name="itemToRemove">Item to remove.</param>
-		public virtual bool RemoveItem(int i, int quantity)
+        /// <summary>
+        /// 인벤토리에서 지정된 항목을 제거합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 항목이 제거된 경우, <c>false</c> 아닐경우.</returns>
+        /// <param name="itemToRemove">Item to remove.</param>
+        public virtual bool RemoveItem(int i, int quantity)
 		{
 			if (i < 0 || i >= Content.Length)
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to remove an item from an invalid index.");
+				Debug.LogWarning("InventoryEngine : 잘못된 색인에서 항목을 제거하려고 합니다.");
 				return false;
 			}
 			if (InventoryItem.IsNull(Content[i]))
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to remove from an empty slot.");
+				Debug.LogWarning("InventoryEngine : 빈 슬롯에서 제거하려고 합니다.");
 				return false;
 			}
 
@@ -403,24 +413,24 @@ namespace MoreMountains.InventoryEngine
 				return true;
 			}
 		}
-        
-		/// <summary>
-		/// Removes the specified quantity of the item matching the specified itemID
-		/// </summary>
-		/// <param name="itemID"></param>
-		/// <param name="quantity"></param>
-		/// <returns></returns>
-		public virtual bool RemoveItemByID(string itemID, int quantity)
+
+        /// <summary>
+        /// 지정된 itemID와 일치하는 항목의 지정된 수량을 제거합니다.
+        /// </summary>
+        /// <param name="itemID"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public virtual bool RemoveItemByID(string itemID, int quantity)
 		{
 			if (quantity < 1)
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to remove an incorrect quantity ("+quantity+") from your inventory.");
+				Debug.LogWarning("InventoryEngine : 재고에서 잘못된 수량(" + quantity + ")을 제거하려고 합니다.");
 				return false;
 			}
             
 			if (itemID == null || itemID == "")
 			{
-				Debug.LogWarning("InventoryEngine : you're trying to remove an item but itemID hasn't been specified.");
+				Debug.LogWarning("InventoryEngine : 항목을 제거하려고 하는데 항목 ID가 지정되지 않았습니다.");
 				return false;
 			}
 
@@ -442,12 +452,12 @@ namespace MoreMountains.InventoryEngine
 			return false;
 		}
 
-		/// <summary>
-		/// Destroys the item stored at index i
-		/// </summary>
-		/// <returns><c>true</c>, if item was destroyed, <c>false</c> otherwise.</returns>
-		/// <param name="i">The index.</param>
-		public virtual bool DestroyItem(int i)
+        /// <summary>
+        /// 인덱스 i에 저장된 항목을 파괴합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 아이템이 파괴된 경우, <c>false</c> 그렇지 않을 경우.</returns>
+        /// <param name="i">The index.</param>
+        public virtual bool DestroyItem(int i)
 		{
 			Content[i] = null;
 
@@ -455,23 +465,23 @@ namespace MoreMountains.InventoryEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Empties the current state of the inventory.
-		/// </summary>
-		public virtual void EmptyInventory()
+        /// <summary>
+        /// 현재 인벤토리 상태를 비웁니다.
+        /// </summary>
+        public virtual void EmptyInventory()
 		{
 			Content = new InventoryItem[Content.Length];
 
 			MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
 		}
 
-		/// <summary>
-		/// Adds the item to content array.
-		/// </summary>
-		/// <returns><c>true</c>, if item to array was added, <c>false</c> otherwise.</returns>
-		/// <param name="itemToAdd">Item to add.</param>
-		/// <param name="quantity">Quantity.</param>
-		protected virtual bool AddItemToArray(InventoryItem itemToAdd, int quantity)
+        /// <summary>
+        /// 콘텐츠 배열에 항목을 추가합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 배열에 항목이 추가된 경우, <c>false</c> 아닐경우.</returns>
+        /// <param name="itemToAdd">Item to add.</param>
+        /// <param name="quantity">Quantity.</param>
+        protected virtual bool AddItemToArray(InventoryItem itemToAdd, int quantity)
 		{
 			if (NumberOfFreeSlots == 0)
 			{
@@ -491,12 +501,12 @@ namespace MoreMountains.InventoryEngine
 			return false;
 		}
 
-		/// <summary>
-		/// Removes the item at index i from the array.
-		/// </summary>
-		/// <returns><c>true</c>, if item from array was removed, <c>false</c> otherwise.</returns>
-		/// <param name="i">The index.</param>
-		protected virtual bool RemoveItemFromArray(int i)
+        /// <summary>
+        /// 배열에서 인덱스 i에 있는 항목을 제거합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 배열의 항목이 제거된 경우, <c>false</c> 아닐경우.</returns>
+        /// <param name="i">The index.</param>
+        protected virtual bool RemoveItemFromArray(int i)
 		{
 			if (i < Content.Length)
 			{
@@ -507,11 +517,11 @@ namespace MoreMountains.InventoryEngine
 			return false;
 		}
 
-		/// <summary>
-		/// Resizes the array to the specified new size
-		/// </summary>
-		/// <param name="newSize">New size.</param>
-		public virtual void ResizeArray(int newSize)
+        /// <summary>
+        /// 배열의 크기를 지정된 새 크기로 조정합니다.
+        /// </summary>
+        /// <param name="newSize">New size.</param>
+        public virtual void ResizeArray(int newSize)
 		{
 			InventoryItem[] temp = new InventoryItem[newSize];
 			for (int i = 0; i < Mathf.Min(newSize, Content.Length); i++)
@@ -521,12 +531,12 @@ namespace MoreMountains.InventoryEngine
 			Content = temp;
 		}
 
-		/// <summary>
-		/// Returns the total quantity of items matching the specified name
-		/// </summary>
-		/// <returns>The quantity.</returns>
-		/// <param name="searchedItem">Searched item.</param>
-		public virtual int GetQuantity(string searchedItemID)
+        /// <summary>
+        /// 지정된 이름과 일치하는 항목의 총 수량을 반환합니다.
+        /// </summary>
+        /// <returns>The quantity.</returns>
+        /// <param name="searchedItem">Searched item.</param>
+        public virtual int GetQuantity(string searchedItemID)
 		{
 			List<int> list = InventoryContains(searchedItemID);
 			int total = 0;
@@ -537,12 +547,12 @@ namespace MoreMountains.InventoryEngine
 			return total;
 		}
 
-		/// <summary>
-		/// Returns a list of all the items in the inventory that match the specified name
-		/// </summary>
-		/// <returns>A list of item matching the search criteria.</returns>
-		/// <param name="searchedType">The searched type.</param>
-		public virtual List<int> InventoryContains(string searchedItemID)
+        /// <summary>
+        /// 지정된 이름과 일치하는 인벤토리의 모든 항목 목록을 반환합니다.
+        /// </summary>
+        /// <returns>검색 기준과 일치하는 항목 목록입니다.</returns>
+        /// <param name="searchedType">검색된 유형입니다.</param>
+        public virtual List<int> InventoryContains(string searchedItemID)
 		{
 			List<int> list = new List<int>();
 
@@ -559,12 +569,12 @@ namespace MoreMountains.InventoryEngine
 			return list;
 		}
 
-		/// <summary>
-		/// Returns a list of all the items in the inventory that match the specified class
-		/// </summary>
-		/// <returns>A list of item matching the search criteria.</returns>
-		/// <param name="searchedType">The searched type.</param>
-		public virtual List<int> InventoryContains(MoreMountains.InventoryEngine.ItemClasses searchedClass)
+        /// <summary>
+        /// 지정된 클래스와 일치하는 인벤토리의 모든 항목 목록을 반환합니다.
+        /// </summary>
+        /// <returns>검색 기준과 일치하는 항목 목록입니다.</returns>
+        /// <param name="searchedType">The searched type.</param>
+        public virtual List<int> InventoryContains(MoreMountains.InventoryEngine.ItemClasses searchedClass)
 		{
 			List<int> list = new List<int>();
 
@@ -582,31 +592,31 @@ namespace MoreMountains.InventoryEngine
 			return list;
 		}
 
-		/// <summary>
-		/// Saves the inventory to a file
-		/// </summary>
-		public virtual void SaveInventory()
+        /// <summary>
+        /// 인벤토리를 파일에 저장합니다.
+        /// </summary>
+        public virtual void SaveInventory()
 		{
 			SerializedInventory serializedInventory = new SerializedInventory();
 			FillSerializedInventory(serializedInventory);
 			MMSaveLoadManager.Save(serializedInventory, DetermineSaveName(), _saveFolderName);
 		}
 
-		/// <summary>
-		/// Tries to load the inventory if a file is present
-		/// </summary>
-		public virtual void LoadSavedInventory()
+        /// <summary>
+        /// 파일이 있는 경우 인벤토리 로드를 시도합니다.
+        /// </summary>
+        public virtual void LoadSavedInventory()
 		{
 			SerializedInventory serializedInventory = (SerializedInventory)MMSaveLoadManager.Load(typeof(SerializedInventory), DetermineSaveName(), _saveFolderName);
 			ExtractSerializedInventory(serializedInventory);
 			MMInventoryEvent.Trigger(MMInventoryEventType.InventoryLoaded, null, this.name, null, 0, 0, PlayerID);
 		}
 
-		/// <summary>
-		/// Fills the serialized inventory for storage
-		/// </summary>
-		/// <param name="serializedInventory">Serialized inventory.</param>
-		protected virtual void FillSerializedInventory(SerializedInventory serializedInventory)
+        /// <summary>
+        /// 보관을 위해 일련번호가 지정된 인벤토리를 채웁니다.
+        /// </summary>
+        /// <param name="serializedInventory">직렬화된 인벤토리.</param>
+        protected virtual void FillSerializedInventory(SerializedInventory serializedInventory)
 		{
 			serializedInventory.InventoryType = InventoryType;
 			serializedInventory.DrawContentInInspector = DrawContentInInspector;
@@ -629,11 +639,11 @@ namespace MoreMountains.InventoryEngine
 
 		protected InventoryItem _loadedInventoryItem;
 
-		/// <summary>
-		/// Extracts the serialized inventory from a file content
-		/// </summary>
-		/// <param name="serializedInventory">Serialized inventory.</param>
-		protected virtual void ExtractSerializedInventory(SerializedInventory serializedInventory)
+        /// <summary>
+        /// 파일 콘텐츠에서 직렬화된 인벤토리를 추출합니다.
+        /// </summary>
+        /// <param name="serializedInventory">Serialized inventory.</param>
+        protected virtual void ExtractSerializedInventory(SerializedInventory serializedInventory)
 		{
 			if (serializedInventory == null)
 			{
@@ -674,22 +684,22 @@ namespace MoreMountains.InventoryEngine
 			return gameObject.name + "_" + PlayerID + _saveFileExtension;
 		}
 
-		/// <summary>
-		/// Destroys any save file 
-		/// </summary>
-		public virtual void ResetSavedInventory()
+        /// <summary>
+        /// 모든 저장 파일을 파괴합니다.
+        /// </summary>
+        public virtual void ResetSavedInventory()
 		{
 			MMSaveLoadManager.DeleteSave(DetermineSaveName(), _saveFolderName);
 			Debug.LogFormat("Inventory save file deleted");
 		}
 
-		/// <summary>
-		/// Triggers the use and potential consumption of the item passed in parameter. You can also specify the item's slot (optional) and index.
-		/// </summary>
-		/// <param name="item">Item.</param>
-		/// <param name="slot">Slot.</param>
-		/// <param name="index">Index.</param>
-		public virtual bool UseItem(InventoryItem item, int index, InventorySlot slot = null)
+        /// <summary>
+        /// 매개변수에 전달된 항목의 사용 및 잠재적 소비를 트리거합니다. 항목의 슬롯(선택 사항)과 색인을 지정할 수도 있습니다.
+        /// </summary>
+        /// <param name="item">Item.</param>
+        /// <param name="slot">Slot.</param>
+        /// <param name="index">Index.</param>
+        public virtual bool UseItem(InventoryItem item, int index, InventorySlot slot = null)
 		{
 			if (InventoryItem.IsNull(item))
 			{
@@ -702,8 +712,8 @@ namespace MoreMountains.InventoryEngine
 			}
 			if (item.Use(PlayerID))
 			{
-				// remove 1 from quantity
-				MMInventoryEvent.Trigger(MMInventoryEventType.ItemUsed, slot, this.name, item.Copy(), 0, index, PlayerID);
+                // 수량에서 1개 제거
+                MMInventoryEvent.Trigger(MMInventoryEventType.ItemUsed, slot, this.name, item.Copy(), 0, index, PlayerID);
 				if (item.Consumable)
 				{
 					RemoveItem(index, item.ConsumeQuantity);    
@@ -712,12 +722,12 @@ namespace MoreMountains.InventoryEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Triggers the use of an item, as specified by its name. Prefer this signature over the previous one if you don't particularly care what slot the item will be taken from in case of duplicates.
-		/// </summary>
-		/// <param name="itemName"></param>
-		/// <returns></returns>
-		public virtual bool UseItem(string itemName)
+        /// <summary>
+        /// 이름에 지정된 대로 항목의 사용을 트리거합니다. 중복되는 경우 항목을 어느 슬롯에서 가져갈지 특별히 신경쓰지 않는 경우 이전 서명보다 이 서명을 선호합니다.
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <returns></returns>
+        public virtual bool UseItem(string itemName)
 		{
 			List<int> list = InventoryContains(itemName);
 			if (list.Count > 0)
@@ -747,38 +757,38 @@ namespace MoreMountains.InventoryEngine
 					MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
 					return;
 				}
-				// if the object is not equipable, we do nothing and exit
-				if (!item.IsEquippable)
+                // 객체가 장착 가능하지 않으면 아무것도 하지 않고 종료합니다.
+                if (!item.IsEquippable)
 				{
 					return;
 				}
-				// if a target equipment inventory is not set, we do nothing and exit
-				if (item.TargetEquipmentInventory(PlayerID) == null)
+                // 대상 장비 인벤토리가 설정되어 있지 않으면 아무것도 하지 않고 종료됩니다.
+                if (item.TargetEquipmentInventory(PlayerID) == null)
 				{
 					Debug.LogWarning("InventoryEngine Warning : " + Content[index].ItemName + "'s target equipment inventory couldn't be found.");
 					return;
 				}
-				// if the object can't be moved, we play an error sound and exit
-				if (!item.CanMoveObject)
+                // 객체를 이동할 수 없으면 오류 소리를 내고 종료합니다.
+                if (!item.CanMoveObject)
 				{
 					MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
 					return;
 				}
-				// if the object can't be equipped if the inventory is full, and if it indeed is, we do nothing and exit
-				if (!item.EquippableIfInventoryIsFull)
+                // 인벤토리가 가득 차면 개체를 장착할 수 없고, 실제로 장착되어 있으면 아무것도 하지 않고 종료합니다.
+                if (!item.EquippableIfInventoryIsFull)
 				{
 					if (item.TargetEquipmentInventory(PlayerID).IsFull)
 					{
 						return;
 					}
 				}
-				// call the equip method of the item
-				if (!item.Equip(PlayerID))
+                // 아이템의 장비 메소드를 호출하세요
+                if (!item.Equip(PlayerID))
 				{
 					return;
 				}
-				// if this is a mono slot inventory, we prepare to swap
-				if (item.TargetEquipmentInventory(PlayerID).Content.Length == 1)
+                // 모노슬롯 인벤토리라면 교체 준비를 합니다
+                if (item.TargetEquipmentInventory(PlayerID).Content.Length == 1)
 				{
 					if (!InventoryItem.IsNull(item.TargetEquipmentInventory(PlayerID).Content[0]))
 					{
@@ -788,16 +798,16 @@ namespace MoreMountains.InventoryEngine
 							&& (item.TargetEquipmentInventory(PlayerID).Content[0].CanSwapObject)
 						)
 						{
-							// we store the item in the equipment inventory
-							oldItem = item.TargetEquipmentInventory(PlayerID).Content[0].Copy();
+                            // 장비 인벤토리에 아이템을 저장합니다
+                            oldItem = item.TargetEquipmentInventory(PlayerID).Content[0].Copy();
 							item.TargetEquipmentInventory(PlayerID).EmptyInventory();
 						}
 					}
 				}
-				// we add one to the target equipment inventory
-				item.TargetEquipmentInventory(PlayerID).AddItem(item.Copy(), item.Quantity);
-				// remove 1 from quantity
-				if (item.MoveWhenEquipped)
+                // 대상 장비 인벤토리에 하나를 추가합니다.
+                item.TargetEquipmentInventory(PlayerID).AddItem(item.Copy(), item.Quantity);
+                // 수량에서 1개 제거
+                if (item.MoveWhenEquipped)
 				{
 					RemoveItem(index, item.Quantity);    
 				}
@@ -817,13 +827,13 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Drops the item, removing it from the inventory and potentially spawning an item on the ground near the character
-		/// </summary>
-		/// <param name="item">Item.</param>
-		/// <param name="index">Index.</param>
-		/// <param name="slot">Slot.</param>
-		public virtual void DropItem(InventoryItem item, int index, InventorySlot slot = null)
+        /// <summary>
+        /// 아이템을 떨어뜨려 인벤토리에서 제거하고 잠재적으로 캐릭터 근처 땅에 아이템을 생성합니다.
+        /// </summary>
+        /// <param name="item">Item.</param>
+        /// <param name="index">Index.</param>
+        /// <param name="slot">Slot.</param>
+        public virtual void DropItem(InventoryItem item, int index, InventorySlot slot = null)
 		{
 			if (InventoryItem.IsNull(item))
 			{
@@ -857,27 +867,27 @@ namespace MoreMountains.InventoryEngine
 
 		public virtual void UnEquipItem(InventoryItem item, int index, InventorySlot slot = null)
 		{
-			// if there's no item at this slot, we trigger an error
-			if (InventoryItem.IsNull(item))
+            // 이 슬롯에 항목이 없으면 오류가 발생합니다.
+            if (InventoryItem.IsNull(item))
 			{
 				MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
 				return;
 			}
-			// if we're not in an equipment inventory, we trigger an error
-			if (InventoryType != InventoryTypes.Equipment)
+            // 장비 인벤토리에 없으면 오류가 발생합니다.
+            if (InventoryType != InventoryTypes.Equipment)
 			{
 				MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
 				return;
 			}
-			// we trigger the unequip effect of the item
-			if (!item.UnEquip(PlayerID))
+            // 아이템의 장착 해제 효과를 발동시킵니다.
+            if (!item.UnEquip(PlayerID))
 			{
 				return;
 			}
 			MMInventoryEvent.Trigger(MMInventoryEventType.ItemUnEquipped, slot, this.name, item, item.Quantity, index, PlayerID);
 
-			// if there's a target inventory, we'll try to add the item back to it
-			if (item.TargetInventory(PlayerID) != null)
+            // 대상 인벤토리가 있으면 해당 항목을 다시 해당 인벤토리에 추가하려고 합니다.
+            if (item.TargetInventory(PlayerID) != null)
 			{
 				bool itemAdded = false;
 				if (item.ForceSlotIndex)
@@ -892,28 +902,28 @@ namespace MoreMountains.InventoryEngine
 				{
 					itemAdded = item.TargetInventory(PlayerID).AddItem(item, item.Quantity);    
 				}
-				
-				// if we managed to add the item
-				if (itemAdded)
+
+                // 항목을 추가했다면
+                if (itemAdded)
 				{
 					DestroyItem(index);
 				}
 				else
 				{
-					// if we couldn't (inventory full for example), we drop it to the ground
-					MMInventoryEvent.Trigger(MMInventoryEventType.Drop, slot, this.name, item, item.Quantity, index, PlayerID);
+                    // 할 수 없으면(예를 들어 재고가 가득 찬 경우) 땅에 떨어뜨립니다.
+                    MMInventoryEvent.Trigger(MMInventoryEventType.Drop, slot, this.name, item, item.Quantity, index, PlayerID);
 				}
 			}
 		}
 
-		/// <summary>
-		/// Catches inventory events and acts on them
-		/// </summary>
-		/// <param name="inventoryEvent">Inventory event.</param>
-		public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
+        /// <summary>
+        /// 인벤토리 이벤트를 포착하고 이에 대한 조치를 취합니다.
+        /// </summary>
+        /// <param name="inventoryEvent">Inventory event.</param>
+        public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
 		{
-			// if this event doesn't concern our inventory display, we do nothing and exit
-			if (inventoryEvent.TargetInventoryName != this.name)
+            // 이 이벤트가 재고 표시와 관련이 없으면 아무것도 하지 않고 종료됩니다.
+            if (inventoryEvent.TargetInventoryName != this.name)
 			{
 				return;
 			}
@@ -956,11 +966,11 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// When we catch an MMGameEvent, we do stuff based on its name
-		/// </summary>
-		/// <param name="gameEvent">Game event.</param>
-		public virtual void OnMMEvent(MMGameEvent gameEvent)
+        /// <summary>
+        /// MMGameEvent를 포착하면 이름을 기반으로 작업을 수행합니다.
+        /// </summary>
+        /// <param name="gameEvent">Game event.</param>
+        public virtual void OnMMEvent(MMGameEvent gameEvent)
 		{
 			if ((gameEvent.EventName == "Save") && Persistent)
 			{
@@ -976,19 +986,19 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// On enable, we start listening for MMGameEvents. You may want to extend that to listen to other types of events.
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// 활성화되면 MMGameEvents 수신을 시작합니다. 이를 확장하여 다른 유형의 이벤트를 수신할 수도 있습니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			this.MMEventStartListening<MMGameEvent>();
 			this.MMEventStartListening<MMInventoryEvent>();
 		}
 
-		/// <summary>
-		/// On disable, we stop listening for MMGameEvents. You may want to extend that to stop listening to other types of events.
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// 비활성화하면 MMGameEvents 수신이 중지됩니다. 다른 유형의 이벤트 수신을 중지하기 위해 이를 확장할 수 있습니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			this.MMEventStopListening<MMGameEvent>();
 			this.MMEventStopListening<MMInventoryEvent>();
