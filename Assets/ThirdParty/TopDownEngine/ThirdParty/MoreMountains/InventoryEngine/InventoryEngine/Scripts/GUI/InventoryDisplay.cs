@@ -215,8 +215,8 @@ namespace MoreMountains.InventoryEngine
 				return;
 			}
 
-			// if we also have a sound player component, we set it up too
-			if (this.gameObject.MMGetComponentNoAlloc<InventorySoundPlayer>() != null)
+            // 사운드 플레이어 구성요소도 있는 경우 해당 구성요소도 설정합니다.
+            if (this.gameObject.MMGetComponentNoAlloc<InventorySoundPlayer>() != null)
 			{
 				this.gameObject.MMGetComponentNoAlloc<InventorySoundPlayer> ().SetupInventorySoundPlayer ();
 			}
@@ -241,12 +241,6 @@ namespace MoreMountains.InventoryEngine
 				RedrawInventoryDisplay (); 	
 			}
 		}
-
-		protected virtual void Start()
-		{
-   //         MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, test, 0, 0, PlayerID);
-			//Debug.Log($"test.ItemName = {test.ItemName}");
-        }
 
 		/// <summary>
 		/// 필요할 때 인벤토리 표시 내용을 다시 그립니다(보통 대상 인벤토리가 변경된 후).

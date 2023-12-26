@@ -85,7 +85,7 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 			_hideCoroutine = StartCoroutine(HideCo());
-            Debug.Log("안보여짐");
+            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen = false;
         }
 
 		protected virtual IEnumerator HideCo()

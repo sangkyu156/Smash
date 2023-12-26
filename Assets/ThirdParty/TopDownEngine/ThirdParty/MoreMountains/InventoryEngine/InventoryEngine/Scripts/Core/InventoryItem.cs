@@ -23,8 +23,8 @@ namespace MoreMountains.InventoryEngine
     public class InventoryItem : ScriptableObject 
 	{
 		[Header("ID and Target")]
-		/// the (unique) ID of the item
-		[Tooltip("the (unique) ID of the item")]
+        /// 항목의 (고유) ID
+        [Tooltip("항목의 (고유) ID")]
 		public string ItemID;
         /// 이 아이템이 저장될 인벤토리 이름
         [Tooltip("이 아이템이 저장될 인벤토리 이름")]
@@ -32,130 +32,130 @@ namespace MoreMountains.InventoryEngine
         /// 이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.
         [Tooltip("이것이 true인 경우 항목은 인벤토리에 공간이 있는 어디에도 추가되지 않고 대신 지정된 TargetIndex 슬롯에 추가됩니다.")]
 		public bool ForceSlotIndex = false;
-		/// if ForceSlotIndex is true, this is the index at which the item will be added in the target inventory
-		[Tooltip("if ForceSlotIndex is true, this is the index at which the item will be added in the target inventory")]
+        /// ForceSlotIndex가 true인 경우 대상 인벤토리에 항목이 추가될 인덱스입니다.
+        [Tooltip("ForceSlotIndex가 true인 경우 대상 인벤토리에 항목이 추가될 인덱스입니다.")]
 		[MMCondition("ForceSlotIndex", true)]
 		public int TargetIndex = 0;
 
 		[Header("Permissions")]
-		/// whether or not this item can be "used" (via the Use method) - important, this is only the INITIAL state of this object, IsUsable is to be used anytime after that
-		[Tooltip("whether or not this item can be 'used' (via the Use method) - important, this is only the INITIAL state of this object, IsUsable is to be used anytime after that")]
+        /// 이 항목을 "사용"할 수 있는지 여부(Use 메서드를 통해) - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsUsable은 그 이후 언제든지 사용됩니다.
+        [Tooltip("이 항목을 \"사용\"할 수 있는지 여부(Use 메서드를 통해) - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsUsable은 그 이후 언제든지 사용됩니다.")]
 		public bool Usable = false;
-		/// if this is true, calling Use on that object will consume one unit of it
-		[Tooltip("if this is true, calling Use on that object will consume one unit of it")]
+        /// 이것이 사실이라면 해당 객체에 대해 Use를 호출하면 해당 객체의 한 단위가 소비됩니다.
+        [Tooltip("이것이 사실이라면 해당 객체에 대해 Use를 호출하면 해당 객체의 한 단위가 소비됩니다.")]
 		[MMCondition("Usable", true)] 
 		public bool Consumable = true;
-		/// if this item is consumable, determines how many will be consumed per use (usually one)
-		[Tooltip("if this item is consumable, determines how many will be consumed per use (usually one)")]
+        /// 이 아이템이 소모품인 경우, 한 번 사용 시 소모되는 개수(보통 1개)를 결정합니다.
+        [Tooltip("이 아이템이 소모품인 경우, 한 번 사용 시 소모되는 개수(보통 1개)를 결정합니다.")]
 		[MMCondition("Consumable", true)] 
 		public int ConsumeQuantity = 1;
-		/// whether or not this item can be equipped - important, this is only the INITIAL state of this object, IsEquippable is to be used anytime after that
-		[Tooltip("whether or not this item can be equipped - important, this is only the INITIAL state of this object, IsEquippable is to be used anytime after that")]
+        /// 이 아이템을 장착할 수 있는지 여부 - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsEquippable은 그 이후 언제든지 사용됩니다.
+        [Tooltip("이 아이템을 장착할 수 있는지 여부 - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsEquippable은 그 이후 언제든지 사용됩니다.")]
 		public bool Equippable = false;
-		/// whether or not this item can be equipped if its target inventory is full
-		[Tooltip("whether or not this item can be equipped if its target inventory is full")]
+        /// 대상 인벤토리가 가득 찬 경우 이 아이템을 장착할 수 있는지 여부
+        [Tooltip("대상 인벤토리가 가득 찬 경우 이 아이템을 장착할 수 있는지 여부")]
 		[MMCondition("Equippable", true)]
 		public bool EquippableIfInventoryIsFull = true;
-		/// if this is true, this item will be removed from its original inventory when equipped, and moved to its EquipmentInventory
-		[Tooltip("if this is true, this item will be removed from its original inventory when equipped, and moved to its EquipmentInventory")]
+        /// 이것이 사실이라면 이 아이템은 장착 시 원래 인벤토리에서 제거되고 EquipmentInventory로 이동됩니다.
+        [Tooltip("이것이 사실이라면 이 아이템은 장착 시 원래 인벤토리에서 제거되고 EquipmentInventory로 이동됩니다.")]
 		[MMCondition("Equippable", true)]
 		public bool MoveWhenEquipped = true;
-		
-		/// if this is true, this item can be dropped
-		[Tooltip("if this is true, this item can be dropped")]
+
+        /// 이것이 사실이라면 이 아이템은 드랍될 수 있습니다
+        [Tooltip("이것이 사실이라면 이 아이템은 드랍될 수 있습니다")]
 		public bool Droppable = true;
-		/// if this is true, objects can be moved
-		[Tooltip("if this is true, objects can be moved")]
+        /// 이것이 사실이라면 객체를 이동할 수 있습니다.
+        [Tooltip("이것이 사실이라면 객체를 이동할 수 있습니다.")]
 		public bool CanMoveObject=true;
-		/// if this is true, objects can be swapped with another object
-		[Tooltip("if this is true, objects can be swapped with another object")]
+        /// 이것이 사실이라면 객체는 다른 객체로 교체될 수 있습니다.
+        [Tooltip("이것이 사실이라면 객체는 다른 객체로 교체될 수 있습니다.")]
 		public bool CanSwapObject=true;
-		/// a set of properties defining whether or not to show inventory action buttons when that item is selected 
-		[Tooltip("a set of properties defining whether or not to show inventory action buttons when that item is selected")]
+        /// 해당 항목이 선택될 때 인벤토리 작업 버튼을 표시할지 여부를 정의하는 속성 집합
+        [Tooltip("해당 항목이 선택될 때 인벤토리 작업 버튼을 표시할지 여부를 정의하는 속성 집합")]
 		public InventoryItemDisplayProperties DisplayProperties;
-		
-		/// whether or not this object can be used
-		public virtual bool IsUsable {  get { return Usable;  } }
-		/// whether or not this object can be equipped
-		public virtual bool IsEquippable { get { return Equippable; } }
+
+        /// 이 객체를 사용할 수 있는지 여부
+        public virtual bool IsUsable {  get { return Usable;  } }
+        /// 이 객체를 사용할 수 있는지 여부
+        public virtual bool IsEquippable { get { return Equippable; } }
 
 		[HideInInspector]
-		/// the base quantity of this item
-		public int Quantity = 1;
+        /// 이 품목의 기본 수량
+        public int Quantity = 1;
 
 		[Header("Basic info")]
-		/// the name of the item - will be displayed in the details panel
-		[Tooltip("the name of the item - will be displayed in the details panel")]
+        /// 항목 이름 - 세부정보 패널에 표시됩니다.
+        [Tooltip("항목 이름 - 세부정보 패널에 표시됩니다.")]
 		public string ItemName;
-		/// the item's short description to display in the details panel
-		[TextArea]
-		[Tooltip("the item's short description to display in the details panel")]
+        /// 세부정보 패널에 표시할 항목의 간단한 설명
+        [TextArea]
+		[Tooltip("세부정보 패널에 표시할 항목의 간단한 설명")]
 		public string ShortDescription;
 		[TextArea]
-		/// the item's long description to display in the details panel
-		[Tooltip("the item's long description to display in the details panel")]
+        /// 세부정보 패널에 표시할 항목의 긴 설명
+        [Tooltip("세부정보 패널에 표시할 항목의 긴 설명")]
 		public string Description;
 
 		[Header("Image")]
-		/// the icon that will be shown on the inventory's slot
-		[Tooltip("the icon that will be shown on the inventory's slot")]
+        /// 인벤토리 슬롯에 표시될 아이콘
+        [Tooltip("인벤토리 슬롯에 표시될 아이콘")]
 		public Sprite Icon;
 
 		[Header("Prefab Drop")]
-		/// the prefab to instantiate when the item is dropped
-		[Tooltip("the prefab to instantiate when the item is dropped")]
+        /// 항목을 떨어뜨렸을 때 인스턴스화할 프리팹
+        [Tooltip("항목을 떨어뜨렸을 때 인스턴스화할 프리팹")]
 		public GameObject Prefab;
-		/// if this is true, the quantity of the object will be forced to PrefabDropQuantity when dropped
-		[Tooltip("if this is true, the quantity of the object will be forced to PrefabDropQuantity when dropped")]
+        /// 이것이 사실인 경우, 삭제 시 객체의 수량은 강제로 PrefabDropQuantity로 설정됩니다.
+        [Tooltip("이것이 사실인 경우, 삭제 시 객체의 수량은 강제로 PrefabDropQuantity로 설정됩니다.")]
 		public bool ForcePrefabDropQuantity = false;
-		/// the quantity to force on the spawned item if ForcePrefabDropQuantity is true
-		[Tooltip("the quantity to force on the spawned item if ForcePrefabDropQuantity is true")]
+        /// ForcePrefabDropQuantity가 true인 경우 생성된 항목에 강제할 수량입니다.
+        [Tooltip("ForcePrefabDropQuantity가 true인 경우 생성된 항목에 강제할 수량입니다.")]
 		[MMCondition("ForcePrefabDropQuantity", true)]
 		public int PrefabDropQuantity = 1;
-		/// the minimal distance at which the object should be spawned when dropped
-		[Tooltip("the minimal distance at which the object should be spawned when dropped")]
+        /// 객체를 떨어뜨렸을 때 생성되어야 하는 최소 거리
+        [Tooltip("객체를 떨어뜨렸을 때 생성되어야 하는 최소 거리")]
 		public MMSpawnAroundProperties DropProperties;
 
 		[Header("Inventory Properties")]
-		/// If this object can be stacked (multiple instances in a single inventory slot), you can specify here the maximum size of that stack.
-		[Tooltip("If this object can be stacked (multiple instances in a single inventory slot), you can specify here the maximum size of that stack.")]
+        /// 이 개체를 쌓을 수 있는 경우(단일 인벤토리 슬롯에 여러 인스턴스) 여기에서 해당 스택의 최대 크기를 지정할 수 있습니다.
+        [Tooltip("이 개체를 쌓을 수 있는 경우(단일 인벤토리 슬롯에 여러 인스턴스) 여기에서 해당 스택의 최대 크기를 지정할 수 있습니다.")]
 		public int MaximumStack = 1;
-		/// the class of the item
-		[Tooltip("the class of the item")]
+        /// 아이템의 클래스
+        [Tooltip("아이템의 클래스")]
 		public ItemClasses ItemClass;
 
 		[Header("Equippable")]
-		/// If this item is equippable, you can set here its target inventory name (for example ArmorInventory). Of course you'll need an inventory with a matching name in your scene.
-		[Tooltip("If this item is equippable, you can set here its target inventory name (for example ArmorInventory). Of course you'll need an inventory with a matching name in your scene.")]
+        /// 이 아이템을 장착할 수 있는 경우 여기에서 대상 인벤토리 이름(예: ArmorInventory)을 설정할 수 있습니다. 물론 장면에 이름이 일치하는 인벤토리가 필요합니다.
+        [Tooltip("이 아이템을 장착할 수 있는 경우 여기에서 대상 인벤토리 이름(예: ArmorInventory)을 설정할 수 있습니다. 물론 장면에 이름이 일치하는 인벤토리가 필요합니다.")]
 		public string TargetEquipmentInventoryName;
-		/// the sound the item should play when equipped (optional)
-		[Tooltip("the sound the item should play when equipped (optional)")]
+        /// 아이템을 장착했을 때 재생되어야 하는 소리(선택 사항)
+        [Tooltip("아이템을 장착했을 때 재생되어야 하는 소리(선택 사항)")]
 		public AudioClip EquippedSound;
 
 		[Header("Usable")]
-		/// If this item can be used, you can set here a sound to play when it gets used, if you don't a default sound will be played.
-		[Tooltip("If this item can be used, you can set here a sound to play when it gets used, if you don't a default sound will be played.")]
+        /// 이 항목을 사용할 수 있는 경우 여기에서 사용할 때 재생할 소리를 설정할 수 있습니다. 그렇지 않은 경우 기본 소리가 재생됩니다.
+        [Tooltip("이 항목을 사용할 수 있는 경우 여기에서 사용할 때 재생할 소리를 설정할 수 있습니다. 그렇지 않은 경우 기본 소리가 재생됩니다.")]
 		public AudioClip UsedSound;
 
 		[Header("Sounds")]
-		/// the sound the item should play when moved (optional)
-		[Tooltip("the sound the item should play when moved (optional)")]
+        /// 항목을 이동할 때 재생할 소리(선택 사항)
+        [Tooltip("항목을 이동할 때 재생할 소리(선택 사항)")]
 		public AudioClip MovedSound;
-		/// the sound the item should play when dropped (optional)
-		[Tooltip("the sound the item should play when dropped (optional)")]
+        /// 항목을 떨어뜨렸을 때 재생되어야 하는 소리(선택 사항)
+        [Tooltip("항목을 떨어뜨렸을 때 재생되어야 하는 소리(선택 사항)")]
 		public AudioClip DroppedSound;
-		/// if this is set to false, default sounds won't be used and no sound will be played
-		[Tooltip("if this is set to false, default sounds won't be used and no sound will be played")]
+        /// false로 설정하면 기본 사운드가 사용되지 않고 사운드가 재생되지 않습니다.
+        [Tooltip("false로 설정하면 기본 사운드가 사용되지 않고 사운드가 재생되지 않습니다.")]
 		public bool UseDefaultSoundsIfNull = true;
 
 		protected Inventory _targetInventory = null;
 		protected Inventory _targetEquipmentInventory = null;
 
-		/// <summary>
-		/// Gets the target inventory.
-		/// </summary>
-		/// <value>The target inventory.</value>
-		public virtual Inventory TargetInventory(string playerID)
+        /// <summary>
+        /// 대상 인벤토리를 가져옵니다.
+        /// </summary>
+        /// <value>대상 인벤토리입니다.</value>
+        public virtual Inventory TargetInventory(string playerID)
 		{ 
 			if (TargetInventoryName == null)
 			{
@@ -165,11 +165,11 @@ namespace MoreMountains.InventoryEngine
 			return _targetInventory;
 		}
 
-		/// <summary>
-		/// Gets the target equipment inventory.
-		/// </summary>
-		/// <value>The target equipment inventory.</value>
-		public virtual Inventory TargetEquipmentInventory(string playerID)
+        /// <summary>
+        /// 대상 장비 인벤토리를 가져옵니다.
+        /// </summary>
+        /// <value>대상 장비 인벤토리입니다.</value>
+        public virtual Inventory TargetEquipmentInventory(string playerID)
 		{ 
 			if (TargetEquipmentInventoryName == null)
 			{
@@ -179,12 +179,12 @@ namespace MoreMountains.InventoryEngine
 			return _targetEquipmentInventory;
 		}
 
-		/// <summary>
-		/// Determines if an item is null or not
-		/// </summary>
-		/// <returns><c>true</c> if is null the specified item; otherwise, <c>false</c>.</returns>
-		/// <param name="item">Item.</param>
-		public static bool IsNull(InventoryItem item)
+        /// <summary>
+        /// 항목이 null인지 여부를 결정합니다.
+        /// </summary>
+        /// <returns><c>true</c> null인 경우 지정된 항목입니다. 그렇지 않으면, <c>false</c>.</returns>
+        /// <param name="item">Item.</param>
+        public static bool IsNull(InventoryItem item)
 		{
 			if (item==null)
 			{
@@ -201,10 +201,10 @@ namespace MoreMountains.InventoryEngine
 			return false;
 		}
 
-		/// <summary>
-		/// Copies an item into a new one
-		/// </summary>
-		public virtual InventoryItem Copy()
+        /// <summary>
+        /// 항목을 새 항목으로 복사합니다.
+        /// </summary>
+        public virtual InventoryItem Copy()
 		{
 			string name = this.name;
 			InventoryItem clone = UnityEngine.Object.Instantiate(this) as InventoryItem;
@@ -212,15 +212,15 @@ namespace MoreMountains.InventoryEngine
 			return clone;
 		}
 
-		/// <summary>
-		/// Spawns the associated prefab
-		/// </summary>
-		public virtual void SpawnPrefab(string playerID)
+        /// <summary>
+        /// 연관된 프리팹을 생성합니다.
+        /// </summary>
+        public virtual void SpawnPrefab(string playerID)
 		{
 			if (TargetInventory(playerID) != null)
 			{
-				// if there's a prefab set for the item at this slot, we instantiate it at the specified offset
-				if (Prefab!=null && TargetInventory(playerID).TargetTransform!=null)
+                // 이 슬롯에 항목에 대한 프리팹 세트가 있는 경우 지정된 오프셋에서 인스턴스화합니다.
+                if (Prefab!=null && TargetInventory(playerID).TargetTransform!=null)
 				{
 					GameObject droppedObject=(GameObject)Instantiate(Prefab);
 					if (droppedObject.GetComponent<ItemPicker>()!=null)
@@ -238,34 +238,34 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// What happens when the object is picked - override this to add your own behaviors
-		/// </summary>
-		public virtual bool Pick(string playerID) { return true; }
+        /// <summary>
+        /// 개체를 선택하면 어떤 일이 발생합니까? 이를 재정의하여 자신만의 동작을 추가하세요.
+        /// </summary>
+        public virtual bool Pick(string playerID) { return true; }
 
-		/// <summary>
-		/// What happens when the object is used - override this to add your own behaviors
-		/// </summary>
-		public virtual bool Use(string playerID) { return true; }
+        /// <summary>
+        /// 객체가 사용될 때 일어나는 일 - 이를 재정의하여 자신만의 동작을 추가하세요.
+        /// </summary>
+        public virtual bool Use(string playerID) { return true; }
 
-		/// <summary>
-		/// What happens when the object is equipped - override this to add your own behaviors
-		/// </summary>
-		public virtual bool Equip(string playerID) { return true; }
+        /// <summary>
+        /// 객체가 장착되면 어떤 일이 발생합니까? 이를 재정의하여 자신만의 동작을 추가하세요.
+        /// </summary>
+        public virtual bool Equip(string playerID) { return true; }
 
-		/// <summary>
-		/// What happens when the object is unequipped (called when dropped) - override this to add your own behaviors
-		/// </summary>
-		public virtual bool UnEquip(string playerID) { return true; }
+        /// <summary>
+        /// 개체가 장착되지 않은 경우(드롭 시 호출됨) 발생하는 상황 - 이를 재정의하여 고유한 동작을 추가합니다.
+        /// </summary>
+        public virtual bool UnEquip(string playerID) { return true; }
 
-		/// <summary>
-		/// What happens when the object gets swapped for another object
-		/// </summary>
-		public virtual void Swap(string playerID) {}
+        /// <summary>
+        /// 객체가 다른 객체로 교체되면 어떻게 되나요?
+        /// </summary>
+        public virtual void Swap(string playerID) {}
 
-		/// <summary>
-		/// What happens when the object is dropped - override this to add your own behaviors
-		/// </summary>
-		public virtual bool Drop(string playerID) { return true; }
+        /// <summary>
+        /// 개체를 떨어뜨리면 어떻게 됩니까? 이를 재정의하여 자신만의 동작을 추가하세요.
+        /// </summary>
+        public virtual bool Drop(string playerID) { return true; }
 	}
 }

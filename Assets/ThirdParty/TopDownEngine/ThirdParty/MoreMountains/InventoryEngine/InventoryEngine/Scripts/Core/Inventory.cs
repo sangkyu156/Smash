@@ -227,23 +227,19 @@ namespace MoreMountains.InventoryEngine
 
 			while (quantity > 0)
 			{
-                Debug.Log("아이템 추가");
                 if (quantity > itemToAdd.MaximumStack)
 				{
 					AddItem(itemToAdd, itemToAdd.MaximumStack);
 					quantity -= itemToAdd.MaximumStack;
-                    Debug.Log("아이템 추가2");
                 }
 				else
 				{
 					AddItemToArray(itemToAdd, quantity);
 					quantity = 0;
-                    Debug.Log("아이템 추가3");
                 }
 			}
 			// 아직 여기에 있다면 사용 가능한 첫 번째 슬롯에 항목을 추가합니다.
 			MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
-			Debug.Log("아이템 추가4");
             return true;
 		}
 

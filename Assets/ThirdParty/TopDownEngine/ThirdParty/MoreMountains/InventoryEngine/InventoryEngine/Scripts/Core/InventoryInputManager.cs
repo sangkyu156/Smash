@@ -21,8 +21,11 @@ namespace MoreMountains.InventoryEngine
 		/// The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button
 		[Tooltip("The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button")]
 		public CanvasGroup TargetInventoryContainer;
-        // 내가만든 변수 (플레이어가 NPC근처가서 'E'키 누르면 나오는 상점)
-        public CanvasGroup NPC_TargetInventoryContainer;
+        // 내가만든 변수
+		// 플레이어가 NPC근처가서 'E'키 누르면 나오는 상점
+        public CanvasGroup NPC_InventoryContainer;
+        // 플레이어가 NPC근처가서 'E'키 루느면 나오는 플레이어 인벤토리
+        public CanvasGroup Player_InventoryContainer;
         /// 주요 재고 표시
         [Tooltip("The main inventory display")] 
 		public InventoryDisplay TargetInventoryDisplay;
@@ -278,7 +281,8 @@ namespace MoreMountains.InventoryEngine
 			if (HideContainerOnStart)
 			{
 				if (TargetInventoryContainer != null) { TargetInventoryContainer.alpha = 0; }
-                if (NPC_TargetInventoryContainer != null) { NPC_TargetInventoryContainer.alpha = 0; }
+                if (NPC_InventoryContainer != null) { NPC_InventoryContainer.alpha = 0; }
+				if (Player_InventoryContainer != null) {  Player_InventoryContainer.alpha = 0; }
                 if (Overlay != null) { Overlay.alpha = OverlayInactiveOpacity; }
 				EventSystem.current.sendNavigationEvents = false;
 				if (_canvasGroup != null)
@@ -440,7 +444,11 @@ namespace MoreMountains.InventoryEngine
 
 			StartCoroutine(MMFade.FadeCanvasGroup(TargetInventoryContainer, 0.2f, 1f));
 			StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
-		}
+
+			//다른 인벤토리 슬롯창 클릭 안되도록
+			NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
 
         // 상점 패널을 엽니다.
         public virtual void OpenNPCInventory()
@@ -462,8 +470,12 @@ namespace MoreMountains.InventoryEngine
             MMGameEvent.Trigger("inventoryOpens");
             NPCInventoryIsOpen = true;
 
-            StartCoroutine(MMFade.FadeCanvasGroup(NPC_TargetInventoryContainer, 0.2f, 1f));
+            StartCoroutine(MMFade.FadeCanvasGroup(NPC_InventoryContainer, 0.2f, 1f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Player_InventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
+
+            //다른 인벤토리 슬롯창 클릭 안되도록
+            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
         /// <summary>
@@ -482,7 +494,11 @@ namespace MoreMountains.InventoryEngine
 
 			StartCoroutine(MMFade.FadeCanvasGroup(TargetInventoryContainer, 0.2f, 0f));
 			StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
-		}
+
+            //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
+            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
 
         //상점 패널을 닫습니다.
         public virtual void CloseNPCInventory()
@@ -496,8 +512,12 @@ namespace MoreMountains.InventoryEngine
             MMGameEvent.Trigger("inventoryCloses");
             NPCInventoryIsOpen = false;
 
-            StartCoroutine(MMFade.FadeCanvasGroup(NPC_TargetInventoryContainer, 0.2f, 0f));
+            StartCoroutine(MMFade.FadeCanvasGroup(NPC_InventoryContainer, 0.2f, 0f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Player_InventoryContainer, 0.2f, 0f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
+
+            //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
+            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
 
         /// <summary>
