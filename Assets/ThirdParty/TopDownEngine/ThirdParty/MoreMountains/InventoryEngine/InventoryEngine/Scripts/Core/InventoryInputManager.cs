@@ -258,7 +258,7 @@ namespace MoreMountains.InventoryEngine
         public TextMeshProUGUI money;
 
         /// <summary>
-        /// On start, we grab references and prepare our hotbar list
+        /// 처음에는 참고 자료를 수집하고 핫바 목록을 준비합니다.
         /// </summary>
         protected virtual void Start()
 		{
@@ -448,6 +448,9 @@ namespace MoreMountains.InventoryEngine
 			//다른 인벤토리 슬롯창 클릭 안되도록
 			NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
             Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+			//첫번째 슬롯 가리키기
+			TargetInventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
         }
 
         // 상점 패널을 엽니다.
@@ -476,6 +479,13 @@ namespace MoreMountains.InventoryEngine
 
             //다른 인벤토리 슬롯창 클릭 안되도록
             TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+            //아이템 정보창 안보이게 하기
+            NPC_InventoryContainer.GetComponentInChildren<InventoryDetails>().DisplayDetails(null);
+            Player_InventoryContainer.GetComponentInChildren<InventoryDetails>().DisplayDetails(null);
+
+            //첫번째 슬롯 가리키기
+            NPC_InventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
         }
 
         /// <summary>

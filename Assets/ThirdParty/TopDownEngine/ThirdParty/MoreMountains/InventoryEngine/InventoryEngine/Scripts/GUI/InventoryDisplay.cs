@@ -697,7 +697,7 @@ namespace MoreMountains.InventoryEngine
         /// </summary>		
         public virtual void Focus()		
 		{
-			if (!EnableNavigation)
+            if (!EnableNavigation)
 			{
 				return;
 			}

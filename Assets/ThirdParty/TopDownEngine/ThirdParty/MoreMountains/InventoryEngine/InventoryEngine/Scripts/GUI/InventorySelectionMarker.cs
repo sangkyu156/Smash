@@ -6,16 +6,16 @@ using UnityEngine.EventSystems;
 namespace MoreMountains.InventoryEngine
 {	
 	[RequireComponent(typeof(RectTransform))]
-	/// <summary>
-	/// This class handles the selection marker, that will mark the currently selected slot
-	/// </summary>
-	public class InventorySelectionMarker : MonoBehaviour 
+    /// <summary>
+    /// 이 클래스는 현재 선택된 슬롯을 표시하는 선택 마커를 처리합니다.
+    /// </summary>
+    public class InventorySelectionMarker : MonoBehaviour 
 	{
-		[MMInformation("The selection marker will highlight the current selection. Here you can define its transition speed and minimal distance threshold (it's usually ok to leave it to default).",MMInformationAttribute.InformationType.Info,false)]
-		/// the speed at which the selection marker will move from one slot to the other
-		public float TransitionSpeed=5f;
-		/// the threshold distance at which the marker will stop moving
-		public float MinimalTransitionDistance=0.01f;
+		[MMInformation("선택 마커는 현재 선택을 강조 표시합니다. 여기에서 전환 속도와 최소 거리 임계값을 정의할 수 있습니다(일반적으로 기본값으로 두어도 괜찮습니다).", MMInformationAttribute.InformationType.Info,false)]
+        /// 선택 마커가 한 슬롯에서 다른 슬롯으로 이동하는 속도
+        public float TransitionSpeed=5f;
+        /// 마커가 이동을 멈추는 임계 거리
+        public float MinimalTransitionDistance=0.01f;
 
 		protected RectTransform _rectTransform;
 		protected GameObject _currentSelection;
@@ -26,18 +26,18 @@ namespace MoreMountains.InventoryEngine
 		protected bool _originIsNull=true;
 		protected float _deltaTime;
 
-		/// <summary>
-		/// On Start, we get the associated rect transform
-		/// </summary>
-		void Start () 
+        /// <summary>
+        /// 시작 시 관련 각형 변환을 얻습니다.
+        /// </summary>
+        void Start () 
 		{
 			_rectTransform = GetComponent<RectTransform>();
 		}
 
-		/// <summary>
-		/// On Update, we get the current selected object, and we move the marker to it if necessary
-		/// </summary>
-		void Update () 
+        /// <summary>
+        /// 업데이트 시 현재 선택된 개체를 가져오고 필요한 경우 마커를 해당 개체로 이동합니다.
+        /// </summary>
+        void Update () 
 		{			
 			_currentSelection = EventSystem.current.currentSelectedGameObject;
 			if (_currentSelection == null)
