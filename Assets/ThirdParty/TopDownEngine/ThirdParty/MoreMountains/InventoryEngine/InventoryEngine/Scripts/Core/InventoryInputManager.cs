@@ -480,12 +480,17 @@ namespace MoreMountains.InventoryEngine
             //다른 인벤토리 슬롯창 클릭 안되도록
             TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-            //아이템 정보창 안보이게 하기
-            NPC_InventoryContainer.GetComponentInChildren<InventoryDetails>().DisplayDetails(null);
-            Player_InventoryContainer.GetComponentInChildren<InventoryDetails>().DisplayDetails(null);
-
             //첫번째 슬롯 가리키기
             NPC_InventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
+
+            //아이템 정보창 안보이게 하기
+            for (int i = 0; i < NPC_InventoryContainer.transform.childCount; i++)
+			{
+				if (NPC_InventoryContainer.transform.GetChild(i).GetComponent<InventoryDetails>() != null)
+				{
+                    NPC_InventoryContainer.transform.GetChild(i).GetComponent<InventoryDetails>().DisplayDetailsHidden();
+				}
+			}
         }
 
         /// <summary>

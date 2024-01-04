@@ -84,6 +84,13 @@ namespace MoreMountains.InventoryEngine
             }
         }
 
+        //아이템정보창 숨기기
+        public virtual void DisplayDetailsHidden()
+        {
+            StartCoroutine(MMFade.FadeCanvasGroup(_canvasGroup, _fadeDelay, 0f));
+            Hidden = true;
+        }
+
         /// <summary>
         /// 현재 슬롯이 비어 있는지 여부에 따라 디스플레이 코루틴 또는 패널 페이드를 시작합니다.
         /// </summary>
@@ -177,6 +184,7 @@ namespace MoreMountains.InventoryEngine
 
             switch (inventoryEvent.InventoryEventType)
             {
+                case MMInventoryEventType.Click:
                 case MMInventoryEventType.Select:
                     DisplayDetails(inventoryEvent.EventItem);
                     break;

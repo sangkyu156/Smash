@@ -132,6 +132,7 @@ namespace MoreMountains.InventoryEngine
 
 		//테스트
 		public InventoryItem testItem;
+        public InventoryItem testItem2;
 
         IEnumerator addItemTest(InventoryItem item, int ss)
 		{
@@ -146,6 +147,8 @@ namespace MoreMountains.InventoryEngine
 		{
 			RegisterInventory();
 			StartCoroutine(addItemTest(testItem, 1));
+			if(testItem2 != null)
+                StartCoroutine(addItemTest(testItem2, 50));
         }
 
         /// <summary>
