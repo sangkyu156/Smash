@@ -196,7 +196,6 @@ namespace MoreMountains.InventoryEngine
 		protected InventorySlot _slotPrefab = null;
 
 		//테스트
-		public InventoryItem test;
 
         /// <summary>
         /// 재고 디스플레이 생성 및 설정(보통 검사관의 전용 버튼을 통해 호출됨)

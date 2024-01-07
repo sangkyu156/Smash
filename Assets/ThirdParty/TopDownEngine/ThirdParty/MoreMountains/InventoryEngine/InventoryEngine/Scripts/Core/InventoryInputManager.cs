@@ -252,6 +252,8 @@ namespace MoreMountains.InventoryEngine
 		protected bool _equipKeyPressed;
 		protected bool _useKeyPressed;
 		protected bool _dropKeyPressed;
+		protected bool _buyKeyPressed;
+		protected bool _sellKeyPressed;
 		protected bool _hotbarInputPressed = false;
 
         //내가 만든 변수
@@ -669,10 +671,26 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// Checks for hotbar input and acts on it
-		/// </summary>
-		protected virtual void HandleHotbarsInput()
+		//사고 팔기 테스트
+		public void BuyTest()
+		{
+            if (CurrentlySelectedInventorySlot != null)
+            {
+                CurrentlySelectedInventorySlot.Buy();
+            }
+        }
+        public void SellTest()
+        {
+            if (CurrentlySelectedInventorySlot != null)
+            {
+                CurrentlySelectedInventorySlot.Sell();
+            }
+        }
+
+        /// <summary>
+        /// Checks for hotbar input and acts on it
+        /// </summary>
+        protected virtual void HandleHotbarsInput()
 		{
 			if (!InventoryIsOpen)
 			{
@@ -695,10 +713,10 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		/// <summary>
-		/// When pressing the equip/use button, we determine which of the two methods to call
-		/// </summary>
-		public virtual void EquipOrUse()
+        /// <summary>
+        /// 장착/사용 버튼을 누르면 두 가지 방법 중 어떤 방법을 호출할지 결정합니다.
+        /// </summary>
+        public virtual void EquipOrUse()
 		{
 			if (CurrentlySelectedInventorySlot.Equippable())
 			{

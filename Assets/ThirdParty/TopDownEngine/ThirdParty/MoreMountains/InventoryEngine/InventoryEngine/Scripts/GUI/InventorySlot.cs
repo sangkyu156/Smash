@@ -251,6 +251,20 @@ namespace MoreMountains.InventoryEngine
 			}            
 		}
 
+		//아이템을 구매합니다.
+		public virtual void Buy()
+		{
+			Debug.Log($"{ParentInventoryDisplay.TargetInventoryName} 에서 구매를 합니다.");
+            
+
+        }
+
+		//아이템을 판매 합니다.
+		public virtual void Sell()
+		{
+            Debug.Log($"{ParentInventoryDisplay.TargetInventoryName} 에서 판매를 합니다.");
+        }
+
         /// <summary>
         /// 슬롯을 비활성화합니다.
         /// </summary>

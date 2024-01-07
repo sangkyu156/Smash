@@ -146,7 +146,7 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Awake()
 		{
 			RegisterInventory();
-			StartCoroutine(addItemTest(testItem, 1));
+			StartCoroutine(addItemTest(testItem, 19));
 			if(testItem2 != null)
                 StartCoroutine(addItemTest(testItem2, 50));
         }

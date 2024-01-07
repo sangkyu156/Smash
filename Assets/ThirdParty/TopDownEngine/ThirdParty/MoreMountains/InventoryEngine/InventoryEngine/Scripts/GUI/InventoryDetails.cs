@@ -108,6 +108,8 @@ namespace MoreMountains.InventoryEngine
                 {
                     StartCoroutine(FillDetailFieldsWithDefaults(0));
                 }
+                //빈공간 누르면 '바이','셀'버튼 비활성화
+                _canvasGroup.blocksRaycasts = false;
             }
             else
             {
@@ -121,6 +123,7 @@ namespace MoreMountains.InventoryEngine
                     //여기 까지 왔다면 선택한 슬롯이 해당 인벤토리이기 떄문에 활성화 시켜줍니다.
                     marker.gameObject.SetActive(true);
                     _canvasGroup.alpha = 1;
+                    _canvasGroup.blocksRaycasts = true;
                 }
             }
         }
@@ -173,6 +176,7 @@ namespace MoreMountains.InventoryEngine
             {
                 marker.gameObject.SetActive(false);
                 _canvasGroup.alpha = 0;
+                _canvasGroup.blocksRaycasts = false;
                 Hidden = true;
                 return;
             }
@@ -200,26 +204,6 @@ namespace MoreMountains.InventoryEngine
                 case MMInventoryEventType.EquipRequest:
                     DisplayDetails(null);
                     break;
-            }
-        }
-
-        // 아이템 선택시 'TargetInventoryName'에 따라 마커, 아이템정보창이 세팅 되도록하는 함수
-        protected virtual void SelectSettings(InventoryItem item)
-        {
-            Debug.Log($"타겟인벤 = {item.TargetInventoryName}");
-            if (item.TargetInventoryName == this.TargetInventoryName)
-            {
-                _canvasGroup.alpha = 1;
-
-                Hidden = false;
-                Debug.Log($"1");
-            }
-            else
-            {
-                _canvasGroup.alpha = 0;
-
-                Hidden = true;
-                Debug.Log($"2");
             }
         }
 
