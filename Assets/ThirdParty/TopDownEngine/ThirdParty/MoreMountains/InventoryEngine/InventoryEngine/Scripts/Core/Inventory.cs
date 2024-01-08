@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
+
 
 namespace MoreMountains.InventoryEngine
 {
@@ -134,6 +136,9 @@ namespace MoreMountains.InventoryEngine
 		public InventoryItem testItem;
         public InventoryItem testItem2;
 
+		//내가 만든 변수
+		public TextMeshProUGUI playerGold;
+
         IEnumerator addItemTest(InventoryItem item, int ss)
 		{
 			yield return null;
@@ -150,6 +155,11 @@ namespace MoreMountains.InventoryEngine
 			if(testItem2 != null)
                 StartCoroutine(addItemTest(testItem2, 50));
         }
+
+		protected virtual void Start()
+		{
+
+		}
 
         /// <summary>
         /// 나중에 다른 스크립트에서 액세스할 수 있도록 이 인벤토리를 등록합니다.
@@ -597,7 +607,7 @@ namespace MoreMountains.InventoryEngine
         public virtual void SaveInventory()
 		{
 			SerializedInventory serializedInventory = new SerializedInventory();
-			FillSerializedInventory(serializedInventory);
+            FillSerializedInventory(serializedInventory);
 			MMSaveLoadManager.Save(serializedInventory, DetermineSaveName(), _saveFolderName);
 		}
 

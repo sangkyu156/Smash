@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.VisualScripting;
 
 #if UNITY_VISUAL_SCRIPTING
 [Unity.VisualScripting.IncludeInSettings(true)]

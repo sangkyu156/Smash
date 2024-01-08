@@ -118,7 +118,8 @@ namespace MoreMountains.TopDownEngine
 			base.Awake();
 			_collider = this.GetComponent<Collider>();
 			_initialSpawnPointPosition = (InitialSpawnPoint == null) ? Vector3.zero : InitialSpawnPoint.transform.position;
-		}
+            
+        }
 
 		/// <summary>
 		/// On Start we grab our dependencies and initialize spawn
@@ -126,6 +127,9 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Start()
 		{
 			StartCoroutine(InitializationCoroutine());
+            SerializedPlayer serializedPlayer = new SerializedPlayer();
+			ES3.Save("PlayerGold", serializedPlayer.PlayerGold = 777);
+			Debug.Log("½ÇÇàµÊ");
 		}
 
 		protected virtual IEnumerator InitializationCoroutine()

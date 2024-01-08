@@ -38,7 +38,7 @@ public class ES3
     /// <summary>Saves the value to a file with the given key.</summary>
     /// <param name="key">The key we want to use to identify our value in the file.</param>
     /// <param name="value">The value we want to save.</param>
-    /// <param name="filePath">The relative or absolute path of the file we want to store our value to.</param>
+    /// <param name="filePath">값을 저장하려는 파일의 상대 또는 절대 경로입니다.</param>
     public static void Save(string key, object value, string filePath)
     {
         Save<object>(key, value, new ES3Settings(filePath));
@@ -100,6 +100,7 @@ public class ES3
     /// <param name="settings">The settings we want to use to override the default settings.</param>
     public static void Save<T>(string key, T value, ES3Settings settings)
     {
+        Debug.Log($"저장됨 = {settings.FullPath}");
         if (settings.location == Location.Cache)
         {
             ES3File.GetOrCreateCachedFile(settings).Save(key, value);

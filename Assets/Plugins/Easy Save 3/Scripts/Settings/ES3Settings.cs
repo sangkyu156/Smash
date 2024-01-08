@@ -146,7 +146,7 @@ public class ES3Settings : System.ICloneable
     [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 	public string[] assemblyNames = new string[] { "Assembly-CSharp-firstpass", "Assembly-CSharp"};
 
-    /// <summary>Gets the full, absolute path which this ES3Settings object identifies.</summary>
+    /// <summary>이 ES3Settings 개체가 식별하는 전체 절대 경로를 가져옵니다.</summary>
     public string FullPath
 	{
 		get
@@ -195,7 +195,7 @@ public class ES3Settings : System.ICloneable
     #region Constructors
 
     /// <summary>Creates a new ES3Settings object with the given path.</summary>
-    /// <param name="path">The path associated with this ES3Settings object.</param>
+    /// <param name="path">이 ES3Settings 개체와 연결된 경로입니다.</param>
     /// <param name="settings">The settings we want to use to override the default settings.</param>
     public ES3Settings(string path = null, ES3Settings settings = null) : this(true)
     {
