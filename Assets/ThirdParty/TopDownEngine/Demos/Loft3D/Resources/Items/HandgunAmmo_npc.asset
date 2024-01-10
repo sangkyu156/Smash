@@ -14,20 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: HandgunAmmo
   TargetInventoryName: SuitMainInventory
+  ForceSlotIndex: 0
+  TargetIndex: 0
   Usable: 1
   Consumable: 1
   ConsumeQuantity: 1
   Equippable: 0
+  EquippableIfInventoryIsFull: 1
+  MoveWhenEquipped: 1
   Droppable: 1
   CanMoveObject: 1
   CanSwapObject: 1
+  DisplayProperties:
+    DisplayEquipUseButton: 1
+    DisplayMoveButton: 1
+    DisplayDropButton: 1
+    DisplayEquipButton: 1
+    DisplayUseButton: 1
+    DisplayUnequipButton: 1
   Quantity: 1
+  price: 100
   ItemName: Handgun Ammo
   ShortDescription: Goes into a handgun
   Description: A metal projectile for firing from a handgun typically cylindrical
     and pointed, and sometimes containing an explosive.
   Icon: {fileID: 21300012, guid: febaf98c9e2e16b4693de2178a533b43, type: 3}
-  Prefab: {fileID: 1274152818310764, guid: 57e02a55277772f4e8a2bd2f44f5faa8, type: 3}
+  Prefab: {fileID: 1274152818310764, guid: fe7c62914b26cb1459f21615a8fdac46, type: 3}
+  ForcePrefabDropQuantity: 0
+  PrefabDropQuantity: 1
   DropProperties:
     Shape: 0
     NormalToSpawnPlane: {x: 0, y: 1, z: 0}

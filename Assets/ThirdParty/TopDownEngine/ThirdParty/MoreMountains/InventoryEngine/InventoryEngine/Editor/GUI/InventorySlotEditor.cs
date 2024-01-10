@@ -19,8 +19,9 @@ namespace MoreMountains.InventoryEngine
 		protected SerializedProperty _iconRectTransform;
 		protected SerializedProperty _iconImage;
 		protected SerializedProperty _quantityText;
-        
-		protected override void OnEnable()
+        protected SerializedProperty _countImage;
+
+        protected override void OnEnable()
 		{
 			base.OnEnable();
             
@@ -34,7 +35,8 @@ namespace MoreMountains.InventoryEngine
 			_iconRectTransform = serializedObject.FindProperty("IconRectTransform");
 			_iconImage = serializedObject.FindProperty("IconImage");
 			_quantityText = serializedObject.FindProperty("QuantityText");
-		}
+            _countImage = serializedObject.FindProperty("CountImage");
+        }
         
 		public override void OnInspectorGUI() {
 
@@ -51,9 +53,9 @@ namespace MoreMountains.InventoryEngine
 			EditorGUILayout.PropertyField(_iconRectTransform);
 			EditorGUILayout.PropertyField(_iconImage);
 			EditorGUILayout.PropertyField(_quantityText);
- 
-			serializedObject.ApplyModifiedProperties();
+            EditorGUILayout.PropertyField(_countImage);
 
+            serializedObject.ApplyModifiedProperties();
 		}
 	}    
 }

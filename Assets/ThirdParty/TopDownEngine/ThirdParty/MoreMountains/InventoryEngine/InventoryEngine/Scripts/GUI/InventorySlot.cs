@@ -4,6 +4,8 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using static Codice.Client.BaseCommands.Import.Commit;
+using TMPro;
 
 namespace MoreMountains.InventoryEngine
 {
@@ -20,14 +22,15 @@ namespace MoreMountains.InventoryEngine
         public int Index;
         /// 이 슬롯이 현재 활성화되어 있고 상호 작용할 수 있는지 여부
         public bool SlotEnabled=true;
-		public Image TargetImage;
+        
+        public Image TargetImage;
 		public CanvasGroup TargetCanvasGroup;
 		public RectTransform TargetRectTransform;
 		public RectTransform IconRectTransform;
 		public Image IconImage;
-		public Text QuantityText;
-		
-		
+		public TextMeshProUGUI QuantityText;
+        public Image CountImage;
+				
 		protected const float _disabledAlpha = 0.5f;
 		protected const float _enabledAlpha = 1.0f;
 
@@ -37,7 +40,8 @@ namespace MoreMountains.InventoryEngine
 			TargetImage = this.gameObject.GetComponent<Image>();
 			TargetCanvasGroup = this.gameObject.GetComponent<CanvasGroup>();
 			TargetRectTransform = this.gameObject.GetComponent<RectTransform>();
-		}
+            //CountImage = this.gameObject.GetComponentInChildren<Image>();
+        }
 
         /// <summary>
         /// 시작 시 해당 슬롯의 클릭 이벤트를 듣기 시작합니다.
@@ -80,12 +84,14 @@ namespace MoreMountains.InventoryEngine
 			if (quantity > 1)
 			{
 				QuantityText.gameObject.SetActive(true);
-				QuantityText.text = quantity.ToString();	
-			}
+				QuantityText.text = quantity.ToString();
+                CountImage.enabled = true;
+            }
 			else
 			{
 				QuantityText.gameObject.SetActive(false);
-			}
+                CountImage.enabled = false;
+            }
 		}
 
 		public virtual void DisableIconAndQuantity()
@@ -357,9 +363,20 @@ namespace MoreMountains.InventoryEngine
 			}
 			else
 			{
-				return true;
+                return true;
+            }
+        }
+
+        // 선택중인 아이템을 반환합니다.
+		public virtual InventoryItem CurrentlySelectedItem()
+		{
+			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
+			{
+				return ParentInventoryDisplay.TargetInventory.Content[Index];
 			}
-		}
+			else
+				return null;
+        }
 
         /// <summary>
         /// 이 슬롯에 아이템을 떨어뜨릴 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.

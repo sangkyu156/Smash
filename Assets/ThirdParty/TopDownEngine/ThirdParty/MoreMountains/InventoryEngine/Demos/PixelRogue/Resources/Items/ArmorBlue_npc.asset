@@ -18,7 +18,7 @@ MonoBehaviour:
   TargetIndex: 0
   Usable: 0
   Consumable: 1
-  ConsumeQuantity: 1
+  ConsumeQuantity: 0
   Equippable: 1
   EquippableIfInventoryIsFull: 1
   MoveWhenEquipped: 1
@@ -33,12 +33,13 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
+  price: 1
   ItemName: Blue Armor
   ShortDescription: A better armor than the green one
   Description: The Blue Armor was forged by the dwarves living under the Kharaz Mountain.
     It's probably the best armor ever.
   Icon: {fileID: 21300008, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
-  Prefab: {fileID: 172054, guid: 0f6882b0de0be6743861da4384873383, type: 3}
+  Prefab: {fileID: 172054, guid: 9e6d30d80ccbf4349b084ba236bbf616, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:

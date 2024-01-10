@@ -7,6 +7,10 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.EventSystems;
+using TMPro;
+using TMPro.EditorUtilities;
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -154,7 +158,7 @@ namespace MoreMountains.InventoryEngine
 		[Header("Quantity Text")]
 		[MMInformation("인벤토리에 쌓인 항목(동전이나 물약과 같이 단일 슬롯에 특정 종류의 항목이 두 개 이상)으로 포함된 경우 항목 아이콘 옆에 수량을 표시하고 싶을 것입니다. 이를 위해 여기서 사용할 글꼴, 색상, 해당 수량 텍스트의 위치를 ​​지정할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
         /// 수량을 표시하는 데 사용되는 글꼴
-        public Font QtyFont;
+        public TMP_FontAsset QtyFont;
         /// 사용할 글꼴 크기
         public int QtyFontSize=12;
         /// 수량을 표시할 색상
@@ -162,7 +166,7 @@ namespace MoreMountains.InventoryEngine
         /// 패딩(슬롯 가장자리까지의 거리)
         public float QtyPadding=10f;
         /// 수량을 표시해야 하는 위치
-        public TextAnchor QtyAlignment = TextAnchor.LowerRight;
+        public TextAlignmentOptions QtyAlignment = TextAlignmentOptions.BottomRight;
 
 		[Header("Extra Inventory Navigation")]
 		[MMInformation("InventoryInputManager에는 한 인벤토리 패널에서 다음 패널로 이동할 수 있는 컨트롤이 제공됩니다. 여기에서는 이전 또는 다음 인벤토리 버튼을 누를 때 플레이어가 이 패널에서 이동해야 하는 인벤토리를 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
@@ -568,10 +572,11 @@ namespace MoreMountains.InventoryEngine
 				itemRectTransform.localScale = Vector3.one;
 				MMGUI.SetSize(itemRectTransform, IconSize);
 
+				//변경전
 				// we add the quantity placeholder
 				GameObject textObject = new GameObject("Slot Quantity", typeof(RectTransform));
 				textObject.transform.SetParent(itemIcon.transform);
-				Text textComponent = textObject.AddComponent<Text>();
+                TextMeshProUGUI textComponent = textObject.AddComponent<TextMeshProUGUI>();
 				_slotPrefab.QuantityText = textComponent;
 				textComponent.font = QtyFont;
 				textComponent.fontSize = QtyFontSize;
@@ -580,9 +585,9 @@ namespace MoreMountains.InventoryEngine
 				RectTransform textObjectRectTransform = textObject.GetComponent<RectTransform>();
 				textObjectRectTransform.localPosition = Vector3.zero;
 				textObjectRectTransform.localScale = Vector3.one;
-				MMGUI.SetSize(textObjectRectTransform, (SlotSize - Vector2.one * QtyPadding)); 
+				MMGUI.SetSize(textObjectRectTransform, (SlotSize - Vector2.one * QtyPadding));
 
-				_slotPrefab.name = "SlotPrefab";
+                _slotPrefab.name = "SlotPrefab";
 			}
 		}
 

@@ -257,7 +257,7 @@ namespace MoreMountains.InventoryEngine
 		protected bool _hotbarInputPressed = false;
 
         //내가 만든 변수
-        public TextMeshProUGUI money;
+
 
         /// <summary>
         /// 처음에는 참고 자료를 수집하고 핫바 목록을 준비합니다.
@@ -276,7 +276,7 @@ namespace MoreMountains.InventoryEngine
             ButtonPromptIsOpen = false;
             _targetInventoryHotbars = new List<InventoryHotbar>();
 			_canvasGroup = GetComponent<CanvasGroup>();
-			foreach (InventoryHotbar go in FindObjectsOfType(typeof(InventoryHotbar)) as InventoryHotbar[])
+            foreach (InventoryHotbar go in FindObjectsOfType(typeof(InventoryHotbar)) as InventoryHotbar[])
 			{
 				_targetInventoryHotbars.Add(go);
 			}
@@ -478,6 +478,9 @@ namespace MoreMountains.InventoryEngine
             StartCoroutine(MMFade.FadeCanvasGroup(NPC_InventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Player_InventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
+
+			//현재 플레이어가 가지고 있는돈 업데이트 하기
+
 
             //다른 인벤토리 슬롯창 클릭 안되도록
             TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -759,11 +762,11 @@ namespace MoreMountains.InventoryEngine
 			CurrentlySelectedInventorySlot.Drop();
 		}
 
-		/// <summary>
-		/// Catches MMInventoryEvents and acts on them
-		/// </summary>
-		/// <param name="inventoryEvent">Inventory event.</param>
-		public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
+        /// <summary>
+        /// Catches MMInventoryEvents and acts on them
+        /// </summary>
+        /// <param name="inventoryEvent">Inventory event.</param>
+        public virtual void OnMMEvent(MMInventoryEvent inventoryEvent)
 		{
 			if (inventoryEvent.PlayerID != TargetInventoryDisplay.PlayerID)
 			{

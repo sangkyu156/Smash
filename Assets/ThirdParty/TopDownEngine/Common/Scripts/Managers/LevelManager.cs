@@ -6,6 +6,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
+using System.IO;
 
 
 namespace MoreMountains.TopDownEngine
@@ -121,15 +122,12 @@ namespace MoreMountains.TopDownEngine
             
         }
 
-		/// <summary>
-		/// On Start we grab our dependencies and initialize spawn
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작 시 종속성을 확보하고 스폰을 초기화합니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			StartCoroutine(InitializationCoroutine());
-            SerializedPlayer serializedPlayer = new SerializedPlayer();
-			ES3.Save("PlayerGold", serializedPlayer.PlayerGold = 777);
-			Debug.Log("실행됨");
 		}
 
 		protected virtual IEnumerator InitializationCoroutine()

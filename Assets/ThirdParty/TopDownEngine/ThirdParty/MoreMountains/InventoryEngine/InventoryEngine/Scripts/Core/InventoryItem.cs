@@ -80,10 +80,12 @@ namespace MoreMountains.InventoryEngine
         public virtual bool IsEquippable { get { return Equippable; } }
 
 		[HideInInspector]
-        /// 이 품목의 기본 수량
+        /// 이 아이템의 기본 수량
         public int Quantity = 1;
+        // 이 아이템의 가격
+        public int price = 1;
 
-		[Header("Basic info")]
+        [Header("Basic info")]
         /// 항목 이름 - 세부정보 패널에 표시됩니다.
         [Tooltip("항목 이름 - 세부정보 패널에 표시됩니다.")]
 		public string ItemName;

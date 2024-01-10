@@ -35,7 +35,7 @@ namespace MoreMountains.InventoryEngine
         [Tooltip("이것이 사실이라면 이 객체는 플레이어 태그가 있는 충돌체에 의해서만 선택될 수 있습니다.")]
 		public bool RequirePlayerTag = true;
 
-		protected int _pickedQuantity = 0;
+        protected int _pickedQuantity = 0;
 		protected Inventory _targetInventory;
 
         /// <summary>
