@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4829572fcd2f98479c803ffaf809268, type: 3}
-  m_Name: Axe_npc
+  m_Script: {fileID: 11500000, guid: ebac50667a1e87a4cb566381b6ce3d8f, type: 3}
+  m_Name: ArmorBlue
   m_EditorClassIdentifier: 
-  ItemID: Axe_npc
-  TargetInventoryName: NPCInventory
+  ItemID: ArmorBlue
+  TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0
@@ -33,14 +33,13 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 28
-  ItemName: Axe
-  ShortDescription: A heavy axe
-  Description: An axe is an implement that has been used for millennia to shape,
-    split and cut wood; to harvest timber; as a weapon; and as a ceremonial or heraldic
-    symbol.
-  Icon: {fileID: 21300016, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
-  Prefab: {fileID: 173298, guid: 6a4937dba4a64fe458c40d71bada376f, type: 3}
+  price: 23
+  ItemName: Blue Armor
+  ShortDescription: A better armor than the green one
+  Description: The Blue Armor was forged by the dwarves living under the Kharaz Mountain.
+    It's probably the best armor ever.
+  Icon: {fileID: 21300008, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
+  Prefab: {fileID: 172054, guid: 0f6882b0de0be6743861da4384873383, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
@@ -85,11 +84,11 @@ MonoBehaviour:
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
   MaximumStack: 1
-  ItemClass: 2
-  TargetEquipmentInventoryName: RogueWeaponInventory
-  EquippedSound: {fileID: 0}
+  ItemClass: 1
+  TargetEquipmentInventoryName: RogueArmorInventory
+  EquippedSound: {fileID: 8300000, guid: 9f638326ba72ffb47bdfe9e691932e66, type: 3}
   UsedSound: {fileID: 0}
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  WeaponSprite: {fileID: 21300014, guid: 678058abcbfe36f42902c11d9e5f64fc, type: 3}
+  ArmorIndex: 1

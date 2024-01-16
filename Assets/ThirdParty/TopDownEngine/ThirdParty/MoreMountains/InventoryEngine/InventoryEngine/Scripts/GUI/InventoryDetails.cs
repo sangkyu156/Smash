@@ -55,7 +55,7 @@ namespace MoreMountains.InventoryEngine
         public Text Quantity;
 
         protected float _fadeDelay = 0.2f;
-        protected CanvasGroup _canvasGroup;
+        public CanvasGroup _canvasGroup;
 
         //내가만든 변수
         public GameObject marker;
@@ -196,6 +196,9 @@ namespace MoreMountains.InventoryEngine
 
             switch (inventoryEvent.InventoryEventType)
             {
+                case MMInventoryEventType.Sell:
+                    DisplayDetails(null);
+                    break;
                 case MMInventoryEventType.Click:
                 case MMInventoryEventType.Select:
                     curItem = inventoryEvent.EventItem;

@@ -18,7 +18,7 @@ MonoBehaviour:
   TargetIndex: 0
   Usable: 1
   Consumable: 1
-  ConsumeQuantity: 5
+  ConsumeQuantity: 1
   Equippable: 0
   EquippableIfInventoryIsFull: 1
   MoveWhenEquipped: 1

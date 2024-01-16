@@ -674,22 +674,6 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
-		//사고 팔기 테스트
-		public void BuyTest()
-		{
-            if (CurrentlySelectedInventorySlot != null)
-            {
-                CurrentlySelectedInventorySlot.Buy();
-            }
-        }
-        public void SellTest()
-        {
-            if (CurrentlySelectedInventorySlot != null)
-            {
-                CurrentlySelectedInventorySlot.Sell();
-            }
-        }
-
         /// <summary>
         /// Checks for hotbar input and acts on it
         /// </summary>

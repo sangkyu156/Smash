@@ -136,7 +136,7 @@ namespace MoreMountains.InventoryEngine
         //내가 만든 변수
         public TextMeshProUGUI playerGold;
         InventoryItem ItemsToInclude;
-        InventoryItem[] InventoryItems = new InventoryItem[50];
+        public InventoryItem[] InventoryItems = new InventoryItem[50];
         //List<InventoryItem> InventoryItemsList;
 
 
@@ -516,7 +516,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// 배열에서 인덱스 i에 있는 항목을 제거합니다.
         /// </summary>
-        /// <returns><c>true</c>, 배열의 항목이 제거된 경우, <c>false</c> 아닐경우.</returns>
+        /// <returns>배열의 항목이 제거된 경우<c>true</c> 아닐경우<c>false</c> </returns>
         /// <param name="i">The index.</param>
         protected virtual bool RemoveItemFromArray(int i)
         {

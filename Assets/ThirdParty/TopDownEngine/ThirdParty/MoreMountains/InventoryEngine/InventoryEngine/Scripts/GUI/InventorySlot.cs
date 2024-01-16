@@ -40,7 +40,6 @@ namespace MoreMountains.InventoryEngine
 			TargetImage = this.gameObject.GetComponent<Image>();
 			TargetCanvasGroup = this.gameObject.GetComponent<CanvasGroup>();
 			TargetRectTransform = this.gameObject.GetComponent<RectTransform>();
-            //CountImage = this.gameObject.GetComponentInChildren<Image>();
         }
 
         /// <summary>
@@ -257,20 +256,6 @@ namespace MoreMountains.InventoryEngine
 			}            
 		}
 
-		//아이템을 구매합니다.
-		public virtual void Buy()
-		{
-			Debug.Log($"{ParentInventoryDisplay.TargetInventoryName} 에서 구매를 합니다.");
-            
-
-        }
-
-		//아이템을 판매 합니다.
-		public virtual void Sell()
-		{
-            Debug.Log($"{ParentInventoryDisplay.TargetInventoryName} 에서 판매를 합니다.");
-        }
-
         /// <summary>
         /// 슬롯을 비활성화합니다.
         /// </summary>
@@ -370,12 +355,7 @@ namespace MoreMountains.InventoryEngine
         // 선택중인 아이템을 반환합니다.
 		public virtual InventoryItem CurrentlySelectedItem()
 		{
-			if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
-			{
-				return ParentInventoryDisplay.TargetInventory.Content[Index];
-			}
-			else
-				return null;
+            return ParentInventoryDisplay.TargetInventory.Content[Index];
         }
 
         /// <summary>

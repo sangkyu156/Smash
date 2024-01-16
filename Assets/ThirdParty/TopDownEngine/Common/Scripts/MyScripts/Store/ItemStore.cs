@@ -1,5 +1,6 @@
 using MoreMountains.InventoryEngine;
 using MoreMountains.Tools;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -29,7 +30,8 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
         playerGold.text = playerData.CurPlayerGold.ToString();
         playerGold2.text = playerData.CurPlayerGold.ToString();
         quantity = 1;
-        SetPriceAndQuantity();
+        SetPriceAndQuantity_Buy();
+        SetPriceAndQuantity_Sell();
     }
 
     public int GetPlayerGold()
@@ -38,7 +40,7 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
         return curPlayerGold;
     }
 
-    public void UpButton()
+    public void BuyUpButton()
     {
         quantity++;
 
@@ -51,10 +53,10 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
 
         }
 
-        SetPriceAndQuantity();
+        SetPriceAndQuantity_Buy();
     }
 
-    public void DownButton()
+    public void BuyDownButton()
     {
         quantity--;
 
@@ -67,27 +69,75 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
 
         }
 
-        SetPriceAndQuantity();
+        SetPriceAndQuantity_Buy();
     }
 
-    public void MaxButton()
+    public void BuyMaxButton()
     {
         quantity = curPlayerGold / curItem.price;
-        SetPriceAndQuantity();
+        SetPriceAndQuantity_Buy();
     }
 
-    public void SetPriceAndQuantity()
+    public void SellUpButton()
+    {
+        quantity++;
+
+        if (quantity > curItem.Quantity)
+        {
+            quantity--;
+        }
+        else
+        {
+
+        }
+
+        SetPriceAndQuantity_Sell();
+    }
+
+    public void SellDownButton()
+    {
+        quantity--;
+
+        if (quantity <= 0)
+        {
+            quantity++;
+        }
+        else
+        {
+
+        }
+
+        SetPriceAndQuantity_Sell();
+    }
+
+    public void SellMaxButton()
+    {
+        quantity = curItem.Quantity;
+        SetPriceAndQuantity_Sell();
+    }
+
+    public void SetPriceAndQuantity_Buy()
     {
         quantity_Text.text = quantity.ToString();
-        quantity_Text2.text = quantity.ToString();
         if (curItem != null)
         {
             price_Text.text = (curItem.price * quantity).ToString();
-            price_Text2.text = (curItem.price * quantity).ToString();
         }
         else
         {
             price_Text.text = "0";
+        }
+    }
+
+    public void SetPriceAndQuantity_Sell()
+    {
+        quantity_Text2.text = quantity.ToString();
+        if (curItem != null)
+        {
+            price_Text2.text = Math.Round((curItem.price * quantity) * 0.8f).ToString();
+        }
+        else
+        {
             price_Text2.text = "0";
         }
     }
@@ -105,7 +155,8 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
                     curItem = inventoryEvent.EventItem;
                     curPlayerGold = playerData.CurPlayerGold;
                     quantity = 1;
-                    SetPriceAndQuantity();
+                    SetPriceAndQuantity_Buy();
+                    SetPriceAndQuantity_Sell();
                 }
                 break;
         }

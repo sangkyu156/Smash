@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4829572fcd2f98479c803ffaf809268, type: 3}
-  m_Name: Axe_npc
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  ItemID: Axe_npc
-  TargetInventoryName: NPCInventory
+  ItemID: Axe
+  TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     split and cut wood; to harvest timber; as a weapon; and as a ceremonial or heraldic
     symbol.
   Icon: {fileID: 21300016, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
-  Prefab: {fileID: 173298, guid: 6a4937dba4a64fe458c40d71bada376f, type: 3}
+  Prefab: {fileID: 173298, guid: 91029e093b01d0246b933ad8e3fe3ce1, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:

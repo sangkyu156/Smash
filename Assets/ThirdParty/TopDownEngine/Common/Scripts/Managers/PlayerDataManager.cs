@@ -20,11 +20,21 @@ public class PlayerDataManager : MonoBehaviour
             ES3.Save("PlayerGold", CurPlayerGold = 777);
             CurPlayerGold = ES3.Load<int>("PlayerGold");
         }
+
+        ES3.Save("PlayerGold", CurPlayerGold = 777);
+        CurPlayerGold = ES3.Load<int>("PlayerGold");
     }
 
     public void BuyItem(InventoryItem item, int quantity)
     {
-        CurPlayerGold = CurPlayerGold - (item.price * quantity);
+        CurPlayerGold -= (item.price * quantity);
+
+        ES3.Save<int>("PlayerGold", CurPlayerGold);
+    }
+
+    public void SellItem(InventoryItem item, int quantity)
+    {
+        CurPlayerGold += (int)Mathf.Round((item.price * quantity) * 0.8f);
 
         ES3.Save<int>("PlayerGold", CurPlayerGold);
     }
