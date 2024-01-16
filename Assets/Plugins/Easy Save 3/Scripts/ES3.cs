@@ -100,7 +100,7 @@ public class ES3
     /// <param name="settings">The settings we want to use to override the default settings.</param>
     public static void Save<T>(string key, T value, ES3Settings settings)
     {
-        Debug.Log($"저장됨 = {settings.FullPath}");
+        //Debug.Log($"저장됨 = {settings.FullPath}");
         if (settings.location == Location.Cache)
         {
             ES3File.GetOrCreateCachedFile(settings).Save(key, value);

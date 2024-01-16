@@ -14,18 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: Axe
   TargetInventoryName: RogueMainInventory
+  ForceSlotIndex: 0
+  TargetIndex: 0
   Usable: 0
+  Consumable: 1
+  ConsumeQuantity: 1
   Equippable: 1
+  EquippableIfInventoryIsFull: 1
+  MoveWhenEquipped: 1
+  Droppable: 1
+  CanMoveObject: 1
+  CanSwapObject: 1
+  DisplayProperties:
+    DisplayEquipUseButton: 1
+    DisplayMoveButton: 1
+    DisplayDropButton: 1
+    DisplayEquipButton: 1
+    DisplayUseButton: 1
+    DisplayUnequipButton: 1
   Quantity: 1
+  price: 1
   ItemName: Axe
   ShortDescription: A heavy axe
   Description: An axe is an implement that has been used for millennia to shape,
     split and cut wood; to harvest timber; as a weapon; and as a ceremonial or heraldic
     symbol.
-  CanMoveObject: 1
-  CanSwapObject: 1
   Icon: {fileID: 21300016, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
   Prefab: {fileID: 173298, guid: 91029e093b01d0246b933ad8e3fe3ce1, type: 3}
+  ForcePrefabDropQuantity: 0
+  PrefabDropQuantity: 1
   DropProperties:
     Shape: 0
     NormalToSpawnPlane: {x: 0, y: 0, z: 1}
@@ -67,7 +84,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 1
+  MaximumStack: 22
   ItemClass: 2
   TargetEquipmentInventoryName: RogueWeaponInventory
   EquippedSound: {fileID: 0}

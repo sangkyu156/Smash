@@ -119,7 +119,6 @@ namespace MoreMountains.TopDownEngine
 			base.Awake();
 			_collider = this.GetComponent<Collider>();
 			_initialSpawnPointPosition = (InitialSpawnPoint == null) ? Vector3.zero : InitialSpawnPoint.transform.position;
-            
         }
 
         /// <summary>

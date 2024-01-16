@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using static Codice.CM.Common.CmCallContext;
 
 namespace MoreMountains.InventoryEngine
 {
@@ -58,6 +59,7 @@ namespace MoreMountains.InventoryEngine
 
         //내가만든 변수
         public GameObject marker;
+        InventoryItem curItem;
 
         /// <summary>
         /// 시작 시 캔버스 그룹을 가져와 저장하고 현재 숨김 상태를 확인합니다.
@@ -89,6 +91,12 @@ namespace MoreMountains.InventoryEngine
         {
             StartCoroutine(MMFade.FadeCanvasGroup(_canvasGroup, _fadeDelay, 0f));
             Hidden = true;
+        }
+
+        //현재 선택중인 아이템 정보 반환
+        public InventoryItem SetCurrentItemInformation()
+        {
+            return curItem;
         }
 
         /// <summary>
@@ -190,6 +198,7 @@ namespace MoreMountains.InventoryEngine
             {
                 case MMInventoryEventType.Click:
                 case MMInventoryEventType.Select:
+                    curItem = inventoryEvent.EventItem;
                     DisplayDetails(inventoryEvent.EventItem);
                     break;
                 case MMInventoryEventType.UseRequest:

@@ -11,23 +11,23 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
     public TextMeshProUGUI quantity_Text2;
     public TextMeshProUGUI playerGold;
     public TextMeshProUGUI playerGold2;
-    public GameObject playerDataManager;
-    public InventoryItem curItem;
+    public PlayerDataManager playerData;
+    InventoryItem curItem;
 
 
-    int quantity = 1;
-    int CurPlayerGold;
+    public int quantity = 1;
+    int curPlayerGold;
 
     private void Start()
     {
-        if (playerDataManager == null)
-            playerDataManager = GameObject.FindGameObjectWithTag("PlayerDataManager");
+        if (playerData == null)
+            playerData = GameObject.FindGameObjectWithTag("PlayerDataManager").GetComponent<PlayerDataManager>();
     }
 
     public void SetPlayerGold()
     {
-        playerGold.text = playerDataManager.GetComponent<PlayerDataManager>().CurPlayerGold.ToString();
-        playerGold2.text = playerDataManager.GetComponent<PlayerDataManager>().CurPlayerGold.ToString();
+        playerGold.text = playerData.CurPlayerGold.ToString();
+        playerGold2.text = playerData.CurPlayerGold.ToString();
         quantity = 1;
         SetPriceAndQuantity();
     }
@@ -35,14 +35,14 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
     public int GetPlayerGold()
     {
         SetPlayerGold();
-        return CurPlayerGold;
+        return curPlayerGold;
     }
 
     public void UpButton()
     {
         quantity++;
 
-        if (curItem.price * quantity > CurPlayerGold)
+        if (curItem.price * quantity > curPlayerGold)
         {
             quantity--;
         }
@@ -72,7 +72,7 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
 
     public void MaxButton()
     {
-        quantity = CurPlayerGold / curItem.price;
+        quantity = curPlayerGold / curItem.price;
         SetPriceAndQuantity();
     }
 
@@ -92,15 +92,18 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
         }
     }
 
+    //상점, 이벤토리가 열릴떄마다 호출되는 이벤트
+    //플레이어 현재 골드량 표시, 수량 1로 설정
     public void OnMMEvent(MMInventoryEvent inventoryEvent)
     {
+        SetPlayerGold();
         switch (inventoryEvent.InventoryEventType)
         {
             case MMInventoryEventType.Select:
                 if (inventoryEvent.EventItem != null)
                 {
                     curItem = inventoryEvent.EventItem;
-                    CurPlayerGold = playerDataManager.GetComponent<PlayerDataManager>().CurPlayerGold;
+                    curPlayerGold = playerData.CurPlayerGold;
                     quantity = 1;
                     SetPriceAndQuantity();
                 }
@@ -108,14 +111,15 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
         }
     }
 
+    //게임 이벤트가 포착되면 호출되는 이벤트
     public void OnMMEvent(MMGameEvent eventType)
     {
-        switch (eventType.EventName)
-        {
-            case "inventoryOpens":
-                SetPlayerGold();
-                break;
-        }
+        //switch (eventType.EventName)
+        //{
+        //    case "inventoryOpens":
+        //        SetPlayerGold();
+        //        break;
+        //}
     }
 
     /// <summary>

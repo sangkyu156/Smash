@@ -8,42 +8,42 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Allows the save and load of objects in a specific folder and file.
-	/// 
-	/// How to use (at a minimum) :
-	/// 
-	/// Save : MMSaveLoadManager.Save(TestObject, FileName+SaveFileExtension, FolderName);
-	/// 
-	/// Load : TestObject = (YourObjectClass)MMSaveLoadManager.Load(typeof(YourObjectClass), FileName + SaveFileExtension, FolderName);
-	/// 
-	/// Delete save : MMSaveLoadManager.DeleteSave(FileName+SaveFileExtension, FolderName);
-	/// 
-	/// Delete save folder : MMSaveLoadManager.DeleteSaveFolder(FolderName);
-	/// 
-	/// You can also specify what IMMSaveLoadManagerMethod the system should use. By default it's binary but you can also pick binary encrypted, json, or json encrypted
-	/// You'll find examples of how to set each of these in the MMSaveLoadTester class
-	/// 
-	/// </summary>
-	public static class MMSaveLoadManager
+    /// <summary>
+    /// 특정 폴더 및 파일에 개체를 저장하고 로드할 수 있습니다.
+    /// 
+    /// 사용방법(최소) :
+    /// 
+    /// Save : MMSaveLoadManager.Save(TestObject, FileName+SaveFileExtension, FolderName);
+    /// 
+    /// Load : TestObject = (YourObjectClass)MMSaveLoadManager.Load(typeof(YourObjectClass), FileName + SaveFileExtension, FolderName);
+    /// 
+    /// Delete save : MMSaveLoadManager.DeleteSave(FileName+SaveFileExtension, FolderName);
+    /// 
+    /// Delete save folder : MMSaveLoadManager.DeleteSaveFolder(FolderName);
+    /// 
+    /// 시스템이 사용해야 하는 IMMSaveLoadManagerMethod를 지정할 수도 있습니다. 기본적으로 바이너리이지만 암호화된 바이너리, json 또는 json 암호화를 선택할 수도 있습니다. 
+    /// MMSaveLoadTester 클래스에서 이들 각각을 설정하는 방법에 대한 예를 찾을 수 있습니다.
+    /// 
+    /// </summary>
+    public static class MMSaveLoadManager
 	{
-		/// the method to use when saving and loading files (has to be the same at both times of course)
-		public static IMMSaveLoadManagerMethod SaveLoadMethod = new MMSaveLoadManagerMethodBinary();
-		/// the default top level folder the system will use to save the file
-		private const string _baseFolderName = "/MMData/";
-		/// the name of the save folder if none is provided
-		private const string _defaultFolderName = "MMSaveLoadManager";
+        /// 파일을 저장하고 불러올 때 사용하는 방법(물론 두 번 모두 동일해야 함)
+        public static IMMSaveLoadManagerMethod SaveLoadMethod = new MMSaveLoadManagerMethodBinary();
+        /// 시스템이 파일을 저장하는 데 사용할 기본 최상위 폴더
+        private const string _baseFolderName = "/MMData/";
+        /// 아무것도 제공되지 않은 경우 저장 폴더의 이름
+        private const string _defaultFolderName = "MMSaveLoadManager";
 
-		/// <summary>
-		/// Determines the save path to use when loading and saving a file based on a folder name.
-		/// </summary>
-		/// <returns>The save path.</returns>
-		/// <param name="folderName">Folder name.</param>
-		static string DetermineSavePath(string folderName = _defaultFolderName)
+        /// <summary>
+        /// 폴더 이름을 기준으로 파일을 로드하고 저장할 때 사용할 저장 경로를 결정합니다.
+        /// </summary>
+        /// <returns>저장 경로.</returns>
+        /// <param name="folderName">Folder name.</param>
+        public static string DetermineSavePath(string folderName = _defaultFolderName)
 		{
 			string savePath;
-			// depending on the device we're on, we assemble the path
-			if (Application.platform == RuntimePlatform.IPhonePlayer) 
+            // 사용 중인 장치에 따라 경로를 조합합니다.
+            if (Application.platform == RuntimePlatform.IPhonePlayer) 
 			{
 				savePath = Application.persistentDataPath + _baseFolderName;
 			} 
@@ -59,70 +59,73 @@ namespace MoreMountains.Tools
 			return savePath;
 		}
 
-		/// <summary>
-		/// Determines the name of the file to save
-		/// </summary>
-		/// <returns>The save file name.</returns>
-		/// <param name="fileName">File name.</param>
-		static string DetermineSaveFileName(string fileName)
+        /// <summary>
+        /// 저장할 파일의 이름을 결정합니다
+        /// </summary>
+        /// <returns>The save file name.</returns>
+        /// <param name="fileName">File name.</param>
+        static string DetermineSaveFileName(string fileName)
 		{
 			return fileName;
 		}
 
-		/// <summary>
-		/// Save the specified saveObject, fileName and foldername into a file on disk.
-		/// </summary>
-		/// <param name="saveObject">Save object.</param>
-		/// <param name="fileName">File name.</param>
-		/// <param name="foldername">Foldername.</param>
-		public static void Save(object saveObject, string fileName, string foldername = _defaultFolderName)
+        /// <summary>
+        /// 지정된 saveObject, fileName 및 폴더 이름을 디스크의 파일에 저장합니다.
+        /// </summary>
+        /// <param name="saveObject">Save object.</param>
+        /// <param name="fileName">File name.</param>
+        /// <param name="foldername">Foldername.</param>
+        public static void Save(object saveObject, string fileName, string foldername = _defaultFolderName)
 		{
 			string savePath = DetermineSavePath(foldername);
 			string saveFileName = DetermineSaveFileName(fileName);
-			// if the directory doesn't already exist, we create it
-			if (!Directory.Exists(savePath))
+
+            // 디렉토리가 아직 존재하지 않으면 디렉토리를 생성합니다.
+            if (!Directory.Exists(savePath))
 			{
 				Directory.CreateDirectory(savePath);
-			}
-			// we serialize and write our object into a file on disk
+            }
 
-			FileStream saveFile = File.Create(savePath + saveFileName);
+            // 객체를 직렬화하고 디스크의 파일에 씁니다.
+            FileStream saveFile = File.Create(savePath + saveFileName);
 
 			SaveLoadMethod.Save(saveObject, saveFile);
-			saveFile.Close();
+            Debug.Log($"세이브경로 = {savePath}{saveFileName}");
+            saveFile.Close();
 		}
 
-		/// <summary>
-		/// Load the specified file based on a file name into a specified folder
-		/// </summary>
-		/// <param name="fileName">File name.</param>
-		/// <param name="foldername">Foldername.</param>
-		public static object Load(System.Type objectType, string fileName, string foldername = _defaultFolderName)
+        /// <summary>
+        /// 파일 이름을 기준으로 지정된 파일을 지정된 폴더에 로드합니다.
+        /// </summary>
+        /// <param name="fileName">File name.</param>
+        /// <param name="foldername">Foldername.</param>
+        public static object Load(System.Type objectType, string fileName, string foldername = _defaultFolderName)
 		{
 			string savePath = DetermineSavePath(foldername);
 			string saveFileName = savePath + DetermineSaveFileName(fileName);
 
 			object returnObject;
 
-			// if the MMSaves directory or the save file doesn't exist, there's nothing to load, we do nothing and exit
-			if (!Directory.Exists(savePath) || !File.Exists(saveFileName))
+            // MMSaves 디렉터리나 저장 파일이 존재하지 않으면 로드할 것이 없으므로 아무것도 하지 않고 종료합니다.
+            if (!Directory.Exists(savePath) || !File.Exists(saveFileName))
 			{
-				return null;
+                return null;
 			}
 
 			FileStream saveFile = File.Open(saveFileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 			returnObject = SaveLoadMethod.Load(objectType, saveFile);
+			Debug.Log($"로드경로 = {saveFileName}");
 			saveFile.Close();
 
 			return returnObject;
 		}
 
-		/// <summary>
-		/// Removes a save from disk
-		/// </summary>
-		/// <param name="fileName">File name.</param>
-		/// <param name="folderName">Folder name.</param>
-		public static void DeleteSave(string fileName, string folderName = _defaultFolderName)
+        /// <summary>
+        /// 디스크에서 저장 내용을 제거합니다.
+        /// </summary>
+        /// <param name="fileName">File name.</param>
+        /// <param name="folderName">Folder name.</param>
+        public static void DeleteSave(string fileName, string folderName = _defaultFolderName)
 		{
 			string savePath = DetermineSavePath(folderName);
 			string saveFileName = DetermineSaveFileName(fileName);
@@ -136,11 +139,11 @@ namespace MoreMountains.Tools
 			}			
 		}
 
-		/// <summary>
-		/// Deletes the whole save folder
-		/// </summary>
-		/// <param name="folderName"></param>
-		public static void DeleteSaveFolder(string folderName = _defaultFolderName)
+        /// <summary>
+        /// 저장 폴더 전체를 삭제합니다.
+        /// </summary>
+        /// <param name="folderName"></param>
+        public static void DeleteSaveFolder(string folderName = _defaultFolderName)
 		{
 			string savePath = DetermineSavePath(folderName);
 			if (Directory.Exists(savePath))
@@ -148,11 +151,11 @@ namespace MoreMountains.Tools
 				DeleteDirectory(savePath);
 			}
 		}
-		
-		/// <summary>
-		/// Deletes all save files saved by this MMSaveLoadManager
-		/// </summary>
-		public static void DeleteAllSaveFiles()
+
+        /// <summary>
+        /// 이 MMSaveLoadManager에 의해 저장된 모든 저장 파일을 삭제합니다.
+        /// </summary>
+        public static void DeleteAllSaveFiles()
 		{
 			string savePath = DetermineSavePath("");
 
@@ -168,11 +171,11 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Deletes the specified directory
-		/// </summary>
-		/// <param name="target_dir"></param>
-		public static void DeleteDirectory(string target_dir)
+        /// <summary>
+        /// 지정된 디렉터리를 삭제합니다.
+        /// </summary>
+        /// <param name="target_dir"></param>
+        public static void DeleteDirectory(string target_dir)
 		{
 			string[] files = Directory.GetFiles(target_dir);
 			string[] dirs = Directory.GetDirectories(target_dir);
