@@ -195,10 +195,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Initializes the buttons. If you want to add more buttons, make sure to register them here.
-		/// </summary>
-		protected virtual void InitializeButtons()
+        /// <summary>
+        /// 버튼을 초기화합니다. 더 많은 버튼을 추가하려면 여기에 등록하세요.
+        /// </summary>
+        protected virtual void InitializeButtons()
 		{
 			ButtonList = new List<MMInput.IMButton> ();
 			ButtonList.Add(JumpButton = new MMInput.IMButton (PlayerID, "Jump", JumpButtonDown, JumpButtonPressed, JumpButtonUp));

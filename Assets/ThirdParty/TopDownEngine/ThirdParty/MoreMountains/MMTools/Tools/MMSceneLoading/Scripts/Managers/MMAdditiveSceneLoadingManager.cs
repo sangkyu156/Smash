@@ -275,10 +275,10 @@ namespace MoreMountains.Tools
 			Initialization();
 		}
 
-		/// <summary>
-		/// Initializes timescale, computes null checks, and starts the load sequence
-		/// </summary>
-		protected virtual void Initialization()
+        /// <summary>
+        /// 시간 단위를 초기화하고, null 검사를 계산하고, 로드 시퀀스를 시작합니다.
+        /// </summary>
+        protected virtual void Initialization()
 		{
 			MMLoadingSceneDebug("MMLoadingSceneManagerAdditive : Initialization");
 

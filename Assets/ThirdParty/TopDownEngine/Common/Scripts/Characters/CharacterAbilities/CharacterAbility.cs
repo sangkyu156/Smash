@@ -362,10 +362,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Plays the ability start sound effect
-		/// </summary>
-		public virtual void PlayAbilityStartFeedbacks()
+        /// <summary>
+        /// 능력 시작 음향 효과를 재생합니다.
+        /// </summary>
+        public virtual void PlayAbilityStartFeedbacks()
 		{
 			AbilityStartFeedbacks?.PlayFeedbacks(this.transform.position);
 			_startFeedbackIsPlaying = true;

@@ -12,6 +12,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     public PlayerDataManager playerData;
     public Inventory inventory;
     public InventoryDisplay inventoryDisplay;
+    public InventoryDetails inventoryDetails;
     int curQuantity;
     string newItemName;
     InventoryItem curItem;
@@ -66,7 +67,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
         inventory.SaveInventory();
         inventoryDisplay.RedrawInventoryDisplay();
         inventoryDisplay.Focus();
-        //디테일창 끄는 이벤트함
+        inventoryDetails.DisplayDetails(null);
 
         OffSellPopup();
     }

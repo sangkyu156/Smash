@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine.EventSystems;
+using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -54,10 +55,14 @@ namespace MoreMountains.TopDownEngine
 		protected float _initialButtonsAlpha;
 		protected bool _initialized = false;
 
-		/// <summary>
-		/// Initialization
-		/// </summary>
-		protected override void Awake()
+		//내가 만든 변수
+		public CanvasGroup PlayerInventoryCanvas;
+		public CanvasGroup StoreInventoryCanvas;
+
+        /// <summary>
+        /// Initialization
+        /// </summary>
+        protected override void Awake()
 		{
 			base.Awake();
 
@@ -179,7 +184,7 @@ namespace MoreMountains.TopDownEngine
         /// <param name="state">If set to <c>true</c>, sets the pause.</param>
         public virtual void SetPauseScreen(bool state)
 		{
-			if (PauseScreen != null)
+			if (PauseScreen != null && PlayerInventoryCanvas.alpha == 0 && StoreInventoryCanvas.alpha == 0)
 			{
 				PauseScreen.SetActive(state);
 				EventSystem.current.sendNavigationEvents = state;

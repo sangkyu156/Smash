@@ -196,9 +196,6 @@ namespace MoreMountains.InventoryEngine
 
             switch (inventoryEvent.InventoryEventType)
             {
-                case MMInventoryEventType.Sell:
-                    DisplayDetails(null);
-                    break;
                 case MMInventoryEventType.Click:
                 case MMInventoryEventType.Select:
                     curItem = inventoryEvent.EventItem;

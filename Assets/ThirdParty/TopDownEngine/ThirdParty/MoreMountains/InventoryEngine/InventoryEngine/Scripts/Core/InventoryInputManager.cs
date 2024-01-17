@@ -17,9 +17,9 @@ namespace MoreMountains.InventoryEngine
 	public class InventoryInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		[Header("Targets")]
-		[MMInformation("Bind here your inventory container (the CanvasGroup that you want to turn on/off when opening/closing the inventory), your main InventoryDisplay, and the overlay that will be displayed under the InventoryDisplay when opened.", MMInformationAttribute.InformationType.Info, false)]
-		/// The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button
-		[Tooltip("The CanvasGroup containing all the elements you want to show/hide when pressing the open/close inventory button")]
+		[MMInformation("여기에 인벤토리 컨테이너(인벤토리를 열거나 닫을 때 켜거나 끄려는 CanvasGroup), 기본 InventoryDisplay 및 열릴 때 InventoryDisplay 아래에 표시될 오버레이를 바인딩합니다.", MMInformationAttribute.InformationType.Info, false)]
+        /// 인벤토리 열기/닫기 버튼을 누를 때 표시하거나 숨기려는 모든 요소가 포함된 CanvasGroup
+        [Tooltip("인벤토리 열기/닫기 버튼을 누를 때 표시하거나 숨기려는 모든 요소가 포함된 CanvasGroup")]
 		public CanvasGroup TargetInventoryContainer;
         // 내가만든 변수
 		// 플레이어가 NPC근처가서 'E'키 누르면 나오는 상점
@@ -30,27 +30,27 @@ namespace MoreMountains.InventoryEngine
         [Tooltip("The main inventory display")] 
 		public InventoryDisplay TargetInventoryDisplay;
         /// 인벤토리 열기/닫기 시 그 아래에 사용될 페이더입니다.
-        [Tooltip("The Fader that will be used under it when opening/closing the inventory")]
+        [Tooltip("인벤토리 열기/닫기 시 그 아래에 사용될 페이더입니다.")]
 		public CanvasGroup Overlay;
 
-		[Header("Overlay")] 
-		/// the opacity of the overlay when active
-		[Tooltip("the opacity of the overlay when active")]
+		[Header("Overlay")]
+        /// 활성화 시 오버레이의 불투명도
+        [Tooltip("활성화 시 오버레이의 불투명도")]
 		public float OverlayActiveOpacity = 0.85f;
-		/// the opacity of the overlay when inactive
-		[Tooltip("the opacity of the overlay when inactive")]
+        /// 비활성 상태일 때 오버레이의 불투명도
+        [Tooltip("비활성 상태일 때 오버레이의 불투명도")]
 		public float OverlayInactiveOpacity = 0f;
 
 		[Header("Start Behaviour")]
-		[MMInformation("If you set HideContainerOnStart to true, the TargetInventoryContainer defined right above this field will be automatically hidden on Start, even if you've left it visible in Scene view. Useful for setup.", MMInformationAttribute.InformationType.Info, false)]
-		/// if this is true, the inventory container will be hidden automatically on start
-		[Tooltip("if this is true, the inventory container will be hidden automatically on start")]
+		[MMInformation("HideContainerOnStart를 true로 설정하면 이 필드 바로 위에 정의된 TargetInventoryContainer가 장면 뷰에 표시된 상태로 두더라도 시작 시 자동으로 숨겨집니다. 설정에 유용합니다.", MMInformationAttribute.InformationType.Info, false)]
+        /// 이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.
+        [Tooltip("이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.")]
 		public bool HideContainerOnStart = true;
 
 		[Header("Permissions")]
-		[MMInformation("Here you can decide to have your inventory catch input only when open, or not.", MMInformationAttribute.InformationType.Info, false)]
-		/// if this is true, the inventory container will be hidden automatically on start
-		[Tooltip("if this is true, the inventory container will be hidden automatically on start")]
+		[MMInformation("여기에서 인벤토리가 열려 있을 때만 입력을 포착하도록 할지 여부를 결정할 수 있습니다.", MMInformationAttribute.InformationType.Info, false)]
+        /// 이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.
+        [Tooltip("이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.")]
 		public bool InputOnlyWhenOpen = true;
 
 		#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
@@ -145,10 +145,10 @@ namespace MoreMountains.InventoryEngine
 		#else
 		[Header("Key Mapping")]
 		[MMInformation("여기서는 원하는 다양한 키 바인딩을 설정해야 합니다. 기본적으로 일부가 있지만 자유롭게 변경할 수 있습니다.", MMInformationAttribute.InformationType.Info, false)]
-		/// the key used to open/close the inventory
-		public KeyCode ToggleInventoryKey = KeyCode.I;
-		/// the alt key used to open/close the inventory
-		public KeyCode ToggleInventoryAltKey = KeyCode.Joystick1Button6;
+        /// 인벤토리를 열고 닫는 데 사용되는 키
+        public KeyCode ToggleInventoryKey = KeyCode.I;
+        /// 인벤토리를 열고 닫는 데 사용되는 Alt 키
+        public KeyCode ToggleInventoryAltKey = KeyCode.Joystick1Button6;
         /// 인벤토리를 여는 데 사용되는 키
         public KeyCode OpenInventoryKey;
 		/// the key used to close the inventory
@@ -194,10 +194,10 @@ namespace MoreMountains.InventoryEngine
 		public enum ManageButtonsModes { Interactable, SetActive }
         
 		[Header("Buttons")]
-		/// if this is true, the InputManager will change the interactable state of inventory control buttons based on the currently selected slot
-		public bool ManageButtons = false;
-		/// the selected mode to enable buttons with (interactable will change the button's interactable state, SetActive will enable/disable the button's game object
-		[MMCondition("ManageButtons", true)] 
+        /// 이것이 사실이라면, InputManager는 현재 선택된 슬롯을 기반으로 인벤토리 제어 버튼의 상호작용 가능한 상태를 변경합니다.
+        public bool ManageButtons = false;
+        /// 버튼을 활성화하기 위해 선택한 모드(상호작용 가능은 버튼의 상호작용 가능 상태를 변경하고, SetActive는 버튼 게임 개체를 활성화/비활성화합니다)
+        [MMCondition("ManageButtons", true)] 
 		public ManageButtonsModes ManageButtonsMode = ManageButtonsModes.SetActive;
 		/// the button used to equip or use an item
 		[MMCondition("ManageButtons", true)]
@@ -518,6 +518,8 @@ namespace MoreMountains.InventoryEngine
             //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
             NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
             Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+			Time.timeScale = 1f;
         }
 
         //상점 패널을 닫습니다.
@@ -538,6 +540,8 @@ namespace MoreMountains.InventoryEngine
 
             //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
             TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+            Time.timeScale = 1f;
         }
 
         /// <summary>
@@ -579,12 +583,12 @@ namespace MoreMountains.InventoryEngine
 #endif
 
             // 사용자가 '인벤토리 전환' 키를 누르면
-            if (_toggleInventoryKeyPressed)
+            if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0)
 			{
 				ToggleInventory();
 			}
 
-			if(_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen)
+			if(_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen && TargetInventoryContainer.alpha == 0)
 			{
 				NPCToggleInventory();
             }
@@ -604,6 +608,10 @@ namespace MoreMountains.InventoryEngine
 				if (InventoryIsOpen)
 				{
 					CloseInventory();
+				}
+				if(NPCInventoryIsOpen)
+				{
+					CloseNPCInventory();
 				}
 			}
 

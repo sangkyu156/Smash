@@ -4,25 +4,25 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A list of the methods available to change the current score
-	/// </summary>
-	public enum MMTimeScaleMethods
+    /// <summary>
+    /// 현재 점수를 변경하는 데 사용할 수 있는 방법 목록
+    /// </summary>
+    public enum MMTimeScaleMethods
 	{
 		For,
 		Reset,
 		Unfreeze
 	}
-	
-	/// <summary>
-	/// The possible modes with which to interpolate time scale. Speed is a legacy mode, the recommended mode if you want to lerp timescale would be Duration, which offers the most options and accuracy
-	/// </summary>
-	public enum MMTimeScaleLerpModes { Speed, Duration, NoInterpolation } 
 
-	/// <summary>
-	/// The different settings you can play with on a time scale event
-	/// </summary>
-	public struct TimeScaleProperties
+    /// <summary>
+    /// 시간 척도를 보간하는 데 사용할 수 있는 모드입니다. 속도는 레거시 모드입니다. 시간 척도를 조정하려는 경우 권장되는 모드는 대부분의 옵션과 정확성을 제공하는 기간입니다.
+    /// </summary>
+    public enum MMTimeScaleLerpModes { Speed, Duration, NoInterpolation }
+
+    /// <summary>
+    /// 시간 규모 이벤트에서 사용할 수 있는 다양한 설정
+    /// </summary>
+    public struct TimeScaleProperties
 	{
 		public float TimeScale;
 		public float Duration;
@@ -151,10 +151,10 @@ namespace MoreMountains.Feedbacks
 			Initialization();
 		}
 
-		/// <summary>
-		/// On init we store our initial timescales and apply the normal timescale
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// init에서는 초기 시간 척도를 저장하고 일반 시간 척도를 적용합니다.
+        /// </summary>
+        public virtual void Initialization()
 		{
 			TargetTimeScale = NormalTimeScale;
 			_initialFixedDeltaTime = Time.fixedDeltaTime;
@@ -223,14 +223,14 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Modifies the time scale and time attributes to match the new time scale
-		/// </summary>
-		/// <param name="newValue"></param>
-		protected virtual void ApplyTimeScale(float newValue)
+        /// <summary>
+        /// 새로운 시간 척도와 일치하도록 시간 척도 및 시간 속성을 수정합니다.
+        /// </summary>
+        /// <param name="newValue"></param>
+        protected virtual void ApplyTimeScale(float newValue)
 		{
-			// if the new timescale is the same as last time, we don't bother updating it
-			if (newValue == _timeScaleLastTime)
+            // 새로운 시간 척도가 지난번과 같으면 굳이 업데이트하지 않아도 됩니다.
+            if (newValue == _timeScaleLastTime)
 			{
 				return;
 			}

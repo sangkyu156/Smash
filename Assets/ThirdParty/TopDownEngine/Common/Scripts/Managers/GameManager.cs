@@ -169,8 +169,8 @@ namespace MoreMountains.TopDownEngine
         /// 이것이 사실이라면 인벤토리를 열 때 게임이 자동으로 일시 중지됩니다.
         [Tooltip("if this is true, the game will automatically pause when opening an inventory")]
 		public bool PauseGameWhenInventoryOpens = true;
-		/// true if the game is currently paused
-		public bool Paused { get; set; } 
+        /// 게임이 현재 일시 정지된 경우 true
+        public bool Paused { get; set; } 
 		// true if we've stored a map position at least once
 		public bool StoredLevelMapPosition{ get; set; }
 		/// the current player
@@ -313,7 +313,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void Pause(PauseMethods pauseMethod = PauseMethods.PauseMenu, bool unpauseIfPaused = true)
 		{	
-			if ((pauseMethod == PauseMethods.PauseMenu) && _inventoryOpen)
+			if ((pauseMethod == PauseMethods.PauseMenu) && _inventoryOpen && GUIManager.Instance.PlayerInventoryCanvas.alpha == 1 && GUIManager.Instance.StoreInventoryCanvas.alpha == 1)
 			{
 				return;
 			}
@@ -501,15 +501,15 @@ namespace MoreMountains.TopDownEngine
 				case "inventoryOpens":
 					if (PauseGameWhenInventoryOpens)
 					{
-						Pause(PauseMethods.NoPauseMenu, false);
-					}					
+                        Pause(PauseMethods.NoPauseMenu, false);
+                    }					
 					break;
 
 				case "inventoryCloses":
 					if (PauseGameWhenInventoryOpens)
 					{
-						UnPause(PauseMethods.NoPauseMenu);
-					}
+                        UnPause(PauseMethods.NoPauseMenu);
+                    }
 					break;
 			}
 		}

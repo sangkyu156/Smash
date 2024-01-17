@@ -8,11 +8,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Command lines to be run from the MMDebugMenu
-	/// To add new ones, add the [MMDebugLogCommand] attribute to any static method
-	/// </summary>
-	public class MMDebugMenuCommands : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 실행할 명령줄 새로운 항목을 추가하려면 정적 메서드에 [MMDebugLogCommand] 특성을 추가하세요.
+    /// </summary>
+    public class MMDebugMenuCommands : MonoBehaviour
 	{
 		/// <summary>
 		/// Outputs Time.time
@@ -136,11 +135,11 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Sets the target timescale to the specified value
-		/// </summary>
-		/// <param name="args"></param>
-		[MMDebugLogCommandArgumentCount(1)]
+        /// <summary>
+        /// 목표 기간을 지정된 값으로 설정합니다.
+        /// </summary>
+        /// <param name="args"></param>
+        [MMDebugLogCommandArgumentCount(1)]
 		[MMDebugLogCommand]
 		public static void Timescale(string[] args)
 		{
