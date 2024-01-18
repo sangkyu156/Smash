@@ -103,7 +103,7 @@ namespace MoreMountains.InventoryEngine
             return numberOfStackableSlots;
         }
 
-        public static string _resourceItemPath = "Items/";
+        public static string _resourceItemPath = "Prefabs/Items/";
         public static string _saveFolderName = "InventoryEngine/";
         public static string _saveFileExtension = ".inventory";
 
@@ -155,7 +155,6 @@ namespace MoreMountains.InventoryEngine
 
         protected virtual void Start()
         {
-
             //파일 있는지 체크하고(해당 컴퓨터에서 처음 실행하는지 확인하고) 파일이 있으면 로드하고 없으면 초기값 넣어서 저장하고 불러온다
             if (PlayerID == "Player1")
                 IsStartSetup();
@@ -386,8 +385,9 @@ namespace MoreMountains.InventoryEngine
                 targetInventory.AddItem(itemToMove, itemToMove.Quantity);
             }
 
-            // 그런 다음 원래 인벤토리에서 제거합니다.
+            // 원래 제거해야하는데 퀵슬롯에 가는거라 제거안함 나중에 퀵슬롯 말고 다른곳으로 움길일이 있으면 다시 수정해야함.
             RemoveItem(startIndex, itemToMove.Quantity);
+            AddItemAt(itemToMove, itemToMove.Quantity, startIndex);//퀵슬롯으로 이동후 스프라이트 안바뀌는 버그때문에 지우고 그자리에 다시 생성함
 
             return true;
         }
@@ -395,7 +395,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// 인벤토리에서 지정된 항목을 제거합니다.
         /// </summary>
-        /// <returns><c>true</c>, 항목이 제거된 경우, <c>false</c> 아닐경우.</returns>
+        /// <returns>항목이 제거된 경우<c>true</c>, 아닐경우<c>false</c></returns>
         /// <param name="itemToRemove">Item to remove.</param>
         public virtual bool RemoveItem(int i, int quantity)
         {
@@ -724,7 +724,7 @@ namespace MoreMountains.InventoryEngine
             }
             if (item.Use(PlayerID))
             {
-                // 수량에서 1개 제거
+                // 수량에서 ConsumeQuantity만큼 제거
                 MMInventoryEvent.Trigger(MMInventoryEventType.ItemUsed, slot, this.name, item.Copy(), 0, index, PlayerID);
                 if (item.Consumable)
                 {
@@ -960,19 +960,24 @@ namespace MoreMountains.InventoryEngine
         /// </summary>
 		public void StoreItemSeting()
         {
-            for (int i = 0;i < InventoryItems.Length; i++)
+            for (int i = 0; i < InventoryItems.Length; i++)
             {
                 if (InventoryItems[i].ItemID == "Apple_npc")
                 {
                     ItemsToInclude = InventoryItems[i];
                     AddItem(ItemsToInclude, 1);
                 }
-                if (InventoryItems[i].ItemID == "ArmorBlue_npc")
+                else if (InventoryItems[i].ItemID == "ArmorBlue_npc")
                 {
                     ItemsToInclude = InventoryItems[i];
                     AddItem(ItemsToInclude, 1);
                 }
-                if (InventoryItems[i].ItemID == "Axe_npc")
+                else if(InventoryItems[i].ItemID == "Axe_npc")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                }
+                else if(InventoryItems[i].ItemID == "StoneBarrier_npc")
                 {
                     ItemsToInclude = InventoryItems[i];
                     AddItem(ItemsToInclude, 1);

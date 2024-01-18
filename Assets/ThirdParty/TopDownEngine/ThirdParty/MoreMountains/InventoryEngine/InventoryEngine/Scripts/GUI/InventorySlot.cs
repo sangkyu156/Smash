@@ -125,8 +125,8 @@ namespace MoreMountains.InventoryEngine
 					MMInventoryEvent.Trigger(MMInventoryEventType.EquipRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 				}
 				MMInventoryEvent.Trigger(MMInventoryEventType.Click, this, ParentInventoryDisplay.TargetInventoryName, item, 0, Index, ParentInventoryDisplay.PlayerID);
-				// if we're currently moving an object
-				if (InventoryDisplay.CurrentlyBeingMovedItemIndex != -1)
+                // 현재 물체를 움직이고 있다면
+                if (InventoryDisplay.CurrentlyBeingMovedItemIndex != -1)
 				{
 					Move();
 				}
@@ -149,7 +149,8 @@ namespace MoreMountains.InventoryEngine
 					MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 					return;
 				}
-				if (ParentInventoryDisplay.TargetInventory.Content[Index].CanMoveObject)
+                //아이템이 움직일수 있는 아이템인경우ㅑ
+                if (ParentInventoryDisplay.TargetInventory.Content[Index].CanMoveObject)
 				{
                     // 배경 이미지를 변경합니다
                     TargetImage.sprite = ParentInventoryDisplay.MovedSlotImage;
@@ -157,16 +158,17 @@ namespace MoreMountains.InventoryEngine
 					InventoryDisplay.CurrentlyBeingMovedItemIndex = Index;
 				}
 			}
-            // 물체를 움직이고 있다면
+            // 아이템을 클릭후 무브까지 클릭한 상태에서 다른 슬롯을 눌렀을때
             else
             {
-				bool moveSuccessful = false;
-                // 객체를 새 슬롯으로 이동합니다.
+                bool moveSuccessful = false;
+                // 이동하려는 슬롯이 같은 인벤토리일때
                 if (ParentInventoryDisplay == InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay)
 				{
-					if (!ParentInventoryDisplay.TargetInventory.MoveItem(InventoryDisplay.CurrentlyBeingMovedItemIndex, Index))
+                    // MoveItem()으로 이동이 가능한지 불가능한지 판단
+                    if (!ParentInventoryDisplay.TargetInventory.MoveItem(InventoryDisplay.CurrentlyBeingMovedItemIndex, Index))
 					{
-                        // 이동할 수 없는 경우(예: 비어 있지 않은 대상 슬롯) 소리를 재생합니다.
+                        // 이동할 수 없는 경우 소리를 재생합니다.
                         MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 						moveSuccessful = false;
 					}
@@ -175,24 +177,26 @@ namespace MoreMountains.InventoryEngine
 						moveSuccessful = true;
 					}
 				}
-				else
-				{
-					if (!ParentInventoryDisplay.AllowMovingObjectsToThisInventory)
+                // 이동하려는 슬롯이 다른 인벤토리일때
+                else
+                {
+                    if (!ParentInventoryDisplay.AllowMovingObjectsToThisInventory)
 					{
-						moveSuccessful = false;
+                        moveSuccessful = false;
 					}
 					else
 					{
-						if (!InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay.TargetInventory.MoveItemToInventory(InventoryDisplay.CurrentlyBeingMovedItemIndex, ParentInventoryDisplay.TargetInventory, Index))
+                        if (!InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay.TargetInventory.MoveItemToInventory(InventoryDisplay.CurrentlyBeingMovedItemIndex, ParentInventoryDisplay.TargetInventory, Index))
 						{
                             // 이동할 수 없는 경우(예: 비어 있지 않은 대상 슬롯) 소리를 재생합니다.
                             MMInventoryEvent.Trigger(MMInventoryEventType.Error, this, ParentInventoryDisplay.TargetInventoryName, null, 0, Index, ParentInventoryDisplay.PlayerID);
 							moveSuccessful = false;
 						}
+						//다른 인벤토리에 이동성공
 						else
 						{
 							moveSuccessful = true;
-						}
+                        }
 					}
 				}
 
@@ -203,7 +207,7 @@ namespace MoreMountains.InventoryEngine
 					InventoryDisplay.CurrentlyBeingMovedFromInventoryDisplay = null;
 					MMInventoryEvent.Trigger(MMInventoryEventType.Move, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 				}
-			}
+            }
 		}
 
         /// <summary>

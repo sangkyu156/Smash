@@ -26,12 +26,12 @@ MonoBehaviour:
   CanMoveObject: 1
   CanSwapObject: 1
   DisplayProperties:
-    DisplayEquipUseButton: 0
-    DisplayMoveButton: 0
-    DisplayDropButton: 0
-    DisplayEquipButton: 0
-    DisplayUseButton: 0
-    DisplayUnequipButton: 0
+    DisplayEquipUseButton: 1
+    DisplayMoveButton: 1
+    DisplayDropButton: 1
+    DisplayEquipButton: 1
+    DisplayUseButton: 1
+    DisplayUnequipButton: 1
   Quantity: 1
   price: 23
   ItemName: Blue Armor
@@ -83,7 +83,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 1
+  MaximumStack: 10
   ItemClass: 1
   TargetEquipmentInventoryName: RogueArmorInventory
   EquippedSound: {fileID: 8300000, guid: 9f638326ba72ffb47bdfe9e691932e66, type: 3}

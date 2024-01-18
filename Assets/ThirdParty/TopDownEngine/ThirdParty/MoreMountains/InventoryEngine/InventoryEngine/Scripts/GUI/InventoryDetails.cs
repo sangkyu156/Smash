@@ -1,5 +1,6 @@
 ﻿using MoreMountains.Tools;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Codice.CM.Common.CmCallContext;
@@ -46,13 +47,13 @@ namespace MoreMountains.InventoryEngine
         /// 아이콘 컨테이너 객체
         public Image Icon;
         /// 제목 컨테이너 객체
-        public Text Title;
+        public TextMeshProUGUI Title;
         /// 간단한 설명 컨테이너 객체
-        public Text ShortDescription;
+        public TextMeshProUGUI ShortDescription;
         /// 설명 컨테이너 객체
-        public Text Description;
+        public TextMeshProUGUI Description;
         /// 수량 컨테이너 객체
-        public Text Quantity;
+        public TextMeshProUGUI Quantity;
 
         protected float _fadeDelay = 0.2f;
         public CanvasGroup _canvasGroup;

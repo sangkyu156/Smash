@@ -114,7 +114,6 @@ namespace MoreMountains.Tools
 
 			FileStream saveFile = File.Open(saveFileName, FileMode.Open, FileAccess.Read, FileShare.Read);
 			returnObject = SaveLoadMethod.Load(objectType, saveFile);
-			Debug.Log($"로드경로 = {saveFileName}");
 			saveFile.Close();
 
 			return returnObject;

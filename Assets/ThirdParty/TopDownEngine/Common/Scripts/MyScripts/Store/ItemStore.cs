@@ -3,6 +3,7 @@ using MoreMountains.Tools;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEventListener<MMGameEvent>
 {
@@ -32,6 +33,20 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
         quantity = 1;
         SetPriceAndQuantity_Buy();
         SetPriceAndQuantity_Sell();
+
+        //if(SceneManager.GetActiveScene().name == "Village")
+        //{
+        //    playerGold.text = playerData.CurPlayerGold.ToString();
+        //    playerGold2.text = playerData.CurPlayerGold.ToString();
+        //    quantity = 1;
+        //    SetPriceAndQuantity_Buy();
+        //    SetPriceAndQuantity_Sell();
+        //}
+        //else
+        //{
+        //    Debug.Log("들어옴");
+        //    playerGold2.text = playerData.CurPlayerGold.ToString();
+        //}
     }
 
     public int GetPlayerGold()
@@ -160,6 +175,22 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
                 }
                 break;
         }
+        //if (SceneManager.GetActiveScene().name == "Village")
+        //{
+        //    switch (inventoryEvent.InventoryEventType)
+        //    {
+        //        case MMInventoryEventType.Select:
+        //            if (inventoryEvent.EventItem != null)
+        //            {
+        //                curItem = inventoryEvent.EventItem;
+        //                curPlayerGold = playerData.CurPlayerGold;
+        //                quantity = 1;
+        //                SetPriceAndQuantity_Buy();
+        //                SetPriceAndQuantity_Sell();
+        //            }
+        //            break;
+        //    }
+        //}
     }
 
     //게임 이벤트가 포착되면 호출되는 이벤트

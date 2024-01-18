@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  MovedSprite: {fileID: 21300000, guid: 1df255698053d2d448cb7287b5aa2f69, type: 3}
+  MovedSprite: {fileID: 21300000, guid: 95164962e202d03449431b56919de321, type: 3}
   ParentInventoryDisplay: {fileID: 0}
   Index: 0
   SlotEnabled: 1
@@ -333,7 +333,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4800438578156707612
 CanvasRenderer:

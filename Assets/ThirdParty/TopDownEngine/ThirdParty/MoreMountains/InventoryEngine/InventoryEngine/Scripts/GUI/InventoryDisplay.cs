@@ -353,7 +353,7 @@ namespace MoreMountains.InventoryEngine
         /// <summary>
         /// 인벤토리의 내용(슬롯 및 아이콘)을 그립니다.
         /// </summary>
-        protected virtual void DrawInventoryContent ()             
+        public virtual void DrawInventoryContent ()             
 		{            
 			if (SlotContainer != null)
 			{

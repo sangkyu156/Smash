@@ -4,6 +4,7 @@ using System.Collections;
 using MoreMountains.Tools;
 using UnityEngine.EventSystems;
 using MoreMountains.Feedbacks;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -184,11 +185,30 @@ namespace MoreMountains.TopDownEngine
         /// <param name="state">If set to <c>true</c>, sets the pause.</param>
         public virtual void SetPauseScreen(bool state)
 		{
-			if (PauseScreen != null && PlayerInventoryCanvas.alpha == 0 && StoreInventoryCanvas.alpha == 0)
-			{
-				PauseScreen.SetActive(state);
-				EventSystem.current.sendNavigationEvents = state;
-			}
+            PauseScreen.SetActive(state);
+            if (PauseScreen != null && PlayerInventoryCanvas.alpha == 0 && StoreInventoryCanvas.alpha == 0)
+            {
+                PauseScreen.SetActive(state);
+                EventSystem.current.sendNavigationEvents = state;
+            }
+
+   //         if (SceneManager.GetActiveScene().name == "Village")
+   //         {
+   //             PauseScreen.SetActive(state);
+   //             if (PauseScreen != null && PlayerInventoryCanvas.alpha == 0 && StoreInventoryCanvas.alpha == 0)
+   //             {
+   //                 PauseScreen.SetActive(state);
+   //                 EventSystem.current.sendNavigationEvents = state;
+   //             }
+   //         }
+   //         else if (SceneManager.GetActiveScene().name == "LevelSelect" || SceneManager.GetActiveScene().name == "Battlefield01")
+			//{
+   //             if (PauseScreen != null)
+   //             {
+   //                 PauseScreen.SetActive(state);
+   //                 EventSystem.current.sendNavigationEvents = state;
+   //             }
+   //         }
 		}
 
 		/// <summary>
