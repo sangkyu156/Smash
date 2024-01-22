@@ -1900,7 +1900,9 @@
         <member name="M:NPOI.XSSF.UserModel.XSSFCellStyle.#ctor(System.Int32,System.Int32,NPOI.XSSF.Model.StylesTable,NPOI.XSSF.Model.ThemesTable)">
             Creates a Cell Style from the supplied parts
             @param cellXfId The main XF for the cell. Must be a valid 0-based index into the XF table
-            @param cellStyleXfId Optional, style xf. A value of <code>-1</code> means no xf.
+            @param cellStyleXfId Optional, style xf. A value of <code>
+          
+        </code> means no xf.
             @param stylesSource Styles Source to work off
         </member>
         <member name="M:NPOI.XSSF.UserModel.XSSFCellStyle.GetCoreXf">

@@ -41,7 +41,7 @@ namespace Nova
         /// <typeparam name="T">The type of the <paramref name="animation"/> struct</typeparam>
         /// <param name="animation">The <see cref="IAnimation"/> struct configured to perform the animation via <see cref="IAnimation.Update(float)"/></param>
         /// <param name="durationInSeconds">The duration, in seconds, per iteration of the animation</param>
-        /// <param name="iterations">The number of iterations to perform before the animation is removed from the animation queue. <c>-1</c> indicates "infinite iterations"</param>
+        /// <param name="iterations">The number of iterations to perform before the animation is removed from the animation queue. <c>,-1</c> indicates "infinite iterations"</param>
         /// <returns>An <see cref="AnimationHandle"/>, which can be used to: 
         /// <list type="table">
         /// <item><term>Chain</term> <description><see cref="AnimationHandleExtensions.Chain{T}(AnimationHandle, T, float, int)"/></description></item>
