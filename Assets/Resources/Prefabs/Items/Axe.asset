@@ -26,12 +26,12 @@ MonoBehaviour:
   CanMoveObject: 1
   CanSwapObject: 1
   DisplayProperties:
-    DisplayEquipUseButton: 1
-    DisplayMoveButton: 1
-    DisplayDropButton: 1
-    DisplayEquipButton: 1
-    DisplayUseButton: 1
-    DisplayUnequipButton: 1
+    DisplayEquipUseButton: 0
+    DisplayMoveButton: 0
+    DisplayDropButton: 0
+    DisplayEquipButton: 0
+    DisplayUseButton: 0
+    DisplayUnequipButton: 0
   Quantity: 1
   price: 28
   ItemName: Axe

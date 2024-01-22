@@ -251,8 +251,8 @@ namespace MoreMountains.InventoryEngine
 		{
 			InitializeSprites();
 			AddGridLayoutGroup();
-			DrawInventoryContent();		
-			FillLastUpdateContent();	
+			DrawInventoryContent();
+			FillLastUpdateContent();
 		}
 
         /// <summary>
@@ -720,6 +720,31 @@ namespace MoreMountains.InventoryEngine
 			}			
 		}
 
+        /// <summary>		
+        /// 인벤토리의 원하는 항목에 초점을 설정합니다.		
+        /// </summary>		
+        public virtual void Focus(int slotNum)
+        {
+            if (!EnableNavigation)
+            {
+                return;
+            }
+
+            if (SlotContainer.Count > 0)
+            {
+                SlotContainer[slotNum].Select();
+            }
+
+            if (EventSystem.current.currentSelectedGameObject == null)
+            {
+                InventorySlot newSlot = transform.GetComponentInChildren<InventorySlot>();
+                if (newSlot != null)
+                {
+                    EventSystem.current.SetSelectedGameObject(newSlot.gameObject);
+                }
+            }
+        }
+
         /// <summary>
         /// 현재 선택된 인벤토리 슬롯을 반환합니다.
         /// </summary>
@@ -904,8 +929,9 @@ namespace MoreMountains.InventoryEngine
 					break;
 
 				case MMInventoryEventType.ContentChanged:
-					ContentHasChanged ();
-					break;
+					RedrawInventoryDisplay();
+					Focus(CurrentlySelectedInventorySlot().Index);
+                    break;
 
 				case MMInventoryEventType.Redraw:
 					RedrawInventoryDisplay ();
