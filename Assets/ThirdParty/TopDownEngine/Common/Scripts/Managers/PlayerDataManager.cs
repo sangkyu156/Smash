@@ -21,7 +21,6 @@ public class PlayerDataManager : MonoBehaviour
             CurPlayerGold = ES3.Load<int>("PlayerGold");
         }
 
-        //지워야함
         ES3.Save("PlayerGold", CurPlayerGold = 777);
         CurPlayerGold = ES3.Load<int>("PlayerGold");
     }

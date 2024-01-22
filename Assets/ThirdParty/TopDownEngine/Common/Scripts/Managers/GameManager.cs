@@ -51,7 +51,6 @@ namespace MoreMountains.TopDownEngine
 	public struct TopDownEngineEvent
 	{
 		public TopDownEngineEventTypes EventType;
-		
 		public Character OriginCharacter;
 
 		/// <summary>
@@ -60,7 +59,7 @@ namespace MoreMountains.TopDownEngine
 		/// <param name="eventType">Event type.</param>
 		public TopDownEngineEvent(TopDownEngineEventTypes eventType, Character originCharacter)
 		{
-            EventType = eventType;
+			EventType = eventType;
 			OriginCharacter = originCharacter;
 		}
 
@@ -199,8 +198,10 @@ namespace MoreMountains.TopDownEngine
 		public Define.Scenes scenes = Define.Scenes.Title;
 
         ResourceManager _resource = new ResourceManager();
+		DataManager _data = new DataManager();
 
         public static ResourceManager Resource { get { return Instance._resource; } }
+		public static DataManager Data { get { return Instance._data; } }
 
         /// <summary>
         /// On Awake we initialize our list of points of entry

@@ -26,12 +26,12 @@ MonoBehaviour:
   CanMoveObject: 0
   CanSwapObject: 1
   DisplayProperties:
-    DisplayEquipUseButton: 0
-    DisplayMoveButton: 0
-    DisplayDropButton: 0
-    DisplayEquipButton: 0
-    DisplayUseButton: 0
-    DisplayUnequipButton: 0
+    DisplayEquipUseButton: 1
+    DisplayMoveButton: 1
+    DisplayDropButton: 1
+    DisplayEquipButton: 1
+    DisplayUseButton: 1
+    DisplayUnequipButton: 1
   Quantity: 1
   price: 2
   ItemName: Apple
