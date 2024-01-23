@@ -198,10 +198,8 @@ namespace MoreMountains.TopDownEngine
 		public Define.Scenes scenes = Define.Scenes.Title;
 
         ResourceManager _resource = new ResourceManager();
-		DataManager _data = new DataManager();
 
         public static ResourceManager Resource { get { return Instance._resource; } }
-		public static DataManager Data { get { return Instance._data; } }
 
         /// <summary>
         /// On Awake we initialize our list of points of entry

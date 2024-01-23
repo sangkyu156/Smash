@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace MoreMountains.InventoryEngine
@@ -378,6 +379,21 @@ namespace MoreMountains.InventoryEngine
             // 대상 인덱스를 지정했다면 이를 사용하고, 그렇지 않으면 정상적으로 추가합니다.
             if (endIndex >= 0)
             {
+                //퀵 슬롯에 똑같은 아이템,똑같은 수량이 이미 존재하면 삭제후 움긴 자리에 다시 생성
+                if (SceneManager.GetActiveScene().name != "Village")
+                {
+                    for (int i = 0; i < targetInventory.Content.Length; i++)
+                    {
+                        if (targetInventory.Content[i] == null)
+                            continue;
+
+                        if (targetInventory.Content[i].ItemID == itemToMove.ItemID && targetInventory.Content[i].Quantity == itemToMove.Quantity)
+                        {
+                            targetInventory.GetComponent<Inventory>().RemoveItem(i, targetInventory.Content[i].Quantity);
+                        }
+                    }
+                }
+
                 targetInventory.AddItemAt(itemToMove, itemToMove.Quantity, endIndex);
             }
             else
