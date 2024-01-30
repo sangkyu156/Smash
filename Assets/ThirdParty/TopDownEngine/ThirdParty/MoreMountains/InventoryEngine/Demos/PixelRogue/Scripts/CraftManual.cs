@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-[System.Serializable]
-public class Craft
-{
-    public string craftName; // �̸�
-    public GameObject go_prefab; // ���� ��ġ �� ������
-    public GameObject go_PreviewPrefab; // �̸� ���� ������
-}
+//[System.Serializable]
+//public class Craft
+//{
+//    public string craftName;
+//    public GameObject go_prefab;
+//    public GameObject go_PreviewPrefab;
+//}
 
 public class CraftManual : MonoBehaviour
 {
@@ -25,22 +26,26 @@ public class CraftManual : MonoBehaviour
     //private GameObject go_Prefab; 
 
     //[SerializeField]
-    public Transform tf_Player;  
+    //public Transform tf_Player;  
 
-    private RaycastHit hitInfo;
-    [SerializeField]
-    private LayerMask layerMask;
+    public LayerMask targetLayer;
     [SerializeField]
     private float range;
 
+    //public CraftManual(GameObject preview)
+    //{
+    //    go_Preview = preview;
+    //}
 
-    public void SlotClick(int _slotNumber)
+    private void Awake()
     {
-        Debug.Log($"�÷��̾� = {tf_Player.name}");
-        Debug.Log($"ť�� = {go_Preview.name}");
-        go_Preview = Instantiate(go_Preview, tf_Player.position + tf_Player.forward, Quaternion.identity);
-        isPreviewActivated = true;
-        //go_BaseUI.SetActive(false);
+        int layerMask = 1 << LayerMask.NameToLayer("Ground");
+        targetLayer = layerMask;
+    }
+
+    private void Start()
+    {
+        SlotClick();
     }
 
     void Update()
@@ -58,18 +63,27 @@ public class CraftManual : MonoBehaviour
         //    Cancel();
     }
 
-    private void PreviewPositionUpdate()
+    public void SlotClick()
     {
-        if (Physics.Raycast(tf_Player.position, new Vector3(0, 0, 31), out hitInfo, range, layerMask))
-        {
-            if (hitInfo.transform != null)
-            {
-                Vector3 _location = hitInfo.point;
-                go_Preview.transform.position = _location;
+        go_Preview = Instantiate(go_Preview, Vector3.zero, Quaternion.identity);
+        isPreviewActivated = true;
+        //go_BaseUI.SetActive(false);
+    }
 
-                Debug.Log(_location);
-                Debug.Log(go_Preview.transform.position);
-            }
+    void PreviewPositionUpdate()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan);
+
+        // 레이캐스트 수행, targetLayer = 충돌할 레이어
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer))
+        {
+            Vector3 newPosition = hit.point;
+            newPosition.y = newPosition.y + (go_Preview.transform.lossyScale.y * 0.5f);
+            go_Preview.transform.position = newPosition;
+            Debug.Log("돌맹이 위치 조정함");
         }
     }
 

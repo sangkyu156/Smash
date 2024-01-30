@@ -846,6 +846,32 @@ namespace MoreMountains.InventoryEngine
 			}
 		}
 
+		//어떤 퀵슬롯을 선택했는지 확인후 사용하는 함수
+		public virtual void UseQuickSlot(KeyCode key)
+		{
+			switch (key)
+			{
+				case KeyCode.Alpha1:
+					SlotContainer[0].Use();
+					break;
+                case KeyCode.Alpha2:
+                    SlotContainer[1].Use();
+                    break;
+                case KeyCode.Alpha3:
+                    SlotContainer[2].Use();
+                    break;
+                case KeyCode.Alpha4:
+                    SlotContainer[3].Use();
+                    break;
+                case KeyCode.Alpha5:
+                    SlotContainer[4].Use();
+                    break;
+                case KeyCode.Alpha6:
+                    SlotContainer[5].Use();
+                    break;
+            }
+		}
+
         /// <summary>
         /// MMInventoryEvents를 포착하고 이에 대한 조치를 취합니다.
         /// </summary>

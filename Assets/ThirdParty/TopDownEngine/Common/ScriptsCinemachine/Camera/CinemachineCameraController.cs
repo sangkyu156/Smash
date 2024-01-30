@@ -7,36 +7,37 @@ using Cinemachine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
+    /// <summary>
 	/// A class that handles camera follow for Cinemachine powered cameras
-	/// </summary>
-	public class CinemachineCameraController : TopDownMonoBehaviour, MMEventListener<MMCameraEvent>, MMEventListener<TopDownEngineEvent>
+    /// 시네머신 기반 카메라의 카메라 팔로우를 처리하는 클래스
+    /// </summary>
+    public class CinemachineCameraController : TopDownMonoBehaviour, MMEventListener<MMCameraEvent>, MMEventListener<TopDownEngineEvent>
 	{
-		/// True if the camera should follow the player
-		public bool FollowsPlayer { get; set; }
-		/// Whether or not this camera should follow a player
-		[Tooltip("Whether or not this camera should follow a player")]
+        /// 카메라가 플레이어를 따라가야 한다면 True입니다.
+        public bool FollowsPlayer { get; set; }
+        /// 이 카메라가 플레이어를 따라가야 하는지 여부
+        [Tooltip("이 카메라가 플레이어를 따라가야 하는지 여부")]
 		public bool FollowsAPlayer = true;
-		/// Whether to confine this camera to the level bounds, as defined in the LevelManager
-		[Tooltip("Whether to confine this camera to the level bounds, as defined in the LevelManager")]
+        /// LevelManager에 정의된 대로 이 카메라를 레벨 경계에 제한할지 여부
+        [Tooltip("LevelManager에 정의된 대로 이 카메라를 레벨 경계에 제한할지 여부")]
 		public bool ConfineCameraToLevelBounds = true;
-		/// If this is true, this confiner will listen to set confiner events
-		[Tooltip("If this is true, this confiner will listen to set confiner events")]
+        /// 이것이 사실이라면, 이 제한자는 설정된 제한자 이벤트를 수신합니다.
+        [Tooltip("이것이 사실이라면, 이 제한자는 설정된 제한자 이벤트를 수신합니다.")]
 		public bool ListenToSetConfinerEvents = true;
 		[MMReadOnly]
-		/// the target character this camera should follow
-		[Tooltip("the target character this camera should follow")]
+        /// 이 카메라가 따라야 하는 대상 캐릭터
+        [Tooltip("이 카메라가 따라야 하는 대상 캐릭터")]
 		public Character TargetCharacter;
 
 		#if MM_CINEMACHINE
 		protected CinemachineVirtualCamera _virtualCamera;
 		protected CinemachineConfiner _confiner;
-		#endif
+#endif
 
-		/// <summary>
-		/// On Awake we grab our components
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// Awake에서는 구성 요소를 가져옵니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			#if MM_CINEMACHINE
 			_virtualCamera = GetComponent<CinemachineVirtualCamera>();
@@ -44,10 +45,10 @@ namespace MoreMountains.TopDownEngine
 			#endif
 		}
 
-		/// <summary>
-		/// On Start we assign our bounding volume
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작 시 경계 볼륨을 할당합니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			#if MM_CINEMACHINE
 			if ((_confiner != null) && ConfineCameraToLevelBounds && LevelManager.HasInstance)
@@ -62,15 +63,16 @@ namespace MoreMountains.TopDownEngine
 			TargetCharacter = character;
 		}
 
-		/// <summary>
-		/// Starts following the LevelManager's main player
-		/// </summary>
-		public virtual void StartFollowing()
+        /// <summary>
+        /// LevelManager의 메인 플레이어를 따라가기 시작합니다.
+        /// </summary>
+        public virtual void StartFollowing()
 		{
 			if (!FollowsAPlayer) { return; }
 			FollowsPlayer = true;
 			#if MM_CINEMACHINE
 			_virtualCamera.Follow = TargetCharacter.CameraTarget.transform;
+			_virtualCamera.LookAt = TargetCharacter.CameraTarget.transform;
 			_virtualCamera.enabled = true;
 			#endif
 		}

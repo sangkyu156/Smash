@@ -15,6 +15,7 @@ TagManager:
   - InventoryCanvas
   - NPCInventory
   - PlayerDataManager
+  - Ground
   layers:
   - Default
   - TransparentFX
