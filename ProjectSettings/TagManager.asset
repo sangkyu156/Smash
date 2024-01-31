@@ -16,6 +16,8 @@ TagManager:
   - NPCInventory
   - PlayerDataManager
   - Ground
+  - QuickSlots
+  - MainInventory
   layers:
   - Default
   - TransparentFX

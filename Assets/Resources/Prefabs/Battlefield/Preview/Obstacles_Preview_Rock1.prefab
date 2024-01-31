@@ -123,8 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerGround: 9
   myMaterial: {fileID: 4822385376499202418}
-  green: {fileID: 2100000, guid: 7f95153e0c2e92d419b66d3711b188de, type: 2}
-  red: {fileID: 2100000, guid: 4add91b370f63c64f882909ca5d76c21, type: 2}
+  green: {fileID: 2100000, guid: 2db131aabdabe6543b46bf2bc14f597d, type: 2}
+  red: {fileID: 2100000, guid: 58d9888477b5c5f439c99208427b549b, type: 2}
+  colliderSize: 0
 --- !u!54 &3641435296465188022
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -280,6 +280,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 21385092}
+  curSelctItem: {fileID: 0}
 --- !u!225 &21385091
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 53635604}
+  curSelctItem: {fileID: 0}
 --- !u!225 &53635603
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -929,6 +931,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 95227185}
+  curSelctItem: {fileID: 0}
 --- !u!225 &95227184
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1196,6 +1199,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 103064886}
+  curSelctItem: {fileID: 0}
 --- !u!225 &103064885
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1465,6 +1469,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 109624276}
+  curSelctItem: {fileID: 0}
 --- !u!225 &109624275
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1779,6 +1784,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 150699532}
+  curSelctItem: {fileID: 0}
 --- !u!225 &150699531
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1924,6 +1930,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 153788402}
+  curSelctItem: {fileID: 0}
 --- !u!225 &153788401
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2204,6 +2211,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 156605162}
+  curSelctItem: {fileID: 0}
 --- !u!225 &156605161
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2536,6 +2544,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 173488896}
+  curSelctItem: {fileID: 0}
 --- !u!225 &173488895
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2793,6 +2802,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 195345855}
+  curSelctItem: {fileID: 0}
 --- !u!225 &195345854
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3020,6 +3030,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 200274201}
+  curSelctItem: {fileID: 0}
 --- !u!225 &200274200
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3165,6 +3176,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 211116003}
+  curSelctItem: {fileID: 0}
 --- !u!225 &211116002
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3310,6 +3322,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 216791286}
+  curSelctItem: {fileID: 0}
 --- !u!225 &216791285
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3632,6 +3645,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 245159654}
+  curSelctItem: {fileID: 0}
 --- !u!225 &245159653
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4089,6 +4103,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 280648305}
+  curSelctItem: {fileID: 0}
 --- !u!225 &280648304
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4234,6 +4249,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 283295860}
+  curSelctItem: {fileID: 0}
 --- !u!225 &283295859
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4514,6 +4530,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 302534334}
+  curSelctItem: {fileID: 0}
 --- !u!225 &302534333
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4808,6 +4825,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 328553606}
+  curSelctItem: {fileID: 0}
 --- !u!225 &328553605
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5193,6 +5211,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 340935053}
+  curSelctItem: {fileID: 0}
 --- !u!225 &340935052
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5458,6 +5477,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 348649221}
+  curSelctItem: {fileID: 0}
 --- !u!225 &348649220
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5603,6 +5623,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 351792606}
+  curSelctItem: {fileID: 0}
 --- !u!225 &351792605
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5748,6 +5769,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 355661772}
+  curSelctItem: {fileID: 0}
 --- !u!225 &355661771
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6028,6 +6050,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 373819699}
+  curSelctItem: {fileID: 0}
 --- !u!225 &373819698
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6173,6 +6196,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 394210761}
+  curSelctItem: {fileID: 0}
 --- !u!225 &394210760
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6802,6 +6826,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 450238428}
+  curSelctItem: {fileID: 0}
 --- !u!225 &450238427
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7397,6 +7422,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 509644281}
+  curSelctItem: {fileID: 0}
 --- !u!225 &509644280
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7586,6 +7612,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 531017427}
+  curSelctItem: {fileID: 0}
 --- !u!225 &531017426
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7731,6 +7758,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 536694357}
+  curSelctItem: {fileID: 0}
 --- !u!225 &536694356
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7968,6 +7996,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 548711820}
+  curSelctItem: {fileID: 0}
 --- !u!225 &548711819
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8339,6 +8368,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 566929807}
+  curSelctItem: {fileID: 0}
 --- !u!114 &566929807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8453,6 +8483,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 569623536}
+  curSelctItem: {fileID: 0}
 --- !u!225 &569623535
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8598,6 +8629,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 580396885}
+  curSelctItem: {fileID: 0}
 --- !u!225 &580396884
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9219,6 +9251,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 598455224}
+  curSelctItem: {fileID: 0}
 --- !u!225 &598455223
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -9958,6 +9991,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 637225215}
+  curSelctItem: {fileID: 0}
 --- !u!225 &637225214
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10156,6 +10190,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 650220669}
+  curSelctItem: {fileID: 0}
 --- !u!225 &650220668
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10504,6 +10539,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 696296330}
+  curSelctItem: {fileID: 0}
 --- !u!225 &696296329
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10876,6 +10912,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 739484832}
+  curSelctItem: {fileID: 0}
 --- !u!225 &739484831
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11021,6 +11058,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 742037667}
+  curSelctItem: {fileID: 0}
 --- !u!225 &742037666
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11166,6 +11204,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 743313285}
+  curSelctItem: {fileID: 0}
 --- !u!225 &743313284
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11311,6 +11350,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 750354307}
+  curSelctItem: {fileID: 0}
 --- !u!225 &750354306
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -12282,6 +12322,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 788209759}
+  curSelctItem: {fileID: 0}
 --- !u!225 &788209758
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -12751,6 +12792,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 815200206}
+  curSelctItem: {fileID: 0}
 --- !u!225 &815200205
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -12929,6 +12971,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 850012183}
+  curSelctItem: {fileID: 0}
 --- !u!225 &850012182
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13074,6 +13117,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 861552280}
+  curSelctItem: {fileID: 0}
 --- !u!225 &861552279
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13537,6 +13581,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 881516049}
+  curSelctItem: {fileID: 0}
 --- !u!225 &881516048
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13682,6 +13727,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 894342143}
+  curSelctItem: {fileID: 0}
 --- !u!225 &894342142
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -13908,6 +13954,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 933678147}
+  curSelctItem: {fileID: 0}
 --- !u!225 &933678146
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -14053,6 +14100,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 939288446}
+  curSelctItem: {fileID: 0}
 --- !u!225 &939288445
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15122,6 +15170,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 988343744}
+  curSelctItem: {fileID: 0}
 --- !u!225 &988343743
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -15435,6 +15484,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 995533533}
+  curSelctItem: {fileID: 0}
 --- !u!114 &995533533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15643,6 +15693,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 997579703}
+  curSelctItem: {fileID: 0}
 --- !u!225 &997579702
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16326,6 +16377,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1063146855}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1063146854
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16563,6 +16615,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1095966948}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1095966947
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16891,6 +16944,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1138008899}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1138008898
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17278,6 +17332,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1153942912}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1153942911
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17558,6 +17613,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1160179408}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1160179407
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17703,6 +17759,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1161250669}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1161250668
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -17848,6 +17905,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1162782419}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1162782418
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -18072,6 +18130,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1174762193}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1174762192
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -18217,6 +18276,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1182071796}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1182071795
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -18482,6 +18542,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1209215902}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1209215901
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -18720,6 +18781,7 @@ MonoBehaviour:
   OverlayInactiveOpacity: 0
   HideContainerOnStart: 1
   InputOnlyWhenOpen: 1
+  QuickSlots: {fileID: 1884380576}
   ToggleInventoryKey: 105
   ToggleInventoryAltKey: 356
   OpenInventoryKey: 0
@@ -18994,6 +19056,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1228162038}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1228162037
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -19139,6 +19202,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1229781425}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1229781424
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -19506,6 +19570,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1245152629}
+  curSelctItem: {fileID: 0}
 --- !u!114 &1245152629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19620,6 +19685,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1262979387}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1262979386
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -20097,6 +20163,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1297123987}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1297123986
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -20242,6 +20309,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1307238504}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1307238503
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -21436,6 +21504,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1364846343}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1364846342
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22291,6 +22360,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1398733121}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1398733120
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22436,6 +22506,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1403987452}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1403987451
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22736,6 +22807,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1450289535}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1450289534
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23196,6 +23268,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1473663480}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1473663479
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23341,6 +23414,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1480562948}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1480562947
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23486,6 +23560,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1497578398}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1497578397
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23631,6 +23706,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1500168980}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1500168979
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23776,6 +23852,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1509185878}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1509185877
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23921,6 +23998,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1530355069}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1530355068
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -23990,6 +24068,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1530561123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1530561124}
+  m_Layer: 0
+  m_Name: ParentPreviewObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1530561124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530561123}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552360997
 GameObject:
   m_ObjectHideFlags: 0
@@ -24457,6 +24566,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1572368923}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1572368922
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25023,6 +25133,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1623809972}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1623809971
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25168,6 +25279,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1625363932}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1625363931
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25445,6 +25557,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1661861180}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1661861179
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25590,6 +25703,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1664491132}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1664491131
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -25807,6 +25921,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1678793839}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1678793838
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -26005,6 +26120,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1693107177}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1693107176
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -26150,6 +26266,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1695837895}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1695837894
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -26535,6 +26652,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1715033736}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1715033735
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -26914,6 +27032,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1752676318}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1752676317
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -27298,6 +27417,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1778317650}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1778317649
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -27701,6 +27821,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1787273265}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1787273264
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -28352,6 +28473,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1864118434}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1864118433
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -28716,6 +28838,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1879009781}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1879009780
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -28861,6 +28984,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1879448991}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1879448990
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -28942,7 +29066,7 @@ GameObject:
   - component: {fileID: 1884380576}
   m_Layer: 0
   m_Name: QuickSlots
-  m_TagString: Untagged
+  m_TagString: QuickSlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28989,6 +29113,7 @@ MonoBehaviour:
   DrawContentInInspector: 1
   StoreItem: {fileID: 0}
   playerGold: {fileID: 0}
+  ParentPreviewObjects: {fileID: 1530561123}
   InventoryItems:
   - {fileID: 0}
   - {fileID: 0}
@@ -29040,6 +29165,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isInstalling: 0
+  mainInventory: {fileID: 2066512474}
 --- !u!1 &1918232350
 GameObject:
   m_ObjectHideFlags: 0
@@ -29153,6 +29280,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1918869110}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1918869109
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -29344,6 +29472,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1931725811}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1931725810
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -29522,6 +29651,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1944760590}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1944760589
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -29775,6 +29905,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1955562781}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1955562780
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30052,6 +30183,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1968617329}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1968617328
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30197,6 +30329,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1988870611}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1988870610
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30342,6 +30475,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 1990421274}
+  curSelctItem: {fileID: 0}
 --- !u!225 &1990421273
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30647,6 +30781,7 @@ MonoBehaviour:
   IconImage: {fileID: 0}
   QuantityText: {fileID: 0}
   CountImage: {fileID: 2052560292}
+  curSelctItem: {fileID: 0}
 --- !u!225 &2052560291
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30820,7 +30955,7 @@ GameObject:
   - component: {fileID: 2066512474}
   m_Layer: 0
   m_Name: RogueMainInventory
-  m_TagString: Untagged
+  m_TagString: MainInventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30896,6 +31031,7 @@ MonoBehaviour:
   DrawContentInInspector: 1
   StoreItem: {fileID: 0}
   playerGold: {fileID: 0}
+  ParentPreviewObjects: {fileID: 0}
   InventoryItems:
   - {fileID: 0}
   - {fileID: 0}
@@ -30947,6 +31083,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isInstalling: 0
+  mainInventory: {fileID: 2066512474}
 --- !u!1 &2107025981
 GameObject:
   m_ObjectHideFlags: 0
@@ -32524,21 +32662,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &79970569383244494
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999333107498720994}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.22, y: -1, z: -3.32}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &81268020924900597
 AudioListener:
   m_ObjectHideFlags: 0
@@ -35726,6 +35849,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!33 &219799715238619051
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757104173533992267}
+  m_Mesh: {fileID: -1633821710574564935, guid: 589e8cd47e1a77740a9c28d9052f5f54, type: 3}
 --- !u!222 &222034491318478343
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37368,33 +37499,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!54 &853887122336341415
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999333107498720994}
-  serializedVersion: 4
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &942648133751117414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37519,6 +37623,48 @@ MonoBehaviour:
     m_RotationOrder: 4
   RemapIntensityZero: 0
   RemapIntensityOne: 50
+--- !u!23 &979266529302359465
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757104173533992267}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 82e1cc75762845347b97ed79d96636a3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &984954000657918896
 GameObject:
   m_ObjectHideFlags: 0
@@ -37533,26 +37679,6 @@ GameObject:
   - component: {fileID: 4926871223290735596}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &999333107498720994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 79970569383244494}
-  - component: {fileID: 8916540365700780131}
-  - component: {fileID: 4815005435823012024}
-  - component: {fileID: 7348167967024242049}
-  - component: {fileID: 853887122336341415}
-  m_Layer: 23
-  m_Name: Obstacles_Rock1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38040,6 +38166,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2757104173533992267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8993995520621573113}
+  - component: {fileID: 979266529302359465}
+  - component: {fileID: 219799715238619051}
+  - component: {fileID: 4441706215136233241}
+  - component: {fileID: 4451248091796220743}
+  m_Layer: 23
+  m_Name: Obstacles_Rock1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &2817445160893281042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38564,6 +38710,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!136 &4441706215136233241
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757104173533992267}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.69317627
+  m_Height: 1.60098
+  m_Direction: 1
+  m_Center: {x: 0.0020439923, y: 0.3471651, z: -0.023542374}
+--- !u!54 &4451248091796220743
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757104173533992267}
+  serializedVersion: 4
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &4549664441149523208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38602,14 +38798,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7398411279218825972}
   m_CullTransparentMesh: 1
---- !u!33 &4815005435823012024
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999333107498720994}
-  m_Mesh: {fileID: -1633821710574564935, guid: 589e8cd47e1a77740a9c28d9052f5f54, type: 3}
 --- !u!224 &4830195544143445588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39923,29 +40111,6 @@ MonoBehaviour:
   RemapColorZero: 0
   RemapColorOne: 1
   TargetColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!136 &7348167967024242049
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999333107498720994}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.69317627
-  m_Height: 1.60098
-  m_Direction: 1
-  m_Center: {x: 0.0020439923, y: 0.3471651, z: -0.023542374}
 --- !u!136 &7351254723236680484
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40544,48 +40709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8aa3525151bb343b66b059b6095946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!23 &8916540365700780131
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999333107498720994}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 82e1cc75762845347b97ed79d96636a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!222 &8925156215500054785
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40616,6 +40739,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &8993995520621573113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757104173533992267}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.22, y: -1, z: -3.32}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9059378249585205148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40699,4 +40837,5 @@ SceneRoots:
   - {fileID: 447894122}
   - {fileID: 1471278609}
   - {fileID: 815989393}
-  - {fileID: 79970569383244494}
+  - {fileID: 8993995520621573113}
+  - {fileID: 1530561124}

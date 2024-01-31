@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static Codice.Client.BaseCommands.Import.Commit;
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 	using UnityEngine.InputSystem;
 #endif
@@ -54,6 +55,10 @@ namespace MoreMountains.InventoryEngine
         /// 이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.
         [Tooltip("이것이 사실이라면 시작 시 인벤토리 컨테이너가 자동으로 숨겨집니다.")]
         public bool InputOnlyWhenOpen = true;
+
+        //퀵슬롯 인벤토리
+        public Inventory QuickSlots;
+        int currentlySelectedSlot;
 
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 		
@@ -220,7 +225,7 @@ namespace MoreMountains.InventoryEngine
         [MMCondition("ManageButtons", true)]
         public Button UnEquipButton;
 
-        /// returns the active slot
+        /// 현재 선택중인 슬롯을 반환합니다.
         public InventorySlot CurrentlySelectedInventorySlot { get; set; }
 
         [Header("State")]
@@ -263,7 +268,6 @@ namespace MoreMountains.InventoryEngine
         protected bool _quickSlot4;
         protected bool _quickSlot5;
         protected bool _quickSlot6;
-        //내가 만든 변수
 
 
         /// <summary>
@@ -552,13 +556,13 @@ namespace MoreMountains.InventoryEngine
         }
 
         //퀵슬롯을 눌렀을때 호출되는 함수
-        public virtual void CheckCurrentlySelectedQuickSlot(KeyCode key)
-        {
-            if (SceneManager.GetActiveScene().name != "Village" || SceneManager.GetActiveScene().name != "LevelSelect")
-            {
-                QuickSlotsDisplay.UseQuickSlot(key);
-            }
-        }
+        //public virtual void CheckCurrentlySelectedQuickSlot(KeyCode key)
+        //{
+        //    if (SceneManager.GetActiveScene().name != "Village" || SceneManager.GetActiveScene().name != "LevelSelect")
+        //    {
+        //        QuickSlotsDisplay.SelectQuickSlot(key);
+        //    }
+        //}
 
         /// <summary>
         /// 재고 관련 입력을 처리하고 이에 따라 조치를 취합니다.
@@ -603,23 +607,62 @@ namespace MoreMountains.InventoryEngine
             _quickSlot5 = Input.GetKeyDown(KeyCode.Alpha5);
             _quickSlot6 = Input.GetKeyDown(KeyCode.Alpha6);
 #endif
+            if (QuickSlots != null)
+            {
+                if (_cancelKeyPressed && QuickSlots.isInstalling)
+                {
+                    //여기에 설치중인 아이템 다시 돌려놔야함
+                    Debug.Log("설치 취소");
+                }
+
+                if(Input.GetMouseButtonDown(0) && QuickSlots.isInstalling)
+                {
+                    //설치 아이템 사용
+                    Debug.Log($"선택중인 슬롯 인덱스 = {currentlySelectedSlot}");
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                }
+
+                //설치중이라면 'esc'버튼 빼고 전부 입력안되게
+                if (QuickSlots.isInstalling)
+                    return;
+            }
+
+            //아이템 설치중
             if (_quickSlot1 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha1);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha1);
+                currentlySelectedSlot = 0;
+            }
 
             if (_quickSlot2 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha2);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha2);
+                currentlySelectedSlot = 1;
+            }
 
             if (_quickSlot3 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha3);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha3);
+                currentlySelectedSlot = 2;
+            }
 
             if (_quickSlot4 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha4);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha4);
+                currentlySelectedSlot = 3;
+            }
 
             if (_quickSlot5 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha5);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha5);
+                currentlySelectedSlot = 4;
+            }
 
             if (_quickSlot6 && Overlay.alpha == 0)
-                CheckCurrentlySelectedQuickSlot(KeyCode.Alpha6);
+            {
+                QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha6);
+                currentlySelectedSlot = 5;
+            }
 
             // 사용자가 '인벤토리 전환' 키를 누르면
             if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0)
@@ -654,7 +697,7 @@ namespace MoreMountains.InventoryEngine
                 }
             }
 
-            // if we've only authorized input when open, and if the inventory is currently closed, we do nothing and exit
+            // 열릴 때만 입력을 승인했고 인벤토리가 현재 닫혀 있는 경우 아무 작업도 하지 않고 종료합니다.
             if (InputOnlyWhenOpen && !InventoryIsOpen)
             {
                 return;

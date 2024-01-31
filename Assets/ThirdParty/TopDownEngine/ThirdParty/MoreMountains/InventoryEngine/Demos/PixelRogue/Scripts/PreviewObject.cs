@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PreviewObject : MonoBehaviour
 {
-    private List<Collider> colliderList = new List<Collider>();
-
     [SerializeField]
     private int layerGround; 
     public MeshRenderer myMaterial;
@@ -16,72 +14,29 @@ public class PreviewObject : MonoBehaviour
     private Material red;
 
     public float colliderSize;
+    public bool isInstallable;
 
     private void Awake()
     {
         myMaterial = GetComponent<MeshRenderer>();
 
         colliderSize = GetCapsuleColliderSizeFloat(this.gameObject.GetComponent<CapsuleCollider>());
+        layerGround = 9;
     }
 
     void Update()
     {
         OnTriggerEnter2();
-        //ChangeColor();
     }
-
-    private void ChangeColor()
-    {
-        //if (colliderList.Count > 0)
-        //    SetColor(red);
-        //else
-        //    SetColor(green);
-
-        if (colliderList.Count > 0)
-        {
-            myMaterial.material = red;
-            for (int i = 0; i < colliderList.Count; i++)
-            {
-                Debug.Log($"현재 colliderList에 들어있는 오브젝트 = {colliderList[i].name}");
-            }
-        }
-        else
-            myMaterial.material = green;
-    }
-
-    private void SetColor(Material mat)
-    {
-        foreach (Transform tf_Child in this.transform)
-        {
-            Material[] newMaterials = new Material[tf_Child.GetComponent<Renderer>().materials.Length];
-
-            for (int i = 0; i < newMaterials.Length; i++)
-            {
-                newMaterials[i] = mat;
-            }
-
-            tf_Child.GetComponent<Renderer>().materials = newMaterials;
-        }
-    }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.layer != layerGround)
-    //        colliderList.Add(other);
-    //}
 
     private void OnTriggerEnter2()
     {
-        // 현재 GameObject 주위에 반경 1.0f 안에 있는 Collider들을 모두 찾습니다.
+        // 현재 GameObject 주위에 반경 colliderSize 안에 있는 Collider들을 모두 찾습니다.
         Collider[] colliders = Physics.OverlapSphere(transform.position, colliderSize);
 
         // 모든 찾은 Collider들을 순회하면서 처리합니다.
         foreach (Collider collider in colliders)
         {
-            // 자기 자신과의 충돌은 무시합니다.
-            if (collider == GetComponent<Collider>())
-                continue;
-
             // 여기에서 원하는 동작을 수행
             HandleCollision(collider);
         }
@@ -91,9 +46,15 @@ public class PreviewObject : MonoBehaviour
     void HandleCollision(Collider otherCollider)
     {
         if (otherCollider.gameObject.layer != layerGround)
+        {
             myMaterial.material = red;
+            isInstallable = false;
+        }
         else
+        {
             myMaterial.material = green;
+            isInstallable = true;
+        }
     }
 
     //콜라이더 사이즈 씬화면에 그리기
@@ -112,16 +73,5 @@ public class PreviewObject : MonoBehaviour
         float size = capsuleCollider.radius * 2;
 
         return size;
-    }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.layer != layerGround)
-    //        colliderList.Remove(other);
-    //}
-
-    public bool isBuildable()
-    {
-        return colliderList.Count == 0;
     }
 }

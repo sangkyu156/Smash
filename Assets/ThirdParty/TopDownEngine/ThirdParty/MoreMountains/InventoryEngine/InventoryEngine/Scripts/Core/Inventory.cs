@@ -136,9 +136,13 @@ namespace MoreMountains.InventoryEngine
 
         //내가 만든 변수
         public TextMeshProUGUI playerGold;
+        public GameObject ParentPreviewObjects;
         InventoryItem ItemsToInclude;
         public InventoryItem[] InventoryItems = new InventoryItem[50];
-        //List<InventoryItem> InventoryItemsList;
+        //현재 설치중인지 확인하는 변수
+        public bool isInstalling = false;
+        //메인 인벤토리
+        public Inventory mainInventory;
 
 
         /// <summary>
@@ -738,6 +742,7 @@ namespace MoreMountains.InventoryEngine
             {
                 return false;
             }
+
             if (item.Use(PlayerID))
             {
                 // 수량에서 ConsumeQuantity만큼 제거
@@ -745,6 +750,10 @@ namespace MoreMountains.InventoryEngine
                 if (item.Consumable)
                 {
                     RemoveItem(index, item.ConsumeQuantity);
+                    if(this.gameObject.tag != "MainInventory")
+                    {
+                        mainInventory.RemoveItemByID(item.ItemID, item.ConsumeQuantity);
+                    }
                 }
             }
             return true;
@@ -768,6 +777,31 @@ namespace MoreMountains.InventoryEngine
                 return false;
             }
         }
+
+        //아이템 설치모드에 들어갑니다.
+        public virtual bool InstallationItem(InventoryItem item, int index, InventorySlot slot = null)
+        {
+            if (InventoryItem.IsNull(item))
+            {
+                MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
+                return false;
+            }
+            if (!item.IsInstallable)
+            {
+                return false;
+            }
+
+            //아이템 설치 모드 실행
+            if (item.Installation(PlayerID))
+            {
+                //설치류 아이템을 사용했기 때문에 설치중(isInstalling)을 true로 바꿔준다.
+                if (item.isInstallable)
+                    isInstalling = true;
+            }
+
+            return true;
+        }
+        
 
         /// <summary>
         /// 지정된 슬롯에 아이템을 장착합니다.
@@ -1031,6 +1065,10 @@ namespace MoreMountains.InventoryEngine
 
                 case MMInventoryEventType.UseRequest:
                     UseItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);
+                    break;
+
+                case MMInventoryEventType.installed:
+                    InstallationItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);
                     break;
 
                 case MMInventoryEventType.EquipRequest:

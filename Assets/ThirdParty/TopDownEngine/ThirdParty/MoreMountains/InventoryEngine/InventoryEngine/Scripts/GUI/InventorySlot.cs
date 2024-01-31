@@ -30,6 +30,7 @@ namespace MoreMountains.InventoryEngine
 		public Image IconImage;
 		public TextMeshProUGUI QuantityText;
         public Image CountImage;
+		public InventoryItem curSelctItem;
 				
 		protected const float _disabledAlpha = 0.5f;
 		protected const float _enabledAlpha = 1.0f;
@@ -209,6 +210,14 @@ namespace MoreMountains.InventoryEngine
 				}
             }
 		}
+		
+		//현재 선택중인 아이템 정보를 반환하는 함수
+		public InventoryItem CurrentSelctItemInfo(int index)
+		{
+			curSelctItem = ParentInventoryDisplay.TargetInventory.Content[index];
+
+            return curSelctItem;
+        }
 
         /// <summary>
         /// 이 슬롯에 있는 아이템 1개를 소비하여 소리를 발생시키고 사용 중인 이 아이템에 대해 정의된 모든 동작을 실행합니다.
@@ -216,8 +225,23 @@ namespace MoreMountains.InventoryEngine
         public virtual void Use()
 		{
 			if (!SlotEnabled) { return; }
+			if(ParentInventoryDisplay.TargetInventory.Content[Index].IsInstallable) //설치류 아이템이면
+			{
+				if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>().isInstallable)
+				{
+					Debug.Log("설치할수 없습니다.");
+					return;				
+				}
+            }
 			MMInventoryEvent.Trigger(MMInventoryEventType.UseRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}
+
+		//설치 이벤트 뿌리기 (구독하고있는 함수 모두 호출)
+		public virtual void Installation()
+		{
+            if (!SlotEnabled) { return; }
+            MMInventoryEvent.Trigger(MMInventoryEventType.installed, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
+        }
 
         /// <summary>
         /// 가능하다면 이 아이템을 장착하세요.
@@ -356,8 +380,27 @@ namespace MoreMountains.InventoryEngine
             }
         }
 
+        /// <summary>
+        /// 이 슬롯에 아이템을 설치할 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        public virtual bool Installable()
+        {
+            if (InventoryItem.IsNull(ParentInventoryDisplay.TargetInventory.Content[Index]))
+            {
+                return false;
+            }
+            if (!ParentInventoryDisplay.TargetInventory.Content[Index].IsInstallable)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         // 선택중인 아이템을 반환합니다.
-		public virtual InventoryItem CurrentlySelectedItem()
+        public virtual InventoryItem CurrentlySelectedItem()
 		{
             return ParentInventoryDisplay.TargetInventory.Content[Index];
         }

@@ -41,10 +41,15 @@ namespace MoreMountains.InventoryEngine
         /// 이 항목을 "사용"할 수 있는지 여부(Use 메서드를 통해) - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsUsable은 그 이후 언제든지 사용됩니다.
         [Tooltip("이 항목을 \"사용\"할 수 있는지 여부(Use 메서드를 통해) - 중요합니다. 이는 이 개체의 초기 상태일 뿐이며, IsUsable은 그 이후 언제든지 사용됩니다.")]
 		public bool Usable = false;
+
+        /// 이것이 true라면 설치류인 아이템이다.
+        public bool isInstallable = false;
+
         /// 이것이 사실이라면 해당 객체에 대해 Use를 호출하면 해당 객체의 한 단위가 소비됩니다.
         [Tooltip("이것이 사실이라면 해당 객체에 대해 Use를 호출하면 해당 객체의 한 단위가 소비됩니다.")]
 		[MMCondition("Usable", true)] 
 		public bool Consumable = true;
+
         /// 이 아이템이 소모품인 경우, 한 번 사용 시 소모되는 개수(보통 1개)를 결정합니다.
         [Tooltip("이 아이템이 소모품인 경우, 한 번 사용 시 소모되는 개수(보통 1개)를 결정합니다.")]
 		[MMCondition("Consumable", true)] 
@@ -78,8 +83,11 @@ namespace MoreMountains.InventoryEngine
         public virtual bool IsUsable {  get { return Usable;  } }
         /// 이 객체를 사용할 수 있는지 여부
         public virtual bool IsEquippable { get { return Equippable; } }
+        //  이 객체를 설치할 수 있는지 여부
+        public virtual bool IsInstallable { get { return isInstallable; } }
 
-		[HideInInspector]
+
+        [HideInInspector]
         /// 이 아이템의 기본 수량
         public int Quantity = 1;
         // 이 아이템의 가격
@@ -269,5 +277,11 @@ namespace MoreMountains.InventoryEngine
         /// 개체를 떨어뜨리면 어떻게 됩니까? 이를 재정의하여 자신만의 동작을 추가하세요.
         /// </summary>
         public virtual bool Drop(string playerID) { return true; }
-	}
+
+        //아이템을 설치할때
+        public virtual bool Installation(string playerID) { return true; }
+
+        //설치 취소할때
+        public virtual bool InstallationCancel(string playerID) { return true; }
+    }
 }

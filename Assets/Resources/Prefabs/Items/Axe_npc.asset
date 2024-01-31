@@ -17,6 +17,7 @@ MonoBehaviour:
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0
+  isInstallable: 0
   Consumable: 1
   ConsumeQuantity: 1
   Equippable: 1
