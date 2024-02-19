@@ -60,7 +60,6 @@ public class CraftManual : MonoBehaviour
 
     public void Build()
     {
-        Debug.Log($"isPreviewActivated = {isPreviewActivated}, isBuildable = {go_Preview.GetComponent<PreviewObject>().isInstallable}");
         if (isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isInstallable)
         {
             int randomAngleY = Random.Range(0, 180);
@@ -70,8 +69,18 @@ public class CraftManual : MonoBehaviour
             isPreviewActivated = false;
             go_Preview = null;
             go_Prefab = null;
-            Time.timeScale = 1;
             inventory.isInstalling = false;
+            Time.timeScale = 1;
         }
+    }
+
+    public void BuildCancel()
+    {
+        Destroy(go_Preview);
+        isPreviewActivated = false;
+        go_Preview = null;
+        go_Prefab = null;
+        inventory.isInstalling = false;
+        Time.timeScale = 1;
     }
 }

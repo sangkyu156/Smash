@@ -236,11 +236,19 @@ namespace MoreMountains.InventoryEngine
 			MMInventoryEvent.Trigger(MMInventoryEventType.UseRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}
 
+		//아이템 설치중 취소
+		public virtual void Cancle()
+		{
+            if (!SlotEnabled) { return; }
+            if (ParentInventoryDisplay.TargetInventory.Content[Index].IsInstallable) //설치류 아이템이면
+                MMInventoryEvent.Trigger(MMInventoryEventType.CancelInstallation, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
+        }
+
 		//설치 이벤트 뿌리기 (구독하고있는 함수 모두 호출)
 		public virtual void Installation()
 		{
             if (!SlotEnabled) { return; }
-            MMInventoryEvent.Trigger(MMInventoryEventType.installed, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
+            MMInventoryEvent.Trigger(MMInventoryEventType.Installed, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
         }
 
         /// <summary>

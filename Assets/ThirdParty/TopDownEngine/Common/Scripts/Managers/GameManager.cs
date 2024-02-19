@@ -167,7 +167,7 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Pause")]
         /// 이것이 사실이라면 인벤토리를 열 때 게임이 자동으로 일시 중지됩니다.
-        [Tooltip("if this is true, the game will automatically pause when opening an inventory")]
+        [Tooltip("이것이 사실이라면 인벤토리를 열 때 게임이 자동으로 일시 중지됩니다.")]
 		public bool PauseGameWhenInventoryOpens = true;
         /// 게임이 현재 일시 정지된 경우 true
         public bool Paused { get; set; } 
@@ -208,7 +208,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.Awake ();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
-		}
+        }
 
 		/// <summary>
 		/// On Start(), sets the target framerate to whatever's been specified
@@ -219,11 +219,11 @@ namespace MoreMountains.TopDownEngine
 			_initialCurrentLives = CurrentLives;
 			_initialMaximumLives = MaximumLives;
         }
-					
-		/// <summary>
-		/// this method resets the whole game manager
-		/// </summary>
-		public virtual void Reset()
+
+        /// <summary>
+        /// 이 방법은 전체 게임 관리자를 재설정합니다
+        /// </summary>
+        public virtual void Reset()
 		{
 			Points = 0;
 			MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, 1f, 0f, false, 0f, true);

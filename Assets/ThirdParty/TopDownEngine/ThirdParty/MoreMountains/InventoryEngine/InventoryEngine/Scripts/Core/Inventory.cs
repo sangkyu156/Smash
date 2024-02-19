@@ -801,7 +801,30 @@ namespace MoreMountains.InventoryEngine
 
             return true;
         }
-        
+
+        //아이템 설치모드에서 취소 하여 원래 모드로 돌아가기
+        public virtual bool CancleInstallationItem(InventoryItem item, int index, InventorySlot slot = null)
+        {
+            if (InventoryItem.IsNull(item))
+            {
+                MMInventoryEvent.Trigger(MMInventoryEventType.Error, slot, this.name, null, 0, index, PlayerID);
+                return false;
+            }
+            if (!item.IsInstallable)
+            {
+                return false;
+            }
+
+            //아이템 설치 모드 실행
+            if (item.InstallationCancel(PlayerID))
+            {
+                if (item.isInstallable)
+                    isInstalling = false;
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// 지정된 슬롯에 아이템을 장착합니다.
@@ -1067,9 +1090,14 @@ namespace MoreMountains.InventoryEngine
                     UseItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);
                     break;
 
-                case MMInventoryEventType.installed:
+                case MMInventoryEventType.Installed:
                     InstallationItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);
                     break;
+
+                case MMInventoryEventType.CancelInstallation:
+                    CancleInstallationItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);
+                    break;
+
 
                 case MMInventoryEventType.EquipRequest:
                     EquipItem(inventoryEvent.EventItem, inventoryEvent.Index, inventoryEvent.Slot);

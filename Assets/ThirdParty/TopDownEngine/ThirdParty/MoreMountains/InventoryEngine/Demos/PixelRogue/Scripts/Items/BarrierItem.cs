@@ -26,6 +26,7 @@ public class BarrierItem : InventoryItem
     {
         base.InstallationCancel(playerID);
         Debug.Log($"{ItemID}을 설치를 취소했습니다.");
+        craftManual.GetComponent<CraftManual>().BuildCancel();
         return true;
     }
 

@@ -193,6 +193,8 @@ namespace MoreMountains.InventoryEngine
         protected SpriteState _spriteState = new SpriteState();
         protected InventorySlot _currentlySelectedSlot;
         protected InventorySlot _slotPrefab = null;
+        //설치중일때 나오는 안내 텍스트
+        public GameObject InstallInfoText;
 
         /// <summary>
         /// 재고 디스플레이 생성 및 설정(보통 검사관의 전용 버튼을 통해 호출됨)
@@ -847,6 +849,9 @@ namespace MoreMountains.InventoryEngine
             if (SceneManager.GetActiveScene().name == "Village" || SceneManager.GetActiveScene().name == "LevelSelect")
                 return;
 
+            if (InstallInfoText != null)
+                InstallInfoTextOn(); //설치 안내 텍스트 출력
+
             switch (key)
             {
                 case KeyCode.Alpha1:
@@ -894,6 +899,47 @@ namespace MoreMountains.InventoryEngine
                     SlotContainer[5].Use();
                     break;
             }
+        }
+
+        //설치중에 취소 했을때 호출되는 함수
+        public virtual void CancleQuickSlotItem(int curInstallingItem)
+        {
+            if (InstallInfoText != null)
+                InstallInfoTextOff(); //설치 안내 텍스트 끄기
+
+            switch (curInstallingItem)
+            {
+                case 0:
+                    SlotContainer[0].Cancle();
+                    break;
+                case 1:
+                    SlotContainer[1].Cancle();
+                    break;
+                case 2:
+                    SlotContainer[2].Cancle();
+                    break;
+                case 3:
+                    SlotContainer[3].Cancle();
+                    break;
+                case 4:
+                    SlotContainer[4].Cancle();
+                    break;
+                case 5:
+                    SlotContainer[5].Cancle();
+                    break;
+            }
+        }
+
+        //설치중 안내 텍스트 활성화
+        public void InstallInfoTextOn()
+        {
+            InstallInfoText.SetActive(true);
+        }
+
+        //설치중 안내 텍스트 비활성화
+        public void InstallInfoTextOff()
+        {
+            InstallInfoText.SetActive(false);
         }
 
         /// <summary>

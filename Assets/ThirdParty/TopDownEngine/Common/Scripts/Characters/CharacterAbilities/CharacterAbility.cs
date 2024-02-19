@@ -32,8 +32,8 @@ namespace MoreMountains.TopDownEngine
 		public MMFeedbacks AbilityStopFeedbacks;
                 
 		[Header("Permission")]
-		/// if true, this ability can perform as usual, if not, it'll be ignored. You can use this to unlock abilities over time for example
-		[Tooltip("if true, this ability can perform as usual, if not, it'll be ignored. You can use this to unlock abilities over time for example")]
+        /// true인 경우 이 능력은 평소대로 수행될 수 있으며, 그렇지 않은 경우 무시됩니다. 예를 들어 이를 사용하여 시간이 지남에 따라 능력을 잠금 해제할 수 있습니다.
+        [Tooltip("true인 경우 이 능력은 평소대로 수행될 수 있으며, 그렇지 않은 경우 무시됩니다. 예를 들어 이를 사용하여 시간이 지남에 따라 능력을 잠금 해제할 수 있습니다.")]
 		public bool AbilityPermitted = true;
         
 		/// an array containing all the blocking movement states. If the Character is in one of these states and tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while Idle or Swimming, for example.

@@ -613,12 +613,12 @@ namespace MoreMountains.InventoryEngine
                 {
                     //여기에 설치중인 아이템 다시 돌려놔야함
                     Debug.Log("설치 취소");
+                    QuickSlotsDisplay.CancleQuickSlotItem(currentlySelectedSlot);
                 }
 
                 if(Input.GetMouseButtonDown(0) && QuickSlots.isInstalling)
                 {
                     //설치 아이템 사용
-                    Debug.Log($"선택중인 슬롯 인덱스 = {currentlySelectedSlot}");
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
                 }
 

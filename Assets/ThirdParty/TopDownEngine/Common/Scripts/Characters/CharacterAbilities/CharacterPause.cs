@@ -38,6 +38,14 @@ namespace MoreMountains.TopDownEngine
 		public UnityEvent OnUnpause;
 
 
+        //'esc' 처음에 누르고 설치 취소하면 정상인데 설치 취소부터 하면 퍼즈 걸리는 현상 때문에 시작하지마자 퍼즈걸었다 품
+        protected override void Start()
+        {
+            base.Start();
+			TriggerPause();
+            TriggerPause();
+        }
+
         /// <summary>
         /// 매 프레임마다 입력을 확인하여 게임을 일시 중지/일시 중지 해제해야 하는지 확인합니다.
         /// </summary>
@@ -45,7 +53,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (_inputManager.PauseButton.State.CurrentState == MMInput.ButtonStates.ButtonDown)
 			{
-				TriggerPause();
+                TriggerPause();
 			}
 		}
 
@@ -60,12 +68,12 @@ namespace MoreMountains.TopDownEngine
 			}
 			if (!AbilityAuthorized)
 			{
-				return;
+                return;
 			}
 			PlayAbilityStartFeedbacks();
 			// GameManager 및 이를 수신할 수 있는 다른 클래스에 대해 Pause 이벤트를 트리거합니다.
             TopDownEngineEvent.Trigger(TopDownEngineEventTypes.TogglePause, null);
-		}
+        }
 
 		/// <summary>
 		/// Puts the character in the pause state

@@ -87,8 +87,8 @@ namespace MoreMountains.TopDownEngine
 		public MMStateMachine<CharacterStates.MovementStates> MovementState;
 		public MMStateMachine<CharacterStates.CharacterConditions> ConditionState;
 
-		/// associated camera and input manager
-		public InputManager LinkedInputManager { get; protected set; }
+        /// 관련 카메라 및 입력 관리자
+        public InputManager LinkedInputManager { get; protected set; }
         /// 이 캐릭터와 관련된 애니메이터
         public Animator _animator { get; protected set; }
 		/// a list of animator parameters
@@ -488,6 +488,7 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Update()
 		{		
+			//케릭터 업테이트가 먼저 실행되고 인풋메니저가 다음에 실행되게하면 된다.
 			EveryFrame();
         }
 
@@ -510,11 +511,11 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void EarlyProcessAbilities()
 		{
-			foreach (CharacterAbility ability in _characterAbilities)
+            foreach (CharacterAbility ability in _characterAbilities)
 			{
 				if (ability.enabled && ability.AbilityInitialized)
 				{
-					ability.EarlyProcessAbility();
+                    ability.EarlyProcessAbility();
 				}
 			}
 		}
