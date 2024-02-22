@@ -41,7 +41,7 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
-				Debug.LogWarning("No matching boolean found for ConditionAttribute in object: " + conditionAttribute.ConditionBoolean);
+				//Debug.LogWarning("No matching boolean found for ConditionAttribute in object: " + conditionAttribute.ConditionBoolean);
 			}
 			if (conditionAttribute.Negative)
 			{

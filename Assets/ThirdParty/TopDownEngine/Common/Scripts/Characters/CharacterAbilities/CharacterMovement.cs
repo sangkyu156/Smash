@@ -4,87 +4,87 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this ability to a Character to have it handle ground movement (walk, and potentially run, crawl, etc) in x and z direction for 3D, x and y for 2D
-	/// Animator parameters : Speed (float), Walking (bool)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")] 
+{
+    /// <summary>
+    /// 3D의 경우 x 및 z 방향, 2D의 경우 x 및 y 방향으로 지상 이동(걷기, 잠재적으로 뛰기, 기어다니기 등)을 처리하도록 캐릭터에 이 기능을 추가하세요.
+    /// 애니메이터 매개변수: 속도(float), 걷기(bool)
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Movement")] 
 	public class CharacterMovement : CharacterAbility 
 	{
-		/// the possible rotation modes for the character
-		public enum Movements { Free, Strict2DirectionsHorizontal, Strict2DirectionsVertical, Strict4Directions, Strict8Directions }
+        /// 캐릭터에 가능한 회전 모드
+        public enum Movements { Free, Strict2DirectionsHorizontal, Strict2DirectionsVertical, Strict4Directions, Strict8Directions }
 
-		/// the current reference movement speed
-		public float MovementSpeed { get; set; }
-		/// if this is true, movement will be forbidden (as well as flip)
-		public bool MovementForbidden { get; set; }
+        /// 현재 기준 이동 속도
+        public float MovementSpeed { get; set; }
+        /// 이것이 사실이라면 이동이 금지됩니다(뒤집기 포함).
+        public bool MovementForbidden { get; set; }
 
 		[Header("Direction")]
 
-		/// whether the character can move freely, in 2D only, in 4 or 8 cardinal directions
-		[Tooltip("whether the character can move freely, in 2D only, in 4 or 8 cardinal directions")]
+        /// 캐릭터가 2D에서만 4방향 또는 8방향으로 자유롭게 움직일 수 있는지 여부
+        [Tooltip("캐릭터가 2D에서만 4방향 또는 8방향으로 자유롭게 움직일 수 있는지 여부")]
 		public Movements Movement = Movements.Free;
 
 		[Header("Settings")]
 
-		/// whether or not movement input is authorized at that time
-		[Tooltip("whether or not movement input is authorized at that time")]
+        /// 해당 시점의 움직임 입력이 승인되었는지 여부
+        [Tooltip("해당 시점의 움직임 입력이 승인되었는지 여부")]
 		public bool InputAuthorized = true;
-		/// whether or not input should be analog
-		[Tooltip("whether or not input should be analog")]
+        /// 입력이 아날로그여야 하는지 여부
+        [Tooltip("입력이 아날로그여야 하는지 여부")]
 		public bool AnalogInput = false;
-		/// whether or not input should be set from another script
-		[Tooltip("whether or not input should be set from another script")]
+        /// 다른 스크립트에서 입력을 설정해야 하는지 여부
+        [Tooltip("다른 스크립트에서 입력을 설정해야 하는지 여부")]
 		public bool ScriptDrivenInput = false;
 
 		[Header("Speed")]
 
-		/// the speed of the character when it's walking
-		[Tooltip("the speed of the character when it's walking")]
+        /// 캐릭터가 걸을 때의 속도
+        [Tooltip("캐릭터가 걸을 때의 속도")]
 		public float WalkSpeed = 6f;
-		/// whether or not this component should set the controller's movement
-		[Tooltip("whether or not this component should set the controller's movement")]
+        /// 이 구성요소가 컨트롤러의 움직임을 설정해야 하는지 여부
+        [Tooltip("이 구성요소가 컨트롤러의 움직임을 설정해야 하는지 여부")]
 		public bool ShouldSetMovement = true;
-		/// the speed threshold after which the character is not considered idle anymore
-		[Tooltip("the speed threshold after which the character is not considered idle anymore")]
+        /// 캐릭터가 더 이상 유휴 상태로 간주되지 않는 속도 임계값
+        [Tooltip("캐릭터가 더 이상 유휴 상태로 간주되지 않는 속도 임계값")]
 		public float IdleThreshold = 0.05f;
 
 		[Header("Acceleration")]
 
-		/// the acceleration to apply to the current speed / 0f : no acceleration, instant full speed
-		[Tooltip("the acceleration to apply to the current speed / 0f : no acceleration, instant full speed")]
+        /// 현재 속도에 적용할 가속도 / 0f : 가속도 없음, 순간 최고 속도
+        [Tooltip("현재 속도에 적용할 가속도 / 0f : 가속도 없음, 순간 최고 속도")]
 		public float Acceleration = 10f;
-		/// the deceleration to apply to the current speed / 0f : no deceleration, instant stop
-		[Tooltip("the deceleration to apply to the current speed / 0f : no deceleration, instant stop")]
+        /// 현재 속도에 적용할 감속 / 0f : 감속 없음, 즉시 정지
+        [Tooltip("현재 속도에 적용할 감속 / 0f : 감속 없음, 즉시 정지")]
 		public float Deceleration = 10f;
 
-		/// whether or not to interpolate movement speed
-		[Tooltip("whether or not to interpolate movement speed")]
+        /// 이동 속도를 보간할지 말지
+        [Tooltip("이동 속도를 보간할지 말지")]
 		public bool InterpolateMovementSpeed = false;
 		public float MovementSpeedMaxMultiplier { get; set; } = float.MaxValue;
 		private float _movementSpeedMultiplier;
-		/// the multiplier to apply to the horizontal movement
-		public float MovementSpeedMultiplier
+        /// 수평 운동에 적용할 승수
+        public float MovementSpeedMultiplier
 		{
 			get => Mathf.Min(_movementSpeedMultiplier, MovementSpeedMaxMultiplier);
 			set => _movementSpeedMultiplier = value;
 		}
-		/// the multiplier to apply to the horizontal movement, applied by contextual elements (movement zones, etc)
-		public Stack<float> ContextSpeedStack = new Stack<float>();
+        /// 컨텍스트 요소(movement 구역 등)에 의해 적용되는 수평 이동에 적용할 승수
+        public Stack<float> ContextSpeedStack = new Stack<float>();
 		public float ContextSpeedMultiplier => ContextSpeedStack.Count > 0 ? ContextSpeedStack.Peek() : 1;
 
-		[Header("Walk Feedback")]
-		/// the particles to trigger while walking
-		[Tooltip("the particles to trigger while walking")]
+		[Header("워크 피드백")]
+        /// 걷는 동안 유발할 입자들
+        [Tooltip("걷는 동안 유발할 입자들")]
 		public ParticleSystem[] WalkParticles;
 
-		[Header("Touch The Ground Feedback")]
-		/// the particles to trigger when touching the ground
-		[Tooltip("the particles to trigger when touching the ground")]
+		[Header("터치 더 그라운드 피드백")]
+        /// 땅에 닿을 때 유발할 입자들
+        [Tooltip("땅에 닿을 때 유발할 입자들")]
 		public ParticleSystem[] TouchTheGroundParticles;
-		/// the sfx to trigger when touching the ground
-		[Tooltip("the sfx to trigger when touching the ground")]
+        /// 땅에 닿을 때 트리거할 sfx
+        [Tooltip("땅에 닿을 때 트리거할 sfx")]
 		public AudioClip[] TouchTheGroundSfx;
 
 		protected float _movementSpeed;
@@ -104,18 +104,18 @@ namespace MoreMountains.TopDownEngine
 		protected int _walkingAnimationParameter;
 		protected int _idleAnimationParameter;
 
-		/// <summary>
-		/// On Initialization, we set our movement speed to WalkSpeed.
-		/// </summary>
-		protected override void Initialization()
+        /// <summary>
+        /// 초기화 시 이동 속도를 WalkSpeed로 설정합니다.
+        /// </summary>
+        protected override void Initialization()
 		{
 			base.Initialization ();
 			ResetAbility();
 		}
 
-		/// <summary>
-		/// Resets character movement states and speeds
-		/// </summary>
+        /// <summary>
+        /// 문자 이동 상태 및 속도를 재설정합니다
+        /// </summary>
         public override void ResetAbility()
         {
 	        base.ResetAbility();
@@ -145,12 +145,12 @@ namespace MoreMountains.TopDownEngine
 					system.Stop();
 				}				
 			}
-		} 
+		}
 
-		/// <summary>
-		/// The second of the 3 passes you can have in your ability. Think of it as Update()
-		/// </summary>
-		public override void ProcessAbility()
+        /// <summary>
+        /// 3개의 패스 중 두 번째 패스는 능력치입니다. Update()라고 생각하시면 됩니다
+        /// </summary>
+        public override void ProcessAbility()
 		{
 			base.ProcessAbility();
 			
@@ -170,11 +170,10 @@ namespace MoreMountains.TopDownEngine
 			Feedbacks ();
 		}
 
-		/// <summary>
-		/// Called at the very start of the ability's cycle, and intended to be overridden, looks for input and calls
-		/// methods if conditions are met
-		/// </summary>
-		protected override void HandleInput()
+        /// <summary>
+        /// 기능 사이클의 맨 처음에 호출되며, 무시되도록 의도되며, 조건이 충족되면 입력 및 호출 방법을 찾습니다
+        /// </summary>
+        protected override void HandleInput()
 		{
 			if (ScriptDrivenInput)
 			{
@@ -193,51 +192,51 @@ namespace MoreMountains.TopDownEngine
 			}	
 		}
 
-		/// <summary>
-		/// Sets the horizontal move value.
-		/// </summary>
-		/// <param name="value">Horizontal move value, between -1 and 1 - positive : will move to the right, negative : will move left </param>
-		public virtual void SetMovement(Vector2 value)
+        /// <summary>
+        /// 수평 이동 값을 설정합니다.
+        /// </summary>
+        /// <param name="value">Horizontal move value, between -1 and 1 - positive : will move to the right, negative : will move left </param>
+        public virtual void SetMovement(Vector2 value)
 		{
 			_horizontalMovement = value.x;
 			_verticalMovement = value.y;
 		}
 
-		/// <summary>
-		/// Sets the horizontal part of the movement
-		/// </summary>
-		/// <param name="value"></param>
-		public virtual void SetHorizontalMovement(float value)
+        /// <summary>
+        /// 이동의 수평 부분을 설정합니다
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetHorizontalMovement(float value)
 		{
 			_horizontalMovement = value;
 		}
 
-		/// <summary>
-		/// Sets the vertical part of the movement
-		/// </summary>
-		/// <param name="value"></param>
-		public virtual void SetVerticalMovement(float value)
+        /// <summary>
+        /// 이동의 수직 부분을 설정합니다
+        /// </summary>
+        /// <param name="value"></param>
+        public virtual void SetVerticalMovement(float value)
 		{
 			_verticalMovement = value;
 		}
-		
-		/// <summary>
-		/// Applies a movement multiplier for the specified duration
-		/// </summary>
-		/// <param name="movementMultiplier"></param>
-		/// <param name="duration"></param>
-		public virtual void ApplyMovementMultiplier(float movementMultiplier, float duration)
+
+        /// <summary>
+        /// 지정된 기간 동안 이동 승수를 적용합니다
+        /// </summary>
+        /// <param name="movementMultiplier"></param>
+        /// <param name="duration"></param>
+        public virtual void ApplyMovementMultiplier(float movementMultiplier, float duration)
 		{
 			StartCoroutine(ApplyMovementMultiplierCo(movementMultiplier, duration));
 		}
-		
-		/// <summary>
-		/// A coroutine used to apply a movement multiplier for a certain duration only
-		/// </summary>
-		/// <param name="movementMultiplier"></param>
-		/// <param name="duration"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator ApplyMovementMultiplierCo(float movementMultiplier, float duration)
+
+        /// <summary>
+        /// 특정 기간 동안만 이동 승수를 적용하는 데 사용되는 코루틴
+        /// </summary>
+        /// <param name="movementMultiplier"></param>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator ApplyMovementMultiplierCo(float movementMultiplier, float duration)
 		{
 			if (_characterMovement == null)
 			{
@@ -248,19 +247,19 @@ namespace MoreMountains.TopDownEngine
 			ResetContextSpeedMultiplier();
 		}
 
-		/// <summary>
-		/// Stacks a new context speed multiplier
-		/// </summary>
-		/// <param name="newMovementSpeedMultiplier"></param>
-		public virtual void SetContextSpeedMultiplier(float newMovementSpeedMultiplier)
+        /// <summary>
+        /// 새 컨텍스트 속도 승수 스택
+        /// </summary>
+        /// <param name="newMovementSpeedMultiplier"></param>
+        public virtual void SetContextSpeedMultiplier(float newMovementSpeedMultiplier)
 		{
 			ContextSpeedStack.Push(newMovementSpeedMultiplier);
 		}
 
-		/// <summary>
-		/// Revers the context speed multiplier to its previous value
-		/// </summary>
-		public virtual void ResetContextSpeedMultiplier()
+        /// <summary>
+        /// 컨텍스트 속도 승수를 이전 값으로 되돌립니다
+        /// </summary>
+        public virtual void ResetContextSpeedMultiplier()
 		{
 			if (ContextSpeedStack.Count <= 0)
 			{
@@ -270,10 +269,10 @@ namespace MoreMountains.TopDownEngine
 			ContextSpeedStack.Pop();
 		}
 
-		/// <summary>
-		/// Modifies player input to account for the selected movement mode
-		/// </summary>
-		protected virtual void HandleDirection()
+        /// <summary>
+        /// 선택한 이동 모드를 고려하여 플레이어 입력을 수정합니다
+        /// </summary>
+        protected virtual void HandleDirection()
 		{
 			switch (Movement)
 			{
@@ -303,19 +302,19 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Called at Update(), handles horizontal movement
-		/// </summary>
-		protected virtual void HandleMovement()
+        /// <summary>
+        /// Update() 시 호출되며, 수평 이동을 처리합니다
+        /// </summary>
+        protected virtual void HandleMovement()
 		{
-			// if we're not walking anymore, we stop our walking sound
-			if ((_movement.CurrentState != CharacterStates.MovementStates.Walking) && _startFeedbackIsPlaying)
+            // 우리가 더 이상 걷지 않는다면, 우리는 우리의 걷는 소리를 멈추죠
+            if ((_movement.CurrentState != CharacterStates.MovementStates.Walking) && _startFeedbackIsPlaying)
 			{
 				StopStartFeedbacks();
 			}
 
-			// if we're not walking anymore, we stop our walking sound
-			if (_movement.CurrentState != CharacterStates.MovementStates.Walking && _abilityInProgressSfx != null)
+            // 우리가 더 이상 걷지 않는다면, 우리는 우리의 걷는 소리를 멈추죠
+            if (_movement.CurrentState != CharacterStates.MovementStates.Walking && _abilityInProgressSfx != null)
 			{
 				StopAbilityUsedSfx();
 			}
@@ -325,8 +324,8 @@ namespace MoreMountains.TopDownEngine
 				PlayAbilityUsedSfx();
 			}
 
-			// if movement is prevented, or if the character is dead/frozen/can't move, we exit and do nothing
-			if ( !AbilityAuthorized
+            // 이동이 차단되거나 캐릭터가 죽거나/frozen/이동이 불가능한 경우, 우리는 종료하고 아무것도 하지 않습니다
+            if ( !AbilityAuthorized
 			     || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal) )
 			{
 				return;				
@@ -340,8 +339,8 @@ namespace MoreMountains.TopDownEngine
 				_verticalMovement = 0f;
 			}
 
-			// if the character is not grounded, but currently idle or walking, we change its state to Falling
-			if (!_controller.Grounded
+            // 캐릭터가 접지되어 있지 않지만 현재 유휴 상태이거나 보행 중인 경우 상태를 Falling(폴링)으로 변경합니다
+            if (!_controller.Grounded
 			    && (_condition.CurrentState == CharacterStates.CharacterConditions.Normal)
 			    && (
 				    (_movement.CurrentState == CharacterStates.MovementStates.Walking)
@@ -365,9 +364,9 @@ namespace MoreMountains.TopDownEngine
 				PlayAbilityUsedSfx();
 				PlayAbilityStartFeedbacks();
 			}
-            
-			// if we're walking and not moving anymore, we go back to the Idle state
-			if ((_movement.CurrentState == CharacterStates.MovementStates.Walking) 
+
+            // 만약 우리가 더 이상 움직이지 않고 걷는다면, 우리는 유휴 상태로 돌아갈 것입니다
+            if ((_movement.CurrentState == CharacterStates.MovementStates.Walking) 
 			    && (_controller.CurrentMovement.magnitude <= IdleThreshold))
 			{
 				_movement.ChangeState(CharacterStates.MovementStates.Idle);
@@ -381,10 +380,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Describes what happens when the character is in the frozen state
-		/// </summary>
-		protected virtual void HandleFrozen()
+        /// <summary>
+        /// 캐릭터가 동결 상태일 때 발생하는 작업을 설명합니다
+        /// </summary>
+        protected virtual void HandleFrozen()
 		{
 			if (!AbilityAuthorized)
 			{
@@ -398,10 +397,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Moves the controller
-		/// </summary>
-		protected virtual void SetMovement()
+        /// <summary>
+        /// 컨트롤러를 이동합니다
+        /// </summary>
+        protected virtual void SetMovement()
 		{
 			_movementVector = Vector3.zero;
 			_currentInput = Vector2.zero;
@@ -480,10 +479,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Plays particles when walking, and particles and sounds when landing
-		/// </summary>
-		protected virtual void Feedbacks ()
+        /// <summary>
+        /// 걸을 때는 파티클, 착지할 때는 파티클과 소리를 재생합니다
+        /// </summary>
+        protected virtual void Feedbacks ()
 		{
 			if (_controller.Grounded)
 			{
@@ -539,18 +538,18 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Resets this character's speed
-		/// </summary>
-		public virtual void ResetSpeed()
+        /// <summary>
+        /// 이 문자의 속도를 재설정합니다
+        /// </summary>
+        public virtual void ResetSpeed()
 		{
 			MovementSpeed = WalkSpeed;
 		}
 
-		/// <summary>
-		/// On Respawn, resets the speed
-		/// </summary>
-		protected override void OnRespawn()
+        /// <summary>
+        /// Respawn에서 속도를 재설정합니다
+        /// </summary>
+        protected override void OnRespawn()
 		{
 			ResetSpeed();
 			MovementForbidden = false;
@@ -562,10 +561,10 @@ namespace MoreMountains.TopDownEngine
 			DisableWalkParticles();
 		}
 
-		/// <summary>
-		/// Disables all walk particle systems that may be playing
-		/// </summary>
-		protected virtual void DisableWalkParticles()
+        /// <summary>
+        /// 재생 중일 가능성이 있는 모든 워크 파티클 시스템을 비활성화합니다
+        /// </summary>
+        protected virtual void DisableWalkParticles()
 		{
 			if (WalkParticles.Length > 0)
 			{
@@ -579,10 +578,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On disable we make sure to turn off anything that could still be playing
-		/// </summary>
-		protected override void OnDisable()
+        /// <summary>
+        /// 비활성화 시 여전히 재생할 수 있는 모든 것을 꺼야 합니다
+        /// </summary>
+        protected override void OnDisable()
 		{
 			base.OnDisable ();
 			DisableWalkParticles();
@@ -591,20 +590,20 @@ namespace MoreMountains.TopDownEngine
 			StopAbilityUsedSfx();
 		}
 
-		/// <summary>
-		/// Adds required animator parameters to the animator parameters list if they exist
-		/// </summary>
-		protected override void InitializeAnimatorParameters()
+        /// <summary>
+        /// 필요한 애니메이터 매개변수가 있는 경우 애니메이터 매개변수 목록에 추가합니다
+        /// </summary>
+        protected override void InitializeAnimatorParameters()
 		{
 			RegisterAnimatorParameter (_speedAnimationParameterName, AnimatorControllerParameterType.Float, out _speedAnimationParameter);
 			RegisterAnimatorParameter (_walkingAnimationParameterName, AnimatorControllerParameterType.Bool, out _walkingAnimationParameter);
 			RegisterAnimatorParameter (_idleAnimationParameterName, AnimatorControllerParameterType.Bool, out _idleAnimationParameter);
 		}
 
-		/// <summary>
-		/// Sends the current speed and the current value of the Walking state to the animator
-		/// </summary>
-		public override void UpdateAnimator()
+        /// <summary>
+        /// 현재 속도와 Walking 상태의 현재 값을 애니메이터로 보냅니다
+        /// </summary>
+        public override void UpdateAnimator()
 		{
 			MMAnimatorExtensions.UpdateAnimatorFloat(_animator, _speedAnimationParameter, Mathf.Abs(_controller.CurrentMovement.magnitude),_character._animatorParameters, _character.RunAnimatorSanityChecks);
 			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _walkingAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Walking),_character._animatorParameters, _character.RunAnimatorSanityChecks);

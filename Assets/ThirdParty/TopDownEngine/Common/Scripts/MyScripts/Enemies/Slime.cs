@@ -14,7 +14,6 @@ namespace MoreMountains.TopDownEngine
         AIBrain brain;
         Character character;
         CharacterHandleWeapon characterHandleWeapon;
-        Vector3 ranPostion = Vector3.zero;
 
         private void Awake()
         {
@@ -35,12 +34,13 @@ namespace MoreMountains.TopDownEngine
 
         }
 
+        //처음 생성될때 호출 되는 함수
         public override void OnCreatedInPool()
         {
             base.OnCreatedInPool();
-
         }
 
+        //재활용 될때마다 호출 되는 함수
         public override void OnGettingFromPool()
         {
             base.OnGettingFromPool();
@@ -49,41 +49,11 @@ namespace MoreMountains.TopDownEngine
 
         private void EnemyReset()
         {
-            //램덤으로 위치 지정
-            transform.position = RandomPostion();
-
             controller.enabled = true;
             topDown.enabled = true;
             brain.enabled = true;
             character.ConditionState.CurrentState = CharacterStates.CharacterConditions.Normal;
             characterHandleWeapon.Setup();
-        }
-
-        Vector3 RandomPostion()
-        {
-            int num = Random.Range(1, 9);
-
-            switch (num)
-            {
-                case 1:
-                    ranPostion = new Vector3(-8, 0, 8); break;
-                case 2:
-                    ranPostion = new Vector3(0, 0, 8); break;
-                case 3:
-                    ranPostion = new Vector3(8, 0, 8); break;
-                case 4:
-                    ranPostion = new Vector3(-8, 0, 0); break;
-                case 5:
-                    ranPostion = new Vector3(8, 0, 0); break;
-                case 6:
-                    ranPostion = new Vector3(-8, 0, -8); break;
-                case 7:
-                    ranPostion = new Vector3(0, 0, -8); break;
-                case 8:
-                    ranPostion = new Vector3(8, 0, -8); break;
-            }
-
-            return ranPostion;
         }
     }
 }

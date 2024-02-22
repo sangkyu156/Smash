@@ -9,10 +9,10 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to an object and it will cause damage to objects that collide with it. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Damage/DamageOnTouch")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 개체와 충돌하는 개체에 손상을 입힙니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Damage/DamageOnTouch")]
 	public class DamageOnTouch : MMMonoBehaviour
 	{
 		[Flags]
@@ -29,29 +29,29 @@ namespace MoreMountains.TopDownEngine
 			All = All_3D | All_2D
 		}
 
-		/// the possible ways to add knockback : noKnockback, which won't do nothing, set force, or add force
-		public enum KnockbackStyles
+        /// 넉백을 추가할 수 있는 방법: noKnockback, 아무 작업도 수행하지 않고 힘을 설정하거나 힘을 추가하지 않습니다.
+        public enum KnockbackStyles
 		{
 			NoKnockback,
 			AddForce
 		}
 
-		/// the possible knockback directions
-		public enum KnockbackDirections
+        /// 가능한 넉백 방향
+        public enum KnockbackDirections
 		{
-			BasedOnOwnerPosition,
-			BasedOnSpeed,
-			BasedOnDirection,
-			BasedOnScriptDirection
-		}
+			BasedOnOwnerPosition,//소유자 위치 기준
+            BasedOnSpeed,//속도 기준
+            BasedOnDirection,//방향 기반
+            BasedOnScriptDirection//스크립트 방향에 따라
+        }
 
-		/// the possible ways to determine damage directions
-		public enum DamageDirections
+        /// 손상 방향을 결정하는 가능한 방법
+        public enum DamageDirections
 		{
-			BasedOnOwnerPosition,
-			BasedOnVelocity,
-			BasedOnScriptDirection
-		}
+			BasedOnOwnerPosition,//소유자 위치 기준
+            BasedOnVelocity,//속도 기준
+            BasedOnScriptDirection//스크립트 방향에 따라
+        }
 
 		public const TriggerAndCollisionMask AllowedTriggerCallbacks = TriggerAndCollisionMask.OnTriggerEnter
 		                                                                  | TriggerAndCollisionMask.OnTriggerStay
@@ -60,116 +60,116 @@ namespace MoreMountains.TopDownEngine
 
 		[MMInspectorGroup("Targets", true, 3)]
 		[MMInformation(
-			"This component will make your object cause damage to objects that collide with it. Here you can define what layers will be affected by the damage (for a standard enemy, choose Player), how much damage to give, and how much force should be applied to the object that gets the damage on hit. You can also specify how long the post-hit invincibility should last (in seconds).",
+            "이 구성 요소는 개체가 충돌하는 개체에 손상을 입히도록 만듭니다. 여기에서 피해의 영향을 받는 레이어(표준 적의 경우 플레이어 선택), 줄 피해량, 적중 시 피해를 받는 개체에 적용할 힘의 양을 정의할 수 있습니다. 적중 후 무적이 지속되는 시간(초)을 지정할 수도 있습니다.",
 			MMInformationAttribute.InformationType.Info, false)]
-		/// the layers that will be damaged by this object
-		[Tooltip("the layers that will be damaged by this object")]
+        /// 이 개체에 의해 손상될 레이어
+        [Tooltip("이 개체에 의해 손상될 레이어")]
 		public LayerMask TargetLayerMask;
-		/// the owner of the DamageOnTouch zone
-		[MMReadOnly] [Tooltip("the owner of the DamageOnTouch zone")]
+        /// DamageOnTouch 구역의 소유자
+        [MMReadOnly] [Tooltip("DamageOnTouch 구역의 소유자")]
 		public GameObject Owner;
 
         /// 기본적으로 입력 및 유지(2D 및 3D 모두) 시 피해를 적용해야 하는 트리거를 정의하지만 이 필드를 사용하면 필요한 경우 트리거를 제외할 수 있습니다.
         [Tooltip(
-			"Defines on what triggers the damage should be applied, by default on enter and stay (both 2D and 3D) but this field will let you exclude triggers if needed")]
+            "기본적으로 입력 및 유지(2D 및 3D 모두) 시 손상을 적용해야 하는 트리거를 정의하지만 이 필드를 사용하면 필요한 경우 트리거를 제외할 수 있습니다.")]
 		public TriggerAndCollisionMask TriggerFilter = AllowedTriggerCallbacks;
 
-		[MMInspectorGroup("Damage Caused", true, 8)]
-		/// The min amount of health to remove from the player's health
-		[FormerlySerializedAs("DamageCaused")]
-		[Tooltip("The min amount of health to remove from the player's health")]
+		[MMInspectorGroup("데미지 수치", true, 8)]
+        /// 플레이어의 체력에서 제거할 최소 체력입니다.
+        [FormerlySerializedAs("데미지 수치")]
+		[Tooltip("플레이어의 체력에서 제거할 최소 체력입니다.")]
 		public float MinDamageCaused = 10f;
-		/// The max amount of health to remove from the player's health
-		[Tooltip("The max amount of health to remove from the player's health")]
+        /// 플레이어의 체력에서 제거할 최대 체력
+        [Tooltip("플레이어의 체력에서 제거할 최대 체력")]
 		public float MaxDamageCaused = 10f;
-		/// a list of typed damage definitions that will be applied on top of the base damage
-		[Tooltip("a list of typed damage definitions that will be applied on top of the base damage")]
+        /// 기본 손상 위에 적용될 유형 손상 정의 목록
+        [Tooltip("기본 손상 위에 적용될 유형 손상 정의 목록")]
 		public List<TypedDamage> TypedDamages;
-		/// how to determine the damage direction passed to the Health damage method, usually you'll use velocity for moving damage areas (projectiles) and owner position for melee weapons
-		[Tooltip("how to determine the damage direction passed to the Health damage method, usually you'll use velocity for moving damage areas (projectiles) and owner position for melee weapons")]
+        /// 건강 피해 방법에 전달되는 피해 방향을 결정하는 방법은 일반적으로 피해 영역(발사체) 이동에 속도를 사용하고 근접 무기에 소유자 위치를 사용합니다.
+        [Tooltip("건강 피해 방법에 전달되는 피해 방향을 결정하는 방법은 일반적으로 피해 영역(발사체) 이동에 속도를 사용하고 근접 무기에 소유자 위치를 사용합니다.")]
 		public DamageDirections DamageDirectionMode = DamageDirections.BasedOnVelocity;
 		
 		[Header("Knockback")]
-		/// the type of knockback to apply when causing damage
-		[Tooltip("the type of knockback to apply when causing damage")]
+        /// 피해를 입힐 때 적용할 넉백 유형
+        [Tooltip("피해를 입힐 때 적용할 넉백 유형")]
 		public KnockbackStyles DamageCausedKnockbackType = KnockbackStyles.AddForce;
-		/// The direction to apply the knockback 
-		[Tooltip("The direction to apply the knockback ")]
+        /// 넉백을 적용하는 방향
+        [Tooltip("넉백을 적용하는 방향")]
 		public KnockbackDirections DamageCausedKnockbackDirection = KnockbackDirections.BasedOnOwnerPosition;
-		/// The force to apply to the object that gets damaged
-		[Tooltip("The force to apply to the object that gets damaged")]
+        /// 손상된 물체에 가하는 힘
+        [Tooltip("손상된 물체에 가하는 힘")]
 		public Vector3 DamageCausedKnockbackForce = new Vector3(10, 10, 10);
 		
-		[Header("Invincibility")]
-		/// The duration of the invincibility frames after the hit (in seconds)
-		[Tooltip("The duration of the invincibility frames after the hit (in seconds)")]
+		[Header("무적")]
+        /// 명중 후 무적 프레임의 지속 시간(초)
+        [Tooltip("명중 후 무적 프레임의 지속 시간(초)")]
 		public float InvincibilityDuration = 0.5f;
 
-		[Header("Damage over time")]
-		/// Whether or not this damage on touch zone should apply damage over time
-		[Tooltip("Whether or not this damage on touch zone should apply damage over time")]
+		[Header("시간이 지남에 따른 손상")]
+        /// 터치 영역의 손상이 시간이 지남에 따라 손상을 적용할지 여부
+        [Tooltip("터치 영역의 손상이 시간이 지남에 따라 손상을 적용할지 여부")]
 		public bool RepeatDamageOverTime = false;
-		/// if in damage over time mode, how many times should damage be repeated?
-		[Tooltip("if in damage over time mode, how many times should damage be repeated?")] 
-		[MMCondition("RepeatDamageOverTime", true)]
+        /// 시간 경과에 따른 피해 모드에서는 피해가 몇 번이나 반복되어야 합니까?
+        [Tooltip("시간 경과에 따른 피해 모드에서는 피해가 몇 번이나 반복되어야 합니까?")] 
+		[MMCondition("반복피해시간 초과", true)]
 		public int AmountOfRepeats = 3;
-		/// if in damage over time mode, the duration, in seconds, between two damages
-		[Tooltip("if in damage over time mode, the duration, in seconds, between two damages")]
-		[MMCondition("RepeatDamageOverTime", true)]
+        /// 시간 경과에 따른 손상 모드인 경우 두 손상 사이의 지속 시간(초)
+        [Tooltip("시간 경과에 따른 손상 모드인 경우 두 손상 사이의 지속 시간(초)")]
+		[MMCondition("시간이 지남에 따라 피해를 반복", true)]
 		public float DurationBetweenRepeats = 1f;
-		/// if in damage over time mode, whether or not it can be interrupted (by calling the Health:InterruptDamageOverTime method
-		[Tooltip("if in damage over time mode, whether or not it can be interrupted (by calling the Health:InterruptDamageOverTime method")] 
-		[MMCondition("RepeatDamageOverTime", true)]
+        /// 시간 경과에 따른 손상 모드에 있는 경우 중단할 수 있는지 여부(Health:InterruptDamageOverTime 메서드를 호출하여)
+        [Tooltip("시간 경과에 따른 손상 모드에 있는 경우 중단할 수 있는지 여부(Health:InterruptDamageOverTime 메서드를 호출하여)")] 
+		[MMCondition("시간이 지남에 따라 피해를 반복", true)]
 		public bool DamageOverTimeInterruptible = true;
-		/// if in damage over time mode, the type of the repeated damage 
-		[Tooltip("if in damage over time mode, the type of the repeated damage")] 
-		[MMCondition("RepeatDamageOverTime", true)]
+        /// 시간 경과에 따른 피해 모드인 경우 반복되는 피해 유형
+        [Tooltip("시간 경과에 따른 피해 모드인 경우 반복되는 피해 유형")] 
+		[MMCondition("시간이 지남에 따라 피해를 반복", true)]
 		public DamageType RepeatedDamageType;
 		
-		[MMInspectorGroup("Damage Taken", true, 69)]
-		[MMInformation("After having applied the damage to whatever it collided with, you can have this object hurt itself. " +
-		               "A bullet will explode after hitting a wall for example. Here you can define how much damage it'll take every time it hits something, " +
-		               "or only when hitting something that's damageable, or non damageable. Note that this object will need a Health component too for this to be useful.",
+		[MMInspectorGroup("받은 피해", true, 69)]
+		[MMInformation("충돌한 모든 것에 피해를 가한 후에는 이 개체가 스스로 상처를 입도록 할 수 있습니다. " +
+                       "예를 들어 총알은 벽에 부딪힌 후 폭발합니다. 여기에서 무언가에 맞을 때마다 얼마나 많은 피해를 입을지 정의할 수 있습니다. " +
+                       "또는 손상될 수 있거나 손상되지 않는 것을 칠 때만 가능합니다. 이 개체를 유용하게 사용하려면 Health 구성 요소도 필요합니다.",
 			MMInformationAttribute.InformationType.Info, false)]
-		/// The amount of damage taken every time, whether what we collide with is damageable or not
-		[Tooltip("The amount of damage taken every time, whether what we collide with is damageable or not")]
+        /// 우리가 충돌하는 것이 손상 가능한지 여부에 관계없이 매번 받는 손상의 양
+        [Tooltip("우리가 충돌하는 것이 손상 가능한지 여부에 관계없이 매번 받는 손상의 양")]
 		public float DamageTakenEveryTime = 0;
-		/// The amount of damage taken when colliding with a damageable object
-		[Tooltip("The amount of damage taken when colliding with a damageable object")]
+        /// 손상 가능한 물체와 충돌했을 때 받는 피해량
+        [Tooltip("손상 가능한 물체와 충돌했을 때 받는 피해량")]
 		public float DamageTakenDamageable = 0;
-		/// The amount of damage taken when colliding with something that is not damageable
-		[Tooltip("The amount of damage taken when colliding with something that is not damageable")]
+        /// 손상되지 않는 물체와 충돌했을 때 받는 피해량
+        [Tooltip("손상되지 않는 물체와 충돌했을 때 받는 피해량")]
 		public float DamageTakenNonDamageable = 0;
-		/// the type of knockback to apply when taking damage
-		[Tooltip("the type of knockback to apply when taking damage")]
+        /// 피해를 입을 때 적용할 넉백 유형
+        [Tooltip("피해를 입을 때 적용할 넉백 유형")]
 		public KnockbackStyles DamageTakenKnockbackType = KnockbackStyles.NoKnockback;
-		/// The force to apply to the object that gets damaged
-		[Tooltip("The force to apply to the object that gets damaged")]
+        /// 손상된 물체에 가하는 힘
+        [Tooltip("손상된 물체에 가하는 힘")]
 		public Vector3 DamageTakenKnockbackForce = Vector3.zero;
-		/// The duration of the invincibility frames after the hit (in seconds)
-		[Tooltip("The duration of the invincibility frames after the hit (in seconds)")]
+        /// 적중 후 무적 프레임의 지속 시간(초)
+        [Tooltip("적중 후 무적 프레임의 지속 시간(초)")]
 		public float DamageTakenInvincibilityDuration = 0.5f;
 
 		[MMInspectorGroup("Feedbacks", true, 18)]
-		/// the feedback to play when hitting a Damageable
-		[Tooltip("the feedback to play when hitting a Damageable")]
+        /// Damageable을 칠 때 재생할 피드백
+        [Tooltip("Damageable을 칠 때 재생할 피드백")]
 		public MMFeedbacks HitDamageableFeedback;
-		/// the feedback to play when hitting a non Damageable
-		[Tooltip("the feedback to play when hitting a non Damageable")]
+        /// 손상되지 않는 공격을 가했을 때 재생되는 피드백
+        [Tooltip("손상되지 않는 공격을 가했을 때 재생되는 피드백")]
 		public MMFeedbacks HitNonDamageableFeedback;
-		/// the feedback to play when hitting anything
-		[Tooltip("the feedback to play when hitting anything")]
+        /// 무엇이든 칠 때 재생되는 피드백
+        [Tooltip("무엇이든 칠 때 재생되는 피드백")]
 		public MMFeedbacks HitAnythingFeedback;
 
-		/// an event to trigger when hitting a Damageable
-		public UnityEvent<Health> HitDamageableEvent;
-		/// an event to trigger when hitting a non Damageable
-		public UnityEvent<GameObject> HitNonDamageableEvent;
-		/// an event to trigger when hitting anything
-		public UnityEvent<GameObject> HitAnythingEvent;
+        /// Damageable을 칠 때 트리거되는 이벤트
+        public UnityEvent<Health> HitDamageableEvent;
+        /// 손상되지 않는 공격을 가했을 때 트리거되는 이벤트
+        public UnityEvent<GameObject> HitNonDamageableEvent;
+        /// 무엇이든 부딪힐 때 트리거되는 이벤트
+        public UnityEvent<GameObject> HitAnythingEvent;
 
-		// storage		
-		protected Vector3 _lastPosition, _lastDamagePosition, _velocity, _knockbackForce, _damageDirection;
+        // 저장		
+        protected Vector3 _lastPosition, _lastDamagePosition, _velocity, _knockbackForce, _damageDirection;
 		protected float _startTime = 0f;
 		protected Health _colliderHealth;
 		protected TopDownController _topDownController;
@@ -193,30 +193,30 @@ namespace MoreMountains.TopDownEngine
 		protected Vector3 _damageScriptDirection;
 		protected Health _collidingHealth;
 
-		#region Initialization
-		
-		/// <summary>
-		/// On Awake we initialize our damage on touch area
-		/// </summary>
-		protected virtual void Awake()
+        #region Initialization
+
+        /// <summary>
+        /// Awake에서는 터치 영역의 손상을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			Initialization();
 		}
 
-		/// <summary>
-		/// OnEnable we set the start time to the current timestamp
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// OnEnable 시작 시간을 현재 타임스탬프로 설정합니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			_startTime = Time.time;
 			_lastPosition = transform.position;
 			_lastDamagePosition = transform.position;
 		}
 
-		/// <summary>
-		/// Initializes ignore list, feedbacks, colliders and grabs components
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// 무시 목록, 피드백, 충돌체 및 구성 요소 가져오기를 초기화합니다.
+        /// </summary>
+        public virtual void Initialization()
 		{
 			InitializeIgnoreList();
 			GrabComponents();
@@ -225,10 +225,10 @@ namespace MoreMountains.TopDownEngine
 			InitializeFeedbacks();
 		}
 
-		/// <summary>
-		/// Stores components
-		/// </summary>
-		protected virtual void GrabComponents()
+        /// <summary>
+        /// 구성 요소를 저장합니다.
+        /// </summary>
+        protected virtual void GrabComponents()
 		{
 			_health = GetComponent<Health>();
 			_topDownController = GetComponent<TopDownController>();
@@ -239,10 +239,10 @@ namespace MoreMountains.TopDownEngine
 			_lastDamagePosition = transform.position;
 		}
 
-		/// <summary>
-		/// Initializes colliders, setting them as trigger if needed
-		/// </summary>
-		protected virtual void InitializeColliders()
+        /// <summary>
+        /// 충돌체를 초기화하고 필요한 경우 트리거로 설정합니다.
+        /// </summary>
+        protected virtual void InitializeColliders()
 		{
 			_twoD = _boxCollider2D != null || _circleCollider2D != null;
 			if (_boxCollider2D != null)
@@ -270,18 +270,18 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Initializes the _ignoredGameObjects list if needed
-		/// </summary>
-		protected virtual void InitializeIgnoreList()
+        /// <summary>
+        /// 필요한 경우 _ignoredGameObjects 목록을 초기화합니다.
+        /// </summary>
+        protected virtual void InitializeIgnoreList()
 		{
 			if (_ignoredGameObjects == null) _ignoredGameObjects = new List<GameObject>();
 		}
 
-		/// <summary>
-		/// Initializes feedbacks
-		/// </summary>
-		public virtual void InitializeFeedbacks()
+        /// <summary>
+        /// 피드백 초기화
+        /// </summary>
+        public virtual void InitializeFeedbacks()
 		{
 			if (_initializedFeedbacks) return;
 
@@ -291,40 +291,40 @@ namespace MoreMountains.TopDownEngine
 			_initializedFeedbacks = true;
 		}
 
-		/// <summary>
-		/// On disable we clear our ignore list
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// 비활성화하면 무시 목록이 지워집니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			ClearIgnoreList();
 		}
 
-		/// <summary>
-		/// On validate we ensure our inspector is in sync
-		/// </summary>
-		protected virtual void OnValidate()
+        /// <summary>
+        /// 검증 시 검사관이 동기화되었는지 확인합니다.
+        /// </summary>
+        protected virtual void OnValidate()
 		{
 			TriggerFilter &= AllowedTriggerCallbacks;
 		}
-		
-		#endregion
 
-		#region Gizmos
+        #endregion
 
-		/// <summary>
-		/// Initializes gizmo colors & settings
-		/// </summary>
-		protected virtual void InitalizeGizmos()
+        #region Gizmos
+
+        /// <summary>
+        /// 기즈모 색상 및 설정을 초기화합니다.
+        /// </summary>
+        protected virtual void InitalizeGizmos()
 		{
 			_gizmosColor = Color.red;
 			_gizmosColor.a = 0.25f;
 		}
-		
-		/// <summary>
-		/// A public method letting you (re)define gizmo size
-		/// </summary>
-		/// <param name="newGizmoSize"></param>
-		public virtual void SetGizmoSize(Vector3 newGizmoSize)
+
+        /// <summary>
+        /// 기즈모 크기를 (재)정의할 수 있는 공개 메서드
+        /// </summary>
+        /// <param name="newGizmoSize"></param>
+        public virtual void SetGizmoSize(Vector3 newGizmoSize)
 		{
 			_boxCollider2D = GetComponent<BoxCollider2D>();
 			_boxCollider = GetComponent<BoxCollider>();
@@ -333,19 +333,19 @@ namespace MoreMountains.TopDownEngine
 			_gizmoSize = newGizmoSize;
 		}
 
-		/// <summary>
-		/// A public method letting you specify a gizmo offset
-		/// </summary>
-		/// <param name="newOffset"></param>
-		public virtual void SetGizmoOffset(Vector3 newOffset)
+        /// <summary>
+        /// 기즈모 오프셋을 지정할 수 있는 공개 메소드
+        /// </summary>
+        /// <param name="newOffset"></param>
+        public virtual void SetGizmoOffset(Vector3 newOffset)
 		{
 			_gizmoOffset = newOffset;
 		}
-		
-		/// <summary>
-		/// draws a cube or sphere around the damage area
-		/// </summary>
-		protected virtual void OnDrawGizmos()
+
+        /// <summary>
+        /// 손상 영역 주위에 큐브나 구를 그립니다.
+        /// </summary>
+        protected virtual void OnDrawGizmos()
 		{
 			Gizmos.color = _gizmosColor;
 
@@ -398,80 +398,80 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region PublicAPIs
+        #region PublicAPIs
 
-		/// <summary>
-		/// When knockback is in script direction mode, lets you specify the direction of the knockback
-		/// </summary>
-		/// <param name="newDirection"></param>
-		public virtual void SetKnockbackScriptDirection(Vector3 newDirection)
+        /// <summary>
+        /// 넉백이 스크립트 방향 모드인 경우 넉백 방향을 지정할 수 있습니다.
+        /// </summary>
+        /// <param name="newDirection"></param>
+        public virtual void SetKnockbackScriptDirection(Vector3 newDirection)
 		{
 			_knockbackScriptDirection = newDirection;
 		}
 
-		/// <summary>
-		/// When damage direction is in script mode, lets you specify the direction of damage
-		/// </summary>
-		/// <param name="newDirection"></param>
-		public virtual void SetDamageScriptDirection(Vector3 newDirection)
+        /// <summary>
+        /// 손상 방향이 스크립트 모드인 경우 손상 방향을 지정할 수 있습니다.
+        /// </summary>
+        /// <param name="newDirection"></param>
+        public virtual void SetDamageScriptDirection(Vector3 newDirection)
 		{
 			_damageDirection = newDirection;
 		}
 
-		/// <summary>
-		/// Adds the gameobject set in parameters to the ignore list
-		/// </summary>
-		/// <param name="newIgnoredGameObject">New ignored game object.</param>
-		public virtual void IgnoreGameObject(GameObject newIgnoredGameObject)
+        /// <summary>
+        /// 매개변수에 설정된 게임오브젝트를 무시 목록에 추가합니다.
+        /// </summary>
+        /// <param name="newIgnoredGameObject">New ignored game object.</param>
+        public virtual void IgnoreGameObject(GameObject newIgnoredGameObject)
 		{
 			InitializeIgnoreList();
 			_ignoredGameObjects.Add(newIgnoredGameObject);
 		}
-		
-		/// <summary>
-		/// Removes the object set in parameters from the ignore list
-		/// </summary>
-		/// <param name="ignoredGameObject">Ignored game object.</param>
-		public virtual void StopIgnoringObject(GameObject ignoredGameObject)
+
+        /// <summary>
+        /// 무시 목록에서 매개변수에 설정된 개체를 제거합니다.
+        /// </summary>
+        /// <param name="ignoredGameObject">Ignored game object.</param>
+        public virtual void StopIgnoringObject(GameObject ignoredGameObject)
 		{
 			if (_ignoredGameObjects != null) _ignoredGameObjects.Remove(ignoredGameObject);
 		}
 
-		/// <summary>
-		/// Clears the ignore list.
-		/// </summary>
-		public virtual void ClearIgnoreList()
+        /// <summary>
+        /// 무시 목록을 지웁니다.
+        /// </summary>
+        public virtual void ClearIgnoreList()
 		{
 			InitializeIgnoreList();
 			_ignoredGameObjects.Clear();
 		}
 
-		#endregion
+        #endregion
 
-		#region Loop
+        #region Loop
 
-		/// <summary>
-		/// During last update, we store the position and velocity of the object
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 마지막 업데이트 중에 객체의 위치와 속도를 저장합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			ComputeVelocity();
 		}
 
-		/// <summary>
-		/// On Late Update we store our position
-		/// </summary>
-		protected void LateUpdate()
+        /// <summary>
+        /// 늦은 업데이트에서는 위치를 저장합니다.
+        /// </summary>
+        protected void LateUpdate()
 		{
 			_positionLastFrame = transform.position;
 		}
 
-		/// <summary>
-		/// Computes the velocity based on the object's last position
-		/// </summary>
-		protected virtual void ComputeVelocity()
+        /// <summary>
+        /// 물체의 마지막 위치를 기준으로 속도를 계산합니다.
+        /// </summary>
+        protected virtual void ComputeVelocity()
 		{
 			if (Time.deltaTime != 0f)
 			{
@@ -486,10 +486,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Determine the damage direction to pass to the Health Damage method
-		/// </summary>
-		protected virtual void DetermineDamageDirection()
+        /// <summary>
+        ///Health Damage 메서드에 전달할 피해 방향을 결정합니다.
+        /// </summary>
+        protected virtual void DetermineDamageDirection()
 		{
 			switch (DamageDirectionMode)
 			{
@@ -519,45 +519,46 @@ namespace MoreMountains.TopDownEngine
 			_damageDirection = _damageDirection.normalized;
 		}
 
-		#endregion
+        #endregion
 
-		#region CollisionDetection
+        #region CollisionDetection
 
-		/// <summary>
-		/// When a collision with the player is triggered, we give damage to the player and knock it back
-		/// </summary>
-		/// <param name="collider">what's colliding with the object.</param>
-		public virtual void OnTriggerStay2D(Collider2D collider)
+        /// <summary>
+        /// 플레이어와의 충돌이 발생하면 플레이어에게 피해를 주고 밀어냅니다.
+        /// </summary>
+        /// <param name="collider">what's colliding with the object.</param>
+        public virtual void OnTriggerStay2D(Collider2D collider)
 		{
 			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerStay2D)) return;
 			Colliding(collider.gameObject);
 		}
 
-		/// <summary>
-		/// On trigger enter 2D, we call our colliding endpoint
-		/// </summary>
-		/// <param name="collider"></param>S
-		public virtual void OnTriggerEnter2D(Collider2D collider)
+        /// <summary>
+        /// 2D 입력 트리거에서 충돌하는 끝점을 호출합니다.
+        /// </summary>
+        /// <param name="collider"></param>S
+        public virtual void OnTriggerEnter2D(Collider2D collider)
 		{
 			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerEnter2D)) return;
 			Colliding(collider.gameObject);
 		}
 
-		/// <summary>
-		/// On trigger stay, we call our colliding endpoint
-		/// </summary>
-		/// <param name="collider"></param>
-		public virtual void OnTriggerStay(Collider collider)
+        /// <summary>
+        /// 트리거 스테이에서 충돌하는 엔드포인트를 호출합니다.
+        /// </summary>
+        /// <param name="collider"></param>
+        public virtual void OnTriggerStay(Collider collider)
 		{
 			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerStay)) return;
 			Colliding(collider.gameObject);
+			Debug.Log($"{collider.name} 이랑 출돌중");
 		}
 
-		/// <summary>
-		/// On trigger enter, we call our colliding endpoint
-		/// </summary>
-		/// <param name="collider"></param>
-		public virtual void OnTriggerEnter(Collider collider)
+        /// <summary>
+        /// 트리거 입력 시 충돌하는 엔드포인트를 호출합니다.
+        /// </summary>
+        /// <param name="collider"></param>
+        public virtual void OnTriggerEnter(Collider collider)
 		{
 			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerEnter)) return;
 			Colliding(collider.gameObject);
@@ -576,20 +577,20 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 
-			// cache reset 
-			_colliderTopDownController = null;
+            // 캐시 재설정
+            _colliderTopDownController = null;
 			_colliderHealth = collider.gameObject.MMGetComponentNoAlloc<Health>();
-			
-			// if what we're colliding with is damageable
-			if (_colliderHealth != null)
+
+            // 우리가 충돌하는 것이 손상될 수 있는 경우
+            if (_colliderHealth != null)
 			{
 				if (_colliderHealth.CurrentHealth > 0)
 				{
 					OnCollideWithDamageable(_colliderHealth);
 				}
 			}
-			else // if what we're colliding with can't be damaged
-			{
+            else // 우리가 충돌하는 것이 손상될 수 없다면
+            {
 				OnCollideWithNonDamageable();
 				HitNonDamageableEvent?.Invoke(collider);
 			}
@@ -599,24 +600,24 @@ namespace MoreMountains.TopDownEngine
 			HitAnythingFeedback?.PlayFeedbacks(transform.position);
 		}
 
-		/// <summary>
-		/// Checks whether or not damage should be applied this frame
-		/// </summary>
-		/// <param name="collider"></param>
-		/// <returns></returns>
-		protected virtual bool EvaluateAvailability(GameObject collider)
+        /// <summary>
+        /// 이 프레임에 피해를 가해야 하는지 여부를 확인합니다.
+        /// </summary>
+        /// <param name="collider"></param>
+        /// <returns></returns>
+        protected virtual bool EvaluateAvailability(GameObject collider)
 		{
-			// if we're inactive, we do nothing
-			if (!isActiveAndEnabled) { return false; }
+            // 활동하지 않으면 아무것도 하지 않습니다
+            if (!isActiveAndEnabled) { return false; }
 
-			// if the object we're colliding with is part of our ignore list, we do nothing and exit
-			if (_ignoredGameObjects.Contains(collider)) { return false; }
+            //충돌하는 객체가 무시 목록의 일부인 경우 아무 작업도 수행하지 않고 종료합니다.
+            if (_ignoredGameObjects.Contains(collider)) { return false; }
 
-			// if what we're colliding with isn't part of the target layers, we do nothing and exit
-			if (!MMLayers.LayerInLayerMask(collider.layer, TargetLayerMask)) { return false; }
+            // 우리가 충돌하는 것이 대상 레이어의 일부가 아닌 경우 아무것도 하지 않고 종료합니다.
+            if (!MMLayers.LayerInLayerMask(collider.layer, TargetLayerMask)) { return false; }
 
-			// if we're on our first frame, we don't apply damage
-			if (Time.time == 0f) { return false; }
+            // 첫 번째 프레임에서는 피해를 입히지 않습니다.
+            if (Time.time == 0f) { return false; }
 
 			return true;
 		}
@@ -631,14 +632,14 @@ namespace MoreMountains.TopDownEngine
 
 			if (health.CanTakeDamageThisFrame())
 			{
-				// if what we're colliding with is a TopDownController, we apply a knockback force
-				_colliderTopDownController = health.gameObject.MMGetComponentNoAlloc<TopDownController>();
+                // 충돌하는 것이 TopDownController인 경우 밀어내기 힘을 적용합니다.
+                _colliderTopDownController = health.gameObject.MMGetComponentNoAlloc<TopDownController>();
 
 				HitDamageableFeedback?.PlayFeedbacks(this.transform.position);
 				HitDamageableEvent?.Invoke(_colliderHealth);
 
-				// we apply the damage to the thing we've collided with
-				float randomDamage =
+                // 우리는 충돌한 것에 피해를 입힙니다.
+                float randomDamage =
 					UnityEngine.Random.Range(MinDamageCaused, Mathf.Max(MaxDamageCaused, MinDamageCaused));
 
 				ApplyKnockback(randomDamage, TypedDamages);
@@ -658,19 +659,19 @@ namespace MoreMountains.TopDownEngine
 				}
 			}
 
-			// we apply self damage
-			if (DamageTakenEveryTime + DamageTakenDamageable > 0 && !_colliderHealth.PreventTakeSelfDamage)
+            // 우리는 자기 피해를 입힌다
+            if (DamageTakenEveryTime + DamageTakenDamageable > 0 && !_colliderHealth.PreventTakeSelfDamage)
 			{
 				SelfDamage(DamageTakenEveryTime + DamageTakenDamageable);
 			}
 		}
 
-		#region Knockback
+        #region Knockback
 
-		/// <summary>
-		/// Applies knockback if needed
-		/// </summary>
-		protected virtual void ApplyKnockback(float damage, List<TypedDamage> typedDamages)
+        /// <summary>
+        /// 필요한 경우 넉백을 적용합니다.
+        /// </summary>
+        protected virtual void ApplyKnockback(float damage, List<TypedDamage> typedDamages)
 		{
 			if (ShouldApplyKnockback(damage, typedDamages))
 			{
@@ -693,11 +694,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Determines whether or not knockback should be applied
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool ShouldApplyKnockback(float damage, List<TypedDamage> typedDamages)
+        /// <summary>
+        /// 넉백을 적용할지 여부를 결정합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool ShouldApplyKnockback(float damage, List<TypedDamage> typedDamages)
 		{
 			if (_colliderHealth.ImmuneToKnockbackIfZeroDamage)
 			{
@@ -713,10 +714,10 @@ namespace MoreMountains.TopDownEngine
 			       && _colliderHealth.CanGetKnockback(typedDamages);
 		}
 
-		/// <summary>
-		/// Applies knockback if we're in a 2D context
-		/// </summary>
-		protected virtual void ApplyKnockback2D()
+        /// <summary>
+        /// 2D 컨텍스트에 있는 경우 넉백을 적용합니다.
+        /// </summary>
+        protected virtual void ApplyKnockback2D()
 		{
 			switch (DamageCausedKnockbackDirection)
 			{
@@ -743,10 +744,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Applies knockback if we're in a 3D context
-		/// </summary>
-		protected virtual void ApplyKnockback3D()
+        /// <summary>
+        /// 3D 환경에 있는 경우 넉백을 적용합니다.
+        /// </summary>
+        protected virtual void ApplyKnockback3D()
 		{
 			switch (DamageCausedKnockbackDirection)
 			{
@@ -772,13 +773,13 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		#endregion
-		
+        #endregion
 
-		/// <summary>
-		/// Describes what happens when colliding with a non damageable object
-		/// </summary>
-		protected virtual void OnCollideWithNonDamageable()
+
+        /// <summary>
+        /// 손상되지 않는 물체와 충돌할 때 어떤 일이 일어나는지 설명합니다.
+        /// </summary>
+        protected virtual void OnCollideWithNonDamageable()
 		{
 			float selfDamage = DamageTakenEveryTime + DamageTakenNonDamageable; 
 			if (selfDamage > 0)
@@ -788,18 +789,19 @@ namespace MoreMountains.TopDownEngine
 			HitNonDamageableFeedback?.PlayFeedbacks(transform.position);
 		}
 
-		/// <summary>
-		/// Describes what could happens when colliding with anything
-		/// </summary>
-		protected virtual void OnAnyCollision(GameObject other)
+        /// <summary>
+        /// 무엇이든 충돌할 때 어떤 일이 발생할 수 있는지 설명합니다.
+        /// </summary>
+        protected virtual void OnAnyCollision(GameObject other)
 		{
+
 		}
 
-		/// <summary>
-		/// Applies damage to itself
-		/// </summary>
-		/// <param name="damage">Damage.</param>
-		protected virtual void SelfDamage(float damage)
+        /// <summary>
+        /// 자신에게 피해를 입힙니다.
+        /// </summary>
+        /// <param name="damage">Damage.</param>
+        protected virtual void SelfDamage(float damage)
 		{
 			if (_health != null)
 			{
@@ -807,8 +809,8 @@ namespace MoreMountains.TopDownEngine
 				_health.Damage(damage, gameObject, 0f, DamageTakenInvincibilityDuration, _damageDirection);
 			}
 
-			// if what we're colliding with is a TopDownController, we apply a knockback force
-			if ((_topDownController != null) && (_colliderTopDownController != null))
+            // 충돌하는 것이 TopDownController인 경우 밀어내기 힘을 적용합니다.
+            if ((_topDownController != null) && (_colliderTopDownController != null))
 			{
 				Vector3 totalVelocity = _colliderTopDownController.Speed + _velocity;
 				Vector3 knockbackForce =

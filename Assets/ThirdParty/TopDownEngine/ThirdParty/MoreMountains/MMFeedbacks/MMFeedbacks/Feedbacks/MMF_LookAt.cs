@@ -5,20 +5,20 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you animate the rotation of a transform to look at a target over time.
-	/// You can also use it to broadcast a MMLookAtShake event, that MMLookAtShakers on the right channel will be able to listen for and act upon 
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상을 볼 수 있도록 변환 회전에 애니메이션을 적용할 수 있습니다.
+    /// 또한 이를 사용하여 올바른 채널의 MMLookAtShaker가 듣고 조치를 취할 수 있는 MMLookAtShake 이벤트를 브로드캐스트할 수도 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackHelp("This feedback will let you animate the rotation of a transform to look at a target over time. You can also use it to broadcast a MMLookAtShake event, that MMLookAtShakers on the right channel will be able to listen for and act upon.")]
 	[FeedbackPath("Transform/LookAt")]
 	public class MMF_LookAt : MMF_Feedback
 	{
-		/// a static bool used to disable all feedbacks of this type at once
-		public static bool FeedbackTypeAuthorized = true;
-		/// sets the inspector color for this feedback
-		#if UNITY_EDITOR
-		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TransformColor; } }
+        /// 이 유형의 모든 피드백을 한 번에 비활성화하는 데 사용되는 정적 부울입니다.
+        public static bool FeedbackTypeAuthorized = true;
+        /// 이 피드백에 대한 검사기 색상을 설정합니다.
+#if UNITY_EDITOR
+        public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TransformColor; } }
 		public override bool EvaluateRequiresSetup()
 		{
 			if (Mode == Modes.Direct)
@@ -101,8 +101,8 @@ namespace MoreMountains.Feedbacks
 		/// the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector
 		[Tooltip("the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector")]
 		public LookAtTargetModes LookAtTargetMode = LookAtTargetModes.Transform;
-		/// the transform we want to look at 
-		[Tooltip("the transform we want to look at")]
+        /// 우리가 보고 싶은 변환
+        [Tooltip("우리가 보고 싶은 변환")]
 		[MMFEnumCondition("LookAtTargetMode", (int)LookAtTargetModes.Transform)]
 		public Transform LookAtTarget;
 		/// the coordinates of a point the world that we want to look at

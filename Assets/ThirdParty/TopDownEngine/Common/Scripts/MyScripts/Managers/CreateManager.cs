@@ -1,19 +1,22 @@
+using NPOI.SS.Formula.Functions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
     public class CreateManager : MonoBehaviour
     {
         PoolManager poolManager; //오브젝트 풀링 매니져
-        GameObject level; //Battlefield 씬 맵
-        GameObject bfManager; //BattlefieldManager
+        public GameObject level; //Battlefield 씬 맵(입장시 돌맹이 만다는데 필요)
+        public GameObject bfManager; //BattlefieldManager
+        public GameObject player;
 
         static CreateManager c_instance; // 유일성이 보장된다       
-        static public CreateManager Instance { get { /*Init();*/ return c_instance; } } // 유일한 매니저를 갖고온다
+        static public CreateManager Instance { get { return c_instance; } } // 유일한 매니저를 갖고온다
 
         float createTime = 0;
 
@@ -25,19 +28,10 @@ namespace MoreMountains.TopDownEngine
 
         void Start()
         {
-            //level = GameObject.FindWithTag("Level");
-            //bfManager = GameObject.FindWithTag("BattlefieldManager");
-
-            //BarricadeRockCreation();
-
-            if (GameManager.Instance.scenes == Define.Scenes.Battlefield)
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "Battlefield01" || sceneName == "Battlefield02" || sceneName == "Battlefield03" || sceneName == "Battlefield04" || sceneName == "Battlefield05")
             {
-                level = GameObject.FindWithTag("Level");
-                bfManager = GameObject.FindWithTag("BattlefieldManager");
-
                 BarricadeRockCreation();
-
-
             }
         }
 
@@ -45,7 +39,7 @@ namespace MoreMountains.TopDownEngine
         {
             createTime += Time.deltaTime;
 
-            if (createTime > 1.5f)
+            if (createTime > 1f)
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
@@ -56,6 +50,28 @@ namespace MoreMountains.TopDownEngine
             {
                 BarricadeRockCreation();
             }
+
+            // 마우스 왼쪽 버튼 클릭 감지
+            if (Input.GetMouseButtonDown(0))
+            {
+                //// 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언
+                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                //// Raycast를 수행하여 충돌 정보를 저장할 변수 선언
+                //RaycastHit hit;
+
+                //// Raycast를 수행하고, 충돌이 발생했는지 여부를 반환
+                //if (Physics.Raycast(ray, out hit))
+                //{
+                //    // 만약 Ray가 어떤 물체와 충돌했다면, 그 정보를 출력
+                //    Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                //    Debug.Log("Hit point: " + hit.point);
+                //}
+                //else
+                //{
+                //    // 만약 Ray가 아무것도 충돌하지 않았다면, 아무 동작도 수행하지 않음
+                //}
+            }
         }
 
         //바리게이트 돌멩이 프리펩 0~4개 랜덤으로 생성
@@ -63,7 +79,6 @@ namespace MoreMountains.TopDownEngine
         {
             int randomNumber = Random.Range(0, 100);
             int randomNumber2 = Random.Range(0, 4);
-            Debug.Log($"randomNumber - {randomNumber}, randomNumber2 - {randomNumber2}");
 
             if (randomNumber >= 0 && randomNumber <=  44) //45%
             {
@@ -125,7 +140,7 @@ namespace MoreMountains.TopDownEngine
             int posX = Random.Range(-7, -33);
             int posZ = Random.Range(posX, -posX);
 
-            GameObject barricadeRock_1 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            GameObject barricadeRock_1 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_1.transform.position = new Vector3(posX, -1.2f, posZ);
         }
 
@@ -135,7 +150,7 @@ namespace MoreMountains.TopDownEngine
             int posZ = Random.Range(7, 33);
             int posX = Random.Range((-posZ)+2, posZ-1);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
 
-            GameObject barricadeRock_2 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            GameObject barricadeRock_2 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_2.transform.position = new Vector3(posX, -1.2f, posZ);
         }
 
@@ -145,7 +160,7 @@ namespace MoreMountains.TopDownEngine
             int posX = Random.Range(7, 33);
             int posZ = Random.Range(-posX, posX);
 
-            GameObject barricadeRock_3 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            GameObject barricadeRock_3 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_3.transform.position = new Vector3(posX, -1.2f, posZ);
         }
 
@@ -155,7 +170,7 @@ namespace MoreMountains.TopDownEngine
             int posZ = Random.Range(-7, -33);
             int posX = Random.Range(posZ+3, (-posZ)-2);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
 
-            GameObject barricadeRock_4 = Instantiate("Battlefield/BF_BarricadeRock1", level.transform);
+            GameObject barricadeRock_4 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_4.transform.position = new Vector3(posX, -1.2f, posZ);
         }
 
@@ -178,21 +193,99 @@ namespace MoreMountains.TopDownEngine
             return go;
         }
 
-        //오브젝트 생성
+        public void SetRandomPosition(GameObject enemy)
+        {
+            Vector3 pos = Vector3.zero;
+
+            switch (RandomValueBasedOnPlayerPosition())
+            {
+                case 1: pos = new Vector3(player.transform.position.x + 2, 0, player.transform.position.z + 20); break;
+                case 2: pos = new Vector3(player.transform.position.x + 9, 0, player.transform.position.z + 18); break;
+                case 3: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z + 15);break;
+                case 4: pos = new Vector3(player.transform.position.x + 18, 0, player.transform.position.z + 9); break;
+                case 5: pos = new Vector3(player.transform.position.x + 20, 0, player.transform.position.z + 2); break;
+                case 6: pos = new Vector3(player.transform.position.x + 20, 0, player.transform.position.z - 2); break;
+                case 7: pos = new Vector3(player.transform.position.x + 18, 0, player.transform.position.z - 9); break;
+                case 8: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z - 15);break;
+                case 9: pos = new Vector3(player.transform.position.x + 9, 0, player.transform.position.z - 18); break;
+                case 10:pos = new Vector3(player.transform.position.x + 2, 0, player.transform.position.z - 20); break;
+                case 11:pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z - 20); break;
+                case 12:pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z - 18); break;
+                case 13:pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z - 15); break;
+                case 14:pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z - 9); break;
+                case 15:pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z - 2); break;
+                case 16:pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z + 2); break;
+                case 17:pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z + 9); break;
+                case 18:pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z + 15); break;
+                case 19:pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z + 18); break;
+                case 20:pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z + 20); break;
+            }
+
+            enemy.transform.position = pos;
+        }
+
+        //플레이어 위치에 따른 랜덤값 반환 함수
+        public int RandomValueBasedOnPlayerPosition()
+        {
+            //플레이어 x 값이 -17이하 이고, z값이 -18이하이면 1~5 포지션에서 나와야함.
+            if (player.transform.position.x <= -17 && player.transform.position.z <= -18)
+                return Random.Range(1, 6);
+            //플레이어 x 값이 -17이하 이고, z값이 17이상이면 6~10 포지션에서 나와야함.
+            else if (player.transform.position.x <= -17 && player.transform.position.z >= 17)
+                return Random.Range(6, 11);
+            //플레이어 x 값이 18이상 이고, z값이 17 이상이면 11~15 포지션에서 나와야함.
+            else if (player.transform.position.x >= 18 && player.transform.position.z >= 17)
+                return Random.Range(11, 16);
+            //플레이어 x 값이 18이상 이고, z값이 -17이하이면 16~20 포지션에서 나와야함.
+            else if (player.transform.position.x >= 18 && player.transform.position.z <= -17)
+                return Random.Range(16, 21);
+            //플레이어 x 값이 -17이하 이면 1~10 포지션에서 나와야함.
+            else if (player.transform.position.x <= -17)
+                return Random.Range(1, 11);
+            //플레이어 z 값이 17이상 이면 6~15 포지션에서 나와야함.
+            else if (player.transform.position.z >= 17)
+                return Random.Range(6, 16);
+            //플레이어 x 값이 18이상 이면 11~20 포지션에서 나와야함.
+            else if (player.transform.position.x >= 18)
+                return Random.Range(11, 21);
+            //플레이어 z 값이 -18이하 이면 1~5,16~20 포지션에서 나와야함.
+            else if (player.transform.position.z <= -18)
+            {
+                int randomNumber;
+                int range1to5 = Random.Range(1, 6);
+                int range16to20 = Random.Range(16, 21);
+
+                if (Random.Range(0, 2) == 0)
+                    randomNumber = range1to5;
+                else
+                    randomNumber = range16to20;
+
+                return randomNumber;
+            }
+            else
+                return Random.Range(1, 21);
+        }
+
+        //↓오브젝트 생성 함수들
+
+        //3번째 공격
         public void ThirdAttackSpawn()
         {
             ThirdAttack thirdAttack = poolManager.GetFromPool<ThirdAttack>();
         }
+
         public void SlimeSpawn()
         {
             Slime slime = poolManager.GetFromPool<Slime>();
+            //SetRandomPosition(slime.gameObject);
         }
 
-        //오브젝트 회수
+        //↓오브젝트 회수 함수들
         public void ReturnPool(ThirdAttack clone)
         {
             poolManager.TakeToPool<ThirdAttack>(clone.idName, clone);
         }
+
         public void ReturnPool(Slime clone)
         {
             poolManager.TakeToPool<Slime>(clone.idName, clone);

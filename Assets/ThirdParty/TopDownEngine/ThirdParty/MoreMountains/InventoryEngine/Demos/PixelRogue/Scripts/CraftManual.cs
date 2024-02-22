@@ -1,4 +1,5 @@
 ﻿using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,6 +72,7 @@ public class CraftManual : MonoBehaviour
             go_Prefab = null;
             inventory.isInstalling = false;
             Time.timeScale = 1;
+            MMGameEvent.Trigger("Installed");
         }
     }
 

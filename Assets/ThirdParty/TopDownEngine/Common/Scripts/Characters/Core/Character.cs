@@ -703,15 +703,15 @@ namespace MoreMountains.TopDownEngine
 			_conditionChangeCoroutine = StartCoroutine(ChangeCharacterConditionTemporarilyCo(newCondition, duration, resetControllerForces, disableGravity));
 		}
 
-		/// <summary>
-		/// Coroutine handling the temporary change of condition mandated by ChangeCharacterConditionTemporarily
-		/// </summary>
-		/// <param name="newCondition"></param>
-		/// <param name="duration"></param>
-		/// <param name="resetControllerForces"></param>
-		/// <param name="disableGravity"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator ChangeCharacterConditionTemporarilyCo(
+        /// <summary>
+        /// ChangeCharacterConditionTemporarily에 의해 명령된 임시 조건 변경을 처리하는 코루틴
+        /// </summary>
+        /// <param name="newCondition"></param>
+        /// <param name="duration"></param>
+        /// <param name="resetControllerForces"></param>
+        /// <param name="disableGravity"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator ChangeCharacterConditionTemporarilyCo(
 			CharacterStates.CharacterConditions newCondition,
 			float duration, bool resetControllerForces, bool disableGravity)
 		{

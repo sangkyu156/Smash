@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An Action that shoots using the currently equipped weapon. If your weapon is in auto mode, will shoot until you exit the state, and will only shoot once in SemiAuto mode. You can optionnally have the character face (left/right) the target, and aim at it (if the weapon has a WeaponAim component).
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot3D")]
+    /// <summary>
+    /// 현재 장착된 무기를 사용하여 사격하는 액션. 무기가 자동 모드인 경우 상태를 종료할 때까지 사격하고 세미 오토 모드에서는 한 번만 사격합니다. 선택적으로 캐릭터가 목표물을 향해(좌/우) 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot3D")]
 	//[RequireComponent(typeof(CharacterOrientation3D))]
 	//[RequireComponent(typeof(CharacterHandleWeapon))]
 	public class AIActionShoot3D : AIAction

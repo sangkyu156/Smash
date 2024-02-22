@@ -7,50 +7,49 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object and it will show a healthbar above it
-	/// You can either use a prefab for it, or have the component draw one at the start
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/MMHealthBar")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 그 위에 체력 표시줄이 표시됩니다. 프리팹을 사용하거나 시작 시 구성 요소가 하나를 그리도록 할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/MMHealthBar")]
 	public class MMHealthBar : MonoBehaviour 
 	{
-		/// the possible health bar types
-		public enum HealthBarTypes { Prefab, Drawn, Existing }
-		/// the possible timescales the bar can work on
-		public enum TimeScales { UnscaledTime, Time }
+        /// 가능한 체력 바 유형
+        public enum HealthBarTypes { Prefab, Drawn, Existing }
+        /// 바가 작동할 수 있는 가능한 시간 척도
+        public enum TimeScales { UnscaledTime, Time }
 
-		[MMInformation("Add this component to an object and it'll add a healthbar next to it to reflect its health level in real time. You can decide here whether the health bar should be drawn automatically or use a prefab.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// whether the healthbar uses a prefab or is drawn automatically
-		[Tooltip("whether the healthbar uses a prefab or is drawn automatically")]
+		[MMInformation("이 구성 요소를 개체에 추가하면 옆에 건강 표시줄이 추가되어 건강 수준이 실시간으로 반영됩니다. 여기서 체력 막대를 자동으로 그릴지 아니면 프리팹을 사용할지 결정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 체력 바가 프리팹을 사용하는지 아니면 자동으로 그려지는지 여부
+        [Tooltip("체력 바가 프리팹을 사용하는지 아니면 자동으로 그려지는지 여부")]
 		public HealthBarTypes HealthBarType = HealthBarTypes.Drawn;
-		/// defines whether the bar will work on scaled or unscaled time (whether or not it'll keep moving if time is slowed down for example)
-		[Tooltip("defines whether the bar will work on scaled or unscaled time (whether or not it'll keep moving if time is slowed down for example)")]
+        /// 막대가 조정된 시간 또는 조정되지 않은 시간에 작동할지 여부를 정의합니다(예를 들어 시간이 느려지는 경우 계속 움직일지 여부)
+        [Tooltip("막대가 조정된 시간 또는 조정되지 않은 시간에 작동할지 여부를 정의합니다(예를 들어 시간이 느려지는 경우 계속 움직일지 여부)")]
 		public TimeScales TimeScale = TimeScales.UnscaledTime;
 
-		[Header("Select a Prefab")]
-		[MMInformation("Select a prefab with a progress bar script on it. There is one example of such a prefab in Common/Prefabs/GUI.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// the prefab to use as the health bar
-		[Tooltip("the prefab to use as the health bar")]
+		[Header("프리팹 선택")]
+		[MMInformation("진행률 표시줄 스크립트가 있는 프리팹을 선택합니다. Common/Prefabs/GUI에는 이러한 프리팹의 한 가지 예가 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 체력바로 사용할 프리팹
+        [Tooltip("체력바로 사용할 프리팹")]
 		public MMProgressBar HealthBarPrefab;
 
 		[Header("Existing MMProgressBar")]
-		/// the MMProgressBar this health bar should update 
-		[Tooltip("the MMProgressBar this health bar should update")]
+        /// 이 상태 표시줄이 업데이트해야 하는 MMProgressBar
+        [Tooltip("이 상태 표시줄이 업데이트해야 하는 MMProgressBar")]
 		public MMProgressBar TargetProgressBar;
 
-		[Header("Drawn Healthbar Settings ")]
-		[MMInformation("Set the size (in world units), padding, back and front colors of the healthbar.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// if the healthbar is drawn, its size in world units
-		[Tooltip("if the healthbar is drawn, its size in world units")]
+		[Header("그려진 체력바 설정")]
+		[MMInformation("체력바의 크기(월드 단위), 패딩, 뒷면 및 앞면 색상을 설정합니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 체력 막대가 그려지면 크기는 월드 단위로 표시됩니다.
+        [Tooltip("체력 막대가 그려지면 크기는 월드 단위로 표시됩니다.")]
 		public Vector2 Size = new Vector2(1f,0.2f);
-		/// if the healthbar is drawn, the padding to apply to the foreground, in world units
-		[Tooltip("if the healthbar is drawn, the padding to apply to the foreground, in world units")]
+        /// 체력 막대가 그려지는 경우 전경에 적용할 패딩(세계 단위)
+        [Tooltip("체력 막대가 그려지는 경우 전경에 적용할 패딩(세계 단위)")]
 		public Vector2 BackgroundPadding = new Vector2(0.01f,0.01f);
-		/// the rotation to apply to the MMHealthBarContainer when drawing it
-		[Tooltip("the rotation to apply to the MMHealthBarContainer when drawing it")]
+        /// MMHealthBarContainer를 그릴 때 적용할 회전
+        [Tooltip("MMHealthBarContainer를 그릴 때 적용할 회전")]
 		public Vector3 InitialRotationAngles;
-		/// if the healthbar is drawn, the color of its foreground
-		[Tooltip("if the healthbar is drawn, the color of its foreground")]
+        /// 체력 막대가 그려지면 전경의 색상
+        [Tooltip("체력 막대가 그려지면 전경의 색상")]
 		public Gradient ForegroundColor = new Gradient()
 		{
 			colorKeys = new GradientColorKey[2] {
@@ -58,8 +57,8 @@ namespace MoreMountains.Tools
 				new GradientColorKey(MMColors.BestRed, 1f)
 			},
 			alphaKeys = new GradientAlphaKey[2] {new GradientAlphaKey(1, 0),new GradientAlphaKey(1, 1)}};
-		/// if the healthbar is drawn, the color of its delayed bar
-		[Tooltip("if the healthbar is drawn, the color of its delayed bar")]
+        /// 체력 막대가 그려지면 지연된 막대의 색상
+        [Tooltip("체력 막대가 그려지면 지연된 막대의 색상")]
 		public Gradient DelayedColor = new Gradient()
 		{
 			colorKeys = new GradientColorKey[2] {
@@ -68,8 +67,8 @@ namespace MoreMountains.Tools
 			},
 			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
 		};
-		/// if the healthbar is drawn, the color of its border
-		[Tooltip("if the healthbar is drawn, the color of its border")]
+        /// 체력바가 그려지면 테두리의 색상
+        [Tooltip("체력바가 그려지면 테두리의 색상")]
 		public Gradient BorderColor = new Gradient()
 		{
 			colorKeys = new GradientColorKey[2] {
@@ -78,8 +77,8 @@ namespace MoreMountains.Tools
 			},
 			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
 		};
-		/// if the healthbar is drawn, the color of its background
-		[Tooltip("if the healthbar is drawn, the color of its background")]
+        /// 체력바가 그려지면 배경색
+        [Tooltip("체력바가 그려지면 배경색")]
 		public Gradient BackgroundColor = new Gradient()
 		{
 			colorKeys = new GradientColorKey[2] {
@@ -88,69 +87,69 @@ namespace MoreMountains.Tools
 			},
 			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
 		};
-		/// the name of the sorting layer to put this health bar on
-		[Tooltip("the name of the sorting layer to put this health bar on")]
+        /// 이 체력 바를 배치할 정렬 레이어의 이름
+        [Tooltip("이 체력 바를 배치할 정렬 레이어의 이름")]
 		public string SortingLayerName = "UI";
-		/// the delay to apply to the delayed bar if drawn
-		[Tooltip("the delay to apply to the delayed bar if drawn")]
+        /// 그려진 경우 지연된 막대에 적용할 지연
+        [Tooltip("그려진 경우 지연된 막대에 적용할 지연")]
 		public float Delay = 0.5f;
-		/// whether or not the front bar should lerp
-		[Tooltip("whether or not the front bar should lerp")]
+        /// 전면 바가 펄럭여야 하는지 여부
+        [Tooltip("전면 바가 펄럭여야 하는지 여부")]
 		public bool LerpFrontBar = true;
-		/// the speed at which the front bar lerps
-		[Tooltip("the speed at which the front bar lerps")]
+        /// 앞바가 움직이는 속도
+        [Tooltip("앞바가 움직이는 속도")]
 		public float LerpFrontBarSpeed = 15f;
-		/// whether or not the delayed bar should lerp
-		[Tooltip("whether or not the delayed bar should lerp")]
+        /// 지연된 막대가 부풀어 오르는지 여부
+        [Tooltip("지연된 막대가 부풀어 오르는지 여부")]
 		public bool LerpDelayedBar = true;
-		/// the speed at which the delayed bar lerps
-		[Tooltip("the speed at which the delayed bar lerps")]
+        /// 지연된 막대가 움직이는 속도
+        [Tooltip("지연된 막대가 움직이는 속도")]
 		public float LerpDelayedBarSpeed = 15f;
-		/// if this is true, bumps the scale of the healthbar when its value changes
-		[Tooltip("if this is true, bumps the scale of the healthbar when its value changes")]
+        /// 이것이 사실인 경우, 값이 변경될 때 체력 표시줄의 크기가 커집니다.
+        [Tooltip("이것이 사실인 경우, 값이 변경될 때 체력 표시줄의 크기가 커집니다.")]
 		public bool BumpScaleOnChange = true;
-		/// the duration of the bump animation
-		[Tooltip("the duration of the bump animation")]
+        ///범프 애니메이션의 지속 시간
+        [Tooltip("범프 애니메이션의 지속 시간")]
 		public float BumpDuration = 0.2f;
-		/// the animation curve to map the bump animation on
-		[Tooltip("the animation curve to map the bump animation on")]
+        /// 범프 애니메이션을 매핑할 애니메이션 곡선
+        [Tooltip("범프 애니메이션을 매핑할 애니메이션 곡선")]
 		public AnimationCurve BumpAnimationCurve = AnimationCurve.Constant(0,1,1);
-		
-		
-		/// the mode the bar should follow the target in
-		[Tooltip("the mode the bar should follow the target in")]
+
+
+        /// 바가 타겟을 따라가야 하는 모드
+        [Tooltip("바가 타겟을 따라가야 하는 모드")]
 		public MMFollowTarget.UpdateModes FollowTargetMode = MMFollowTarget.UpdateModes.LateUpdate;
         /// 이것이 사실이라면 그려진 체력 바는 MMHealthBar 아래에 중첩됩니다.
-        [Tooltip("if this is true, the drawn health bar will be nested below the MMHealthBar")]
+        [Tooltip("이것이 사실이라면 그려진 체력 바는 MMHealthBar 아래에 중첩됩니다.")]
 		public bool NestDrawnHealthBar = false;
-		/// if this is true, a MMBillboard component will be added to the progress bar to make sure it always looks towards the camera
-		[Tooltip("if this is true, a MMBillboard component will be added to the progress bar to make sure it always looks towards the camera")]
+        /// 이것이 사실이라면 MMBillboard 구성 요소가 진행률 표시줄에 추가되어 항상 카메라를 향하게 됩니다.
+        [Tooltip("이것이 사실이라면 MMBillboard 구성 요소가 진행률 표시줄에 추가되어 항상 카메라를 향하게 됩니다.")]
 		public bool Billboard = false;
 
 		[Header("Death")]
-		/// a gameobject (usually a particle system) to instantiate when the healthbar reaches zero
-		[Tooltip("a gameobject (usually a particle system) to instantiate when the healthbar reaches zero")]
+        /// 체력 표시줄이 0에 도달할 때 인스턴스화할 게임 개체(일반적으로 입자 시스템)
+        [Tooltip("체력 표시줄이 0에 도달할 때 인스턴스화할 게임 개체(일반적으로 입자 시스템)")]
 		public GameObject InstantiatedOnDeath;
 
 		[Header("Offset")]
-		[MMInformation("Set the offset (in world units), relative to the object's center, to which the health bar will be displayed.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("체력 표시줄이 표시될 개체 중심을 기준으로 오프셋(세계 단위)을 설정합니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the offset to apply to the healthbar compared to the object's center
 		[Tooltip("the offset to apply to the healthbar compared to the object's center")]
 		public Vector3 HealthBarOffset = new Vector3(0f,1f,0f);
 
 		[Header("Display")]
-		[MMInformation("Here you can define whether or not the healthbar should always be visible. If not, you can set here how long after a hit it'll remain visible.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// whether or not the bar should be permanently displayed
-		[Tooltip("whether or not the bar should be permanently displayed")]
+		[MMInformation("여기서 체력바를 항상 표시할지 여부를 정의할 수 있습니다. 그렇지 않은 경우 적중 후 얼마 동안 표시되는지 여기에서 설정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 막대를 영구적으로 표시할지 여부
+        [Tooltip("막대를 영구적으로 표시할지 여부")]
 		public bool AlwaysVisible = true;
-		/// the duration (in seconds) during which to display the bar
-		[Tooltip("the duration (in seconds) during which to display the bar")]
+        /// 막대를 표시하는 기간(초)
+        [Tooltip("막대를 표시하는 기간(초)")]
 		public float DisplayDurationOnHit = 1f;
-		/// if this is set to true the bar will hide itself when it reaches zero
-		[Tooltip("if this is set to true the bar will hide itself when it reaches zero")]
+        /// 이것이 true로 설정되면 막대가 0에 도달할 때 자체적으로 숨겨집니다.
+        [Tooltip("이것이 true로 설정되면 막대가 0에 도달할 때 자체적으로 숨겨집니다.")]
 		public bool HideBarAtZero = true;
-		/// the delay (in seconds) after which to hide the bar
-		[Tooltip("the delay (in seconds) after which to hide the bar")]
+        /// 막대를 숨기기까지의 지연 시간(초)
+        [Tooltip("막대를 숨기기까지의 지연 시간(초)")]
 		public float HideBarAtZeroDelay = 1f;
 
 		protected MMProgressBar _progressBar;
@@ -169,7 +168,7 @@ namespace MoreMountains.Tools
         protected virtual void Awake()
 		{
 			Initialization();
-		}
+        }
 
 		/// <summary>
 		/// On enable, initializes the bar again

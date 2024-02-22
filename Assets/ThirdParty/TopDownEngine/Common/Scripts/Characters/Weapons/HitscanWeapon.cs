@@ -221,10 +221,10 @@ namespace MoreMountains.TopDownEngine
 			}      
 		}
 
-		/// <summary>
-		/// Handles damage and the associated feedbacks
-		/// </summary>
-		protected virtual void HandleDamage()
+        /// <summary>
+        /// 손상 및 관련 피드백 처리
+        /// </summary>
+        protected virtual void HandleDamage()
 		{
 			if (_hitObject == null)
 			{

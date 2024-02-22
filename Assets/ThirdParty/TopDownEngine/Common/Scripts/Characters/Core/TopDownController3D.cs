@@ -11,97 +11,97 @@ namespace MoreMountains.TopDownEngine
 	[RequireComponent(typeof(CharacterController))]
 	[AddComponentMenu("TopDown Engine/Character/Core/TopDown Controller 3D")]
 
-	/// <summary>
-	/// A controller, initially adapted from Unity's CharacterMotor.js, to add on top of Unity's native CharacterController, that will handle 
-	/// </summary>
-	public class TopDownController3D : TopDownController
+    /// <summary>
+    /// 유니티의 기본 캐릭터 컨트롤러 위에 추가하기 위해 초기에 유니티의 캐릭터 Motor.js를 개조한 컨트롤러로, 다음을 처리합니다
+    /// </summary>
+    public class TopDownController3D : TopDownController
 	{
-		/// the possible modes to compute grounded state. Simple should only be used if your ground is even and flat
-		public enum GroundedComputationModes { Simple, Advanced }
-        
-		/// the current input sent to this character
-		[MMReadOnly]
-		[Tooltip("the current input sent to this character")]
+        /// 접지 상태를 계산하는 가능한 모드. 심플은 접지가 평평하고 평평한 경우에만 사용해야 합니다
+        public enum GroundedComputationModes { Simple, Advanced }
+
+        /// 이 문자로 보낸 현재 입력
+        [MMReadOnly]
+		[Tooltip("이 문자로 보낸 현재 입력")]
 		public Vector3 InputMoveDirection = Vector3.zero;
 
-		/// the different possible update modes
-		public enum UpdateModes { Update, FixedUpdate }
-		/// the possible ways to transfer velocity on jump
-		public enum VelocityTransferOnJump { NoTransfer, InitialVelocity, FloorVelocity, Relative }
+        /// 가능한 다양한 업데이트 모드
+        public enum UpdateModes { Update, FixedUpdate }
+        /// 점프할 때 속도를 전달하는 가능한 방법들
+        public enum VelocityTransferOnJump { NoTransfer, InitialVelocity, FloorVelocity, Relative }
 
 		[Header("Settings")]
-		/// whether the movement computation should occur at Update or FixedUpdate. FixedUpdate is the recommended choice.
-		[Tooltip("whether the movement computation should occur at Update or FixedUpdate. FixedUpdate is the recommended choice.")]
+        /// 이동 계산이 Update에서 이루어져야 하는지 FixedUpdate에서 이루어져야 하는지 FixedUpdate가 권장되는 선택입니다.
+        [Tooltip("이동 계산이 Update에서 이루어져야 하는지 FixedUpdate에서 이루어져야 하는지 FixedUpdate가 권장되는 선택입니다.")]
 		public UpdateModes UpdateMode = UpdateModes.FixedUpdate;
-		/// how the velocity should be affected when jumping from a moving ground
-		[Tooltip("how the velocity should be affected when jumping from a moving ground")]
+        /// 이동하는 지면에서 점프할 때 속도에 영향을 미치는 방법
+        [Tooltip("이동하는 지면에서 점프할 때 속도에 영향을 미치는 방법")]
 		public VelocityTransferOnJump VelocityTransferMethod = VelocityTransferOnJump.FloorVelocity;
         
-		[Header("Raycasts")]
-		/// the layer to consider as obstacles (will prevent movement)
-		[Tooltip("the layer to consider as obstacles (will prevent movement)")]
+		[Header("레이캐스트")]
+        /// 장애물로 간주할 층(이동을 방지함)
+        [Tooltip("장애물로 간주할 층(이동을 방지함)")]
 		public LayerMask ObstaclesLayerMask = LayerManager.ObstaclesLayerMask;
-		/// the length of the raycasts to cast downwards
-		[Tooltip("the length of the raycasts to cast downwards")]
+        /// 아래로 드리우는 광선의 길이
+        [Tooltip("아래로 드리우는 광선의 길이")]
 		public float GroundedRaycastLength = 5f;
-		/// the distance to the ground beyond which the character isn't considered grounded anymore
-		[Tooltip("the distance to the ground beyond which the character isn't considered grounded anymore")]
+        /// 캐릭터가 더 이상 접지된 것으로 간주되지 않는 지면까지의 거리
+        [Tooltip("캐릭터가 더 이상 접지된 것으로 간주되지 않는 지면까지의 거리")]
 		public float MinimumGroundedDistance = 0.2f;
-		/// the selected modes to compute grounded state. Simple should only be used if your ground is even and flat
-		[Tooltip("the selected modes to compute grounded state. Simple should only be used if your ground is even and flat")]
+        /// 접지 상태를 계산하기 위해 선택한 모드입니다. 심플은 접지가 평평하고 평평한 경우에만 사용해야 합니다
+        [Tooltip("접지 상태를 계산하기 위해 선택한 모드입니다. 심플은 접지가 평평하고 평평한 경우에만 사용해야 합니다")]
 		public GroundedComputationModes GroundedComputationMode = GroundedComputationModes.Advanced;
-		/// a threshold against which to check when going over steps. Adjust that value if your character has issues going over small steps
-		[Tooltip("a threshold against which to check when going over steps. Adjust that value if your character has issues going over small steps")] 
+        /// 단계를 넘길 때 체크해야 할 임계값. 캐릭터에 작은 단계를 통과하는 데 문제가 있는 경우 이 값을 조정하십시오
+        [Tooltip("단계를 넘길 때 체크해야 할 임계값. 캐릭터에 작은 단계를 통과하는 데 문제가 있는 경우 이 값을 조정하십시오")] 
 		public float GroundNormalHeightThreshold = 0.2f;
-		/// the speed at which external forces get lerped to zero
-		[Tooltip("the speed at which external forces get lerped to zero")]
+        /// 외력이 0이 되는 속도
+        [Tooltip("외력이 0이 되는 속도")]
 		public float ImpactFalloff = 5f;
         
-		[Header("Movement")]
+		[Header("움직임")]
 
-		/// the maximum vertical velocity the character can have while falling
-		[Tooltip("the maximum vertical velocity the character can have while falling")]
+        /// 캐릭터가 떨어지는 동안 가질 수 있는 최대 수직 속도
+        [Tooltip("캐릭터가 떨어지는 동안 가질 수 있는 최대 수직 속도")]
 		public float MaximumFallSpeed = 20.0f;
-		/// the factor by which to multiply the speed while walking on a slope. x is the angle, y is the factor
-		[Tooltip("the factor by which to multiply the speed while walking on a slope. x is the angle, y is the factor")]
+        /// 비탈길을 걸을 때 속도를 곱하는 인자. x는 각도, y는 인자
+        [Tooltip("비탈길을 걸을 때 속도를 곱하는 인자. x는 각도, y는 인자")]
 		public AnimationCurve SlopeSpeedMultiplier = new AnimationCurve(new Keyframe(-90, 1), new Keyframe(0, 1), new Keyframe(90, 0));
 
-		[Header("Steep Surfaces")]
-		/// the current surface normal vector
-		[Tooltip("the current surface normal vector")]
+		[Header("가파른 표면")]
+        /// 현재 표면의 일반적인 벡터
+        [Tooltip("현재 표면의 일반적인 벡터")]
 		[MMReadOnly]
 		public Vector3 GroundNormal = Vector3.zero;
-		/// whether or not the character should slide while standing on steep surfaces
-		[Tooltip("whether or not the character should slide while standing on steep surfaces")]
+        /// 캐릭터가 가파른 표면에 서 있는 동안 미끄러져야 하는지 여부
+        [Tooltip("캐릭터가 가파른 표면에 서 있는 동안 미끄러져야 하는지 여부")]
 		public bool SlideOnSteepSurfaces = true;
-		/// the speed at which the character should slide
-		[Tooltip("the speed at which the character should slide")]
+        /// 캐릭터가 미끄러지는 속도
+        [Tooltip("캐릭터가 미끄러지는 속도")]
 		public float SlidingSpeed = 15f;
-		/// the control the player has on the speed while sliding down
-		[Tooltip("the control the player has on the speed while sliding down")]
+        /// 미끄러져 내려올 때 선수가 속도를 조절하는 것
+        [Tooltip("미끄러져 내려올 때 선수가 속도를 조절하는 것")]
 		public float SlidingSpeedControl = 0.4f;
-		/// the control the player has on the direction while sliding down
-		[Tooltip("the control the player has on the direction while sliding down")]
+        /// 미끄러져 내려가는 동안 플레이어가 방향에 대해 가지고 있는 컨트롤
+        [Tooltip("미끄러져 내려가는 동안 플레이어가 방향에 대해 가지고 있는 컨트롤")]
 		public float SlidingDirectionControl = 1f;
 
-		/// returns the center coordinate of the collider
-		public override Vector3 ColliderCenter { get { return this.transform.position + _characterController.center; } }
-		/// returns the bottom coordinate of the collider
-		public override Vector3 ColliderBottom { get { return this.transform.position + _characterController.center + Vector3.down * _characterController.bounds.extents.y; } }
-		/// returns the top coordinate of the collider
-		public override Vector3 ColliderTop { get { return this.transform.position + _characterController.center + Vector3.up * _characterController.bounds.extents.y; } }
-		/// whether or not the character is sliding down a steep slope
-		public virtual bool IsSliding() { return (Grounded && SlideOnSteepSurfaces && TooSteep()); }
-		/// whether or not the character is colliding above
-		public virtual bool CollidingAbove() { return (_collisionFlags & CollisionFlags.CollidedAbove) != 0; }
-		/// whether or not the current surface is too steep or not
-		public virtual bool TooSteep() { return (GroundNormal.y <= Mathf.Cos(_characterController.slopeLimit * Mathf.Deg2Rad)); }
-		/// whether or not the character just entered a slope/ground not too steep this frame
-		public virtual bool ExitedTooSteepSlopeThisFrame { get; set; }
-		///  whether or not the character is on a moving platform
-		public override bool OnAMovingPlatform { get { return ShouldMoveWithPlatformThisFrame(); } }
-		/// the speed of the moving platform
-		public override Vector3 MovingPlatformSpeed
+        /// 충돌기의 중심 좌표를 반환합니다
+        public override Vector3 ColliderCenter { get { return this.transform.position + _characterController.center; } }
+        /// 충돌기의 하단 좌표를 반환합니다
+        public override Vector3 ColliderBottom { get { return this.transform.position + _characterController.center + Vector3.down * _characterController.bounds.extents.y; } }
+        /// 충돌기의 맨 위 좌표를 반환합니다
+        public override Vector3 ColliderTop { get { return this.transform.position + _characterController.center + Vector3.up * _characterController.bounds.extents.y; } }
+        /// 캐릭터가 가파른 경사를 미끄러져 내려오든 말든
+        public virtual bool IsSliding() { return (Grounded && SlideOnSteepSurfaces && TooSteep()); }
+        /// 캐릭터가 위에서 충돌하고 있는지 여부
+        public virtual bool CollidingAbove() { return (_collisionFlags & CollisionFlags.CollidedAbove) != 0; }
+        /// 현재 표면이 너무 가파른지 아닌지 여부
+        public virtual bool TooSteep() { return (GroundNormal.y <= Mathf.Cos(_characterController.slopeLimit * Mathf.Deg2Rad)); }
+        /// 문자가 이 프레임이 너무 가파르지 않은 경사/지상에 방금 진입했는지 여부
+        public virtual bool ExitedTooSteepSlopeThisFrame { get; set; }
+        ///  캐릭터가 움직이는 플랫폼에 있는지 여부
+        public override bool OnAMovingPlatform { get { return ShouldMoveWithPlatformThisFrame(); } }
+        /// 움직이는 플랫폼의 속도
+        public override Vector3 MovingPlatformSpeed
 		{
 			get { return _movingPlatformVelocity;  }
 		}
@@ -117,7 +117,7 @@ namespace MoreMountains.TopDownEngine
 		protected WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 		protected bool _detached = false;
 
-		// moving platforms
+		// 이동 플랫폼
 		protected Transform _movingPlatformHitCollider;
 		protected Transform _movingPlatformCurrentHitCollider;
 		protected Vector3 _movingPlatformCurrentHitColliderLocal;
@@ -170,10 +170,10 @@ namespace MoreMountains.TopDownEngine
 		protected RaycastHit _canGoBackHeadCheck;
 		protected bool _tooSteepLastFrame;
 
-		/// <summary>
-		/// On awake we store our various components for future use
-		/// </summary>
-		protected override void Awake()
+        /// <summary>
+        /// 깨어있는 상태에서 향후 사용할 수 있도록 다양한 구성 요소를 저장합니다
+        /// </summary>
+        protected override void Awake()
 		{
 			base.Awake();
 
@@ -185,21 +185,21 @@ namespace MoreMountains.TopDownEngine
 			_originalColliderCenter = _characterController.center;
 		}
 
-		#region Update
+        #region Update
 
-		/// <summary>
-		/// On late update we apply any impact we have in store, and store our velocity for use next frame
-		/// </summary>
-		protected override void LateUpdate()
+        /// <summary>
+        /// 업데이트가 늦어질 때 우리는 우리가 가지고 있는 영향을 적용하고 우리의 속도를 다음 프레임에 사용하기 위해 저장합니다
+        /// </summary>
+        protected override void LateUpdate()
 		{
 			base.LateUpdate();
 			VelocityLastFrame = Velocity;
 		}
 
-		/// <summary>
-		/// On Update we process our Update computations if UpdateMode is set to Update
-		/// </summary>
-		protected override void Update()
+        /// <summary>
+        /// Update에서 Update Mode가 Update로 설정된 경우 Update 계산을 처리합니다
+        /// </summary>
+        protected override void Update()
 		{
 			base.Update();
 			if (UpdateMode == UpdateModes.Update)
@@ -208,10 +208,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On FixedUpdate we process our Update computations if UpdateMode is set to FixedUpdate
-		/// </summary>
-		protected override void FixedUpdate()
+        /// <summary>
+        /// FixedUpdate에서 UpdateMode가 FixedUpdate로 설정된 경우 업데이트 계산을 처리합니다
+        /// </summary>
+        protected override void FixedUpdate()
 		{
 			base.FixedUpdate();
 			ApplyImpact();
@@ -221,11 +221,11 @@ namespace MoreMountains.TopDownEngine
 				ProcessUpdate();
 			}
 		}
-                
-		/// <summary>
-		/// Computes the new velocity and moves the character
-		/// </summary>
-		protected virtual void ProcessUpdate()
+
+        /// <summary>
+        /// 새로운 속도를 계산하고 캐릭터를 이동합니다
+        /// </summary>
+        protected virtual void ProcessUpdate()
 		{
 			if (_transform == null)
 			{
@@ -252,10 +252,10 @@ namespace MoreMountains.TopDownEngine
 			ComputeSpeed();
 		}
 
-		/// <summary>
-		/// Determines the new velocity based on the slope we're on and the input 
-		/// </summary>
-		protected virtual void AddInput()
+        /// <summary>
+        /// 현재 위치한 경사면과 입력에 따라 새로운 속도를 결정합니다
+        /// </summary>
+        protected virtual void AddInput()
 		{
 			if (Grounded && TooSteep())
 			{
@@ -288,10 +288,10 @@ namespace MoreMountains.TopDownEngine
 			_newVelocity.y = Grounded ? Mathf.Min(_newVelocity.y, 0) : _newVelocity.y;
 		}
 
-		/// <summary>
-		/// Adds the gravity to the new velocity and any AddedForce we may have
-		/// </summary>
-		protected virtual void AddGravity()
+        /// <summary>
+        /// 새로운 속도와 추가된 힘에 중력을 더합니다
+        /// </summary>
+        protected virtual void AddGravity()
 		{
 			if (GravityActive)
 			{
@@ -308,11 +308,11 @@ namespace MoreMountains.TopDownEngine
 			_newVelocity += AddedForce;
 			AddedForce = Vector3.zero;
 		}
-        
-		/// <summary>
-		/// Moves and rotates the character controller to follow any moving platform we may be standing on
-		/// </summary>
-		protected virtual void MoveWithPlatform()
+
+        /// <summary>
+        /// 캐릭터 컨트롤러를 이동 및 회전하여 우리가 서 있을 수 있는 모든 이동 플랫폼을 따릅니다
+        /// </summary>
+        protected virtual void MoveWithPlatform()
 		{
 			if (ShouldMoveWithPlatformThisFrame())
 			{
@@ -333,10 +333,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Computes the motion vector to apply to the character controller 
-		/// </summary>
-		protected virtual void ComputeVelocityDelta()
+        /// <summary>
+        /// 캐릭터 컨트롤러에 적용할 모션 벡터를 계산합니다
+        /// </summary>
+        protected virtual void ComputeVelocityDelta()
 		{
 			_motion = _newVelocity * Time.deltaTime;
 			_horizontalVelocityDelta.x = _motion.x;
@@ -349,10 +349,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Moves the character controller by the computed _motion 
-		/// </summary>
-		protected virtual void MoveCharacterController()
+        /// <summary>
+        /// 계산된 _motion을 기준으로 문자 컨트롤러를 이동합니다
+        /// </summary>
+        protected virtual void MoveCharacterController()
 		{
 			GroundNormal.x = GroundNormal.y = GroundNormal.z = 0f;
 
@@ -362,10 +362,10 @@ namespace MoreMountains.TopDownEngine
 			_lastGroundNormal = GroundNormal;
 		}
 
-		/// <summary>
-		/// Detects any moving platform we may be standing on
-		/// </summary>
-		protected virtual void DetectNewMovingPlatform()
+        /// <summary>
+        /// 우리가 서 있을 수 있는 움직이는 플랫폼을 감지합니다
+        /// </summary>
+        protected virtual void DetectNewMovingPlatform()
 		{
 			if (_movingPlatformCurrentHitCollider != _movingPlatformHitCollider)
 			{
@@ -378,19 +378,19 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Determines the new Velocity value based on our position and our position last frame
-		/// </summary>
-		protected virtual void ComputeNewVelocity()
+        /// <summary>
+        /// 우리의 위치와 마지막 프레임에 따라 새로운 Velocity 값을 결정합니다
+        /// </summary>
+        protected virtual void ComputeNewVelocity()
 		{
 			Velocity = _newVelocity;
 			Acceleration = (Velocity - VelocityLastFrame) / Time.deltaTime;
 		}
 
-		/// <summary>
-		/// We handle ground contact, velocity transfer and moving platforms
-		/// </summary>
-		protected virtual void HandleGroundContact()
+        /// <summary>
+        /// 접지 접촉, 속도 전달 및 이동 플랫폼을 처리합니다
+        /// </summary>
+        protected virtual void HandleGroundContact()
 		{
 			Grounded = _characterController.isGrounded;
             
@@ -426,29 +426,29 @@ namespace MoreMountains.TopDownEngine
 			_tooSteepLastFrame = TooSteep();
 		}
 
-		/// <summary>
-		/// Determines the direction based on the current movement
-		/// </summary>
-		protected override void DetermineDirection()
+        /// <summary>
+        /// 현재의 움직임에 따라 방향을 결정합니다
+        /// </summary>
+        protected override void DetermineDirection()
 		{
 			if (CurrentMovement.magnitude > 0f)
 			{
 				CurrentDirection = CurrentMovement.normalized;
 			}
 		}
-        
-		/// <summary>
-		/// Handles friction with ground surfaces, coming soon
-		/// </summary>
-		protected override void HandleFriction()
+
+        /// <summary>
+        /// 접지면과의 마찰을 처리합니다. 곧 제공될 예정입니다
+        /// </summary>
+        protected override void HandleFriction()
 		{
 			//TODO - coming soon
 		}
 
-		/// <summary>
-		/// Forces the controller to detach from the ground
-		/// </summary>
-		public virtual void DetachFromGround()
+        /// <summary>
+        /// 컨트롤러를 지면에서 강제로 분리합니다
+        /// </summary>
+        public virtual void DetachFromGround()
 		{
 			_detached = true;
 		}
@@ -460,16 +460,16 @@ namespace MoreMountains.TopDownEngine
 			_movingPlatformHitCollider = null;
 		}
 
-		#endregion
+        #endregion
 
-		#region Rigidbody push mechanics
+        #region Rigidbody push mechanics
 
-		/// <summary>
-		/// This method compensates for the regular OnControllerColliderHit, which unfortunately generates a lot of garbage.
-		/// To do so, it casts a ray downwards to get our ground normal, and a ray in the current movement direction to (potentially) push rigidbodies
-		/// </summary>
-        
-		protected virtual void ManualControllerColliderHit()
+        /// <summary>
+        /// 이 방법은 유감스럽게도 많은 쓰레기를 발생시키는 일반 OnControllerColliderHit을 보상합니다.
+        /// 이를 위해, 우리의 지면을 정상으로 만들기 위해 아래쪽으로 광선을 던지고, (잠재적으로) 강체를 밀어내기 위해 전류 이동 방향으로 광선을 던집니다
+        /// </summary>
+
+        protected virtual void ManualControllerColliderHit()
 		{
 			HandleAdvancedGroundDetection();
 		}
@@ -485,8 +485,8 @@ namespace MoreMountains.TopDownEngine
 			_longestDistance = Single.MinValue;
 			_smallestRaycast = _emptyRaycast;
 
-			// we cast 4 rays downwards to get ground normal
-			float offset = _characterController.radius;
+            // 우리는 4개의 광선을 아래쪽으로 던져서 땅을 정상으로 만듭니다
+            float offset = _characterController.radius;
             
 			_downRaycastsOffset.x = 0f;
 			_downRaycastsOffset.y = 0f;
@@ -508,9 +508,9 @@ namespace MoreMountains.TopDownEngine
 			_downRaycastsOffset.y = offset;
 			_downRaycastsOffset.z = offset;
 			CastRayDownwards();
-            
-			// we handle our shortest ray
-			if (_smallestRaycast.collider != null)
+
+            // 우리는 우리의 가장 짧은 광선을 처리합니다
+            if (_smallestRaycast.collider != null)
 			{
 				float adjustedDistance = AdjustDistance(_smallestRaycast.distance);
                 
@@ -531,11 +531,11 @@ namespace MoreMountains.TopDownEngine
 				}    
 			} 
 		}
-        
-		/// <summary>
-		/// Casts a ray downwards and adjusts distances if needed
-		/// </summary>
-		protected virtual void CastRayDownwards()
+
+        /// <summary>
+        /// 아래쪽으로 광선을 던지고 필요한 경우 거리를 조정합니다
+        /// </summary>
+        protected virtual void CastRayDownwards()
 		{
 			if (_smallestDistance <= MinimumGroundedDistance)
 			{
@@ -554,12 +554,12 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Returns the real distance between the extremity of the character and the ground
-		/// </summary>
-		/// <param name="distance"></param>
-		/// <returns></returns>
-		protected float AdjustDistance(float distance)
+        /// <summary>
+        /// 캐릭터의 극한과 지면 사이의 실제 거리를 반환합니다
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        protected float AdjustDistance(float distance)
 		{
 			float adjustedDistance = distance - _characterController.height / 2f -
 			                         _characterController.skinWidth;
@@ -567,15 +567,15 @@ namespace MoreMountains.TopDownEngine
 		}
 
 		protected Vector3 _onTriggerEnterPushbackDirection;
-        
-		/// <summary>
-		/// When triggering with something else, we check if it's a moving platform and we push ourselves if needed
-		/// </summary>
-		/// <param name="other"></param>
-		protected virtual void OnTriggerEnter(Collider other)
+
+        /// <summary>
+        /// 다른 것으로 트리거할 때는 움직이는 플랫폼인지 확인하고 필요한 경우 스스로 밀어냅니다
+        /// </summary>
+        /// <param name="other"></param>
+        protected virtual void OnTriggerEnter(Collider other)
 		{
-			// on trigger enter, if we're colliding with a moving platform, we push ourselves in the opposite direction
-			if (other.gameObject.MMGetComponentNoAlloc<MovingPlatform3D>() != null)
+            // 방아쇠를 당길 때, 우리가 움직이는 플랫폼과 충돌할 때, 우리는 우리 자신을 반대 방향으로 밀어냅니다
+            if (other.gameObject.MMGetComponentNoAlloc<MovingPlatform3D>() != null)
 			{
 				if (this.transform.position.y < other.transform.position.y)
 				{
@@ -585,14 +585,14 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Moving Platforms
-        
-		/// <summary>
-		/// Gets the current moving platform's velocity
-		/// </summary>
-		protected virtual void GetMovingPlatformVelocity()
+        #region Moving Platforms
+
+        /// <summary>
+        /// 현재 이동하는 플랫폼의 속도를 가져옵니다
+        /// </summary>
+        protected virtual void GetMovingPlatformVelocity()
 		{
 			if (_movingPlatformCurrentHitCollider != null)
 			{
@@ -612,11 +612,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Computes the relative velocity
-		/// </summary>
-		/// <returns></returns>
-		protected virtual IEnumerator SubstractNewPlatformVelocity()
+        /// <summary>
+        /// 상대 속도를 계산합니다
+        /// </summary>
+        /// <returns></returns>
+        protected virtual IEnumerator SubstractNewPlatformVelocity()
 		{
 			if ((VelocityTransferMethod == VelocityTransferOnJump.InitialVelocity ||
 			     VelocityTransferMethod == VelocityTransferOnJump.FloorVelocity))
@@ -634,11 +634,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Whether or not our character should move with the moving platform this frame
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool ShouldMoveWithPlatformThisFrame()
+        /// <summary>
+        /// 우리의 캐릭터가 이 프레임을 움직이는 플랫폼과 함께 움직여야 하는지 여부
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool ShouldMoveWithPlatformThisFrame()
 		{
 			return (
 				(Grounded || VelocityTransferMethod == VelocityTransferOnJump.Relative)
@@ -646,15 +646,15 @@ namespace MoreMountains.TopDownEngine
 			);
 		}
 
-		#endregion
+        #endregion
 
-		#region Collider Resizing
-        
-		/// <summary>
-		/// Determines whether this instance can go back to original size.
-		/// </summary>
-		/// <returns><c>true</c> if this instance can go back to original size; otherwise, <c>false</c>.</returns>
-		public override bool CanGoBackToOriginalSize()
+        #region Collider Resizing
+
+        /// <summary>
+        /// 이 인스턴스가 원래 크기로 돌아갈 수 있는지 여부를 결정합니다.
+        /// </summary>
+        /// <returns><c>true</c> if this instance can go back to original size; otherwise, <c>false</c>.</returns>
+        public override bool CanGoBackToOriginalSize()
 		{
 			// if we're already at original size, we return true
 			if (_collider.bounds.size.y == _originalColliderHeight)
@@ -677,11 +677,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Resizes the collider to the new size set in parameters
-		/// </summary>
-		/// <param name="newSize">New size.</param>
-		public override void ResizeColliderHeight(float newHeight, bool translateCenter = false)
+        /// <summary>
+        /// 충돌기의 크기를 모수로 설정된 새 크기로 조정합니다
+        /// </summary>
+        /// <param name="newSize">New size.</param>
+        public override void ResizeColliderHeight(float newHeight, bool translateCenter = false)
 		{
 			float newYOffset = _originalColliderCenter.y - (_originalColliderHeight - newHeight) / 2;
 			_characterController.height = newHeight;
@@ -693,24 +693,24 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Returns the collider to its initial size
-		/// </summary>
-		public override void ResetColliderSize()
+        /// <summary>
+        /// 충돌기를 초기 크기로 되돌립니다
+        /// </summary>
+        public override void ResetColliderSize()
 		{
 			_characterController.height = _originalColliderHeight;
 			_characterController.center = _originalColliderCenter;
 		}
 
-		#endregion
+        #endregion
 
-		#region Grounded Tests
-        
-		/// <summary>
-		/// Whether or not the character is grounded
-		/// </summary>
-		/// <returns></returns>
-		public virtual bool IsGroundedTest()
+        #region Grounded Tests
+
+        /// <summary>
+        /// 캐릭터의 접지 여부
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsGroundedTest()
 		{
 			bool grounded = false;
 			if (GroundedComputationMode == GroundedComputationModes.Advanced)
@@ -731,10 +731,10 @@ namespace MoreMountains.TopDownEngine
 			return grounded;
 		}
 
-		/// <summary>
-		/// Grounded check
-		/// </summary>
-		protected override void CheckIfGrounded()
+        /// <summary>
+        /// 접지 체크
+        /// </summary>
+        protected override void CheckIfGrounded()
 		{
 			JustGotGrounded = (!_groundedLastFrame && Grounded);
 			_groundedLastFrame = Grounded;
@@ -745,27 +745,27 @@ namespace MoreMountains.TopDownEngine
 		#region Public Methods
 
 		/// <summary>
-		/// Enables the collider
+		/// 콜라이더를 활성화 합니다.
 		/// </summary>
 		public override void CollisionsOn()
 		{
 			_collider.enabled = true;
 		}
 
-		/// <summary>
-		/// Disables collider
-		/// </summary>
-		public override void CollisionsOff()
+        /// <summary>
+        /// 콜라이더를 비활성화 합니다.
+        /// </summary>
+        public override void CollisionsOff()
 		{
 			_collider.enabled = false;
 		}
 
-		/// <summary>
-		/// Performs a cardinal collision check and stores collision objects informations
-		/// </summary>
-		/// <param name="distance"></param>
-		/// <param name="offset"></param>
-		public override void DetectObstacles(float distance, Vector3 offset)
+        /// <summary>
+        /// 기본 충돌 점검을 수행하고 충돌 물체 정보를 저장합니다
+        /// </summary>
+        /// <param name="distance"></param>
+        /// <param name="offset"></param>
+        public override void DetectObstacles(float distance, Vector3 offset)
 		{
 			if (!PerformCardinalObstacleRaycastDetection)
 			{
@@ -787,10 +787,10 @@ namespace MoreMountains.TopDownEngine
 			if (_cardinalRaycast.collider != null) { DetectedObstacleDown = _cardinalRaycast.collider.gameObject; CollidingWithCardinalObstacle = true; } else { DetectedObstacleDown = null; }
 		}
 
-		/// <summary>
-		/// Applies the stored impact to the character
-		/// </summary>
-		protected virtual void ApplyImpact()
+        /// <summary>
+        /// 저장된 임팩트를 캐릭터에 적용합니다
+        /// </summary>
+        protected virtual void ApplyImpact()
 		{
 			if (_impact.magnitude > 0.2f)
 			{
@@ -799,32 +799,32 @@ namespace MoreMountains.TopDownEngine
 			_impact = Vector3.Lerp(_impact, Vector3.zero, ImpactFalloff * Time.deltaTime);
 		}
 
-		/// <summary>
-		/// Adds a force of the specified direction and magnitude to the character
-		/// </summary>
-		/// <param name="movement"></param>
-		public override void AddForce(Vector3 movement)
+        /// <summary>
+        /// 지정한 방향과 크기의 힘을 문자에 추가합니다
+        /// </summary>
+        /// <param name="movement"></param>
+        public override void AddForce(Vector3 movement)
 		{
 			AddedForce += movement;
 		}
 
-		/// <summary>
-		/// Applies an impact to the character of the specified direction and force
-		/// </summary>
-		/// <param name="direction"></param>
-		/// <param name="force"></param>
-		public override void Impact(Vector3 direction, float force)
+        /// <summary>
+        /// 지정된 방향과 힘의 특성에 충격을 가합니다
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <param name="force"></param>
+        public override void Impact(Vector3 direction, float force)
 		{
 			direction = direction.normalized;
 			if (direction.y < 0) { direction.y = -direction.y; }
 			_impact += direction.normalized * force;
 		}
 
-		/// <summary>
-		/// Sets the character's current input direction and magnitude
-		/// </summary>
-		/// <param name="movement"></param>
-		public override void SetMovement(Vector3 movement)
+        /// <summary>
+        /// 캐릭터의 현재 입력 방향과 크기를 설정합니다
+        /// </summary>
+        /// <param name="movement"></param>
+        public override void SetMovement(Vector3 movement)
 		{
 			CurrentMovement = movement;
 
@@ -841,20 +841,20 @@ namespace MoreMountains.TopDownEngine
 			InputMoveDirection = transform.rotation * directionVector;
 		}
 
-		/// <summary>
-		/// Turns this character's rigidbody kinematic or not
-		/// </summary>
-		/// <param name="state"></param>
-		public override void SetKinematic(bool state)
+        /// <summary>
+        /// 이 캐릭터의 강체 운동학적인지 여부를 바꿉니다
+        /// </summary>
+        /// <param name="state"></param>
+        public override void SetKinematic(bool state)
 		{
 			_rigidBody.isKinematic = state;
 		}
 
-		/// <summary>
-		/// Moves this character to the specified position while trying to avoid obstacles
-		/// </summary>
-		/// <param name="newPosition"></param>
-		public override void MovePosition(Vector3 newPosition)
+        /// <summary>
+        /// 장애물을 피하려고 할 때 이 문자를 지정된 위치로 이동합니다
+        /// </summary>
+        /// <param name="newPosition"></param>
+        public override void MovePosition(Vector3 newPosition)
 		{
             
 			_movePositionDirection = (newPosition - this.transform.position);
@@ -877,10 +877,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On reset, we reset vectors and transforms
-		/// </summary>
-		public override void Reset()
+        /// <summary>
+        /// 재설정 시 벡터와 변환을 재설정합니다
+        /// </summary>
+        public override void Reset()
 		{
 			base.Reset();
 			_idealDirection = Vector3.zero;

@@ -1,4 +1,5 @@
 ﻿using MoreMountains.Tools;
+using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -433,7 +434,7 @@ namespace MoreMountains.InventoryEngine
             quantity = Mathf.Max(0, quantity);
 
             Content[i].Quantity -= quantity;
-            if (Content[i].Quantity <= 0)
+            if (Content[i].Quantity <= 0)// 사용후 아이템 수량이 0이하면 아이템을 삭제시킨다.
             {
                 bool suppressionSuccessful = RemoveItemFromArray(i);
                 MMInventoryEvent.Trigger(MMInventoryEventType.ContentChanged, null, this.name, null, 0, 0, PlayerID);
@@ -478,6 +479,43 @@ namespace MoreMountains.InventoryEngine
                 if (quantityLeftToRemove <= 0)
                 {
                     return true;
+                }
+            }
+
+            return false;
+        }
+
+        //지정한 아이템ID와 지정한 아이템수량이 같은 아이템을 찾아 item.ConsumeQuantity만큼 제거합니다. 제거했는데 아이템 남은수량이 0이라면 아이템을 삭제합니다.
+        public virtual bool RemoveItemByIDandQuantity(string itemID,int itemQuantity, int RemoveQuantity)
+        {
+            if (RemoveQuantity < 1)
+            {
+                Debug.LogWarning("InventoryEngine : 재고에서 잘못된 수량(" + RemoveQuantity + ")을 제거하려고 합니다.");
+                return false;
+            }
+
+            if (itemID == null || itemID == "")
+            {
+                Debug.LogWarning("InventoryEngine : 항목을 제거하려고 하는데 항목 ID가 지정되지 않았습니다.");
+                return false;
+            }
+
+            int quantityLeftToRemove = RemoveQuantity;
+
+            List<int> list = InventoryContains(itemID);
+            for (int i = 0; i < list.Count; i++)
+            {
+                int quantityAtIndex = Content[list[i]].Quantity;
+                Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 수량 = [{Content[list[i]].Quantity}]");
+                if (Content[list[i]].Quantity == itemQuantity)
+                {
+                    RemoveItem(list[i], quantityLeftToRemove);
+                    Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 삭제");
+                    quantityAtIndex -= quantityAtIndex; //가지고 있는 아이템수량에서 소모하고 싶은 수량을 뺏는데 1이상이면 트루
+                    if(quantityAtIndex > 0)
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -580,7 +618,7 @@ namespace MoreMountains.InventoryEngine
         }
 
         /// <summary>
-        /// 지정된 이름과 일치하는 인벤토리의 모든 항목 목록을 반환합니다.
+        /// 지정된 이름과 일치하는 인벤토리의 Index들을 반환합니다.
         /// </summary>
         /// <returns>검색 기준과 일치하는 항목 목록입니다.</returns>
         /// <param name="searchedType">검색된 유형입니다.</param>
@@ -749,11 +787,12 @@ namespace MoreMountains.InventoryEngine
                 MMInventoryEvent.Trigger(MMInventoryEventType.ItemUsed, slot, this.name, item.Copy(), 0, index, PlayerID);
                 if (item.Consumable)
                 {
+                    //현재 아이템 사용하는 방법은 퀵슬롯에 등록 해서만 사용이 가능하게 끔 만들었음
+                    Debug.Log($"퀵슬롯에 들어있는 [{index}]번째 아이템 수량 = [{Content[index].Quantity}]");
+                    mainInventory.RemoveItemByIDandQuantity(item.ItemID, Content[index].Quantity, item.ConsumeQuantity);
+
                     RemoveItem(index, item.ConsumeQuantity);
-                    if(this.gameObject.tag != "MainInventory")
-                    {
-                        mainInventory.RemoveItemByID(item.ItemID, item.ConsumeQuantity);
-                    }
+                    Debug.Log($"퀵슬롯에 들어있는 [{index}]번째 아이템 삭제");
                 }
             }
             return true;

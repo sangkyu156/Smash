@@ -33,8 +33,8 @@ namespace MoreMountains.TopDownEngine
 		public MMFeedbacks WeaponUseFeedback;
 
 		[Header("Binding")]
-		/// the position the weapon will be attached to. If left blank, will be this.transform.
-		[Tooltip("the position the weapon will be attached to. If left blank, will be this.transform.")]
+        /// 무기가 부착될 위치입니다. 빈칸으로 놔두면 이것이 됩니다. 변환.
+        [Tooltip("무기가 부착될 위치입니다. 빈칸으로 놔두면 이것이 됩니다. 변환.")]
 		public Transform WeaponAttachment;
 		/// the position from which projectiles will be spawned (can be safely left empty)
 		[Tooltip("the position from which projectiles will be spawned (can be safely left empty)")]

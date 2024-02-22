@@ -4,12 +4,12 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Do not use this class directly, use TopDownController2D for 2D characters, or TopDownController3D for 3D characters
-	/// Both of these classes inherit from this one
-	/// </summary>
-	public class TopDownController : TopDownMonoBehaviour 
+{
+    /// <summary>
+    /// 이 클래스를 직접 사용하지 마십시오. 2D 문자의 경우 TopDownController2D를 사용하거나 3D 문자의 경우 TopDownController3D를 사용하십시오. 
+	/// 이 두 클래스는 모두 이 클래스에서 상속됩니다
+    /// </summary>
+    public class TopDownController : TopDownMonoBehaviour 
 	{
 		[Header("Gravity")]
 		/// the current gravity to apply to our character (positive goes down, negative goes up, higher value, higher acceleration)
@@ -209,20 +209,20 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-		/// <summary>
-		/// Sets the current movement of the controller to the specified Vector3
-		/// </summary>
-		/// <param name="movement"></param>
-		public virtual void SetMovement(Vector3 movement)
+        /// <summary>
+        /// 컨트롤러의 현재 움직임을 지정된 Vector3으로 설정합니다
+        /// </summary>
+        /// <param name="movement"></param>
+        public virtual void SetMovement(Vector3 movement)
 		{
 
 		}
 
-		/// <summary>
-		/// Moves the controller to the specified position (in world space)
-		/// </summary>
-		/// <param name="newPosition"></param>
-		public virtual void MovePosition(Vector3 newPosition)
+        /// <summary>
+        /// 컨트롤러를 지정된 위치(in world space)로 이동합니다
+        /// </summary>
+        /// <param name="newPosition"></param>
+        public virtual void MovePosition(Vector3 newPosition)
 		{
 			
 		}
@@ -286,10 +286,10 @@ namespace MoreMountains.TopDownEngine
 
 		}
 
-		/// <summary>
-		/// Resets all values for this controller
-		/// </summary>
-		public virtual void Reset()
+        /// <summary>
+        /// 이 컨트롤러의 모든 값을 재설정합니다
+        /// </summary>
+        public virtual void Reset()
 		{
 			_impact = Vector3.zero;
 			GravityActive = true;

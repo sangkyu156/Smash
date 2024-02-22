@@ -358,10 +358,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Moves the character on the grid
-		/// </summary>
-		protected virtual void HandleMovement()
+        /// <summary>
+        /// 그리드 위의 캐릭터를 이동합니다.
+        /// </summary>
+        protected virtual void HandleMovement()
 		{
 			_perfectTile = false;
 			PerfectTile = false;
@@ -456,9 +456,9 @@ namespace MoreMountains.TopDownEngine
 
 			// computes our new grid position
 			TargetGridPosition = GridManager.Instance.WorldToCellCoordinates(_endWorldPosition);
-            
-			// moves the controller to the next position
-			Vector3 newPosition = Vector3.MoveTowards(transform.position, _endWorldPosition, Time.deltaTime * CurrentSpeed);
+
+            // 컨트롤러를 다음 위치로 이동
+            Vector3 newPosition = Vector3.MoveTowards(transform.position, _endWorldPosition, Time.deltaTime * CurrentSpeed);
 
 			_lastCurrentDirection = _endWorldPosition - this.transform.position;
 			_lastCurrentDirection = _lastCurrentDirection.MMRound();

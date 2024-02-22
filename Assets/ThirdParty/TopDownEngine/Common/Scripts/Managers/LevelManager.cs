@@ -10,111 +10,111 @@ using System.IO;
 
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Spawns the player, handles checkpoints and respawn
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/Level Manager")]
+{
+    /// <summary>
+    /// 플레이어를 생성하고, 체크포인트를 처리하고 다시 생성합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/Level Manager")]
 	public class LevelManager : MMSingleton<LevelManager>, MMEventListener<TopDownEngineEvent>
-	{	
-		/// the prefab you want for your player
-		[Header("Instantiate Characters")]
-		[MMInformation("The LevelManager is responsible for handling spawn/respawn, checkpoints management and level bounds. Here you can define one or more playable characters for your level..",MMInformationAttribute.InformationType.Info,false)]
-		/// should the player IDs be auto attributed (usually yes)
-		[Tooltip("should the player IDs be auto attributed (usually yes)")]
+	{
+        /// 플레이어에게 원하는 조립식 건물
+        [Header("Instantiate Characters")]
+		[MMInformation("LevelManager는 스폰/리스폰, 체크포인트 관리, 레벨 경계 처리를 담당합니다. 여기에서 레벨에 대해 하나 이상의 플레이 가능한 캐릭터를 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// 플레이어 ID가 자동으로 부여되어야 하는지(일반적으로 yes)
+        [Tooltip("플레이어 ID가 자동으로 부여되어야 하는지(일반적으로 yes)")]
 		public bool AutoAttributePlayerIDs = true;
-		/// the list of player prefabs to instantiate
-		[Tooltip("The list of player prefabs this level manager will instantiate on Start")]
+        /// 인스턴스화할 플레이어 프리팹 목록
+        [Tooltip("이 레벨 관리자가 시작 시 인스턴스화할 플레이어 프리팹 목록")]
 		public Character[] PlayerPrefabs ;
 
-		[Header("Characters already in the scene")]
-		[MMInformation("It's recommended to have the LevelManager instantiate your characters, but if instead you'd prefer to have them already present in the scene, just bind them in the list below.", MMInformationAttribute.InformationType.Info, false)]
-		/// a list of Characters already present in the scene before runtime. If this list is filled, PlayerPrefabs will be ignored
-		[Tooltip("a list of Characters already present in the scene before runtime. If this list is filled, PlayerPrefabs will be ignored")]
+		[Header("이미 장면에 등장하는 캐릭터")]
+		[MMInformation("LevelManager가 캐릭터를 인스턴스화하도록 하는 것이 권장되지만, 대신 장면에 이미 존재하도록 하려면 아래 목록에 바인딩하기만 하면 됩니다.", MMInformationAttribute.InformationType.Info, false)]
+        /// 런타임 전에 장면에 이미 존재하는 캐릭터 목록입니다. 이 목록이 채워지면 PlayerPrefabs가 무시됩니다.
+        [Tooltip("런타임 전에 장면에 이미 존재하는 캐릭터 목록입니다. 이 목록이 채워지면 PlayerPrefabs가 무시됩니다.")]
 		public List<Character> SceneCharacters;
 
-		[Header("Checkpoints")]
-		/// the checkpoint to use as initial spawn point if no point of entry is specified
-		[Tooltip("the checkpoint to use as initial spawn point if no point of entry is specified")]
+		[Header("체크포인트")]
+        /// 진입점이 지정되지 않은 경우 초기 스폰 지점으로 사용할 체크포인트
+        [Tooltip("진입점이 지정되지 않은 경우 초기 스폰 지점으로 사용할 체크포인트")]
 		public CheckPoint InitialSpawnPoint;
-		/// the currently active checkpoint (the last checkpoint passed by the player)
-		[Tooltip("the currently active checkpoint (the last checkpoint passed by the player)")]
+        /// 현재 활성화된 체크포인트(플레이어가 마지막으로 통과한 체크포인트)
+        [Tooltip("현재 활성화된 체크포인트(플레이어가 마지막으로 통과한 체크포인트)")]
 		public CheckPoint CurrentCheckpoint;
 
-		[Header("Points of Entry")]
+		[Header("진입점")]
         /// 다른 레벨에서 초기 목표로 사용할 수 있는 이 레벨의 진입점 목록입니다.
-        [Tooltip("A list of this level's points of entry, which can be used from other levels as initial targets")]
+        [Tooltip("다른 레벨에서 초기 목표로 사용할 수 있는 이 레벨의 진입점 목록입니다.")]
 		public Transform[] PointsOfEntry;
         				
 		[Space(10)]
-		[Header("Intro and Outro durations")]
-		[MMInformation("Here you can specify the length of the fade in and fade out at the start and end of your level. You can also determine the delay before a respawn.",MMInformationAttribute.InformationType.Info,false)]
-		/// duration of the initial fade in (in seconds)
-		[Tooltip("the duration of the initial fade in (in seconds)")]
+		[Header("인트로 및 아웃트로 기간")]
+		[MMInformation("여기서 레벨의 시작과 끝에서 페이드 인 및 페이드 아웃 길이를 지정할 수 있습니다. 리스폰되기 전의 지연 시간을 결정할 수도 있습니다.", MMInformationAttribute.InformationType.Info,false)]
+        /// 초기 페이드 인 기간(초)
+        [Tooltip("초기 페이드 인 기간(초)")]
 		public float IntroFadeDuration=1f;
 
 		public float SpawnDelay = 0f;
         /// 레벨 끝에서 검은색으로 페이드되는 기간(초)
-        [Tooltip("the duration of the fade to black at the end of the level (in seconds)")]
+        [Tooltip("레벨 끝에서 검은색으로 페이드되는 지속 시간(초)")]
 		public float OutroFadeDuration=1f;
-		/// the ID to use when triggering the event (should match the ID on the fader you want to use)
-		[Tooltip("the ID to use when triggering the event (should match the ID on the fader you want to use)")]
+        /// 이벤트를 트리거할 때 사용할 ID(사용하려는 페이더의 ID와 일치해야 함)
+        [Tooltip("이벤트를 트리거할 때 사용할 ID(사용하려는 페이더의 ID와 일치해야 함)")]
 		public int FaderID = 0;
-		/// the curve to use for in and out fades
-		[Tooltip("the curve to use for in and out fades")]
+        /// 인 및 아웃 페이드에 사용할 곡선
+        [Tooltip("인 및 아웃 페이드에 사용할 곡선")]
 		public MMTweenType FadeCurve = new MMTweenType(MMTween.MMTweenCurve.EaseInOutCubic);
-		/// duration between a death of the main character and its respawn
-		[Tooltip("the duration between a death of the main character and its respawn")]
+        /// 주인공의 죽음과 부활 사이의 시간
+        [Tooltip("주인공의 죽음과 부활 사이의 시간")]
 		public float RespawnDelay = 2f;
 
-		[Header("Respawn Loop")]
-		/// the delay, in seconds, before displaying the death screen once the player is dead
-		[Tooltip("the delay, in seconds, before displaying the death screen once the player is dead")]
+		[Header("부활 루프")]
+        /// 플레이어가 죽었을 때 사망 화면이 표시되기까지의 지연 시간(초)
+        [Tooltip("플레이어가 죽었을 때 사망 화면이 표시되기까지의 지연 시간(초)")]
 		public float DelayBeforeDeathScreen = 1f;
 
-		[Header("Bounds")]
-		/// if this is true, this level will use the level bounds defined on this LevelManager. Set it to false when using the Rooms system.
-		[Tooltip("if this is true, this level will use the level bounds defined on this LevelManager. Set it to false when using the Rooms system.")]
+		[Header("범위")]
+        /// 이것이 true이면 이 레벨은 이 LevelManager에 정의된 레벨 경계를 사용합니다. 룸 시스템을 사용할 때는 false로 설정하세요.
+        [Tooltip("이것이 true이면 이 레벨은 이 LevelManager에 정의된 레벨 경계를 사용합니다. 룸 시스템을 사용할 때는 false로 설정하세요.")]
 		public bool UseLevelBounds = true;
         
-		[Header("Scene Loading")]
-		/// the method to use to load the destination level
-		[Tooltip("the method to use to load the destination level")]
+		[Header("장면 로딩")]
+        /// 대상 레벨을 로드하는 데 사용하는 방법
+        [Tooltip("대상 레벨을 로드하는 데 사용하는 방법")]
 		public MMLoadScene.LoadingSceneModes LoadingSceneMode = MMLoadScene.LoadingSceneModes.MMSceneLoadingManager;
         /// 사용하려는 MMSceneLoadingManager 장면의 이름
-        [Tooltip("the name of the MMSceneLoadingManager scene you want to use")]
+        [Tooltip("사용하려는 MMSceneLoadingManager 장면의 이름")]
 		[MMEnumCondition("LoadingSceneMode", (int) MMLoadScene.LoadingSceneModes.MMSceneLoadingManager)]
 		public string LoadingSceneName = "LoadingScreen";
-		/// the settings to use when loading the scene in additive mode
-		[Tooltip("the settings to use when loading the scene in additive mode")]
+        /// 추가 모드에서 장면을 로드할 때 사용할 설정
+        [Tooltip("추가 모드에서 장면을 로드할 때 사용할 설정")]
 		[MMEnumCondition("LoadingSceneMode", (int)MMLoadScene.LoadingSceneModes.MMAdditiveSceneLoadingManager)]
 		public MMAdditiveSceneLoadingManagerSettings AdditiveLoadingSettings; 
 		
-		[Header("Feedbacks")] 
-		/// if this is true, an event will be triggered on player instantiation to set the range target of all feedbacks to it
-		[Tooltip("if this is true, an event will be triggered on player instantiation to set the range target of all feedbacks to it")]
+		[Header("Feedbacks")]
+        /// 이것이 사실이라면 플레이어 인스턴스화 시 모든 피드백의 범위 목표를 설정하기 위해 이벤트가 트리거됩니다.
+        [Tooltip("이것이 사실이라면 플레이어 인스턴스화 시 모든 피드백의 범위 목표를 설정하기 위해 이벤트가 트리거됩니다.")]
 		public bool SetPlayerAsFeedbackRangeCenter = false;
-        
-		/// the level limits, camera and player won't go beyond this point.
-		public Bounds LevelBounds {  get { return (_collider==null)? new Bounds(): _collider.bounds; } }
+
+        /// 레벨 제한, 카메라 및 플레이어는 이 지점을 넘지 않습니다.
+        public Bounds LevelBounds {  get { return (_collider==null)? new Bounds(): _collider.bounds; } }
 		public Collider BoundsCollider { get; protected set; }
 
-		/// the elapsed time since the start of the level
-		public TimeSpan RunningTime { get { return DateTime.UtcNow - _started ;}}
-        
-		// private stuff
-		public List<CheckPoint> Checkpoints { get; protected set; }
+        /// 레벨 시작 이후 경과된 시간
+        public TimeSpan RunningTime { get { return DateTime.UtcNow - _started ;}}
+
+        // 개인적인 물건
+        public List<CheckPoint> Checkpoints { get; protected set; }
 		public List<Character> Players { get; protected set; }
 
 		protected DateTime _started;
 		protected int _savedPoints;
 		protected Collider _collider;
 		protected Vector3 _initialSpawnPointPosition;
-		
-		/// <summary>
-		/// On awake, instantiates the player
-		/// </summary>
-		protected override void Awake()
+
+        /// <summary>
+        /// Awake시 플레이어를 인스턴스화합니다.
+        /// </summary>
+        protected override void Awake()
 		{
 			base.Awake();
 			_collider = this.GetComponent<Collider>();
@@ -150,8 +150,8 @@ namespace MoreMountains.TopDownEngine
 
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.SpawnCharacterStarts, null);
 
-			// we handle the spawn of the character(s)
-			if (Players.Count == 1)
+            // 우리는 캐릭터의 스폰을 처리합니다
+            if (Players.Count == 1)
 			{
 				SpawnSingleCharacter();
 			}
@@ -162,11 +162,11 @@ namespace MoreMountains.TopDownEngine
 
 			CheckpointAssignment();
 
-			// we trigger a fade
-			MMFadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
+            //우리는 페이드를 트리거합니다
+            MMFadeOutEvent.Trigger(IntroFadeDuration, FadeCurve, FaderID);
 
-			// we trigger a level start event
-			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelStart, null);
+            // 레벨 시작 이벤트를 트리거합니다
+            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelStart, null);
 			MMGameEvent.Trigger("Load");
 
 			if (SetPlayerAsFeedbackRangeCenter)
@@ -179,10 +179,10 @@ namespace MoreMountains.TopDownEngine
 			MMGameEvent.Trigger("CameraBound");
 		}
 
-		/// <summary>
-		/// A method meant to be overridden by each multiplayer level manager to describe how to spawn characters
-		/// </summary>
-		protected virtual void SpawnMultipleCharacters()
+        /// <summary>
+        /// 캐릭터 생성 방법을 설명하기 위해 각 멀티플레이어 레벨 관리자가 재정의하는 방법입니다.
+        /// </summary>
+        protected virtual void SpawnMultipleCharacters()
 		{
 
 		}
@@ -220,8 +220,8 @@ namespace MoreMountains.TopDownEngine
 
 			if (PlayerPrefabs == null) { return; }
 
-			// player instantiation
-			if (PlayerPrefabs.Length != 0)
+            // 플레이어 인스턴스화
+            if (PlayerPrefabs.Length != 0)
 			{ 
 				foreach (Character playerPrefab in PlayerPrefabs)
 				{
@@ -230,22 +230,23 @@ namespace MoreMountains.TopDownEngine
                     Players.Add(newPlayer);
 
                     GameManager.Instance.playerTypeChange(newPlayer);
+					CreateManager.Instance.player = newPlayer.gameObject;
 
                     if (playerPrefab.CharacterType != Character.CharacterTypes.Player)
 					{
-						Debug.LogWarning ("LevelManager : The Character you've set in the LevelManager isn't a Player, which means it's probably not going to move. You can change that in the Character component of your prefab.");
+						Debug.LogWarning ("LevelManager : TLevelManager에 설정한 캐릭터는 플레이어가 아닙니다. 이는 아마도 움직이지 않을 것임을 의미합니다. 프리팹의 캐릭터 구성 요소에서 이를 변경할 수 있습니다.");
 					}
 				}
 			}
 		}
 
-		/// <summary>
-		/// Assigns all respawnable objects in the scene to their checkpoint
-		/// </summary>
-		protected virtual void CheckpointAssignment()
+        /// <summary>
+        /// 장면의 모든 재생성 가능한 개체를 해당 체크포인트에 할당합니다.
+        /// </summary>
+        protected virtual void CheckpointAssignment()
 		{
-			// we get all respawnable objects in the scene and attribute them to their corresponding checkpoint
-			IEnumerable<Respawnable> listeners = FindObjectsOfType<MonoBehaviour>(true).OfType<Respawnable>();
+            //장면에서 재생성 가능한 모든 객체를 가져와 해당 체크포인트에 귀속시킵니다.
+            IEnumerable<Respawnable> listeners = FindObjectsOfType<MonoBehaviour>(true).OfType<Respawnable>();
 			AutoRespawn autoRespawn;
 			foreach (Respawnable listener in listeners)
 			{
@@ -279,20 +280,20 @@ namespace MoreMountains.TopDownEngine
 		}
 
 
-		/// <summary>
-		/// Gets current camera, points number, start time, etc.
-		/// </summary>
-		protected virtual void Initialization()
+        /// <summary>
+        /// 현재 카메라, 포인트 번호, 시작 시간 등을 가져옵니다.
+        /// </summary>
+        protected virtual void Initialization()
 		{
 			Checkpoints = FindObjectsOfType<CheckPoint>().OrderBy(o => o.CheckPointOrder).ToList();
 			_savedPoints =GameManager.Instance.Points;
 			_started = DateTime.UtcNow;
 		}
 
-		/// <summary>
-		/// Spawns a playable character into the scene
-		/// </summary>
-		protected virtual void SpawnSingleCharacter()
+        /// <summary>
+        /// 장면에 플레이 가능한 캐릭터를 생성합니다.
+        /// </summary>
+        protected virtual void SpawnSingleCharacter()
 		{
 			PointsOfEntryStorage point = GameManager.Instance.GetPointsOfEntry(SceneManager.GetActiveScene().name);
 			if ((point != null) && (PointsOfEntry.Length >= (point.PointOfEntryIndex + 1)))
@@ -351,8 +352,8 @@ namespace MoreMountains.TopDownEngine
 			{ 
 				yield return new WaitForSeconds(OutroFadeDuration);
 			}
-			// we trigger an unPause event for the GameManager (and potentially other classes)
-			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
+            // GameManager(및 잠재적으로 다른 클래스)에 대해 unPause 이벤트를 트리거합니다.
+            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LoadNextScene, null);
 
 			string destinationScene = (string.IsNullOrEmpty(levelName)) ? "StartScreen" : levelName;
@@ -371,10 +372,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Kills the player.
-		/// </summary>
-		public virtual void PlayerDead(Character playerCharacter)
+        /// <summary>
+        /// 플레이어를 죽입니다.
+        /// </summary>
+        public virtual void PlayerDead(Character playerCharacter)
 		{
 			if (Players.Count < 2)
 			{
@@ -382,21 +383,21 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Triggers the death screen display after a short delay
-		/// </summary>
-		/// <returns></returns>
-		protected virtual IEnumerator PlayerDeadCo()
+        /// <summary>
+        /// 짧은 지연 후 사망 화면 표시가 시작됩니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual IEnumerator PlayerDeadCo()
 		{
 			yield return new WaitForSeconds(DelayBeforeDeathScreen);
 
 			GUIManager.Instance.SetDeathScreen(true);
 		}
 
-		/// <summary>
-		/// Initiates the respawn
-		/// </summary>
-		protected virtual void Respawn()
+        /// <summary>
+        /// 리스폰을 시작합니다
+        /// </summary>
+        protected virtual void Respawn()
 		{
 			if (Players.Count < 2)
 			{
@@ -404,24 +405,24 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Coroutine that kills the player, stops the camera, resets the points.
-		/// </summary>
-		/// <returns>The player co.</returns>
-		protected virtual IEnumerator SoloModeRestart()
+        /// <summary>
+        /// 플레이어를 죽이고, 카메라를 멈추고, 포인트를 재설정하는 코루틴입니다.
+        /// </summary>
+        /// <returns>The player co.</returns>
+        protected virtual IEnumerator SoloModeRestart()
 		{
 			if ((PlayerPrefabs.Length <= 0) && (SceneCharacters.Count <= 0))
 			{
 				yield break;
 			}
 
-			// if we've setup our game manager to use lives (meaning our max lives is more than zero)
-			if (GameManager.Instance.MaximumLives > 0)
+            // 생명을 사용하도록 게임 관리자를 설정한 경우(최대 생명이 0보다 크다는 의미)
+            if (GameManager.Instance.MaximumLives > 0)
 			{
-				// we lose a life
-				GameManager.Instance.LoseLife();
-				// if we're out of lives, we check if we have an exit scene, and move there
-				if (GameManager.Instance.CurrentLives <= 0)
+                // 우리는 생명을 잃습니다
+                GameManager.Instance.LoseLife();
+                // 수명이 다 되면 엑시트 신이 있는지 확인하고 그곳으로 이동합니다.
+                if (GameManager.Instance.CurrentLives <= 0)
 				{
 					TopDownEngineEvent.Trigger(TopDownEngineEventTypes.GameOver, null);
 					if ((GameManager.Instance.GameOverScene != null) && (GameManager.Instance.GameOverScene != ""))
@@ -457,24 +458,24 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-				Debug.LogWarning("LevelManager : no checkpoint or initial spawn point has been defined, can't respawn the Player.");
+				Debug.LogWarning("LevelManager : 체크포인트나 초기 스폰 지점이 정의되지 않아 플레이어를 리스폰할 수 없습니다.");
 			}
 
 			_started = DateTime.UtcNow;
 			
 			MMCameraEvent.Trigger(MMCameraEventTypes.StartFollowing);
 
-			// we send a new points event for the GameManager to catch (and other classes that may listen to it too)
-			TopDownEnginePointEvent.Trigger(PointsMethods.Set, 0);
+            // GameManager가 포착할 수 있는 새로운 포인트 이벤트(및 이를 수신할 수 있는 다른 클래스)를 보냅니다.
+            TopDownEnginePointEvent.Trigger(PointsMethods.Set, 0);
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.RespawnComplete, Players[0]);
 			yield break;
 		}
 
 
-		/// <summary>
-		/// Toggles Character Pause
-		/// </summary>
-		public virtual void ToggleCharacterPause()
+        /// <summary>
+        /// 캐릭터 일시 정지를 전환합니다
+        /// </summary>
+        public virtual void ToggleCharacterPause()
 		{
 			foreach (Character player in Players)
 			{
@@ -495,10 +496,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Freezes the character(s)
-		/// </summary>
-		public virtual void FreezeCharacters()
+        /// <summary>
+        /// 캐릭터를 동결시킵니다.
+        /// </summary>
+        public virtual void FreezeCharacters()
 		{
 			foreach (Character player in Players)
 			{
@@ -506,10 +507,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Unfreezes the character(s)
-		/// </summary>
-		public virtual void UnFreezeCharacters()
+        /// <summary>
+        /// 캐릭터 고정을 해제합니다.
+        /// </summary>
+        public virtual void UnFreezeCharacters()
 		{
 			foreach (Character player in Players)
 			{
@@ -517,11 +518,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Sets the current checkpoint with the one set in parameter. This checkpoint will be saved and used should the player die.
-		/// </summary>
-		/// <param name="newCheckPoint"></param>
-		public virtual void SetCurrentCheckpoint(CheckPoint newCheckPoint)
+        /// <summary>
+        /// 매개변수에 설정된 값으로 현재 체크포인트를 설정합니다. 이 체크포인트는 저장되어 플레이어가 죽을 경우 사용됩니다.
+        /// </summary>
+        /// <param name="newCheckPoint"></param>
+        public virtual void SetCurrentCheckpoint(CheckPoint newCheckPoint)
 		{
 			if (newCheckPoint.ForceAssignation)
 			{
@@ -540,11 +541,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Catches TopDownEngineEvents and acts on them, playing the corresponding sounds
-		/// </summary>
-		/// <param name="engineEvent">TopDownEngineEvent event.</param>
-		public virtual void OnMMEvent(TopDownEngineEvent engineEvent)
+        /// <summary>
+        /// TopDownEngineEvents를 포착하고 그에 따라 작동하여 해당 사운드를 재생합니다.
+        /// </summary>
+        /// <param name="engineEvent">TopDownEngineEvent event.</param>
+        public virtual void OnMMEvent(TopDownEngineEvent engineEvent)
 		{
 			switch (engineEvent.EventType)
 			{
@@ -557,18 +558,18 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// OnDisable, we start listening to events.
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// OnDisable을 사용하면 이벤트 수신이 시작됩니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			this.MMEventStartListening<TopDownEngineEvent>();
 		}
 
-		/// <summary>
-		/// OnDisable, we stop listening to events.
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// OnDisable을 사용하면 이벤트 수신이 중지됩니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			this.MMEventStopListening<TopDownEngineEvent>();
 		}

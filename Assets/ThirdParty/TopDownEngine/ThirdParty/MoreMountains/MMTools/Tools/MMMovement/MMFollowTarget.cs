@@ -6,51 +6,53 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object and it'll get moved towards the target at update, with or without interpolation based on your settings
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMFollowTarget")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 설정에 따른 보간 여부에 관계없이 업데이트 시 대상을 향해 이동됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMFollowTarget")]
 	public class MMFollowTarget : MonoBehaviour
 	{
 		/// the possible update modes
 		public enum UpdateModes { Update, FixedUpdate, LateUpdate }
 		/// the possible follow modes
 		public enum FollowModes { RegularLerp, MMLerp, MMSpring }
-		/// whether to operate in world or local space
-		public enum PositionSpaces { World, Local }
+        /// 월드 공간에서 작동할지, 로컬 공간에서 작동할지 여부
+        public enum PositionSpaces { World, Local }
 
 		[Header("Follow Position")]
-		/// whether or not the object is currently following its target's position
-		public bool FollowPosition = true;
-		/// whether this object should follow its target on the X axis
-		[MMCondition("FollowPosition", true)]
+        /// 객체가 현재 대상의 위치를 ​​따르고 있는지 여부
+        public bool FollowPosition = true;
+        /// 이 객체가 X축의 대상을 따라야 하는지 여부
+        [MMCondition("FollowPosition", true)]
 		public bool FollowPositionX = true;
-		/// whether this object should follow its target on the Y axis
-		[MMCondition("FollowPosition", true)]
+        /// 이 객체가 Y축의 대상을 따라야 하는지 여부
+        [MMCondition("FollowPosition", true)]
 		public bool FollowPositionY = true;
-		/// whether this object should follow its target on the Z axis
-		[MMCondition("FollowPosition", true)]
+        /// 이 객체가 Z축의 대상을 따라야 하는지 여부
+        [MMCondition("FollowPosition", true)]
 		public bool FollowPositionZ = true;
-		/// whether to operate in world or local space
+		/// 월드 공간에서 작동할지, 로컬 공간에서 작동할지 여부
 		[MMCondition("FollowPosition", true)] 
 		public PositionSpaces PositionSpace = PositionSpaces.World;
 
 		[Header("Follow Rotation")]
-		/// whether or not the object is currently following its target's rotation
-		public bool FollowRotation = true;
+        /// whether or not the object is currently following its target's rotation
+        /// 객체가 현재 대상의 회전을 따르고 있는지 여부
+        public bool FollowRotation = true;
 
 		[Header("Follow Scale")]
-		/// whether or not the object is currently following its target's rotation
-		public bool FollowScale = true;
-		/// the factor to apply to the scale when following
-		[MMCondition("FollowScale", true)]
+        /// whether or not the object is currently following its target's rotation
+        /// 객체가 현재 대상의 회전을 따르고 있는지 여부
+        public bool FollowScale = true;
+        /// 다음을 따를 때 척도에 적용할 계수
+        [MMCondition("FollowScale", true)]
 		public float FollowScaleFactor = 1f;
 
 		[Header("Target")]
-		/// the target to follow
-		public Transform Target;
-		/// the offset to apply to the followed target
-		[MMCondition("FollowPosition", true)]
+        /// 따라야 할 목표
+        public Transform Target;
+        /// 뒤따르는 타겟에 적용할 오프셋
+        [MMCondition("FollowPosition", true)]
 		public Vector3 Offset;
 		///whether or not to add the initial x distance to the offset
 		[MMCondition("FollowPosition", true)]
@@ -63,13 +65,13 @@ namespace MoreMountains.Tools
 		public bool AddInitialDistanceZToZOffset = false;
 
 		[Header("Position Interpolation")]
-		/// whether or not we need to interpolate the movement
-		public bool InterpolatePosition = true;
-		/// the follow mode to use when following position
-		[MMCondition("InterpolatePosition", true)]
+        /// 움직임을 보간해야 하는지 여부
+        public bool InterpolatePosition = true;
+        /// 위치를 따라갈 때 사용할 팔로우 모드
+        [MMCondition("InterpolatePosition", true)]
 		public FollowModes FollowPositionMode = FollowModes.MMLerp;
-		/// the speed at which to interpolate the follower's movement
-		[MMCondition("InterpolatePosition", true)]
+        /// 추종자의 움직임을 보간하는 속도
+        [MMCondition("InterpolatePosition", true)]
 		public float FollowPositionSpeed = 10f;
 		/// higher values mean more damping, less spring, low values mean less damping, more spring
 		[MMEnumCondition("FollowPositionMode", (int)FollowModes.MMSpring)] 
@@ -133,13 +135,21 @@ namespace MoreMountains.Tools
 		protected Vector3 _newScale;
 		protected Quaternion _newTargetRotation;
 		protected Quaternion _initialRotation;
-        
-		/// <summary>
-		/// On start we store our initial position
-		/// </summary>
-		protected virtual void Start()
+
+		//항상 카메라 보도록 하기위해 만든 변수
+		Transform _mainCamera;
+
+        /// <summary>
+        /// On start we store our initial position
+        /// </summary>
+        protected virtual void Start()
 		{
 			Initialization();
+
+			if(_mainCamera == null)
+			{
+                _mainCamera = GameObject.FindWithTag("MainCamera").transform;
+            }
 		}
 
 		/// <summary>
@@ -198,7 +208,12 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void Update()
 		{
-			if (Target == null)
+            if (gameObject.activeSelf)
+            {
+                transform.LookAt(_mainCamera);
+            }
+
+            if (Target == null)
 			{
 				return;
 			}

@@ -224,10 +224,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On process ability, we move our character if we're currently dashing
-		/// </summary>
-		public override void ProcessAbility()
+        /// <summary>
+        /// 프로세스 능력에서 현재 대시 중인 경우 캐릭터를 이동합니다.
+        /// </summary>
+        public override void ProcessAbility()
 		{
 			base.ProcessAbility();
 			Cooldown.Update();

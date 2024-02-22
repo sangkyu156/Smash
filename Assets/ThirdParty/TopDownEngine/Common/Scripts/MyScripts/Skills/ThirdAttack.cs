@@ -43,10 +43,29 @@ namespace MoreMountains.TopDownEngine
 
         public void SetAbility()
         {
-            GameManager.Instance.SetSkillPostion();
+            //GameManager.Instance.SetSkillPostion();
             this.transform.position = GameManager.Instance.skillPostion.transform.position;
 
-            //this.transform.rotation = GameManager.Instance.GetMouseRotation();//마우스 커서 방향
+            // 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // Raycast를 수행하여 충돌 정보를 저장할 변수 선언
+            RaycastHit hit;
+
+            // Raycast를 수행하고, 충돌이 발생했는지 여부를 반환
+            if (Physics.Raycast(ray, out hit, 300, 1 << LayerMask.NameToLayer("Ground")))
+            {
+                // 만약 Ray가 어떤 물체와 충돌했다면, 그 정보를 출력
+                transform.LookAt(hit.point);
+                Vector3 currentRotation = transform.rotation.eulerAngles;
+                transform.rotation = Quaternion.Euler(-90, currentRotation.y, -90);
+                Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                Debug.Log("Hit point: " + hit.point);
+            }
+            else
+            {
+                // 만약 Ray가 아무것도 충돌하지 않았다면, 아무 동작도 수행하지 않음
+            }
         }
     }
 }

@@ -6,16 +6,13 @@ using UnityEngine;
 public class StageZone : MonoBehaviour
 {
     string curStage = string.Empty;
+
+    public GameObject stagePopup;
     
 
     void Start()
     {
         curStage = gameObject.name;
-    }
-
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,23 +23,19 @@ public class StageZone : MonoBehaviour
 
     void PopupCreate()
     {
-        
-
         switch (curStage)
         {
-            case "01": GameManager.Instance.SetCurrentStage(Define.Stage.Stage01); break;
-            case "02": GameManager.Instance.SetCurrentStage(Define.Stage.Stage02); break;
-            case "03": GameManager.Instance.SetCurrentStage(Define.Stage.Stage03); break;
-            case "04": GameManager.Instance.SetCurrentStage(Define.Stage.Stage04); break;
-            case "05": GameManager.Instance.SetCurrentStage(Define.Stage.Stage05); break;
-            case "06": GameManager.Instance.SetCurrentStage(Define.Stage.Stage06); break;
-            case "07": GameManager.Instance.SetCurrentStage(Define.Stage.Stage07); break;
-            case "08": GameManager.Instance.SetCurrentStage(Define.Stage.Stage08); break;
-            case "09": GameManager.Instance.SetCurrentStage(Define.Stage.Stage09); break;
-            case "10": GameManager.Instance.SetCurrentStage(Define.Stage.Stage10); break;
+            case "01": GameManager.Instance.SetCurrentStage(Define.Stage.Stage01); stagePopup.SetActive(true); break;
+            case "02": GameManager.Instance.SetCurrentStage(Define.Stage.Stage02); stagePopup.SetActive(true); break;
+            case "03": GameManager.Instance.SetCurrentStage(Define.Stage.Stage03); stagePopup.SetActive(true); break;
+            case "04": GameManager.Instance.SetCurrentStage(Define.Stage.Stage04); stagePopup.SetActive(true); break;
+            case "05": GameManager.Instance.SetCurrentStage(Define.Stage.Stage05); stagePopup.SetActive(true); break;
+            case "06": GameManager.Instance.SetCurrentStage(Define.Stage.Stage06); stagePopup.SetActive(true); break;
+            case "07": GameManager.Instance.SetCurrentStage(Define.Stage.Stage07); stagePopup.SetActive(true); break;
+            case "08": GameManager.Instance.SetCurrentStage(Define.Stage.Stage08); stagePopup.SetActive(true); break;
+            case "09": GameManager.Instance.SetCurrentStage(Define.Stage.Stage09); stagePopup.SetActive(true); break;
+            case "10": GameManager.Instance.SetCurrentStage(Define.Stage.Stage10); stagePopup.SetActive(true); break;
             default: GameManager.Instance.SetCurrentStage(Define.Stage.Stage01); break;
         }
-
-        GameManager.Resource.Instantiate("Popups/StagePopup");
     }
 }

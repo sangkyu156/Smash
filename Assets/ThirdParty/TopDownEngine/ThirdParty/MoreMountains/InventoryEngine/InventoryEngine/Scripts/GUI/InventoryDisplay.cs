@@ -878,6 +878,13 @@ namespace MoreMountains.InventoryEngine
         //퀵슬롯에 등록된 아이템 설치하는 함수
         public virtual void UseQuickSlotItem(int curInstallingItem)
         {
+            //배틀필드가 아니면 리턴
+            if (SceneManager.GetActiveScene().name == "Village" || SceneManager.GetActiveScene().name == "LevelSelect")
+                return;
+
+            if (InstallInfoText != null)
+                InstallInfoTextOff(); //설치 안내 텍스트 끄기
+
             switch (curInstallingItem)
             {
                 case 0:

@@ -39,8 +39,8 @@ namespace MoreMountains.TopDownEngine
     }
 
     /// <summary>
-    /// Pool manager. You can set options for it in editor and then use in game. <br/>
-    /// It creates specified pools in Awake method, which then you can find with <b>GetPool</b> methods and call its methods.
+    /// Pool manager. 편집기에서 옵션을 설정한 다음 게임에서 사용할 수 있습니다. <br/>
+    /// Awake 메소드에 지정된 풀을 생성한 다음 <b>GetPool</b> 메소드를 사용하여 찾고 해당 메소드를 호출할 수 있습니다.
     /// </summary>
     public class PoolManager : MonoBehaviour
     {

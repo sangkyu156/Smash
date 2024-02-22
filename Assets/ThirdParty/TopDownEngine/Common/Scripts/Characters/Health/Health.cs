@@ -419,24 +419,25 @@ namespace MoreMountains.TopDownEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Called when the object takes damage
-		/// </summary>
-		/// <param name="damage">The amount of health points that will get lost.</param>
-		/// <param name="instigator">The object that caused the damage.</param>
-		/// <param name="flickerDuration">The time (in seconds) the object should flicker after taking the damage - not used anymore, kept to not break retrocompatibility</param>
-		/// <param name="invincibilityDuration">The duration of the short invincibility following the hit.</param>
-		public virtual void Damage(float damage, GameObject instigator, float flickerDuration, float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null)
+        /// <summary>
+        /// 개체가 손상을 입을 때 호출됩니다
+        /// </summary>
+        /// <param name="damage">손실될 건강 포인트의 양입니다.</param>
+        /// <param name="instigator">피해를 입힌 개체입니다.</param>
+        /// <param name="flickerDuration">손상을 입은 후 물체가 깜박여야 하는 시간(초) - 더 이상 사용되지 않고 retrocompatibility이 깨지지 않도록 유지됩니다</param>
+        /// <param name="invincibilityDuration">타격 후 짧은 무적의 지속 시간.</param>
+        public virtual void Damage(float damage, GameObject instigator, float flickerDuration, float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null)
 		{
+			Debug.Log($"[{this.gameObject.name}] 가 [{damage}] 데미지 입음");
 			if (!CanTakeDamageThisFrame())
 			{
 				return;
 			}
 
 			damage = ComputeDamageOutput(damage, typedDamages, true);
-			
-			// we decrease the character's health by the damage
-			float previousHealth = CurrentHealth;
+
+            // 우리는 피해로 캐릭터의 건강을 떨어뜨립니다
+            float previousHealth = CurrentHealth;
 			if (MasterHealth != null)
 			{
 				previousHealth = MasterHealth.CurrentHealth;
@@ -454,24 +455,24 @@ namespace MoreMountains.TopDownEngine
 				OnHit();
 			}
 
-			// we prevent the character from colliding with Projectiles, Player and Enemies
-			if (invincibilityDuration > 0)
+            // 캐릭터가 발사체, 플레이어 및 적과 충돌하는 것을 방지합니다
+            if (invincibilityDuration > 0)
 			{
 				DamageDisabled();
 				StartCoroutine(DamageEnabled(invincibilityDuration));	
 			}
-            
-			// we trigger a damage taken event
-			MMDamageTakenEvent.Trigger(this, instigator, CurrentHealth, damage, previousHealth);
 
-			// we update our animator
-			if (TargetAnimator != null)
+            // 우리는 피해를 입은 사건을 유발합니다
+            MMDamageTakenEvent.Trigger(this, instigator, CurrentHealth, damage, previousHealth);
+
+            // 우리는 애니메이터를 업데이트합니다
+            if (TargetAnimator != null)
 			{
 				TargetAnimator.SetTrigger("Damage");
 			}
 
-			// we play our feedback
-			if (FeedbackIsProportionalToDamage)
+            // 우리는 피드백을 재생합니다
+            if (FeedbackIsProportionalToDamage)
 			{
 				DamageMMFeedbacks?.PlayFeedbacks(this.transform.position, damage);    
 			}
@@ -479,16 +480,16 @@ namespace MoreMountains.TopDownEngine
 			{
 				DamageMMFeedbacks?.PlayFeedbacks(this.transform.position);
 			}
-            
-			// we update the health bar
-			UpdateHealthBar(true);
-			
-			// we process any condition state change
-			ComputeCharacterConditionStateChanges(typedDamages);
+
+            // 상태 표시줄을 업데이트합니다
+            UpdateHealthBar(true);
+
+            // 우리는 모든 조건 상태 변경을 처리합니다
+            ComputeCharacterConditionStateChanges(typedDamages);
 			ComputeCharacterMovementMultipliers(typedDamages);
 
-			// if health has reached zero we set its health to zero (useful for the healthbar)
-			if (MasterHealth != null)
+            // 건강이 0에 도달하면 건강을 0으로 설정합니다 (useful for the healthbar)
+            if (MasterHealth != null)
 			{
 				if (MasterHealth.CurrentHealth <= 0)
 				{
@@ -581,21 +582,21 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// A coroutine used to apply damage over time
-		/// </summary>
-		/// <param name="damage"></param>
-		/// <param name="instigator"></param>
-		/// <param name="flickerDuration"></param>
-		/// <param name="invincibilityDuration"></param>
-		/// <param name="damageDirection"></param>
-		/// <param name="typedDamages"></param>
-		/// <param name="amountOfRepeats"></param>
-		/// <param name="durationBetweenRepeats"></param>
-		/// <param name="interruptible"></param>
-		/// <param name="damageType"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator DamageOverTimeCo(float damage, GameObject instigator, float flickerDuration,
+        /// <summary>
+        /// 시간이 지남에 따라 손상을 가하는 데 사용되는 코루틴
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="instigator"></param>
+        /// <param name="flickerDuration"></param>
+        /// <param name="invincibilityDuration"></param>
+        /// <param name="damageDirection"></param>
+        /// <param name="typedDamages"></param>
+        /// <param name="amountOfRepeats"></param>
+        /// <param name="durationBetweenRepeats"></param>
+        /// <param name="interruptible"></param>
+        /// <param name="damageType"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator DamageOverTimeCo(float damage, GameObject instigator, float flickerDuration,
 			float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null,
 			int amountOfRepeats = 0, float durationBetweenRepeats = 1f, bool interruptible = true, DamageType damageType = null)
 		{
@@ -933,10 +934,10 @@ namespace MoreMountains.TopDownEngine
 			MMLifeCycleEvent.Trigger(this, MMLifeCycleEventTypes.Revive);
 		}
 
-		/// <summary>
-		/// Destroys the object, or tries to, depending on the character's settings
-		/// </summary>
-		protected virtual void DestroyObject()
+        /// <summary>
+        /// 캐릭터의 설정에 따라 물체를 파괴하거나 파괴하려고 시도합니다.
+        /// </summary>
+        protected virtual void DestroyObject()
 		{
 			if (_autoRespawn == null)
 			{
@@ -958,7 +959,7 @@ namespace MoreMountains.TopDownEngine
 
 
         /// <summary>
-        /// Sets the current health to the specified new value, and updates the health bar
+        /// 현재 상태를 지정된 새 값으로 설정하고 상태 표시줄을 업데이트합니다
         /// </summary>
         /// <param name="newValue"></param>
         public virtual void SetHealth(float newValue)
@@ -994,11 +995,11 @@ namespace MoreMountains.TopDownEngine
 		{
 			SetHealth(MaximumHealth);
 		}
-		
-		/// <summary>
-		/// Forces a refresh of the character's health bar
-		/// </summary>
-		public virtual void UpdateHealthBar(bool show)
+
+        /// <summary>
+        /// 캐릭터의 상태 표시줄을 강제로 새로 고칩니다
+        /// </summary>
+        public virtual void UpdateHealthBar(bool show)
 		{
 			if (_healthBar != null)
 			{
