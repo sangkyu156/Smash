@@ -211,6 +211,7 @@ MonoBehaviour:
   IconImage: {fileID: 3735742332690797074}
   QuantityText: {fileID: 5425745628451484052}
   CountImage: {fileID: 5025820142383548604}
+  curSelctItem: {fileID: 0}
 --- !u!225 &8850365702751653167
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -365,16 +366,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 162f7f16c4bec41ff98f811bd90e7b6e, type: 2}
-  m_sharedMaterial: {fileID: 6447333859754382329, guid: 162f7f16c4bec41ff98f811bd90e7b6e,
+  m_fontAsset: {fileID: 11400000, guid: fa08fff1716a04db18700207b6c202e5, type: 2}
+  m_sharedMaterial: {fileID: 7908499825950019370, guid: fa08fff1716a04db18700207b6c202e5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284643463
-  m_fontColor: {r: 0.5294118, g: 0.47058824, b: 0.38431373, a: 1}
+    rgba: 4285435297
+  m_fontColor: {r: 0.6320754, g: 0.55109173, b: 0.43231574, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

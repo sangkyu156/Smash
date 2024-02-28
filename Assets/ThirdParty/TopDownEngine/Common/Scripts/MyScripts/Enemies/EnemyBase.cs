@@ -55,13 +55,11 @@ namespace MoreMountains.TopDownEngine
             }
 
             this.gameObject.transform.position = pos;
-            Debug.Log($"슬라임 생성된 랜덤한 위치 = [{pos}]");
         }
 
         //플레이어 위치에 따른 랜덤값 반환 함수
         public int RandomValueBasedOnPlayerPosition()
         {
-            Debug.Log($"생성 될때 현제 플레이어의 x 좌표 = [{CreateManager.Instance.player.transform.position.x}]");
             //플레이어 x 값이 -17이하 이고, z값이 -18이하이면 1~5 포지션에서 나와야함.
             if (CreateManager.Instance.player.transform.position.x <= -17 && CreateManager.Instance.player.transform.position.z <= -18)
                 return Random.Range(1, 6);

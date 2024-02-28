@@ -551,7 +551,6 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerStay)) return;
 			Colliding(collider.gameObject);
-			Debug.Log($"{collider.name} 이랑 출돌중");
 		}
 
         /// <summary>

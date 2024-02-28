@@ -18,6 +18,7 @@ TagManager:
   - Ground
   - QuickSlots
   - MainInventory
+  - GameManager
   layers:
   - Default
   - TransparentFX

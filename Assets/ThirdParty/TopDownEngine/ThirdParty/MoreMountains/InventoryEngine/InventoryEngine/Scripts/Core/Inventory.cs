@@ -140,6 +140,7 @@ namespace MoreMountains.InventoryEngine
         public GameObject ParentPreviewObjects;
         InventoryItem ItemsToInclude;
         public InventoryItem[] InventoryItems = new InventoryItem[50];
+        bool isRemove;
         //현재 설치중인지 확인하는 변수
         public bool isInstalling = false;
         //메인 인벤토리
@@ -503,18 +504,24 @@ namespace MoreMountains.InventoryEngine
             int quantityLeftToRemove = RemoveQuantity;
 
             List<int> list = InventoryContains(itemID);
+
+            isRemove = false;
             for (int i = 0; i < list.Count; i++)
             {
-                int quantityAtIndex = Content[list[i]].Quantity;
-                Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 수량 = [{Content[list[i]].Quantity}]");
-                if (Content[list[i]].Quantity == itemQuantity)
+                if(isRemove == false)
                 {
-                    RemoveItem(list[i], quantityLeftToRemove);
-                    Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 삭제");
-                    quantityAtIndex -= quantityAtIndex; //가지고 있는 아이템수량에서 소모하고 싶은 수량을 뺏는데 1이상이면 트루
-                    if(quantityAtIndex > 0)
+                    int quantityAtIndex = Content[list[i]].Quantity;
+                    Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 수량 = [{Content[list[i]].Quantity}]");
+                    if (Content[list[i]].Quantity == itemQuantity)
                     {
-                        return true;
+                        RemoveItem(list[i], quantityLeftToRemove);
+                        isRemove = true;
+                        Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 삭제");
+                        quantityAtIndex -= quantityAtIndex; //가지고 있는 아이템수량에서 소모하고 싶은 수량을 뺏는데 1이상이면 트루
+                        if (quantityAtIndex > 0)
+                        {
+                            return true;
+                        }
                     }
                 }
             }

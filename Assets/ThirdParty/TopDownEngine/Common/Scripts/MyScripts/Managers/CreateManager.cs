@@ -14,11 +14,13 @@ namespace MoreMountains.TopDownEngine
         public GameObject level; //Battlefield 씬 맵(입장시 돌맹이 만다는데 필요)
         public GameObject bfManager; //BattlefieldManager
         public GameObject player;
+        public GameObject clearSplash;
 
         static CreateManager c_instance; // 유일성이 보장된다       
         static public CreateManager Instance { get { return c_instance; } } // 유일한 매니저를 갖고온다
 
         float createTime = 0;
+        float clearTime = 0;
 
         private void Awake()
         {
@@ -28,6 +30,7 @@ namespace MoreMountains.TopDownEngine
 
         void Start()
         {
+            clearTime = 0;
             string sceneName = SceneManager.GetActiveScene().name;
             if (sceneName == "Battlefield01" || sceneName == "Battlefield02" || sceneName == "Battlefield03" || sceneName == "Battlefield04" || sceneName == "Battlefield05")
             {
@@ -38,39 +41,13 @@ namespace MoreMountains.TopDownEngine
         private void Update()
         {
             createTime += Time.deltaTime;
+            clearTime += Time.deltaTime;
 
             if (createTime > 1f)
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
-            }
-
-            if(Input.GetKeyDown(KeyCode.H))
-            {
-                BarricadeRockCreation();
-            }
-
-            // 마우스 왼쪽 버튼 클릭 감지
-            if (Input.GetMouseButtonDown(0))
-            {
-                //// 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언
-                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                //// Raycast를 수행하여 충돌 정보를 저장할 변수 선언
-                //RaycastHit hit;
-
-                //// Raycast를 수행하고, 충돌이 발생했는지 여부를 반환
-                //if (Physics.Raycast(ray, out hit))
-                //{
-                //    // 만약 Ray가 어떤 물체와 충돌했다면, 그 정보를 출력
-                //    Debug.Log("Hit object: " + hit.collider.gameObject.name);
-                //    Debug.Log("Hit point: " + hit.point);
-                //}
-                //else
-                //{
-                //    // 만약 Ray가 아무것도 충돌하지 않았다면, 아무 동작도 수행하지 않음
-                //}
             }
         }
 
@@ -193,7 +170,7 @@ namespace MoreMountains.TopDownEngine
             return go;
         }
 
-        public void SetRandomPosition(GameObject enemy)
+        public void SetRandomPosition(GameObject object_)
         {
             Vector3 pos = Vector3.zero;
 
@@ -221,7 +198,7 @@ namespace MoreMountains.TopDownEngine
                 case 20:pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z + 20); break;
             }
 
-            enemy.transform.position = pos;
+            object_.transform.position = pos;
         }
 
         //플레이어 위치에 따른 랜덤값 반환 함수
@@ -266,6 +243,12 @@ namespace MoreMountains.TopDownEngine
                 return Random.Range(1, 21);
         }
 
+        public void SetClearData()
+        {
+            clearSplash.GetComponent<ClearSplash>().ClearTimePrint(clearTime);
+            clearSplash.GetComponent<ClearSplash>().RewardsPrint();
+        }
+
         //↓오브젝트 생성 함수들
 
         //3번째 공격
@@ -277,7 +260,6 @@ namespace MoreMountains.TopDownEngine
         public void SlimeSpawn()
         {
             Slime slime = poolManager.GetFromPool<Slime>();
-            //SetRandomPosition(slime.gameObject);
         }
 
         //↓오브젝트 회수 함수들

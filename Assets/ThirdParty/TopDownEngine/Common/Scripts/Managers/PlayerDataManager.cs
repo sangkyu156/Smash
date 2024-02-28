@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerDataManager : MonoBehaviour
 {
     public int CurPlayerGold {  get; private set; }
+    public Inventory inventory;
 
     private void Start()
     {
@@ -21,8 +22,8 @@ public class PlayerDataManager : MonoBehaviour
             CurPlayerGold = ES3.Load<int>("PlayerGold");
         }
 
-        ES3.Save("PlayerGold", CurPlayerGold = 777);
-        CurPlayerGold = ES3.Load<int>("PlayerGold");
+        //ES3.Save("PlayerGold", CurPlayerGold = 777);
+        //CurPlayerGold = ES3.Load<int>("PlayerGold");
     }
 
     public void BuyItem(InventoryItem item, int quantity)
@@ -37,5 +38,19 @@ public class PlayerDataManager : MonoBehaviour
         CurPlayerGold += (int)Mathf.Round((item.price * quantity) * 0.8f);
 
         ES3.Save<int>("PlayerGold", CurPlayerGold);
+    }
+
+    public void StageRewards(string rewards)
+    {
+        CurPlayerGold += int.Parse(rewards);
+
+        ES3.Save<int>("PlayerGold", CurPlayerGold);
+
+        SaveInventory_Player();
+    }
+
+    public void SaveInventory_Player()
+    {
+        inventory.SaveInventory();
     }
 }

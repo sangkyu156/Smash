@@ -29,7 +29,12 @@ public class ScaleAndSparkle : MonoBehaviour
 
     void ScaleUPandDown(float ranNum)
     {
-        rectTransform.DOBlendableScaleBy(new Vector3(1, 1, 1), ranNum).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        rectTransform.DOBlendableScaleBy(new Vector3(1, 1, 1), ranNum).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
+    }
+
+    public void ScaleUPandDownOff()
+    {
+        rectTransform.DOPause();
     }
 
     void SparkleUPandDown(float ranNum2)

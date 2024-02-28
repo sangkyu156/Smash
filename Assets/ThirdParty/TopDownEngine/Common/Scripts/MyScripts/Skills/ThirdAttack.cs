@@ -43,7 +43,6 @@ namespace MoreMountains.TopDownEngine
 
         public void SetAbility()
         {
-            //GameManager.Instance.SetSkillPostion();
             this.transform.position = GameManager.Instance.skillPostion.transform.position;
 
             // 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언
@@ -59,8 +58,6 @@ namespace MoreMountains.TopDownEngine
                 transform.LookAt(hit.point);
                 Vector3 currentRotation = transform.rotation.eulerAngles;
                 transform.rotation = Quaternion.Euler(-90, currentRotation.y, -90);
-                Debug.Log("Hit object: " + hit.collider.gameObject.name);
-                Debug.Log("Hit point: " + hit.point);
             }
             else
             {

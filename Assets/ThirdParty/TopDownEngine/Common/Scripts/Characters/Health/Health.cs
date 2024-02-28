@@ -501,7 +501,8 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (CurrentHealth <= 0)
 				{
-					CurrentHealth = 0;
+                    MMGameEvent.Trigger("SlimeDie");
+                    CurrentHealth = 0;
 					Kill();
 				}
 					
@@ -945,9 +946,7 @@ namespace MoreMountains.TopDownEngine
 				{
                     //오브젝트 회수
 					CreateManager.Instance.ReturnPool(this.gameObject.GetComponent<Slime>());
-
-                    //gameObject.SetActive(false);
-                }                
+                }
 			}
 			else
 			{
