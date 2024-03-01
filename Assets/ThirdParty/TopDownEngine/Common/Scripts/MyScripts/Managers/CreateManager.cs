@@ -21,6 +21,7 @@ namespace MoreMountains.TopDownEngine
 
         float createTime = 0;
         float clearTime = 0;
+        int enemyCount = 0;
 
         private void Awake()
         {
@@ -31,6 +32,7 @@ namespace MoreMountains.TopDownEngine
         void Start()
         {
             clearTime = 0;
+            enemyCount = 0;
             string sceneName = SceneManager.GetActiveScene().name;
             if (sceneName == "Battlefield01" || sceneName == "Battlefield02" || sceneName == "Battlefield03" || sceneName == "Battlefield04" || sceneName == "Battlefield05")
             {
@@ -43,7 +45,7 @@ namespace MoreMountains.TopDownEngine
             createTime += Time.deltaTime;
             clearTime += Time.deltaTime;
 
-            if (createTime > 1f)
+            if (createTime > 1f && enemyCount <= 35)
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
@@ -243,6 +245,7 @@ namespace MoreMountains.TopDownEngine
                 return Random.Range(1, 21);
         }
 
+        //클리어씬에 표시해야할 정보
         public void SetClearData()
         {
             clearSplash.GetComponent<ClearSplash>().ClearTimePrint(clearTime);
@@ -252,25 +255,37 @@ namespace MoreMountains.TopDownEngine
         //↓오브젝트 생성 함수들
 
         //3번째 공격
-        public void ThirdAttackSpawn()
+        public void ThirdAttack_IceSpawn()
         {
-            ThirdAttack thirdAttack = poolManager.GetFromPool<ThirdAttack>();
+            ThirdAttack_Ice thirdAttack = poolManager.GetFromPool<ThirdAttack_Ice>();
+        }
+
+        public void ThirdAttack_HolySpawn()
+        {
+            ThirdAttack_Holy thirdAttack = poolManager.GetFromPool<ThirdAttack_Holy>();
         }
 
         public void SlimeSpawn()
         {
             Slime slime = poolManager.GetFromPool<Slime>();
+            enemyCount++;
         }
 
         //↓오브젝트 회수 함수들
-        public void ReturnPool(ThirdAttack clone)
+        public void ReturnPool(ThirdAttack_Ice clone)
         {
-            poolManager.TakeToPool<ThirdAttack>(clone.idName, clone);
+            poolManager.TakeToPool<ThirdAttack_Ice>(clone.idName, clone);
+        }
+
+        public void ReturnPool(ThirdAttack_Holy clone)
+        {
+            poolManager.TakeToPool<ThirdAttack_Holy>(clone.idName, clone);
         }
 
         public void ReturnPool(Slime clone)
         {
             poolManager.TakeToPool<Slime>(clone.idName, clone);
+            enemyCount--;
         }
     }
 }

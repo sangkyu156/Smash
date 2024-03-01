@@ -1,4 +1,5 @@
-﻿using MoreMountains.Tools;
+﻿using DG.Tweening.Core.Easing;
+using MoreMountains.Tools;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -378,12 +379,7 @@ namespace MoreMountains.InventoryEngine
             }
             else
             {
-                SetButtonState(UseButton, false);
-                SetButtonState(EquipButton, false);
-                SetButtonState(EquipUseButton, false);
-                SetButtonState(DropButton, false);
                 SetButtonState(MoveButton, false);
-                SetButtonState(UnEquipButton, false);
             }
         }
 
@@ -459,8 +455,11 @@ namespace MoreMountains.InventoryEngine
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
 
             //다른 인벤토리 슬롯창 클릭 안되도록
-            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if(SceneManager.GetActiveScene().name == "Village")
+            {
+                NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }            
 
             //첫번째 슬롯 가리키기
             TargetInventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
@@ -527,8 +526,11 @@ namespace MoreMountains.InventoryEngine
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
 
             //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
-            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            if (SceneManager.GetActiveScene().name == "Village")
+            {
+                NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
 
             Time.timeScale = 1f;
         }
@@ -628,46 +630,56 @@ namespace MoreMountains.InventoryEngine
             }
 
             //아이템 설치중
-            if (_quickSlot1 && Overlay.alpha == 0)
+            if (_quickSlot1 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha1);
                 currentlySelectedSlot = 0;
             }
 
-            if (_quickSlot2 && Overlay.alpha == 0)
+            if (_quickSlot2 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha2);
                 currentlySelectedSlot = 1;
             }
 
-            if (_quickSlot3 && Overlay.alpha == 0)
+            if (_quickSlot3 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha3);
                 currentlySelectedSlot = 2;
             }
 
-            if (_quickSlot4 && Overlay.alpha == 0)
+            if (_quickSlot4 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha4);
                 currentlySelectedSlot = 3;
             }
 
-            if (_quickSlot5 && Overlay.alpha == 0)
+            if (_quickSlot5 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha5);
                 currentlySelectedSlot = 4;
             }
 
-            if (_quickSlot6 && Overlay.alpha == 0)
+            if (_quickSlot6 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha6);
                 currentlySelectedSlot = 5;
             }
 
             // 사용자가 '인벤토리 전환' 키를 누르면
-            if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0)
+            if (SceneManager.GetActiveScene().name == "Village")
             {
-                ToggleInventory();
+                if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0)
+                {
+                    ToggleInventory();
+                }
+            }
+            else
+            {
+                if(_toggleInventoryKeyPressed)
+                {
+                    ToggleInventory();
+                }
             }
 
             if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen && TargetInventoryContainer.alpha == 0)

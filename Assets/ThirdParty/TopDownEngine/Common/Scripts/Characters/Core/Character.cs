@@ -847,10 +847,5 @@ namespace MoreMountains.TopDownEngine
 				CharacterHealth.OnHit -= OnHit;
 			}			
 		}
-
-		public void ThirdAttackCreate()
-		{
-            CreateManager.Instance.ThirdAttackSpawn();
-        }
     }
 }

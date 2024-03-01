@@ -195,6 +195,7 @@ namespace MoreMountains.TopDownEngine
 		public Transform skillPostion;
 		public Transform uiCanvas;
         public Define.Stage stage = Define.Stage.Stage00;
+		public string playerThirdAttack = string.Empty;
 
         ResourceManager _resource = new ResourceManager();
 

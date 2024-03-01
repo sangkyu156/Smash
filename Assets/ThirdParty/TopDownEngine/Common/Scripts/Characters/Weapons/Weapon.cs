@@ -580,7 +580,11 @@ namespace MoreMountains.TopDownEngine
 
 			while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
 			{
-				CreateManager.Instance.ThirdAttackSpawn();
+				switch (GameManager.Instance.playerThirdAttack)
+				{
+					case "Holy": CreateManager.Instance.ThirdAttack_HolySpawn(); break;
+					case "Ice": CreateManager.Instance.ThirdAttack_IceSpawn(); break;
+                }				
                 InputAuthorized = false;
                 yield return new WaitForSecondsRealtime(0.78f);
                 animator.SetInteger("Combo", 0);
