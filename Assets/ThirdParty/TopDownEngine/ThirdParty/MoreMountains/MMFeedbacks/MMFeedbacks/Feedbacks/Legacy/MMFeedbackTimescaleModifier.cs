@@ -38,8 +38,8 @@ namespace MoreMountains.Feedbacks
 		/// the new timescale to apply
 		[Tooltip("the new timescale to apply")]
 		public float TimeScale = 0.5f;
-		/// the duration of the timescale modification
-		[Tooltip("the duration of the timescale modification")]
+        /// 타임스케일 수정 기간
+        [Tooltip("타임스케일 수정 기간")]
 		[MMFEnumCondition("Mode", (int)Modes.Shake)]
 		public float TimeScaleDuration = 1f;
 		/// whether or not we should lerp the timescale

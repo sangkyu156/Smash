@@ -211,11 +211,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Sets the death screen on or off.
-		/// </summary>
-		/// <param name="state">If set to <c>true</c>, sets the pause.</param>
-		public virtual void SetDeathScreen(bool state)
+        /// <summary>
+        /// 사망 화면을 켜거나 끕니다.
+        /// </summary>
+        /// <param name="state">If set to <c>true</c>, sets the pause.</param>
+        public virtual void SetDeathScreen(bool state)
 		{
 			if (DeathScreen != null)
 			{

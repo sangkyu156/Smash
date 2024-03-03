@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 using UnityEditor.EditorTools;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -196,7 +197,11 @@ namespace MoreMountains.TopDownEngine
 		protected MaterialPropertyBlock _propertyBlock;
 		protected bool _hasColorProperty = false;
 
-		protected class InterruptiblesDamageOverTimeCoroutine
+		//내가만든 변수
+		string thisTag;
+		int thisLayer;
+
+        protected class InterruptiblesDamageOverTimeCoroutine
 		{
 			public Coroutine DamageOverTimeCoroutine;
 			public DamageType DamageOverTimeType;
@@ -221,7 +226,9 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void Start()
 		{
-			GrabAnimator();
+            thisTag = this.gameObject.tag;
+            thisLayer = this.gameObject.layer;
+            GrabAnimator();
 		}
 		
 		/// <summary>
@@ -501,7 +508,8 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (CurrentHealth <= 0)
 				{
-                    MMGameEvent.Trigger("SlimeDie");
+					//자기 자신의 태그를확인해서 게임이벤트 트리거 하는 함수 만들어야함
+					TagCheckEventOccurs();
                     CurrentHealth = 0;
 					Kill();
 				}
@@ -509,10 +517,20 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Interrupts all damage over time, regardless of type
-		/// </summary>
-		public virtual void InterruptAllDamageOverTime()
+		//자기자신 태그확인후 이벤트 트리거함
+        public virtual void TagCheckEventOccurs()
+		{
+			switch(thisTag)
+			{
+				case "Player": MMGameEvent.Trigger("PlayerDie"); break;
+                case "Slime": MMGameEvent.Trigger("SlimeDie"); break;
+            }
+		}
+
+        /// <summary>
+        /// Interrupts all damage over time, regardless of type
+        /// </summary>
+        public virtual void InterruptAllDamageOverTime()
 		{
 			foreach (InterruptiblesDamageOverTimeCoroutine coroutine in _interruptiblesDamageOverTimeCoroutines)
 			{
@@ -944,8 +962,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (DestroyOnDeath)
 				{
-                    //오브젝트 회수
-					CreateManager.Instance.ReturnPool(this.gameObject.GetComponent<Slime>());
+					//오브젝트 회수
+					if (thisLayer == 13)
+						TagCheckReturnPool();
                 }
 			}
 			else
@@ -954,14 +973,23 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-        #region HealthManipulationAPIs
+		//자신의 태그를 확인후 알맞는 회수함수 호출
+		void TagCheckReturnPool()
+		{
+			switch (thisTag)
+			{
+				case "Slime": CreateManager.Instance.ReturnPool(this.gameObject.GetComponent<Slime>()); Debug.Log("슬라임 회수됨"); break;
+            }
+		}
+
+		#region HealthManipulationAPIs
 
 
-        /// <summary>
-        /// 현재 상태를 지정된 새 값으로 설정하고 상태 표시줄을 업데이트합니다
-        /// </summary>
-        /// <param name="newValue"></param>
-        public virtual void SetHealth(float newValue)
+		/// <summary>
+		/// 현재 상태를 지정된 새 값으로 설정하고 상태 표시줄을 업데이트합니다
+		/// </summary>
+		/// <param name="newValue"></param>
+		public virtual void SetHealth(float newValue)
 		{
 			CurrentHealth = newValue;
 			UpdateHealthBar(false);

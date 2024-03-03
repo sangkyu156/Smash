@@ -392,6 +392,7 @@ namespace MoreMountains.TopDownEngine
 			yield return new WaitForSeconds(DelayBeforeDeathScreen);
 
 			GUIManager.Instance.SetDeathScreen(true);
+			Time.timeScale = 0;
 		}
 
         /// <summary>

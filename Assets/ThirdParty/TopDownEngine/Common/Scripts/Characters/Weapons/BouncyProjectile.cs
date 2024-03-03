@@ -152,11 +152,11 @@ namespace MoreMountains.TopDownEngine
 			EvaluateHit2D(hit);
 		}
 
-		/// <summary>
-		/// If we get a prevent collision 3D message, we check if we should bounce
-		/// </summary>
-		/// <param name="hit"></param>
-		public void PreventedCollision3D(RaycastHit hit)
+        /// <summary>
+        /// 충돌 방지 3D 메시지를 받으면 반송해야 하는지 확인합니다.
+        /// </summary>
+        /// <param name="hit"></param>
+        public void PreventedCollision3D(RaycastHit hit)
 		{
 			_raycastDirection = transform.position - _positionLastFrame;
 			if (_health.CurrentHealth <= 0)

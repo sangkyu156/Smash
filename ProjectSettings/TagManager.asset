@@ -19,6 +19,7 @@ TagManager:
   - QuickSlots
   - MainInventory
   - GameManager
+  - Slime
   layers:
   - Default
   - TransparentFX
