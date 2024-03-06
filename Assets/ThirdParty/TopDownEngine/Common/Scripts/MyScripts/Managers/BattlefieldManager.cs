@@ -232,6 +232,10 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
         {
             NavMeshBake();
         }
+        if(gameEvent.EventName == "Destroyed")
+        {
+            NavMeshBake();
+        }
         if (gameEvent.EventName == "SlimeDie")
         {
             EnemyCount1();

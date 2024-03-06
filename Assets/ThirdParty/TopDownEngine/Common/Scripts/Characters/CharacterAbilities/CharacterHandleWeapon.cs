@@ -6,13 +6,11 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a character so it can use weapons
-	/// Note that this component will trigger animations (if their parameter is present in the Animator), based on 
-	/// the current weapon's Animations
-	/// Animator parameters : defined from the Weapon's inspector
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Handle Weapon")]
+    /// <summary>
+	/// 무기를 사용할 수 있도록 캐릭터에 이 클래스를 추가합니다. 
+	/// 이 구성 요소는 무기 검사기에서 정의된 현재 무기의 애니메이션 애니메이터 매개 변수를 기반으로 애니메이션을 트리거합니다(해당 매개 변수가 애니메이터에 있는 경우).
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Handle Weapon")]
 	public class CharacterHandleWeapon : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector

@@ -45,6 +45,7 @@ public class CraftManual : MonoBehaviour
 
     void PreviewPositionUpdate()
     {
+        //바꾼코딩
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -54,8 +55,11 @@ public class CraftManual : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer))
         {
             Vector3 newPosition = hit.point;
-            newPosition.y = newPosition.y + (go_Preview.transform.lossyScale.y * 0.5f);
+            newPosition.y = newPosition.y + 0.5f;
             go_Preview.transform.position = newPosition;
+            Vector3 newRotation = go_Preview.transform.rotation.eulerAngles;
+            newRotation.x = -90;
+            go_Preview.transform.rotation = Quaternion.Euler(newRotation);
         }
     }
 
@@ -64,7 +68,7 @@ public class CraftManual : MonoBehaviour
         if (isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isInstallable)
         {
             int randomAngleY = Random.Range(0, 180);
-            Quaternion randomRotation = Quaternion.Euler(0, randomAngleY, 0);
+            Quaternion randomRotation = Quaternion.Euler(-90, randomAngleY, 0);
             Instantiate(go_Prefab, go_Preview.transform.position, randomRotation);
             Destroy(go_Preview);
             isPreviewActivated = false;

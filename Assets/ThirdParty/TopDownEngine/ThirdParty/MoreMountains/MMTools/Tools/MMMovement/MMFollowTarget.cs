@@ -136,20 +136,12 @@ namespace MoreMountains.Tools
 		protected Quaternion _newTargetRotation;
 		protected Quaternion _initialRotation;
 
-		//항상 카메라 보도록 하기위해 만든 변수
-		Transform _mainCamera;
-
         /// <summary>
         /// On start we store our initial position
         /// </summary>
         protected virtual void Start()
 		{
 			Initialization();
-
-			if(_mainCamera == null)
-			{
-                _mainCamera = GameObject.FindWithTag("MainCamera").transform;
-            }
 		}
 
 		/// <summary>
@@ -208,11 +200,6 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void Update()
 		{
-            if (gameObject.activeSelf)
-            {
-                transform.LookAt(_mainCamera);
-            }
-
             if (Target == null)
 			{
 				return;

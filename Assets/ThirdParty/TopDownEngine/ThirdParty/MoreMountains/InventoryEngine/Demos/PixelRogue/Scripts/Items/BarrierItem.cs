@@ -15,8 +15,10 @@ public class BarrierItem : InventoryItem
         Debug.Log($"{ItemID}을 설치중입니다.");
         Time.timeScale = 0;
         craftManual = Instantiate(Resources.Load<GameObject>("Prefabs/Object/CraftManual"));
-        craftManual.GetComponent<CraftManual>().go_Preview = Resources.Load<GameObject>("Prefabs/Battlefield/Preview/Obstacles_Preview_Rock1");
-        craftManual.GetComponent<CraftManual>().go_Prefab = Resources.Load<GameObject>("Prefabs/Battlefield/Obstacles/Obstacles_Rock1");
+        craftManual.GetComponent<CraftManual>().go_Preview = Resources.Load<GameObject>("Prefabs/Battlefield/Preview/new_Obstacles_Preview_Rock1");
+        craftManual.GetComponent<CraftManual>().go_Prefab = Resources.Load<GameObject>("Prefabs/Battlefield/Obstacles/new_Obstacles_Rock1");
+        //craftManual.GetComponent<CraftManual>().go_Preview = Resources.Load<GameObject>("Prefabs/Battlefield/Preview/Obstacles_Preview_Rock1");
+        //craftManual.GetComponent<CraftManual>().go_Prefab = Resources.Load<GameObject>("Prefabs/Battlefield/Obstacles/Obstacles_Rock1");
         craftManual.GetComponent<CraftManual>().inventory = GameObject.FindGameObjectWithTag("QuickSlots").GetComponent<Inventory>();
 
         return true;

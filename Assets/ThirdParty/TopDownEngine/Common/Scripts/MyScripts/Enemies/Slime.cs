@@ -24,16 +24,6 @@ namespace MoreMountains.TopDownEngine
             characterHandleWeapon = GetComponent<CharacterHandleWeapon>();
         }
 
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
-
         //처음 생성될때 호출 되는 함수
         public override void OnCreatedInPool()
         {

@@ -33,6 +33,18 @@ public class PlayerDataManager : MonoBehaviour
                 CurPlayerGold = ES3.Load<int>("PlayerGold");
             }
         }
+        else
+        {
+            if (ES3.FileExists())
+            {
+                CurPlayerGold = ES3.Load<int>("PlayerGold");
+            }
+            else
+            {
+                ES3.Save("PlayerGold", CurPlayerGold = 777);
+                CurPlayerGold = ES3.Load<int>("PlayerGold");
+            }
+        }
         //ES3.Save("PlayerGold", CurPlayerGold = 777);
         //CurPlayerGold = ES3.Load<int>("PlayerGold");
     }

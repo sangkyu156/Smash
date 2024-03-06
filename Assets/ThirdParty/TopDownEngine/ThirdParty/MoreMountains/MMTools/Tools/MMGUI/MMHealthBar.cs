@@ -121,7 +121,7 @@ namespace MoreMountains.Tools
 		public MMFollowTarget.UpdateModes FollowTargetMode = MMFollowTarget.UpdateModes.LateUpdate;
         /// 이것이 사실이라면 그려진 체력 바는 MMHealthBar 아래에 중첩됩니다.
         [Tooltip("이것이 사실이라면 그려진 체력 바는 MMHealthBar 아래에 중첩됩니다.")]
-		public bool NestDrawnHealthBar = false;
+		public bool NestDrawnHealthBar = true;
         /// 이것이 사실이라면 MMBillboard 구성 요소가 진행률 표시줄에 추가되어 항상 카메라를 향하게 됩니다.
         [Tooltip("이것이 사실이라면 MMBillboard 구성 요소가 진행률 표시줄에 추가되어 항상 카메라를 향하게 됩니다.")]
 		public bool Billboard = false;
@@ -256,7 +256,7 @@ namespace MoreMountains.Tools
 		}
 
         /// <summary>
-        /// 체력바를 그립니다.
+        /// 체력바를 그립니다. 
         /// </summary>
         protected virtual void DrawHealthBar()
 		{
@@ -266,7 +266,7 @@ namespace MoreMountains.Tools
 
 			if (NestDrawnHealthBar)
 			{
-				newGameObject.transform.SetParent(this.transform);
+				newGameObject.transform.SetParent(this.gameObject.transform);
 			}
 
 			_progressBar = newGameObject.AddComponent<MMProgressBar>();

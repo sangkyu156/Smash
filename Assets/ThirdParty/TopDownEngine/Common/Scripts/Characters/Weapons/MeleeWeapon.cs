@@ -6,10 +6,10 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Melee Weapon")]
+    /// <summary>
+    /// 무기를 사용할 때 "상처 구역"을 활성화하는 기본 근접 무기 클래스
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Melee Weapon")]
 	public class MeleeWeapon : Weapon
 	{
 		/// the possible shapes for the melee weapon's damage area

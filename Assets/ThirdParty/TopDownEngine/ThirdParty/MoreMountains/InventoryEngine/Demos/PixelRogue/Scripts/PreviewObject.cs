@@ -15,10 +15,12 @@ public class PreviewObject : MonoBehaviour
 
     public float colliderSize;
     public bool isInstallable;
+    private CapsuleCollider capsuleCollider;
 
     private void Awake()
     {
         myMaterial = GetComponent<MeshRenderer>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
 
         colliderSize = GetCapsuleColliderSizeFloat(this.gameObject.GetComponent<CapsuleCollider>());
         layerGround = 9;
@@ -32,7 +34,14 @@ public class PreviewObject : MonoBehaviour
     private void OnTriggerEnter2()
     {
         // 현재 GameObject 주위에 반경 colliderSize 안에 있는 Collider들을 모두 찾습니다.
-        Collider[] colliders = Physics.OverlapSphere(transform.position, colliderSize);
+        // 캡슐 콜라이더의 시작점과 끝점 계산
+        Vector3 startPoint = transform.position + Vector3.up * capsuleCollider.height / 2 - Vector3.up * capsuleCollider.radius * 15;
+        Vector3 endPoint = transform.position - Vector3.up * capsuleCollider.height / 2 + Vector3.up * capsuleCollider.radius * 15;
+
+        // 캡슐 콜라이더와 겹치는 오브젝트 찾기
+        Collider[] colliders = Physics.OverlapCapsule(startPoint, endPoint, capsuleCollider.radius * 15);
+
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, colliderSize);
 
         // 모든 찾은 Collider들을 순회하면서 처리합니다.
         foreach (Collider collider in colliders)
@@ -61,9 +70,17 @@ public class PreviewObject : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
+        if (capsuleCollider != null)
+        {
+            // 캡슐 콜라이더의 시작점과 끝점 계산
+            Vector3 startPoint = transform.position - Vector3.up * capsuleCollider.height / 2 + Vector3.up * capsuleCollider.radius * 15;
+
+            // 시작점과 끝점을 기준으로 캡슐 형태의 선 그리기
+            Gizmos.DrawWireSphere(startPoint, capsuleCollider.radius * 15);
+        }
 
         // 현재 객체의 위치에 구체를 그립니다.
-        Gizmos.DrawWireSphere(transform.position, colliderSize);
+        //Gizmos.DrawWireSphere(transform.position, colliderSize);
     }
 
     //캡슐콜라이더 크기를 float형으로 반환 하는 함수

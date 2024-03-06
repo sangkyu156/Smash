@@ -16,16 +16,6 @@ namespace MoreMountains.TopDownEngine
             SetRandomPosition();
         }
 
-        void Start()
-        {
-
-        }
-
-        void Update()
-        {
-
-        }
-
         public void SetRandomPosition()
         {
             Vector3 pos = Vector3.zero;

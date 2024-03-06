@@ -11,232 +11,232 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this bar to an object and link it to a bar (possibly the same object the script is on), and you'll be able to resize the bar object based on a current value, located between a min and max value.
-	/// See the HealthBar.cs script for a use case
-	/// </summary>
-	[MMRequiresConstantRepaint]
+    /// <summary>
+    /// 이 막대를 개체에 추가하고 막대(아마도 스크립트가 있는 동일한 개체)에 연결하면 최소값과 최대값 사이에 있는 현재 값을 기준으로 막대 개체의 크기를 조정할 수 있습니다.
+    /// 사용 사례는 HealthBar.cs 스크립트를 참조하세요.
+    /// </summary>
+    [MMRequiresConstantRepaint]
 	[AddComponentMenu("More Mountains/Tools/GUI/MMProgressBar")]
 	public class MMProgressBar : MMMonoBehaviour
 	{
 		public enum MMProgressBarStates {Idle, Decreasing, Increasing, InDecreasingDelay, InIncreasingDelay }
-		/// the possible fill modes 
-		public enum FillModes { LocalScale, FillAmount, Width, Height, Anchor }
-		/// the possible directions for the fill (for local scale and fill amount only)
-		public enum BarDirections { LeftToRight, RightToLeft, UpToDown, DownToUp }
-		/// the possible timescales the bar can work on
-		public enum TimeScales { UnscaledTime, Time }
-		/// the possible ways to animate the bar fill
-		public enum BarFillModes { SpeedBased, FixedDuration }
+        /// 가능한 채우기 모드
+        public enum FillModes { LocalScale, FillAmount, Width, Height, Anchor }
+        /// 가능한 채우기 방향(로컬 축척 및 채우기 양에만 해당)
+        public enum BarDirections { LeftToRight, RightToLeft, UpToDown, DownToUp }
+        /// 바가 작동할 수 있는 가능한 시간 척도
+        public enum TimeScales { UnscaledTime, Time }
+        /// t막대 채우기에 애니메이션을 적용할 수 있는 방법
+        public enum BarFillModes { SpeedBased, FixedDuration }
         
 		[MMInspectorGroup("Bindings", true, 10)]
-		/// optional - the ID of the player associated to this bar
-		[Tooltip("optional - the ID of the player associated to this bar")]
+        /// 선택사항 - 이 바에 연관된 플레이어의 ID
+        [Tooltip("선택사항 - 이 바에 연관된 플레이어의 ID")]
 		public string PlayerID;
-		/// the main, foreground bar
-		[Tooltip("the main, foreground bar")]
+        /// 메인, 전경 바
+        [Tooltip("메인, 전경 바")]
 		public Transform ForegroundBar;
-		/// the delayed bar that will show when moving from a value to a new, lower value
-		[Tooltip("the delayed bar that will show when moving from a value to a new, lower value")]
+        /// 값에서 더 낮은 새 값으로 이동할 때 표시되는 지연된 막대
+        [Tooltip("값에서 더 낮은 새 값으로 이동할 때 표시되는 지연된 막대")]
 		[FormerlySerializedAs("DelayedBar")] 
 		public Transform DelayedBarDecreasing;
-		/// the delayed bar that will show when moving from a value to a new, higher value
-		[Tooltip("the delayed bar that will show when moving from a value to a new, higher value")]
+        /// 값에서 더 높은 새 값으로 이동할 때 표시되는 지연된 막대
+        [Tooltip("값에서 더 높은 새 값으로 이동할 때 표시되는 지연된 막대")]
 		public Transform DelayedBarIncreasing;
         
 		[MMInspectorGroup("Fill Settings", true, 11)]
-		/// the local scale or fillamount value to reach when the value associated to the bar is at 0%
-		[FormerlySerializedAs("StartValue")] 
+        /// 막대에 연결된 값이 0%일 때 도달할 로컬 배율 또는 채우기 양 값
+        [FormerlySerializedAs("StartValue")] 
 		[Range(0f,1f)]
-		[Tooltip("the local scale or fillamount value to reach when the value associated to the bar is at 0%")]
+		[Tooltip("막대에 연결된 값이 0%일 때 도달할 로컬 배율 또는 채우기 양 값")]
 		public float MinimumBarFillValue = 0f;
-		/// the local scale or fillamount value to reach when the bar is full
-		[FormerlySerializedAs("EndValue")] 
+        /// 막대가 가득 찼을 때 도달할 로컬 배율 또는 채우기 양 값
+        [FormerlySerializedAs("EndValue")] 
 		[Range(0f,1f)]
-		[Tooltip("the local scale or fillamount value to reach when the bar is full")]
+		[Tooltip("막대가 가득 찼을 때 도달할 로컬 배율 또는 채우기 양 값")]
 		public float MaximumBarFillValue = 1f;
-		/// whether or not to initialize the value of the bar on start
-		[Tooltip("whether or not to initialize the value of the bar on start")]
+        /// 시작 시 막대 값을 초기화할지 여부
+        [Tooltip("시작 시 막대 값을 초기화할지 여부")]
 		public bool SetInitialFillValueOnStart = false;
-		/// the initial value of the bar
-		[MMCondition("SetInitialFillValueOnStart", true)]
+        /// 막대의 초기 값
+        [MMCondition("SetInitialFillValueOnStart", true)]
 		[Range(0f,1f)]
-		[Tooltip("the initial value of the bar")]
+		[Tooltip("막대의 초기 값")]
 		public float InitialFillValue = 0f;
-		/// the direction this bar moves to
-		[Tooltip("the direction this bar moves to")]
+        /// 이 막대가 움직이는 방향
+        [Tooltip("이 막대가 움직이는 방향")]
 		public BarDirections BarDirection = BarDirections.LeftToRight;
-		/// the foreground bar's fill mode
-		[Tooltip("the foreground bar's fill mode")]
+        /// 전경 막대의 채우기 모드
+        [Tooltip("전경 막대의 채우기 모드")]
 		public FillModes FillMode = FillModes.LocalScale;
-		/// defines whether the bar will work on scaled or unscaled time (whether or not it'll keep moving if time is slowed down for example)
-		[Tooltip("defines whether the bar will work on scaled or unscaled time (whether or not it'll keep moving if time is slowed down for example)")]
+        /// 막대가 조정된 시간 또는 조정되지 않은 시간에 작동할지 여부를 정의합니다(예를 들어 시간이 느려지는 경우 계속 움직일지 여부)
+        [Tooltip("막대가 조정된 시간 또는 조정되지 않은 시간에 작동할지 여부를 정의합니다(예를 들어 시간이 느려지는 경우 계속 움직일지 여부)")]
 		public TimeScales TimeScale = TimeScales.UnscaledTime;
-		/// the selected fill animation mode
-		[Tooltip("the selected fill animation mode")]
+        /// 선택한 채우기 애니메이션 모드
+        [Tooltip("선택한 채우기 애니메이션 모드")]
 		public BarFillModes BarFillMode = BarFillModes.SpeedBased;
 
 		[MMInspectorGroup("Foreground Bar Settings", true, 12)]
-		/// whether or not the foreground bar should lerp
-		[Tooltip("whether or not the foreground bar should lerp")]
+        /// 전경 막대가 소리를 내야 하는지 여부
+        [Tooltip("전경 막대가 소리를 내야 하는지 여부")]
 		public bool LerpForegroundBar = true;
-		/// the speed at which to lerp the foreground bar
-		[Tooltip("the speed at which to lerp the foreground bar")]
+        /// 전경 막대를 이동하는 속도
+        [Tooltip("전경 막대를 이동하는 속도")]
 		[MMCondition("LerpForegroundBar", true)]
 		public float LerpForegroundBarSpeedDecreasing = 15f;
-		/// the speed at which to lerp the foreground bar if value is increasing
-		[Tooltip("the speed at which to lerp the foreground bar if value is increasing")]
+        /// 값이 증가하는 경우 전경 막대를 이동하는 속도
+        [Tooltip("값이 증가하는 경우 전경 막대를 이동하는 속도")]
 		[FormerlySerializedAs("LerpForegroundBarSpeed")]
 		[MMCondition("LerpForegroundBar", true)]
 		public float LerpForegroundBarSpeedIncreasing = 15f;
-		/// the speed at which to lerp the foreground bar if speed is decreasing
-		[Tooltip("the speed at which to lerp the foreground bar if speed is decreasing")]
+        /// 속도가 감소하는 경우 전경 막대를 이동하는 속도
+        [Tooltip("속도가 감소하는 경우 전경 막대를 이동하는 속도")]
 		[MMCondition("LerpForegroundBar", true)]
 		public float LerpForegroundBarDurationDecreasing = 0.2f;
-		/// the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)
-		[Tooltip("the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)")]
+        /// 전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)
+        [Tooltip("전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)")]
 		[MMCondition("LerpForegroundBar", true)]
 		public float LerpForegroundBarDurationIncreasing = 0.2f;
-		/// the curve to use when animating the foreground bar fill decreasing
-		[Tooltip("the curve to use when animating the foreground bar fill decreasing")]
+        /// 전경 막대 채우기 감소에 애니메이션을 적용할 때 사용할 곡선
+        [Tooltip("전경 막대 채우기 감소에 애니메이션을 적용할 때 사용할 곡선")]
 		[MMCondition("LerpForegroundBar", true)]
 		public AnimationCurve LerpForegroundBarCurveDecreasing = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-		/// the curve to use when animating the foreground bar fill increasing
-		[Tooltip("the curve to use when animating the foreground bar fill increasing")]
+        /// 전경 막대 채우기 증가에 애니메이션을 적용할 때 사용할 곡선
+        [Tooltip("전경 막대 채우기 증가에 애니메이션을 적용할 때 사용할 곡선")]
 		[MMCondition("LerpForegroundBar", true)]
 		public AnimationCurve LerpForegroundBarCurveIncreasing = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
 		[MMInspectorGroup("Delayed Bar Decreasing", true, 13)]
-		
-		/// the delay before the delayed bar moves (in seconds)
-		[Tooltip("the delay before the delayed bar moves (in seconds)")]
+
+        /// 지연된 막대가 움직이기 전의 지연 시간(초)
+        [Tooltip("지연된 막대가 움직이기 전의 지연 시간(초)")]
 		[FormerlySerializedAs("Delay")] 
 		public float DecreasingDelay = 1f;
-		/// whether or not the delayed bar's animation should lerp
-		[Tooltip("whether or not the delayed bar's animation should lerp")]
+        /// 지연된 막대의 애니메이션이 불안정해야 하는지 여부
+        [Tooltip("지연된 막대의 애니메이션이 불안정해야 하는지 여부")]
 		[FormerlySerializedAs("LerpDelayedBar")] 
 		public bool LerpDecreasingDelayedBar = true;
-		/// the speed at which to lerp the delayed bar
-		[Tooltip("the speed at which to lerp the delayed bar")]
+        /// 지연된 막대를 lerp하는 속도
+        [Tooltip("지연된 막대를 lerp하는 속도")]
 		[FormerlySerializedAs("LerpDelayedBarSpeed")] 
 		[MMCondition("LerpDecreasingDelayedBar", true)]
 		public float LerpDecreasingDelayedBarSpeed = 15f;
-		/// the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)
-		[Tooltip("the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)")]
+        /// 전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)
+        [Tooltip("전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)")]
 		[FormerlySerializedAs("LerpDelayedBarDuration")] 
 		[MMCondition("LerpDecreasingDelayedBar", true)]
 		public float LerpDecreasingDelayedBarDuration = 0.2f;
-		/// the curve to use when animating the delayed bar fill
-		[Tooltip("the curve to use when animating the delayed bar fill")]
+        /// 지연된 막대 채우기를 애니메이션화할 때 사용할 곡선
+        [Tooltip("지연된 막대 채우기를 애니메이션화할 때 사용할 곡선")]
 		[FormerlySerializedAs("LerpDelayedBarCurve")] 
 		[MMCondition("LerpDecreasingDelayedBar", true)]
 		public AnimationCurve LerpDecreasingDelayedBarCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
 		[MMInspectorGroup("Delayed Bar Increasing", true, 18)]
-		
-		/// the delay before the delayed bar moves (in seconds)
-		[Tooltip("the delay before the delayed bar moves (in seconds)")]
+
+        /// 지연된 막대가 움직이기 전의 지연 시간(초)
+        [Tooltip("지연된 막대가 움직이기 전의 지연 시간(초)")]
 		public float IncreasingDelay = 1f;
-		/// whether or not the delayed bar's animation should lerp
-		[Tooltip("whether or not the delayed bar's animation should lerp")]
+        /// 지연된 막대의 애니메이션이 불안정해야 하는지 여부
+        [Tooltip("지연된 막대의 애니메이션이 불안정해야 하는지 여부")]
 		public bool LerpIncreasingDelayedBar = true;
-		/// the speed at which to lerp the delayed bar
-		[Tooltip("the speed at which to lerp the delayed bar")]
+        /// 지연된 막대를 lerp하는 속도
+        [Tooltip("지연된 막대를 lerp하는 속도")]
 		[MMCondition("LerpIncreasingDelayedBar", true)]
 		public float LerpIncreasingDelayedBarSpeed = 15f;
-		/// the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)
-		[Tooltip("the duration each update of the foreground bar should take (only if in fixed duration bar fill mode)")]
+        /// 전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)
+        [Tooltip("전경 막대의 각 업데이트에 소요되는 시간(고정 기간 막대 채우기 모드인 경우에만)")]
 		[MMCondition("LerpIncreasingDelayedBar", true)]
 		public float LerpIncreasingDelayedBarDuration = 0.2f;
-		/// the curve to use when animating the delayed bar fill
-		[Tooltip("the curve to use when animating the delayed bar fill")]
+        /// 지연된 막대 채우기를 애니메이션화할 때 사용할 곡선
+        [Tooltip("지연된 막대 채우기를 애니메이션화할 때 사용할 곡선")]
 		[MMCondition("LerpIncreasingDelayedBar", true)]
 		public AnimationCurve LerpIncreasingDelayedBarCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
 		[MMInspectorGroup("Bump", true, 14)]
-		/// whether or not the bar should "bump" when changing value
-		[Tooltip("whether or not the bar should 'bump' when changing value")]
+        /// 값을 변경할 때 막대가 "범프"해야 하는지 여부
+        [Tooltip("값을 변경할 때 막대가 \"범프\"해야 하는지 여부")]
 		public bool BumpScaleOnChange = true;
-		/// whether or not the bar should bump when its value increases
-		[Tooltip("whether or not the bar should bump when its value increases")]
+        /// 값이 증가할 때 막대가 부딪혀야 하는지 여부
+        [Tooltip("값이 증가할 때 막대가 부딪혀야 하는지 여부")]
 		public bool BumpOnIncrease = false;
-		/// whether or not the bar should bump when its value decreases
-		[Tooltip("whether or not the bar should bump when its value decreases")]
+        /// 값이 감소할 때 막대가 부딪혀야 하는지 여부
+        [Tooltip("값이 감소할 때 막대가 부딪혀야 하는지 여부")]
 		public bool BumpOnDecrease = false;
-		/// the duration of the bump animation
-		[Tooltip("the duration of the bump animation")]
+        /// 범프 애니메이션의 지속 시간
+        [Tooltip("범프 애니메이션의 지속 시간")]
 		public float BumpDuration = 0.2f;
-		/// whether or not the bar should flash when bumping
-		[Tooltip("whether or not the bar should flash when bumping")]
+        /// 부딪힐 때 바가 깜박여야 하는지 여부
+        [Tooltip("부딪힐 때 바가 깜박여야 하는지 여부")]
 		public bool ChangeColorWhenBumping = true;
-		/// whether or not to store the initial bar color before a bump
-		[Tooltip("whether or not to store the initial bar color before a bump")]
+        /// 범프 전에 초기 막대 색상을 저장할지 여부
+        [Tooltip("범프 전에 초기 막대 색상을 저장할지 여부")]
 		public bool StoreBarColorOnPlay = true;
-		/// the color to apply to the bar when bumping
-		[Tooltip("the color to apply to the bar when bumping")]
+        /// 부딪힐 때 바에 적용할 색상
+        [Tooltip("부딪힐 때 바에 적용할 색상")]
 		[MMCondition("ChangeColorWhenBumping", true)]
 		public Color BumpColor = Color.white;
-		/// the curve to map the bump animation on
-		[Tooltip("the curve to map the bump animation on")]
+        /// 범프 애니메이션을 매핑할 곡선
+        [Tooltip("범프 애니메이션을 매핑할 곡선")]
 		[FormerlySerializedAs("BumpAnimationCurve")]
 		public AnimationCurve BumpScaleAnimationCurve = new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
-		/// the curve to map the bump animation color animation on
-		[Tooltip("the curve to map the bump animation color animation on")]
+        /// 범프 애니메이션 색상 애니메이션을 매핑할 곡선
+        [Tooltip("범프 애니메이션 색상 애니메이션을 매핑할 곡선")]
 		public AnimationCurve BumpColorAnimationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
-		/// whether or not the bar is bumping right now
-		public bool Bumping { get; protected set; }
+        /// 지금 바가 부딪히는지 아닌지
+        public bool Bumping { get; protected set; }
 
-		[MMInspectorGroup("Events", true, 16)] 
-        
-		/// an event to trigger every time the bar bumps
-		[Tooltip("an event to trigger every time the bar bumps")]
+		[MMInspectorGroup("Events", true, 16)]
+
+        /// 막대가 부딪힐 때마다 트리거되는 이벤트
+        [Tooltip("막대가 부딪힐 때마다 트리거되는 이벤트")]
 		public UnityEvent OnBump;
-		/// an event to trigger every time the bar starts decreasing
-		[Tooltip("an event to trigger every time the bar starts decreasing")]
+        /// 막대가 감소하기 시작할 때마다 트리거되는 이벤트
+        [Tooltip("막대가 감소하기 시작할 때마다 트리거되는 이벤트")]
 		public UnityEvent OnBarMovementDecreasingStart;
-		/// an event to trigger every time the bar stops decreasing
-		[Tooltip("an event to trigger every time the bar stops decreasing")]
+        /// 막대가 감소하는 것을 멈출 때마다 트리거되는 이벤트
+        [Tooltip("막대가 감소하는 것을 멈출 때마다 트리거되는 이벤트")]
 		public UnityEvent OnBarMovementDecreasingStop;
-		/// an event to trigger every time the bar starts increasing
-		[Tooltip("an event to trigger every time the bar starts increasing")]
+        /// 막대가 증가하기 시작할 때마다 트리거되는 이벤트
+        [Tooltip("막대가 증가하기 시작할 때마다 트리거되는 이벤트")]
 		public UnityEvent OnBarMovementIncreasingStart;
-		/// an event to trigger every time the bar stops increasing
-		[Tooltip("an event to trigger every time the bar stops increasing")]
+        /// 막대의 증가가 멈출 때마다 트리거되는 이벤트
+        [Tooltip("막대의 증가가 멈출 때마다 트리거되는 이벤트")]
 		public UnityEvent OnBarMovementIncreasingStop;
 
-		[MMInspectorGroup("Text", true, 20)] 
-		/// a Text object to update with the bar's value
-		[Tooltip("a Text object to update with the bar's value")]
+		[MMInspectorGroup("Text", true, 20)]
+        /// 막대의 값으로 업데이트할 Text 객체
+        [Tooltip("막대의 값으로 업데이트할 Text 객체")]
 		public Text PercentageText;
-		#if MM_TEXTMESHPRO
-		/// a TMPro text object to update with the bar's value
-		[Tooltip("a TMPro text object to update with the bar's value")]
+#if MM_TEXTMESHPRO
+        /// 막대의 값으로 업데이트할 TMPro 텍스트 객체
+        [Tooltip("막대의 값으로 업데이트할 TMPro 텍스트 객체")]
 		public TMP_Text PercentageTextMeshPro;
-		#endif
+#endif
 
-		/// a prefix to always add to the bar's value display
-		[Tooltip("a prefix to always add to the bar's value display")]
+        /// 바의 값 표시에 항상 추가되는 접두사
+        [Tooltip("바의 값 표시에 항상 추가되는 접두사")]
 		public string TextPrefix;
-		/// a suffix to always add to the bar's value display
-		[Tooltip("a suffix to always add to the bar's value display")]
+        /// 막대의 값 표시에 항상 추가되는 접미사
+        [Tooltip("막대의 값 표시에 항상 추가되는 접미사")]
 		public string TextSuffix;
-		/// a value multiplier to always apply to the bar's value when displaying it
-		[Tooltip("a value multiplier to always apply to the bar's value when displaying it")]
+        /// 막대를 표시할 때 막대의 값에 항상 적용할 값 승수
+        [Tooltip("막대를 표시할 때 막대의 값에 항상 적용할 값 승수")]
 		public float TextValueMultiplier = 1f;
-		/// the format in which the text should display
-		[Tooltip("the format in which the text should display")]
+        /// 텍스트가 표시되어야 하는 형식
+        [Tooltip("텍스트가 표시되어야 하는 형식")]
 		public string TextFormat = "{000}";
-		/// whether or not to display the total after the current value 
-		[Tooltip("whether or not to display the total after the current value")]
+        /// 현재 값 이후의 합계를 표시할지 여부
+        [Tooltip("현재 값 이후의 합계를 표시할지 여부")]
 		public bool DisplayTotal = false;
-		/// if DisplayTotal is true, the separator to put between the current value and the total
-		[Tooltip("if DisplayTotal is true, the separator to put between the current value and the total")]
+        /// DisplayTotal이 true인 경우 현재 값과 합계 사이에 넣을 구분 기호입니다.
+        [Tooltip("DisplayTotal이 true인 경우 현재 값과 합계 사이에 넣을 구분 기호입니다.")]
 		[MMCondition("DisplayTotal", true)]
 		public string TotalSeparator = " / ";
 
 		[MMInspectorGroup("Debug", true, 15)]
-		/// the value the bar will move to if you press the DebugSet button
-		[Tooltip("the value the bar will move to if you press the DebugSet button")]
+        /// DebugSet 버튼을 누르면 막대가 이동할 값
+        [Tooltip("DebugSet 버튼을 누르면 막대가 이동할 값")]
 		[Range(0f, 1f)] 
 		public float DebugNewTargetValue;
 
@@ -252,20 +252,20 @@ namespace MoreMountains.Tools
 		public bool Minus10PercentButton;
         
 		[MMInspectorGroup("Debug Read Only", true, 19)]
-		/// the current progress of the bar, ideally read only
-		[Tooltip("the current progress of the bar, ideally read only")]
+        /// 막대의 현재 진행 상황(이상적으로는 읽기 전용)
+        [Tooltip("막대의 현재 진행 상황(이상적으로는 읽기 전용)")]
 		[Range(0f,1f)]
 		public float BarProgress;
-		/// the current progress of the bar, ideally read only
-		[Tooltip("the current progress of the bar, ideally read only")]
+        /// 막대의 현재 진행 상황(이상적으로는 읽기 전용)
+        [Tooltip("막대의 현재 진행 상황(이상적으로는 읽기 전용)")]
 		[Range(0f,1f)]
 		public float BarTarget;
-		/// the current progress of the delayed bar increasing
-		[Tooltip("the current progress of the delayed bar increasing")]
+        /// 지연된 막대의 현재 진행 상황이 증가하고 있습니다.
+        [Tooltip("지연된 막대의 현재 진행 상황이 증가하고 있습니다.")]
 		[Range(0f,1f)]
 		public float DelayedBarIncreasingProgress;
-		/// the current progress of the delayed bar decreasing
-		[Tooltip("the current progress of the delayed bar decreasing")]
+        /// 지연된 막대의 현재 진행 상황이 감소하고 있습니다.
+        [Tooltip("지연된 막대의 현재 진행 상황이 감소하고 있습니다.")]
 		[Range(0f,1f)]
 		public float DelayedBarDecreasingProgress;
 

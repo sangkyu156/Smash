@@ -1,9 +1,4 @@
-using NPOI.SS.Formula.Functions;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
@@ -21,7 +16,9 @@ namespace MoreMountains.TopDownEngine
 
         float createTime = 0;
         float clearTime = 0;
-        int enemyCount = 0;
+        int curEnemyCount = 0;
+        int enemyKillCount = 0;
+        GameObject buff;
 
         private void Awake()
         {
@@ -32,7 +29,8 @@ namespace MoreMountains.TopDownEngine
         void Start()
         {
             clearTime = 0;
-            enemyCount = 0;
+            curEnemyCount = 0;
+            enemyKillCount = 0;
             string sceneName = SceneManager.GetActiveScene().name;
             if (sceneName == "Battlefield01" || sceneName == "Battlefield02" || sceneName == "Battlefield03" || sceneName == "Battlefield04" || sceneName == "Battlefield05")
             {
@@ -45,11 +43,18 @@ namespace MoreMountains.TopDownEngine
             createTime += Time.deltaTime;
             clearTime += Time.deltaTime;
 
-            if (createTime > 1f && enemyCount <= 35)
+            if (createTime > 1f && curEnemyCount <= 35)
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
                     SlimeSpawn();
+            }
+
+            //에너미 5마리 잡을때마다 20%확률로 랜덤하게 버프 생성
+            if (enemyKillCount % 5 == 0 && enemyKillCount != 0)
+            {
+                enemyKillCount = 0;
+                RandomBuffCreation();
             }
         }
 
@@ -59,9 +64,9 @@ namespace MoreMountains.TopDownEngine
             int randomNumber = Random.Range(0, 100);
             int randomNumber2 = Random.Range(0, 4);
 
-            if (randomNumber >= 0 && randomNumber <=  44) //45%
+            if (randomNumber >= 0 && randomNumber <= 44) //45%
             {
-                
+
                 switch (randomNumber2)
                 {
                     case 0:
@@ -127,7 +132,7 @@ namespace MoreMountains.TopDownEngine
         {
             //2번 돌맹이 생성 범위(z축을 7,8, ... , 31, 32 으로 정하고 그에따라 x축도 결정해준다.)
             int posZ = Random.Range(7, 33);
-            int posX = Random.Range((-posZ)+2, posZ-1);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
+            int posX = Random.Range((-posZ) + 2, posZ - 1);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
 
             GameObject barricadeRock_2 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_2.transform.position = new Vector3(posX, -1.2f, posZ);
@@ -147,7 +152,7 @@ namespace MoreMountains.TopDownEngine
         {
             //4번 돌맹이 생성 범위(z축을 -7,-8, ... , -31, -32 으로 정하고 그에따라 x축도 결정해준다.)
             int posZ = Random.Range(-7, -33);
-            int posX = Random.Range(posZ+3, (-posZ)-2);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
+            int posX = Random.Range(posZ + 3, (-posZ) - 2);//2,4 번 돌맹이는 1,3번의 교집합 부분을 생성하지 않게한다.
 
             GameObject barricadeRock_4 = Instantiate("Battlefield/Obstacles/Obstacles_Rock1", level.transform);
             barricadeRock_4.transform.position = new Vector3(posX, -1.2f, posZ);
@@ -180,24 +185,24 @@ namespace MoreMountains.TopDownEngine
             {
                 case 1: pos = new Vector3(player.transform.position.x + 2, 0, player.transform.position.z + 20); break;
                 case 2: pos = new Vector3(player.transform.position.x + 9, 0, player.transform.position.z + 18); break;
-                case 3: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z + 15);break;
+                case 3: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z + 15); break;
                 case 4: pos = new Vector3(player.transform.position.x + 18, 0, player.transform.position.z + 9); break;
                 case 5: pos = new Vector3(player.transform.position.x + 20, 0, player.transform.position.z + 2); break;
                 case 6: pos = new Vector3(player.transform.position.x + 20, 0, player.transform.position.z - 2); break;
                 case 7: pos = new Vector3(player.transform.position.x + 18, 0, player.transform.position.z - 9); break;
-                case 8: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z - 15);break;
+                case 8: pos = new Vector3(player.transform.position.x + 15, 0, player.transform.position.z - 15); break;
                 case 9: pos = new Vector3(player.transform.position.x + 9, 0, player.transform.position.z - 18); break;
-                case 10:pos = new Vector3(player.transform.position.x + 2, 0, player.transform.position.z - 20); break;
-                case 11:pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z - 20); break;
-                case 12:pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z - 18); break;
-                case 13:pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z - 15); break;
-                case 14:pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z - 9); break;
-                case 15:pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z - 2); break;
-                case 16:pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z + 2); break;
-                case 17:pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z + 9); break;
-                case 18:pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z + 15); break;
-                case 19:pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z + 18); break;
-                case 20:pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z + 20); break;
+                case 10: pos = new Vector3(player.transform.position.x + 2, 0, player.transform.position.z - 20); break;
+                case 11: pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z - 20); break;
+                case 12: pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z - 18); break;
+                case 13: pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z - 15); break;
+                case 14: pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z - 9); break;
+                case 15: pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z - 2); break;
+                case 16: pos = new Vector3(player.transform.position.x - 20, 0, player.transform.position.z + 2); break;
+                case 17: pos = new Vector3(player.transform.position.x - 18, 0, player.transform.position.z + 9); break;
+                case 18: pos = new Vector3(player.transform.position.x - 15, 0, player.transform.position.z + 15); break;
+                case 19: pos = new Vector3(player.transform.position.x - 9, 0, player.transform.position.z + 18); break;
+                case 20: pos = new Vector3(player.transform.position.x - 2, 0, player.transform.position.z + 20); break;
             }
 
             object_.transform.position = pos;
@@ -252,6 +257,28 @@ namespace MoreMountains.TopDownEngine
             clearSplash.GetComponent<ClearSplash>().RewardsPrint();
         }
 
+        void RandomBuffCreation()
+        {
+            int randomValue = Random.Range(1, 11);
+
+            if (randomValue <= 2)
+            {
+                int randomValue2 = Random.Range(1, 7);
+                switch (randomValue2)
+                {
+                    case 1: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 2: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 3: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 4: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 5: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 6: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                }
+
+                SetRandomPosition(buff);
+            }
+        }
+
+
         //↓오브젝트 생성 함수들
 
         //3번째 공격
@@ -268,7 +295,7 @@ namespace MoreMountains.TopDownEngine
         public void SlimeSpawn()
         {
             Slime slime = poolManager.GetFromPool<Slime>();
-            enemyCount++;
+            curEnemyCount++;
         }
 
         //↓오브젝트 회수 함수들
@@ -285,7 +312,8 @@ namespace MoreMountains.TopDownEngine
         public void ReturnPool(Slime clone)
         {
             poolManager.TakeToPool<Slime>(clone.idName, clone);
-            enemyCount--;
+            curEnemyCount--;
+            enemyKillCount++;
         }
     }
 }

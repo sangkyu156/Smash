@@ -76325,8 +76325,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 15
-  MaximumHealth: 15
+  InitialHealth: 80
+  MaximumHealth: 80
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 4680348834179073177}

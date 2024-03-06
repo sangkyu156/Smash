@@ -9,7 +9,7 @@ using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// An event triggered every time health values change, for other classes to listen to
+    /// 다른 클래스가 수신할 수 있도록 상태 값이 변경될 때마다 트리거되는 이벤트
     /// </summary>
     public struct HealthChangeEvent
 	{
@@ -30,138 +30,137 @@ namespace MoreMountains.TopDownEngine
 			MMEventManager.TriggerEvent(e);
 		}
 	}
-	
-	/// <summary>
-	/// This class manages the health of an object, pilots its potential health bar, handles what happens when it takes damage,
-	/// and what happens when it dies.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Core/Health")] 
+
+    /// <summary>
+    /// 이 클래스는 개체의 체력을 관리하고, 잠재적인 체력 바를 조종하며, 피해를 입을 때 일어나는 일과 죽을 때 일어나는 일을 처리합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Core/Health")] 
 	public class Health : MMMonoBehaviour
 	{
         [MMInspectorGroup("Bindings", true, 3)]
 
-		/// the model to disable (if set so)
-		[Tooltip("the model to disable (if set so)")]
+        /// 비활성화할 모델(그렇게 설정된 경우)
+        [Tooltip("비활성화할 모델(그렇게 설정된 경우)")]
 		public GameObject Model;
         public GameObject enemy;
 
         [MMInspectorGroup("Status", true, 29)]
 
-		/// the current health of the character
-		[MMReadOnly]
-		[Tooltip("the current health of the character")]
+        /// 캐릭터의 현재 체력
+        [MMReadOnly]
+		[Tooltip("캐릭터의 현재 체력")]
 		public float CurrentHealth ;
-		/// If this is true, this object can't take damage at this time
-		[MMReadOnly]
-		[Tooltip("If this is true, this object can't take damage at this time")]
+        /// 이것이 사실이라면 이 개체는 현재 피해를 입을 수 없습니다.
+        [MMReadOnly]
+		[Tooltip("이것이 사실이라면 이 개체는 현재 피해를 입을 수 없습니다.")]
 		public bool Invulnerable = false;	
 
 		[MMInspectorGroup("Health", true, 5)]
 
-		[MMInformation("Add this component to an object and it'll have health, will be able to get damaged and potentially die.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// the initial amount of health of the object
-		[Tooltip("the initial amount of health of the object")]
+		[MMInformation("이 구성 요소를 개체에 추가하면 체력이 생기고 손상을 입어 잠재적으로 죽을 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 객체의 초기 체력
+        [Tooltip("객체의 초기 체력")]
 		public float InitialHealth = 10;
-		/// the maximum amount of health of the object
-		[Tooltip("the maximum amount of health of the object")]
+        /// 개체의 최대 체력
+        [Tooltip("개체의 최대 체력")]
 		public float MaximumHealth = 10;
-		/// if this is true, health values will be reset everytime this character is enabled (usually at the start of a scene)
-		[Tooltip("if this is true, health values will be reset everytime this character is enabled (usually at the start of a scene)")]
+        /// 이것이 사실이라면 이 캐릭터가 활성화될 때마다(보통 장면이 시작될 때) 체력 값이 재설정됩니다.
+        [Tooltip("이것이 사실이라면 이 캐릭터가 활성화될 때마다(보통 장면이 시작될 때) 체력 값이 재설정됩니다.")]
 		public bool ResetHealthOnEnable = true;
 
 		[MMInspectorGroup("Damage", true, 6)]
 
-		[MMInformation("Here you can specify an effect and a sound FX to instantiate when the object gets damaged, and also how long the object should flicker when hit (only works for sprites).", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-		/// whether or not this Health object can be damaged 
-		[Tooltip("whether or not this Health object can be damaged")]
+		[MMInformation("여기서는 개체가 손상될 때 인스턴스화할 효과와 사운드 FX를 지정할 수 있으며, 개체가 충돌할 때 깜박이는 시간도 지정할 수 있습니다(스프라이트에만 작동).", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+        /// 이 Health 개체가 손상될 수 있는지 여부
+        [Tooltip("이 Health 개체가 손상될 수 있는지 여부")]
 		public bool ImmuneToDamage = false;
-		/// the feedback to play when getting damage
-		[Tooltip("the feedback to play when getting damage")]
+        /// 피해를 입었을 때 플레이할 피드백
+        [Tooltip("피해를 입었을 때 플레이할 피드백")]
 		public MMFeedbacks DamageMMFeedbacks;
-		/// if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases
-		[Tooltip("if this is true, the damage value will be passed to the MMFeedbacks as its Intensity parameter, letting you trigger more intense feedbacks as damage increases")]
+        /// 이것이 사실이라면 피해 값은 Intensity 매개변수로 MMFeedbacks에 전달되어 피해가 증가함에 따라 더욱 강렬한 피드백을 트리거할 수 있습니다.
+        [Tooltip("이것이 사실이라면 피해 값은 Intensity 매개변수로 MMFeedbacks에 전달되어 피해가 증가함에 따라 더욱 강렬한 피드백을 트리거할 수 있습니다.")]
 		public bool FeedbackIsProportionalToDamage = false;
-		/// if you set this to true, other objects damaging this one won't take any self damage
-		[Tooltip("if you set this to true, other objects damaging this one won't take any self damage")]
+        /// 이것을 true로 설정하면 이 객체에 피해를 주는 다른 객체는 자체 피해를 입지 않습니다.
+        [Tooltip("이것을 true로 설정하면 이 객체에 피해를 주는 다른 객체는 자체 피해를 입지 않습니다.")]
 		public bool PreventTakeSelfDamage = false;
 		
 		[MMInspectorGroup("Knockback", true, 63)]
-		
-		/// whether or not this object is immune to damage knockback
-		[Tooltip("whether or not this object is immune to damage knockback")]
+
+        /// 이 물체가 피해 넉백에 면역인지 여부
+        [Tooltip("이 물체가 피해 넉백에 면역인지 여부")]
 		public bool ImmuneToKnockback = false;
-		/// whether or not this object is immune to damage knockback if the damage received is zero
-		[Tooltip("whether or not this object is immune to damage knockback if the damage received is zero")]
+        /// 받은 피해가 0인 경우 이 개체가 피해 넉백에 면역인지 여부
+        [Tooltip("받은 피해가 0인 경우 이 개체가 피해 넉백에 면역인지 여부")]
 		public bool ImmuneToKnockbackIfZeroDamage = false;
-		/// a multiplier applied to the incoming knockback forces. 0 will cancel all knockback, 0.5 will cut it in half, 1 will have no effect, 2 will double the knockback force, etc
-		[Tooltip("a multiplier applied to the incoming knockback forces. 0 will cancel all knockback, 0.5 will cut it in half, 1 will have no effect, 2 will double the knockback force, etc")]
+        /// 들어오는 넉백 힘에 적용되는 승수입니다. 0은 모든 넉백을 취소하고, 0.5는 반으로 줄이며, 1은 효과가 없으며, 2는 넉백 힘을 두 배로 늘립니다.
+        [Tooltip("들어오는 넉백 힘에 적용되는 승수입니다. 0은 모든 넉백을 취소하고, 0.5는 반으로 줄이며, 1은 효과가 없으며, 2는 넉백 힘을 두 배로 늘립니다.")]
 		public float KnockbackForceMultiplier = 1f;
 
 		[MMInspectorGroup("Death", true, 53)]
 
-		[MMInformation("Here you can set an effect to instantiate when the object dies, a force to apply to it (topdown controller required), how many points to add to the game score, and where the character should respawn (for non-player characters only).", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-		/// whether or not this object should get destroyed on death
-		[Tooltip("whether or not this object should get destroyed on death")]
+		[MMInformation("여기서는 개체가 죽을 때 인스턴스화할 효과, 개체에 적용할 힘(하향식 컨트롤러 필요), 게임 점수에 추가할 포인트 수, 캐릭터가 다시 생성되어야 하는 위치(비플레이어 캐릭터에만 해당)를 설정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+        /// 이 개체가 사망 시 파괴되어야 하는지 여부
+        [Tooltip("이 개체가 사망 시 파괴되어야 하는지 여부")]
 		public bool DestroyOnDeath = true;
-		/// the time (in seconds) before the character is destroyed or disabled
-		[Tooltip("the time (in seconds) before the character is destroyed or disabled")]
+        /// 캐릭터가 파괴되거나 비활성화되기 전의 시간(초)
+        [Tooltip("캐릭터가 파괴되거나 비활성화되기 전의 시간(초)")]
 		public float DelayBeforeDestruction = 0f;
-		/// the points the player gets when the object's health reaches zero
-		[Tooltip("the points the player gets when the object's health reaches zero")]
+        /// 개체의 체력이 0에 도달할 때 플레이어가 얻는 포인트
+        [Tooltip("개체의 체력이 0에 도달할 때 플레이어가 얻는 포인트")]
 		public int PointsWhenDestroyed;
-		/// if this is set to false, the character will respawn at the location of its death, otherwise it'll be moved to its initial position (when the scene started)
-		[Tooltip("if this is set to false, the character will respawn at the location of its death, otherwise it'll be moved to its initial position (when the scene started)")]
+        /// false로 설정되면 캐릭터는 사망한 위치에서 다시 생성되고, 그렇지 않으면 초기 위치(장면이 시작될 때)로 이동됩니다.
+        [Tooltip("false로 설정되면 캐릭터는 사망한 위치에서 다시 생성되고, 그렇지 않으면 초기 위치(장면이 시작될 때)로 이동됩니다.")]
 		public bool RespawnAtInitialLocation = false;
-		/// if this is true, the controller will be disabled on death
-		[Tooltip("if this is true, the controller will be disabled on death")]
+        /// 이것이 사실이라면 컨트롤러는 사망 시 비활성화됩니다.
+        [Tooltip("이것이 사실이라면 컨트롤러는 사망 시 비활성화됩니다.")]
 		public bool DisableControllerOnDeath = true;
-		/// if this is true, the model will be disabled instantly on death (if a model has been set)
-		[Tooltip("if this is true, the model will be disabled instantly on death (if a model has been set)")]
+        /// 이것이 사실이라면, 사망 시 모델이 즉시 비활성화됩니다(모델이 설정된 경우).
+        [Tooltip("이것이 사실이라면, 사망 시 모델이 즉시 비활성화됩니다(모델이 설정된 경우).")]
 		public bool DisableModelOnDeath = true;
-		/// if this is true, collisions will be turned off when the character dies
-		[Tooltip("if this is true, collisions will be turned off when the character dies")]
+        /// 이것이 사실이라면 캐릭터가 죽을 때 충돌이 꺼질 것입니다.
+        [Tooltip("이것이 사실이라면 캐릭터가 죽을 때 충돌이 꺼질 것입니다.")]
 		public bool DisableCollisionsOnDeath = true;
-		/// if this is true, collisions will also be turned off on child colliders when the character dies
-		[Tooltip("if this is true, collisions will also be turned off on child colliders when the character dies")]
+        /// 이것이 사실이라면 캐릭터가 죽을 때 하위 충돌기에서도 충돌이 꺼집니다.
+        [Tooltip("이것이 사실이라면 캐릭터가 죽을 때 하위 충돌기에서도 충돌이 꺼집니다.")]
 		public bool DisableChildCollisionsOnDeath = false;
-		/// whether or not this object should change layer on death
-		[Tooltip("whether or not this object should change layer on death")]
+        /// 이 객체가 사망 시 레이어를 변경해야 하는지 여부
+        [Tooltip("이 객체가 사망 시 레이어를 변경해야 하는지 여부")]
 		public bool ChangeLayerOnDeath = false;
-		/// whether or not this object should change layer on death
-		[Tooltip("whether or not this object should change layer on death")]
+        /// 이 객체가 사망 시 레이어를 변경해야 하는지 여부
+        [Tooltip("이 객체가 사망 시 레이어를 변경해야 하는지 여부")]
 		public bool ChangeLayersRecursivelyOnDeath = false;
-		/// the layer we should move this character to on death
-		[Tooltip("the layer we should move this character to on death")]
+        /// 이 캐릭터가 죽을 때 이동해야 하는 레이어
+        [Tooltip("이 캐릭터가 죽을 때 이동해야 하는 레이어")]
 		public MMLayer LayerOnDeath;
-		/// the feedback to play when dying
-		[Tooltip("the feedback to play when dying")]
+        /// 죽을 때 플레이할 피드백
+        [Tooltip("죽을 때 플레이할 피드백")]
 		public MMFeedbacks DeathMMFeedbacks;
 
-		/// if this is true, color will be reset on revive
-		[Tooltip("if this is true, color will be reset on revive")]
+        /// 이것이 사실이라면 부활 시 색상이 재설정됩니다.
+        [Tooltip("이것이 사실이라면 부활 시 색상이 재설정됩니다.")]
 		public bool ResetColorOnRevive = true;
-		/// the name of the property on your renderer's shader that defines its color 
-		[Tooltip("the name of the property on your renderer's shader that defines its color")]
+        /// 색상을 정의하는 렌더러 셰이더의 속성 이름
+        [Tooltip("색상을 정의하는 렌더러 셰이더의 속성 이름")]
 		[MMCondition("ResetColorOnRevive", true)]
 		public string ColorMaterialPropertyName = "_Color";
-		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+        /// 이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.
+        [Tooltip("이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.")] 
 		public bool UseMaterialPropertyBlocks = false;
         
 		[MMInspectorGroup("Shared Health and Damage Resistance", true, 12)]
-		/// another Health component (usually on another character) towards which all health will be redirected
-		[Tooltip("another Health component (usually on another character) towards which all health will be redirected")]
+        /// 모든 건강이 리디렉션되는 다른 건강 구성 요소(일반적으로 다른 캐릭터)
+        [Tooltip("모든 건강이 리디렉션되는 다른 건강 구성 요소(일반적으로 다른 캐릭터)")]
 		public Health MasterHealth;
-		/// a DamageResistanceProcessor this Health will use to process damage when it's received
-		[Tooltip("a DamageResistanceProcessor this Health will use to process damage when it's received")]
+        /// 이 Health가 데미지를 받았을 때 처리하는 데 사용할 DamageResistanceProcessor
+        [Tooltip("이 Health가 데미지를 받았을 때 처리하는 데 사용할 DamageResistanceProcessor")]
 		public DamageResistanceProcessor TargetDamageResistanceProcessor;
 
 		[MMInspectorGroup("Animator", true, 14)]
-		/// the target animator to pass a Death animation parameter to. The Health component will try to auto bind this if left empty
-		[Tooltip("the target animator to pass a Death animation parameter to. The Health component will try to auto bind this if left empty")]
+        /// 죽음 애니메이션 매개변수를 전달할 대상 애니메이터입니다. 상태 구성 요소는 비어 있는 경우 자동 바인딩을 시도합니다.
+        [Tooltip("죽음 애니메이션 매개변수를 전달할 대상 애니메이터입니다. 상태 구성 요소는 비어 있는 경우 자동 바인딩을 시도합니다.")]
 		public Animator TargetAnimator;
-		/// if this is true, animator logs for the associated animator will be turned off to avoid potential spam
-		[Tooltip("if this is true, animator logs for the associated animator will be turned off to avoid potential spam")]
+        /// 이것이 사실인 경우 잠재적인 스팸을 방지하기 위해 연결된 애니메이터에 대한 애니메이터 로그가 꺼집니다.
+        [Tooltip("이것이 사실인 경우 잠재적인 스팸을 방지하기 위해 연결된 애니메이터에 대한 애니메이터 로그가 꺼집니다.")]
 		public bool DisableAnimatorLogs = true;
         
 		public float LastDamage { get; set; }
@@ -210,31 +209,31 @@ namespace MoreMountains.TopDownEngine
 		protected List<InterruptiblesDamageOverTimeCoroutine> _interruptiblesDamageOverTimeCoroutines;
 		protected List<InterruptiblesDamageOverTimeCoroutine> _damageOverTimeCoroutines;
 
-		#region Initialization
-		
-		/// <summary>
-		/// On Awake, we initialize our health
-		/// </summary>
-		protected virtual void Awake()
+        #region Initialization
+
+        /// <summary>
+        /// Awake에서는 건강을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
             Initialization();
 			InitializeCurrentHealth();
         }
 
-		/// <summary>
-		/// On Start we grab our animator
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작하면 애니메이터를 잡습니다.
+        /// </summary>
+        protected virtual void Start()
 		{
             thisTag = this.gameObject.tag;
             thisLayer = this.gameObject.layer;
             GrabAnimator();
 		}
-		
-		/// <summary>
-		/// Grabs useful components, enables damage and gets the inital color
-		/// </summary>
-		public virtual void Initialization()
+
+        /// <summary>
+        /// 유용한 구성 요소를 잡고 손상을 입히고 초기 색상을 얻습니다.
+        /// </summary>
+        public virtual void Initialization()
 		{
 			_character = this.gameObject.GetComponentInParent<Character>(); 
 
@@ -305,11 +304,11 @@ namespace MoreMountains.TopDownEngine
 			
 			DamageEnabled();
 		}
-		
-		/// <summary>
-		/// Grabs the target animator
-		/// </summary>
-		protected virtual void GrabAnimator()
+
+        /// <summary>
+        /// 대상 애니메이터를 잡습니다.
+        /// </summary>
+        protected virtual void GrabAnimator()
 		{
 			if (TargetAnimator == null)
 			{
@@ -322,10 +321,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Finds and binds an animator if possible
-		/// </summary>
-		protected virtual void BindAnimator()
+        /// <summary>
+        /// 가능하다면 애니메이터를 찾아 바인딩합니다.
+        /// </summary>
+        protected virtual void BindAnimator()
 		{
 			if (_character != null)
 			{
@@ -344,10 +343,10 @@ namespace MoreMountains.TopDownEngine
 			}    
 		}
 
-		/// <summary>
-		/// Stores the initial position for further use
-		/// </summary>
-		public virtual void StoreInitialPosition()
+        /// <summary>
+        /// 추가 사용을 위해 초기 위치를 저장합니다.
+        /// </summary>
+        public virtual void StoreInitialPosition()
 		{
 			_initialPosition = this.transform.position;
 		}
@@ -374,10 +373,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When the object is enabled (on respawn for example), we restore its initial health levels
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// 객체가 활성화되면(예를 들어 다시 생성될 때) 초기 체력 수준을 복원합니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			if (ResetHealthOnEnable)
 			{
@@ -389,11 +388,11 @@ namespace MoreMountains.TopDownEngine
 			}            
 			DamageEnabled();
 		}
-		
-		/// <summary>
-		/// On Disable, we prevent any delayed destruction from running
-		/// </summary>
-		protected virtual void OnDisable()
+
+        /// <summary>
+        /// 비활성화하면 지연된 파괴가 실행되는 것을 방지합니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			CancelInvoke();
 		}
@@ -528,7 +527,7 @@ namespace MoreMountains.TopDownEngine
 		}
 
         /// <summary>
-        /// Interrupts all damage over time, regardless of type
+        /// 유형에 관계없이 시간이 지남에 따라 모든 피해를 차단합니다. //시간이 지남에 따라 모든 피해 = 지속피해 즉, 지속피해를 끝낸다는 말임
         /// </summary>
         public virtual void InterruptAllDamageOverTime()
 		{
@@ -539,10 +538,10 @@ namespace MoreMountains.TopDownEngine
 			_interruptiblesDamageOverTimeCoroutines.Clear();
 		}
 
-		/// <summary>
-		/// Interrupts all damage over time, even the non interruptible ones (usually on death)
-		/// </summary>
-		public virtual void StopAllDamageOverTime()
+        /// <summary>
+        /// 방해할 수 없는 피해까지 포함하여 시간이 지남에 따라 모든 피해를 차단합니다(보통 사망 시). //시간이 지남에 따라 모든 피해 = 지속피해 즉, 지속피해를 끝낸다는 말임
+        /// </summary>
+        public virtual void StopAllDamageOverTime()
 		{
 			foreach (InterruptiblesDamageOverTimeCoroutine coroutine in _damageOverTimeCoroutines)
 			{
@@ -551,11 +550,11 @@ namespace MoreMountains.TopDownEngine
 			_damageOverTimeCoroutines.Clear();
 		}
 
-		/// <summary>
-		/// Interrupts all damage over time of the specified type
-		/// </summary>
-		/// <param name="damageType"></param>
-		public virtual void InterruptAllDamageOverTimeOfType(DamageType damageType)
+        /// <summary>
+        /// 지정된 유형의 시간이 지남에 따라 모든 피해를 차단합니다. //시간이 지남에 따라 모든 피해 = 지속피해 즉, 지속피해를 끝낸다는 말임
+        /// </summary>
+        /// <param name="damageType"></param>
+        public virtual void InterruptAllDamageOverTimeOfType(DamageType damageType)
 		{
 			foreach (InterruptiblesDamageOverTimeCoroutine coroutine in _interruptiblesDamageOverTimeCoroutines)
 			{
@@ -567,20 +566,20 @@ namespace MoreMountains.TopDownEngine
 			TargetDamageResistanceProcessor?.InterruptDamageOverTime(damageType);
 		}
 
-		/// <summary>
-		/// Applies damage over time, for the specified amount of repeats (which includes the first application of damage, makes it easier to do quick maths in the inspector, and at the specified interval).
-		/// Optionally you can decide that your damage is interruptible, in which case, calling InterruptAllDamageOverTime() will stop these from being applied, useful to cure poison for example.
-		/// </summary>
-		/// <param name="damage"></param>
-		/// <param name="instigator"></param>
-		/// <param name="flickerDuration"></param>
-		/// <param name="invincibilityDuration"></param>
-		/// <param name="damageDirection"></param>
-		/// <param name="typedDamages"></param>
-		/// <param name="amountOfRepeats"></param>
-		/// <param name="durationBetweenRepeats"></param>
-		/// <param name="interruptible"></param>
-		public virtual void DamageOverTime(float damage, GameObject instigator, float flickerDuration,
+        /// <summary>
+        /// 지정된 반복 횟수 동안 시간이 지남에 따라 손상을 적용합니다(첫 번째 손상 적용을 포함하여 검사기에서 지정된 간격으로 빠른 계산을 더 쉽게 수행할 수 있음).
+        /// 선택적으로 피해를 중단할 수 있는지 결정할 수 있습니다. 이 경우 InterruptAllDamageOverTime()을 호출하면 이러한 적용이 중단되며, 예를 들어 독을 치료하는 데 유용합니다.
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="instigator"></param>
+        /// <param name="flickerDuration"></param>
+        /// <param name="invincibilityDuration"></param>
+        /// <param name="damageDirection"></param>
+        /// <param name="typedDamages"></param>
+        /// <param name="amountOfRepeats"></param>
+        /// <param name="durationBetweenRepeats"></param>
+        /// <param name="interruptible"></param>
+        public virtual void DamageOverTime(float damage, GameObject instigator, float flickerDuration,
 			float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null,
 			int amountOfRepeats = 0, float durationBetweenRepeats = 1f, bool interruptible = true, DamageType damageType = null)
 		{
@@ -626,12 +625,12 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Returns the damage this health should take after processing potential resistances
-		/// </summary>
-		/// <param name="damage"></param>
-		/// <returns></returns>
-		public virtual float ComputeDamageOutput(float damage, List<TypedDamage> typedDamages = null, bool damageApplied = false)
+        /// <summary>
+        /// 잠재적 저항을 처리한 후 이 체력이 입어야 하는 피해를 반환합니다.
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <returns></returns>
+        public virtual float ComputeDamageOutput(float damage, List<TypedDamage> typedDamages = null, bool damageApplied = false)
 		{
 			if (Invulnerable || ImmuneToDamage)
 			{
@@ -639,8 +638,8 @@ namespace MoreMountains.TopDownEngine
 			}
 			
 			float totalDamage = 0f;
-			// we process our damage through our potential resistances
-			if (TargetDamageResistanceProcessor != null)
+            // 우리는 잠재적인 저항을 통해 피해를 처리합니다.
+            if (TargetDamageResistanceProcessor != null)
 			{
 				if (TargetDamageResistanceProcessor.isActiveAndEnabled)
 				{
@@ -661,11 +660,11 @@ namespace MoreMountains.TopDownEngine
 			return totalDamage;
 		}
 
-		/// <summary>
-		/// Goes through resistances and applies condition state changes if needed
-		/// </summary>
-		/// <param name="typedDamages"></param>
-		protected virtual void ComputeCharacterConditionStateChanges(List<TypedDamage> typedDamages)
+        /// <summary>
+        /// 저항을 통과하고 필요한 경우 조건 상태 변경을 적용합니다.
+        /// </summary>
+        /// <param name="typedDamages"></param>
+        protected virtual void ComputeCharacterConditionStateChanges(List<TypedDamage> typedDamages)
 		{
 			if ((typedDamages == null) || (_character == null))
 			{
@@ -694,11 +693,11 @@ namespace MoreMountains.TopDownEngine
 			
 		}
 
-		/// <summary>
-		/// Goes through the resistance list and applies movement multipliers if needed
-		/// </summary>
-		/// <param name="typedDamages"></param>
-		protected virtual void ComputeCharacterMovementMultipliers(List<TypedDamage> typedDamages)
+        /// <summary>
+        /// 저항 목록을 살펴보고 필요한 경우 이동 승수를 적용합니다.
+        /// </summary>
+        /// <param name="typedDamages"></param>
+        protected virtual void ComputeCharacterMovementMultipliers(List<TypedDamage> typedDamages)
 		{
 			if ((typedDamages == null) || (_character == null))
 			{
@@ -726,25 +725,25 @@ namespace MoreMountains.TopDownEngine
 				}
 			}
 		}
-		
-		/// <summary>
-		/// Determines a new knockback force by processing it through resistances
-		/// </summary>
-		/// <param name="knockbackForce"></param>
-		/// <param name="typedDamages"></param>
-		/// <returns></returns>
-		public virtual Vector3 ComputeKnockbackForce(Vector3 knockbackForce, List<TypedDamage> typedDamages = null)
+
+        /// <summary>
+        /// 저항을 통해 처리하여 새로운 넉백 힘을 결정합니다.
+        /// </summary>
+        /// <param name="knockbackForce"></param>
+        /// <param name="typedDamages"></param>
+        /// <returns></returns>
+        public virtual Vector3 ComputeKnockbackForce(Vector3 knockbackForce, List<TypedDamage> typedDamages = null)
 		{
 			return (TargetDamageResistanceProcessor == null) ? knockbackForce : TargetDamageResistanceProcessor.ProcessKnockbackForce(knockbackForce, typedDamages);;
 
 		}
 
-		/// <summary>
-		/// Returns true if this Health can get knockbacked, false otherwise
-		/// </summary>
-		/// <param name="typedDamages"></param>
-		/// <returns></returns>
-		public virtual bool CanGetKnockback(List<TypedDamage> typedDamages) 
+        /// <summary>
+        /// 이 체력이 밀려날 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        /// <param name="typedDamages"></param>
+        /// <returns></returns>
+        public virtual bool CanGetKnockback(List<TypedDamage> typedDamages) 
 		{
 			if (ImmuneToKnockback)
 			{
@@ -764,10 +763,10 @@ namespace MoreMountains.TopDownEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Kills the character, instantiates death effects, handles points, etc
-		/// </summary>
-		public virtual void Kill()
+        /// <summary>
+        /// 캐릭터를 죽이고, 사망 효과를 인스턴스화하고, 포인트를 처리하는 등의 작업을 수행합니다.
+        /// </summary>
+        public virtual void Kill()
 		{
 			if (ImmuneToDamage)
 			{
@@ -776,8 +775,8 @@ namespace MoreMountains.TopDownEngine
 	        
 			if (_character != null)
 			{
-				// we set its dead state to true
-				_character.ConditionState.ChangeState(CharacterStates.CharacterConditions.Dead);
+                // 우리는 죽은 상태를 true로 설정했습니다
+                _character.ConditionState.ChangeState(CharacterStates.CharacterConditions.Dead);
 				_character.Reset();
 
 				if (_character.CharacterType == Character.CharacterTypes.Player)
@@ -787,25 +786,25 @@ namespace MoreMountains.TopDownEngine
 			}
 			SetHealth(0);
 
-			// we prevent further damage
-			StopAllDamageOverTime();
+            // 추가 피해를 방지하겠습니다
+            StopAllDamageOverTime();
 			DamageDisabled();
 
 			DeathMMFeedbacks?.PlayFeedbacks(this.transform.position);
-            
-			// Adds points if needed.
-			if(PointsWhenDestroyed != 0)
+
+            // 필요한 경우 포인트를 추가합니다.
+            if (PointsWhenDestroyed != 0)
 			{
-				// we send a new points event for the GameManager to catch (and other classes that may listen to it too)
-				TopDownEnginePointEvent.Trigger(PointsMethods.Add, PointsWhenDestroyed);
+                // GameManager가 포착할 수 있는 새로운 포인트 이벤트(및 이를 수신할 수 있는 다른 클래스)를 보냅니다.
+                TopDownEnginePointEvent.Trigger(PointsMethods.Add, PointsWhenDestroyed);
 			}
 
 			if (TargetAnimator != null)
 			{
 				TargetAnimator.SetTrigger("Death");
 			}
-			// we make it ignore the collisions from now on
-			if (DisableCollisionsOnDeath)
+            // 이제부터 충돌을 무시하도록 만듭니다.
+            if (DisableCollisionsOnDeath)
 			{
 				if (_collider2D != null)
 				{
@@ -816,8 +815,8 @@ namespace MoreMountains.TopDownEngine
 					_collider3D.enabled = false;
 				}
 
-				// if we have a controller, removes collisions, restores parameters for a potential respawn, and applies a death force
-				if (_controller != null)
+                // 컨트롤러가 있는 경우 충돌을 제거하고 잠재적인 부활을 위한 매개변수를 복원하고 죽음의 힘을 적용합니다.
+                if (_controller != null)
 				{				
 					_controller.CollisionsOff();						
 				}
@@ -868,15 +867,15 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-				// finally we destroy the object
-				DestroyObject();	
+                // 마침내 우리는 그 물체를 파괴한다
+                DestroyObject();	
 			}
 		}
 
-		/// <summary>
-		/// Revive this object.
-		/// </summary>
-		public virtual void Revive()
+        /// <summary>
+        /// 이 개체를 되살리세요.
+        /// </summary>
+        public virtual void Revive()
 		{
 			if (!_initialized)
 			{
@@ -995,16 +994,16 @@ namespace MoreMountains.TopDownEngine
 			UpdateHealthBar(false);
 			HealthChangeEvent.Trigger(this, newValue);
 		}
-		
-		/// <summary>
-		/// Called when the character gets health (from a stimpack for example)
-		/// </summary>
-		/// <param name="health">The health the character gets.</param>
-		/// <param name="instigator">The thing that gives the character health.</param>
-		public virtual void ReceiveHealth(float health,GameObject instigator)
+
+        /// <summary>
+        /// 캐릭터가 체력을 얻을 때 호출됩니다(예: a stimpack for example에서).
+        /// </summary>
+        /// <param name="health">캐릭터가 얻는 건강.</param>
+        /// <param name="instigator">캐릭터에게 건강을 주는 것.</param>
+        public virtual void ReceiveHealth(float health,GameObject instigator)
 		{
-			// this function adds health to the character's Health and prevents it to go above MaxHealth.
-			if (MasterHealth != null)
+            // 이 기능은 캐릭터의 체력에 체력을 추가하고 최대 체력(MaxHealth)을 초과하는 것을 방지합니다.
+            if (MasterHealth != null)
 			{
 				MasterHealth.SetHealth(Mathf.Min (CurrentHealth + health,MaximumHealth));	
 			}
@@ -1014,11 +1013,11 @@ namespace MoreMountains.TopDownEngine
 			}
 			UpdateHealthBar(true);
 		}
-		
-		/// <summary>
-		/// Resets the character's health to its max value
-		/// </summary>
-		public virtual void ResetHealthToMaxHealth()
+
+        /// <summary>
+        /// 캐릭터의 체력을 최대값으로 재설정합니다.
+        /// </summary>
+        public virtual void ResetHealthToMaxHealth()
 		{
 			SetHealth(MaximumHealth);
 		}
@@ -1049,31 +1048,54 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		#endregion
-		
-		#region DamageDisablingAPIs
+		//최대체력을 변경합니다.
+		public virtual void UpdateMaxHealth(float healthValue, bool plus)
+		{
+			if(plus)
+			{
+				MaximumHealth += healthValue;
+				ReceiveHealth(healthValue, null);
+            }
+			else
+			{
+				MaximumHealth -= healthValue;
+				if (MaximumHealth <= 0)
+					MaximumHealth = 1;
+			}
+		}
 
-		/// <summary>
-		/// Prevents the character from taking any damage
-		/// </summary>
-		public virtual void DamageDisabled()
+        #endregion
+
+        #region DamageDisablingAPIs
+
+        /// <summary>
+        /// 캐릭터가 피해를 입지 않도록 방지
+        /// </summary>
+        public virtual void DamageDisabled()
 		{
 			Invulnerable = true;
 		}
 
-		/// <summary>
-		/// Allows the character to take damage
-		/// </summary>
-		public virtual void DamageEnabled()
+        //캐릭터가 파라미터(초) 동안 피해를 입지 않습니다. 파라미터(초)이후에는 다시 피해를 입습니다.
+        public virtual void DamageDisabled(float invincibilityTime_)
+        {
+            Invulnerable = true;
+			StartCoroutine(DamageEnabled(invincibilityTime_));
+        }
+
+        /// <summary>
+        /// 캐릭터가 피해를 입을 수 있게 해줍니다.
+        /// </summary>
+        public virtual void DamageEnabled()
 		{
 			Invulnerable = false;
 		}
 
-		/// <summary>
-		/// makes the character able to take damage again after the specified delay
-		/// </summary>
-		/// <returns>The layer collision.</returns>
-		public virtual IEnumerator DamageEnabled(float delay)
+        /// <summary>
+        /// 캐릭터가 지정된 지연 후에 다시 피해를 입을 수 있도록 합니다.
+        /// </summary>
+        /// <returns>The layer collision.</returns>
+        public virtual IEnumerator DamageEnabled(float delay)
 		{
 			yield return new WaitForSeconds (delay);
 			Invulnerable = false;

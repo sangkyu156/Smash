@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// The 3D version of the WeaponAutoAim, meant to be used on objects equipped with a WeaponAim3D.
-	/// It'll detect targets within the defined radius, pick the closest, and force the WeaponAim component to aim at them if a target is found
-	/// </summary>
-	[RequireComponent(typeof(WeaponAim3D))]
+    /// <summary>
+    /// WeaponAutoAim의 3D 버전으로, WeaponAim3D가 장착된 개체에 사용됩니다.
+    /// 정의된 반경 내의 대상을 감지하고, 가장 가까운 대상을 선택하고, 대상이 발견되면 WeaponAim 구성 요소가 해당 대상을 조준하도록 강제합니다.
+    /// </summary>
+    [RequireComponent(typeof(WeaponAim3D))]
 	[AddComponentMenu("TopDown Engine/Weapons/Weapon Auto Aim 3D")]
 	public class WeaponAutoAim3D : WeaponAutoAim
 	{

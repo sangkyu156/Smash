@@ -80,15 +80,18 @@ public class ClearSplash : MonoBehaviour
         }
     }
 
-    public void GoToVillage()
+    public void GoToVillage_Clear()
     {
         GameManager.Instance.stage = Define.Stage.Stage00;
+        LevelManager.Instance.isClear = true;
         DOTweenOff();
         LevelManager.Instance.GotoLevel("Village");
     }
 
-    public void GoToRestart()
+
+    public void GoToRestart_Clear()
     {
+        LevelManager.Instance.isClear = true;
         DOTweenOff();
         LevelManager.Instance.GotoLevel(SceneManager.GetActiveScene().name);
     }

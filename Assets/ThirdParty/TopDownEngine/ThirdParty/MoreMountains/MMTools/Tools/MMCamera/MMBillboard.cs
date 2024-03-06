@@ -4,34 +4,34 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an object (usually a sprite) and it'll face the camera at all times
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Camera/MMBillboard")]
+    /// <summary>
+    /// 이 클래스를 객체(보통 스프라이트)에 추가하면 항상 카메라를 향하게 됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Camera/MMBillboard")]
 	public class MMBillboard : MonoBehaviour
 	{
-		/// the camera we're facing
-		public Camera MainCamera { get; set; }
-		/// whether or not this object should automatically grab a camera on start
-		[Tooltip("whether or not this object should automatically grab a camera on start")]
+        /// 우리가 마주하고 있는 카메라
+        public Camera MainCamera { get; set; }
+        /// 이 객체가 시작 시 자동으로 카메라를 잡아야 하는지 여부
+        [Tooltip("이 객체가 시작 시 자동으로 카메라를 잡아야 하는지 여부")]
 		public bool GrabMainCameraOnStart = true;
-		/// whether or not to nest this object below a parent container
-		[Tooltip("whether or not to nest this object below a parent container")]
+        /// 이 객체를 상위 컨테이너 아래에 중첩할지 여부
+        [Tooltip("이 객체를 상위 컨테이너 아래에 중첩할지 여부")]
 		public bool NestObject = true;
-		/// the Vector3 to offset the look at direction by
-		[Tooltip("the Vector3 to offset the look at direction by")]
+        /// Vector3을 사용하여 방향을 바라보는 방향을 오프셋합니다.
+        [Tooltip("Vector3을 사용하여 방향을 바라보는 방향을 오프셋합니다.")]
 		public Vector3 OffsetDirection = Vector3.back;
-		/// the Vector3 to consider as "world up"
-		[Tooltip("the Vector3 to consider as 'world up'")] 
+        /// "월드 업"으로 간주할 Vector3
+        [Tooltip("\"월드 업\"으로 간주할 Vector3")] 
 		public Vector3 Up = Vector3.up;
 
 		protected GameObject _parentContainer;
 		private Transform _transform;
 
-		/// <summary>
-		/// On awake we grab a camera if needed, and nest our object
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// 깨어 있을 때 필요한 경우 카메라를 잡고 개체를 중첩합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			_transform = transform;
 
@@ -49,10 +49,10 @@ namespace MoreMountains.Tools
 			}                
 		}
 
-		/// <summary>
-		/// Nests this object below a parent container
-		/// </summary>
-		protected virtual void NestThisObject()
+        /// <summary>
+        /// 이 개체를 상위 컨테이너 아래에 중첩합니다.
+        /// </summary>
+        protected virtual void NestThisObject()
 		{
 			_parentContainer = new GameObject();
 			SceneManager.MoveGameObjectToScene(_parentContainer, this.gameObject.scene);
@@ -61,18 +61,18 @@ namespace MoreMountains.Tools
 			transform.SetParent(_parentContainer.transform);
 		}
 
-		/// <summary>
-		/// Grabs the main camera.
-		/// </summary>
-		protected virtual void GrabMainCamera()
+        /// <summary>
+        /// 메인 카메라를 잡습니다.
+        /// </summary>
+        protected virtual void GrabMainCamera()
 		{
 			MainCamera = Camera.main;
 		}
 
-		/// <summary>
-		/// On update, we change our parent container's rotation to face the camera
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 업데이트 시 상위 컨테이너의 회전이 카메라를 향하도록 변경합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			if (NestObject)
 			{

@@ -132,9 +132,6 @@ namespace MoreMountains.InventoryEngine
             return null;
         }
 
-        //테스트
-        public InventoryItem StoreItem;
-
         //내가 만든 변수
         public TextMeshProUGUI playerGold;
         public GameObject ParentPreviewObjects;
@@ -168,6 +165,8 @@ namespace MoreMountains.InventoryEngine
 
             if (PlayerID == "NPC1")
                 StoreItemSeting();
+
+            QuickSlotsReset();
         }
 
         /// <summary>
@@ -1102,6 +1101,13 @@ namespace MoreMountains.InventoryEngine
                     AddItem(ItemsToInclude, 1);
                 }
             }
+        }
+
+        //퀵슬롯 아이템 전부 삭제
+        public void QuickSlotsReset()
+        {
+            if (PlayerID == "PlayerQuickSlots")
+                EmptyInventory();
         }
 
         /// <summary>

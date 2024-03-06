@@ -11,29 +11,29 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDistanceToTarget")]
 	public class AIDecisionDistanceToTarget : AIDecision
 	{
-		/// The possible comparison modes
-		public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan }
-		/// the comparison mode
-		[Tooltip("the comparison mode")]
+        /// 가능한 비교 모드
+        public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan }//엄격히낮음, 보다 낮은, 같음, 보다 큼, 엄밀히 말하면 보다 큼
+        /// 비교 모드
+        [Tooltip("비교 모드")]
 		public ComparisonModes ComparisonMode = ComparisonModes.GreaterThan;
-		/// the distance to compare with
-		[Tooltip("the distance to compare with")]
+        /// 비교할 거리
+        [Tooltip("비교할 거리")]
 		public float Distance;
-        
-		/// <summary>
-		/// On Decide we check our distance to the Target
-		/// </summary>
-		/// <returns></returns>
-		public override bool Decide()
+
+        /// <summary>
+        /// Decide에서 목표까지의 거리를 확인합니다.
+        /// </summary>
+        /// <returns></returns>
+        public override bool Decide()
 		{
 			return EvaluateDistance();
 		}
 
-		/// <summary>
-		/// Returns true if the distance conditions are met
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool EvaluateDistance()
+        /// <summary>
+        /// 거리 조건이 충족되면 true를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool EvaluateDistance()
 		{
 			if (_brain.Target == null)
 			{

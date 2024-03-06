@@ -6,7 +6,8 @@ using MoreMountains.Tools;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// 현재 장착된 무기를 사용하여 사격하는 액션. 무기가 자동 모드인 경우 상태를 종료할 때까지 사격하고 세미 오토 모드에서는 한 번만 사격합니다. 선택적으로 캐릭터가 목표물을 향해(좌/우) 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
+    /// 현재 장착된 무기를 사용하여 사격하는 액션. 무기가 자동 모드인 경우 상태를 종료할 때까지 사격하고 세미 오토 모드에서는 한 번만 사격합니다. 
+	/// 선택적으로 캐릭터가 목표물을 향해(좌/우) 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
     /// </summary>
     [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot3D")]
 	//[RequireComponent(typeof(CharacterOrientation3D))]
@@ -15,23 +16,23 @@ namespace MoreMountains.TopDownEngine
 	{
 		public enum AimOrigins { Transform, SpawnPosition }
         
-		[Header("Binding")] 
-		/// the CharacterHandleWeapon ability this AI action should pilot. If left blank, the system will grab the first one it finds.
-		[Tooltip("the CharacterHandleWeapon ability this AI action should pilot. If left blank, the system will grab the first one it finds.")]
+		[Header("Binding")]
+        /// 이 AI 작업이 조종해야 하는 CharacterHandleWeapon 능력입니다. 공백으로 두면 시스템은 가장 먼저 찾은 항목을 가져옵니다.
+        [Tooltip("이 AI 작업이 조종해야 하는 CharacterHandleWeapon 능력입니다. 공백으로 두면 시스템은 가장 먼저 찾은 항목을 가져옵니다.")]
 		public CharacterHandleWeapon TargetHandleWeaponAbility;
         
 		[Header("Behaviour")]
-		/// if true the Character will aim at the target when shooting
-		[Tooltip("if true the Character will aim at the target when shooting")]
+        /// true인 경우 캐릭터는 총을 쏠 때 대상을 조준합니다.
+        [Tooltip("true인 경우 캐릭터는 총을 쏠 때 대상을 조준합니다.")]
 		public bool AimAtTarget = true;
-		/// the point to consider as the aim origin
-		[Tooltip("the point to consider as the aim origin")]
+        /// 목표 원점으로 간주하는 지점
+        [Tooltip("목표 원점으로 간주하는 지점")]
 		public AimOrigins AimOrigin = AimOrigins.Transform;
-		/// an offset to apply to the aim (useful to aim at the head/torso/etc automatically)
-		[Tooltip("an offset to apply to the aim (useful to aim at the head/torso/etc automatically)")]
+        /// 조준에 적용할 오프셋(머리/몸통 등을 자동으로 조준하는 데 유용함)
+        [Tooltip("조준에 적용할 오프셋(머리/몸통 등을 자동으로 조준하는 데 유용함)")]
 		public Vector3 ShootOffset;
-		/// if this is set to true, vertical aim will be locked to remain horizontal
-		[Tooltip("if this is set to true, vertical aim will be locked to remain horizontal")]
+        /// 이것이 true로 설정되면 수직 조준이 수평을 유지하도록 잠깁니다.
+        [Tooltip("이것이 true로 설정되면 수직 조준이 수평을 유지하도록 잠깁니다.")]
 		public bool LockVerticalAim = false;
 
 		protected CharacterOrientation3D _orientation3D;
@@ -43,10 +44,10 @@ namespace MoreMountains.TopDownEngine
 		protected bool _shooting = false;
 		protected Weapon _targetWeapon;
 
-		/// <summary>
-		/// On init we grab our CharacterHandleWeapon ability
-		/// </summary>
-		public override void Initialization()
+        /// <summary>
+        /// 초기화 시 CharacterHandleWeapon 기능을 가져옵니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();
@@ -58,20 +59,20 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On PerformAction we face and aim if needed, and we shoot
-		/// </summary>
-		public override void PerformAction()
+        /// <summary>
+        /// PerformAction에서는 필요한 경우 정면을 바라보고 조준한 다음 촬영합니다.
+        /// </summary>
+        public override void PerformAction()
 		{
 			MakeChangesToTheWeapon();
 			TestAimAtTarget();
 			Shoot();
 		}
 
-		/// <summary>
-		/// Makes changes to the weapon to ensure it works ok with AI scripts
-		/// </summary>
-		protected virtual void MakeChangesToTheWeapon()
+        /// <summary>
+        /// AI 스크립트와 잘 작동하도록 무기를 변경합니다.
+        /// </summary>
+        protected virtual void MakeChangesToTheWeapon()
 		{
 			if (TargetHandleWeaponAbility.CurrentWeapon != null)
 			{
@@ -79,10 +80,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Sets the current aim if needed
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 필요한 경우 현재 목표를 설정합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			if (TargetHandleWeaponAbility.CurrentWeapon != null)
 			{
@@ -103,11 +104,11 @@ namespace MoreMountains.TopDownEngine
 				}
 			}
 		}
-        
-		/// <summary>
-		/// Aims at the target if required
-		/// </summary>
-		protected virtual void TestAimAtTarget()
+
+        /// <summary>
+        /// 필요한 경우 목표물을 겨냥합니다.
+        /// </summary>
+        protected virtual void TestAimAtTarget()
 		{
 			if (!AimAtTarget || (_brain.Target == null))
 			{
@@ -173,10 +174,10 @@ namespace MoreMountains.TopDownEngine
 			_projectileWeapon = TargetHandleWeaponAbility.CurrentWeapon.gameObject.MMGetComponentNoAlloc<ProjectileWeapon>();
         }
 
-		/// <summary>
-		/// When exiting the state we make sure we're not shooting anymore
-		/// </summary>
-		public override void OnExitState()
+        /// <summary>
+        /// 상태를 종료할 때 더 이상 총격을 가하지 않는지 확인합니다.
+        /// </summary>
+        public override void OnExitState()
 		{
 			base.OnExitState();
 			if (TargetHandleWeaponAbility != null)

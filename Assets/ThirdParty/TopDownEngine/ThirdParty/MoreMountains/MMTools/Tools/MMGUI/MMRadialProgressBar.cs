@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a radial image and it'll allow you to control its fill amount
-	/// This is a legacy class, and it's recommended to use MMProgressBar instead, it'll provide the same functionality
-	/// (make sure you pick FillAmount as the FillMode)
-	/// and much more options, such as delayed bars, events, bump, and more!
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/MMRadialProgressBar")]
+    /// <summary>
+    /// 이 클래스를 방사형 이미지에 추가하면 채우기 양을 제어할 수 있습니다. 
+	/// 이것은 레거시 클래스이며 대신 MMProgressBar를 사용하는 것이 좋습니다. 
+	/// 동일한 기능을 제공합니다(FillMode로 FillAmount를 선택해야 합니다). 
+	/// 지연된 막대, 이벤트, 범프 등과 같은 훨씬 더 많은 옵션!
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/MMRadialProgressBar")]
 	public class MMRadialProgressBar : MonoBehaviour 
 	{
 		/// the start fill amount value 

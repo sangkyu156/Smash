@@ -111,6 +111,9 @@ namespace MoreMountains.TopDownEngine
 		protected Collider _collider;
 		protected Vector3 _initialSpawnPointPosition;
 
+		//내가만든 변수
+		public bool isClear = false;
+
         /// <summary>
         /// Awake시 플레이어를 인스턴스화합니다.
         /// </summary>
@@ -126,7 +129,8 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void Start()
 		{
-			StartCoroutine(InitializationCoroutine());
+			isClear = false;
+            StartCoroutine(InitializationCoroutine());
 		}
 
 		protected virtual IEnumerator InitializationCoroutine()
@@ -328,8 +332,9 @@ namespace MoreMountains.TopDownEngine
         public virtual void TriggerEndLevelEvents()
 		{
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.LevelEnd, null);
-			MMGameEvent.Trigger("Save");
-		}
+			if(isClear == true)
+                MMGameEvent.Trigger("Save");
+        }
 
         /// <summary>
         /// 잠시 기다린 후 지정된 레벨을 로드합니다.

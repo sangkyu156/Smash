@@ -9,18 +9,13 @@ using MoreMountains.Tools;
 public class StagePopup : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI missionText;
+    public TextMeshProUGUI missionText; //이걸 없애고 에너미 사진이랑 몇kill해야하는지 나와야함
 
     void Start()
     {
         Time.timeScale = 0f;
 
         SetText();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void PopupClose()
@@ -44,8 +39,6 @@ public class StagePopup : MonoBehaviour
             case Define.Stage.Stage09: titleText.text = TextUtil.GetText("game:popup:stagetitle9"); break;
             case Define.Stage.Stage10: titleText.text = TextUtil.GetText("game:popup:stagetitle10"); break;
         }
-
-        missionText.text = TextUtil.GetText("game:popup:stagemesstion1");
     }
 
     public void GotoStage()
@@ -61,7 +54,7 @@ public class StagePopup : MonoBehaviour
             case Define.Stage.Stage07: break;
             case Define.Stage.Stage08: break;
             case Define.Stage.Stage09: break;
-            case Define.Stage.Stage10:  break;
+            case Define.Stage.Stage10: break;
         }
     }
 }
