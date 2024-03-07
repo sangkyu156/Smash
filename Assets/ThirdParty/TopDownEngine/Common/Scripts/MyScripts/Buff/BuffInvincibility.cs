@@ -13,6 +13,7 @@ public class BuffInvincibility : MonoBehaviour
             invincibilityTime = 5;
 
             other.GetComponent<Health>().DamageDisabled(invincibilityTime);
+            CreateManager.Instance.BuffInvincibilityEffectStart(invincibilityTime);
 
             GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffInvincibilityEffect");
             effect.transform.position = other.transform.position;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,8 +17,8 @@ namespace MoreMountains.TopDownEngine
 
         float createTime = 0;
         float clearTime = 0;
-        int curEnemyCount = 0;
-        int enemyKillCount = 0;
+        int curEnemyCount = 0;//현재 필드에 나와있는 에너미 숫자
+        int enemyKillCount = 0;//에너미 죽일때 올라가는 숫자 (5마리 죽이면 다시 0으로됨)
         GameObject buff;
 
         private void Awake()
@@ -270,7 +271,7 @@ namespace MoreMountains.TopDownEngine
                     case 2: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
                     case 3: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
                     case 4: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
-                    case 5: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 5: buff = Instantiate("Battlefield/Buff/BuffSpeedup"); break;
                     case 6: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
                 }
 
@@ -278,6 +279,36 @@ namespace MoreMountains.TopDownEngine
             }
         }
 
+        /// <summary>
+        /// 무적 버프먹으면 BuffInvincibility 스크립트에서 호출하는 함수
+        /// </summary>
+        /// <param name="time"></param>
+        public void BuffInvincibilityEffectStart(float time)
+        {
+            GameObject effect = Instantiate("Battlefield/Buff/BuffInvincibilityPlayer",player.transform);
+
+            StartCoroutine(ObjectDestructionOverTime(effect, time));
+        }
+
+        /// <summary>
+        /// 이동속도 증가 버프를 먹으면 BuffSpeedup 스크립트에서 호출하는 함수
+        /// </summary>
+        /// <param name="time"></param>
+        public void BuffSpeedupEffectStart(float time)
+        {
+            GameObject effect = Instantiate("Battlefield/Buff/PlayerMoveTrail", player.transform);
+
+            StartCoroutine(ObjectDestructionOverTime(effect, time));
+        }
+
+        /// <summary>
+        /// 매개변수로 받은 오브젝트, 시간에 따라 시간이 지나면 오브젝트 파괴하는 함수
+        /// </summary>
+        public IEnumerator ObjectDestructionOverTime(GameObject oj,float time)
+        {
+            yield return new WaitForSeconds(time);
+            Destroy(oj);
+        }
 
         //↓오브젝트 생성 함수들
 

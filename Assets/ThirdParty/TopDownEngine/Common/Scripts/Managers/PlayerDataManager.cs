@@ -12,7 +12,7 @@ public class PlayerDataManager : MonoBehaviour
         Holy, Ice
     }
 
-    public int CurPlayerGold {  get; private set; }
+    public int CurPlayerGold { get; private set; }
     public Inventory inventory;
     public ThirdAttack curThirdAttack = ThirdAttack.Holy;
 
@@ -21,7 +21,7 @@ public class PlayerDataManager : MonoBehaviour
         PlayerSetting();
 
         //파일 있는지 체크하고(해당 컴퓨터에서 처음 실행하는지 확인하고) 파일이 있으면 로드하고 없으면 초기값 넣어서 저장하고 불러온다
-        if(GameManager.Instance.stage == Define.Stage.Stage00)
+        if (GameManager.Instance.stage == Define.Stage.Stage00)
         {
             if (ES3.FileExists())
             {
@@ -80,7 +80,7 @@ public class PlayerDataManager : MonoBehaviour
     void PlayerSetting()
     {
         GameObject gameManager_ = GameObject.FindGameObjectWithTag("GameManager");
-        if(gameManager_.GetComponent<GameManager>().playerThirdAttack == string.Empty)
+        if (gameManager_.GetComponent<GameManager>().playerThirdAttack == string.Empty)
             gameManager_.GetComponent<GameManager>().playerThirdAttack = curThirdAttack.ToString();
         gameManager_.GetComponent<GameManager>().playerThirdAttack = curThirdAttack.ToString();
     }

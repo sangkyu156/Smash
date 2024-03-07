@@ -298,6 +298,7 @@ namespace MoreMountains.Tools
 		protected bool _isForegroundImageNotNull;
 		protected bool _isPercentageTextNotNull;
 		protected bool _isPercentageTextMeshProNotNull;
+		string healthText;
 
 		#region PUBLIC_API
         
@@ -404,7 +405,8 @@ namespace MoreMountains.Tools
 				SetBar(currentValue, minValue, maxValue);
 			}
 
-			UpdateText();
+			healthText = currentValue.ToString() + " / " + maxValue.ToString();
+            UpdateText(healthText);
 		}
 
 		/// <summary>
@@ -576,11 +578,35 @@ namespace MoreMountains.Tools
 			}
 			#endif
 		}
-        
+
 		/// <summary>
-		/// On Update we update our bars
+		/// string 변수를 받아와서 받아온 정보를 바탕으로 택스트표시
 		/// </summary>
-		protected virtual IEnumerator UpdateBarsCo()
+        protected virtual void UpdateText(string text)
+        {
+			_updatedText = text;
+			Debug.Log("어디서 호출됨?");
+            if (DisplayTotal)
+            {
+                _updatedText += TotalSeparator + (TextValueMultiplier).ToString(TextFormat);
+            }
+            _updatedText += TextSuffix;
+            if (_isPercentageTextNotNull)
+            {
+                PercentageText.text = _updatedText;
+            }
+#if MM_TEXTMESHPRO
+            if (_isPercentageTextMeshProNotNull)
+            {
+                PercentageTextMeshPro.text = _updatedText;
+            }
+#endif
+        }
+
+        /// <summary>
+        /// On Update we update our bars
+        /// </summary>
+        protected virtual IEnumerator UpdateBarsCo()
 		{
 			while (_coroutineShouldRun)
 			{
