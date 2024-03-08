@@ -14,31 +14,24 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
     public TextMeshProUGUI quantity_Text2;
     public TextMeshProUGUI playerGold;
     public TextMeshProUGUI playerGold2;
-    public PlayerDataManager playerData;
     InventoryItem curItem;
 
 
     public int quantity = 1;
     int curPlayerGold;
 
-    private void Start()
-    {
-        if (playerData == null)
-            playerData = GameObject.FindGameObjectWithTag("PlayerDataManager").GetComponent<PlayerDataManager>();
-    }
-
     public void SetPlayerGold()
     {
         if(GameManager.Instance.stage == Define.Stage.Stage00)
         {
-            playerGold.text = playerData.CurPlayerGold.ToString();
-            playerGold2.text = playerData.CurPlayerGold.ToString();
+            playerGold.text = PlayerDataManager.GetCurPlayerGold().ToString();
+            playerGold2.text = PlayerDataManager.GetCurPlayerGold().ToString();
             quantity = 1;
             SetPriceAndQuantity_Buy();
             SetPriceAndQuantity_Sell();
         }
         else
-            playerGold2.text = playerData.CurPlayerGold.ToString();
+            playerGold2.text = PlayerDataManager.GetCurPlayerGold().ToString();
     }
 
     public int GetPlayerGold()
@@ -160,7 +153,7 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
                 if (inventoryEvent.EventItem != null)
                 {
                     curItem = inventoryEvent.EventItem;
-                    curPlayerGold = playerData.CurPlayerGold;
+                    curPlayerGold = PlayerDataManager.GetCurPlayerGold();
                     quantity = 1;
                     if (GameManager.Instance.stage == Define.Stage.Stage00)
                     {

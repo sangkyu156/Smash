@@ -195,7 +195,6 @@ namespace MoreMountains.TopDownEngine
 		public Transform skillPostion;
 		public Transform uiCanvas;
         public Define.Stage stage = Define.Stage.Stage00;
-		public string playerThirdAttack = string.Empty;
 
         ResourceManager _resource = new ResourceManager();
 
@@ -207,6 +206,8 @@ namespace MoreMountains.TopDownEngine
         protected override void Awake()
 		{
 			base.Awake ();
+			//PlayerDataManager.PlayerSetting();
+			PlayerDataManager.TEST();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
         }
 
@@ -599,6 +600,12 @@ namespace MoreMountains.TopDownEngine
 		public void SetCurrentStage(Define.Stage stage_)
 		{
             stage = stage_;
+        }
+
+		//플레이어 정보 저장하기
+		void SetPlayerInfo()
+		{
+
         }
     }
 }

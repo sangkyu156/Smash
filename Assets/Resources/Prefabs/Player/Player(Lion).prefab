@@ -19996,7 +19996,7 @@ GameObject:
   - component: {fileID: 3867546452035018530}
   m_Layer: 0
   m_Name: Sword01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20251,7 +20251,7 @@ GameObject:
   - component: {fileID: 1379677362856723132}
   m_Layer: 0
   m_Name: SwordSlashThinBlue
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39824,7 +39824,7 @@ GameObject:
   - component: {fileID: 1578825569768780601}
   m_Layer: 0
   m_Name: Sword06
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39949,7 +39949,7 @@ GameObject:
   - component: {fileID: 4213331478802777409}
   m_Layer: 0
   m_Name: root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40017,7 +40017,7 @@ GameObject:
   - component: {fileID: 3229617677333648669}
   m_Layer: 0
   m_Name: Sword03
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50206,7 +50206,7 @@ GameObject:
   - component: {fileID: 6506215931446983938}
   m_Layer: 0
   m_Name: Sword05
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55266,7 +55266,7 @@ GameObject:
   - component: {fileID: 8664016614079889622}
   m_Layer: 0
   m_Name: Body5
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65707,7 +65707,7 @@ GameObject:
   - component: {fileID: 2670980665937412023}
   m_Layer: 0
   m_Name: thigh_l
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77029,7 +77029,7 @@ GameObject:
   - component: {fileID: 3275265304584402916}
   m_Layer: 0
   m_Name: Badger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77258,7 +77258,7 @@ GameObject:
   - component: {fileID: 7227463131264053286}
   m_Layer: 0
   m_Name: Body8
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77424,7 +77424,7 @@ GameObject:
   - component: {fileID: 328912165117505251}
   m_Layer: 10
   m_Name: WalkParticles
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87518,7 +87518,7 @@ GameObject:
   - component: {fileID: 5067145788047909809}
   m_Layer: 0
   m_Name: Body1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87684,7 +87684,7 @@ GameObject:
   - component: {fileID: 6125563795961880946}
   m_Layer: 0
   m_Name: Body6
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93189,7 +93189,7 @@ GameObject:
   - component: {fileID: 3975045957153260501}
   m_Layer: 0
   m_Name: Tail05
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93648,7 +93648,7 @@ GameObject:
   - component: {fileID: 2439531121359102474}
   m_Layer: 0
   m_Name: Deer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98751,7 +98751,7 @@ GameObject:
   - component: {fileID: 1180679427168243526}
   m_Layer: 0
   m_Name: Sword04
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98846,7 +98846,7 @@ GameObject:
   - component: {fileID: 5027805310630634516}
   m_Layer: 0
   m_Name: Body7
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108946,7 +108946,7 @@ GameObject:
   - component: {fileID: 4180670793257092948}
   m_Layer: 0
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109112,7 +109112,7 @@ GameObject:
   - component: {fileID: 808012504556884719}
   m_Layer: 0
   m_Name: Lizard
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109309,7 +109309,7 @@ GameObject:
   - component: {fileID: 1796133203601616919}
   m_Layer: 0
   m_Name: SwordTrail
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109349,7 +109349,7 @@ GameObject:
   - component: {fileID: 7246093136648652454}
   m_Layer: 0
   m_Name: spine_01
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109416,7 +109416,7 @@ GameObject:
   - component: {fileID: 8953071364535894550}
   m_Layer: 0
   m_Name: Sword02
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119520,7 +119520,7 @@ GameObject:
   - component: {fileID: 7781935636644956122}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119591,7 +119591,7 @@ GameObject:
   - component: {fileID: 412001320722648126}
   m_Layer: 0
   m_Name: pelvis
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119628,7 +119628,7 @@ GameObject:
   - component: {fileID: 2449437274729301380}
   m_Layer: 0
   m_Name: Shield
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119669,7 +119669,7 @@ GameObject:
   - component: {fileID: 4269834694662784293}
   m_Layer: 0
   m_Name: Rabit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119837,7 +119837,7 @@ GameObject:
   - component: {fileID: 760957469158088524}
   m_Layer: 0
   m_Name: LionModel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124890,7 +124890,7 @@ GameObject:
   - component: {fileID: 2233633177651668603}
   m_Layer: 10
   m_Name: SkillPos
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129895,7 +129895,7 @@ GameObject:
   - component: {fileID: 3582992431455516094}
   m_Layer: 0
   m_Name: Owl
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130059,7 +130059,7 @@ GameObject:
   - component: {fileID: 7887056299687507725}
   m_Layer: 10
   m_Name: Feedbacks
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130288,7 +130288,7 @@ GameObject:
   - component: {fileID: 8850683785274902918}
   m_Layer: 0
   m_Name: thigh_r
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130322,7 +130322,7 @@ GameObject:
   - component: {fileID: 5777188073186281228}
   m_Layer: 0
   m_Name: Lion
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130488,7 +130488,7 @@ GameObject:
   - component: {fileID: 6565455922101253209}
   m_Layer: 0
   m_Name: Body3
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135920,7 +135920,7 @@ GameObject:
   - component: {fileID: 4540835132606850680}
   m_Layer: 0
   m_Name: Dog
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136087,7 +136087,7 @@ GameObject:
   - component: {fileID: 8109534458305444172}
   m_Layer: 0
   m_Name: Sword08
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141853,7 +141853,7 @@ GameObject:
   - component: {fileID: 6659735787860945684}
   m_Layer: 0
   m_Name: Body2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142019,7 +142019,7 @@ GameObject:
   - component: {fileID: 294561824914310454}
   m_Layer: 0
   m_Name: Body4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147848,7 +147848,7 @@ GameObject:
   - component: {fileID: 3412965702050851005}
   m_Layer: 0
   m_Name: Sword07
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152831,7 +152831,7 @@ GameObject:
   - component: {fileID: 9070355926453636867}
   m_Layer: 0
   m_Name: SwordSlashThickBlue
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

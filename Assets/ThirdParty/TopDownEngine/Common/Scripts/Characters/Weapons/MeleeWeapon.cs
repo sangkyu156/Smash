@@ -206,8 +206,16 @@ namespace MoreMountains.TopDownEngine
 			_damageOnTouch.SetGizmoSize(AreaSize);
 			_damageOnTouch.SetGizmoOffset(AreaOffset);
 			_damageOnTouch.TargetLayerMask = TargetLayerMask;
-			_damageOnTouch.MinDamageCaused = MinDamageCaused;
-			_damageOnTouch.MaxDamageCaused = MaxDamageCaused;
+			if(gameObject.tag == "Player")
+			{
+                _damageOnTouch.MinDamageCaused = PlayerDataManager.GetPower();
+                _damageOnTouch.MaxDamageCaused = PlayerDataManager.GetPower();
+            }
+			else
+			{
+                _damageOnTouch.MinDamageCaused = MinDamageCaused;
+                _damageOnTouch.MaxDamageCaused = MaxDamageCaused;
+            }
 			_damageOnTouch.DamageDirectionMode = DamageOnTouch.DamageDirections.BasedOnOwnerPosition;
 			_damageOnTouch.DamageCausedKnockbackType = Knockback;
 			_damageOnTouch.DamageCausedKnockbackForce = KnockbackForce;

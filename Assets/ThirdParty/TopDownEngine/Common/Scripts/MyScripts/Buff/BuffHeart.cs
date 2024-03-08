@@ -12,7 +12,7 @@ public class BuffHeart : MonoBehaviour
         {
             plusHealth = 10;
 
-            other.GetComponent<Health>().UpdateMaxHealth(plusHealth, true);
+            other.GetComponent<Health>().UpdateMaxHealth(plusHealth);
 
             GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffHeartEffect");
             effect.transform.position = other.transform.position;

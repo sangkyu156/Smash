@@ -199,6 +199,7 @@ namespace MoreMountains.TopDownEngine
 		//내가만든 변수
 		string thisTag;
 		int thisLayer;
+        int invincibilityCount;//무적버프 중복으로 먹은 횟수
 
         protected class InterruptiblesDamageOverTimeCoroutine
 		{
@@ -216,6 +217,11 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void Awake()
 		{
+            if(gameObject.tag == "Player")
+			{
+                InitialHealth = PlayerDataManager.GetHealth();
+                MaximumHealth = PlayerDataManager.GetHealth();
+            }
             Initialization();
 			InitializeCurrentHealth();
         }
@@ -1032,7 +1038,10 @@ namespace MoreMountains.TopDownEngine
 				_healthBar.UpdateBar(CurrentHealth, 0f, MaximumHealth, show);
 			}
 
-			if (MasterHealth == null)
+			if(gameObject.tag == "Player")
+                GUIManager.Instance.UpdateHealthBarText(CurrentHealth, MaximumHealth);
+
+            if (MasterHealth == null)
 			{
 				if (_character != null)
 				{
@@ -1049,20 +1058,13 @@ namespace MoreMountains.TopDownEngine
 		}
 
 		//최대체력을 변경합니다.
-		public virtual void UpdateMaxHealth(float healthValue, bool plus)
+		public virtual void UpdateMaxHealth(float healthValue)
 		{
-			if(plus)
-			{
-				MaximumHealth += healthValue;
-				ReceiveHealth(healthValue, null);
-            }
-			else
-			{
-				MaximumHealth -= healthValue;
-				if (MaximumHealth <= 0)
-					MaximumHealth = 1;
-			}
-		}
+            MaximumHealth += healthValue;
+			CurrentHealth += healthValue;
+
+            UpdateHealthBar(true);
+        }
 
         #endregion
 
@@ -1097,9 +1099,12 @@ namespace MoreMountains.TopDownEngine
         /// <returns>The layer collision.</returns>
         public virtual IEnumerator DamageEnabled(float delay)
 		{
-			yield return new WaitForSeconds (delay);
-			Invulnerable = false;
-		}
+			invincibilityCount++;
+            yield return new WaitForSeconds (delay);
+			invincibilityCount--;
+            if (invincibilityCount <= 0)
+                Invulnerable = false;
+        }
 
 		#endregion
 	}

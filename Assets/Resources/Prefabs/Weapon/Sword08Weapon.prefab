@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 9050575023889080810}
   - component: {fileID: 4082960705789421048}
   - component: {fileID: 3510339079986301035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sword08Weapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

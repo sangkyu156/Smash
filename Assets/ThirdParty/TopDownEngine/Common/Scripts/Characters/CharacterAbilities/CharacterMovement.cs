@@ -119,8 +119,17 @@ namespace MoreMountains.TopDownEngine
         public override void ResetAbility()
         {
 	        base.ResetAbility();
-			MovementSpeed = WalkSpeed;
-			if (ContextSpeedStack != null)
+            if (gameObject.tag == "Player")
+            {
+                MovementSpeed = PlayerDataManager.GetSpeed();
+            }
+            else
+            {
+                MovementSpeed = WalkSpeed;
+            }
+            //MovementSpeed = WalkSpeed;
+            
+            if (ContextSpeedStack != null)
 			{
 				ContextSpeedStack.Clear();
 			}
@@ -543,8 +552,16 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void ResetSpeed()
 		{
-			MovementSpeed = WalkSpeed;
-		}
+            if (gameObject.tag == "Player")
+            {
+                MovementSpeed = PlayerDataManager.GetSpeed();
+            }
+            else
+            {
+                MovementSpeed = WalkSpeed;
+            }
+            //MovementSpeed = WalkSpeed;
+        }
 
         /// <summary>
         /// Respawn에서 속도를 재설정합니다

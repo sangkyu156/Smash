@@ -34,8 +34,16 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.Initialization();
 			_characterOrientation3D = _character.FindAbility<CharacterOrientation3D>();
-			_maxSpeed = _characterMovement.WalkSpeed;
-			_leftSmokeEmission = LeftSmoke.emission;
+            if (gameObject.tag == "Player")
+            {
+                _maxSpeed = PlayerDataManager.GetSpeed();
+            }
+            else
+            {
+                _maxSpeed = _characterMovement.WalkSpeed;
+            }
+            //_maxSpeed = _characterMovement.WalkSpeed;
+            _leftSmokeEmission = LeftSmoke.emission;
 			_rightSmokeEmission = RightSmoke.emission;
 			_initialSmokeEmission = _leftSmokeEmission.rateOverTimeMultiplier;
 		}

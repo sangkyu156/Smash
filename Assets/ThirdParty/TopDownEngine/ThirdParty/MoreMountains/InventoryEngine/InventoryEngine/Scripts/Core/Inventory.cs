@@ -1179,6 +1179,10 @@ namespace MoreMountains.InventoryEngine
             {
                 SaveInventory();
             }
+            if ((gameEvent.EventName == "StageClear") && Persistent)
+            {
+                SaveInventory();
+            }
             if ((gameEvent.EventName == "Load") && Persistent)
             {
                 if (ResetThisInventorySaveOnStart)

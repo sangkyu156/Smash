@@ -404,9 +404,6 @@ namespace MoreMountains.Tools
 			{
 				SetBar(currentValue, minValue, maxValue);
 			}
-
-			healthText = currentValue.ToString() + " / " + maxValue.ToString();
-            UpdateText(healthText);
 		}
 
 		/// <summary>
@@ -582,10 +579,9 @@ namespace MoreMountains.Tools
 		/// <summary>
 		/// string 변수를 받아와서 받아온 정보를 바탕으로 택스트표시
 		/// </summary>
-        protected virtual void UpdateText(string text)
+        public void UpdateText(string text)
         {
 			_updatedText = text;
-			Debug.Log("어디서 호출됨?");
             if (DisplayTotal)
             {
                 _updatedText += TotalSeparator + (TextValueMultiplier).ToString(TextFormat);
@@ -599,6 +595,7 @@ namespace MoreMountains.Tools
             if (_isPercentageTextMeshProNotNull)
             {
                 PercentageTextMeshPro.text = _updatedText;
+				Debug.Log("체력 업데이트함");
             }
 #endif
         }

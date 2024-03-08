@@ -123,6 +123,9 @@ namespace MoreMountains.TopDownEngine
 		protected List<CharacterHandleWeapon> _handleWeaponList;
         //내가만든 변수
         public GameObject cinemachineVirtualCamera;
+        protected float maxStamina;
+        protected float currentStamina;
+        protected float staminaDecreaseRate = 10f; // 달릴 때마다 감소하는 스테미나 비율
 
         /// This method is only used to display a helpbox text at the beginning of the ability's inspector
         public virtual string HelpBoxText() { return ""; }
@@ -182,7 +185,13 @@ namespace MoreMountains.TopDownEngine
 			_movement = _character.MovementState;
 			_condition = _character.ConditionState;
 			_abilityInitialized = true;
-		}
+
+            if (_character.gameObject.tag == "Player")
+			{
+                currentStamina = PlayerDataManager.GetStamina();
+				maxStamina = PlayerDataManager.GetStamina();
+			}
+        }
 
 		/// <summary>
 		/// Call this any time you want to force this ability to initialize (again)
@@ -434,6 +443,11 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void OnHit()
 		{
 
+		}
+
+		public void StaminaReset()
+		{
+			currentStamina = maxStamina;
 		}
 
 		/// <summary>

@@ -22,7 +22,7 @@ namespace MoreMountains.TopDownEngine
 		public GameObject HUD;
 		/// the health bars to update
 		[Tooltip("the health bars to update")]
-		public MMProgressBar[] HealthBars;
+		public MMProgressBar[] HealthBars; //스테미나Bar도 같이 들어있을 수 있음
 		/// the dash bars to update
 		[Tooltip("the dash bars to update")]
 		public MMRadialProgressBar[] DashBars;
@@ -302,8 +302,40 @@ namespace MoreMountains.TopDownEngine
 					healthBar.UpdateBar(currentHealth,minHealth,maxHealth);
 				}
 			}
-
 		}
+
+		/// <summary>
+		/// 스테미나바 업데이트
+		/// </summary>
+		/// <param name="currentHealth"></param>
+		/// <param name="minHealth"></param>
+		/// <param name="maxHealth"></param>
+		/// <param name="playerID"></param>
+        public virtual void UpdateStaminaBar(float currenStamina, float minStamina, float maxStamina, string playerID)
+        {
+            //이름은 HealthBars 이지만 StaminaBar가 들어 있을 수 있음
+            if (HealthBars == null) { return; }
+            if (HealthBars.Length <= 0) { return; }
+
+            foreach (MMProgressBar staminaBar in HealthBars)
+            {
+                if (staminaBar == null) { continue; }
+                if (staminaBar.PlayerID == playerID)
+                {
+                    staminaBar.UpdateBar(currenStamina, minStamina, maxStamina);
+                }
+            }
+        }
+
+        public void UpdateHealthBarText(float currentHealth, float maxHealth)
+		{
+			string text = currentHealth.ToString() + " / " + maxHealth.ToString();
+
+            foreach (MMProgressBar healthBar in HealthBars)
+            {
+                healthBar.UpdateText(text);
+            }
+        }
 
 		/// <summary>
 		/// Updates the dash bars.

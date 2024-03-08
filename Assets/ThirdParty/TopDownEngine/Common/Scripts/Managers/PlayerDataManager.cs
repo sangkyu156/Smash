@@ -1,87 +1,139 @@
 using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class PlayerDataManager : MonoBehaviour
+public static class PlayerDataManager
 {
     public enum ThirdAttack
     {
         Holy, Ice
     }
 
-    public int CurPlayerGold { get; private set; }
-    public Inventory inventory;
-    public ThirdAttack curThirdAttack = ThirdAttack.Holy;
+    private static int CurPlayerGold;
+    private static int Power;
+    private static float Speed;
+    private static float Heath;
+    private static float Stamina;
+    private static ThirdAttack curThirdAttack = ThirdAttack.Holy;
 
-    private void Start()
+    public static void PlayerSetting()
     {
-        PlayerSetting();
-
-        //파일 있는지 체크하고(해당 컴퓨터에서 처음 실행하는지 확인하고) 파일이 있으면 로드하고 없으면 초기값 넣어서 저장하고 불러온다
-        if (GameManager.Instance.stage == Define.Stage.Stage00)
+        if(ES3.FileExists())
         {
-            if (ES3.FileExists())
-            {
-                CurPlayerGold = ES3.Load<int>("PlayerGold");
-            }
-            else
-            {
-                ES3.Save("PlayerGold", CurPlayerGold = 777);
-                CurPlayerGold = ES3.Load<int>("PlayerGold");
-            }
+            //돈
+            CurPlayerGold = ES3.Load<int>("PlayerGold");
+            //3타 스킬
+            curThirdAttack = ES3.Load<ThirdAttack>("PlayerThirdAttack");
+            //공격력
+            Power = ES3.Load<int>("PlayerPower");
+            //스피드
+            Speed = ES3.Load<float>("PlayerSpeed");
+            //체력
+            Heath = ES3.Load<float>("PlayerHeath");
+            //스테미나
+            Stamina = ES3.Load<float>("PlayerStamina");
         }
         else
         {
-            if (ES3.FileExists())
-            {
-                CurPlayerGold = ES3.Load<int>("PlayerGold");
-            }
-            else
-            {
-                ES3.Save("PlayerGold", CurPlayerGold = 777);
-                CurPlayerGold = ES3.Load<int>("PlayerGold");
-            }
+            //돈
+            ES3.Save("PlayerGold", CurPlayerGold = 0);
+            CurPlayerGold = ES3.Load<int>("PlayerGold");
+            //3타 스킬
+            ES3.Save("PlayerThirdAttack", curThirdAttack = ThirdAttack.Holy);
+            curThirdAttack = ES3.Load<ThirdAttack>("PlayerThirdAttack");
+            //공격력
+            ES3.Save("PlayerPower", Power = 10);
+            Power = ES3.Load<int>("PlayerPower");
+            //스피드
+            ES3.Save("PlayerSpeed", Speed = 10);
+            Speed = ES3.Load<float>("PlayerSpeed");
+            //체력
+            ES3.Save("PlayerHeath", Heath = 100);
+            Heath = ES3.Load<float>("PlayerHeath");
+            //스테미나
+            ES3.Save("PlayerStamina", Stamina = 30);
+            Stamina = ES3.Load<float>("PlayerStamina");
         }
-        //ES3.Save("PlayerGold", CurPlayerGold = 777);
-        //CurPlayerGold = ES3.Load<int>("PlayerGold");
+
+        UnityEngine.Debug.Log($"돈 = {CurPlayerGold}\n3타 스킬 = {curThirdAttack}\n공격력 = {Power}");
     }
 
-    public void BuyItem(InventoryItem item, int quantity)
+    public static void TEST()
+    {
+        //돈
+        //ES3.Save("PlayerGold", CurPlayerGold = 0);
+        //CurPlayerGold = ES3.Load<int>("PlayerGold");
+        //3타 스킬
+        ES3.Save("PlayerThirdAttack", curThirdAttack = ThirdAttack.Holy);
+        curThirdAttack = ES3.Load<ThirdAttack>("PlayerThirdAttack");
+        //공격력
+        ES3.Save("PlayerPower", Power = 10);
+        Power = ES3.Load<int>("PlayerPower");
+        //스피드
+        ES3.Save("PlayerSpeed", Speed = 10);
+        Speed = ES3.Load<float>("PlayerSpeed");
+        //체력
+        ES3.Save("PlayerHeath", Heath = 100);
+        Heath = ES3.Load<float>("PlayerHeath");
+        //스테미나
+        ES3.Save("PlayerStamina", Stamina = 30);
+        Stamina = ES3.Load<float>("PlayerStamina");
+    }
+
+    public static void BuyItem(InventoryItem item, int quantity)
     {
         CurPlayerGold -= (item.price * quantity);
 
         ES3.Save<int>("PlayerGold", CurPlayerGold);
     }
 
-    public void SellItem(InventoryItem item, int quantity)
+    public static void SellItem(InventoryItem item, int quantity)
     {
         CurPlayerGold += (int)Mathf.Round((item.price * quantity) * 0.8f);
 
         ES3.Save<int>("PlayerGold", CurPlayerGold);
     }
 
-    public void StageRewards(string rewards)
+    public static void StageRewards(string rewards)
     {
         CurPlayerGold += int.Parse(rewards);
 
         ES3.Save<int>("PlayerGold", CurPlayerGold);
 
-        SaveInventory_Player();
+        MMGameEvent.Trigger("StageClear");
     }
 
-    public void SaveInventory_Player()
+    public static int GetCurPlayerGold()
     {
-        inventory.SaveInventory();
+        return CurPlayerGold;
     }
 
-    void PlayerSetting()
+    public static ThirdAttack GetThirdAttack()
     {
-        GameObject gameManager_ = GameObject.FindGameObjectWithTag("GameManager");
-        if (gameManager_.GetComponent<GameManager>().playerThirdAttack == string.Empty)
-            gameManager_.GetComponent<GameManager>().playerThirdAttack = curThirdAttack.ToString();
-        gameManager_.GetComponent<GameManager>().playerThirdAttack = curThirdAttack.ToString();
+        return curThirdAttack;
+    }
+
+    public static int GetPower()
+    {
+        return Power;
+    }
+
+    public static float GetSpeed()
+    {
+        return Speed;
+    }
+
+    public static float GetHealth()
+    {
+        return Heath;
+    }
+
+    public static float GetStamina()
+    {
+        return Stamina;
     }
 }

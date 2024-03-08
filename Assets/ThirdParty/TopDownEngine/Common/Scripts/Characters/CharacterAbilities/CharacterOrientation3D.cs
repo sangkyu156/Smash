@@ -365,8 +365,16 @@ namespace MoreMountains.TopDownEngine
 			float maxSpeed = 0f;
 			if (_characterMovement != null)
 			{
-				maxSpeed = _characterMovement.WalkSpeed;
-			}
+                if (gameObject.tag == "Player")
+                {
+                    maxSpeed = PlayerDataManager.GetSpeed();
+                }
+                else
+                {
+                    maxSpeed = _characterMovement.WalkSpeed;
+                }
+                //maxSpeed = _characterMovement.WalkSpeed;
+            }
 			if (_characterRun != null)
 			{
 				maxSpeed = _characterRun.RunSpeed;

@@ -11,7 +11,6 @@ public class ClearSplash : MonoBehaviour
 {
     public TextMeshProUGUI clearTime;
     public TextMeshProUGUI rewards;
-    public PlayerDataManager playerData;
     public GameObject[] particle;
 
     public void ClearTimePrint(float time)
@@ -27,7 +26,7 @@ public class ClearSplash : MonoBehaviour
     {
         switch (GameManager.Instance.stage)
         {
-            case Define.Stage.Stage01: string _rewars = "70"; rewards.text = _rewars; playerData.StageRewards(_rewars); break;
+            case Define.Stage.Stage01: string _rewars = "70"; rewards.text = _rewars; PlayerDataManager.StageRewards(_rewars); break;
             case Define.Stage.Stage02: break;
             case Define.Stage.Stage03: break;
             case Define.Stage.Stage04: break;

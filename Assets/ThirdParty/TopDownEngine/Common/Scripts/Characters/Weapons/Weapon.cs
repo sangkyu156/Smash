@@ -580,7 +580,7 @@ namespace MoreMountains.TopDownEngine
 
 			while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
 			{
-				switch (GameManager.Instance.playerThirdAttack)
+				switch (PlayerDataManager.GetThirdAttack().ToString())
 				{
 					case "Holy": CreateManager.Instance.ThirdAttack_HolySpawn(); break;
 					case "Ice": CreateManager.Instance.ThirdAttack_IceSpawn(); break;

@@ -9,7 +9,6 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     public GameObject buyPopup;
     public GameObject sellPopup;
     public ItemStore itemStore;
-    public PlayerDataManager playerData;
     public Inventory inventory;
     public InventoryDisplay inventoryDisplay;
     public InventoryDetails inventoryDetails;
@@ -42,7 +41,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     public void BuyItem()
     {
         curQuantity = itemStore.quantity;
-        playerData.BuyItem(curItem, curQuantity);
+        PlayerDataManager.BuyItem(curItem, curQuantity);
         itemStore.SetPlayerGold();
         newItemName = curItem.ItemID.Replace("_npc", "");
         //구매중인 아이템 찾아서 인벤에 넣어주기
@@ -61,7 +60,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     public void SellItem()
     {
         curQuantity = itemStore.quantity;
-        playerData.SellItem(curItem, curQuantity);
+        PlayerDataManager.SellItem(curItem, curQuantity);
         itemStore.SetPlayerGold();
         inventory.RemoveItem(curSolt.Index, curQuantity);
         inventory.SaveInventory();
