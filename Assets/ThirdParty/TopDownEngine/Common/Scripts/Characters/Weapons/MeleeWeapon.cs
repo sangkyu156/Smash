@@ -206,7 +206,7 @@ namespace MoreMountains.TopDownEngine
 			_damageOnTouch.SetGizmoSize(AreaSize);
 			_damageOnTouch.SetGizmoOffset(AreaOffset);
 			_damageOnTouch.TargetLayerMask = TargetLayerMask;
-			if(gameObject.tag == "Player")
+            if (gameObject.tag == "Player")
 			{
                 _damageOnTouch.MinDamageCaused = PlayerDataManager.GetPower();
                 _damageOnTouch.MaxDamageCaused = PlayerDataManager.GetPower();

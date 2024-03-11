@@ -7,9 +7,11 @@ namespace MoreMountains.TopDownEngine
     public class ThirdAttack_Holy : MonoBehaviour, IPoolObject
     {
         public string idName = "ThirdAttack_Holy";
+        BoxCollider damageCollider;
 
         private void Awake()
         {
+            damageCollider = GetComponent<BoxCollider>();
             SetAbility();
         }
 
@@ -38,11 +40,19 @@ namespace MoreMountains.TopDownEngine
         public void OnGettingFromPool()
         {
             SetAbility();
+            Invoke("damageColliderOff", 0.4f);
             Invoke("OnTargetReached", 1f);
+        }
+
+        public void damageColliderOff()
+        {
+            damageCollider.enabled = false;
         }
 
         public void SetAbility()
         {
+            damageCollider.enabled = true;
+
             this.transform.position = GameManager.Instance.skillPostion.transform.position;
 
             // 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언

@@ -5013,7 +5013,7 @@ GameObject:
   - component: {fileID: 3634281810703083909}
   m_Layer: 0
   m_Name: ThirdAttack_Holy
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9934,6 +9934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a95364aa00f6de45a8fb34ec3125f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idName: ThirdAttack_Holy
 --- !u!114 &3634281810703083909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9950,9 +9951,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   Owner: {fileID: 0}
-  TriggerFilter: 195
-  MinDamageCaused: 15
-  MaxDamageCaused: 15
+  TriggerFilter: 1
+  MinDamageCaused: 1
+  MaxDamageCaused: 1
   TypedDamages: []
   DamageDirectionMode: 1
   DamageCausedKnockbackType: 0

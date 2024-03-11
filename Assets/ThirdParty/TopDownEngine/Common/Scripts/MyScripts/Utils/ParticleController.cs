@@ -11,9 +11,14 @@ public class ParticleController : MonoBehaviour
     public Slider slider;
     float totalDuration;
     float usageTime;
+    public Define.Grade grade;
 
     private void Start()
     {
+        if (grade == Define.Grade.Unique)
+            Debug.Log("난 유니크야");
+        else
+            Debug.Log("난 노말 또는 레어야");
         // 파티클 시스템의 재생 시간을 가져옵니다.
         totalDuration = particleSystem.main.duration;
         slider.maxValue = totalDuration;

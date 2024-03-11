@@ -97,6 +97,8 @@ namespace MoreMountains.InventoryEngine
         /// 항목 이름 - 세부정보 패널에 표시됩니다.
         [Tooltip("항목 이름 - 세부정보 패널에 표시됩니다.")]
 		public string ItemName;
+        public Define.Grade grade = Define.Grade.Normal;
+        
         /// 세부정보 패널에 표시할 항목의 간단한 설명
         [TextArea]
 		[Tooltip("세부정보 패널에 표시할 항목의 간단한 설명")]

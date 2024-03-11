@@ -1080,25 +1080,22 @@ namespace MoreMountains.InventoryEngine
         {
             for (int i = 0; i < InventoryItems.Length; i++)
             {
-                if (InventoryItems[i].ItemID == "Apple_npc")
+                if (InventoryItems[i].ItemID == "RockNormal")
                 {
                     ItemsToInclude = InventoryItems[i];
                     AddItem(ItemsToInclude, 1);
                 }
                 else if (InventoryItems[i].ItemID == "ArmorBlue_npc")
                 {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
+
                 }
                 else if(InventoryItems[i].ItemID == "Axe_npc")
                 {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
+
                 }
                 else if(InventoryItems[i].ItemID == "StoneBarrier_npc")
                 {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
+
                 }
             }
         }

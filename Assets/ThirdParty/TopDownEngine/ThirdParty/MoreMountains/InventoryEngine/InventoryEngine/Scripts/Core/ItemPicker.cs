@@ -82,7 +82,8 @@ namespace MoreMountains.InventoryEngine
 				playerID = identifier.PlayerID;
 			}
 
-			Pick(Item.TargetInventoryName, playerID);
+            Debug.Log($"아이템 먹음 = Item.TargetInventoryName = {Item.TargetInventoryName}");
+            Pick(Item.TargetInventoryName, playerID);
 		}
 
         /// <summary>

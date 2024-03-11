@@ -201,7 +201,13 @@ namespace MoreMountains.TopDownEngine
         protected virtual void Awake()
 		{
 			Initialization();
-		}
+
+			if (gameObject.tag == "Player")
+			{
+				MinDamageCaused = PlayerDataManager.GetPower(); //3타 데미지를 더 쌔게할지 더 약하게 할지는 추후에 결정
+				MaxDamageCaused = PlayerDataManager.GetPower();
+			}
+        }
 
         /// <summary>
         /// OnEnable 시작 시간을 현재 타임스탬프로 설정합니다.
@@ -559,8 +565,8 @@ namespace MoreMountains.TopDownEngine
         /// <param name="collider"></param>
         public virtual void OnTriggerEnter(Collider collider)
 		{
-			if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerEnter)) return;
-			Colliding(collider.gameObject);
+            if (0 == (TriggerFilter & TriggerAndCollisionMask.OnTriggerEnter)) return;
+            Colliding(collider.gameObject);
 		}
 
         #endregion
@@ -573,7 +579,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (!EvaluateAvailability(collider))
 			{
-				return;
+                return;
 			}
 
             // 캐시 재설정
@@ -583,9 +589,9 @@ namespace MoreMountains.TopDownEngine
             // 우리가 충돌하는 것이 손상될 수 있는 경우
             if (_colliderHealth != null)
 			{
-				if (_colliderHealth.CurrentHealth > 0)
+                if (_colliderHealth.CurrentHealth > 0)
 				{
-					OnCollideWithDamageable(_colliderHealth);
+                    OnCollideWithDamageable(_colliderHealth);
 				}
 			}
             else // 우리가 충돌하는 것이 손상될 수 없다면
@@ -629,7 +635,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			_collidingHealth = health;
 
-			if (health.CanTakeDamageThisFrame())
+            if (health.CanTakeDamageThisFrame())
 			{
                 // 충돌하는 것이 TopDownController인 경우 밀어내기 힘을 적용합니다.
                 _colliderTopDownController = health.gameObject.MMGetComponentNoAlloc<TopDownController>();
@@ -653,7 +659,7 @@ namespace MoreMountains.TopDownEngine
 				}
 				else
 				{
-					_colliderHealth.Damage(randomDamage, gameObject, InvincibilityDuration, InvincibilityDuration,
+                    _colliderHealth.Damage(randomDamage, gameObject, InvincibilityDuration, InvincibilityDuration,
 						_damageDirection, TypedDamages);
 				}
 			}

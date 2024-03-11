@@ -1,4 +1,5 @@
-﻿using MoreMountains.Tools;
+﻿using DG.DemiEditor;
+using MoreMountains.Tools;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -147,6 +148,14 @@ namespace MoreMountains.InventoryEngine
         {
             yield return new WaitForSeconds(initialDelay);
             if (Title != null) { Title.text = item.ItemName; }
+            if(item.grade != Define.Grade.Normal)
+            {
+                switch (item.grade)
+                {
+                    case Define.Grade.Rare: Title.color = new Color(0.83f, 0.83f, 0f); break;
+                    case Define.Grade.Unique: Title.color = new Color(0.83f, 0f, 0f); break;
+                }
+            }
             if (ShortDescription != null) { ShortDescription.text = item.ShortDescription; }
             if (Description != null) { Description.text = item.Description; }
             if (Quantity != null) { Quantity.text = item.Quantity.ToString(); }
