@@ -839,6 +839,7 @@ namespace MoreMountains.InventoryEngine
             //아이템 설치 모드 실행
             if (item.Installation(PlayerID))
             {
+                Debug.Log("2");
                 //설치류 아이템을 사용했기 때문에 설치중(isInstalling)을 true로 바꿔준다.
                 if (item.isInstallable)
                     isInstalling = true;
@@ -1081,22 +1082,13 @@ namespace MoreMountains.InventoryEngine
             for (int i = 0; i < InventoryItems.Length; i++)
             {
                 if (InventoryItems[i].ItemID == "RockNormal")
-                {
                     ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                }
-                else if (InventoryItems[i].ItemID == "ArmorBlue_npc")
-                {
+                else if (InventoryItems[i].ItemID == "RockRare")
+                    ItemsToInclude = InventoryItems[i];
+                else if (InventoryItems[i].ItemID == "RockUnique")
+                    ItemsToInclude = InventoryItems[i];
 
-                }
-                else if(InventoryItems[i].ItemID == "Axe_npc")
-                {
-
-                }
-                else if(InventoryItems[i].ItemID == "StoneBarrier_npc")
-                {
-
-                }
+                AddItem(ItemsToInclude, 1);
             }
         }
 

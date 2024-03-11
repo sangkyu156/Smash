@@ -65,8 +65,8 @@ public static class PlayerDataManager
     public static void TEST()
     {
         //µ·
-        //ES3.Save("PlayerGold", CurPlayerGold = 0);
-        //CurPlayerGold = ES3.Load<int>("PlayerGold");
+        ES3.Save("PlayerGold", CurPlayerGold = 5000);
+        CurPlayerGold = ES3.Load<int>("PlayerGold");
         //3Å¸ ½ºÅ³
         ES3.Save("PlayerThirdAttack", curThirdAttack = ThirdAttack.Holy);
         curThirdAttack = ES3.Load<ThirdAttack>("PlayerThirdAttack");

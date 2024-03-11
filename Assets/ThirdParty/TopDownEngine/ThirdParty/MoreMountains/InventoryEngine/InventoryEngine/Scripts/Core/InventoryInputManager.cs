@@ -446,7 +446,6 @@ namespace MoreMountains.InventoryEngine
                 _canvasGroup.blocksRaycasts = true;
             }
 
-            Debug.Log($"TargetInventoryDisplay.TargetInventoryName = {TargetInventoryDisplay.TargetInventoryName}, TargetInventoryDisplay.TargetInventory.Content[0] = {TargetInventoryDisplay.TargetInventory.Content[0]}, TargetInventoryDisplay.PlayerID = {TargetInventoryDisplay.PlayerID}");
             // 우리는 인벤토리를 엽니다
             MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
             MMGameEvent.Trigger("inventoryOpens");

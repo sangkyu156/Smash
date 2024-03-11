@@ -148,13 +148,11 @@ namespace MoreMountains.InventoryEngine
         {
             yield return new WaitForSeconds(initialDelay);
             if (Title != null) { Title.text = item.ItemName; }
-            if(item.grade != Define.Grade.Normal)
+            switch (item.grade)
             {
-                switch (item.grade)
-                {
-                    case Define.Grade.Rare: Title.color = new Color(0.83f, 0.83f, 0f); break;
-                    case Define.Grade.Unique: Title.color = new Color(0.83f, 0f, 0f); break;
-                }
+                case Define.Grade.Normal: Title.color = Color.white; break;
+                case Define.Grade.Rare: Title.color = new Color(0.83f, 0.83f, 0f); break;
+                case Define.Grade.Unique: Title.color = new Color(0.83f, 0f, 0f); break;
             }
             if (ShortDescription != null) { ShortDescription.text = item.ShortDescription; }
             if (Description != null) { Description.text = item.Description; }
