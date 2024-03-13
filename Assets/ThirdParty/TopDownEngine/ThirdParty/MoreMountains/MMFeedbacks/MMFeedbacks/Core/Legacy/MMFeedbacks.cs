@@ -14,152 +14,152 @@ using UnityEditor;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A collection of MMFeedback, meant to be played altogether.
-	/// This class provides a custom inspector to add and customize feedbacks, and public methods to trigger them, stop them, etc.
-	/// You can either use it on its own, or bind it from another class and trigger it from there.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/MMFeedbacks")]
+    /// <summary>
+    /// 모두 재생되도록 만들어진 MMFeedback 모음입니다.
+    /// 이 클래스는 피드백을 추가 및 사용자 정의하는 사용자 정의 검사기와 이를 트리거하고 중지하는 등의 공개 메소드를 제공합니다.
+    /// 자체적으로 사용하거나 다른 클래스에서 바인딩하여 거기에서 트리거할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/MMFeedbacks")]
 	public class MMFeedbacks : MonoBehaviour
 	{
-		/// the possible directions MMFeedbacks can be played
-		public enum Directions { TopToBottom, BottomToTop }
-		/// the possible SafeModes (will perform checks to make sure no serialization error has damaged them)
-		/// - nope : no safety
-		/// - editor only : performs checks on enable
-		/// - runtime only : performs checks on Awake
-		/// - full : performs both editor and runtime checks, recommended setting
-		public enum SafeModes { Nope, EditorOnly, RuntimeOnly, Full }
-        
-		/// a list of MMFeedback to trigger
-		public List<MMFeedback> Feedbacks = new List<MMFeedback>();
-        
-		/// the possible initialization modes. If you use Script, you'll have to initialize manually by calling the Initialization method and passing it an owner
-		/// Otherwise, you can have this component initialize itself at Awake or Start, and in this case the owner will be the MMFeedbacks itself
-		public enum InitializationModes { Script, Awake, Start }
-		/// the chosen initialization mode
-		[Tooltip("the chosen initialization modes. If you use Script, you'll have to initialize manually by calling the " +
-		         "Initialization method and passing it an owner. Otherwise, you can have this component initialize " +
-		         "itself at Awake or Start, and in this case the owner will be the MMFeedbacks itself")]
+        /// MMFeedback이 재생될 수 있는 가능한 방향
+        public enum Directions { TopToBottom, BottomToTop }
+        /// 가능한 안전 모드(직렬화 오류로 인해 손상되지 않았는지 확인하기 위해 검사를 수행함)
+        /// - nope : 안전하지 않다
+        /// - editor only : 활성화 확인을 수행합니다.
+        /// - runtime only : Awake에 대한 검사를 수행합니다.
+        /// - full : 편집기와 런타임 검사를 모두 수행합니다. 권장 설정
+        public enum SafeModes { Nope, EditorOnly, RuntimeOnly, Full }
+
+        /// 트리거할 MMFeedback 목록
+        public List<MMFeedback> Feedbacks = new List<MMFeedback>();
+
+		/// 가능한 초기화 모드. 스크립트를 사용하는 경우 초기화 메서드를 호출하고 소유자를 전달하여 수동으로 초기화해야 합니다.
+        /// 그렇지 않으면 이 구성 요소가 Awake 또는 Start에서 자체적으로 초기화되도록 할 수 있으며 이 경우 소유자는 MMFeedbacks 자체가 됩니다.
+        public enum InitializationModes { Script, Awake, Start }
+        /// 선택한 초기화 모드
+        [Tooltip("선택한 초기화 모드. 스크립트를 사용하는 경우 다음을 호출하여 수동으로 초기화해야 합니다. " +
+                 "초기화 방법 및 소유자 전달 그렇지 않으면 이 구성 요소를 초기화할 수 있습니다. " +
+                 "Awake 또는 Start에서 자체적으로, 이 경우 소유자는 MMFeedbacks 자체가 됩니다.")]
 		public InitializationModes InitializationMode = InitializationModes.Start;
-		/// if you set this to true, the system will make changes to ensure that initialization always happens before play
-		[Tooltip("if you set this to true, the system will make changes to ensure that initialization always happens before play")]
+        /// 이를 true로 설정하면 시스템은 재생 전에 항상 초기화가 발생하도록 변경합니다.
+        [Tooltip("이를 true로 설정하면 시스템은 재생 전에 항상 초기화가 발생하도록 변경합니다.")]
 		public bool AutoInitialization = true;
-		/// the selected safe mode
-		[Tooltip("the selected safe mode")]
+        /// 선택한 안전 모드
+        [Tooltip("선택한 안전 모드")]
 		public SafeModes SafeMode = SafeModes.Full;
-		/// the selected direction
-		[Tooltip("the selected direction these feedbacks should play in")]
+        /// 선택한 방향
+        [Tooltip("이러한 피드백이 재생되어야 하는 선택된 방향")]
 		public Directions Direction = Directions.TopToBottom;
-		/// whether or not this MMFeedbacks should invert its direction when all feedbacks have played
-		[Tooltip("whether or not this MMFeedbacks should invert its direction when all feedbacks have played")]
+        /// 모든 피드백이 재생되었을 때 이 MMFeedback이 방향을 반전해야 하는지 여부
+        [Tooltip("모든 피드백이 재생되었을 때 이 MMFeedback이 방향을 반전해야 하는지 여부")]
 		public bool AutoChangeDirectionOnEnd = false;
-		/// whether or not to play this feedbacks automatically on Start
-		[Tooltip("whether or not to play this feedbacks automatically on Start")]
+        /// 시작 시 이 피드백을 자동으로 재생할지 여부
+        [Tooltip("시작 시 이 피드백을 자동으로 재생할지 여부")]
 		public bool AutoPlayOnStart = false;
-		/// whether or not to play this feedbacks automatically on Enable
-		[Tooltip("whether or not to play this feedbacks automatically on Enable")]
+        /// 활성화 시 이 피드백을 자동으로 재생할지 여부
+        [Tooltip("활성화 시 이 피드백을 자동으로 재생할지 여부")]
 		public bool AutoPlayOnEnable = false;
 
-		/// if this is true, all feedbacks within that player will work on the specified ForcedTimescaleMode, regardless of their individual settings 
-		[Tooltip("if this is true, all feedbacks within that player will work on the specified ForcedTimescaleMode, regardless of their individual settings")] 
+        /// 이것이 사실이라면 해당 플레이어 내의 모든 피드백은 개별 설정에 관계없이 지정된 ForcedTimescaleMode에서 작동합니다. 
+        [Tooltip("이것이 사실이라면 해당 플레이어 내의 모든 피드백은 개별 설정에 관계없이 지정된 ForcedTimescaleMode에서 작동합니다.")] 
 		public bool ForceTimescaleMode = false;
-		/// the time scale mode all feedbacks on this player should work on, if ForceTimescaleMode is true
-		[Tooltip("the time scale mode all feedbacks on this player should work on, if ForceTimescaleMode is true")] 
+        /// ForceTimescaleMode가 true인 경우 이 플레이어에 대한 모든 피드백이 작동해야 하는 시간 척도 모드입니다.
+        [Tooltip("ForceTimescaleMode가 true인 경우 이 플레이어에 대한 모든 피드백이 작동해야 하는 시간 척도 모드입니다.")] 
 		[MMFCondition("ForceTimescaleMode", true)]
 		public TimescaleModes ForcedTimescaleMode = TimescaleModes.Unscaled;
-		/// a time multiplier that will be applied to all feedback durations (initial delay, duration, delay between repeats...)
-		[Tooltip("a time multiplier that will be applied to all feedback durations (initial delay, duration, delay between repeats...)")]
+        /// 모든 피드백 기간(초기 지연, 기간, 반복 간 지연...)에 적용되는 시간 승수
+        [Tooltip("모든 피드백 기간(초기 지연, 기간, 반복 간 지연...)에 적용되는 시간 승수")]
 		public float DurationMultiplier = 1f;
-		/// if this is true, will expose a RandomDurationMultiplier. The final duration of each feedback will be : their base duration * DurationMultiplier * a random value between RandomDurationMultiplier.x and RandomDurationMultiplier.y
-		[Tooltip("if this is true, will expose a RandomDurationMultiplier. The final duration of each feedback will be : their base duration * DurationMultiplier * a random value between RandomDurationMultiplier.x and RandomDurationMultiplier.y")]
+        /// 이것이 사실이라면 RandomDurationMultiplier가 노출됩니다. 각 피드백의 최종 지속 시간은 다음과 같습니다: 기본 지속 시간 * DurationMultiplier * RandomDurationMultiplier.x와 RandomDurationMultiplier.y 사이의 임의 값
+        [Tooltip("이것이 사실이라면 RandomDurationMultiplier가 노출됩니다. 각 피드백의 최종 지속 시간은 다음과 같습니다: 기본 지속 시간 * DurationMultiplier * RandomDurationMultiplier.x와 RandomDurationMultiplier.y 사이의 임의 값")]
 		public bool RandomizeDuration = false;
-		/// if RandomizeDuration is true, the min (x) and max (y) values for the random duration multiplier
-		[Tooltip("if RandomizeDuration is true, the min (x) and max (y) values for the random duration multiplier")]
+        /// RandomizeDuration이 true인 경우 무작위 기간 승수의 최소(x) 및 최대(y) 값
+        [Tooltip("RandomizeDuration이 true인 경우 무작위 기간 승수의 최소(x) 및 최대(y) 값")]
 		[MMCondition("RandomizeDuration", true)]
 		public Vector2 RandomDurationMultiplier = new Vector2(0.5f, 1.5f);
-		/// if this is true, more editor-only, detailed info will be displayed per feedback in the duration slot
-		[Tooltip("if this is true, more editor-only, detailed info will be displayed per feedback in the duration slot")]
+        /// 이것이 사실이라면 더 많은 편집자 전용 세부 정보가 기간 슬롯의 피드백별로 표시됩니다.
+        [Tooltip("이것이 사실이라면 더 많은 편집자 전용 세부 정보가 기간 슬롯의 피드백별로 표시됩니다.")]
 		public bool DisplayFullDurationDetails = false;
-		/// the timescale at which the player itself will operate. This notably impacts sequencing and pauses duration evaluation.
-		[Tooltip("the timescale at which the player itself will operate. This notably impacts sequencing and pauses duration evaluation.")]
+        /// 플레이어 자체가 작동하는 시간 척도. 이는 특히 순서에 영향을 미치고 기간 평가를 일시 중지합니다.
+        [Tooltip("플레이어 자체가 작동하는 시간 척도. 이는 특히 순서에 영향을 미치고 기간 평가를 일시 중지합니다.")]
 		public TimescaleModes PlayerTimescaleMode = TimescaleModes.Unscaled;
 
-		/// if this is true, this feedback will only play if its distance to RangeCenter is lower or equal to RangeDistance
-		[Tooltip("if this is true, this feedback will only play if its distance to RangeCenter is lower or equal to RangeDistance")]
+        /// 이것이 사실이라면 이 피드백은 RangeCenter까지의 거리가 RangeDistance보다 낮거나 같은 경우에만 재생됩니다.
+        [Tooltip("이것이 사실이라면 이 피드백은 RangeCenter까지의 거리가 RangeDistance보다 낮거나 같은 경우에만 재생됩니다.")]
 		public bool OnlyPlayIfWithinRange = false;
-		/// when in OnlyPlayIfWithinRange mode, the transform to consider as the center of the range
-		[Tooltip("when in OnlyPlayIfWithinRange mode, the transform to consider as the center of the range")]
+        /// OnlyPlayIfWithinRange 모드에서 범위의 중심으로 간주되는 변환
+        [Tooltip("OnlyPlayIfWithinRange 모드에서 범위의 중심으로 간주되는 변환")]
 		public Transform RangeCenter;
-		/// when in OnlyPlayIfWithinRange mode, the distance to the center within which the feedback will play
-		[Tooltip("when in OnlyPlayIfWithinRange mode, the distance to the center within which the feedback will play")]
+        /// OnlyPlayIfWithinRange 모드에서 피드백이 재생되는 중심까지의 거리
+        [Tooltip("OnlyPlayIfWithinRange 모드에서 피드백이 재생되는 중심까지의 거리")]
 		public float RangeDistance = 5f;
-		/// when in OnlyPlayIfWithinRange mode, whether or not to modify the intensity of feedbacks based on the RangeFallOff curve  
-		[Tooltip("when in OnlyPlayIfWithinRange mode, whether or not to modify the intensity of feedbacks based on the RangeFallOff curve")]
+        /// OnlyPlayIfWithinRange 모드에서 RangeFallOff 곡선을 기반으로 피드백 강도를 수정할지 여부  
+        [Tooltip("OnlyPlayIfWithinRange 모드에서 RangeFallOff 곡선을 기반으로 피드백 강도를 수정할지 여부")]
 		public bool UseRangeFalloff = false;
-		/// the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)
-		[Tooltip("the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)")]
+        /// 폴오프를 정의하는 데 사용할 애니메이션 곡선(x에서 0은 범위 중심을 나타내고 1은 최대 거리를 나타냄)
+        [Tooltip("폴오프를 정의하는 데 사용할 애니메이션 곡선(x에서 0은 범위 중심을 나타내고 1은 최대 거리를 나타냄)")]
 		[MMFCondition("UseRangeFalloff", true)]
 		public AnimationCurve RangeFalloff = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
-		/// the values to remap the falloff curve's y axis' 0 and 1
-		[Tooltip("the values to remap the falloff curve's y axis' 0 and 1")]
+        /// 폴오프 곡선의 y축을 다시 매핑하는 값 '0과 1'
+        [Tooltip("폴오프 곡선의 y축을 다시 매핑하는 값 '0과 1'")]
 		[MMFVector("Zero","One")]
 		public Vector2 RemapRangeFalloff = new Vector2(0f, 1f);
-		/// whether or not to ignore MMSetFeedbackRangeCenterEvent, used to set the RangeCenter from anywhere
-		[Tooltip("whether or not to ignore MMSetFeedbackRangeCenterEvent, used to set the RangeCenter from anywhere")]
+        /// 어디서나 RangeCenter를 설정하는 데 사용되는 MMSetFeedbackRangeCenterEvent를 무시할지 여부
+        [Tooltip("어디서나 RangeCenter를 설정하는 데 사용되는 MMSetFeedbackRangeCenterEvent를 무시할지 여부")]
 		public bool IgnoreRangeEvents = false;
 
-		/// a duration, in seconds, during which triggering a new play of this MMFeedbacks after it's been played once will be impossible
-		[Tooltip("a duration, in seconds, during which triggering a new play of this MMFeedbacks after it's been played once will be impossible")]
+        /// 이 MMFeedbacks가 한 번 재생된 후 새로운 재생을 트리거하는 기간(초)
+        [Tooltip("이 MMFeedbacks가 한 번 재생된 후 새로운 재생을 트리거하는 기간(초)")]
 		public float CooldownDuration = 0f;
-		/// a duration, in seconds, to delay the start of this MMFeedbacks' contents play
-		[Tooltip("a duration, in seconds, to delay the start of this MMFeedbacks' contents play")]
+        /// 이 MMFeedbacks의 콘텐츠 재생 시작을 지연하는 기간(초)
+        [Tooltip("이 MMFeedbacks의 콘텐츠 재생 시작을 지연하는 기간(초)")]
 		public float InitialDelay = 0f;
-		/// whether this player can be played or not, useful to temporarily prevent play from another class, for example
-		[Tooltip("whether this player can be played or not, useful to temporarily prevent play from another class, for example")]
+        /// 이 플레이어를 플레이할 수 있는지 여부. 예를 들어 다른 클래스의 플레이를 일시적으로 방지하는 데 유용합니다.
+        [Tooltip("이 플레이어를 플레이할 수 있는지 여부. 예를 들어 다른 클래스의 플레이를 일시적으로 방지하는 데 유용합니다.")]
 		public bool CanPlay = true;
-		/// if this is true, you'll be able to trigger a new Play while this feedback is already playing, otherwise you won't be able to
-		[Tooltip("if this is true, you'll be able to trigger a new Play while this feedback is already playing, otherwise you won't be able to")]
+        /// 이것이 사실이라면 이 피드백이 이미 재생되는 동안 새 재생을 시작할 수 있습니다. 그렇지 않으면 다음을 수행할 수 없습니다.
+        [Tooltip("이것이 사실이라면 이 피드백이 이미 재생되는 동안 새 재생을 시작할 수 있습니다. 그렇지 않으면 다음을 수행할 수 없습니다.")]
 		public bool CanPlayWhileAlreadyPlaying = true;
-		/// the chance of this sequence happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)
-		[Tooltip("the chance of this sequence happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)")]
+        /// 이 시퀀스가 ​​발생할 확률(퍼센트: 100: 항상 발생, 0: 절대 발생하지 않음, 50: 두 번의 호출마다 한 번 발생 등)
+        [Tooltip("이 시퀀스가 ​​발생할 확률(퍼센트: 100: 항상 발생, 0: 절대 발생하지 않음, 50: 두 번의 호출마다 한 번 발생 등)")]
 		[Range(0,100)]
 		public float ChanceToPlay = 100f;
-        
-		/// the intensity at which to play this feedback. That value will be used by most feedbacks to tune their amplitude. 1 is normal, 0.5 is half power, 0 is no effect.
-		/// Note that what this value controls depends from feedback to feedback, don't hesitate to check the code to see what it does exactly.  
-		[Tooltip("the intensity at which to play this feedback. That value will be used by most feedbacks to tune their amplitude. 1 is normal, 0.5 is half power, 0 is no effect." +
-		         "Note that what this value controls depends from feedback to feedback, don't hesitate to check the code to see what it does exactly.")]
+
+        /// 이 피드백을 재생할 강도입니다. 해당 값은 대부분의 피드백에서 진폭을 조정하는 데 사용됩니다. 1은 정상, 0.5는 절반 전력, 0은 효과 없음을 나타냅니다.
+        /// 이 값이 제어하는 ​​내용은 피드백마다 다르므로 주저하지 말고 코드를 확인하여 정확히 무엇을 하는지 확인하세요.  
+        [Tooltip("이 피드백을 재생할 강도입니다. 해당 값은 대부분의 피드백에서 진폭을 조정하는 데 사용됩니다. 1은 정상, 0.5는 절반 전력, 0은 효과 없음을 나타냅니다." +
+                 "이 값이 제어하는 ​​내용은 피드백마다 다르므로 주저하지 말고 코드를 확인하여 정확히 무엇을 하는지 확인하세요.")]
 		public float FeedbacksIntensity = 1f;
 
-		/// a number of UnityEvents that can be triggered at the various stages of this MMFeedbacks 
-		[Tooltip("a number of UnityEvents that can be triggered at the various stages of this MMFeedbacks")] 
+        /// 이 MMFeedback의 다양한 단계에서 트리거될 수 있는 다수의 UnityEvent
+        [Tooltip("이 MMFeedback의 다양한 단계에서 트리거될 수 있는 다수의 UnityEvent")] 
 		public MMFeedbacksEvents Events;
-        
-		/// a global switch used to turn all feedbacks on or off globally
-		[Tooltip("a global switch used to turn all feedbacks on or off globally")]
+
+        /// 모든 피드백을 전체적으로 켜거나 끄는 데 사용되는 전역 스위치
+        [Tooltip("모든 피드백을 전체적으로 켜거나 끄는 데 사용되는 전역 스위치")]
 		public static bool GlobalMMFeedbacksActive = true;
         
 		[HideInInspector]
-		/// whether or not this MMFeedbacks is in debug mode
-		public bool DebugActive = false;
-		/// whether or not this MMFeedbacks is playing right now - meaning it hasn't been stopped yet.
-		/// if you don't stop your MMFeedbacks it'll remain true of course
-		public bool IsPlaying { get; protected set; }
-		/// if this MMFeedbacks is playing the time since it started playing
-		public float ElapsedTime => IsPlaying ? GetTime() - _lastStartAt : 0f;
-		/// the amount of times this MMFeedbacks has been played
-		public int TimesPlayed { get; protected set; }
-		/// whether or not the execution of this MMFeedbacks' sequence is being prevented and waiting for a Resume() call
-		public bool InScriptDrivenPause { get; set; }
-		/// true if this MMFeedbacks contains at least one loop
-		public bool ContainsLoop { get; set; }
-		/// true if this feedback should change play direction next time it's played
-		public bool ShouldRevertOnNextPlay { get; set; }
-		/// true if this player is forcing unscaled mode
-		public bool ForcingUnscaledTimescaleMode { get { return (ForceTimescaleMode && ForcedTimescaleMode == TimescaleModes.Unscaled);  } }
-		/// The total duration (in seconds) of all the active feedbacks in this MMFeedbacks
-		public virtual float TotalDuration
+        /// 이 MMFeedbacks가 디버그 모드인지 여부
+        public bool DebugActive = false;
+        /// 이 MMFeedbacks가 지금 재생 중인지 여부 - 아직 중지되지 않았음을 의미합니다.
+        /// MMFeedback을 중지하지 않으면 물론 그대로 유지됩니다.
+        public bool IsPlaying { get; protected set; }
+        /// 이 MMFeedbacks가 재생을 시작한 이후의 시간을 재생하는 경우
+        public float ElapsedTime => IsPlaying ? GetTime() - _lastStartAt : 0f;
+        /// 이 MMFeedback이 재생된 횟수
+        public int TimesPlayed { get; protected set; }
+        /// 이 MMFeedbacks' 시퀀스의 실행이 금지되고 Resume() 호출을 기다리는지 여부
+        public bool InScriptDrivenPause { get; set; }
+        /// 이 MMFeedbacks에 루프가 하나 이상 포함되어 있으면 true입니다.
+        public bool ContainsLoop { get; set; }
+        /// 이 피드백이 다음에 재생될 때 재생 방향을 바꿔야 한다면 true입니다.
+        public bool ShouldRevertOnNextPlay { get; set; }
+        /// 이 플레이어가 확장되지 않은 모드를 강제하는 경우 true입니다.
+        public bool ForcingUnscaledTimescaleMode { get { return (ForceTimescaleMode && ForcedTimescaleMode == TimescaleModes.Unscaled);  } }
+        /// 이 MMFeedbacks에 있는 모든 활성 피드백의 총 지속 시간(초)입니다.
+        public virtual float TotalDuration
 		{
 			get
 			{
@@ -192,12 +192,12 @@ namespace MoreMountains.Feedbacks
 		protected float _randomDurationMultiplier = 1f;
 		protected float _lastOnEnableFrame = -1;
 
-		#region INITIALIZATION
+        #region INITIALIZATION
 
-		/// <summary>
-		/// On Awake we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected virtual void Awake()
+        /// <summary>
+        /// Awake에서 자동 모드에 있으면 피드백을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake()
 		{
 			// if our MMFeedbacks is in AutoPlayOnEnable mode, we add a little helper to it that will re-enable it if needed if the parent game object gets turned off and on again
 			if (AutoPlayOnEnable)
@@ -217,10 +217,10 @@ namespace MoreMountains.Feedbacks
 			CheckForLoops();
 		}
 
-		/// <summary>
-		/// On Start we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected virtual void Start()
+        /// <summary>
+        /// 시작 시 자동 모드에 있는 경우 피드백을 초기화합니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			if ((InitializationMode == InitializationModes.Start) && (Application.isPlaying))
 			{
@@ -233,10 +233,10 @@ namespace MoreMountains.Feedbacks
 			CheckForLoops();
 		}
 
-		/// <summary>
-		/// On Enable we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// 활성화하면 자동 모드에 있는 경우 피드백을 초기화합니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			if (AutoPlayOnEnable && Application.isPlaying)
 			{
@@ -244,20 +244,20 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Initializes the MMFeedbacks, setting this MMFeedbacks as the owner
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// MMFeedbacks를 초기화하고 이 MMFeedbacks를 소유자로 설정합니다.
+        /// </summary>
+        public virtual void Initialization()
 		{
 			Initialization(this.gameObject);
 		}
 
-		/// <summary>
-		/// A public method to initialize the feedback, specifying an owner that will be used as the reference for position and hierarchy by feedbacks
-		/// </summary>
-		/// <param name="owner"></param>
-		/// <param name="feedbacksOwner"></param>
-		public virtual void Initialization(GameObject owner)
+        /// <summary>
+        /// 피드백에 의한 위치 및 계층 구조에 대한 참조로 사용될 소유자를 지정하여 피드백을 초기화하는 공개 방법
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="feedbacksOwner"></param>
+        public virtual void Initialization(GameObject owner)
 		{
 			if ((SafeMode == MMFeedbacks.SafeModes.RuntimeOnly) || (SafeMode == MMFeedbacks.SafeModes.Full))
 			{
@@ -277,25 +277,25 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region PLAY
-        
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation
-		/// </summary>
-		public virtual void PlayFeedbacks()
+        #region PLAY
+
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 모든 피드백을 재생합니다.
+        /// </summary>
+        public virtual void PlayFeedbacks()
 		{
 			PlayFeedbacksInternal(this.transform.position, FeedbacksIntensity);
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks and awaits until completion
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <param name="forceRevert"></param>
-		public virtual async System.Threading.Tasks.Task PlayFeedbacksTask(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 모든 피드백을 재생하고 완료될 때까지 기다립니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <param name="forceRevert"></param>
+        public virtual async System.Threading.Tasks.Task PlayFeedbacksTask(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacks(position, feedbacksIntensity, forceRevert);
 			while (IsPlaying)
@@ -303,41 +303,41 @@ namespace MoreMountains.Feedbacks
 				await System.Threading.Tasks.Task.Yield();
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks, specifying a position and intensity. The position may be used by each Feedback and taken into account to spark a particle or play a sound for example.
-		/// The feedbacks intensity is a factor that can be used by each Feedback to lower its intensity, usually you'll want to define that attenuation based on time or distance (using a lower 
-		/// intensity value for feedbacks happening further away from the Player).
-		/// Additionally you can force the feedback to play in reverse, ignoring its current condition
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksOwner"></param>
-		/// <param name="feedbacksIntensity"></param>
-		public virtual void PlayFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 위치와 강도를 지정하여 모든 피드백을 재생합니다. 위치는 각 피드백에 의해 사용될 수 있으며 예를 들어 입자를 활성화하거나 사운드를 재생하는 데 고려됩니다.
+        /// 피드백 강도는 각 피드백이 강도를 낮추는 데 사용할 수 있는 요소입니다. 
+		/// 일반적으로 시간이나 거리를 기준으로 감쇠를 정의하고 싶을 것입니다(더 낮은 값 사용). 플레이어로부터 멀리 떨어진 곳에서 발생하는 피드백의 강도 값)
+        /// 또한 현재 상태를 무시하고 피드백을 역방향으로 재생하도록 강제할 수 있습니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksOwner"></param>
+        /// <param name="feedbacksIntensity"></param>
+        public virtual void PlayFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacksInternal(position, feedbacksIntensity, forceRevert);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation, and in reverse (from bottom to top)
-		/// </summary>
-		public virtual void PlayFeedbacksInReverse()
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 역방향(아래에서 위로)으로 모든 피드백을 재생합니다.
+        /// </summary>
+        public virtual void PlayFeedbacksInReverse()
 		{
 			PlayFeedbacksInternal(this.transform.position, FeedbacksIntensity, true);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation, and in reverse (from bottom to top)
-		/// </summary>
-		public virtual void PlayFeedbacksInReverse(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 역방향(아래에서 위로)으로 모든 피드백을 재생합니다.
+        /// </summary>
+        public virtual void PlayFeedbacksInReverse(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacksInternal(position, feedbacksIntensity, forceRevert);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in reverse order
-		/// </summary>
-		public virtual void PlayFeedbacksOnlyIfReversed()
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 역순으로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public virtual void PlayFeedbacksOnlyIfReversed()
 		{
             
 			if ( (Direction == Directions.BottomToTop && !ShouldRevertOnNextPlay)
@@ -346,11 +346,11 @@ namespace MoreMountains.Feedbacks
 				PlayFeedbacks();
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in reverse order
-		/// </summary>
-		public virtual void PlayFeedbacksOnlyIfReversed(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 역순으로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public virtual void PlayFeedbacksOnlyIfReversed(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
             
 			if ( (Direction == Directions.BottomToTop && !ShouldRevertOnNextPlay)
@@ -359,22 +359,22 @@ namespace MoreMountains.Feedbacks
 				PlayFeedbacks(position, feedbacksIntensity, forceRevert);
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in normal order
-		/// </summary>
-		public virtual void PlayFeedbacksOnlyIfNormalDirection()
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 정상적인 순서로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public virtual void PlayFeedbacksOnlyIfNormalDirection()
 		{
 			if (Direction == Directions.TopToBottom)
 			{
 				PlayFeedbacks();
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in normal order
-		/// </summary>
-		public virtual void PlayFeedbacksOnlyIfNormalDirection(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 정상적인 순서로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public virtual void PlayFeedbacksOnlyIfNormalDirection(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			if (Direction == Directions.TopToBottom)
 			{
@@ -382,15 +382,15 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// A public coroutine you can call externally when you want to yield in a coroutine of yours until the MMFeedbacks has stopped playing
-		/// typically : yield return myFeedback.PlayFeedbacksCoroutine(this.transform.position, 1.0f, false);
-		/// </summary>
-		/// <param name="position">The position at which the MMFeedbacks should play</param>
-		/// <param name="feedbacksIntensity">The intensity of the feedback</param>
-		/// <param name="forceRevert">Whether or not the MMFeedbacks should play in reverse or not</param>
-		/// <returns></returns>
-		public virtual IEnumerator PlayFeedbacksCoroutine(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+        /// <summary>
+        /// MMFeedbacks 재생이 중지될 때까지 자신의 코루틴에서 양보하려는 경우 외부에서 호출할 수 있는 공개 코루틴
+        /// 일반적으로: yield return myFeedback.PlayFeedbacksCoroutine(this.transform.position, 1.0f, false);
+        /// </summary>
+        /// <param name="position">The position at which the MMFeedbacks should play</param>
+        /// <param name="feedbacksIntensity">The intensity of the feedback</param>
+        /// <param name="forceRevert">Whether or not the MMFeedbacks should play in reverse or not</param>
+        /// <returns></returns>
+        public virtual IEnumerator PlayFeedbacksCoroutine(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacks(position, feedbacksIntensity, forceRevert);
 			while (IsPlaying)
@@ -399,16 +399,16 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region SEQUENCE
+        #region SEQUENCE
 
-		/// <summary>
-		/// An internal method used to play feedbacks, shouldn't be called externally
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		protected virtual void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
+        /// <summary>
+        /// 피드백을 재생하는 데 사용되는 내부 메서드는 외부에서 호출하면 안 됩니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        protected virtual void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
 			if (!CanPlay)
 			{
@@ -561,11 +561,11 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Returns true if feedbacks are still playing
-		/// </summary>
-		/// <returns></returns>
-		public virtual bool HasFeedbackStillPlaying()
+        /// <summary>
+        /// 피드백이 아직 재생 중이면 true를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool HasFeedbackStillPlaying()
 		{
 			int count = Feedbacks.Count;
 			for (int i = 0; i < count; i++)
@@ -578,13 +578,13 @@ namespace MoreMountains.Feedbacks
 			return false;
 		}
 
-		/// <summary>
-		/// A coroutine used to handle the sequence of feedbacks if pauses are involved
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator PausedFeedbacksCo(Vector3 position, float feedbacksIntensity)
+        /// <summary>
+        /// 일시 중지가 포함된 경우 일련의 피드백을 처리하는 데 사용되는 코루틴
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator PausedFeedbacksCo(Vector3 position, float feedbacksIntensity)
 		{
 			IsPlaying = true;
 
@@ -739,32 +739,32 @@ namespace MoreMountains.Feedbacks
 			ApplyAutoRevert();
 		}
 
-		#endregion
+        #endregion
 
-		#region STOP
+        #region STOP
 
-		/// <summary>
-		/// Stops all further feedbacks from playing, without stopping individual feedbacks 
-		/// </summary>
-		public virtual void StopFeedbacks()
+        /// <summary>
+        /// 개별 피드백을 중지하지 않고 추가 피드백 재생을 모두 중지합니다.
+        /// </summary>
+        public virtual void StopFeedbacks()
 		{
 			StopFeedbacks(true);
 		}
 
-		/// <summary>
-		/// Stops all feedbacks from playing, with an option to also stop individual feedbacks
-		/// </summary>
-		public virtual void StopFeedbacks(bool stopAllFeedbacks = true)
+        /// <summary>
+        /// 개별 피드백을 중지할 수 있는 옵션과 함께 모든 피드백 재생을 중지합니다.
+        /// </summary>
+        public virtual void StopFeedbacks(bool stopAllFeedbacks = true)
 		{
 			StopFeedbacks(this.transform.position, 1.0f, stopAllFeedbacks);
 		}
 
-		/// <summary>
-		/// Stops all feedbacks from playing, specifying a position and intensity that can be used by the Feedbacks 
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		public virtual void StopFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool stopAllFeedbacks = true)
+        /// <summary>
+        /// 피드백에서 사용할 수 있는 위치와 강도를 지정하여 모든 피드백 재생을 중지합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        public virtual void StopFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool stopAllFeedbacks = true)
 		{
 			if (stopAllFeedbacks)
 			{
@@ -779,15 +779,15 @@ namespace MoreMountains.Feedbacks
 			IsPlaying = false;
 			StopAllCoroutines();
 		}
-        
-		#endregion 
 
-		#region CONTROLS
+        #endregion
 
-		/// <summary>
-		/// Calls each feedback's Reset method if they've defined one. An example of that can be resetting the initial color of a flickering renderer.
-		/// </summary>
-		public virtual void ResetFeedbacks()
+        #region CONTROLS
+
+        /// <summary>
+        /// 정의된 경우 각 피드백의 Reset 메서드를 호출합니다. 그 예로 깜박이는 렌더러의 초기 색상을 재설정할 수 있습니다.
+        /// </summary>
+        public virtual void ResetFeedbacks()
 		{
 			for (int i = 0; i < Feedbacks.Count; i++)
 			{
@@ -799,37 +799,37 @@ namespace MoreMountains.Feedbacks
 			IsPlaying = false;
 		}
 
-		/// <summary>
-		/// Changes the direction of this MMFeedbacks
-		/// </summary>
-		public virtual void Revert()
+        /// <summary>
+        /// 이 MMFeedback의 방향을 변경합니다.
+        /// </summary>
+        public virtual void Revert()
 		{
 			Events.TriggerOnRevert(this);
 			Direction = (Direction == Directions.BottomToTop) ? Directions.TopToBottom : Directions.BottomToTop;
 		}
 
-		/// <summary>
-		/// Use this method to authorize or prevent this player from being played
-		/// </summary>
-		/// <param name="newState"></param>
-		public virtual void SetCanPlay(bool newState)
+        /// <summary>
+        /// 이 플레이어의 플레이를 승인하거나 방지하려면 이 방법을 사용하세요.
+        /// </summary>
+        /// <param name="newState"></param>
+        public virtual void SetCanPlay(bool newState)
 		{
 			CanPlay = newState;
 		}
 
-		/// <summary>
-		/// Pauses execution of a sequence, which can then be resumed by calling ResumeFeedbacks()
-		/// </summary>
-		public virtual void PauseFeedbacks()
+        /// <summary>
+        /// ResumeFeedbacks()를 호출하여 재개할 수 있는 시퀀스 실행을 일시 중지합니다.
+        /// </summary>
+        public virtual void PauseFeedbacks()
 		{
 			Events.TriggerOnPause(this);
 			InScriptDrivenPause = true;
 		}
 
-		/// <summary>
-		/// Resumes execution of a sequence if a script driven pause is in progress
-		/// </summary>
-		public virtual void ResumeFeedbacks()
+        /// <summary>
+        /// 스크립트 기반 일시 중지가 진행 중인 경우 시퀀스 실행을 재개합니다.
+        /// </summary>
+        public virtual void ResumeFeedbacks()
 		{
 			Events.TriggerOnResume(this);
 			InScriptDrivenPause = false;
@@ -882,16 +882,16 @@ namespace MoreMountains.Feedbacks
 			Feedbacks.RemoveAt(id);
 			AutoRepair();
 		}
-        
-		#endregion MODIFICATION
 
-		#region HELPERS
+        #endregion MODIFICATION
 
-		/// <summary>
-		/// Evaluates the chance of this feedback to play, and returns true if this feedback can play, false otherwise
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool EvaluateChance()
+        #region HELPERS
+
+        /// <summary>
+        /// 이 피드백이 재생될 가능성을 평가하고, 이 피드백이 재생될 수 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool EvaluateChance()
 		{
 			if (ChanceToPlay == 0f)
 			{
@@ -909,11 +909,11 @@ namespace MoreMountains.Feedbacks
 
 			return true;
 		}
-        
-		/// <summary>
-		/// Checks whether or not this MMFeedbacks contains one or more looper feedbacks
-		/// </summary>
-		protected virtual void CheckForLoops()
+
+        /// <summary>
+        /// 이 MMFeedbacks에 하나 이상의 루퍼 피드백이 포함되어 있는지 확인합니다.
+        /// </summary>
+        protected virtual void CheckForLoops()
 		{
 			ContainsLoop = false;
 			for (int i = 0; i < Feedbacks.Count; i++)
@@ -928,13 +928,13 @@ namespace MoreMountains.Feedbacks
 				}                
 			}
 		}
-        
-		/// <summary>
-		/// This will return true if the conditions defined in the specified feedback's Timing section allow it to play in the current play direction of this MMFeedbacks
-		/// </summary>
-		/// <param name="feedback"></param>
-		/// <returns></returns>
-		protected bool FeedbackCanPlay(MMFeedback feedback)
+
+        /// <summary>
+        /// 지정된 피드백의 Timing 섹션에 정의된 조건이 이 MMFeedbacks의 현재 재생 방향으로 재생되도록 허용하는 경우 true를 반환합니다.
+        /// </summary>
+        /// <param name="feedback"></param>
+        /// <returns></returns>
+        protected bool FeedbackCanPlay(MMFeedback feedback)
 		{
 			if (feedback == null)
 			{
@@ -958,32 +958,32 @@ namespace MoreMountains.Feedbacks
 			return false;
 		}
 
-		/// <summary>
-		/// Readies the MMFeedbacks to revert direction on the next play
-		/// </summary>
-		protected virtual void ApplyAutoRevert()
+        /// <summary>
+        /// 다음 플레이에서 방향을 되돌리도록 MMFeedback을 준비합니다.
+        /// </summary>
+        protected virtual void ApplyAutoRevert()
 		{
 			if (AutoChangeDirectionOnEnd)
 			{
 				ShouldRevertOnNextPlay = true;
 			}
 		}
-        
-		/// <summary>
-		/// Applies this feedback's time multiplier to a duration (in seconds)
-		/// </summary>
-		/// <param name="duration"></param>
-		/// <returns></returns>
-		public virtual float ApplyTimeMultiplier(float duration)
+
+        /// <summary>
+        /// 이 피드백의 시간 승수를 기간(초)에 적용합니다.
+        /// </summary>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        public virtual float ApplyTimeMultiplier(float duration)
 		{
 			return duration * Mathf.Clamp(DurationMultiplier, _smallValue, Single.MaxValue);
 		}
 
-		/// <summary>
-		/// Unity sometimes has serialization issues. 
-		/// This method fixes that by fixing any bad sync that could happen.
-		/// </summary>
-		public virtual void AutoRepair()
+        /// <summary>
+        /// Unity에는 때때로 직렬화 문제가 있습니다.
+        /// 이 방법은 발생할 수 있는 잘못된 동기화를 수정하여 문제를 해결합니다.
+        /// </summary>
+        public virtual void AutoRepair()
 		{
 			List<Component> components = components = new List<Component>();
 			components = this.gameObject.GetComponents<Component>().ToList();
@@ -1006,16 +1006,16 @@ namespace MoreMountains.Feedbacks
 					}
 				}
 			}
-		} 
+		}
 
-		#endregion 
-        
-		#region EVENTS
+        #endregion
 
-		/// <summary>
-		/// On Disable we stop all feedbacks
-		/// </summary>
-		protected virtual void OnDisable()
+        #region EVENTS
+
+        /// <summary>
+        /// On Disable 우리는 모든 피드백을 중지합니다
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			/*if (IsPlaying)
 			{
@@ -1024,18 +1024,18 @@ namespace MoreMountains.Feedbacks
 			}*/
 		}
 
-		/// <summary>
-		/// On validate, we make sure our DurationMultiplier remains positive
-		/// </summary>
-		protected virtual void OnValidate()
+        /// <summary>
+        /// On validate, DurationMultiplier가 양수로 유지되는지 확인합니다.
+        /// </summary>
+        protected virtual void OnValidate()
 		{
 			DurationMultiplier = Mathf.Clamp(DurationMultiplier, _smallValue, Single.MaxValue);
 		}
 
-		/// <summary>
-		/// On Destroy, removes all feedbacks from this MMFeedbacks to avoid any leftovers
-		/// </summary>
-		protected virtual void OnDestroy()
+        /// <summary>
+        /// On Destroy, 남은 부분을 방지하기 위해 이 MMFeedbacks에서 모든 피드백을 제거합니다.
+        /// </summary>
+        protected virtual void OnDestroy()
 		{
 			IsPlaying = false;
 			#if UNITY_EDITOR

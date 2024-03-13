@@ -1,12 +1,14 @@
 ﻿using MoreMountains.Tools;
 using NPOI.SS.Formula.Functions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static DG.DemiEditor.DeEditorUtils;
 
 
 namespace MoreMountains.InventoryEngine
@@ -132,12 +134,37 @@ namespace MoreMountains.InventoryEngine
             return null;
         }
 
+        /// <summary>
+        /// 검색된 이름 및 플레이어 ID와 일치하는 퀵슬롯을 반환합니다(발견된 경우).
+        /// </summary>
+        /// <param name="inventoryName"></param>
+        /// <param name="playerID"></param>
+        /// <returns></returns>
+        public static Inventory FindQuickSlots(string quickSlotsName, string playerID)
+        {
+            if (quickSlotsName == null)
+            {
+                return null;
+            }
+
+            foreach (Inventory inventory in RegisteredInventories)
+            {
+                if ((inventory.name == quickSlotsName) && (inventory.PlayerID == playerID))
+                {
+                    return inventory;
+                }
+            }
+            return null;
+        }
+
         //내가 만든 변수
-        public TextMeshProUGUI playerGold;
+        public TextMeshProUGUI quickSlotInfoText;// "해당 슬롯이 비어 있지 않아 이동할 수 없습니다." 나오는 텍스트
         public GameObject ParentPreviewObjects;
         InventoryItem ItemsToInclude;
         public InventoryItem[] InventoryItems = new InventoryItem[50];
         bool isRemove;
+        int quickSlotTargetIndex = -1; //퀵슬롯 몇번째에 먹은아이템이 등록되어있는지
+        int quickSlotTargetQuantity = -1; // 퀵슬롯에 먹은 아이템이 몇개로 등록되어있는지 (인벤토리에서 같은개수찾아야해서 필요)
         //현재 설치중인지 확인하는 변수
         public bool isInstalling = false;
         //메인 인벤토리
@@ -375,6 +402,7 @@ namespace MoreMountains.InventoryEngine
             // 목적지가 비어 있지 않으면 우리도 떠납니다.
             if ((endIndex >= 0) && (!InventoryItem.IsNull(targetInventory.Content[endIndex])))
             {
+                StartCoroutine(QuickSlotInfo());
                 Debug.LogWarning("InventoryEngine : 대상 슬롯이 비어 있지 않아 이동할 수 없습니다.");
                 return false;
             }
@@ -646,6 +674,24 @@ namespace MoreMountains.InventoryEngine
         }
 
         /// <summary>
+        /// 매개변수로 받은 ItemID와 Quantity을 받아 인벤토리안에 똑같은 상태의 아이템이 존재하면 그자리에 아이템을 추가하는 함수
+        /// </summary>
+        public void FindSameItemAndAddItem(string itemID, int quickSlotsQuantity, InventoryItem addItem)
+        {
+            for (int i = 0; i < Content.Length; i++)
+            {
+                if (!InventoryItem.IsNull(Content[i]))
+                {
+                    if (Content[i].ItemID == itemID && Content[i].Quantity == quickSlotsQuantity)
+                    {
+                        AddItemAt(addItem, 1, i);
+                        return;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// 지정된 클래스와 일치하는 인벤토리의 모든 항목 목록을 반환합니다.
         /// </summary>
         /// <returns>검색 기준과 일치하는 항목 목록입니다.</returns>
@@ -839,7 +885,6 @@ namespace MoreMountains.InventoryEngine
             //아이템 설치 모드 실행
             if (item.Installation(PlayerID))
             {
-                Debug.Log("2");
                 //설치류 아이템을 사용했기 때문에 설치중(isInstalling)을 true로 바꿔준다.
                 if (item.isInstallable)
                     isInstalling = true;
@@ -1097,6 +1142,49 @@ namespace MoreMountains.InventoryEngine
         {
             if (PlayerID == "PlayerQuickSlots")
                 EmptyInventory();
+        }
+
+        // 퀵슬롯중 이미 아이템이 있는 슬롯에 아이템을 이동시킬때 나오는 안내문
+        IEnumerator QuickSlotInfo()
+        {
+            Debug.Log("들어옴");
+            quickSlotInfoText.gameObject.SetActive(true);
+            yield return new WaitForSecondsRealtime(1f);
+            quickSlotInfoText.gameObject.SetActive(false);
+        }
+
+        //퀵슬롯에 매개변수로 들어온 아이템이 최대치가아닌 상태로 등록되어 있으면 ture, 아니면 false 반환 하는 함수
+        public bool QuickSlotCheckForItem(string ItemID, int itemMaxQuantity)
+        {
+            bool isItem = false;
+
+            for (int i = 0; i < Content.Length; i++)
+            {
+                if (!InventoryItem.IsNull(Content[i]))
+                {
+                    if (Content[i].ItemID == ItemID && Content[i].Quantity != itemMaxQuantity)
+                    {
+                        quickSlotTargetIndex = i;
+                        quickSlotTargetQuantity = Content[i].Quantity;
+                        isItem = true;
+                        return isItem;
+                    }
+                }
+            }
+
+            return isItem;
+        }
+
+        //먹은 아이템을 퀵슬롯 몇번째에 추가해야하는지 반환하는 함수
+        public int GetQuickSlotTargetIndex()
+        {
+            return quickSlotTargetIndex;
+        }
+
+        //인벤토리에서 아이템ID와 같이 확인해야하는 개수를 반환하는 함수
+        public int GetQuickSlotTargetQuantity()
+        {
+            return quickSlotTargetQuantity;
         }
 
         /// <summary>

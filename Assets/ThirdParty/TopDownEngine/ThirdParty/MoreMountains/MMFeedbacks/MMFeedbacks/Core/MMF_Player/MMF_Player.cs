@@ -26,14 +26,14 @@ namespace MoreMountains.Feedbacks
 		}
 
 		public bool KeepPlayModeChanges = false;
-		/// if this is true, the inspector won't refresh while the feedback plays, this saves on performance but feedback inspectors' progress bars for example won't look as smooth
-		[Tooltip("if this is true, the inspector won't refresh while the feedback plays, this saves on performance but feedback inspectors' progress bars for example won't look as smooth")]
+        /// 이것이 사실이라면 피드백이 재생되는 동안 검사기가 새로 고쳐지지 않습니다. 이렇게 하면 성능이 절약되지만 예를 들어 피드백 검사기의 진행률 표시줄이 매끄럽게 보이지는 않습니다.
+        [Tooltip("이것이 사실이라면 피드백이 재생되는 동안 검사기가 새로 고쳐지지 않습니다. 이렇게 하면 성능이 절약되지만 예를 들어 피드백 검사기의 진행률 표시줄이 매끄럽게 보이지는 않습니다.")]
 		public bool PerformanceMode = false;
-		/// if this is true, StopFeedbacks will be called on all feedbacks on Disable
-		[Tooltip("if this is true, StopFeedbacks will be called on all feedbacks on Disable")]
+        /// 이것이 사실이라면, 비활성화에 대한 모든 피드백에 대해 StopFeedbacks가 호출됩니다.
+        [Tooltip("이것이 사실이라면, 비활성화에 대한 모든 피드백에 대해 StopFeedbacks가 호출됩니다.")]
 		public bool StopFeedbacksOnDisable = false;
-		/// how many times this player has started playing
-		[Tooltip("how many times this player has started playing")]
+        /// 이 플레이어가 플레이를 시작한 횟수
+        [Tooltip("이 플레이어가 플레이를 시작한 횟수")]
 		[MMReadOnly]
 		public int PlayCount = 0;
 
@@ -42,15 +42,15 @@ namespace MoreMountains.Feedbacks
 		protected Type _t;
 		protected float _cachedTotalDuration;
 		protected bool _initialized = false;
-        
-		#endregion
-        
-		#region INITIALIZATION
 
-		/// <summary>
-		/// On Awake we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected override void Awake()
+        #endregion
+
+        #region INITIALIZATION
+
+        /// <summary>
+        /// Awake에서 자동 모드에 있으면 피드백을 초기화합니다.
+        /// </summary>
+        protected override void Awake()
 		{
 			if (AutoInitialization && (AutoPlayOnEnable || AutoPlayOnStart))
 			{
@@ -80,10 +80,10 @@ namespace MoreMountains.Feedbacks
 			PreInitialization();
 		}
 
-		/// <summary>
-		/// On Start we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected override void Start()
+        /// <summary>
+        /// On Start 자동 모드에 있으면 피드백을 초기화합니다.
+        /// </summary>
+        protected override void Start()
 		{
 			if ((InitializationMode == InitializationModes.Start) && (Application.isPlaying))
 			{
@@ -96,10 +96,10 @@ namespace MoreMountains.Feedbacks
 			CheckForLoops();
 		}
 
-		/// <summary>
-		/// We initialize our list of feedbacks
-		/// </summary>
-		protected virtual void InitializeFeedbackList()
+        /// <summary>
+        /// 피드백 목록을 초기화합니다.
+        /// </summary>
+        protected virtual void InitializeFeedbackList()
 		{
 			if (FeedbacksList == null)
 			{
@@ -107,10 +107,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Performs extra checks, mostly to cover cases of dynamic creation
-		/// </summary>
-		protected virtual void ExtraInitializationChecks()
+        /// <summary>
+        /// 주로 동적 생성 사례를 다루기 위해 추가 검사를 수행합니다.
+        /// </summary>
+        protected virtual void ExtraInitializationChecks()
 		{
 			if (Events == null)
 			{
@@ -119,10 +119,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// On Enable we initialize our feedbacks if we're in auto mode
-		/// </summary>
-		protected override void OnEnable()
+        /// <summary>
+        /// On Enable 자동 모드에 있으면 피드백을 초기화합니다.
+        /// </summary>
+        protected override void OnEnable()
 		{
 			if (OnlyPlayIfWithinRange)
 			{
@@ -152,12 +152,12 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// A coroutine you can start to play this player's feedbacks after X frames
-		/// </summary>
-		/// <param name="framesAmount"></param>
-		/// <returns></returns>
-		public virtual IEnumerator PlayFeedbacksAfterFrames(int framesAmount)
+        /// <summary>
+        /// X 프레임 후에 이 플레이어의 피드백 재생을 시작할 수 있는 코루틴
+        /// </summary>
+        /// <param name="framesAmount"></param>
+        /// <returns></returns>
+        public virtual IEnumerator PlayFeedbacksAfterFrames(int framesAmount)
 		{
 			yield return MMFeedbacksCoroutine.WaitForFrames(framesAmount);
 			PlayFeedbacks();
@@ -175,12 +175,12 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// A public method to initialize the feedback, specifying an owner that will be used as the reference for position and hierarchy by feedbacks
-		/// </summary>
-		/// <param name="owner"></param>
-		/// <param name="feedbacksOwner"></param>
-		public override void Initialization()
+        /// <summary>
+        /// 피드백에 의한 위치 및 계층 구조에 대한 참조로 사용될 소유자를 지정하여 피드백을 초기화하는 공개 방법
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="feedbacksOwner"></param>
+        public override void Initialization()
 		{
 			SkippingToTheEnd = false;
 			IsPlaying = false;
@@ -198,61 +198,60 @@ namespace MoreMountains.Feedbacks
 			_initialized = true;
 		}
 
-		/// <summary>
-		/// When calling the legacy init method that used to specify an owner, we force the MMF Player init to run
-		/// </summary>
-		/// <param name="owner"></param>
-		public override void Initialization(GameObject owner)
+        /// <summary>
+        /// 소유자를 지정하는 데 사용된 레거시 init 메소드를 호출하면 MMF Player init가 강제로 실행됩니다.
+        /// </summary>
+        /// <param name="owner"></param>
+        public override void Initialization(GameObject owner)
 		{
 			Initialization();
 		}
 
-		#endregion
+        #endregion
 
-		#region PLAY
-        
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation
-		/// </summary>
-		public override void PlayFeedbacks()
+        #region PLAY
+
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 모든 피드백을 재생합니다.
+        /// </summary>
+        public override void PlayFeedbacks()
 		{
 			PlayFeedbacksInternal(this.transform.position, FeedbacksIntensity);
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks, specifying a position and intensity. The position may be used by each Feedback and taken into account to spark a particle or play a sound for example.
-		/// The feedbacks intensity is a factor that can be used by each Feedback to lower its intensity, usually you'll want to define that attenuation based on time or distance (using a lower 
-		/// intensity value for feedbacks happening further away from the Player).
-		/// Additionally you can force the feedback to play in reverse, ignoring its current condition
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksOwner"></param>
-		/// <param name="feedbacksIntensity"></param>
-		public override void PlayFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 위치와 강도를 지정하여 모든 피드백을 재생합니다. 위치는 각 피드백에 의해 사용될 수 있으며 예를 들어 입자를 활성화하거나 사운드를 재생하는 데 고려됩니다.
+        /// 피드백 강도는 각 피드백이 강도를 낮추는 데 사용할 수 있는 요소입니다. 일반적으로 시간이나 거리를 기준으로 감쇠를 정의하고 싶을 것입니다(플레이어로부터 더 멀리서 발생하는 피드백에는 더 낮은 강도 값 사용).
+        /// 또한 현재 상태를 무시하고 피드백을 역방향으로 재생하도록 강제할 수 있습니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksOwner"></param>
+        /// <param name="feedbacksIntensity"></param>
+        public override void PlayFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacksInternal(position, feedbacksIntensity, forceRevert);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation, and in reverse (from bottom to top)
-		/// </summary>
-		public override void PlayFeedbacksInReverse()
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 역방향(아래에서 위로)으로 모든 피드백을 재생합니다.
+        /// </summary>
+        public override void PlayFeedbacksInReverse()
 		{
 			PlayFeedbacksInternal(this.transform.position, FeedbacksIntensity, true);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks using the MMFeedbacks' position as reference, and no attenuation, and in reverse (from bottom to top)
-		/// </summary>
-		public override void PlayFeedbacksInReverse(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+        /// <summary>
+        /// MMFeedbacks의 위치를 ​​참조로 사용하고 감쇠 없이 역방향(아래에서 위로)으로 모든 피드백을 재생합니다.
+        /// </summary>
+        public override void PlayFeedbacksInReverse(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacksInternal(position, feedbacksIntensity, forceRevert);
 		}
 
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in reverse order
-		/// </summary>
-		public override void PlayFeedbacksOnlyIfReversed()
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 역순으로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public override void PlayFeedbacksOnlyIfReversed()
 		{
             
 			if ( (Direction == Directions.BottomToTop && !ShouldRevertOnNextPlay)
@@ -261,11 +260,11 @@ namespace MoreMountains.Feedbacks
 				PlayFeedbacks();
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in reverse order
-		/// </summary>
-		public override void PlayFeedbacksOnlyIfReversed(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 역순으로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public override void PlayFeedbacksOnlyIfReversed(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
             
 			if ( (Direction == Directions.BottomToTop && !ShouldRevertOnNextPlay)
@@ -274,22 +273,22 @@ namespace MoreMountains.Feedbacks
 				PlayFeedbacks(position, feedbacksIntensity, forceRevert);
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in normal order
-		/// </summary>
-		public override void PlayFeedbacksOnlyIfNormalDirection()
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 정상적인 순서로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public override void PlayFeedbacksOnlyIfNormalDirection()
 		{
 			if (Direction == Directions.TopToBottom)
 			{
 				PlayFeedbacks();
 			}
 		}
-        
-		/// <summary>
-		/// Plays all feedbacks in the sequence, but only if this MMFeedbacks is playing in normal order
-		/// </summary>
-		public override void PlayFeedbacksOnlyIfNormalDirection(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+
+        /// <summary>
+        /// 모든 피드백을 순서대로 재생합니다. 단, 이 MMFeedback이 정상적인 순서로 재생되는 경우에만 해당됩니다.
+        /// </summary>
+        public override void PlayFeedbacksOnlyIfNormalDirection(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			if (Direction == Directions.TopToBottom)
 			{
@@ -297,15 +296,15 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// A public coroutine you can call externally when you want to yield in a coroutine of yours until the MMFeedbacks has stopped playing
-		/// typically : yield return myFeedback.PlayFeedbacksCoroutine(this.transform.position, 1.0f, false);
-		/// </summary>
-		/// <param name="position">The position at which the MMFeedbacks should play</param>
-		/// <param name="feedbacksIntensity">The intensity of the feedback</param>
-		/// <param name="forceRevert">Whether or not the MMFeedbacks should play in reverse or not</param>
-		/// <returns></returns>
-		public override IEnumerator PlayFeedbacksCoroutine(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
+        /// <summary>
+        /// MMFeedbacks 재생이 중지될 때까지 자신의 코루틴에서 양보하려는 경우 외부에서 호출할 수 있는 공개 코루틴
+        /// 일반적으로 : yield return myFeedback.PlayFeedbacksCoroutine(this.transform.position, 1.0f, false);
+        /// </summary>
+        /// <param name="position">The position at which the MMFeedbacks should play</param>
+        /// <param name="feedbacksIntensity">The intensity of the feedback</param>
+        /// <param name="forceRevert">Whether or not the MMFeedbacks should play in reverse or not</param>
+        /// <returns></returns>
+        public override IEnumerator PlayFeedbacksCoroutine(Vector3 position, float feedbacksIntensity = 1.0f, bool forceRevert = false)
 		{
 			PlayFeedbacks(position, feedbacksIntensity, forceRevert);
 			while (IsPlaying)
@@ -314,16 +313,16 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region SEQUENCE
+        #region SEQUENCE
 
-		/// <summary>
-		/// An internal method used to play feedbacks, shouldn't be called externally
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		protected override void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
+        /// <summary>
+        /// 피드백을 재생하는 데 사용되는 내부 메서드는 외부에서 호출하면 안 됩니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        protected override void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
 			if (AutoInitialization)
 			{
@@ -378,12 +377,12 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Returns true if this feedback is allowed to play, false otherwise
-		/// </summary>
-		/// <param name="position"></param>
-		/// <returns></returns>
-		public virtual bool IsAllowedToPlay(Vector3 position)
+        /// <summary>
+        /// 이 피드백의 재생이 허용되면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public virtual bool IsAllowedToPlay(Vector3 position)
 		{
 			// if CanPlay is false, we're not allowed to play
 			if (!CanPlay)
@@ -544,13 +543,13 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// A coroutine used to handle the sequence of feedbacks if pauses are involved
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <returns></returns>
-		protected override IEnumerator PausedFeedbacksCo(Vector3 position, float feedbacksIntensity)
+        /// <summary>
+        /// 일시 중지가 포함된 경우 일련의 피드백을 처리하는 데 사용되는 코루틴
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <returns></returns>
+        protected override IEnumerator PausedFeedbacksCo(Vector3 position, float feedbacksIntensity)
 		{
 			IsPlaying = true;
 
@@ -734,32 +733,32 @@ namespace MoreMountains.Feedbacks
 			StopFeedbacks();
 		}
 
-		#endregion
+        #endregion
 
-		#region STOP
+        #region STOP
 
-		/// <summary>
-		/// Stops all further feedbacks from playing, as well as stopping individual feedbacks 
-		/// </summary>
-		public override void StopFeedbacks()
+        /// <summary>
+        /// 모든 추가 피드백 재생을 중지하고 개별 피드백을 중지합니다. 
+        /// </summary>
+        public override void StopFeedbacks()
 		{
 			StopFeedbacks(true);
 		}
 
-		/// <summary>
-		/// Stops all feedbacks from playing, with an option to also stop individual feedbacks
-		/// </summary>
-		public override void StopFeedbacks(bool stopAllFeedbacks = true)
+        /// <summary>
+        /// 개별 피드백을 중지할 수 있는 옵션과 함께 모든 피드백 재생을 중지합니다.
+        /// </summary>
+        public override void StopFeedbacks(bool stopAllFeedbacks = true)
 		{
 			StopFeedbacks(this.transform.position, 1.0f, stopAllFeedbacks);
 		}
 
-		/// <summary>
-		/// Stops all feedbacks from playing, specifying a position and intensity that can be used by the Feedbacks 
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		public override void StopFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool stopAllFeedbacks = true)
+        /// <summary>
+        /// 피드백에서 사용할 수 있는 위치와 강도를 지정하여 모든 피드백 재생을 중지합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        public override void StopFeedbacks(Vector3 position, float feedbacksIntensity = 1.0f, bool stopAllFeedbacks = true)
 		{
 			if (stopAllFeedbacks)
 			{
@@ -772,15 +771,15 @@ namespace MoreMountains.Feedbacks
 			IsPlaying = false;
 			StopAllCoroutines();
 		}
-        
-		#endregion 
 
-		#region CONTROLS
+        #endregion
 
-		/// <summary>
-		/// Calls each feedback's Reset method if they've defined one. An example of that can be resetting the initial color of a flickering renderer. It's usually called automatically before playing them.
-		/// </summary>
-		public override void ResetFeedbacks()
+        #region CONTROLS
+
+        /// <summary>
+        /// 정의된 경우 각 피드백의 Reset 메서드를 호출합니다. 그 예로 깜박이는 렌더러의 초기 색상을 재설정할 수 있습니다. 일반적으로 재생하기 전에 자동으로 호출됩니다
+        /// </summary>
+        public override void ResetFeedbacks()
 		{
 			int count = FeedbacksList.Count;
 			for (int i = 0; i < count; i++)
@@ -793,53 +792,53 @@ namespace MoreMountains.Feedbacks
 			IsPlaying = false;
 		}
 
-		/// <summary>
-		/// Changes the direction of this MMFeedbacks
-		/// </summary>
-		public override void Revert()
+        /// <summary>
+        /// 이 MMFeedback의 방향을 변경합니다.
+        /// </summary>
+        public override void Revert()
 		{
 			Events.TriggerOnRevert(this);
 			Direction = (Direction == Directions.BottomToTop) ? Directions.TopToBottom : Directions.BottomToTop;
 		}
 
-		/// <summary>
-		/// Sets the direction of the player to the one specified in parameters
-		/// </summary>
-		public virtual void SetDirection(Directions newDirection)
+        /// <summary>
+        /// 플레이어의 방향을 매개변수에 지정된 방향으로 설정합니다.
+        /// </summary>
+        public virtual void SetDirection(Directions newDirection)
 		{
 			Direction = newDirection;
 		}
-		
-		/// <summary>
-		/// Sets the direction to top to bottom
-		/// </summary>
-		public void SetDirectionTopToBottom()
+
+        /// <summary>
+        /// 방향을 위에서 아래로 설정합니다.
+        /// </summary>
+        public void SetDirectionTopToBottom()
 		{
 			Direction = Directions.TopToBottom;
 		}
 
-		/// <summary>
-		/// Sets the direction to bottom to top
-		/// </summary>
-		public void SetDirectionBottomToTop()
+        /// <summary>
+        /// 방향을 아래에서 위로 설정합니다.
+        /// </summary>
+        public void SetDirectionBottomToTop()
 		{
 			Direction = Directions.BottomToTop;
 		}
 
-		/// <summary>
-		/// Pauses execution of a sequence, which can then be resumed by calling ResumeFeedbacks()
-		/// </summary>
-		public override void PauseFeedbacks()
+        /// <summary>
+        /// ResumeFeedbacks()를 호출하여 재개할 수 있는 시퀀스 실행을 일시 중지합니다.
+        /// </summary>
+        public override void PauseFeedbacks()
 		{
 			Events.TriggerOnPause(this);
 			InScriptDrivenPause = true;
 		}
 
-		/// <summary>
-		/// Pauses execution of a sequence, which can then be resumed by calling ResumeFeedbacks()
-		/// Note that this doesn't stop feedbacks, by design, but in most cases you'll probably want to call StopFeedbacks() first
-		/// </summary>
-		public virtual void RestoreInitialValues()
+        /// <summary>
+        /// ResumeFeedbacks()를 호출하여 재개할 수 있는 시퀀스 실행을 일시 중지합니다.
+        /// 이는 설계상 피드백을 중지하지 않지만 대부분의 경우 StopFeedbacks()를 먼저 호출하는 것이 좋습니다.
+        /// </summary>
+        public virtual void RestoreInitialValues()
 		{
 			if (PlayCount <= 0)
 			{
@@ -858,32 +857,32 @@ namespace MoreMountains.Feedbacks
 			Events.TriggerOnRestoreInitialValues(this);
 		}
 
-		/// <summary>
-		/// Skips to the end of a sequence of feedbacks. Note that depending on your setup, this can take up to 3 frames to complete, don't disable your player instantly, or it won't complete the skipping
-		/// </summary>
-		public virtual void SkipToTheEnd()
+        /// <summary>
+        /// 일련의 피드백 끝으로 건너뜁니다. 설정에 따라 완료하는 데 최대 3프레임이 걸릴 수 있습니다. 플레이어를 즉시 비활성화하지 마십시오. 그렇지 않으면 건너뛰기가 완료되지 않습니다.
+        /// </summary>
+        public virtual void SkipToTheEnd()
 		{
 			StartCoroutine(SkipToTheEndCo());
 		}
 
-		/// <summary>
-		/// Resumes execution of a sequence if a script driven pause is in progress
-		/// </summary>
-		public override void ResumeFeedbacks()
+        /// <summary>
+        /// 스크립트 기반 일시 중지가 진행 중인 경우 시퀀스 실행을 재개합니다.
+        /// </summary>
+        public override void ResumeFeedbacks()
 		{
 			Events.TriggerOnResume(this);
 			InScriptDrivenPause = false;
 		}
 
-		#endregion
-        
-		#region MODIFICATION
+        #endregion
 
-		/// <summary>
-		/// Adds the specified MMF_Feedback to the player
-		/// </summary>
-		/// <param name="newFeedback"></param>
-		public virtual void AddFeedback(MMF_Feedback newFeedback)
+        #region MODIFICATION
+
+        /// <summary>
+        /// 지정된 MMF_Feedback을 플레이어에 추가합니다.
+        /// </summary>
+        /// <param name="newFeedback"></param>
+        public virtual void AddFeedback(MMF_Feedback newFeedback)
 		{
 			InitializeFeedbackList();
 			newFeedback.Owner = this;
@@ -893,13 +892,13 @@ namespace MoreMountains.Feedbacks
 			newFeedback.CacheRequiresSetup();
 			newFeedback.InitializeCustomAttributes();
 		}
-        
-		/// <summary>
-		/// Adds a feedback of the specified type to the player
-		/// </summary>
-		/// <param name="feedbackType"></param>
-		/// <returns></returns>
-		public new MMF_Feedback AddFeedback(System.Type feedbackType, bool add = true)
+
+        /// <summary>
+        /// 플레이어에 지정된 유형의 피드백을 추가합니다.
+        /// </summary>
+        /// <param name="feedbackType"></param>
+        /// <returns></returns>
+        public new MMF_Feedback AddFeedback(System.Type feedbackType, bool add = true)
 		{
 			InitializeFeedbackList();
 			MMF_Feedback newFeedback = (MMF_Feedback)Activator.CreateInstance(feedbackType);
@@ -916,12 +915,12 @@ namespace MoreMountains.Feedbacks
 			newFeedback.CacheRequiresSetup();
 			return newFeedback;
 		}
-        
-		/// <summary>
-		/// Removes the feedback at the specified index
-		/// </summary>
-		/// <param name="id"></param>
-		public override void RemoveFeedback(int id)
+
+        /// <summary>
+        /// 지정된 인덱스에서 피드백을 제거합니다.
+        /// </summary>
+        /// <param name="id"></param>
+        public override void RemoveFeedback(int id)
 		{
 			if (FeedbacksList.Count < id)
 			{
@@ -929,16 +928,16 @@ namespace MoreMountains.Feedbacks
 			}
 			FeedbacksList.RemoveAt(id);
 		}
-        
-		#endregion MODIFICATION
 
-		#region HELPERS
-        
-		/// <summary>
-		/// Returns true if feedbacks are still playing
-		/// </summary>
-		/// <returns></returns>
-		public override bool HasFeedbackStillPlaying()
+        #endregion MODIFICATION
+
+        #region HELPERS
+
+        /// <summary>
+        /// 피드백이 아직 재생 중이면 true를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        public override bool HasFeedbackStillPlaying()
 		{
 			int count = FeedbacksList.Count;
 			for (int i = 0; i < count; i++)
@@ -952,11 +951,11 @@ namespace MoreMountains.Feedbacks
 			}
 			return false;
 		}
-        
-		/// <summary>
-		/// Checks whether or not this MMFeedbacks contains one or more looper feedbacks
-		/// </summary>
-		protected override void CheckForLoops()
+
+        /// <summary>
+        /// 이 MMFeedbacks에 하나 이상의 루퍼 피드백이 포함되어 있는지 확인합니다.
+        /// </summary>
+        protected override void CheckForLoops()
 		{
 			ContainsLoop = false;
 			int count = FeedbacksList.Count;
@@ -973,10 +972,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Computes new random duration multipliers on all feedbacks if needed
-		/// </summary>
-		protected virtual void ComputeNewRandomDurationMultipliers()
+        /// <summary>
+        /// 필요한 경우 모든 피드백에 대해 새로운 무작위 기간 승수를 계산합니다.
+        /// </summary>
+        protected virtual void ComputeNewRandomDurationMultipliers()
 		{
 			if (RandomizeDuration)
 			{
@@ -993,12 +992,12 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Determines the intensity multiplier to apply 
-		/// </summary>
-		/// <param name="position"></param>
-		/// <returns></returns>
-		public virtual float ComputeRangeIntensityMultiplier(Vector3 position)
+        /// <summary>
+        /// 적용할 강도 승수를 결정합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public virtual float ComputeRangeIntensityMultiplier(Vector3 position)
 		{
 			if (!OnlyPlayIfWithinRange)
 			{
@@ -1027,13 +1026,13 @@ namespace MoreMountains.Feedbacks
 			float newIntensity = MMFeedbacksHelpers.Remap(curveValue, 0f, 1f, RemapRangeFalloff.x, RemapRangeFalloff.y);
 			return newIntensity;
 		}
-        
-		/// <summary>
-		/// This will return true if the conditions defined in the specified feedback's Timing section allow it to play in the current play direction of this MMFeedbacks
-		/// </summary>
-		/// <param name="feedback"></param>
-		/// <returns></returns>
-		protected bool FeedbackCanPlay(MMF_Feedback feedback)
+
+        /// <summary>
+        /// 지정된 피드백의 Timing 섹션에 정의된 조건이 이 MMFeedbacks의 현재 재생 방향으로 재생되도록 허용하는 경우 true를 반환합니다.
+        /// </summary>
+        /// <param name="feedback"></param>
+        /// <returns></returns>
+        protected bool FeedbackCanPlay(MMF_Feedback feedback)
 		{
 			if (feedback.Timing.MMFeedbacksDirectionCondition == MMFeedbackTiming.MMFeedbacksDirectionConditions.Always)
 			{
@@ -1047,51 +1046,51 @@ namespace MoreMountains.Feedbacks
 			return false;
 		}
 
-		/// <summary>
-		/// Readies the MMFeedbacks to revert direction on the next play
-		/// </summary>
-		protected override void ApplyAutoRevert()
+        /// <summary>
+        /// 다음 플레이에서 방향을 되돌리도록 MMFeedback을 준비합니다.
+        /// </summary>
+        protected override void ApplyAutoRevert()
 		{
 			if (AutoChangeDirectionOnEnd)
 			{
 				ShouldRevertOnNextPlay = true;
 			}
 		}
-        
-		/// <summary>
-		/// Applies this feedback's time multiplier to a duration (in seconds)
-		/// </summary>
-		/// <param name="duration"></param>
-		/// <returns></returns>
-		public override float ApplyTimeMultiplier(float duration)
+
+        /// <summary>
+        /// 이 피드백의 시간 승수를 기간(초)에 적용합니다.
+        /// </summary>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        public override float ApplyTimeMultiplier(float duration)
 		{
 			return duration * Mathf.Clamp(DurationMultiplier, _smallValue, float.MaxValue) * _randomDurationMultiplier;
 		}
 
-		/// <summary>
-		/// Lets you destroy objects from feedbacks
-		/// </summary>
-		/// <param name="gameObjectToDestroy"></param>
-		public virtual void ProxyDestroy(GameObject gameObjectToDestroy)
+        /// <summary>
+        /// 피드백에서 객체를 파괴할 수 있습니다.
+        /// </summary>
+        /// <param name="gameObjectToDestroy"></param>
+        public virtual void ProxyDestroy(GameObject gameObjectToDestroy)
 		{
 			Destroy(gameObjectToDestroy);
 		}
-        
-		/// <summary>
-		/// Lets you destroy objects after a delay from feedbacks
-		/// </summary>
-		/// <param name="gameObjectToDestroy"></param>
-		/// <param name="delay"></param>
-		public virtual void ProxyDestroy(GameObject gameObjectToDestroy, float delay)
+
+        /// <summary>
+        /// 피드백으로 인해 지연된 후 객체를 파괴할 수 있습니다.
+        /// </summary>
+        /// <param name="gameObjectToDestroy"></param>
+        /// <param name="delay"></param>
+        public virtual void ProxyDestroy(GameObject gameObjectToDestroy, float delay)
 		{
 			Destroy(gameObjectToDestroy, delay);
 		}
 
-		/// <summary>
-		/// Lets you DestroyImmediate objects from feedbacks
-		/// </summary>
-		/// <param name="gameObjectToDestroy"></param>
-		public virtual void ProxyDestroyImmediate(GameObject gameObjectToDestroy)
+        /// <summary>
+        /// 피드백에서 DestroyImmediate 객체를 사용할 수 있습니다.
+        /// </summary>
+        /// <param name="gameObjectToDestroy"></param>
+        public virtual void ProxyDestroyImmediate(GameObject gameObjectToDestroy)
 		{
 			DestroyImmediate(gameObjectToDestroy);
 		}
@@ -1101,20 +1100,20 @@ namespace MoreMountains.Feedbacks
 		#region ACCESS
 		
 		public enum AccessMethods { First, Previous, Closest, Next, Last }
-		
-		/// <summary>
-		/// Returns the first feedback found in this player's list based on the chosen method and type
-		/// First : first feedback of the matching type in the list, from top to bottom
-		/// Previous : first feedback of the matching type located before (so above) the feedback at the reference index
-		/// Closest : first feedback of the matching type located before or after the feedback at the reference index
-		/// Next : first feedback of the matching type located after (so below) the feedback at the reference index
-		/// First : last feedback of the matching type in the list, from top to bottom
-		/// </summary>
-		/// <param name="method"></param>
-		/// <param name="referenceIndex"></param>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public virtual T GetFeedbackOfType<T>(AccessMethods method, int referenceIndex) where T:MMF_Feedback
+
+        /// <summary>
+        /// 선택한 방법 및 유형을 기반으로 이 플레이어 목록에서 발견된 첫 번째 피드백을 반환합니다.
+        /// First : 목록에서 일치하는 유형의 첫 번째 피드백(위에서 아래로)
+        /// Previous : 참조 인덱스의 피드백 이전(위)에 위치한 일치 유형의 첫 번째 피드백
+        /// Closest : 기준 인덱스에서 피드백 이전 또는 이후에 위치한 일치 유형의 첫 번째 피드백
+        /// Next : 참조 인덱스의 피드백 뒤에(아래와 같이) 위치한 일치 유형의 첫 번째 피드백
+        /// First : 목록에 있는 일치 유형의 마지막 피드백(위에서 아래로)
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="referenceIndex"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual T GetFeedbackOfType<T>(AccessMethods method, int referenceIndex) where T:MMF_Feedback
 		{
 			_t = typeof(T);
 
@@ -1193,12 +1192,12 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Returns the first feedback of the searched type on this MMF_Player
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public virtual T GetFeedbackOfType<T>() where T:MMF_Feedback
+        /// <summary>
+        /// 이 MMF_Player에서 검색된 유형의 첫 번째 피드백을 반환합니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual T GetFeedbackOfType<T>() where T:MMF_Feedback
 		{
 			_t = typeof(T);
 			foreach (MMF_Feedback feedback in FeedbacksList)
@@ -1211,12 +1210,12 @@ namespace MoreMountains.Feedbacks
 			return null;
 		}
 
-		/// <summary>
-		/// Returns a list of all the feedbacks of the searched type on this MMF_Player
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public virtual List<T> GetFeedbacksOfType<T>() where T:MMF_Feedback
+        /// <summary>
+        /// 이 MMF_Player에서 검색된 유형의 모든 피드백 목록을 반환합니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual List<T> GetFeedbacksOfType<T>() where T:MMF_Feedback
 		{
 			_t = typeof(T);
 			List<T> list = new List<T>();
@@ -1230,12 +1229,12 @@ namespace MoreMountains.Feedbacks
 			return list;
 		}
 
-		/// <summary>
-		/// Returns the first feedback of the searched type on this MMF_Player
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public virtual T GetFeedbackOfType<T>(string searchedLabel) where T:MMF_Feedback
+        /// <summary>
+        /// 이 MMF_Player에서 검색된 유형의 첫 번째 피드백을 반환합니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual T GetFeedbackOfType<T>(string searchedLabel) where T:MMF_Feedback
 		{
 			_t = typeof(T);
 			foreach (MMF_Feedback feedback in FeedbacksList)
@@ -1248,12 +1247,12 @@ namespace MoreMountains.Feedbacks
 			return null;
 		}
 
-		/// <summary>
-		/// Returns a list of all the feedbacks of the searched type on this MMF_Player
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public virtual List<T> GetFeedbacksOfType<T>(string searchedLabel) where T:MMF_Feedback
+        /// <summary>
+        /// 이 MMF_Player에서 검색된 유형의 모든 피드백 목록을 반환합니다.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual List<T> GetFeedbacksOfType<T>(string searchedLabel) where T:MMF_Feedback
 		{
 			_t = typeof(T);
 			List<T> list = new List<T>();
@@ -1267,15 +1266,15 @@ namespace MoreMountains.Feedbacks
 			return list;
 		}
 
-		#endregion
-        
-		#region EVENTS
+        #endregion
 
-		/// <summary>
-		/// When we get a MMSetFeedbackRangeCenterEvent, we set our new range center
-		/// </summary>
-		/// <param name="newTransform"></param>
-		protected virtual void OnMMSetFeedbackRangeCenterEvent(Transform newTransform)
+        #region EVENTS
+
+        /// <summary>
+        /// MMSetFeedbackRangeCenterEvent를 받으면 새로운 범위 센터를 설정합니다.
+        /// </summary>
+        /// <param name="newTransform"></param>
+        protected virtual void OnMMSetFeedbackRangeCenterEvent(Transform newTransform)
 		{
 			if (IgnoreRangeEvents)
 			{
@@ -1284,10 +1283,10 @@ namespace MoreMountains.Feedbacks
 			RangeCenter = newTransform;
 		}
 
-		/// <summary>
-		/// On Disable we stop all feedbacks
-		/// </summary>
-		protected override void OnDisable()
+        /// <summary>
+        /// On Disable 우리는 모든 피드백을 중지합니다
+        /// </summary>
+        protected override void OnDisable()
 		{
 			if (OnlyPlayIfWithinRange)
 			{
@@ -1308,10 +1307,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// On validate, we make sure our DurationMultiplier remains positive
-		/// </summary>
-		protected override void OnValidate()
+        /// <summary>
+        /// On validate, DurationMultiplier가 양수로 유지되는지 확인합니다.
+        /// </summary>
+        protected override void OnValidate()
 		{
 			RefreshCache();
 
@@ -1324,10 +1323,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Refreshes cached feedbacks
-		/// </summary>
-		public virtual void RefreshCache()
+        /// <summary>
+        /// 캐시된 피드백을 새로 고칩니다.
+        /// </summary>
+        public virtual void RefreshCache()
 		{
 			if (FeedbacksList == null)
 			{
@@ -1352,10 +1351,10 @@ namespace MoreMountains.Feedbacks
 			ComputeCachedTotalDuration();
 		}
 
-		/// <summary>
-		/// Computes the total duration of the player's sequence of feedbacks
-		/// </summary>
-		public virtual void ComputeCachedTotalDuration()
+        /// <summary>
+        /// 플레이어 피드백 시퀀스의 총 지속 시간을 계산합니다.
+        /// </summary>
+        public virtual void ComputeCachedTotalDuration()
 		{
 			float total = 0f;
 			if (FeedbacksList == null)
@@ -1489,10 +1488,10 @@ namespace MoreMountains.Feedbacks
 			_cachedTotalDuration = InitialDelay + total;
 		}
 
-		/// <summary>
-		/// On Destroy, removes all feedbacks from this MMFeedbacks to avoid any leftovers
-		/// </summary>
-		protected override void OnDestroy()
+        /// <summary>
+        /// On Destroy, 남은 부분을 방지하기 위해 이 MMFeedbacks에서 모든 피드백을 제거합니다.
+        /// </summary>
+        protected override void OnDestroy()
 		{
 			IsPlaying = false;
             
@@ -1502,10 +1501,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Draws gizmos, when the MMF_Player is selected, for all feedbacks that implement the method of the same name 
-		/// </summary>
-		protected void OnDrawGizmosSelected()
+        /// <summary>
+        /// Draws gizmos, MMF_Player가 선택된 경우, 동일한 이름의 메소드를 구현하는 모든 피드백에 대해
+        /// </summary>
+        protected void OnDrawGizmosSelected()
 		{
 			if (FeedbacksList == null)
 			{

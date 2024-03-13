@@ -44,7 +44,7 @@ namespace MoreMountains.TopDownEngine
             createTime += Time.deltaTime;
             clearTime += Time.deltaTime;
 
-            if (createTime > 1f && curEnemyCount <= 35)
+            if (createTime > 0.1f && curEnemyCount <= 35)
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)

@@ -37,6 +37,7 @@ namespace MoreMountains.InventoryEngine
 
         protected int _pickedQuantity = 0;
 		protected Inventory _targetInventory;
+        protected Inventory _quickSlots;
 
         /// <summary>
         /// 시작 시 항목 선택기를 초기화합니다.
@@ -52,7 +53,9 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Initialization()
 		{
 			FindTargetInventory (Item.TargetInventoryName);
-			ResetQuantity();
+			FindTargetQuickSlots("QuickSlots");
+
+            ResetQuantity();
 		}
 
         /// <summary>
@@ -82,9 +85,27 @@ namespace MoreMountains.InventoryEngine
 				playerID = identifier.PlayerID;
 			}
 
-            Debug.Log($"아이템 먹음 = Item.TargetInventoryName = {Item.TargetInventoryName}");
-            Pick(Item.TargetInventoryName, playerID);
-		}
+			//먹은아이템이 퀵슬롯에 있고 & 최대치가 아닌 상태로 등록되어있으면 몇개로 등록되어 있는지 확인하고 그 숫자를 A로 저장, 퀵슬롯 인덱스를 B로 저장하고 
+			//인벤토리에서 같은 아이템ID에 A만큼 저장되어있는 인덱트를 찾아서 거기에다가 먹은 아이템 추가, 퀵슬롯인덱스B에 먹은아이템 추가 하면 끝
+
+			//먹은 아이템이 퀵슬롯에 최대치가 아닌 상태로 등록되어 있는지 아닌지 확인, true이면 퀵슬롯에 먹은 아이템이 최대치가 아닌상태로 등록되어있다는거
+			if (_quickSlots.QuickSlotCheckForItem(Item.ItemID, Item.MaximumStack))
+			{
+                DetermineMaxQuantity(); //최대수량 체크
+                                        //인벤토리에 퀵슬롯에서 발견한 먹은아이템과 같은아이템,같은개수있는곳에 먹은 아이템 추가
+                Debug.Log("1");
+                _targetInventory.FindSameItemAndAddItem(Item.ItemID, _quickSlots.GetQuickSlotTargetQuantity(), Item);
+                Debug.Log("2");
+                //퀵슬롯에 먹은아이템과 같은아이템이면서 최대치로 등록안된 슬롯에 먹은 아이템 추가
+                _quickSlots.AddItemAt(Item, 1, _quickSlots.GetQuickSlotTargetIndex());
+                Debug.Log("3");
+                //아이템 비활성화
+                DisableObjectIfNeeded();
+                Debug.Log("4");
+            }
+			else
+                Pick(Item.TargetInventoryName, playerID);
+        }
 
         /// <summary>
         /// 무언가가 피커와 충돌할 때 트리거됩니다.
@@ -179,8 +200,9 @@ namespace MoreMountains.InventoryEngine
         /// </summary>
         protected virtual void DisableObjectIfNeeded()
 		{
+			Debug.Log($"DisableObjectWhenDepleted = {DisableObjectWhenDepleted}, RemainingQuantity = {RemainingQuantity}");
             // 게임오브젝트를 비활성화합니다
-            if (DisableObjectWhenDepleted && RemainingQuantity <= 0)
+            if (DisableObjectWhenDepleted/* && RemainingQuantity <= 0*/)
 			{
 				gameObject.SetActive(false);	
 			}
@@ -242,5 +264,20 @@ namespace MoreMountains.InventoryEngine
 			}
 			_targetInventory = Inventory.FindInventory(targetInventoryName, playerID);
 		}
-	}
+
+        //FindQuickSlots
+        /// <summary>
+        /// 이름을 기준으로 퀵슬롯을 찾습니다.
+        /// </summary>
+        /// <param name="targetInventoryName">Target inventory name.</param>
+        public virtual void FindTargetQuickSlots(string targetQuickSlotsName, string playerID = "PlayerQuickSlots")
+        {
+            _quickSlots = null;
+            if (targetQuickSlotsName == null)
+            {
+                return;
+            }
+            _quickSlots = Inventory.FindQuickSlots(targetQuickSlotsName, playerID);
+        }
+    }
 }

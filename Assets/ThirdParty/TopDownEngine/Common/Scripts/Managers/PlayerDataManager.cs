@@ -71,7 +71,7 @@ public static class PlayerDataManager
         ES3.Save("PlayerThirdAttack", curThirdAttack = ThirdAttack.Holy);
         curThirdAttack = ES3.Load<ThirdAttack>("PlayerThirdAttack");
         //공격력
-        ES3.Save("PlayerPower", Power = 10);
+        ES3.Save("PlayerPower", Power = 50);
         Power = ES3.Load<int>("PlayerPower");
         //스피드
         ES3.Save("PlayerSpeed", Speed = 10);

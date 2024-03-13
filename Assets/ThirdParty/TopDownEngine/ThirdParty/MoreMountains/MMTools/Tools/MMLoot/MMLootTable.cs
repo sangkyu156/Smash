@@ -4,36 +4,36 @@ using UnityEngine;
 
 namespace  MoreMountains.Tools
 {
-	/// <summary>
-	/// A loot table helper that can be used to randomly pick objects out of a weighted list
-	/// This design pattern was described in more details by Daniel Cook in 2014 in his blog :
-	/// https://lostgarden.home.blog/2014/12/08/loot-drop-tables/
-	///
-	/// This generic LootTable defines a list of objects to loot, each of them weighted.
-	/// The weights don't have to add to a certain number, they're relative to each other.
-	/// The ComputeWeights method determines, based on these weights, the chance percentage of each object to be picked
-	/// The GetLoot method returns one object, picked randomly from the table
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <typeparam name="V"></typeparam>
-	public class MMLootTable<T,V> where T:MMLoot<V>
+    /// <summary>
+    /// 가중치 목록에서 개체를 무작위로 선택하는 데 사용할 수 있는 전리품 테이블 도우미
+    /// 이 디자인 패턴은 2014년 Daniel Cook의 블로그에서 더 자세히 설명되었습니다.
+    /// https://lostgarden.home.blog/2014/12/08/loot-drop-tables/
+    ///
+    /// 이 일반 LootTable은 각각 가중치가 부여된 약탈할 개체 목록을 정의합니다.
+    /// 가중치는 특정 숫자에 추가될 필요가 없으며 서로 상대적입니다.
+    /// ComputeWeights 메서드는 이러한 가중치를 기반으로 각 개체가 선택될 확률을 결정합니다.
+    /// GetLoot 메서드는 테이블에서 무작위로 선택한 하나의 개체를 반환합니다.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="V"></typeparam>
+    public class MMLootTable<T,V> where T:MMLoot<V>
 	{
-		/// the list of objects that have a chance of being returned by the table
-		[SerializeField]
+        /// 테이블에 의해 반환될 가능성이 있는 개체 목록
+        [SerializeField]
 		public List<T> ObjectsToLoot;
 
-		/// the total amount of weights, for debug purposes only
-		[Header("Debug")]
+        /// 디버그 목적으로만 사용되는 가중치의 총량
+        [Header("Debug")]
 		[MMReadOnly]
 		public float WeightsTotal;
         
 		protected float _maximumWeightSoFar = 0f;
 		protected bool _weightsComputed = false;
-        
-		/// <summary>
-		/// Determines, for each object in the table, its chance percentage, based on the specified weights
-		/// </summary>
-		public virtual void ComputeWeights()
+
+        /// <summary>
+        /// 지정된 가중치를 기준으로 테이블의 각 개체에 대한 확률 백분율을 결정합니다.
+        /// </summary>
+        public virtual void ComputeWeights()
 		{
 			if (ObjectsToLoot == null)
 			{
@@ -70,12 +70,12 @@ namespace  MoreMountains.Tools
 
 			_weightsComputed = true;
 		}
-        
-		/// <summary>
-		/// Returns one object from the table, picked randomly
-		/// </summary>
-		/// <returns></returns>
-		public virtual T GetLoot()
+
+        /// <summary>
+        /// 테이블에서 무작위로 선택된 객체 하나를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        public virtual T GetLoot()
 		{	
 			if (ObjectsToLoot == null)
 			{
@@ -105,22 +105,22 @@ namespace  MoreMountains.Tools
 			return null;
 		}
 	}
-    
-	/// <summary>
-	/// A MMLootTable implementation for GameObjects
-	/// </summary>
-	[System.Serializable]
-	public class MMLootTableGameObject : MMLootTable<MMLootGameObject, GameObject> { } 
-    
-	/// <summary>
-	/// A MMLootTable implementation for floats
-	/// </summary>
-	[System.Serializable]
-	public class MMLootTableFloat : MMLootTable<MMLootFloat, float> { } 
-    
-	/// <summary>
-	/// A MMLootTable implementation for strings
-	/// </summary>
-	[System.Serializable]
+
+    /// <summary>
+    /// GameObject에 대한 MMLootTable 구현
+    /// </summary>
+    [System.Serializable]
+	public class MMLootTableGameObject : MMLootTable<MMLootGameObject, GameObject> { }
+
+    /// <summary>
+    /// 부동 소수점에 대한 MMLootTable 구현
+    /// </summary>
+    [System.Serializable]
+	public class MMLootTableFloat : MMLootTable<MMLootFloat, float> { }
+
+    /// <summary>
+    /// 문자열에 대한 MMLootTable 구현
+    /// </summary>
+    [System.Serializable]
 	public class MMLootTableString : MMLootTable<MMLootString, string> { } 
 }

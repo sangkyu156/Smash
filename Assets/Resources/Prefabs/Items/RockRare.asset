@@ -41,7 +41,7 @@ MonoBehaviour:
   Description: "\uC801\uC758 \uC774\uB3D9\uACFC \uACF5\uACA9\uC744 \uB9C9\uC544\uC8FC\uB294
     '\uBC14\uC704'\uB97C \uC6D0\uD558\uB294 \uC9C0\uC5ED\uC5D0 \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C
     \uBC14\uC704\uB294 '3\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4."
-  Icon: {fileID: 21300000, guid: 85489a52e483cc84989b04afec5ab4ea, type: 3}
+  Icon: {fileID: 21300000, guid: c8f98d64580097c4c8b4f180b7147133, type: 3}
   Prefab: {fileID: 6399921688540126762, guid: 2c003d3b80ccc5547bff1c91427a7e18, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1

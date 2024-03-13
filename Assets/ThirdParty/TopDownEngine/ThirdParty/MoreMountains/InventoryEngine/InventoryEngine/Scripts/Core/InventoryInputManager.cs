@@ -630,37 +630,37 @@ namespace MoreMountains.InventoryEngine
             }
 
             //아이템 설치중
-            if (_quickSlot1 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot1 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha1);
                 currentlySelectedSlot = 0;
             }
 
-            if (_quickSlot2 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot2 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha2);
                 currentlySelectedSlot = 1;
             }
 
-            if (_quickSlot3 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot3 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha3);
                 currentlySelectedSlot = 2;
             }
 
-            if (_quickSlot4 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot4 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha4);
                 currentlySelectedSlot = 3;
             }
 
-            if (_quickSlot5 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot5 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha5);
                 currentlySelectedSlot = 4;
             }
 
-            if (_quickSlot6 && Overlay.alpha == 0 && QuickSlotsDisplay != null)
+            if (_quickSlot6 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha6);
                 currentlySelectedSlot = 5;
