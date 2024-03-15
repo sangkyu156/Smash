@@ -14,11 +14,9 @@ public class BuffInvincibility : MonoBehaviour
 
             other.GetComponent<Health>().DamageDisabled(invincibilityTime);
             CreateManager.Instance.BuffInvincibilityEffectStart(invincibilityTime);
+            other.GetComponent<PlayerEffectsController>().invincibilityPlay();
 
-            GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffInvincibilityEffect");
-            effect.transform.position = other.transform.position;
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

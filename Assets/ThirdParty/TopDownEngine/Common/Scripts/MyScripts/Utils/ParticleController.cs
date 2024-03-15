@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ParticleController : MonoBehaviour
 {
     private new ParticleSystem particleSystem;
+    public ParticleSystem subParticle;
     CapsuleCollider capsuleCollider;
     public Slider slider;
     float totalDuration;
@@ -58,6 +59,8 @@ public class ParticleController : MonoBehaviour
     void ParticleColliderOff()
     {
         capsuleCollider.enabled = false;
+        if(subParticle != null)
+            subParticle.gameObject.SetActive(false);
         slider.gameObject.SetActive(false);
         MMGameEvent.Trigger("Destroyed");
     }

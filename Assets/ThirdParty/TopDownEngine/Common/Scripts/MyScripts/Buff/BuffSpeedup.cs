@@ -16,11 +16,9 @@ public class BuffSpeedup : MonoBehaviour
 
             other.GetComponent<CharacterMovement>().ApplyMovementMultiplier(increaseSpeed, speedIncreaseTime);
             CreateManager.Instance.BuffSpeedupEffectStart(speedIncreaseTime);
+            other.GetComponent<PlayerEffectsController>().SpeedupPlay();
 
-            GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffSpeedupEffect");
-            effect.transform.position = other.transform.position;
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

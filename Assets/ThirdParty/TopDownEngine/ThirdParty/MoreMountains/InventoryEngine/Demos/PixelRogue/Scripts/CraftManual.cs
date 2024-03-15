@@ -70,11 +70,13 @@ public class CraftManual : MonoBehaviour
             int randomAngleY = Random.Range(0, 180);
             Quaternion randomRotation = Quaternion.Euler(-90, randomAngleY, 0);
             Instantiate(go_Prefab, go_Preview.transform.position, randomRotation);
-            Destroy(go_Preview);
+            if(go_Preview !=  null)
+                Destroy(go_Preview);
             isPreviewActivated = false;
             go_Preview = null;
             go_Prefab = null;
             inventory.isInstalling = false;
+            gameObject.SetActive(false);
             Time.timeScale = 1;
             MMGameEvent.Trigger("Installed");
         }
@@ -82,11 +84,13 @@ public class CraftManual : MonoBehaviour
 
     public void BuildCancel()
     {
-        Destroy(go_Preview);
+        if (go_Preview != null)
+            Destroy(go_Preview);
         isPreviewActivated = false;
         go_Preview = null;
         go_Prefab = null;
         inventory.isInstalling = false;
+        gameObject.SetActive(false);
         Time.timeScale = 1;
     }
 }

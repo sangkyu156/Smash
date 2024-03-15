@@ -4965,7 +4965,6 @@ GameObject:
   - component: {fileID: 5772142907984049558}
   - component: {fileID: 4045244754222759317}
   - component: {fileID: 6539915546776546561}
-  - component: {fileID: 1614977244839641970}
   m_Layer: 0
   m_Name: BuffStaminaEffect
   m_TagString: Untagged
@@ -9865,15 +9864,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1614977244839641970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3805941995377213482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0619f374d3c3c42911eae623b288ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

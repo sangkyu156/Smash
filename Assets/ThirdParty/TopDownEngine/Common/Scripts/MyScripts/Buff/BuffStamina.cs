@@ -10,11 +10,9 @@ public class BuffStamina : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<CharacterRun>().StaminaReset();
+            other.GetComponent<PlayerEffectsController>().StaminaPlay();
 
-            GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffStaminaEffect");
-            effect.transform.position = other.transform.position;
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

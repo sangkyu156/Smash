@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3226758096513537221}
   - component: {fileID: 7683992942648082459}
   - component: {fileID: 4181722564606178620}
-  - component: {fileID: 4499482535001154891}
   m_Layer: 0
   m_Name: BuffInvincibilityEffect
   m_TagString: Untagged
@@ -4911,18 +4910,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4499482535001154891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3520560649210389533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e0619f374d3c3c42911eae623b288ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4797627606991534680
 GameObject:
   m_ObjectHideFlags: 0

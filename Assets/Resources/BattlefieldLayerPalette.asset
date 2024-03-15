@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c509dbaa7b6f416409e3195321a2187e, type: 3}
+  m_Name: BattlefieldLayerPalette
+  m_EditorClassIdentifier: 
+  PaletteLayers:
+  - {fileID: 8574412962073106934, guid: f32abc1c577b54e44a00467575ef7f0d, type: 2}
+  - {fileID: 8574412962073106934, guid: 6cb94fe356b18b245851120f4beac95e, type: 2}
+  - {fileID: 8574412962073106934, guid: cae15fbebc6775944916b2601e2a1c3e, type: 2}
+  - {fileID: 8574412962073106934, guid: 0de759de531179e43b82af7d11935db1, type: 2}
+  - {fileID: 8574412962073106934, guid: 33d36c61a6ae9744d92c4869b72383e5, type: 2}
+  - {fileID: 8574412962073106934, guid: 361e08d08f470374991d70bbdb314022, type: 2}
+  - {fileID: 8574412962073106934, guid: cc54460a01c68ab46a51d76ddf554118, type: 2}
+  - {fileID: 8574412962073106934, guid: 5e277c78245e3e248a92c57ca103b6c8, type: 2}
+  - {fileID: 8574412962073106934, guid: 6d6a95081de1bd546aace7ffcb2624ce, type: 2}
+  - {fileID: 8574412962073106934, guid: 36466e176e9aeda48a97b368cc9f01f5, type: 2}
+  - {fileID: 8574412962073106934, guid: 665654af80996644f99b7a4f56e5f1d5, type: 2}
+  - {fileID: 8574412962073106934, guid: 8020c736395514b40b43f525f3ebaf2b, type: 2}
+  - {fileID: 8574412962073106934, guid: 76be939272c08214ab952a5c4821c0e3, type: 2}
+  - {fileID: 8574412962073106934, guid: 970b2a22ca63ce547be3f049b9ee8d91, type: 2}
+  - {fileID: 8574412962073106934, guid: 77704d94a38535f438b3992d956f8d26, type: 2}
+  - {fileID: 8574412962073106934, guid: aa5fbf2269ba03740ad3195ef2ad6ae8, type: 2}
+  - {fileID: 8574412962073106934, guid: 171a619ad0b7a3640a924beec71d4371, type: 2}
+  - {fileID: 8574412962073106934, guid: 5a1d74bffcd6a054e9450cf3ec2ad63c, type: 2}

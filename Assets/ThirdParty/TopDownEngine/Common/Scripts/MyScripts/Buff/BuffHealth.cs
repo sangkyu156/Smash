@@ -13,11 +13,9 @@ public class BuffHealth : MonoBehaviour
             float healHealth = GetMaxHealthPercentage(other.GetComponent<Health>().MaximumHealth);
 
             other.GetComponent<Health>().ReceiveHealth(healHealth, this.gameObject);
+            other.GetComponent<PlayerEffectsController>().Heal_1_Play();
 
-            GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffHealthEffect");
-            effect.transform.position = other.transform.position;
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 

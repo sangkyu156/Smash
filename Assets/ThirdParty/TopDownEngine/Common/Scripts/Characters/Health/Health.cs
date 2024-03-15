@@ -200,7 +200,7 @@ namespace MoreMountains.TopDownEngine
 		string thisTag;
 		int thisLayer;
         int invincibilityCount;//무적버프 중복으로 먹은 횟수
-
+        PlayerEffectsController playerParticle;
         protected class InterruptiblesDamageOverTimeCoroutine
 		{
 			public Coroutine DamageOverTimeCoroutine;
@@ -221,6 +221,7 @@ namespace MoreMountains.TopDownEngine
 			{
                 InitialHealth = PlayerDataManager.GetHealth();
                 MaximumHealth = PlayerDataManager.GetHealth();
+                playerParticle = GetComponent<PlayerEffectsController>();
             }
             Initialization();
 			InitializeCurrentHealth();
@@ -1017,7 +1018,8 @@ namespace MoreMountains.TopDownEngine
 			{
 				SetHealth(Mathf.Min (CurrentHealth + health,MaximumHealth));	
 			}
-			UpdateHealthBar(true);
+
+            UpdateHealthBar(true);
 		}
 
         /// <summary>

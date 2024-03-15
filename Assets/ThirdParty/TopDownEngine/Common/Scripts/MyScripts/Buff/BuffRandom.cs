@@ -26,11 +26,9 @@ public class BuffRandom : MonoBehaviour
     void Stamina(Collider other)
     {
         other.GetComponent<CharacterRun>().StaminaReset();
+        other.GetComponent<PlayerEffectsController>().StaminaPlay();
 
-        GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffStaminaEffect");
-        effect.transform.position = other.transform.position;
-
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     //체력 30%회복 버프
@@ -40,11 +38,9 @@ public class BuffRandom : MonoBehaviour
         float healHealth = GetMaxHealthPercentage(other.GetComponent<Health>().MaximumHealth);
 
         other.GetComponent<Health>().ReceiveHealth(healHealth, this.gameObject);
+        other.GetComponent<PlayerEffectsController>().Heal_1_Play();
 
-        GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffHealthEffect");
-        effect.transform.position = other.transform.position;
-
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     //캐릭터의 최대 체력에서 30% 구하기
@@ -59,11 +55,9 @@ public class BuffRandom : MonoBehaviour
         float plusHealth = 10;
 
         other.GetComponent<Health>().UpdateMaxHealth(plusHealth);
+        other.GetComponent<PlayerEffectsController>().HeartPlay();
 
-        GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffHeartEffect");
-        effect.transform.position = other.transform.position;
-
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     //5초동안 무적 버프
@@ -73,11 +67,9 @@ public class BuffRandom : MonoBehaviour
 
         other.GetComponent<Health>().DamageDisabled(invincibilityTime);
         CreateManager.Instance.BuffInvincibilityEffectStart(invincibilityTime);
+        other.GetComponent<PlayerEffectsController>().invincibilityPlay();
 
-        GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffInvincibilityEffect");
-        effect.transform.position = other.transform.position;
-
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     //5초동안 속도 2배 증가 버프
@@ -88,10 +80,8 @@ public class BuffRandom : MonoBehaviour
 
         other.GetComponent<CharacterMovement>().ApplyMovementMultiplier(increaseSpeed, speedIncreaseTime);
         CreateManager.Instance.BuffSpeedupEffectStart(speedIncreaseTime);
+        other.GetComponent<PlayerEffectsController>().SpeedupPlay();
 
-        GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffSpeedupEffect");
-        effect.transform.position = other.transform.position;
-
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }

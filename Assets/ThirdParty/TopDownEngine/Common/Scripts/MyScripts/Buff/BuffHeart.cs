@@ -13,11 +13,9 @@ public class BuffHeart : MonoBehaviour
             plusHealth = 10;
 
             other.GetComponent<Health>().UpdateMaxHealth(plusHealth);
+            other.GetComponent<PlayerEffectsController>().HeartPlay();
 
-            GameObject effect = CreateManager.Instantiate("Battlefield/Buff/BuffHeartEffect");
-            effect.transform.position = other.transform.position;
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
