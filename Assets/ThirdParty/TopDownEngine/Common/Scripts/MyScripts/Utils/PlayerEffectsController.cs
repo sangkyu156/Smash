@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerEffectsController : MonoBehaviour
 {
-    public ParticleSystem heal_1;
-    public ParticleSystem heal_2;
-    public ParticleSystem heart;
+    public ParticleSystem heal_1; //¹öÇÁÈú
+    public ParticleSystem heal_2; //HealRock Èú
+    public ParticleSystem heart;  
     public ParticleSystem invincibility;
     public ParticleSystem speedup;
     public ParticleSystem stamina;
