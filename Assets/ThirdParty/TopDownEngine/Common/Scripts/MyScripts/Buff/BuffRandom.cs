@@ -22,6 +22,8 @@ public class BuffRandom : MonoBehaviour
         }
     }
 
+    //asdasdasd
+
     //스테미나 회복 버프
     void Stamina(Collider other)
     {
