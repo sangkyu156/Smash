@@ -4882,7 +4882,7 @@ MonoBehaviour:
   Quantity: 1
   RemainingQuantity: 1
   PickableIfInventoryIsFull: 0
-  DisableObjectWhenDepleted: 0
+  DisableObjectWhenDepleted: 1
   RequirePlayerTag: 1
 --- !u!1 &4140099296299508324
 GameObject:

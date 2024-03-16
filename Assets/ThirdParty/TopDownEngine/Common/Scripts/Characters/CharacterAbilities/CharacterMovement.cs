@@ -163,9 +163,9 @@ namespace MoreMountains.TopDownEngine
 		{
 			base.ProcessAbility();
 			
-			HandleFrozen();
-			
-			if (!AbilityAuthorized
+			HandleFrozen();			
+
+            if (!AbilityAuthorized
 			    || ((_condition.CurrentState != CharacterStates.CharacterConditions.Normal) && (_condition.CurrentState != CharacterStates.CharacterConditions.ControlledMovement)))
 			{
 				if (AbilityAuthorized)
@@ -176,7 +176,9 @@ namespace MoreMountains.TopDownEngine
 			}
 			HandleDirection();
 			HandleMovement();
-			Feedbacks ();
+
+            HandleSlow();
+            Feedbacks ();
 		}
 
         /// <summary>
@@ -405,6 +407,35 @@ namespace MoreMountains.TopDownEngine
 				SetMovement();
 			}
 		}
+
+        /// <summary>
+        /// 캐릭터가 슬로우 상태일 때 발생하는 작업을 설명합니다
+        /// </summary>
+        protected virtual void HandleSlow()
+        {
+            if (!AbilityAuthorized)
+            {
+                return;
+            }
+            if (_movement.CurrentState == CharacterStates.MovementStates.Slow)
+            {
+				_horizontalMovement = WalkSpeed * 0.5f;
+                _verticalMovement = WalkSpeed * 0.5f;
+                SetMovement();
+            }
+        }
+
+		//캐릭터 컨디션을 슬로우로 변경한다.
+		public void CharacterConditionSlow()
+		{
+            _movement.ChangeState(CharacterStates.MovementStates.Slow);
+        }
+
+        //캐릭터 컨디션을 워킹으로 변경한다.
+        public void CharacterConditionWalking()
+        {
+            _movement.ChangeState(CharacterStates.MovementStates.Walking);
+        }
 
         /// <summary>
         /// 컨트롤러를 이동합니다

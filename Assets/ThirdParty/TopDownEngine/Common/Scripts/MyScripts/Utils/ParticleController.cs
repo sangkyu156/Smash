@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class ParticleController : MonoBehaviour
 {
     private new ParticleSystem particleSystem;
-    public ParticleSystem subParticle;
+    public ParticleSystem subParticle; //콜라이더 없어질때 같이 없어져야하는 파티클시스템
     CapsuleCollider capsuleCollider;
     public Slider slider;
     float totalDuration;
     float usageTime;
+    float particleCycle = 1f; //서브파티클이 루프가 아닌 일회용이면 일회용이 재사용되는 시간
     public Define.Grade grade;
 
     private void Start()
@@ -23,6 +24,17 @@ public class ParticleController : MonoBehaviour
 
     private void Update()
     {
+        if(!subParticle.main.loop)
+        {
+            particleCycle += Time.deltaTime;
+
+            if (particleCycle >= 1)
+            {
+                subParticle.Play();
+                particleCycle = 0;
+            }
+        }
+
         if (particleSystem.isPlaying && slider.enabled)
         {
             // 현재 파티클 시스템이 재생된 시간을 더해줍니다.

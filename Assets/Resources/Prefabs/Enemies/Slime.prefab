@@ -1584,16 +1584,17 @@ MonoBehaviour:
   GameObjectToLoot: {fileID: 0}
   LootTable:
     ObjectsToLoot:
-    - Loot: {fileID: 8156648605230441292, guid: e8ebc2d7fc18cca4fa43f9736932946e,
+    - Loot: {fileID: 2299797054593825260, guid: 3127a7dae4f50384e81b40d3a76dda40,
         type: 3}
-      Weight: 5
+      Weight: 2
       ChancePercentage: 0
-    - Loot: {fileID: 5450364241485022616, guid: d2450a40f2b36d842a9f3bec184096e5,
+    - Loot: {fileID: 2541212190649506079, guid: 11910ae311c03624ea2d1966cfbc96bd,
         type: 3}
-      Weight: 5000
+      Weight: 2
       ChancePercentage: 0
-    - Loot: {fileID: 0}
-      Weight: 90
+    - Loot: {fileID: 2130854186364984410, guid: 5d1722be0064c49498e8a0b7fbb9e6d8,
+        type: 3}
+      Weight: 2
       ChancePercentage: 0
     WeightsTotal: 0
   LootTableSO: {fileID: 0}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8619014916113993359}
   - component: {fileID: 8847763249272527885}
   - component: {fileID: 2957299850192499667}
+  - component: {fileID: -5052119166122996535}
   m_Layer: 0
   m_Name: RareItem
   m_TagString: Untagged
@@ -4865,6 +4866,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5052119166122996535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220924606893123413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 0}
+  Quantity: 1
+  RemainingQuantity: 1
+  PickableIfInventoryIsFull: 0
+  DisableObjectWhenDepleted: 1
+  RequirePlayerTag: 1
 --- !u!1 &1485766196254378602
 GameObject:
   m_ObjectHideFlags: 0

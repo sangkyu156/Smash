@@ -12227,7 +12227,7 @@ MonoBehaviour:
   player_GameObject: {fileID: 0}
   skillPostion: {fileID: 0}
   uiCanvas: {fileID: 0}
-  stage: 23
+  stage: 1
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0

@@ -34603,6 +34603,8 @@ GameObject:
   - component: {fileID: 5151660308296770381}
   - component: {fileID: 3539030157233278530}
   - component: {fileID: 6808621016731081844}
+  - component: {fileID: 761792233304576167}
+  - component: {fileID: 6902849001464608777}
   m_Layer: 23
   m_Name: HealRockRare
   m_TagString: Untagged
@@ -39650,8 +39652,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5271382c6805ca645a49e0c74e12bf22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  subParticle: {fileID: 3202277044729301177}
   slider: {fileID: 8934836356741080522}
   grade: 1
+--- !u!135 &761792233304576167
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676060455470138229}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4.1835594
+  m_Center: {x: 0.0032024384, y: 0, z: 0.043849003}
+--- !u!114 &6902849001464608777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676060455470138229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a40090da19243444ba4a1a489c2ba4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8121544382675276480
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,14 +15,13 @@ namespace MoreMountains.TopDownEngine
 			Normal,
 			ControlledMovement,
 			Frozen,
-			Paused,
+            Paused,
 			Dead,
 			Stunned
 		}
 
-		/// The possible Movement States the character can be in. These usually correspond to their own class, 
-		/// but it's not mandatory
-		public enum MovementStates 
+        /// 캐릭터가 있을 수 있는 가능한 이동 상태. 이는 일반적으로 자신의 클래스에 해당하지만 필수는 아닙니다.
+        public enum MovementStates 
 		{
 			Null,
 			Idle,
@@ -37,7 +36,8 @@ namespace MoreMountains.TopDownEngine
 			Pushing,
 			DoubleJumping,
 			Attacking,
-			FallingDownHole
-		}
+			FallingDownHole,
+            Slow
+        }
 	}
 }

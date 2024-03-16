@@ -14775,6 +14775,7 @@ GameObject:
   - component: {fileID: 7319023060372564673}
   - component: {fileID: 3046318226403680792}
   - component: {fileID: 1970233492587855205}
+  - component: {fileID: -103109787810992066}
   m_Layer: 0
   m_Name: NormalItem
   m_TagString: Untagged
@@ -19628,6 +19629,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-103109787810992066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741576339698336658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fd837a0abc28d4d91c55590bd2c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Item: {fileID: 0}
+  Quantity: 1
+  RemainingQuantity: 1
+  PickableIfInventoryIsFull: 0
+  DisableObjectWhenDepleted: 1
+  RequirePlayerTag: 1
 --- !u!1 &5827560643845711618
 GameObject:
   m_ObjectHideFlags: 0
