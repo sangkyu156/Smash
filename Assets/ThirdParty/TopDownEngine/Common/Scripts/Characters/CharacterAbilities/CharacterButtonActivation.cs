@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a character and it'll be able to activate button zones
-	/// Animator parameters : Activating (bool)
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 버튼 영역을 활성화할 수 있습니다.
+    /// Animator parameters : Activating (bool)
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Button Activation")] 
 	public class CharacterButtonActivation : CharacterAbility 
 	{

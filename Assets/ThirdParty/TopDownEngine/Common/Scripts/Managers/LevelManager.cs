@@ -131,7 +131,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			isClear = false;
             StartCoroutine(InitializationCoroutine());
-		}
+        }
 
 		protected virtual IEnumerator InitializationCoroutine()
 		{
@@ -233,8 +233,11 @@ namespace MoreMountains.TopDownEngine
 					newPlayer.name = playerPrefab.name;
                     Players.Add(newPlayer);
 
-                    GameManager.Instance.playerTypeChange(newPlayer);
-					CreateManager.Instance.player = newPlayer.gameObject;
+                    if (SceneManager.GetActiveScene().name != "LevelSelect2")
+					{
+                        GameManager.Instance.playerTypeChange(newPlayer);
+                        CreateManager.Instance.player = newPlayer.gameObject;
+                    }
 
                     if (playerPrefab.CharacterType != Character.CharacterTypes.Player)
 					{

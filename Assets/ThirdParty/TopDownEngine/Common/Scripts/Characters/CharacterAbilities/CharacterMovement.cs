@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using MoreMountains.Tools;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -119,7 +120,7 @@ namespace MoreMountains.TopDownEngine
         public override void ResetAbility()
         {
 	        base.ResetAbility();
-            if (gameObject.tag == "Player")
+            if (gameObject.tag == "Player" && SceneManager.GetActiveScene().name != "LevelSelect2")
             {
                 MovementSpeed = PlayerDataManager.GetSpeed();
             }

@@ -21,7 +21,7 @@ public class StagePopup : MonoBehaviour
     public void PopupClose()
     {
         Time.timeScale = 1f;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetText()

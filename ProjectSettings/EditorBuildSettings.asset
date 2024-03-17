@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
     guid: 67d4fbd65b46aa448b03fd83ecd803ef
   - enabled: 1
+    path: Assets/Scenes/LevelSelect2.unity
+    guid: a338827332e287941bb21719a7718438
+  - enabled: 1
     path: Assets/Scenes/Battlefield01.unity
     guid: a24549e2a31647f4ab58017d870c261c
   - enabled: 1
