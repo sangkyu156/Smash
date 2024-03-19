@@ -5,16 +5,16 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control channel mixer's red, green and blue over time.
-	/// It requires you have in your scene an object with a Volume 
-	/// with Channel Mixer active, and a MMChannelMixerShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 채널 믹서의 빨간색, 녹색 및 파란색을 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 채널 믹서가 활성화되어 있고 MMChannelMixerShaker_URP 구성 요소가 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("PostProcess/Channel Mixer URP")]
-	[FeedbackHelp("This feedback allows you to control channel mixer's red, green and blue over time." +
-	              "It requires you have in your scene an object with a Volume" +
-	              "with Channel Mixer active, and a MMChannelMixerShaker_URP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 채널 믹서의 빨간색, 녹색 및 파란색을 제어할 수 있습니다." +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"채널 믹서가 활성화되어 있고 MMChannelMixerShaker_URP 구성 요소가 있습니다.")]
 	public class MMFeedbackChannelMixer_URP : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -29,16 +29,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the channel to emit on")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 1f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Red")]

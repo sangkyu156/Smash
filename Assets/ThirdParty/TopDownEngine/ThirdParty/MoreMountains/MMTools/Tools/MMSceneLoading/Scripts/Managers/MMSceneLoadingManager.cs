@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A class to load scenes using a loading screen instead of just the default API
-	/// This class used to be known as LoadingSceneManager, and has now been renamed to MMSceneLoadingManager for consistency
-	/// </summary>
-	public class MMSceneLoadingManager : MonoBehaviour 
+{
+    /// <summary>
+    /// 기본 API 대신 로딩 화면을 사용하여 장면을 로드하는 클래스
+    /// 이 클래스는 LoadingSceneManager로 알려졌으나 이제 일관성을 위해 MMSceneLoadingManager로 이름이 바뀌었습니다.
+    /// </summary>
+    public class MMSceneLoadingManager : MonoBehaviour 
 	{
 		public enum LoadingStatus
 		{
@@ -86,11 +86,11 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Call this static method to load a scene from anywhere
-		/// </summary>
-		/// <param name="sceneToLoad">Level name.</param>
-		public static void LoadScene(string sceneToLoad, string loadingSceneName)
+        /// <summary>
+        /// 어디에서나 장면을 로드하려면 이 정적 메서드를 호출하세요.
+        /// </summary>
+        /// <param name="sceneToLoad">Level name.</param>
+        public static void LoadScene(string sceneToLoad, string loadingSceneName)
 		{
 			_sceneToLoad = sceneToLoad;					
 			Application.backgroundLoadingPriority = ThreadPriority.High;

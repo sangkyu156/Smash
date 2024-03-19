@@ -3,11 +3,11 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// The various states you can use to check if your character is doing something at the current frame
-	/// </summary>    
-	public class CharacterStates 
+{
+    /// <summary>
+    /// 캐릭터가 현재 프레임에서 뭔가를 하고 있는지 확인하는 데 사용할 수 있는 다양한 상태
+    /// </summary>    
+    public class CharacterStates 
 	{
 		/// The possible character conditions
 		public enum CharacterConditions

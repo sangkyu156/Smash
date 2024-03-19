@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This action will make the character pathfind its way back to its last patrol point
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionPathfinderToPatrol3D")]
+    /// <summary>
+    /// 이 작업을 수행하면 캐릭터가 마지막 순찰 지점으로 돌아가는 길을 찾게 됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionPathfinderToPatrol3D")]
 	//[RequireComponent(typeof(AIActionMovePatrol3D))]
 	//[RequireComponent(typeof(CharacterPathfinder3D))]
 	//[RequireComponent(typeof(CharacterMovement))]

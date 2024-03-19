@@ -7,10 +7,10 @@ using UnityEngine.AI;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a 3D character and it'll be able to navigate a navmesh (if there's one in the scene of course)
-	/// </summary>
-	[MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 클래스를 3D 캐릭터에 추가하면 내비메시를 탐색할 수 있습니다(물론 장면에 내비메시가 있는 경우).
+    /// </summary>
+    [MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Pathfinder 3D")]
 	public class CharacterPathfinder3D : CharacterAbility
 	{
@@ -19,57 +19,57 @@ namespace MoreMountains.TopDownEngine
 		[Header("PathfindingTarget")]
 
 		/// the target the character should pathfind to
-		[Tooltip("the target the character should pathfind to")]
+		[Tooltip("캐릭터가 경로를 찾아야 하는 대상")]
 		public Transform Target;
 		/// the distance to waypoint at which the movement is considered complete
-		[Tooltip("the distance to waypoint at which the movement is considered complete")]
+		[Tooltip("이동이 완료된 것으로 간주되는 웨이포인트까지의 거리")]
 		public float DistanceToWaypointThreshold = 1f;
 		/// if the target point can't be reached, the distance threshold around that point in which to look for an alternative end point
-		[Tooltip("if the target point can't be reached, the distance threshold around that point in which to look for an alternative end point")]
+		[Tooltip("목표 지점에 도달할 수 없는 경우 대체 끝점을 찾기 위한 해당 지점 주변의 거리 임계값")]
 		public float ClosestPointThreshold = 3f;
 		/// a minimum delay (in seconds) between two navmesh requests - longer delay means better performance but less accuracy
-		[Tooltip("a minimum delay (in seconds) between two navmesh requests - longer delay means better performance but less accuracy")]
+		[Tooltip("두 개의 navmesh 요청 사이의 최소 지연(초) - 지연 시간이 길수록 성능은 향상되지만 정확도는 떨어집니다.")]
 		public float MinimumDelayBeforePollingNavmesh = 0.1f;
 
 		[Header("Path Refresh")]
 		/// the chosen mode in which to refresh the path (none : nothing will happen and path will only refresh on set new destination,
 		/// time based : path will refresh every x seconds, speed threshold based : path will refresh every x seconds if the character's speed is below a certain threshold
-		[Tooltip("the chosen mode in which to refresh the path (none : nothing will happen and path will only refresh on set new destination, " +
-		         "time based : path will refresh every x seconds, speed threshold based : path will refresh every x seconds if the character's speed is below a certain threshold")]
+		[Tooltip("경로를 새로 고치기 위해 선택한 모드(없음: 아무 일도 일어나지 않고 경로는 새 대상이 설정된 경우에만 새로 고쳐집니다. " +
+                 "time based : 경로는 x초마다 새로 고쳐집니다., speed threshold based : 캐릭터의 속도가 특정 임계값보다 낮으면 경로가 x초마다 새로 고쳐집니다.")]
 		public PathRefreshModes PathRefreshMode = PathRefreshModes.None;
 		/// the speed under which the path should be recomputed, usually if the character blocks against an obstacle
-		[Tooltip("the speed under which the path should be recomputed, usually if the character blocks against an obstacle")]
+		[Tooltip("일반적으로 캐릭터가 장애물을 막는 경우 경로를 다시 계산해야 하는 속도입니다.")]
 		[MMEnumCondition("PathRefreshMode", (int)PathRefreshModes.SpeedThresholdBased)]
 		public float RefreshSpeedThreshold = 1f;
 		/// the interval at which to refresh the path, in seconds
-		[Tooltip("the interval at which to refresh the path, in seconds")]
+		[Tooltip("경로를 새로 고치는 간격(초)")]
 		[MMEnumCondition("PathRefreshMode", (int)PathRefreshModes.TimeBased, (int)PathRefreshModes.SpeedThresholdBased)]
 		public float RefreshInterval = 2f;
 
 		[Header("Debug")]
 		/// whether or not we should draw a debug line to show the current path of the character
-		[Tooltip("whether or not we should draw a debug line to show the current path of the character")]
+		[Tooltip("캐릭터의 현재 경로를 표시하기 위해 디버그 라인을 그려야 하는지 여부")]
 		public bool DebugDrawPath;
 
 		/// the current path
 		[MMReadOnly]
-		[Tooltip("the current path")]
+		[Tooltip("현재 경로")]
 		public UnityEngine.AI.NavMeshPath AgentPath;
 		/// a list of waypoints the character will go through
 		[MMReadOnly]
-		[Tooltip("a list of waypoints the character will go through")]
+		[Tooltip("캐릭터가 통과할 웨이포인트 목록")]
 		public Vector3[] Waypoints;
 		/// the index of the next waypoint
 		[MMReadOnly]
-		[Tooltip("the index of the next waypoint")]
+		[Tooltip("다음 웨이포인트의 인덱스")]
 		public int NextWaypointIndex;
 		/// the direction of the next waypoint
 		[MMReadOnly]
-		[Tooltip("the direction of the next waypoint")]
+		[Tooltip("다음 웨이포인트 방향")]
 		public Vector3 NextWaypointDirection;
 		/// the distance to the next waypoint
 		[MMReadOnly]
-		[Tooltip("the distance to the next waypoint")]
+		[Tooltip("다음 웨이포인트까지의 거리")]
 		public float DistanceToNextWaypoint;
 
 		public event System.Action<int, int, float> OnPathProgress;

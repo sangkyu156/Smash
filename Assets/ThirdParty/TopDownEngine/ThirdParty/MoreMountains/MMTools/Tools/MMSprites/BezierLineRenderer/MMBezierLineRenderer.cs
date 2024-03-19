@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a line renderer and it'll add control points that let you turn your line into a bezier curve
-	/// </summary>
-	[ExecuteAlways]
+    /// <summary>
+    /// 이 클래스를 라인 렌더러에 추가하면 선을 베지어 곡선으로 바꿀 수 있는 제어점이 추가됩니다.
+    /// </summary>
+    [ExecuteAlways]
 	[RequireComponent(typeof(LineRenderer))]
 	[AddComponentMenu("More Mountains/Tools/Sprites/MMBezierLineRenderer")]
 	public class MMBezierLineRenderer : MonoBehaviour

@@ -5,19 +5,19 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This Decision will return true if its MMConeOfVision has detected at least one target, and will set it as the Brain's target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetConeOfVision2D")]
+    /// <summary>
+    /// 이 결정은 MMConeOfVision이 하나 이상의 대상을 감지한 경우 true를 반환하고 이를 Brain의 대상으로 설정합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetConeOfVision2D")]
 	public class AIDecisionDetectTargetConeOfVision2D : AIDecision
 	{
-		/// if this is true, this decision will set the AI Brain's Target to null if no target is found
-		[Tooltip("if this is true, this decision will set the AI Brain's Target to null if no target is found")]
+        /// 이것이 사실이라면 이 결정은 대상이 발견되지 않으면 AI Brain의 대상을 null로 설정합니다.
+        [Tooltip("이것이 사실이라면 이 결정은 대상이 발견되지 않으면 AI Brain의 대상을 null로 설정합니다.")]
 		public bool SetTargetToNullIfNoneIsFound = true;
 
 		[Header("Bindings")]
-		/// the cone of vision 2D to rotate
-		[Tooltip("the cone of vision 2D to rotate")]
+        /// theVision 2D의 원뿔이 회전합니다.
+        [Tooltip("Vision 2D의 원뿔이 회전합니다.")]
 		public MMConeOfVision2D TargetConeOfVision2D;
 
 		/// <summary>

@@ -6,15 +6,15 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Describes a blink phase, defined by a duration for the phase, and the time it should remain inactive and active, sequentially
-	/// For the duration of the phase, the object will be off for OffDuration, then on for OnDuration, then off again for OffDuration, etc
-	/// If you want a grenade to blink briefly every .2 seconds, for 1 second, these parameters are what you're after :
-	/// PhaseDuration = 1f;
-	/// OffDuration = 0.2f;
-	/// OnDuration = 0.1f;
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 단계의 지속 시간으로 정의된 깜박임 단계와 비활성 및 활성 상태를 순차적으로 유지해야 하는 시간을 설명합니다.
+    /// 단계 기간 동안 개체는 OffDuration 동안 꺼진 다음 OnDuration 동안 켜진 다음 OffDuration 동안 다시 꺼지는 식입니다.
+    /// 수류탄이 0.2초마다 1초 동안 짧게 깜박이도록 하려면 다음 매개변수를 사용하세요.
+    /// PhaseDuration = 1f;
+    /// OffDuration = 0.2f;
+    /// OnDuration = 0.1f;
+    /// </summary>
+    [Serializable]
 	public class BlinkPhase
 	{
 		/// the duration of that specific phase, in seconds
@@ -29,10 +29,10 @@ namespace MoreMountains.Feedbacks
 		public float OnLerpDuration = 0.05f;
 	}
 
-	/// <summary>
-	/// Add this class to a GameObject to make it blink, either by enabling/disabling a gameobject, changing its alpha, emission intensity, or a value on a shader)
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMBlink")]
+    /// <summary>
+    /// 게임 개체를 활성화/비활성화하거나 해당 알파, 방출 강도 또는 셰이더 값을 변경하여 깜박이게 하려면 이 클래스를 게임 개체에 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMBlink")]
 	public class MMBlink : MonoBehaviour
 	{
 		/// the possible states of the blinking object
@@ -42,63 +42,63 @@ namespace MoreMountains.Feedbacks
         
 		[Header("Blink Method")]
 		/// the selected method to blink the target object
-		[Tooltip("the selected method to blink the target object")]
+		[Tooltip("대상 객체를 깜박이는 선택된 방법")]
 		public Methods Method = Methods.SetGameObjectActive;
 		/// the object to set active/inactive if that method was chosen
-		[Tooltip("the object to set active/inactive if that method was chosen")]
+		[Tooltip("해당 메소드가 선택된 경우 활성/비활성으로 설정할 객체")]
 		[MMFEnumCondition("Method", (int)Methods.SetGameObjectActive)]
 		public GameObject TargetGameObject;
 		/// the target renderer to work with
-		[Tooltip("the target renderer to work with")]
+		[Tooltip("작업할 대상 렌더러")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public Renderer TargetRenderer;
 		/// the shader property to alter a float on
-		[Tooltip("the shader property to alter a float on")]
+		[Tooltip("플로트를 변경하는 셰이더 속성")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public string ShaderPropertyName = "_Color";
 		/// the value to apply when blinking is off
-		[Tooltip("the value to apply when blinking is off")]
+		[Tooltip("깜박임이 꺼졌을 때 적용할 값")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public float OffValue = 0f;
 		/// the value to apply when blinking is on
-		[Tooltip("the value to apply when blinking is on")]
+		[Tooltip("깜박임이 켜져 있을 때 적용할 값")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public float OnValue = 1f;
 		/// whether to lerp these values or not
-		[Tooltip("whether to lerp these values or not")]
+		[Tooltip("이 값을 lerp할지 여부")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public bool LerpValue = true;
 		/// the curve to apply to the lerping
-		[Tooltip("the curve to apply to the lerping")]
+		[Tooltip("러핑에 적용할 곡선")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
 		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.05f), new Keyframe(1, 0));
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.")] 
 		public bool UseMaterialPropertyBlocks = false;
 
 		[Header("State")]
 		/// whether the object should blink or not
-		[Tooltip("whether the object should blink or not")]
+		[Tooltip("객체가 깜박여야 하는지 여부")]
 		public bool Blinking = true;
 		/// whether or not to force a certain state on exit
-		[Tooltip("whether or not to force a certain state on exit")]
+		[Tooltip("종료 시 특정 상태를 강제로 적용할지 여부")]
 		public bool ForceStateOnExit = false;
 		/// the state to apply on exit
-		[Tooltip("the state to apply on exit")]
+		[Tooltip("종료 시 적용할 상태")]
 		[MMFCondition("ForceStateOnExit", true)]
 		public States StateOnExit = States.On;
 
 		[Header("Timescale")] 
 		/// whether or not this MMBlink should operate on unscaled time 
-		[Tooltip("whether or not this MMBlink should operate on unscaled time")]
+		[Tooltip("이 MMBlink가 확장되지 않은 시간에 작동해야 하는지 여부")]
 		public TimescaleModes TimescaleMode = TimescaleModes.Scaled;
         
 		[Header("Sequence")]
 		/// how many times the sequence should repeat (-1 : infinite)
-		[Tooltip("how many times the sequence should repeat (-1 : infinite)")]
+		[Tooltip("시퀀스가 몇 번 반복되어야 하는지(-1 : 무한)")]
 		public int RepeatCount = 0;
 		/// The list of phases to apply blinking with
-		[Tooltip("The list of phases to apply blinking with")]
+		[Tooltip("적용할 단계 목록이 깜박입니다.")]
 		public List<BlinkPhase> Phases;
         
 		[Header("Debug")]
@@ -115,11 +115,11 @@ namespace MoreMountains.Feedbacks
 		[MMFInspectorButton("StopBlinking")]
 		public bool StopBlinkingButton;
 		/// is the blinking object in an active state right now?
-		[Tooltip("is the blinking object in an active state right now?")]
+		[Tooltip("깜박이는 물체가 지금 활성 상태인가요?")]
 		[MMFReadOnly]
 		public bool Active = false;
 		/// the index of the phase we're currently in
-		[Tooltip("the index of the phase we're currently in")]
+		[Tooltip("우리가 현재 있는 단계의 인덱스")]
 		[MMFReadOnly]
 		public int CurrentPhaseIndex = 0;
         

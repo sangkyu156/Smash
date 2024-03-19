@@ -45,10 +45,10 @@ namespace MoreMountains.TopDownEngine
 		LoadNextScene
 	}
 
-	/// <summary>
-	/// A type of events used to signal level start and end (for now)
-	/// </summary>
-	public struct TopDownEngineEvent
+    /// <summary>
+    /// 레벨 시작 및 종료 신호에 사용되는 이벤트 유형(현재)
+    /// </summary>
+    public struct TopDownEngineEvent
 	{
 		public TopDownEngineEventTypes EventType;
 		public Character OriginCharacter;
@@ -70,21 +70,21 @@ namespace MoreMountains.TopDownEngine
 			e.OriginCharacter = originCharacter;
 			MMEventManager.TriggerEvent(e);
         }
-	} 
+	}
 
-	/// <summary>
-	/// A list of the methods available to change the current score
-	/// </summary>
-	public enum PointsMethods
+    /// <summary>
+    /// 현재 점수를 변경하는 데 사용할 수 있는 방법 목록
+    /// </summary>
+    public enum PointsMethods
 	{
 		Add,
 		Set
 	}
 
-	/// <summary>
-	/// A type of event used to signal changes to the current score
-	/// </summary>
-	public struct TopDownEnginePointEvent
+    /// <summary>
+    /// 현재 점수의 변경 사항을 알리는 데 사용되는 이벤트 유형
+    /// </summary>
+    public struct TopDownEnginePointEvent
 	{
 		public PointsMethods PointsMethod;
 		public int Points;
@@ -108,10 +108,10 @@ namespace MoreMountains.TopDownEngine
 		}
 	}
 
-	/// <summary>
-	/// A list of the possible pause methods
-	/// </summary>
-	public enum PauseMethods
+    /// <summary>
+    /// 가능한 일시 중지 방법 목록
+    /// </summary>
+    public enum PauseMethods
 	{
 		PauseMenu,
 		NoPauseMenu
@@ -134,35 +134,35 @@ namespace MoreMountains.TopDownEngine
 		}
 	}
 
-	/// <summary>
-	/// The game manager is a persistent singleton that handles points and time
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/Game Manager")]
+    /// <summary>
+    /// 게임 관리자는 포인트와 시간을 처리하는 지속적인 싱글톤입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/Game Manager")]
 	public class GameManager : 	MMPersistentSingleton<GameManager>, 
 		MMEventListener<MMGameEvent>, 
 		MMEventListener<TopDownEngineEvent>, 
 		MMEventListener<TopDownEnginePointEvent>
 	{
 		/// the target frame rate for the game
-		[Tooltip("the target frame rate for the game")]
+		[Tooltip("게임의 목표 프레임 속도")]
 		public int TargetFrameRate = 300;
 		[Header("Lives")]
 		/// the maximum amount of lives the character can currently have
-		[Tooltip("the maximum amount of lives the character can currently have")]
+		[Tooltip("캐릭터가 현재 가질 수 있는 최대 생명수")]
 		public int MaximumLives = 0;
 		/// the current number of lives 
-		[Tooltip("the current number of lives ")]
+		[Tooltip("현재 생명 수")]
 		public int CurrentLives = 0;
 
 		[Header("Bindings")]
 		/// the name of the scene to redirect to when all lives are lost
-		[Tooltip("the name of the scene to redirect to when all lives are lost")]
+		[Tooltip("모든 생명을 잃었을 때 방향을 바꿀 장면의 이름")]
 		public string GameOverScene;
 
 		[Header("Points")]
 		/// the current number of game points
 		[MMReadOnly]
-		[Tooltip("the current number of game points")]
+		[Tooltip("현재 게임 포인트 수")]
 		public int Points;
 
 		[Header("Pause")]
@@ -178,7 +178,7 @@ namespace MoreMountains.TopDownEngine
 		/// the stored selected character
 		public Character PersistentCharacter { get; set; }
 		/// the list of points of entry and exit
-		[Tooltip("the list of points of entry and exit")]
+		[Tooltip("출입 지점 목록")]
 		public List<PointsOfEntryStorage> PointsOfEntry;
 		/// the stored selected character
 		public Character StoredCharacter { get; set; }

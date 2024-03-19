@@ -5,31 +5,31 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This AIAction will rotate this AI's ConeOfVision2D either towards the AI's movement or its weapon aim direction
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRotateConeOfVision2D")]
+    /// <summary>
+    /// 이 AIAction은 AI의 ConeOfVision2D를 AI의 움직임이나 무기 조준 방향으로 회전시킵니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRotateConeOfVision2D")]
 	public class AIActionRotateConeOfVision2D : AIAction
 	{
 		/// the possible directions we can aim the cone at
 		public enum Modes { Movement, WeaponAim }
 		
 		[Header("Bindings")]
-		/// the cone of vision 2D to rotate
-		[Tooltip("the cone of vision 2D to rotate")]
+        /// Vision 2D의 원뿔이 회전합니다.
+        [Tooltip("Vision 2D의 원뿔이 회전합니다.")]
 		public MMConeOfVision2D TargetConeOfVision2D;
         
-		[Header("Aim")] 
-		/// whether to aim at the AI's movement direction or the weapon aim direction
-		[Tooltip("whether to aim at the AI's movement direction or the weapon aim direction")]
+		[Header("Aim")]
+        /// AI의 이동 방향을 겨냥할지 무기 조준 방향을 겨냥할지
+        [Tooltip("AI의 이동 방향을 겨냥할지 무기 조준 방향을 겨냥할지")]
 		public Modes Mode = Modes.Movement;
 
-		[Header("Interpolation")] 
-		/// whether or not to interpolate the rotation
-		[Tooltip("whether or not to interpolate the rotation")]
+		[Header("Interpolation")]
+        /// 회전을 보간할지 여부
+        [Tooltip("회전을 보간할지 여부")]
 		public bool Interpolate = false;
-		/// the rate at which to interpolate the rotation
-		[Tooltip("the rate at which to interpolate the rotation")]
+        /// the회전을 보간하는 속도
+        [Tooltip("회전을 보간하는 속도")]
 		[MMCondition("Interpolate", true)] 
 		public float InterpolateRate = 5f;
         

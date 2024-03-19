@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A data class to store auto execution info to be used in MMAutoExecution
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// MMAutoExecution에서 사용할 자동 실행 정보를 저장하는 데이터 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMAutoExecutionItem
 	{
 		/// if this is true, Event will be invoked on Awake  
@@ -23,12 +23,12 @@ namespace MoreMountains.Tools
 		public bool AutoExecuteOnInstantiate;
 		public UnityEvent Event;
 	}
-    
-	/// <summary>
-	/// This simple class lets you trigger Unity events automatically, on Awake, Enable, Disable, Start, or on instantiate
-	/// For that last one, you'll want to send a "OnInstantiate" message when instantiating this object
-	/// </summary>
-	public class MMAutoExecution : MonoBehaviour
+
+    /// <summary>
+    /// 이 간단한 클래스를 사용하면 Awake, 활성화, 비활성화, 시작 또는 인스턴스화 시 Unity 이벤트를 자동으로 트리거할 수 있습니다.
+    /// For that last one, you'll want to send a "OnInstantiate" message when instantiating this object
+    /// </summary>
+    public class MMAutoExecution : MonoBehaviour
 	{
 		/// a list of events to trigger automatically
 		public List<MMAutoExecutionItem> Events;

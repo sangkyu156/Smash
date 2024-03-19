@@ -5,29 +5,28 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a **TRIGGER** collider2D and it'll let you know when a character enters it
-	/// and will let you trigger actions in consequence
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Character Detector")]
+    /// <summary>
+    /// 이 클래스를 **TRIGGER** collider2D에 추가하면 캐릭터가 이 클래스에 들어올 때 이를 알려주고 결과적으로 액션을 트리거할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Character Detector")]
 	[RequireComponent(typeof(Collider2D))]
 	public class CharacterDetector : TopDownMonoBehaviour
 	{
-		/// It this is true, the character will have to be tagged Player for this to work
-		[Tooltip("It this is true, the character will have to be tagged Player for this to work")]
+        /// 이것이 사실입니다. 이 기능이 작동하려면 캐릭터에 Player 태그가 지정되어야 합니다.
+        [Tooltip("이것이 사실입니다. 이 기능이 작동하려면 캐릭터에 Player 태그가 지정되어야 합니다.")]
 		public bool RequiresPlayer = true;
-		/// if this is true, a character (and possibly a player based on the setting above) is in the area
-		[MMReadOnly]
-		[Tooltip("if this is true, a character (and possibly a player based on the setting above) is in the area")]
+        /// 이것이 사실이라면 캐릭터(및 위 설정에 따른 플레이어)가 해당 영역에 있는 것입니다.
+        [MMReadOnly]
+		[Tooltip("이것이 사실이라면 캐릭터(및 위 설정에 따른 플레이어)가 해당 영역에 있는 것입니다.")]
 		public bool CharacterInArea = false;
-		/// a UnityEvent to fire when the targeted character enters the area
-		[Tooltip("a UnityEvent to fire when the targeted character enters the area")]
+        /// 대상 캐릭터가 해당 지역에 들어올 때 발생하는 UnityEvent
+        [Tooltip("대상 캐릭터가 해당 지역에 들어올 때 발생하는 UnityEvent")]
 		public UnityEvent OnEnter;
-		/// a UnityEvent to fire while the targeted character stays in the area
-		[Tooltip("a UnityEvent to fire while the targeted character stays in the area")]
+        /// 대상 캐릭터가 해당 영역에 머무르는 동안 발생하는 UnityEvent
+        [Tooltip("대상 캐릭터가 해당 영역에 머무르는 동안 발생하는 UnityEvent")]
 		public UnityEvent OnStay;
-		/// a UnityEvent to fire when the targeted character exits the area
-		[Tooltip("a UnityEvent to fire when the targeted character exits the area")]
+        /// 대상 캐릭터가 영역을 벗어날 때 발생하는 UnityEvent
+        [Tooltip("대상 캐릭터가 영역을 벗어날 때 발생하는 UnityEvent")]
 		public UnityEvent OnExit;
 
 		protected Collider2D _collider2D;

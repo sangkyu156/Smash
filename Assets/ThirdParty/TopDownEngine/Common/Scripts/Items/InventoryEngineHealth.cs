@@ -14,9 +14,9 @@ namespace MoreMountains.TopDownEngine
 	public class InventoryEngineHealth : InventoryItem 
 	{
 		[Header("Health")]
-		[MMInformation("Here you need specify the amount of health gained when using this item.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기에서 이 아이템을 사용할 때 얻는 체력의 양을 지정해야 합니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// the amount of health to add to the player when the item is used
-		[Tooltip("the amount of health to add to the player when the item is used")]
+		[Tooltip("아이템이 사용될 때 플레이어에게 추가되는 체력의 양")]
 		public float HealthBonus;
 
 		/// <summary>

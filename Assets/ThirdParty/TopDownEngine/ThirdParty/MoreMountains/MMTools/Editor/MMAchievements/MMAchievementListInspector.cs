@@ -8,10 +8,10 @@ using UnityEngine.UI;
 namespace MoreMountains.Tools
 {
 	[CustomEditor(typeof(MMAchievementList),true)]
-	/// <summary>
-	/// Custom inspector for the MMAchievementList scriptable object. 
-	/// </summary>
-	public class MMAchievementListInspector : Editor 
+    /// <summary>
+    /// MMAchievementList 스크립트 가능 개체에 대한 사용자 정의 검사기입니다.
+    /// </summary>
+    public class MMAchievementListInspector : Editor 
 	{
 		/// <summary>
 		/// When drawing the GUI, adds a "Reset Achievements" button, that does exactly what you think it does.

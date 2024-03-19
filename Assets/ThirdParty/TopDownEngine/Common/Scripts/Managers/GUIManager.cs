@@ -8,47 +8,47 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Handles all GUI effects and changes
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/GUIManager")]
+    /// <summary>
+    /// 모든 GUI 효과 및 변경 사항을 처리합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/GUIManager")]
 	public class GUIManager : MMSingleton<GUIManager> 
 	{
 		/// the main canvas
-		[Tooltip("the main canvas")]
+		[Tooltip("메인 캔버스")]
 		public Canvas MainCanvas;
 		/// the game object that contains the heads up display (avatar, health, points...)
-		[Tooltip("the game object that contains the heads up display (avatar, health, points...)")]
+		[Tooltip("헤드업 디스플레이(아바타, 체력, 포인트...)가 포함된 게임 개체")]
 		public GameObject HUD;
 		/// the health bars to update
-		[Tooltip("the health bars to update")]
+		[Tooltip("업데이트할 체력 바")]
 		public MMProgressBar[] HealthBars; //스테미나Bar도 같이 들어있을 수 있음
 		/// the dash bars to update
-		[Tooltip("the dash bars to update")]
+		[Tooltip("업데이트할 대시 바")]
 		public MMRadialProgressBar[] DashBars;
 		/// the panels and bars used to display current weapon ammo
-		[Tooltip("the panels and bars used to display current weapon ammo")]
+		[Tooltip("현재 무기 탄약을 표시하는 데 사용되는 패널과 막대")]
 		public AmmoDisplay[] AmmoDisplays;
 		/// the pause screen game object
-		[Tooltip("the pause screen game object")]
+		[Tooltip("일시정지 화면 게임 객체")]
 		public GameObject PauseScreen;
 		/// the death screen
-		[Tooltip("the death screen")]
+		[Tooltip("죽음 화면")]
 		public GameObject DeathScreen;
 		/// The mobile buttons
-		[Tooltip("The mobile buttons")]
+		[Tooltip("모바일 버튼")]
 		public CanvasGroup Buttons;
 		/// The mobile arrows
-		[Tooltip("The mobile arrows")]
+		[Tooltip("모바일 화살표")]
 		public CanvasGroup Arrows;
 		/// The mobile movement joystick
-		[Tooltip("The mobile movement joystick")]
+		[Tooltip("모바일 이동 조이스틱")]
 		public CanvasGroup Joystick;
 		/// the points counter
-		[Tooltip("the points counter")]
+		[Tooltip("포인트 카운터")]
 		public Text PointsText;
 		/// the pattern to apply to format the display of points
-		[Tooltip("the pattern to apply to format the display of points")]
+		[Tooltip("포인트 표시 형식을 지정하기 위해 적용할 패턴")]
 		public string PointsTextPattern = "000000";
 
 

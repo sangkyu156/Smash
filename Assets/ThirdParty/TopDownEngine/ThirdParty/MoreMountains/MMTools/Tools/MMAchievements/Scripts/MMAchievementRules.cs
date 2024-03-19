@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// That class is meant to be extended to implement the achievement rules specific to your game.
-	/// </summary>
-	public abstract class MMAchievementRules : MonoBehaviour, MMEventListener<MMGameEvent>
+    /// <summary>
+    /// 해당 클래스는 게임에 특정한 성취 규칙을 구현하도록 확장될 예정입니다.
+    /// </summary>
+    public abstract class MMAchievementRules : MonoBehaviour, MMEventListener<MMGameEvent>
 	{
 		public MMAchievementList AchievementList;
 		[MMInspectorButton("PrintCurrentStatus")]

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A super simple mono you can add to an object to call its Quit method, which will force the application to quit.
-	/// </summary>
-	public class MMApplicationQuit : MonoBehaviour
+    /// <summary>
+    /// 매우 간단한 모노를 개체에 추가하여 Quit 메서드를 호출하면 응용 프로그램이 강제로 종료됩니다.
+    /// </summary>
+    public class MMApplicationQuit : MonoBehaviour
 	{
 		[Header("Debug")]
 		[MMInspectorButton("Quit")] 

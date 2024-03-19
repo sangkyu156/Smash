@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Inverts the direction of a patrol on PerformAction
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionInvertPatrolDirection")]
+    /// <summary>
+    /// PerformAction에서 순찰 방향을 반전시킵니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionInvertPatrolDirection")]
 	public class AIActionInvertPatrolDirection : AIAction
 	{
 		[Header("Invert Patrol Action Bindings")]
-		/// the AIActionMovePatrol2D to invert the patrol direction on 
-		[Tooltip("the AIActionMovePatrol2D to invert the patrol direction on")]
+        /// AIActionMovePatrol2D를 사용하여 순찰 방향을 반전시킵니다.
+        [Tooltip("AIActionMovePatrol2D를 사용하여 순찰 방향을 반전시킵니다.")]
 		public AIActionMovePatrol2D _movePatrol2D;
-		/// the AIActionMovePatrol3D to invert the patrol direction on 
-		[Tooltip("the AIActionMovePatrol3D to invert the patrol direction on")]
+        /// AIActionMovePatrol3D를 사용하여 순찰 방향을 반전시킵니다.
+        [Tooltip("AIActionMovePatrol3D를 사용하여 순찰 방향을 반전시킵니다.")]
 		public AIActionMovePatrol3D _movePatrol3D;
         
 		/// <summary>

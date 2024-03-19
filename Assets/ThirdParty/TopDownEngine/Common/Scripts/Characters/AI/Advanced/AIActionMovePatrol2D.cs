@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This Action will make the Character patrol along the defined path (see the MMPath inspector for that) until it hits a wall or a hole while following a path.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMovePatrol2D")]
+    /// <summary>
+    /// This작업은 경로를 따라가는 동안 벽이나 구멍에 부딪힐 때까지 캐릭터가 정의된 경로(MMPath 검사기 참조)를 따라 순찰하도록 만듭니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMovePatrol2D")]
 	//[RequireComponent(typeof(MMPath))]
 	//[RequireComponent(typeof(Character))]
 	//[RequireComponent(typeof(CharacterOrientation2D))]
@@ -16,14 +16,14 @@ namespace MoreMountains.TopDownEngine
 	public class AIActionMovePatrol2D : AIAction
 	{        
 		[Header("Obstacle Detection")]
-		/// If set to true, the agent will change direction when hitting an obstacle
-		[Tooltip("If set to true, the agent will change direction when hitting an obstacle")]
+        /// true로 설정하면 에이전트가 장애물에 부딪힐 때 방향을 변경합니다.
+        [Tooltip("true로 설정하면 에이전트가 장애물에 부딪힐 때 방향을 변경합니다.")]
 		public bool ChangeDirectionOnObstacle = true;
-		/// the layermask to look for obstacles on
-		[Tooltip("the layermask to look for obstacles on")]
+        /// 장애물을 찾기 위한 레이어 마스크
+        [Tooltip("장애물을 찾기 위한 레이어 마스크")]
 		public LayerMask ObstaclesLayerMask = LayerManager.ObstaclesLayerMask;
-		/// the frequency (in seconds) at which to check for obstacles
-		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
+        /// 장애물을 확인하는 빈도(초)
+        [Tooltip("장애물을 확인하는 빈도(초)")]
 		public float ObstaclesCheckFrequency = 1f;
 		/// the coordinates of the last patrol point
 		public Vector3 LastReachedPatrolPoint { get; set; }

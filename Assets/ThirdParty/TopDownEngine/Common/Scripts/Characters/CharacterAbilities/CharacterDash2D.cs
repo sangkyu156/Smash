@@ -7,15 +7,15 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a character and it'll be able to dash in 2D, covering a certain distance in a certain duration
-	///
-	/// Animation parameters :
-	/// Dashing : true if the character is currently dashing
-	/// DashingDirectionX : the x component of the dash direction, normalized
-	/// DashingDirectionY : the y component of the dash direction, normalized
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Dash 2D")]
+    /// <summary>
+    /// 캐릭터에 이 능력을 추가하면 특정 기간 동안 특정 거리를 이동하면서 2D로 돌진할 수 있습니다.
+    ///
+    /// Animation parameters :
+    /// Dashing : 캐릭터가 현재 돌진 중이면 true
+    /// DashingDirectionX : 정규화된 대시 방향의 x 구성요소
+    /// DashingDirectionY : 정규화된 대시 방향의 x 구성요소
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Dash 2D")]
 	public class CharacterDash2D : CharacterAbility 
 	{
 		/// the possible dash modes (fixed : always the same direction)

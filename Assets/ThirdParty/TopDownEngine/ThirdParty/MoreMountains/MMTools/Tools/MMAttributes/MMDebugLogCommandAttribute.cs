@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An attribute to add to static methods to they can be called via the MMDebugMenu's command line
-	/// </summary>
-	[AttributeUsage(System.AttributeTargets.Method, AllowMultiple = false)]
+    /// <summary>
+    /// 정적 메서드에 추가할 속성은 MMDebugMenu의 명령줄을 통해 호출할 수 있습니다.
+    /// </summary>
+    [AttributeUsage(System.AttributeTargets.Method, AllowMultiple = false)]
 	public class MMDebugLogCommandAttribute : System.Attribute { }
 }

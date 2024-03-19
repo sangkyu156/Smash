@@ -4,17 +4,17 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This action is used to trigger a UnityEvent
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionUnityEvents")]
+    /// <summary>
+    /// 이 액션은 UnityEvent를 트리거하는 데 사용됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionUnityEvents")]
 	public class AIActionUnityEvents : AIAction
 	{
-		/// The UnityEvent to trigger when this action gets performed by the AIBrain
-		[Tooltip("The UnityEvent to trigger when this action gets performed by the AIBrain")]
+        /// AIBrain이 이 작업을 수행할 때 트리거할 UnityEvent입니다.
+        [Tooltip("AIBrain이 이 작업을 수행할 때 트리거할 UnityEvent입니다.")]
 		public UnityEvent TargetEvent;
-		/// If this is false, the Unity Event will be triggered every PerformAction (by default every frame while in this state), otherwise it'll only play once, when entering the state
-		[Tooltip("If this is false, the Unity Event will be triggered every PerformAction (by default every frame while in this state), otherwise it'll only play once, when entering the state")]
+        /// 이것이 false인 경우 Unity 이벤트는 PerformAction마다(기본적으로 이 상태에 있는 동안 모든 프레임) 트리거되고, 그렇지 않으면 상태에 들어갈 때 한 번만 재생됩니다.
+        [Tooltip("이것이 false인 경우 Unity 이벤트는 PerformAction마다(기본적으로 이 상태에 있는 동안 모든 프레임) 트리거되고, 그렇지 않으면 상태에 들어갈 때 한 번만 재생됩니다.")]
 		public bool OnlyPlayWhenEnteringState = true;
 
 		protected bool _played = false;

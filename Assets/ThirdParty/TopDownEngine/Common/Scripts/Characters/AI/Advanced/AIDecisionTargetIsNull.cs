@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true if the Brain's current target is null, false otherwise
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTargetIsNull")]
+    /// <summary>
+    /// 이 결정은 Brain의 현재 목표가 null이면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTargetIsNull")]
 	public class AIDecisionTargetIsNull : AIDecision
 	{        
 		/// <summary>

@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 #endif
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// A very simple input manager to handle the demo character's input and make it move
-	/// </summary>
-	public class DemoCharacterInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
+{
+    /// <summary>
+    /// 데모 캐릭터의 입력을 처리하고 움직이게 하는 매우 간단한 입력 관리자
+    /// </summary>
+    public class DemoCharacterInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		/// The character that'll move through the level
-		[MMInformation("This component is a very simple input manager that handles the demo character's input and makes it move. If you remove it from the scene your character won't move anymore.", MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("이 구성 요소는 데모 캐릭터의 입력을 처리하고 움직이게 만드는 매우 간단한 입력 관리자입니다. 장면에서 제거하면 캐릭터가 더 이상 움직이지 않습니다.", MMInformationAttribute.InformationType.Info,false)]
 		public InventoryDemoCharacter DemoCharacter ;
 		
 		[Header("Input")]

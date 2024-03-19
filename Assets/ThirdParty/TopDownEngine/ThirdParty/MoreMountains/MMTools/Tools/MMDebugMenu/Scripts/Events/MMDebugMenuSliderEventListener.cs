@@ -9,10 +9,10 @@ namespace MoreMountains.Tools
 	[Serializable]
 	public class MMDSliderValueChangedEvent : UnityEvent<float> { }
 
-	/// <summary>
-	/// A class used to listen to slider events from a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuSliderEventListener : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 슬라이더 이벤트를 수신하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuSliderEventListener : MonoBehaviour
 	{
 		[Header("Events")]
 		/// the name of the slider event to listen to

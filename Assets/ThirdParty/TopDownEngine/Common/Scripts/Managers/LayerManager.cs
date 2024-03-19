@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A simple static class that keeps track of layer names, holds ready to use layermasks for most common layers and layermasks combinations
-	/// Of course if you happen to change the layer order or numbers, you'll want to udpate this class.
-	/// </summary>
-	public static class LayerManager
+    /// <summary>
+    /// 레이어 이름을 추적하고 가장 일반적인 레이어 및 레이어 마스크 조합에 레이어 마스크를 사용할 준비가 된 간단한 정적 클래스입니다.
+    /// 물론 레이어 순서나 번호를 변경하는 경우 이 클래스를 업데이트하고 싶을 것입니다.
+    /// </summary>
+    public static class LayerManager
 	{
 		private static int ObstaclesLayer = 8;
 		private static int GroundLayer = 9;

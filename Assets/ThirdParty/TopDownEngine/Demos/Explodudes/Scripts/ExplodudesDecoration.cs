@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A decorative class used to make background elements jump
-	/// </summary>
-	public class ExplodudesDecoration : TopDownMonoBehaviour, MMEventListener<MMGameEvent>
+    /// <summary>
+    /// 배경 요소를 점프시키는 데 사용되는 장식 클래스
+    /// </summary>
+    public class ExplodudesDecoration : TopDownMonoBehaviour, MMEventListener<MMGameEvent>
 	{
 		/// the minimum force to apply to the background elements
-		[Tooltip("the minimum force to apply to the background elements")]
+		[Tooltip("배경 요소에 적용할 최소 힘")]
 		public Vector3 MinForce;
 		/// the maximum force to apply to the background elements
-		[Tooltip("the maximum force to apply to the background elements")]
+		[Tooltip("배경 요소에 적용할 최대 힘")]
 		public Vector3 MaxForce;
 
 		/// a test button

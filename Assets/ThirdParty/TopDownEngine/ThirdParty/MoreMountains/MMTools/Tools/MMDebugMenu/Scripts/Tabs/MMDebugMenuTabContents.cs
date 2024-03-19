@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to describe tab contents
-	/// </summary>
-	public class MMDebugMenuTabContents : MonoBehaviour
+    /// <summary>
+    /// 탭 내용을 설명하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuTabContents : MonoBehaviour
 	{
 		/// the index of the tab, setup by MMDebugMenu
 		public int Index = 0;

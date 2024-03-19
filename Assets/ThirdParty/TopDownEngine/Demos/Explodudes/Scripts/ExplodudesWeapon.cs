@@ -5,36 +5,36 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class handles the dropping of bombs by characters in the Explodudes demo scene
-	/// </summary>
-	public class ExplodudesWeapon : Weapon
+    /// <summary>
+    /// 이 클래스는 Explodude 데모 장면에서 캐릭터의 폭탄 투하를 처리합니다.
+    /// </summary>
+    public class ExplodudesWeapon : Weapon
 	{
-		/// <summary>
-		/// The possible ways to spawn a bomb on the grid : 
-		/// - no grid : at the world position of the weapon
-		/// - last cell : the last cell the owner of the weapon passed by
-		/// - next cell : the cell the owner of the weapon is moving to
-		/// - closest : will pick the cell closest to the movement right now
-		/// </summary>
-		public enum GridSpawnMethods { NoGrid, LastCell, NextCell, Closest }
+        /// <summary>
+        /// 그리드에 폭탄을 생성하는 가능한 방법 : 
+        /// - no grid : 무기의 월드 위치에서
+        /// - last cell : 무기의 소유자가 지나간 마지막 감방
+        /// - next cell : 무기의 소유자가 이동하는 감방
+        /// - closest : 지금 당장 움직임에 가장 가까운 셀을 선택합니다.
+        /// </summary>
+        public enum GridSpawnMethods { NoGrid, LastCell, NextCell, Closest }
 
 		[MMInspectorGroup("Explodudes Weapon", true, 23)]
 		/// the spawn method for this weapon
-		[Tooltip("the spawn method for this weapon")]
+		[Tooltip("이 무기의 생성 방법")]
 		public GridSpawnMethods GridSpawnMethod;
 		/// the offset to apply on spawn
-		[Tooltip("the offset to apply on spawn")]
+		[Tooltip("스폰 시 적용할 오프셋")]
 		public Vector3 BombOffset;        
 		/// the max amount of bombs a character can drop on screen at once
-		[Tooltip("the max amount of bombs a character can drop on screen at once")]
+		[Tooltip("캐릭터가 화면에 동시에 떨어뜨릴 수 있는 폭탄의 최대 개수")]
 		public int MaximumAmountOfBombsAtOnce = 3;
 		/// the delay before the bomb explodes
-		[Tooltip("the delay before the bomb explodes")]
+		[Tooltip("폭탄이 터지기 전의 지연")]
 		public float BombDelayBeforeExplosion = 3f;
 		/// the amount of bombs remaining
 		[MMReadOnly]
-		[Tooltip("the amount of bombs remaining")]
+		[Tooltip("남은 폭탄의 양")]
 		public int RemainingBombs = 0;
 
 		protected MMSimpleObjectPooler _objectPool;

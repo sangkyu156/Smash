@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple test class used in the MMDebugMenu demo scene to shake a few values and output them in the debug on screen console
-	/// </summary>
-	public class MMDebugMenuTestClass : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu 데모 장면에서 몇 가지 값을 흔들어 화면 콘솔의 디버그에 출력하는 데 사용되는 간단한 테스트 클래스입니다.
+    /// </summary>
+    public class MMDebugMenuTestClass : MonoBehaviour
 	{
 		/// a label to display
 		public string Label;

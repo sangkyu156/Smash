@@ -4,28 +4,28 @@ using System.Collections;
 namespace MoreMountains.Tools
 {
 	[RequireComponent(typeof(SpriteRenderer))]
-	/// <summary>
-	/// Add this component to an object to have it pick a new order in layer on start, useful to have unique sorting layer numbers
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Sprites/MMAutoOrderInLayer")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 시작 시 레이어에서 새 순서를 선택하게 됩니다. 고유한 정렬 레이어 번호를 갖는 데 유용합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Sprites/MMAutoOrderInLayer")]
 	public class MMAutoOrderInLayer : MonoBehaviour 
 	{
 		static int CurrentMaxCharacterOrderInLayer = 0;
 
 		[Header("Global Counter")]
-		[MMInformation("Add this component to an object with a sprite renderer, and it'll give it a new order in layer based on the settings defined here. First is the global counter increment, or how much you'd like to increment the layer order between two objects on that same layer.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("스프라이트 렌더러가 있는 개체에 이 구성 요소를 추가하면 여기에 정의된 설정에 따라 레이어에 새로운 순서가 부여됩니다. 첫 번째는 전역 카운터 증분, 즉 동일한 레이어에 있는 두 객체 사이의 레이어 순서를 얼마나 증가시키려는지입니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the number by which to increment each new object's order in layer
 		public int GlobalCounterIncrement = 5;
 
 		[Header("Parent")]
-		[MMInformation("You can also decide to determine the new layer order based on the parent sprite's order (it'll have to be on the same layer).",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("또한 상위 스프라이트의 순서에 따라 새 레이어 순서를 결정할 수도 있습니다(동일한 레이어에 있어야 함).", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// if this is true, the new order in layer value will be based on the highest order value found on a parent with a similar sorting layer
 		public bool BasedOnParentOrder = false;
 		/// if BasedOnParentOrder is true, the new value will be the parent's order value + this value
 		public int ParentIncrement = 1;
 
 		[Header("Children")]
-		[MMInformation("And here you can decide to apply your new layer order to all children.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("그리고 여기에서 모든 하위 항목에 새 레이어 순서를 적용할지 결정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// if this is true, the new order value will be passed to all children with a similar sorting layer
 		public bool ApplyNewOrderToChildren = false;
 		/// the value by which the new order value should be incremented to pass it to children

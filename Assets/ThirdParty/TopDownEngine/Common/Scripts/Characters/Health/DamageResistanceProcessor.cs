@@ -6,27 +6,27 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Link this component to a Health component, and it'll be able to process incoming damage through resistances, handling damage reduction/increase, condition changes, movement multipliers, feedbacks and more.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Health/DamageResistanceProcessor")]
+    /// <summary>
+    /// 이 구성요소를 Health 구성요소에 연결하면 저항, 피해 감소/증가 처리, 상태 변경, 이동 승수, 피드백 등을 통해 들어오는 피해를 처리할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Health/DamageResistanceProcessor")]
 	public class DamageResistanceProcessor : TopDownMonoBehaviour
 	{
 		[Header("Damage Resistance List")]
 		
 		/// If this is true, this component will try to auto-fill its list of damage resistances from the ones found in its children 
-		[Tooltip("If this is true, this component will try to auto-fill its list of damage resistances from the ones found in its children")]
+		[Tooltip("이것이 사실이라면 이 구성요소는 하위 항목에서 발견된 피해 저항 목록을 자동으로 채우려고 시도합니다.")]
 		public bool AutoFillDamageResistanceList = true;
 		/// If this is true, disabled resistances will be ignored by the auto fill 
-		[Tooltip("If this is true, disabled resistances will be ignored by the auto fill")]
+		[Tooltip("이것이 사실이라면 비활성화된 저항은 자동 채우기에 의해 무시됩니다.\r\n")]
 		public bool IgnoreDisabledResistances = true;
 		/// If this is true, damage from damage types that this processor has no resistance for will be ignored
-		[Tooltip("If this is true, damage from damage types that this processor has no resistance for will be ignored")]
+		[Tooltip("이것이 사실이라면 이 프로세서에 저항이 없는 손상 유형으로 인한 손상은 무시됩니다.")]
 		public bool IgnoreUnknownDamageTypes = false;
 		
 		/// the list of damage resistances this processor will handle. Auto filled if AutoFillDamageResistanceList is true
 		[FormerlySerializedAs("DamageResitanceList")] 
-		[Tooltip("the list of damage resistances this processor will handle. Auto filled if AutoFillDamageResistanceList is true")]
+		[Tooltip("이 프로세서가 처리할 손상 저항 목록입니다. AutoFillDamageResistanceList가 true이면 자동으로 채워집니다.")]
 		public List<DamageResistance> DamageResistanceList;
 
 		/// <summary>

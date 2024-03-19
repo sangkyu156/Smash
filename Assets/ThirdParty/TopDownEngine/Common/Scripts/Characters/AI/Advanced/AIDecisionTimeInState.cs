@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true after the specified duration, picked randomly between the min and max values (in seconds) has passed since the Brain has been in the state this decision is in. Use it to do something X seconds after having done something else.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTimeInState")]
+    /// <summary>
+    /// 이 결정은 두뇌가 이 결정의 상태에 있었던 이후 최소값과 최대값(초) 사이에서 무작위로 선택된 지정된 기간 후에 true를 반환합니다. 다른 작업을 수행한 후 X초 후에 특정 작업을 수행하는 데 사용합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTimeInState")]
 	public class AIDecisionTimeInState : AIDecision
 	{
-		/// The minimum duration, in seconds, after which to return true
-		[Tooltip("The minimum duration, in seconds, after which to return true")]
+        /// true를 반환할 때까지의 최소 기간(초)입니다.
+        [Tooltip("true를 반환할 때까지의 최소 기간(초)입니다.")]
 		public float AfterTimeMin = 2f;
-		/// The maximum duration, in seconds, after which to return true
-		[Tooltip("The maximum duration, in seconds, after which to return true")]
+        /// true를 반환할 때까지의 최대 기간(초)입니다.
+        [Tooltip("true를 반환할 때까지의 최대 기간(초)입니다.")]
 		public float AfterTimeMax = 2f;
 
 		protected float _randomTime;

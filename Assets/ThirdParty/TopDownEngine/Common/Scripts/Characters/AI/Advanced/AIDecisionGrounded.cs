@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true if the character is grounded, false otherwise.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionGrounded")]
+    /// <summary>
+    /// 이 결정은 캐릭터가 근거가 있는 경우 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionGrounded")]
 	public class AIDecisionGrounded : AIDecision
 	{
-		/// The duration, in seconds, after entering the state this Decision is in during which we'll ignore being grounded
-		[Tooltip("The duration, in seconds, after entering the state this Decision is in during which we'll ignore being grounded")]
+        /// 이 결정 상태에 진입한 후 접지 상태를 무시하는 기간(초)입니다.
+        [Tooltip("이 결정 상태에 진입한 후 접지 상태를 무시하는 기간(초)입니다.")]
 		public float GroundedBufferDelay = 0.2f;
 
 		protected TopDownController _topDownController;

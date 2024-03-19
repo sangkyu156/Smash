@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple class used to store fog properties
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 안개 속성을 저장하는 데 사용되는 간단한 클래스
+    /// </summary>
+    [Serializable]
 	public class FogSettings
 	{
 		public bool FogEnabled = true;
@@ -17,10 +17,10 @@ namespace MoreMountains.Tools
 		public UnityEngine.FogMode FogMode = FogMode.ExponentialSquared;
 	}
 
-	/// <summary>
-	/// Add this class to a camera and it will override fog settings when active
-	/// </summary>
-	[ExecuteAlways]
+    /// <summary>
+    /// 이 클래스를 카메라에 추가하면 활성화되면 안개 설정이 재정의됩니다.
+    /// </summary>
+    [ExecuteAlways]
 	public class MMCameraFog : MonoBehaviour
 	{
 		/// the settings to use to override fog settings 

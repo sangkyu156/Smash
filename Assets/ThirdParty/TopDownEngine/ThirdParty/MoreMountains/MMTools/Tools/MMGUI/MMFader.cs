@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event used to stop fades
-	/// </summary>
-	public struct MMFadeStopEvent
+    /// <summary>
+    /// 페이드를 멈추는 데 사용되는 이벤트
+    /// </summary>
+    public struct MMFadeStopEvent
 	{
 		/// an ID that has to match the one on the fader
 		public int ID;
@@ -28,11 +28,11 @@ namespace MoreMountains.Tools
 			MMEventManager.TriggerEvent(e);
 		}
 	}
-    
-	/// <summary>
-	/// Events used to trigger faders on or off
-	/// </summary>
-	public struct MMFadeEvent
+
+    /// <summary>
+    /// 페이더를 켜거나 끄는 데 사용되는 이벤트
+    /// </summary>
+    public struct MMFadeEvent
 	{
 		/// an ID that has to match the one on the fader
 		public int ID;
@@ -160,10 +160,10 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// The Fader class can be put on an Image, and it'll intercept MMFadeEvents and turn itself on or off accordingly.
-	/// </summary>
-	[RequireComponent(typeof(CanvasGroup))]
+    /// <summary>
+    /// Fader 클래스는 이미지에 배치될 수 있으며 MMFadeEvents를 가로채서 그에 따라 자체적으로 켜거나 끌 것입니다.
+    /// </summary>
+    [RequireComponent(typeof(CanvasGroup))]
 	[RequireComponent(typeof(Image))]
 	[AddComponentMenu("More Mountains/Tools/GUI/MMFader")]
 	public class MMFader : MonoBehaviour, MMEventListener<MMFadeEvent>, MMEventListener<MMFadeInEvent>, MMEventListener<MMFadeOutEvent>, MMEventListener<MMFadeStopEvent>
@@ -172,37 +172,37 @@ namespace MoreMountains.Tools
         
 		[Header("Identification")]
 		/// the ID for this fader (0 is default), set more IDs if you need more than one fader
-		[Tooltip("the ID for this fader (0 is default), set more IDs if you need more than one fader")]
+		[Tooltip("이 페이더의 ID(기본값은 0), 하나 이상의 페이더가 필요한 경우 더 많은 ID를 설정하십시오.")]
 		public int ID;
         
 		[Header("Opacity")]
 		/// the opacity the fader should be at when inactive
-		[Tooltip("the opacity the fader should be at when inactive")]
+		[Tooltip("비활성 상태일 때 페이더의 불투명도")]
 		public float InactiveAlpha = 0f;
 		/// the opacity the fader should be at when active
-		[Tooltip("the opacity the fader should be at when active")]
+		[Tooltip("활성화되었을 때 페이더의 불투명도")]
 		public float ActiveAlpha = 1f;
 		/// determines whether a state should be forced on init
-		[Tooltip("determines whether a state should be forced on init")]
+		[Tooltip("초기화 시 상태를 강제로 적용해야 하는지 여부를 결정합니다.")]
 		public ForcedInitStates ForcedInitState = ForcedInitStates.Inactive;
         
 		[Header("Timing")]
 		/// the default duration of the fade in/out
-		[Tooltip("the default duration of the fade in/out")]
+		[Tooltip("페이드 인/아웃의 기본 지속 시간")]
 		public float DefaultDuration = 0.2f;
 		/// the default curve to use for this fader
-		[Tooltip("the default curve to use for this fader")]
+		[Tooltip("이 페이더에 사용할 기본 곡선")]
 		public MMTweenType DefaultTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
 		/// whether or not the fade should happen in unscaled time
-		[Tooltip("whether or not the fade should happen in unscaled time")] 
+		[Tooltip("스케일링되지 않은 시간에 페이드가 발생해야 하는지 여부")] 
 		public bool IgnoreTimescale = true;
 		/// whether or not this fader can cause a fade if the requested final alpha is the same as the current one
-		[Tooltip("whether or not this fader can cause a fade if the requested final alpha is the same as the current one")] 
+		[Tooltip("요청된 최종 알파가 현재 알파와 동일한 경우 이 페이더가 페이드를 일으킬 수 있는지 여부")] 
 		public bool CanFadeToCurrentAlpha = true;
 
 		[Header("Interaction")]
 		/// whether or not the fader should block raycasts when visible
-		[Tooltip("whether or not the fader should block raycasts when visible")]
+		[Tooltip("페이더가 보일 때 레이캐스트를 차단해야 하는지 여부")]
 		public bool ShouldBlockRaycasts = false;
 
 		[Header("Debug")]

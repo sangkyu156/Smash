@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to have an AI start running
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRunStart")]
+    /// <summary>
+    /// AI 실행을 시작하는 데 사용되는 AIACtion
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRunStart")]
 	public class AIActionRunStart : AIAction
 	{
 		/// if this is true, this action will only run once in a state (this flag will reset on state exit)

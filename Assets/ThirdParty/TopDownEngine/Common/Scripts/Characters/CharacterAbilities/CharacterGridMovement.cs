@@ -3,13 +3,13 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this ability to a Character to have it move on a grid.
-	/// This will require a GridManager be present in your scene
-	/// DO NOT use that component and a CharacterMovement component on the same character.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Grid Movement")] 
+{
+    /// <summary>
+    /// 캐릭터가 그리드 위에서 움직이도록 하려면 이 기능을 캐릭터에 추가하세요.
+    /// 이를 위해서는 장면에 GridManager가 있어야 합니다.
+    /// 동일한 캐릭터에 해당 구성 요소와 CharacterMovement 구성 요소를 사용하지 마십시오.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Grid Movement")] 
 	public class CharacterGridMovement : CharacterAbility 
 	{
 		/// the possible directions on the grid
@@ -21,66 +21,66 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Movement")]
 
-		/// the maximum speed of the character
-		[Tooltip("the maximum speed of the character")]
+        /// 캐릭터의 최대 속도
+        [Tooltip("캐릭터의 최대 속도")]
 		public float MaximumSpeed = 8;
-		/// the acceleration of the character
-		[Tooltip("the acceleration of the character")]
+        /// 캐릭터의 가속
+        [Tooltip("캐릭터의 가속")]
 		public float Acceleration = 5;
-		/// the current speed at which the character is going
-		[MMReadOnly]
-		[Tooltip("the current speed at which the character is going")]
+        /// 캐릭터가 움직이는 현재 속도
+        [MMReadOnly]
+		[Tooltip("캐릭터가 움직이는 현재 속도")]
 		public float CurrentSpeed;
-		/// a multiplier to apply to the maximum speed
-		[MMReadOnly]
-		[Tooltip("a multiplier to apply to the maximum speed")]
+        /// 최대 속도에 적용할 승수
+        [MMReadOnly]
+		[Tooltip("최대 속도에 적용할 승수")]
 		public float MaximumSpeedMultiplier = 1f;
-		/// a multiplier to apply to the acceleration, letting you modify it safely from outside
-		[MMReadOnly]
-		[Tooltip("a multiplier to apply to the acceleration, letting you modify it safely from outside")]
+        /// 가속도에 적용할 승수(외부에서 안전하게 수정할 수 있음)
+        [MMReadOnly]
+		[Tooltip("가속도에 적용할 승수(외부에서 안전하게 수정할 수 있음)")]
 		public float AccelerationMultiplier = 1f;
 
 		[Header("Input Settings")]
 
-		/// whether to use the input manager or a script to feed the inputs
-		[Tooltip("whether to use the input manager or a script to feed the inputs")]
+        /// 입력 관리자를 사용할지 아니면 입력을 제공하는 스크립트를 사용할지 여부
+        [Tooltip("입력 관리자를 사용할지 아니면 입력을 제공하는 스크립트를 사용할지 여부")]
 		public InputModes InputMode = InputModes.InputManager;
-		/// whether or not input should be buffered (to anticipate the next turn)
-		[Tooltip("whether or not input should be buffered (to anticipate the next turn)")]
+        /// 입력을 버퍼링해야 하는지 여부(다음 차례를 예상하기 위해)
+        [Tooltip("입력을 버퍼링해야 하는지 여부(다음 차례를 예상하기 위해)")]
 		public bool UseInputBuffer = true;
-		/// the size of the input buffer (in grid units)
-		[Tooltip("the size of the input buffer (in grid units)")]
+        /// 입력 버퍼의 크기(그리드 단위)
+        [Tooltip("입력 버퍼의 크기(그리드 단위)")]
 		public int BufferSize = 2;
-		/// whether or not the agent can perform fast direction changes such as U turns
-		[Tooltip("whether or not the agent can perform fast direction changes such as U turns")]
+        /// 에이전트가 U턴 등 빠른 방향 전환을 수행할 수 있는지 여부
+        [Tooltip("에이전트가 U턴 등 빠른 방향 전환을 수행할 수 있는지 여부")]
 		public bool FastDirectionChanges = true;
-		/// the speed threshold after which the character is not considered idle anymore
-		[Tooltip("the speed threshold after which the character is not considered idle anymore")]
+        /// 캐릭터가 더 이상 유휴 상태로 간주되지 않는 속도 임계값
+        [Tooltip("캐릭터가 더 이상 유휴 상태로 간주되지 않는 속도 임계값")]
 		public float IdleThreshold = 0.05f;
-		/// if this is true, movement values will be normalized - prefer checking this when using mobile controls
-		[Tooltip("if this is true, movement values will be normalized - prefer checking this when using mobile controls")]
+        /// 이것이 사실이라면 이동 값이 정규화됩니다. 모바일 컨트롤을 사용할 때 이를 확인하는 것이 좋습니다.
+        [Tooltip("이것이 사실이라면 이동 값이 정규화됩니다. 모바일 컨트롤을 사용할 때 이를 확인하는 것이 좋습니다.")]
 		public bool NormalizedInput = false;
 
 		[Header("Grid")]
 
-		/// the offset to apply when detecting obstacles
-		[Tooltip("the offset to apply when detecting obstacles")]
+        /// 장애물 감지 시 적용할 오프셋
+        [Tooltip("장애물 감지 시 적용할 오프셋")]
 		public Vector3 ObstacleDetectionOffset = new Vector3(0f, 0.5f, 0f);
 		/// the position of the object on the grid
 		public Vector3Int CurrentGridPosition { get; protected set; }
 		/// the position the object will be at when it reaches its next perfect tile
 		public Vector3Int TargetGridPosition { get; protected set; }
-		/// this is true everytime a character is at the exact position of a tile
-		[MMReadOnly]
-		[Tooltip("this is true everytime a character is at the exact position of a tile")]
+        /// 이는 캐릭터가 타일의 정확한 위치에 있을 때마다 적용됩니다.
+        [MMReadOnly]
+		[Tooltip("이는 캐릭터가 타일의 정확한 위치에 있을 때마다 적용됩니다.")]
 		public bool PerfectTile;
-		/// the coordinates of the cell this character currently occupies
-		[MMReadOnly]
-		[Tooltip("the coordinates of the cell this character currently occupies")]
+        /// 이 캐릭터가 현재 차지하고 있는 셀의 좌표
+        [MMReadOnly]
+		[Tooltip("이 캐릭터가 현재 차지하고 있는 셀의 좌표")]
 		public Vector3Int CurrentCellCoordinates;
-		/// whether this character is in 2D or 3D. This gets automatically computed at start
-		[MMReadOnly]
-		[Tooltip("whether this character is in 2D or 3D. This gets automatically computed at start")]
+        /// 이 캐릭터가 2D인지 3D인지 여부. 시작 시 자동으로 계산됩니다.
+        [MMReadOnly]
+		[Tooltip("이 캐릭터가 2D인지 3D인지 여부. 시작 시 자동으로 계산됩니다.")]
 		public DimensionModes DimensionMode = DimensionModes.TwoD;
 
 		[Header("Test")]

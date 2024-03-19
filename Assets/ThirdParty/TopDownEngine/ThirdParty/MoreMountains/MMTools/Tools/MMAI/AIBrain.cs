@@ -6,15 +6,15 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// the AI brain is responsible from going from one state to the other based on the defined transitions. It's basically just a collection of states, and it's where you'll link all the actions, decisions, states and transitions together.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/AI/AIBrain")]
+    /// <summary>
+    /// AI 두뇌는 정의된 전환을 기반으로 한 상태에서 다른 상태로 이동하는 일을 담당합니다. 이는 기본적으로 상태의 모음일 뿐이며 모든 작업, 결정, 상태 및 전환을 함께 연결하는 곳입니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/AI/AIBrain")]
 	public class AIBrain : MonoBehaviour
 	{
 		[Header("Debug")]
-		/// the owner of that AI Brain, usually the associated character
-		[MMReadOnly]
+        /// 해당 AI Brain의 소유자, 일반적으로 관련 캐릭터
+        [MMReadOnly]
 		public GameObject Owner;
 		/// the collection of states
 		public List<AIState> States;

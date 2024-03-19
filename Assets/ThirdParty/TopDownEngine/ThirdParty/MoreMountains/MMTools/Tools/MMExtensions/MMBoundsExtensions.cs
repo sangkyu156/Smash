@@ -2,11 +2,11 @@
 using System.Collections;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Bounds helpers
-	/// </summary>
-	public class MMBoundsExtensions : MonoBehaviour 
+{
+    /// <summary>
+    /// 경계 도우미
+    /// </summary>
+    public class MMBoundsExtensions : MonoBehaviour 
 	{
 		/// <summary>
 		/// Returns a random point within the bounds set as parameter

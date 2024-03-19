@@ -5,26 +5,26 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to an audio distortion filter to shake its values remapped along a curve 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioFilterDistortionShaker")]
+    /// <summary>
+    /// 곡선을 따라 다시 매핑된 값을 흔들려면 오디오 왜곡 필터에 이것을 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioFilterDistortionShaker")]
 	[RequireComponent(typeof(AudioDistortionFilter))]
 	public class MMAudioFilterDistortionShaker : MMShaker
 	{
 		[MMInspectorGroup("Distortion", true, 51)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeDistortion = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeDistortion = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(0f, 1f)]
 		public float RemapDistortionZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(0f, 1f)]
 		public float RemapDistortionOne = 1f;
 

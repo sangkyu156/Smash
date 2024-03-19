@@ -5,44 +5,44 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this zone to a trigger collider and it'll automatically trigger a dash on your 3D character on entry
-	/// </summary>
-	[RequireComponent(typeof(Collider))]
+    /// <summary>
+    /// 이 영역을 트리거 충돌체에 추가하면 진입 시 3D 캐릭터에 대시가 자동으로 트리거됩니다.
+    /// </summary>
+    [RequireComponent(typeof(Collider))]
 	[AddComponentMenu("TopDown Engine/Environment/Dash Zone 3D")]
 	public class DashZone3D : TopDownMonoBehaviour
 	{
 		[Header("Bindings")]
 
 		/// the collider of the obstacle you want to dash over
-		[Tooltip("the collider of the obstacle you want to dash over")]
+		[Tooltip("당신이 돌진하고 싶은 장애물의 충돌체")]
 		public Collider CoverObstacleCollider;
 		/// the (optional) exit dash zone on the other side of the collider
-		[Tooltip("the (optional) exit dash zone on the other side of the collider")]
+		[Tooltip("충돌체 반대편의 (선택 사항) 출구 대시 영역")]
 		public List<DashZone3D> ExitDashZones;
 
 		[Header("DashSettings")]
 
 		/// the distance of the dash triggered when entering the zone
-		[Tooltip("the distance of the dash triggered when entering the zone")]
+		[Tooltip("구역에 들어갈 때 발동되는 대시의 거리")]
 		public float DashDistance = 3f;
 		/// the duration of the dash
-		[Tooltip("the duration of the dash")]
+		[Tooltip("대시의 지속 시간")]
 		public float DashDuration;
 		/// the curve to apply to the dash
-		[Tooltip("the curve to apply to the dash")]
+		[Tooltip("대시에 적용할 곡선")]
 		public AnimationCurve DashCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 
 		[Header("Settings")]
 
 		/// the max angle at which the character should approach the obstacle for the dash to happen
-		[Tooltip("the max angle at which the character should approach the obstacle for the dash to happen")]
+		[Tooltip("대시가 발생하기 위해 캐릭터가 장애물에 접근해야 하는 최대 각도")]
 		public float MaxFacingAngle = 90f;
 		/// the duration in seconds before re-enabling all triggers in the zone
-		[Tooltip("the duration in seconds before re-enabling all triggers in the zone")]
+		[Tooltip("해당 영역의 모든 트리거를 다시 활성화하기 전까지의 시간(초)")]
 		public float TriggerResetDuration = 1f;
 		/// if this is false, the dash won't happen
-		[Tooltip("if this is false, the dash won't happen")]
+		[Tooltip("이것이 거짓이면 대시가 발생하지 않습니다.")]
 		public bool DashAuthorized = true;
 
 		protected CharacterDash3D _characterDash3D;

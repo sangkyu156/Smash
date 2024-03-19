@@ -48,11 +48,11 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// A class used to control a float in any other class, over time
-	/// To use it, simply drag a monobehaviour in its target field, pick a control mode (ping pong or random), and tweak the settings
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Property Controllers/FloatController")]
+    /// <summary>
+    /// 시간이 지남에 따라 다른 클래스의 부동 소수점을 제어하는 ​​데 사용되는 클래스
+    /// 이를 사용하려면 대상 필드에서 단일 동작을 드래그하고 제어 모드(핑퐁 또는 무작위)를 선택한 다음 설정을 조정하면 됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Property Controllers/FloatController")]
 	[MMRequiresConstantRepaint]
 	public class FloatController : MMMonoBehaviour
 	{

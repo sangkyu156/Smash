@@ -5,12 +5,12 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control bloom intensity and threshold over time. It requires you have in your scene an object with a Volume with Bloom active, and a MMBloomShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control bloom intensity and threshold over time. It requires you have in your scene an object with a Volume " +
-	              "with Bloom active, and a MMBloomShaker_URP component.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 블룸 강도와 임계값을 제어할 수 있습니다. 이를 위해서는 장면에 Bloom이 활성화된 볼륨이 있는 객체와 MMBloomShaker_URP 구성 요소가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 블룸 강도와 임계값을 제어할 수 있습니다. 장면에 볼륨이 있는 객체가 있어야 합니다. " +
+"블룸이 활성화되어 있고 MMBloomShaker_URP 구성 요소가 있습니다.")]
 	[FeedbackPath("PostProcess/Bloom URP")]
 	public class MMFeedbackBloom_URP : MMFeedback
 	{
@@ -26,21 +26,21 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the channel to emit on")]
 		public int Channel = 0;
 		/// the duration of the feedback, in seconds
-		[Tooltip("the duration of the feedback, in seconds")]
+		[Tooltip("피드백 기간(초)")]
 		public float ShakeDuration = 0.2f;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeValues = true;
 
 		[Header("Intensity")]
 		/// the curve to animate the intensity on
-		[Tooltip("the curve to animate the intensity on")]
+		[Tooltip("강도에 애니메이션을 적용하는 곡선")]
 		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -51,7 +51,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[Header("Threshold")]
 		/// the curve to animate the threshold on
-		[Tooltip("the curve to animate the threshold on")]
+		[Tooltip("임계값에 애니메이션을 적용할 곡선")]
 		public AnimationCurve ShakeThreshold = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]

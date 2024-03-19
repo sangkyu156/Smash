@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to set the current Player character as the target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetPlayerAsTarget")]
+    /// <summary>
+    /// 현재 플레이어 캐릭터를 대상으로 설정하는 데 사용되는 AIACtion
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetPlayerAsTarget")]
 	public class AIActionSetPlayerAsTarget : AIAction
 	{
 		public bool OnlyRunOnce = true;

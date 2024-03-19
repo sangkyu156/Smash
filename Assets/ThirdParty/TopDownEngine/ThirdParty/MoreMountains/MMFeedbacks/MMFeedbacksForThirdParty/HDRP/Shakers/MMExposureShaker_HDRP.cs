@@ -8,27 +8,27 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a HDRP exposure post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// HDRP 노출 사후 처리가 포함된 카메라에 이 클래스를 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMExposureShaker_HDRP")]
 	public class MMExposureShaker_HDRP : MMShaker
 	{
 		[MMInspectorGroup("Exposure Intensity", true, 46)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFixedExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapFixedExposureZero = 8.5f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapFixedExposureOne = 6f;
 
 		#if MM_HDRP

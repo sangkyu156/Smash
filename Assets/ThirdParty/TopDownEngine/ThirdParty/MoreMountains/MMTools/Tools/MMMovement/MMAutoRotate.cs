@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a GameObject to make it rotate on itself
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMAutoRotate")]
+    /// <summary>
+    /// 이 클래스를 GameObject에 추가하여 자체적으로 회전하도록 만듭니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMAutoRotate")]
 	public class MMAutoRotate : MonoBehaviour
 	{
 		public enum UpdateModes { Update, LateUpdate, FixedUpdate }

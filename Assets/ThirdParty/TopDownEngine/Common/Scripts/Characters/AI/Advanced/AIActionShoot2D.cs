@@ -5,33 +5,33 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An Action that shoots using the currently equipped weapon. If your weapon is in auto mode, will shoot until you exit the state, and will only shoot once in SemiAuto mode. You can optionnally have the character face (left/right) the target, and aim at it (if the weapon has a WeaponAim component).
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot2D")]
+    /// <summary>
+    /// 현재 장착된 무기를 사용하여 사격하는 Action입니다. 무기가 자동 모드인 경우 해당 상태를 종료할 때까지 발사되고 반자동 모드에서는 한 번만 발사됩니다. 선택적으로 캐릭터가 대상을 향하게 하고(왼쪽/오른쪽) 이를 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot2D")]
 	//[RequireComponent(typeof(CharacterOrientation2D))]
 	//[RequireComponent(typeof(CharacterHandleWeapon))]
 	public class AIActionShoot2D : AIAction
 	{
 		public enum AimOrigins { Transform, SpawnPoint }
         
-		[Header("Binding")] 
-		/// the CharacterHandleWeapon ability this AI action should pilot. If left blank, the system will grab the first one it finds.
-		[Tooltip("the CharacterHandleWeapon ability this AI action should pilot. If left blank, the system will grab the first one it finds.")]
+		[Header("Binding")]
+        /// 이 AI 작업이 조종해야 하는 CharacterHandleWeapon 능력입니다. 공백으로 두면 시스템은 가장 먼저 찾은 항목을 가져옵니다.
+        [Tooltip("이 AI 작업이 조종해야 하는 CharacterHandleWeapon 능력입니다. 공백으로 두면 시스템은 가장 먼저 찾은 항목을 가져옵니다.")]
 		public CharacterHandleWeapon TargetHandleWeaponAbility;
 
-		[Header("Behaviour")] 
-		/// the origin we'll take into account when computing the aim direction towards the target
-		[Tooltip("the origin we'll take into account when computing the aim direction towards the target")]
+		[Header("Behaviour")]
+        /// 대상을 향한 조준 방향을 계산할 때 고려할 원점
+        [Tooltip("대상을 향한 조준 방향을 계산할 때 고려할 원점")]
 		public AimOrigins AimOrigin = AimOrigins.Transform;
-		/// if true, the Character will face the target (left/right) when shooting
-		[Tooltip("if true, the Character will face the target (left/right) when shooting")]
+        /// true인 경우 캐릭터는 사격할 때 대상(왼쪽/오른쪽)을 향하게 됩니다
+        [Tooltip("iftrue, 캐릭터는 사격할 때 대상(왼쪽/오른쪽)을 향하게 됩니다.")]
 		public bool FaceTarget = true;
-		/// if true the Character will aim at the target when shooting
-		[Tooltip("if true the Character will aim at the target when shooting")]
+        /// true인 경우 캐릭터는 총을 쏠 때 대상을 조준합니다.
+        [Tooltip("true인 경우 캐릭터는 총을 쏠 때 대상을 조준합니다.")]
 		public bool AimAtTarget = false;
-		/// whether or not to only perform aim when in this state
-		[Tooltip("whether or not to only perform aim when in this state")]
+        /// 이 상태에서만 조준을 수행할지 여부
+        [Tooltip("이 상태에서만 조준을 수행할지 여부")]
 		[MMCondition("AimAtTarget")]
 		public bool OnlyAimWhenInState = false;
 

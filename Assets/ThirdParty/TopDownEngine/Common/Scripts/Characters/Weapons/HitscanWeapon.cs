@@ -17,60 +17,60 @@ namespace MoreMountains.TopDownEngine
 
 		[MMInspectorGroup("Hitscan Spawn", true, 23)]
 		/// the offset position at which the projectile will spawn
-		[Tooltip("the offset position at which the projectile will spawn")]
+		[Tooltip("발사체가 생성되는 오프셋 위치")]
 		public Vector3 ProjectileSpawnOffset = Vector3.zero;
 		/// the spread (in degrees) to apply randomly (or not) on each angle when spawning a projectile
-		[Tooltip("the spread (in degrees) to apply randomly (or not) on each angle when spawning a projectile")]
+		[Tooltip("발사체를 생성할 때 각 각도에 무작위로 적용할(또는 적용하지 않을) 확산(도)")]
 		public Vector3 Spread = Vector3.zero;
 		/// whether or not the weapon should rotate to align with the spread angle
-		[Tooltip("whether or not the weapon should rotate to align with the spread angle")]
+		[Tooltip("무기가 확산 각도에 맞춰 회전해야 하는지 여부")]
 		public bool RotateWeaponOnSpread = false;
 		/// whether or not the spread should be random (if not it'll be equally distributed)
-		[Tooltip("whether or not the spread should be random (if not it'll be equally distributed)")]
+		[Tooltip("스프레드가 무작위로 이루어져야 하는지 여부(그렇지 않은 경우 균등하게 분산됨)")]
 		public bool RandomSpread = true;
 		/// the projectile's spawn position
 		[MMReadOnly]
-		[Tooltip("the projectile's spawn position")]
+		[Tooltip("발사체의 스폰 위치")]
 		public Vector3 SpawnPosition = Vector3.zero;
 
 		[MMInspectorGroup("Hitscan", true, 24)]
 		/// whether this hitscan should work in 2D or 3D
-		[Tooltip("whether this hitscan should work in 2D or 3D")]
+		[Tooltip("이 히트스캔이 2D에서 작동해야 하는지 아니면 3D에서 작동해야 하는지 여부")]
 		public Modes Mode = Modes.ThreeD;
 		/// the layer(s) on which to hitscan ray should collide
-		[Tooltip("the layer(s) on which to hitscan ray should collide")]
+		[Tooltip("히트스캔 광선이 충돌해야 하는 레이어")]
 		public LayerMask HitscanTargetLayers;
 		/// the maximum distance of this weapon, after that bullets will be considered lost
-		[Tooltip("the maximum distance of this weapon, after that bullets will be considered lost")]
+		[Tooltip("이 무기의 최대 거리. 그 이후에는 총알이 손실된 것으로 간주됩니다.")]
 		public float HitscanMaxDistance = 100f;
 		/// the min amount of damage to apply to a damageable (something with a Health component) every time there's a hit
 		[FormerlySerializedAs("DamageCaused")] 
-		[Tooltip("the minimum amount of damage to apply to a damageable (something with a Health component) every time there's a hit")]
+		[Tooltip("적중이 발생할 때마다 손상 가능한 항목(건강 구성 요소가 있는 항목)에 적용할 최소 손상량입니다.")]
 		public float MinDamageCaused = 5;
 		/// the maximum amount of damage to apply to a damageable (something with a Health component) every time there's a hit 
-		[Tooltip("the maximum amount of damage to apply to a damageable (something with a Health component) every time there's a hit")]
+		[Tooltip("적중이 발생할 때마다 손상 가능한 항목(건강 구성 요소가 있는 항목)에 적용할 최대 손상량입니다.")]
 		public float MaxDamageCaused = 5;
 		/// the duration of the invincibility after a hit (to prevent insta death in the case of rapid fire)
-		[Tooltip("the duration of the invincibility after a hit (to prevent insta death in the case of rapid fire)")]
+		[Tooltip("명중 후 무적 시간 (속사시 즉사 방지)")]
 		public float DamageCausedInvincibilityDuration = 0.2f;
 		/// a list of typed damage definitions that will be applied on top of the base damage
-		[Tooltip("a list of typed damage definitions that will be applied on top of the base damage")]
+		[Tooltip("기본 손상 위에 적용될 입력된 손상 정의 목록")]
 		public List<TypedDamage> TypedDamages;
 		
 		[MMInspectorGroup("Hit Damageable", true, 25)]
 		/// a MMFeedbacks to move to the position of the hit and to play when hitting something with a Health component
-		[Tooltip("a MMFeedbacks to move to the position of the hit and to play when hitting something with a Health component")]
+		[Tooltip("히트 위치로 이동하고 Health 구성 요소로 무언가를 히트할 때 재생하는 MMFeedbacks")]
 		public MMFeedbacks HitDamageable;
 		/// a particle system to move to the position of the hit and to play when hitting something with a Health component
-		[Tooltip("a particle system to move to the position of the hit and to play when hitting something with a Health component")]
+		[Tooltip("적중 위치로 이동하고 Health 구성 요소로 무언가를 칠 때 재생되는 입자 시스템")]
 		public ParticleSystem DamageableImpactParticles;
         
 		[MMInspectorGroup("Hit Non Damageable", true, 26)]
 		/// a MMFeedbacks to move to the position of the hit and to play when hitting something without a Health component
-		[Tooltip("a MMFeedbacks to move to the position of the hit and to play when hitting something without a Health component")]
+		[Tooltip("히트 위치로 이동하고 Health 구성 요소 없이 무언가를 히트할 때 재생하는 MMFeedbacks")]
 		public MMFeedbacks HitNonDamageable;
 		/// a particle system to move to the position of the hit and to play when hitting something without a Health component
-		[Tooltip("a particle system to move to the position of the hit and to play when hitting something without a Health component")]
+		[Tooltip("히트 위치로 이동하고 Health 구성 요소 없이 무언가를 히트할 때 재생되는 파티클 시스템")]
 		public ParticleSystem NonDamageableImpactParticles;
 
 		protected Vector3 _flippedProjectileSpawnOffset;

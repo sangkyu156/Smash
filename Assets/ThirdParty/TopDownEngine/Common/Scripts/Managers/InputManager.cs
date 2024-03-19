@@ -6,26 +6,26 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// This persistent singleton handles the inputs and sends commands to the player.
-    /// IMPORTANT : this script's Execution Order MUST be -100.
-    /// You can define a script's execution order by clicking on the script's file and then clicking on the Execution Order button at the bottom right of the script's inspector.
-    /// See https://docs.unity3d.com/Manual/class-ScriptExecution.html for more details
+    /// 이 영구 싱글톤은 입력을 처리하고 플레이어에 명령을 보냅니다.
+    /// 중요: 이 스크립트의 실행 순서는 -100이어야 합니다.
+    /// 스크립트 파일을 클릭한 다음 스크립트 검사기 오른쪽 하단에 있는 실행 순서 버튼을 클릭하여 스크립트의 실행 순서를 정의할 수 있습니다.
+    /// 자세한 내용은 https://docs.unity3d.com/Manual/class-ScriptExecution.html을 참조하세요.
     /// </summary>
     [AddComponentMenu("TopDown Engine/Managers/Input Manager")]
     public class InputManager : MMSingleton<InputManager> /*MMEventListener<MMInventoryEvent>*/
     {
         [Header("Settings")]
         /// set this to false to prevent the InputManager from reading input
-        [Tooltip("set this to false to prevent the InputManager from reading input")]
+        [Tooltip("InputManager가 입력을 읽지 못하도록 하려면 false로 설정하세요.")]
         public bool InputDetectionActive = true;
         /// if this is true, button states will be reset on focus loss - when clicking outside the player window on PC, for example
-        [Tooltip("if this is true, button states will be reset on focus loss - when clicking outside the player window on PC, for example")]
+        [Tooltip("이것이 사실이라면 버튼 상태는 포커스 손실 시 재설정됩니다. 예를 들어 PC에서 플레이어 창 외부를 클릭하면")]
         public bool ResetButtonStatesOnFocusLoss = true;
 
         [Header("Player binding")]
-        [MMInformation("The first thing you need to set on your InputManager is the PlayerID. This ID will be used to bind the input manager to your character(s). You'll want to go with Player1, Player2, Player3 or Player4.", MMInformationAttribute.InformationType.Info, false)]
+        [MMInformation("InputManager에서 가장 먼저 설정해야 할 것은 PlayerID입니다. 이 ID는 입력 관리자를 캐릭터에 바인딩하는 데 사용됩니다. Player1, Player2, Player3 또는 Player4와 함께 가고 싶을 것입니다.", MMInformationAttribute.InformationType.Info, false)]
         /// a string identifying the target player(s). You'll need to set this exact same string on your Character, and set its type to Player
-        [Tooltip("a string identifying the target player(s). You'll need to set this exact same string on your Character, and set its type to Player")]
+        [Tooltip("대상 플레이어를 식별하는 문자열입니다. 캐릭터에 정확히 동일한 문자열을 설정하고 해당 유형을 플레이어로 설정해야 합니다.")]
         public string PlayerID = "Player1";
         /// the possible modes for this input manager
         public enum InputForcedModes { None, Mobile, Desktop }
@@ -33,42 +33,42 @@ namespace MoreMountains.TopDownEngine
         public enum MovementControls { Joystick, Arrows }
 
         [Header("Mobile controls")]
-        [MMInformation("If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS. You can also force mobile or desktop (keyboard, gamepad) controls using the dropdown below.\nNote that if you don't need mobile controls and/or GUI this component can also work on its own, just put it on an empty GameObject instead.", MMInformationAttribute.InformationType.Info, false)]
+        [MMInformation("자동 모바일 감지를 선택하면 빌드 타겟이 Android 또는 iOS일 때 엔진이 자동으로 모바일 컨트롤로 전환됩니다. 아래 드롭다운을 사용하여 모바일 또는 데스크톱(키보드, 게임 패드) 컨트롤을 강제할 수도 있습니다.\n모바일 컨트롤 및/또는 GUI가 필요하지 않은 경우 이 구성 요소는 자체적으로 작동할 수도 있습니다. 대신 빈 게임 개체에 넣기만 하면 됩니다.", MMInformationAttribute.InformationType.Info, false)]
         /// if this is set to true, the InputManager will try to detect what mode it should be in, based on the current target device
-        [Tooltip("if this is set to true, the InputManager will try to detect what mode it should be in, based on the current target device")]
+        [Tooltip("이것이 true로 설정되면, InputManager는 현재 대상 장치를 기반으로 어떤 모드에 있어야 하는지 감지하려고 시도합니다.")]
         public bool AutoMobileDetection = true;
         /// use this to force desktop (keyboard, pad) or mobile (touch) mode
-        [Tooltip("use this to force desktop (keyboard, pad) or mobile (touch) mode")]
+        [Tooltip("데스크탑(키보드, 패드) 또는 모바일(터치) 모드를 강제하려면 이 옵션을 사용하십시오.")]
         public InputForcedModes InputForcedMode;
         /// if this is true, the weapon mode will be forced to the selected WeaponForcedMode
-        [Tooltip("if this is true, the weapon mode will be forced to the selected WeaponForcedMode")]
+        [Tooltip("이것이 사실이라면 무기 모드는 선택된 WeaponForcedMode로 강제됩니다.")]
         public bool ForceWeaponMode = false;
         /// use this to force a control mode for weapons
         [MMCondition("ForceWeaponMode", true)]
-        [Tooltip("use this to force a control mode for weapons")]
+        [Tooltip("이것을 사용하여 무기 제어 모드를 강제 실행합니다.")]
         public WeaponAim.AimControls WeaponForcedMode;
         /// if this is true, mobile controls will be hidden in editor mode, regardless of the current build target or the forced mode
-        [Tooltip("if this is true, mobile controls will be hidden in editor mode, regardless of the current build target or the forced mode")]
+        [Tooltip("이것이 사실이라면 현재 빌드 대상이나 강제 모드에 관계없이 모바일 컨트롤이 편집기 모드에서 숨겨집니다.")]
         public bool HideMobileControlsInEditor = false;
         /// use this to specify whether you want to use the default joystick or arrows to move your character
-        [Tooltip("use this to specify whether you want to use the default joystick or arrows to move your character")]
+        [Tooltip("캐릭터를 움직일 때 기본 조이스틱이나 화살표를 사용할지 여부를 지정하려면 이 옵션을 사용하세요.")]
         public MovementControls MovementControl = MovementControls.Joystick;
         /// if this is true, we're currently in mobile mode
         public bool IsMobile { get; protected set; }
 
         [Header("Movement settings")]
-        [MMInformation("Turn SmoothMovement on to have inertia in your controls (meaning there'll be a small delay between a press/release of a direction and your character moving/stopping). You can also define here the horizontal and vertical thresholds.", MMInformationAttribute.InformationType.Info, false)]
+        [MMInformation("컨트롤에 관성을 적용하려면 SmoothMovement를 켜십시오. 즉, 방향을 누르거나 떼는 것과 캐릭터가 움직이거나 멈추는 사이에 약간의 지연이 있음을 의미합니다. 여기에서 수평 및 수직 임계값을 정의할 수도 있습니다.", MMInformationAttribute.InformationType.Info, false)]
         /// If set to true, acceleration / deceleration will take place when moving / stopping
-        [Tooltip("If set to true, acceleration / deceleration will take place when moving / stopping")]
+        [Tooltip("true로 설정하면 이동/정지 시 가속/감속이 발생합니다.")]
         public bool SmoothMovement = true;
         /// the minimum horizontal and vertical value you need to reach to trigger movement on an analog controller (joystick for example)
-        [Tooltip("the minimum horizontal and vertical value you need to reach to trigger movement on an analog controller (joystick for example)")]
+        [Tooltip("아날로그 컨트롤러(예: 조이스틱)에서 움직임을 트리거하기 위해 도달해야 하는 최소 수평 및 수직 값")]
         public Vector2 Threshold = new Vector2(0.1f, 0.4f);
 
         [Header("Camera Rotation")]
-        [MMInformation("Here you can decide whether or not camera rotation should impact your input. That can be useful in, for example, a 3D isometric game, if you want 'up' to mean some other direction than Vector3.up/forward.", MMInformationAttribute.InformationType.Info, false)]
+        [MMInformation("여기에서 카메라 회전이 입력에 영향을 미칠지 여부를 결정할 수 있습니다. 예를 들어 3D 아이소메트릭 게임에서 '위'가 Vector3.up/forward가 아닌 다른 방향을 의미하도록 하려는 경우 유용할 수 있습니다.", MMInformationAttribute.InformationType.Info, false)]
         /// if this is true, any directional input coming into this input manager will be rotated to align with the current camera orientation
-        [Tooltip("if this is true, any directional input coming into this input manager will be rotated to align with the current camera orientation")]
+        [Tooltip("이것이 사실이라면 이 입력 관리자로 들어오는 모든 방향 입력은 현재 카메라 방향에 맞춰 회전됩니다.")]
         public bool RotateInputBasedOnCameraDirection = false;
 
         /// the jump button, used for jumps and validation

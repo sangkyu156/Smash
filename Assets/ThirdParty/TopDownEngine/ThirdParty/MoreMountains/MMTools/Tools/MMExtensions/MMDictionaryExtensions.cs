@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Dictionary extensions
-	/// </summary>
-	public static class MMDictionaryExtensions
+    /// <summary>
+    /// 사전 확장
+    /// </summary>
+    public static class MMDictionaryExtensions
 	{
 		/// <summary>
 		/// Finds a key (if there's one) that matches the value set in parameters

@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterMovement ability. Makes the character move up to the specified MinimumDistance in the direction of the target. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionPathfinderToTarget3D")]
+    /// <summary>
+    /// CharacterMovement 능력이 필요합니다. 캐릭터가 대상 방향으로 지정된 최소 거리만큼 이동하도록 합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionPathfinderToTarget3D")]
 	//[RequireComponent(typeof(CharacterMovement))]
 	//[RequireComponent(typeof(CharacterPathfinder3D))]
 	public class AIActionPathfinderToTarget3D : AIAction

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using UnityEngine;
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this component to a character and it'll be able to be stunned. To stun a character, simply call its Stun or StunFor methods. You'll find test buttons at the bottom of this component's inspector. You can also use StunZones to stun your characters.
-	/// Animator parameters : Stunned (bool)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Stun")] 
+{
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 기절할 수 있습니다. 캐릭터를 기절시키려면 Stun 또는 StunFor 메서드를 호출하기만 하면 됩니다. 이 구성요소 검사기 하단에 테스트 버튼이 있습니다. StunZones를 사용하여 캐릭터를 기절시킬 수도 있습니다.
+    /// Animator parameters : Stunned (bool)
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Stun")] 
 	public class CharacterStun : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
@@ -16,21 +16,21 @@ namespace MoreMountains.TopDownEngine
         
 		[Header("IK")]
 		/// a weapon IK to pilot when stunned
-		[Tooltip("a weapon IK to pilot when stunned")]
+		[Tooltip("기절했을 때 조종할 무기 IK")]
 		public WeaponIK BoundWeaponIK;
 		/// whether or not to detach the left hand of the character from IK when stunned
-		[Tooltip("whether or not to detach the left hand of the character from IK when stunned")]
+		[Tooltip("기절 시 캐릭터의 왼손을 IK에서 분리할지 여부")]
 		public bool DetachLeftHand = false;
 		/// whether or not to detach the right hand of the character from IK when stunned
-		[Tooltip("whether or not to detach the right hand of the character from IK when stunned")]
+		[Tooltip("기절 시 캐릭터의 오른손을 IK에서 분리할지 여부")]
 		public bool DetachRightHand = false;
         
 		[Header("Weapon Models")]
 		/// whether or not to disable the weapon model when stunned
-		[Tooltip("whether or not to disable the weapon model when stunned")]
+		[Tooltip("기절 시 무기 모델을 비활성화할지 여부")]
 		public bool DisableAimWeaponModelAtTargetDuringStun = false;
 		/// the list of weapon models to disable when stunned
-		[Tooltip("the list of weapon models to disable when stunned")]
+		[Tooltip("기절 시 비활성화할 무기 모델 목록")]
 		public List<WeaponModel> WeaponModels;
         
 		[Header("Tests")]

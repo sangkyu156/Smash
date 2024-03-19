@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A manager required in your scenes that use CharacterGridMovement.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/GridManager")]
+    /// <summary>
+    /// CharacterGridMovement를 사용하는 장면에 관리자가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/GridManager")]
 	public class GridManager : MMSingleton<GridManager>
 	{
 		/// the possible types of debug modes
@@ -17,32 +17,32 @@ namespace MoreMountains.TopDownEngine
 		[Header("Grid")]
 
 		/// the origin of the grid in world space
-		[Tooltip("the origin of the grid in world space")]
+		[Tooltip("월드 공간에서 그리드의 기원")]
 		public Transform GridOrigin;
 		/// the size of each square grid cell
-		[Tooltip("the size of each square grid cell")]
+		[Tooltip("각 정사각형 그리드 셀의 크기")]
 		public float GridUnitSize = 1f;
 
 		[Header("Debug")]
 
 		/// whether or not to draw the debug grid
-		[Tooltip("whether or not to draw the debug grid")]
+		[Tooltip("디버그 그리드를 그릴지 여부")]
 		public bool DrawDebugGrid = true;
 		/// the mode in which to draw the debug grid
 		[MMCondition("DrawDebugGrid", true)]
-		[Tooltip("the mode in which to draw the debug grid")]
+		[Tooltip("디버그 그리드를 그리는 모드")]
 		public DebugDrawModes DebugDrawMode = DebugDrawModes.TwoD;
 		/// the size (in squares of the debug grid)
 		[MMCondition("DrawDebugGrid", true)]
-		[Tooltip("the size (in squares of the debug grid)")]
+		[Tooltip("크기(디버그 그리드의 제곱)")]
 		public int DebugGridSize = 30;
 		/// the color to use to draw the debug grid lines
 		[MMCondition("DrawDebugGrid", true)]
-		[Tooltip("the color to use to draw the debug grid lines")]
+		[Tooltip("디버그 그리드 선을 그리는 데 사용할 색상")]
 		public Color CellBorderColor = new Color(60f, 221f, 255f, 1f);
 		/// the color to use to draw the debug grid cells backgrounds
 		[MMCondition("DrawDebugGrid", true)]
-		[Tooltip("the color to use to draw the debug grid cells backgrounds")]
+		[Tooltip("디버그 그리드 셀 배경을 그리는 데 사용할 색상")]
 		public Color InnerColor = new Color(60f, 221f, 255f, 0.3f);
 		/// a list of all cells currently occupied
 		[HideInInspector]

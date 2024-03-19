@@ -5,26 +5,26 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to an audio distortion low pass to shake its values remapped along a curve 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioFilterLowPassShaker")]
+    /// <summary>
+    /// 곡선을 따라 다시 매핑된 값을 흔들려면 오디오 왜곡 로우 패스에 이를 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioFilterLowPassShaker")]
 	[RequireComponent(typeof(AudioLowPassFilter))]
 	public class MMAudioFilterLowPassShaker : MMShaker
 	{
 		[MMInspectorGroup("Low Pass", true, 54)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeLowPass = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeLowPass = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(10f, 22000f)]
 		public float RemapLowPassZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(10f, 22000f)]
 		public float RemapLowPassOne = 10000f;
 

@@ -10,11 +10,11 @@ namespace MoreMountains.TopDownEngine
 	[CustomEditor (typeof(CharacterAbility),true)]
 	[CanEditMultipleObjects]
 
-	/// <summary>
-	/// Adds custom labels to the Character inspector
-	/// </summary>
+    /// <summary>
+    /// 문자 관리자에 사용자 정의 레이블을 추가합니다.
+    /// </summary>
 
-	public class CharacterAbilityInspector : Editor 
+    public class CharacterAbilityInspector : Editor 
 	{		
 		SerializedProperty AbilityStartSfx, AbilityInProgressSfx, AbilityStopSfx, AbilityStartFeedbacks, AbilityStopFeedbacks;
 

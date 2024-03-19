@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an object and it'll make sure that the cursor is either visible or invisible
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/MMCursorVisible")]
+    /// <summary>
+    /// 이 클래스를 객체에 추가하면 커서가 보이거나 보이지 않게 됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/MMCursorVisible")]
 	public class MMCursorVisible : MonoBehaviour
 	{
 		/// The possible states of the cursor

@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control a camera's clipping planes over time. You'll need a MMCameraClippingPlanesShaker on your camera.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 카메라의 클리핑 평면을 제어할 수 있습니다. 카메라에 MMCameraClippingPlanesShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Camera/Clipping Planes")]
-	[FeedbackHelp("This feedback lets you control a camera's clipping planes over time. You'll need a MMCameraClippingPlanesShaker on your camera.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 카메라의 클리핑 평면을 제어할 수 있습니다. 카메라에 MMCameraClippingPlanesShaker가 필요합니다.")]
 	public class MMFeedbackCameraClippingPlanes : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -30,18 +30,18 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the duration of the shake, in seconds")]
 		public float Duration = 2f;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeClippingPlanes = false;
 
 		[Header("Near Plane")]
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeNear = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to        
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -52,7 +52,7 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Far Plane")]
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFar = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to        
 		[Tooltip("the value to remap the curve's 0 to")]

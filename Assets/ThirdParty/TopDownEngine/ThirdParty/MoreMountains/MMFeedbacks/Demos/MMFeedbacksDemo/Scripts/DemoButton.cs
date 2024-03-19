@@ -10,10 +10,10 @@ using UnityEditor.Events;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A simple class used to handle demo buttons in the MMF_PlayerDemo and MMFeedbacksDemo scenes
-	/// </summary>
-	[ExecuteAlways]
+    /// <summary>
+    /// MMF_PlayerDemo 및 MMFeedbacksDemo 장면에서 데모 버튼을 처리하는 데 사용되는 간단한 클래스
+    /// </summary>
+    [ExecuteAlways]
 	public class DemoButton : MonoBehaviour
 	{
 		[Header("Behaviour")]

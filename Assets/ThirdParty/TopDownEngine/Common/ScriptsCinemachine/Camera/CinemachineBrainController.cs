@@ -9,10 +9,10 @@ namespace MoreMountains.TopDownEngine
 {
 	public enum MMCinemachineBrainEventTypes { ChangeBlendDuration }
 
-	/// <summary>
-	/// An event used to interact with camera brains
-	/// </summary>
-	public struct MMCinemachineBrainEvent
+    /// <summary>
+    /// 카메라 두뇌와 상호작용하는 데 사용되는 이벤트
+    /// </summary>
+    public struct MMCinemachineBrainEvent
 	{
 		public MMCinemachineBrainEventTypes EventType;
 		public float Duration;
@@ -32,11 +32,11 @@ namespace MoreMountains.TopDownEngine
 		}
 	}
 
-	/// <summary>
-	/// This class is designed to control CinemachineBrains, letting you control their default blend values via events from any class
-	/// </summary>
-	#if MM_CINEMACHINE
-	[RequireComponent(typeof(CinemachineBrain))]
+    /// <summary>
+    /// 이 클래스는 CinemachineBrains를 제어하도록 설계되어 모든 클래스의 이벤트를 통해 기본 블렌드 값을 제어할 수 있습니다.
+    /// </summary>
+#if MM_CINEMACHINE
+    [RequireComponent(typeof(CinemachineBrain))]
 	#endif
 	public class CinemachineBrainController : TopDownMonoBehaviour, MMEventListener<MMCinemachineBrainEvent>
 	{

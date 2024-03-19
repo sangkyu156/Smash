@@ -5,24 +5,24 @@ using MoreMountains.Tools;
 using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this component to a collider 2D and you'll be able to have it perform an action when 
-	/// a character equipped with the specified key enters it.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Key Operated Zone")]
+{
+    /// <summary>
+    /// 이 구성 요소를 충돌기 2D에 추가하면 다음과 같은 경우 작업을 수행하도록 할 수 있습니다.
+    /// 지정된 키를 갖춘 캐릭터가 입력됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Key Operated Zone")]
 	public class KeyOperatedZone : ButtonActivated 
 	{
 		[Header("Key")]
 
 		/// whether this zone actually requires a key
-		[Tooltip("whether this zone actually requires a key")]
+		[Tooltip("이 영역에 실제로 키가 필요한지 여부")]
 		public bool RequiresKey = true;
 		/// the key ID, that will be checked against the existence (or not) of a key of the same name in the player's inventory
-		[Tooltip("the key ID, that will be checked against the existence (or not) of a key of the same name in the player's inventory")]
+		[Tooltip("플레이어의 인벤토리에 같은 이름의 키가 있는지 여부를 확인하는 키 ID입니다")]
 		public string KeyID;
 		/// the method that should be triggered when the key is used
-		[Tooltip("the method that should be triggered when the key is used")]
+		[Tooltip("키가 사용될 때 트리거되어야 하는 메소드")]
 		public UnityEvent KeyAction;
         
 		protected GameObject _collidingObject;

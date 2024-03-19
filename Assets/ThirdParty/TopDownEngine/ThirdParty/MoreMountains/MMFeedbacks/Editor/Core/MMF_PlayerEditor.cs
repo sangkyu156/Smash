@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A custom editor displaying a foldable list of MMFeedbacks, a dropdown to add more, as well as test buttons to test your feedbacks at runtime
-	/// </summary>
-	[CustomEditor(typeof(MMF_Player), true)]
+    /// <summary>
+    /// 폴더형 MMFeedback 목록, 더 추가할 수 있는 드롭다운, 런타임 시 피드백을 테스트할 수 있는 테스트 버튼을 표시하는 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMF_Player), true)]
 	public class MMF_PlayerEditor : Editor
 	{
-		/// <summary>
-		/// A data structure to store types and names
-		/// </summary>
-		public struct FeedbackTypePair
+        /// <summary>
+        /// 유형과 이름을 저장하는 데이터 구조
+        /// </summary>
+        public struct FeedbackTypePair
 		{
 			public System.Type FeedbackType;
 			public string FeedbackName;
@@ -125,39 +125,39 @@ namespace MoreMountains.Feedbacks
 		protected Dictionary<int, MMF_FeedbackInspector> MMF_FeedbackInspectors =
 			new Dictionary<int, MMF_FeedbackInspector>();
 
-		protected const string _copyAllText = "Copy all";
-		protected const string _pasteAsNewText = "Paste as new";
-		protected const string _replaceAllText = "Replace all";
-		protected const string _pasteAllAsNewText = "Paste all as new";
-		protected const string _inactiveMessage = "All MMFeedbacks, including this one, are currently disabled. This is done via script, by changing the value of the MMFeedbacks.GlobalMMFeedbacksActive boolean. Right now this value has been set to false. Setting it back to true will allow MMFeedbacks to play again.";
-		protected const string _instructionsMessage = "Select Feedbacks from the 'add a feedback' dropdown and customize them. Remember, if you don't use auto initialization (Awake or Start), you'll need to initialize them via script.";
-		protected const string _initializationText = "Initialization";
-		protected const string _directionText = "Direction";
-		protected const string _intensityText = "Intensity";
-		protected const string _timingText = "Timing";
-		protected const string _rangeText = "Range";
-		protected const string _playConditionsText = "Play Settings";
+		protected const string _copyAllText = "모두 복사";
+		protected const string _pasteAsNewText = "새로 붙여넣기";
+		protected const string _replaceAllText = "모두 다 바꿔";
+		protected const string _pasteAllAsNewText = "모두 새로 붙여넣기";
+		protected const string _inactiveMessage = "이 항목을 포함한 모든 MMFeedback은 현재 비활성화되어 있습니다. 이는 MMFeedbacks.GlobalMMFeedbacksActive 부울 값을 변경하여 스크립트를 통해 수행됩니다. 현재 이 값은 false로 설정되어 있습니다. 다시 true로 설정하면 MMFeedbacks가 다시 재생될 수 있습니다.";
+		protected const string _instructionsMessage = "'피드백 추가' 드롭다운에서 피드백을 선택하고 맞춤설정하세요. 자동 초기화(Awake 또는 Start)를 사용하지 않는 경우 스크립트를 통해 초기화해야 한다는 점을 기억하세요.";
+		protected const string _initializationText = "초기화";
+		protected const string _directionText = "방향";
+		protected const string _intensityText = "강도";
+		protected const string _timingText = "타이밍";
+		protected const string _rangeText = "범위";
+		protected const string _playConditionsText = "플레이 설정";
 		protected const string _eventsText = "Events";
 		protected const string _settingsText = "Settings";
 		protected const string _playingBracketsText = "[PLAYING] ";
-		protected const string _infiniteLoopText = "[Infinite Loop] ";
+		protected const string _infiniteLoopText = "[무한 Loop] ";
 		protected const string _allFeedbacksDebugText = "All Feedbacks Debug";
-		protected const string _initializeText = "Initialize";
+		protected const string _initializeText = "초기화";
 		protected const string _playText = "Play";
 		protected const string _removeText = "Remove";
 		protected const string _pauseText = "Pause";
 		protected const string _stopText = "Stop";
 		protected const string _resetText = "Reset";
 		protected const string _revertText = "Revert";
-		protected const string _duplicateText = "Duplicate";
+		protected const string _duplicateText = "복제하다";
 		protected const string _copyText = "Copy";
-		protected const string _pasteText = "Paste";
+		protected const string _pasteText = "반죽(만들다)";
 		protected const string _skipText = "Skip";
-		protected const string _restoreText = "Restore";
-		protected const string _keepPlaymodeChangesText = "Keep Playmode Changes";
-		protected const string _scriptDrivenInProgressText = "Script driven pause in progress, call Resume() to exit pause";
-		protected const string _resumeText = "Resume";
-		protected const string _undoText = "Modified Feedback Manager";
+		protected const string _restoreText = "복원하다";
+		protected const string _keepPlaymodeChangesText = "플레이 모드 변경 사항 유지";
+		protected const string _scriptDrivenInProgressText = "스크립트 기반 일시중지가 진행 중입니다. 일시중지를 종료하려면 Resume()을 호출하세요.";
+		protected const string _resumeText = "재개하다";
+		protected const string _undoText = "수정된 Feedback Manager";
 		protected const string _feedbacksSectionTitle = "Feedbacks";
 		protected bool _expandGroupsInInspectors = true;
         

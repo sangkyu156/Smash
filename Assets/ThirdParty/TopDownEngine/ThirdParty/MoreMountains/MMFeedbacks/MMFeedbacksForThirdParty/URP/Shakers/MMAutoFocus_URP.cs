@@ -9,29 +9,29 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This class will set the URP depth of field to focus on the set of targets specified in its inspector.
-	/// </summary>
-	#if MM_URP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// 이 클래스는 인스펙터에 지정된 대상 세트에 초점을 맞추기 위해 URP 피사계 심도를 설정합니다.
+    /// </summary>
+#if MM_URP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMAutoFocus_URP")]
 	public class MMAutoFocus_URP : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the position of the camera
-		[Tooltip("the position of the camera")]
+		[Tooltip("카메라의 위치")]
 		public Transform CameraTransform;
 		/// a list of all possible targets
-		[Tooltip("a list of all possible targets")]
+		[Tooltip("가능한 모든 대상 목록")]
 		public Transform[] FocusTargets;
 		[Header("Setup")]
 		/// the current target of this auto focus
-		[Tooltip("the current target of this auto focus")]
+		[Tooltip("이 자동 초점의 현재 목표")]
 		public float FocusTargetID;
 		[Header("Desired Aperture")]
 		/// the aperture to work with
-		[Tooltip("the aperture to work with")]
+		[Tooltip("작업할 조리개")]
 		[Range(0.1f, 20f)]
 		public float Aperture = 0.1f;
 

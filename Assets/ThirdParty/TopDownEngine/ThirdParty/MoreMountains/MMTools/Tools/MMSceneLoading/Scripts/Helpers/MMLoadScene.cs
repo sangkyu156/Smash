@@ -20,7 +20,7 @@ namespace MoreMountains.Tools
 		[Tooltip("the name of the scene that needs to be loaded when LoadScene gets called")]
 		public string SceneName;
         /// 장면이 Unity의 기본 API를 사용하여 로드되는지 아니면 MoreMountains의 방식을 사용하여 로드되는지 정의합니다.
-        [Tooltip("defines whether the scene will be loaded using Unity's native API or MoreMountains' way")]
+        [Tooltip("장면이 Unity의 기본 API를 사용하여 로드되는지 아니면 MoreMountains의 방식을 사용하여 로드되는지 정의합니다.")]
 		public LoadingSceneModes LoadingSceneMode = LoadingSceneModes.UnityNative;
 
 		/// <summary>

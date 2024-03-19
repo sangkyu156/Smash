@@ -7,10 +7,10 @@ using UnityEngine.InputSystem.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This helper class handles adding the appropriate input module depending on whether the project is using the old or new input system
-	/// </summary>
-	public class MMAutoInputModule : MonoBehaviour
+    /// <summary>
+    /// 이 도우미 클래스는 프로젝트가 이전 입력 시스템을 사용하는지 아니면 새로운 입력 시스템을 사용하는지에 따라 적절한 입력 모듈 추가를 처리합니다.
+    /// </summary>
+    public class MMAutoInputModule : MonoBehaviour
 	{
 		#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 		protected InputSystemUIInputModule _module;

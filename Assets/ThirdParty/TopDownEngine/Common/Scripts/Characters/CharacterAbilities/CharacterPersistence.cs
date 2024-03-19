@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a Character and it'll persist with its exact current state when transitioning to a new scene.
-	/// It'll be automatically passed to the new scene's LevelManager to be used as this scene's main character.
-	/// It'll keep the exact state all its components are in at the moment they finish the level.
-	/// Its health, enabled abilities, component values, equipped weapons, new components you may have added, etc, will all remain once in the new scene. 
-	/// Animator parameters : None
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Persistence")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 새 장면으로 전환할 때 정확한 현재 상태가 유지됩니다.
+    /// 이 장면의 메인 캐릭터로 사용되도록 새 장면의 LevelManager에 자동으로 전달됩니다.
+    /// 레벨을 완료하는 순간 모든 구성 요소의 정확한 상태를 유지합니다.
+    /// 체력, 활성화된 능력, 구성 요소 값, 장착된 무기, 추가한 새 구성 요소 등은 모두 새 장면에 한 번만 유지됩니다.
+    /// Animator parameters : None
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Persistence")]
 	public class CharacterPersistence : CharacterAbility, MMEventListener<MMGameEvent>, MMEventListener<TopDownEngineEvent>
 	{
 		public bool Initialized { get; set; }

@@ -8,11 +8,11 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a HDRP color adjustments post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// HDRP 색상 조정 후처리를 사용하여 이 클래스를 카메라에 추가하면 이벤트를 받아 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMColorAdjustmentsShaker_HDRP")]
 	public class MMColorAdjustmentsShaker_HDRP : MMShaker
@@ -22,51 +22,51 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMInspectorGroup("Post Exposure", true, 44)]
 		/// the curve used to animate the focus distance value on
-		[Tooltip("the curve used to animate the focus distance value on")]
+		[Tooltip("초점 거리 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakePostExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapPostExposureZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapPostExposureOne = 1f;
 
 		[MMInspectorGroup("Hue Shift", true, 45)]
 		/// the curve used to animate the aperture value on
-		[Tooltip("the curve used to animate the aperture value on")]
+		[Tooltip("조리개 값에 애니메이션을 적용하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeHueShift = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Range(-180f, 180f)]
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapHueShiftZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-180f, 180f)]
 		public float RemapHueShiftOne = 180f;
 
 		[MMInspectorGroup("Saturation", true, 46)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeSaturation = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-100f, 100f)]
 		public float RemapSaturationZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-100f, 100f)]
 		public float RemapSaturationOne = 100f;
 
 		[MMInspectorGroup("Contrast", true, 47)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeContrast = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-100f, 100f)]
 		public float RemapContrastZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-100f, 100f)]
 		public float RemapContrastOne = 100f;
         
@@ -74,19 +74,19 @@ namespace MoreMountains.FeedbacksForThirdParty
  
 		[MMInspectorGroup("Color Filter", true, 48)]
 		/// the color filter mode to work with (none, over a gradient, or interpolate to a destination color
-		[Tooltip("the color filter mode to work with (none, over a gradient, or interpolate to a destination color")]
+		[Tooltip("작업할 색상 필터 모드(없음, 그라디언트 또는 대상 색상으로 보간)")]
 		public ColorFilterModes ColorFilterMode = ColorFilterModes.None;
 		/// the gradient over which to modify the color filter
-		[Tooltip("the gradient over which to modify the color filter")]
+		[Tooltip("색상 필터를 수정할 그라데이션")]
 		[MMFEnumCondition("ColorFilterMode", (int)ColorFilterModes.Gradient)]
 		[GradientUsage(true)]
 		public Gradient ColorFilterGradient;
 		/// the destination color to match when in Interpolate mode
-		[Tooltip("the destination color to match when in Interpolate mode")]
+		[Tooltip("보간 모드에 있을 때 일치시킬 대상 색상")]
 		[MMFEnumCondition("ColorFilterMode", (int) ColorFilterModes.Interpolate)]
 		public Color ColorFilterDestination = Color.yellow;
 		/// the curve over which to interpolate the color filter
-		[Tooltip("the curve over which to interpolate the color filter")]
+		[Tooltip("컬러 필터를 보간할 곡선")]
 		[MMFEnumCondition("ColorFilterMode", (int) ColorFilterModes.Interpolate)]
 		public AnimationCurve ColorFilterCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 

@@ -3,11 +3,11 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// This persistent singleton handles the inputs and sends commands to the player in the MMControls demo, its sole purpose is to output debug logs of the various interactions with the demo's inputs
-	/// </summary>
-	public class MMControlsTestInputManager : MonoBehaviour, MMEventListener<MMSwipeEvent>
+{
+    /// <summary>
+    /// 이 영구 싱글톤은 MMControls 데모에서 입력을 처리하고 플레이어에게 명령을 보냅니다. 유일한 목적은 데모 입력과의 다양한 상호 작용에 대한 디버그 로그를 출력하는 것입니다.
+    /// </summary>
+    public class MMControlsTestInputManager : MonoBehaviour, MMEventListener<MMSwipeEvent>
 	{
 		// on start, we force a high target frame rate for a more fluid experience on mobile devices
 		protected virtual void Start()

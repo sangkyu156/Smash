@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A variant of the Camera Shaker that acts on the rotation instead of the position. Careful, can cause vertigo to some users.
-	/// </summary>
-	public class MMCameraShakerRotation : MMCameraShaker
+    /// <summary>
+    /// 위치 대신 회전에 작용하는 카메라 셰이커의 변형입니다. 조심하세요. 일부 사용자에게는 현기증을 유발할 수 있습니다.
+
+    /// </summary>
+    public class MMCameraShakerRotation : MMCameraShaker
 	{
 		/// <summary>
 		/// Shakes the camera for Duration seconds, by the desired amplitude and frequency

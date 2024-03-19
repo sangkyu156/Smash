@@ -5,12 +5,12 @@ using MoreMountains.InventoryEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class describes how the Top Down Engine demo achievements are triggered.
-	/// It extends the base class MMAchievementRules
-	/// It listens for different event types
-	/// </summary>
-	public class AchievementRules : MMAchievementRules, 
+    /// <summary>
+    /// 이 클래스에서는 하향식 엔진 데모 업적이 트리거되는 방법을 설명합니다.
+    /// 기본 클래스 MMAchievementRules를 확장합니다.
+    /// 다양한 이벤트 유형을 수신합니다.
+    /// </summary>
+    public class AchievementRules : MMAchievementRules, 
 		MMEventListener<MMGameEvent>, 
 		MMEventListener<MMCharacterEvent>, 
 		MMEventListener<TopDownEngineEvent>,

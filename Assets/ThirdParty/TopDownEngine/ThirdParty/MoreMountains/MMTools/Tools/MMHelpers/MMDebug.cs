@@ -11,11 +11,11 @@ using UnityEditor;
 #endif
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Debug helpers
-	/// </summary>
-	public static class MMDebug 
+{
+    /// <summary>
+    /// 디버그 도우미
+    /// </summary>
+    public static class MMDebug 
 	{
 		#region Commands
 

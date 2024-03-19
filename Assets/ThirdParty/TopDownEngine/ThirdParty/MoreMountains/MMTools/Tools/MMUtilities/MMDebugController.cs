@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an empty object in your scene and it'll act as a point of control to enable or disable logs and debug draws
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Utilities/MMDebugController")]
+    /// <summary>
+    /// 이 클래스를 장면의 빈 개체에 추가하면 로그 및 디버그 그리기를 활성화 또는 비활성화하는 제어 지점 역할을 합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Utilities/MMDebugController")]
 	public class MMDebugController : MonoBehaviour
 	{
 		/// whether or not debug logs (MMDebug.DebugLogTime, MMDebug.DebugOnScreen) should be displayed

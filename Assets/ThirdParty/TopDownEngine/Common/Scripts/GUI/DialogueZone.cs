@@ -25,70 +25,70 @@ namespace MoreMountains.TopDownEngine
 		[Header("Dialogue Look")]
 
 		/// the prefab to use to display the dialogue
-		[Tooltip("the prefab to use to display the dialogue")]
+		[Tooltip("대화를 표시하는 데 사용할 프리팹")]
 		public DialogueBox DialogueBoxPrefab;
 		/// the color of the text background.
-		[Tooltip("the color of the text background.")]
+		[Tooltip("텍스트 배경의 색상입니다.")]
 		public Color TextBackgroundColor = Color.black;
 		/// the color of the text
-		[Tooltip("the color of the text")]
+		[Tooltip("텍스트의 색상")]
 		public Color TextColor = Color.white;
 		/// the font that should be used to display the text
-		[Tooltip("the font that should be used to display the text")]
+		[Tooltip("텍스트를 표시하는 데 사용해야 하는 글꼴")]
 		public Font TextFont;
 		/// the size of the font
-		[Tooltip("the size of the font")]
+		[Tooltip("글꼴의 크기")]
 		public int TextSize = 40;
 		/// the text alignment in the box used to display the text
-		[Tooltip("the text alignment in the box used to display the text")]
+		[Tooltip("텍스트를 표시하는 데 사용되는 상자의 텍스트 정렬")]
 		public TextAnchor Alignment = TextAnchor.MiddleCenter;
         
 		[Header("Dialogue Speed (in seconds)")]
 
         /// 인 및 아웃 페이드의 지속 시간
-        [Tooltip("the duration of the in and out fades")]
+        [Tooltip("인 및 아웃 페이드의 지속 시간")]
 		public float FadeDuration = 0.2f;
         /// 두 대화 사이의 시간
-        [Tooltip("the time between two dialogues ")]
+        [Tooltip("두 대화 사이의 시간")]
 		public float TransitionTime = 0.2f;
 
 		[Header("Dialogue Position")]
 
         /// 대화 상자가 나타나야 하는 상자 충돌체 상단으로부터의 거리
-        [Tooltip("the distance from the top of the box collider the dialogue box should appear at")]
+        [Tooltip("대화 상자가 나타나야 하는 상자 충돌체 상단으로부터의 거리")]
 		public Vector3 Offset = Vector3.zero;
         /// 이것이 사실이라면 대화 상자는 영역의 위치를 ​​따릅니다.
-        [Tooltip("if this is true, the dialogue boxes will follow the zone's position")]
+        [Tooltip("이것이 사실이라면 대화 상자는 영역의 위치를 ​​따릅니다.")]
 		public bool BoxesFollowZone = false;
 
 		[Header("Player Movement")]
 
         /// true로 설정하면 대화가 진행되는 동안 캐릭터가 움직일 수 있습니다.
-        [Tooltip("if this is set to true, the character will be able to move while dialogue is in progress")]
+        [Tooltip("true로 설정하면 대화가 진행되는 동안 캐릭터가 움직일 수 있습니다.")]
 		public bool CanMoveWhileTalking = true;
 
 		[Header("Press button to go from one message to the next ?")]
 
         /// 이 영역이 버튼으로 처리되는지 여부
-        [Tooltip("whether or not this zone is handled by a button or not")]
+        [Tooltip("이 영역이 버튼으로 처리되는지 여부")]
 		public bool ButtonHandled = true;
         /// 메시지의 지속 시간. 상자가 버튼으로 처리되지 않은 경우에만 고려됩니다.
         [Header("Only if the dialogue is not button handled :")]
 		[Range(1, 100)]
-		[Tooltip("The duration for which the message should be displayed, in seconds. only considered if the box is not button handled")]
+		[Tooltip("메시지가 표시되어야 하는 기간(초)입니다. 상자가 버튼으로 처리되지 않은 경우에만 고려됩니다.")]
 		public float MessageDuration = 3f;
         
 		[Header("Activations")]
         /// 두 번 이상 활성화할 수 있으면 true
-        [Tooltip("true if can be activated more than once")]
+        [Tooltip("두 번 이상 활성화할 수 있으면 true")]
 		public bool ActivableMoreThanOnce = true;
         /// 영역이 두 번 이상 활성화 가능한 경우 가동 시간 사이에 얼마나 오랫동안 비활성 상태로 유지되어야 합니까?
         [Range(1, 100)]
-		[Tooltip("if the zone is activable more than once, how long should it remain inactive between up times?")]
+		[Tooltip("영역이 두 번 이상 활성화 가능한 경우 가동 시간 사이에 얼마나 오랫동안 비활성 상태로 유지되어야 합니까?")]
 		public float InactiveTime = 2f;
 
         /// 대사
-        [Tooltip("the dialogue lines")]
+        [Tooltip("대사")]
 		public DialogueElement[] Dialogue;
 
 		/// private variables

@@ -4,38 +4,38 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to an object containing multiple weapons and it'll turn it into a ComboWeapon, allowing you to chain attacks from all the different weapons
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Combo Weapon")]
+    /// <summary>
+    /// 여러 무기가 포함된 개체에 이 구성 요소를 추가하면 ComboWeapon으로 변환되어 다양한 무기의 연쇄 공격이 가능해집니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Combo Weapon")]
 	public class ComboWeapon : TopDownMonoBehaviour
 	{
 		[Header("Combo")]
 		/// whether or not the combo can be dropped if enough time passes between two consecutive attacks
-		[Tooltip("whether or not the combo can be dropped if enough time passes between two consecutive attacks")]
+		[Tooltip("두 번의 연속 공격 사이에 충분한 시간이 지나면 콤보가 떨어질 수 있는지 여부")]
 		public bool DroppableCombo = true;
 		/// the delay after which the combo drops
-		[Tooltip("the delay after which the combo drops")]
+		[Tooltip("콤보가 떨어지는 후의 지연 시간")]
 		public float DropComboDelay = 0.5f;
 
 		[Header("Animation")]
 
 		/// the name of the animation parameter to update when a combo is in progress.
-		[Tooltip("the name of the animation parameter to update when a combo is in progress.")]
+		[Tooltip("콤보가 진행 중일 때 업데이트할 애니메이션 매개변수의 이름입니다.")]
 		public string ComboInProgressAnimationParameter = "ComboInProgress";
 
 		[Header("Debug")]
 		/// the list of weapons, set automatically by the class
 		[MMReadOnly]
-		[Tooltip("the list of weapons, set automatically by the class")]
+		[Tooltip("클래스별로 자동으로 설정되는 무기 목록")]
 		public Weapon[] Weapons;
 		/// the reference to the weapon's Owner
 		[MMReadOnly]
-		[Tooltip("the reference to the weapon's Owner")]
+		[Tooltip("무기 소유자에 대한 참조")]
 		public CharacterHandleWeapon OwnerCharacterHandleWeapon;
 		/// the time spent since the last weapon stopped
 		[MMReadOnly]
-		[Tooltip("the time spent since the last weapon stopped")]
+		[Tooltip("마지막 무기가 멈춘 후 소요된 시간")]
 		public float TimeSinceLastWeaponStopped;
 
 		/// <summary>

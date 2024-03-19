@@ -13,55 +13,55 @@ namespace MoreMountains.TopDownEngine
 		public int Quantity;
 	}
 
-	/// <summary>
-	/// Add this component to a character and it'll be able to control an inventory
-	/// Animator parameters : none
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 인벤토리를 제어할 수 있습니다.
+    /// Animator parameters : none
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Inventory")] 
 	public class CharacterInventory : CharacterAbility, MMEventListener<MMInventoryEvent>
 	{
 		public enum WeaponRotationModes { Normal, AddEmptySlot, AddInitialWeapon }
         
 		[Header("Inventories")]
-		/// the unique ID of this player as far as the InventoryEngine is concerned. This has to match all its Inventory and InventoryEngine UI components' PlayerID for that player. If you're not going for multiplayer here, just leave Player1.
-		[Tooltip("the unique ID of this player as far as the InventoryEngine is concerned. This has to match all its Inventory and InventoryEngine UI components' PlayerID for that player. If you're not going for multiplayer here, just leave Player1.")]
+        /// InventoryEngine에 관한 한 이 플레이어의 고유 ID입니다. 이는 해당 플레이어에 대한 모든 Inventory 및 InventoryEngine UI 구성 요소의 PlayerID와 일치해야 합니다. 여기서 멀티플레이어를 사용하지 않으려면 Player1을 그대로 두세요.
+        [Tooltip("InventoryEngine에 관한 한 이 플레이어의 고유 ID입니다. 이는 해당 플레이어에 대한 모든 Inventory 및 InventoryEngine UI 구성 요소의 PlayerID와 일치해야 합니다. 여기서 멀티플레이어를 사용하지 않으려면 Player1을 그대로 두세요.")]
 		public string PlayerID = "Player1";
-		/// the name of the main inventory for this character
-		[Tooltip("the name of the main inventory for this character")]
+        /// 이 캐릭터의 주요 인벤토리 이름
+        [Tooltip("이 캐릭터의 주요 인벤토리 이름")]
 		public string MainInventoryName;
-		/// the name of the inventory where this character stores weapons
-		[Tooltip("the name of the inventory where this character stores weapons")]
+        /// 이 캐릭터가 무기를 보관하는 인벤토리의 이름
+        [Tooltip("이 캐릭터가 무기를 보관하는 인벤토리의 이름")]
 		public string WeaponInventoryName;
-		/// the name of the hotbar inventory for this character
-		[Tooltip("the name of the hotbar inventory for this character")]
+        /// 이 캐릭터의 단축바 인벤토리 이름
+        [Tooltip("이 캐릭터의 단축바 인벤토리 이름")]
 		public string HotbarInventoryName;
-		/// a transform to pass to the inventories, will be passed to the inventories and used as reference for drops. If left empty, this.transform will be used.
-		[Tooltip("a transform to pass to the inventories, will be passed to the inventories and used as reference for drops. If left empty, this.transform will be used.")]
+        /// 인벤토리에 전달할 변환은 인벤토리에 전달되어 드롭에 대한 참조로 사용됩니다. 비워두면 this.transform이 사용됩니다.
+        [Tooltip("인벤토리에 전달할 변환은 인벤토리에 전달되어 드롭에 대한 참조로 사용됩니다. 비워두면 this.transform이 사용됩니다.")]
 		public Transform InventoryTransform;
 
 		[Header("Weapon Rotation")]
-		/// the rotation mode for weapons : Normal will cycle through all weapons, AddEmptySlot will return to empty hands, AddOriginalWeapon will cycle back to the original weapon
-		[Tooltip("if this is true, will add an empty slot to the weapon rotation")]
+        /// 무기 회전 모드: Normal은 모든 무기를 순환하고, AddEmptySlot은 빈 손으로 돌아가고, AddOriginalWeapon은 원래 무기로 다시 순환합니다.
+        [Tooltip("무기 회전 모드: Normal은 모든 무기를 순환하고, AddEmptySlot은 빈 손으로 돌아가고, AddOriginalWeapon은 원래 무기로 다시 순환합니다.")]
 		public WeaponRotationModes WeaponRotationMode = WeaponRotationModes.Normal;
 
 		[Header("Auto Pick")]
-		/// a list of items to automatically add to this Character's inventories on start
-		[Tooltip("a list of items to automatically add to this Character's inventories on start")]
+        /// 시작 시 이 캐릭터의 인벤토리에 자동으로 추가할 아이템 목록
+        [Tooltip("시작 시 이 캐릭터의 인벤토리에 자동으로 추가할 아이템 목록")]
 		public AutoPickItem[] AutoPickItems;
-		/// if this is true, auto pick items will only be added if the main inventory is empty
-		[Tooltip("if this is true, auto pick items will only be added if the main inventory is empty")]
+        /// 이것이 사실이라면 자동 선택 항목은 기본 인벤토리가 비어 있는 경우에만 추가됩니다.
+        [Tooltip("이것이 사실이라면 자동 선택 항목은 기본 인벤토리가 비어 있는 경우에만 추가됩니다.")]
 		public bool AutoPickOnlyIfMainInventoryIsEmpty;
 		
 		[Header("Auto Equip")]
-		/// a weapon to auto equip on start
-		[Tooltip("a weapon to auto equip on start")]
+        /// 시작 시 자동으로 장착되는 무기
+        [Tooltip("시작 시 자동으로 장착되는 무기")]
 		public InventoryWeapon AutoEquipWeaponOnStart;
-		/// if this is true, auto equip will only occur if the main inventory is empty
-		[Tooltip("if this is true, auto equip will only occur if the main inventory is empty")]
+        /// 이것이 사실이라면 자동 장착은 메인 인벤토리가 비어 있는 경우에만 발생합니다.
+        [Tooltip("이것이 사실이라면 자동 장착은 메인 인벤토리가 비어 있는 경우에만 발생합니다.")]
 		public bool AutoEquipOnlyIfMainInventoryIsEmpty;
-		/// the target handle weapon ability - if left empty, will pick the first one it finds
-		[Tooltip("the target handle weapon ability - if left empty, will pick the first one it finds")]
+        /// 대상 핸들 무기 능력 - 비어 있는 경우 가장 먼저 찾은 것을 선택합니다.
+        [Tooltip("대상 핸들 무기 능력 - 비어 있는 경우 가장 먼저 찾은 것을 선택합니다.")]
 		public CharacterHandleWeapon CharacterHandleWeapon;
 
 		public Inventory MainInventory { get; set; }

@@ -5,27 +5,27 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to an AudioSource to shake its stereo pan values remapped along a curve 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioSourceStereoPanShaker")]
+    /// <summary>
+    /// 곡선을 따라 다시 매핑된 스테레오 팬 값을 흔들려면 이것을 AudioSource에 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Audio/MMAudioSourceStereoPanShaker")]
 	[RequireComponent(typeof(AudioSource))]
 	public class MMAudioSourceStereoPanShaker : MMShaker
 	{
 		[MMInspectorGroup("Stereo Pan", true, 57)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeStereoPan = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeStereoPan = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-1f, 1f)]
 		public float RemapStereoPanZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
-		[Range(-1f, 1f)]
+		[Tooltip("곡선의 1을 다시 매핑할 값)")]
+        [Range(-1f, 1f)]
 		public float RemapStereoPanOne = 1f;
 
 		/// the audio source to pilot

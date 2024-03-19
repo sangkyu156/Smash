@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An editor class used to display menu items 
-	/// </summary>
-	public class MMDebugEditor
+    /// <summary>
+    /// 메뉴 항목을 표시하는 데 사용되는 편집기 클래스
+    /// </summary>
+    public class MMDebugEditor
 	{
 		/// <summary>
 		/// Adds a menu item to enable debug logs

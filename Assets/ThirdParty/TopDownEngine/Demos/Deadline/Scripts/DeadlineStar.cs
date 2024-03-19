@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A pickable star, that triggers an event if picked, and disables itself if it's been previously collected
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Deadline Star")]
+    /// <summary>
+    /// 선택하면 이벤트를 트리거하고 이전에 수집된 경우 자체적으로 비활성화되는 선택 가능한 별입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Deadline Star")]
 	public class DeadlineStar : Star
 	{
 		/// <summary>

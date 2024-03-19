@@ -6,43 +6,43 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class used to handle aim markers, (usually circular) visual elements 
-	/// </summary>
-	public class AimMarker : TopDownMonoBehaviour
+    /// <summary>
+    /// 조준 마커(보통 원형) 시각적 요소를 처리하는 데 사용되는 클래스
+    /// </summary>
+    public class AimMarker : TopDownMonoBehaviour
 	{
 		/// the possible movement modes for aim markers
 		public enum MovementModes { Instant, Interpolate }
 
 		[Header("Movement")]
-		/// The selected movement mode for this aim marker. Instant will move the marker instantly to its target, Interpolate will animate its position over time
-		[Tooltip("The selected movement mode for this aim marker. Instant will move the marker instantly to its target, Interpolate will animate its position over time")]
+        /// 이 조준 마커에 대해 선택된 이동 모드입니다. Instant는 마커를 대상으로 즉시 이동하고 Interpolate는 시간이 지남에 따라 위치를 애니메이션으로 표시합니다.
+        [Tooltip("이 조준 마커에 대해 선택된 이동 모드입니다. Instant는 마커를 대상으로 즉시 이동하고 Interpolate는 시간이 지남에 따라 위치를 애니메이션으로 표시합니다.")]
 		public MovementModes MovementMode;
-		/// an offset to apply to the position of the target (useful if you want, for example, the marker to appear above the target)
-		[Tooltip("an offset to apply to the position of the target (useful if you want, for example, the marker to appear above the target)")]
+        /// 대상 위치에 적용할 오프셋(예를 들어 대상 위에 마커를 표시하려는 경우 유용함)
+        [Tooltip("대상 위치에 적용할 오프셋(예를 들어 대상 위에 마커를 표시하려는 경우 유용함)")]
 		public Vector3 Offset;
-		/// When in Interpolate mode, the duration of the movement animation
-		[Tooltip("When in Interpolate mode, the duration of the movement animation")]
+        /// 보간 모드에 있을 때 이동 애니메이션의 지속 시간
+        [Tooltip("보간 모드에 있을 때 이동 애니메이션의 지속 시간")]
 		[MMEnumCondition("MovementMode", (int)MovementModes.Interpolate)]
 		public float MovementDuration = 0.2f;
-		/// When in Interpolate mode, the curve to animate the movement on
-		[Tooltip("When in Interpolate mode, the curve to animate the movement on")]
+        /// 보간 모드에 있을 때 움직임을 애니메이션하는 곡선
+        [Tooltip("보간 모드에 있을 때 움직임을 애니메이션하는 곡선")]
 		[MMEnumCondition("MovementMode", (int)MovementModes.Interpolate)]
 		public MMTween.MMTweenCurve MovementCurve = MMTween.MMTweenCurve.EaseInCubic;
-		/// When in Interpolate mode, the delay before the marker moves when changing target
-		[Tooltip("When in Interpolate mode, the delay before the marker moves when changing target")]
+        /// 보간 모드에서 대상을 변경할 때 마커가 이동하기 전 지연 시간
+        [Tooltip("보간 모드에서 대상을 변경할 때 마커가 이동하기 전 지연 시간")]
 		[MMEnumCondition("MovementMode", (int)MovementModes.Interpolate)]
 		public float MovementDelay = 0f;
 
 		[Header("Feedbacks")]
-		/// A feedback to play when a target is found and we didn't have one already
-		[Tooltip("A feedback to play when a target is found and we didn't have one already")]
+        /// 목표를 찾았지만 아직 목표가 없었을 때 플레이할 피드백
+        [Tooltip("목표를 찾았지만 아직 목표가 없었을 때 플레이할 피드백")]
 		public MMFeedbacks FirstTargetFeedback;
-		/// a feedback to play when we already had a target and just found a new one
-		[Tooltip("a feedback to play when we already had a target and just found a new one")]
+        /// 이미 목표가 있고 방금 새 목표를 찾았을 때 플레이할 수 있는 피드백
+        [Tooltip("이미 목표가 있고 방금 새 목표를 찾았을 때 플레이할 수 있는 피드백")]
 		public MMFeedbacks NewTargetAssignedFeedback;
-		/// a feedback to play when no more targets are found, and we just lost our last target
-		[Tooltip("a feedback to play when no more targets are found, and we just lost our last target")]
+        /// 더 이상 목표를 찾을 수 없고 마지막 목표를 잃었을 때 플레이하기 위한 피드백
+        [Tooltip("더 이상 목표를 찾을 수 없고 마지막 목표를 잃었을 때 플레이하기 위한 피드백")]
 		public MMFeedbacks NoMoreTargetFeedback;
 
 		protected Transform _target;

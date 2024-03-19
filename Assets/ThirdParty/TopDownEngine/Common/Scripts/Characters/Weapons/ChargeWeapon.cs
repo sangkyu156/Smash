@@ -6,33 +6,32 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class used to store the charge properties of the weapons that together make up a charge weapon
-	/// Each charge weapon is made of multiple of these, each representing a step in the charge sequence
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 돌격 무기를 구성하는 무기의 돌격 속성을 저장하는 데 사용되는 클래스 각 돌격 무기는 이들 중 여러 개로 구성되며 각각 돌격 시퀀스의 단계를 나타냅니다.
+    /// </summary>
+    [Serializable]
 	public class ChargeWeaponStep
 	{
 		/// the weapon to cause an attack with at that step
-		[Tooltip("the weapon to cause an attack with at that step")]
+		[Tooltip("그 단계에서 공격을 일으키는 무기")]
 		public Weapon TargetWeapon;
 		/// the duration (in seconds) it should take to keep the charge going to the next step
-		[Tooltip("the duration (in seconds) it should take to keep the charge going to the next step")]
+		[Tooltip("다음 단계로 요금이 계속 진행되는 데 걸리는 시간(초)")]
 		public float ChargeDuration = 1f;
 		/// if the charge is interrupted at this step, whether or not to trigger this weapon's attack
-		[Tooltip("if the charge is interrupted at this step, whether or not to trigger this weapon's attack")]
+		[Tooltip("이 단계에서 충전이 중단되면 이 무기의 공격을 발동할지 여부")]
 		public bool TriggerIfChargeInterrupted = true;
 		/// if this is true, the weapon at this step will be flipped when the charge weapon flips 
-		[Tooltip("if this is true, the weapon at this step will be flipped when the charge weapon flips")]
+		[Tooltip("이것이 사실이라면 이 단계의 무기는 충전 무기가 뒤집힐 때 뒤집힐 것입니다.")]
 		public bool FlipWhenChargeWeaponFlips = true;
 		/// a feedback to trigger when this step starts charging
-		[Tooltip("a feedback to trigger when this step starts charging")]
+		[Tooltip("이 단계에서 충전이 시작되면 피드백 트리거로 트리거됩니다.")]
 		public MMFeedbacks ChargeStartFeedbacks;
 		/// a feedback to trigger when this step gets interrupted (when the charge is dropped at this step)
-		[Tooltip("a feedback to trigger when this step gets interrupted (when the charge is dropped at this step)")]
+		[Tooltip("이 단계가 중단될 때 트리거할 피드백(이 단계에서 요금이 삭제될 때)")]
 		public MMFeedbacks ChargeInterruptedFeedbacks;
 		/// a feedback to trigger when this step completes and the charge potentially moves on to the next step
-		[Tooltip("a feedback to trigger when this step completes and the charge potentially moves on to the next step")]
+		[Tooltip("이 단계가 완료되고 요금이 다음 단계로 넘어갈 때 트리거되는 피드백")]
 		public MMFeedbacks ChargeCompleteFeedbacks;
 		/// the total time (in seconds) from the complete start of the charge weapon to this weapon's charge being complete
 		public float ChargeTotalDuration { get; set; }
@@ -41,11 +40,11 @@ namespace MoreMountains.TopDownEngine
 		/// whether this step's charge has completed or not
 		public bool ChargeComplete { get; set; }
 	}
-	
-	/// <summary>
-	/// Add this component to an object and it'll let you define a sequence of charge steps, each triggering their own unique weapon, complete with options like input modes or conditional releases, hooks for every steps, and more. Useful for Megaman or Zelda like types of charge weapons.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Charge Weapon")]
+
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 각각 고유한 무기를 트리거하는 일련의 충전 단계를 정의할 수 있으며, 입력 모드 또는 조건부 릴리스, 모든 단계에 대한 후크 등과 같은 옵션이 완비됩니다. Megaman이나 Zelda와 같은 충전 무기에 유용합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Charge Weapon")]
 	public class ChargeWeapon : Weapon
 	{
 		/// the possible timescales for this weapon
@@ -60,27 +59,27 @@ namespace MoreMountains.TopDownEngine
 		[MMInspectorGroup("Charge Weapon", true, 22)]
 		[Header("List of Weapons in the Charge Sequence")]
 		/// the list of weapons that make up this charge weapon's sequence of steps
-		[Tooltip("the list of weapons that make up this charge weapon's sequence of steps")]
+		[Tooltip("이 돌격 무기의 일련의 단계를 구성하는 무기 목록")]
 		public List<ChargeWeaponStep> Weapons;
 		
 		[Header("Settings")]
 		/// whether this weapon should trigger its attack when all steps are done charging, or when input gets released
-		[Tooltip("whether this weapon should trigger its attack when all steps are done charging, or when input gets released")]
+		[Tooltip("모든 단계의 충전이 완료되었을 때 또는 입력이 해제되었을 때 이 무기가 공격을 트리거해야 하는지 여부")]
 		public ReleaseModes ReleaseMode = ReleaseModes.OnInputRelease;
 		/// whether this weapon's input should run on scaled or unscaled time
-		[Tooltip("whether this weapon's input should run on scaled or unscaled time")]
+		[Tooltip("이 무기의 입력이 조정된 시간에 실행되어야 하는지, 조정되지 않은 시간에 실행되어야 하는지 여부")]
 		public TimescaleModes TimescaleMode = TimescaleModes.Scaled;
 		/// whether or not the start of the charge should trigger the first step's weapon's attack or not
-		[Tooltip("whether or not the start of the charge should trigger the first step's weapon's attack or not")]
+		[Tooltip("돌격 시작이 첫 번째 단계의 무기 공격을 트리거할지 여부")]
 		public bool AllowInitialShot = true;
 		
 		[Header("Debug")]
 		/// the current charge index in the Weapons step list
-		[Tooltip("the current charge index in the Weapons step list")]
+		[Tooltip("무기 단계 목록의 현재 충전 지수")]
 		[MMReadOnly]
 		public int CurrentChargeIndex = 0;
 		/// whether this weapon is currently charging or not
-		[Tooltip("whether this weapon is currently charging or not")]
+		[Tooltip("이 무기가 현재 충전 중인지 여부")]
 		[MMReadOnly] 
 		public bool Charging = false;
 

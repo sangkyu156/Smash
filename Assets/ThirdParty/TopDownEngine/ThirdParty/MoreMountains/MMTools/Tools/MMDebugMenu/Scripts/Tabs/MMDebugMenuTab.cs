@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to handle the display of a tab in a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuTab : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 탭 표시를 처리하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuTab : MonoBehaviour
 	{
 		/// the tab's title
 		public Text TabText;

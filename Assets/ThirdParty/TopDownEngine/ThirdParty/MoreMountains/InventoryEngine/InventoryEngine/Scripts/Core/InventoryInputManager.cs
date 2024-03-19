@@ -13,8 +13,8 @@ using static Codice.Client.BaseCommands.Import.Commit;
 namespace MoreMountains.InventoryEngine
 {
     /// <summary>
-    /// Example of how you can call an inventory from your game. 
-    /// I suggest having your Input and GUI manager classes handle that though.
+    /// 게임에서 인벤토리를 호출하는 방법의 예입니다.
+    /// 그래도 입력 및 GUI 관리자 클래스에서 이를 처리하도록 하는 것이 좋습니다.
     /// </summary>
     public class InventoryInputManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
     {

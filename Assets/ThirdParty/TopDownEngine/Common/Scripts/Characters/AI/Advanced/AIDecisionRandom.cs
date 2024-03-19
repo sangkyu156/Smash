@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will roll a dice and return true if the result is below or equal the Odds value
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionRandom")]
+    /// <summary>
+    /// 이 결정은 주사위를 굴리고 결과가 확률 값보다 작거나 같으면 true를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionRandom")]
 	public class AIDecisionRandom : AIDecision
 	{
 		[Header("Random")]
-		/// the total number to consider (in "5 out of 10", this would be 10)
-		[Tooltip("the total number to consider (in '5 out of 10', this would be 10)")]
+        /// 고려해야 할 총 개수('10개 중 5개'에서는 10개임)
+        [Tooltip("고려해야 할 총 개수('10개 중 5개'에서는 10개임)")]
 		public int TotalChance = 10;
-		/// when rolling our dice, if the result is below the Odds, this decision will be true. In "5 out of 10", this would be 5.
-		[Tooltip("when rolling our dice, if the result is below the Odds, this decision will be true. In '5 out of 10', this would be 5.")]
+        /// 주사위를 굴릴 때 결과가 확률보다 낮으면 이 결정이 적용됩니다. '10점 만점에 5점'이면 5점입니다.
+        [Tooltip("주사위를 굴릴 때 결과가 확률보다 낮으면 이 결정이 적용됩니다. '10점 만점에 5점'이면 5점입니다.")]
 		public int Odds = 4;
 
 		protected Character _targetCharacter;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Array helpers
-	/// </summary>
-	public class MMArray : MonoBehaviour
+    /// <summary>
+    /// 배열 도우미
+    /// </summary>
+    public class MMArray : MonoBehaviour
 	{
 		/// <summary>
 		/// Rounds an int to the closest int in an array (array has to be sorted)

@@ -4,14 +4,13 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a character and it'll be able to switch its model
-	/// when pressing the SwitchCharacter button
-	/// Note that this will only change the model, not the prefab. Only the visual representation, not the abilities and settings.
-	/// If instead you'd like to change the prefab entirely, look at the CharacterSwitchManager class.
-	/// If you want to swap characters between a bunch of characters within a scene, look at the CharacterSwap ability and CharacterSwapManager
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 SwitchCharacter 버튼을 누를 때 모델을 전환할 수 있습니다.
+    /// 이는 프리팹이 아닌 모델만 변경한다는 점에 유의하세요. 능력이나 설정이 아닌 시각적 표현만 가능합니다.
+    /// 대신 프리팹을 완전히 변경하려면 CharacterSwitchManager 클래스를 살펴보세요.
+    /// 한 장면 내에서 여러 캐릭터 간에 캐릭터를 교환하려면 CharacterSwap 기능과 CharacterSwapManager를 살펴보세요.
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Switch Model")] 
 	public class CharacterSwitchModel : CharacterAbility
 	{
@@ -19,25 +18,25 @@ namespace MoreMountains.TopDownEngine
 		public enum NextModelChoices { Sequential, Random }
 
 		[Header("Models")]
-		[MMInformation("Add this component to a character and it'll be able to switch its model when pressing the SwitchCharacter button (P by default).", MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("이 구성 요소를 캐릭터에 추가하면 SwitchCharacter 버튼(기본적으로 P)을 누를 때 모델을 전환할 수 있습니다.", MMInformationAttribute.InformationType.Info, false)]
 
 		/// the list of possible characters models to switch to
-		[Tooltip("the list of possible characters models to switch to")]
+		[Tooltip("전환할 수 있는 캐릭터 모델 목록")]
 		public GameObject[] CharacterModels;
 		/// the order in which to pick the next character
-		[Tooltip("the order in which to pick the next character")]
+		[Tooltip("다음 문자를 선택하는 순서")]
 		public NextModelChoices NextCharacterChoice = NextModelChoices.Sequential;
 		/// the initial (and at runtime, current) index of the character prefab
-		[Tooltip("the initial (and at runtime, current) index of the character prefab")]
+		[Tooltip("캐릭터 프리팹의 초기(그리고 런타임 시 현재) 인덱스")]
 		public int CurrentIndex = 0;
 		/// if you set this to true, when switching model, the Character's animator will also be bound. This requires your model's animator is at the top level of the model in the hierarchy.
 		/// you can look at the MinimalModelSwitch scene for examples of that
-		[Tooltip("if you set this to true, when switching model, the Character's animator will also be bound. This requires your model's animator is at the top level of the model in the hierarchy. you can look at the MinimalModelSwitch scene for examples of that")]
+		[Tooltip("이를 true로 설정하면 모델을 전환할 때 캐릭터의 애니메이터도 바인딩됩니다. 이를 위해서는 모델의 애니메이터가 계층 구조에서 모델의 최상위 수준에 있어야 합니다. 그 예를 보려면 MinimalModelSwitch 장면을 볼 수 있습니다.")]
 		public bool AutoBindAnimator = true;
 
 		[Header("Visual Effects")]
 		/// a particle system to play when a character gets changed
-		[Tooltip("a particle system to play when a character gets changed")]
+		[Tooltip("캐릭터가 변경될 때 재생할 파티클 시스템")]
 		public ParticleSystem CharacterSwitchVFX;
 
 		protected ParticleSystem _instantiatedVFX;

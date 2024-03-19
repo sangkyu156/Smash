@@ -7,10 +7,10 @@ namespace MoreMountains.InventoryEngine
 {	
 	[CreateAssetMenu(fileName = "HealthBonusItem", menuName = "MoreMountains/InventoryEngine/HealthBonusItem", order = 1)]
 	[Serializable]
-	/// <summary>
-	/// Demo class for a health item
-	/// </summary>
-	public class HealthBonusItem : InventoryItem 
+    /// <summary>
+    /// 건강 품목에 대한 데모 수업
+    /// </summary>
+    public class HealthBonusItem : InventoryItem 
 	{
 		[Header("Health Bonus")]
 		/// the amount of health to add to the player when the item is used

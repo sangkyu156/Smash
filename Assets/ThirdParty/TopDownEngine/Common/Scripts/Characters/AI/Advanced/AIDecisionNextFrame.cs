@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true when entering the state this Decision is on.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionNextFrame")]
+    /// <summary>
+    /// 이 결정은 이 결정이 설정된 상태에 들어갈 때 true를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionNextFrame")]
 	public class AIDecisionNextFrame : AIDecision
 	{
 		/// <summary>

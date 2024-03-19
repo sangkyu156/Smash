@@ -2,12 +2,12 @@
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the cutoff frequency of a low pass filter. You'll need a MMAudioFilterLowPassShaker on your filter.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 저역 통과 필터의 차단 주파수를 제어할 수 있습니다. 필터에 MMAudioFilterLowPassShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/Audio Filter Low Pass")]
-	[FeedbackHelp("This feedback lets you control a low pass audio filter over time. You'll need a MMAudioFilterLowPassShaker on your filter.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 저역 통과 오디오 필터를 제어할 수 있습니다. 필터에 MMAudioFilterLowPassShaker가 필요합니다.")]
 	public class MMFeedbackAudioFilterLowPass : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -21,32 +21,32 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Low Pass Feedback")]
 		/// the channel to emit on
-		[Tooltip("the channel to emit on")]
+		[Tooltip("방출할 채널")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float Duration = 2f;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Low Pass")]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeLowPass = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeLowPass = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
 		/// the value to remap the curve's 0 to
 		[Range(10f, 22000f)]
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapLowPassZero = 0f;
 		/// the value to remap the curve's 1 to
 		[Range(10f, 22000f)]
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapLowPassOne = 10000f;
 
 		/// <summary>

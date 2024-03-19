@@ -9,14 +9,14 @@ namespace MoreMountains.Tools
 	[Serializable]
 	public class MMAim
 	{
-		/// the list of possible control modes .
-		public enum AimControls { Off, PrimaryMovement, SecondaryMovement, Mouse, Script }
-		/// the list of possible rotation modes
-		public enum RotationModes { Free, Strict4Directions, Strict8Directions }
+        /// 가능한 제어 모드 목록.
+        public enum AimControls { Off, PrimaryMovement, SecondaryMovement, Mouse, Script }
+        /// 가능한 회전 모드 목록
+        public enum RotationModes { Free, Strict4Directions, Strict8Directions }
 
 		[Header("Control Mode")]
-		[MMInformation("Pick a control mode : mouse (aims towards the pointer), primary movement (you'll aim towards the current input direction), or secondary movement (aims " +
-		               "towards a second input axis, think twin stick shooters), and set minimum and maximum angles.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("제어 모드 선택: 마우스(포인터를 향해 조준), 기본 이동(현재 입력 방향을 향해 조준) 또는 보조 이동(조준) " +
+                       "두 번째 입력 축을 향해, 트윈 스틱 슈터를 생각하세요) 최소 및 최대 각도를 설정하세요.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		/// the aim control mode
 		public AimControls AimControl = AimControls.SecondaryMovement;
 		/// the rotation mode

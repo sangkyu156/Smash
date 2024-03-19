@@ -4,11 +4,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this script to a platform and it'll fall down when walked upon by a playable character
-	/// Add an AutoRespawn component to your platform and it'll get reset when your character dies
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Falling Platform 2D")]
+    /// <summary>
+    /// 이 스크립트를 플랫폼에 추가하면 플레이 가능한 캐릭터가 걸어갈 때 쓰러집니다.
+    /// 플랫폼에 AutoRespawn 구성 요소를 추가하면 캐릭터가 죽을 때 재설정됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Falling Platform 2D")]
 	public class FallingPlatform2D : TopDownMonoBehaviour 
 	{
 		/// the possible states for the falling platform
@@ -16,17 +16,17 @@ namespace MoreMountains.TopDownEngine
 
 		/// the current state of the falling platform
 		[MMReadOnly]
-		[Tooltip("the current state of the falling platform")]
+		[Tooltip("떨어지는 플랫폼의 현재 상태")]
 		public FallingPlatformStates State;
 
 		/// if this is true, the platform will fall inevitably once touched
-		[Tooltip("if this is true, the platform will fall inevitably once touched")]
+		[Tooltip("이것이 사실이라면 플랫폼을 건드리면 필연적으로 떨어질 것입니다.")]
 		public bool InevitableFall = false;
 		/// the time (in seconds) before the fall of the platform
-		[Tooltip("the time (in seconds) before the fall of the platform")]
+		[Tooltip("플랫폼이 추락하기 전의 시간(초)")]
 		public float TimeBeforeFall = 2f;
 		/// the time (in seconds) before the collider turns itself off once the fall has started
-		[Tooltip("the time (in seconds) before the collider turns itself off once the fall has started")]
+		[Tooltip("낙하가 시작된 후 충돌체가 꺼지기 전까지의 시간(초)")]
 		public float DelayBetweenFallAndColliderOff = 0.5f;
 
 		// private stuff

@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this zone to a trigger collider and it'll automatically trigger a crouch on your 3D character on entry
-	/// </summary>
-	[RequireComponent(typeof(Collider))]
+    /// <summary>
+    /// 이 영역을 트리거 충돌체에 추가하면 입장 시 3D 캐릭터가 자동으로 웅크리는 동작이 발생합니다.
+    /// </summary>
+    [RequireComponent(typeof(Collider))]
 	[AddComponentMenu("TopDown Engine/Environment/Crouch Zone")]
 	public class CrouchZone : TopDownMonoBehaviour
 	{

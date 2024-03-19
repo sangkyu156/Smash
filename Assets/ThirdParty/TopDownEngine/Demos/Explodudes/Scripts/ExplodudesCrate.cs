@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class that modifies the y scale of crates in the Explodudes demo scene
-	/// </summary>
-	public class ExplodudesCrate : TopDownMonoBehaviour
+    /// <summary>
+    /// Explodude 데모 장면에서 상자의 y 크기를 수정하는 클래스
+    /// </summary>
+    public class ExplodudesCrate : TopDownMonoBehaviour
 	{
 		protected const float MinHeight = 0.8f;
 		protected const float MaxHeight = 1.1f;

@@ -6,10 +6,10 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a character and it'll be able to jump in 2D. This means no actual movement, only the collider turned off and on. Movement will be handled by the animation itself.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Jump 2D")]
+    /// <summary>
+    /// 이 능력을 캐릭터에 추가하면 2D로 점프할 수 있습니다. 이는 실제 움직임은 없으며 충돌체만 꺼졌다가 켜졌다는 의미입니다. 움직임은 애니메이션 자체에 의해 처리됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Jump 2D")]
 	public class CharacterJump2D : CharacterAbility 
 	{
 		/// the duration of the jump

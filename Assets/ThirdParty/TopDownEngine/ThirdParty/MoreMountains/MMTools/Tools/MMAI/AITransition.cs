@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Transitions are a combination of one or more decisions and destination states whether or not these transitions are true or false. An example of a transition could be "_if an enemy gets in range, transition to the Shooting state_".
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 전환은 이러한 전환이 참인지 거짓인지에 관계없이 하나 이상의 결정과 대상 상태의 조합입니다. 전환의 예로는 "_적이 범위 내에 들어오면 사격 상태로 전환_"이 있습니다.
+    /// </summary>
+    [System.Serializable]
 	public class AITransition 
 	{
 		/// this transition's decision

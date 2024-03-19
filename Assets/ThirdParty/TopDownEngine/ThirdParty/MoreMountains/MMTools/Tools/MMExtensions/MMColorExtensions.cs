@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Color extensions
-	/// </summary>
-	public static class MMColorExtensions
+    /// <summary>
+    /// 색상 확장
+    /// </summary>
+    public static class MMColorExtensions
 	{
 		/// <summary>
 		/// Adds all parts of the color and returns a float

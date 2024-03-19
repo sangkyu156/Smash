@@ -3,8 +3,8 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// Interface for pool's objects. <br/>
-    /// Your classes can implement this interface if you want some additional processing for your pool's objects.
+    /// 풀 개체에 대한 인터페이스입니다. <br/>
+    /// 풀의 객체에 대한 추가 처리가 필요한 경우 클래스에서 이 인터페이스를 구현할 수 있습니다.
     /// </summary>
     public interface IPoolObject
     {

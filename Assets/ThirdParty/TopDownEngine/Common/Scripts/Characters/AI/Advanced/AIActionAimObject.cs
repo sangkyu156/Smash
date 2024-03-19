@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 
+
+
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to aim any object in the direction of the AI's movement or aim
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionAimObject")]
+    /// <summary>
+    /// AI의 움직임이나 조준 방향으로 객체를 조준하는 데 사용되는 AIACtion입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionAimObject")]
 	public class AIActionAimObject : AIAction
 	{
 		/// the possible directions we can aim the target object at
@@ -16,23 +18,23 @@ namespace MoreMountains.TopDownEngine
 		/// the axis to aim at the movement or weapon aim direction
 		public enum PossibleAxis { Right, Forward }
         
-		[Header("Aim Object")] 
-		/// an object to aim
-		[Tooltip("an object to aim")]
+		[Header("Aim Object")]
+        /// 목표로 삼는 대상
+        [Tooltip("목표로 삼는 대상")]
 		public GameObject GameObjectToAim;
-		/// whether to aim at the AI's movement direction or the weapon aim direction
-		[Tooltip("whether to aim at the AI's movement direction or the weapon aim direction")]
+        /// AI의 이동 방향을 겨냥할지 무기 조준 방향을 겨냥할지
+        [Tooltip("AI의 이동 방향을 겨냥할지 무기 조준 방향을 겨냥할지")]
 		public Modes Mode = Modes.Movement;
-		/// the axis to aim at the moment or weapon aim direction (usually right for 2D, forward for 3D)
-		[Tooltip("the axis to aim at the moment or weapon aim direction (usually right for 2D, forward for 3D)")]
+        /// 순간에 조준할 축 또는 무기 조준 방향(보통 2D에서는 오른쪽, 3D에서는 앞으로)
+        [Tooltip("순간에 조준할 축 또는 무기 조준 방향(보통 2D에서는 오른쪽, 3D에서는 앞으로)")]
 		public PossibleAxis Axis = PossibleAxis.Right;
 
-		[Header("Interpolation")] 
-		/// whether or not to interpolate the rotation
-		[Tooltip("whether or not to interpolate the rotation")]
+		[Header("Interpolation")]
+        /// 회전을 보간할지 여부
+        [Tooltip("회전을 보간할지 여부")]
 		public bool Interpolate = false;
-		/// the rate at which to interpolate the rotation
-		[Tooltip("the rate at which to interpolate the rotation")]
+        /// 회전을 보간하는 속도
+        [Tooltip("회전을 보간하는 속도")]
 		[MMCondition("Interpolate", true)] 
 		public float InterpolateRate = 5f;
         

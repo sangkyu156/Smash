@@ -5,12 +5,12 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterGridMovement ability. 
-	/// Makes the character move randomly in the grid, until it finds an obstacle in its path, in which case it'll pick a new direction at random
-	/// Supports both 2D and 3D grids
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveRandomlyGrid")]
+    /// <summary>
+    /// CharacterGridMovement 능력이 필요합니다.
+    /// 캐릭터가 경로에서 장애물을 발견할 때까지 그리드에서 무작위로 움직이도록 합니다. 이 경우 무작위로 새로운 방향을 선택합니다.
+    /// Supports both 2D and 3D grids
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveRandomlyGrid")]
 	//[RequireComponent(typeof(CharacterGridMovement))]
 	public class AIActionMoveRandomlyGrid : AIAction
 	{
@@ -20,28 +20,28 @@ namespace MoreMountains.TopDownEngine
 		public Modes Mode = Modes.ThreeD;
 
 		[Header("Duration")]
-		/// the maximum time a character can spend going in a direction without changing
-		[Tooltip("the maximum time a character can spend going in a direction without changing")]
+        /// 캐릭터가 방향을 바꾸지 않고 이동하는 데 소비할 수 있는 최대 시간
+        [Tooltip("캐릭터가 방향을 바꾸지 않고 이동하는 데 소비할 수 있는 최대 시간")]
 		public float MaximumDurationInADirection = 3f;
 
 		[Header("Obstacles")]
-		/// the layers the character will try to avoid
-		[Tooltip("the layers the character will try to avoid")]
+        /// 캐릭터가 피하려고 하는 레이어
+        [Tooltip("캐릭터가 피하려고 하는 레이어")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
-		/// the minimum distance from the target this Character can reach.
-		[Tooltip("the minimum distance from the target this Character can reach.")]
+        /// the이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.
+        [Tooltip("이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.")]
 		public float ObstaclesDetectionDistance = 1f;
-		/// the frequency (in seconds) at which to check for obstacles
-		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
+        /// 장애물을 확인하는 빈도(초)
+        [Tooltip("장애물을 확인하는 빈도(초)")]
 		public float ObstaclesCheckFrequency = 1f;
-		/// the minimal random direction to randomize from
-		[Tooltip("the minimal random direction to randomize from")]
+        /// 무작위로 추출할 최소 무작위 방향
+        [Tooltip("무작위로 추출할 최소 무작위 방향")]
 		public Vector2 MinimumRandomDirection = new Vector2(-1f, -1f);
-		/// the maximum random direction to randomize from
-		[Tooltip("the maximum random direction to randomize from")]
+        /// 무작위화할 최대 무작위 방향
+        [Tooltip("무작위화할 최대 무작위 방향")]
 		public Vector2 MaximumRandomDirection = new Vector2(1f, 1f);
-		/// if this is true, the AI will avoid 180° turns if possible
-		[Tooltip("if this is true, the AI will avoid 180° turns if possible")]
+        /// if이것이 사실이라면 AI는 가능하다면 180° 회전을 피할 것입니다.
+        [Tooltip("이것이 사실이라면 AI는 가능하다면 180° 회전을 피할 것입니다.")]
 		public bool Avoid180 = true;
 
 		protected CharacterGridMovement _characterGridMovement;

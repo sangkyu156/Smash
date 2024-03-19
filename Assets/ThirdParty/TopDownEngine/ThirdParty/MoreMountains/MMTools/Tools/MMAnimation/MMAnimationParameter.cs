@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A helper class that will hash a animation parameter and update it on demand
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Animation/MMAnimationParameter")]
+    /// <summary>
+    /// 애니메이션 매개변수를 해시하고 요청 시 업데이트하는 도우미 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Animation/MMAnimationParameter")]
 	public class MMAnimationParameter : MonoBehaviour
 	{
 		/// the name of the animation parameter to hash

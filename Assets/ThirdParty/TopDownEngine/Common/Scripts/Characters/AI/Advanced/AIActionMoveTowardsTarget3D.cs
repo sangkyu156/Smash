@@ -5,15 +5,15 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterMovement ability. Makes the character move up to the specified MinimumDistance in the direction of the target. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveTowardsTarget3D")]
+    /// <summary>
+    /// CharacterMovement 능력이 필요합니다. 캐릭터가 대상 방향으로 지정된 최소 거리만큼 이동하도록 합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveTowardsTarget3D")]
 	//[RequireComponent(typeof(CharacterMovement))]
 	public class AIActionMoveTowardsTarget3D : AIAction
 	{
-		/// the minimum distance from the target this Character can reach.
-		[Tooltip("the minimum distance from the target this Character can reach.")]
+        /// 이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.
+        [Tooltip("이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.")]
 		public float MinimumDistance = 1f;
 
 		protected Vector3 _directionToTarget;

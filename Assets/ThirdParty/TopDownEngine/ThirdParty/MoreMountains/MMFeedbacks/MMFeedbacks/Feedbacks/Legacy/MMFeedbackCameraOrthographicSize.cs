@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control a camera's orthographic size over time. You'll need a MMCameraOrthographicSizeShaker on your camera.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 카메라의 직교 크기를 제어할 수 있습니다. 카메라에 MMCameraOrthographicSizeShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Camera/Orthographic Size")]
-	[FeedbackHelp("This feedback lets you control a camera's orthographic size over time. You'll need a MMCameraOrthographicSizeShaker on your camera.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 카메라의 직교 크기를 제어할 수 있습니다. 카메라에 MMCameraOrthographicSizeShaker가 필요합니다.")]
 	public class MMFeedbackCameraOrthographicSize : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -38,10 +38,10 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Orthographic Size")]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeOrthographicSize = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeOrthographicSize = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]

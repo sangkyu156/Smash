@@ -4,15 +4,15 @@ using System.Collections;
 namespace MoreMountains.Tools
 {
 	[ExecuteAlways]
-	/// <summary>
-	/// Adds this class to a UnityStandardAssets.ImageEffects.GlobalFog to change its color
-	/// Why this is not native, I don't know.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Particles/MMChangeFogColor")]
+    /// <summary>
+    /// 이 클래스를 UnityStandardAssets.ImageEffects.GlobalFog에 추가하여 색상을 변경합니다.
+    /// 왜 이것이 네이티브가 아닌지 모르겠습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Particles/MMChangeFogColor")]
 	public class MMChangeFogColor : MonoBehaviour 
 	{
 		/// Adds this class to a UnityStandardAssets.ImageEffects.GlobalFog to change its color
-		[MMInformation("Adds this class to a UnityStandardAssets.ImageEffects.GlobalFog to change its color", MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("이 클래스를 UnityStandardAssets.ImageEffects.GlobalFog에 추가하여 색상을 변경합니다.", MMInformationAttribute.InformationType.Info,false)]
 		public Color FogColor;
 
 		/// <summary>

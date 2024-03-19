@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple component that will ensure (if put on ALL audio listeners in your game)
-	/// that you never see a "There are two audio listeners in the scene" warning again.
-	/// </summary>
-	[RequireComponent(typeof(AudioListener))]
+    /// <summary>
+    /// (게임의 모든 오디오 리스너에 배치된 경우) 보장하는 간단한 구성 요소
+    /// "장면에 두 명의 오디오 청취자가 있습니다"라는 경고가 다시는 표시되지 않습니다.
+    /// </summary>
+    [RequireComponent(typeof(AudioListener))]
 	public class MMAudioListener : MonoBehaviour
 	{
 		protected AudioListener _audioListener;

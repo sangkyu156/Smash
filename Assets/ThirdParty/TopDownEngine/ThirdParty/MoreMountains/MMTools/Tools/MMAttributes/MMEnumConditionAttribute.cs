@@ -8,11 +8,11 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An attribute to conditionnally hide fields based on the current selection in an enum.
-	/// Usage :  [MMEnumCondition("rotationMode", (int)RotationMode.LookAtTarget, (int)RotationMode.RotateToAngles)]
-	/// </summary>
-	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
+    /// <summary>
+    /// 열거형의 현재 선택을 기반으로 필드를 조건부로 숨기는 속성입니다.
+    /// 사용법: [MMEnumCondition("rotationMode", (int)RotationMode.LookAtTarget, (int)RotationMode.RotateToAngles)]
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
 	public class MMEnumConditionAttribute : PropertyAttribute
 	{
 		public string ConditionEnum = "";

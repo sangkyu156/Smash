@@ -5,41 +5,41 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This object will enable Magnetic objects in your scene when they enter its associated collider2D (make sure you add one).
-	/// While magnetic objects can work on their own, and handle their own range detection, you can also use a different architecture, where an enabler makes them move.
-	/// A typical use case would be to add it to a character, nested under its top level :
-	/// 
-	/// MyCharacter (top level, with a Character, controller, abilities, etc)
-	/// - MyMagneticEnabler (with this class and a CircleCollider2D for example)
-	/// 
-	/// Then, in your scene you'd have Magnetic objects, with StartMagnetOnEnter disabled. 
-	/// Your magnetic enabler would make them follow this specific target on enter.
-	/// From the enabler you can also have it override the follow speed and acceleration.
-	/// </summary>
-	public class MagneticEnabler : TopDownMonoBehaviour
+    /// <summary>
+    /// 이 개체는 관련 collider2D에 들어갈 때 장면에서 자기 개체를 활성화합니다(추가해야 함).
+    /// 자성 물체는 스스로 작동하고 자체 범위 감지를 처리할 수 있지만, 인에이블러가 물체를 움직이게 하는 다른 아키텍처를 사용할 수도 있습니다.
+    /// 일반적인 사용 사례는 최상위 수준 아래에 중첩된 캐릭터에 추가하는 것입니다.
+    /// 
+    /// MyCharacter(최상위, 캐릭터, 컨트롤러, 능력 등 포함)
+    /// - MyMagneticEnabler(예를 들어 이 클래스와 CircleCollider2D 사용)
+    ///
+    /// 그러면 장면에 StartMagnetOnEnter가 비활성화된 Magnetic 개체가 있게 됩니다.
+    /// 자기 활성화 장치는 입력 시 이 특정 대상을 따르도록 만듭니다.
+    /// 인에이블러에서 추종 속도와 가속도를 재정의하도록 할 수도 있습니다.
+    /// </summary>
+    public class MagneticEnabler : TopDownMonoBehaviour
 	{
 		[Header("Detection")]
 		/// the layermask this magnetic enabler looks at to enable magnetic elements
-		[Tooltip("the layermask this magnetic enabler looks at to enable magnetic elements")]
+		[Tooltip("이 자기 활성화 장치가 자기 요소를 활성화하기 위해 살펴보는 레이어 마스크")]
 		public LayerMask TargetLayerMask = LayerManager.PlayerLayerMask;
 		/// a list of the magnetic type ID this enabler targets
-		[Tooltip("a list of the magnetic type ID this enabler targets")]
+		[Tooltip("이 Enabler가 대상으로 하는 자기 유형 ID 목록")]
 		public List<int> MagneticTypeIDs;
 
 		[Header("Overrides")]
 		/// if this is true, the follow position speed will be overridden with the one specified here
-		[Tooltip("if this is true, the follow position speed will be overridden with the one specified here")]
+		[Tooltip("이것이 사실이라면 추종 위치 속도는 여기에 지정된 속도로 재정의됩니다.")]
 		public bool OverrideFollowPositionSpeed = false;
 		/// the value with which to override the speed
-		[Tooltip("the speed with which to override the speed")]
+		[Tooltip("속도를 무시할 속도")]
 		[MMCondition("OverrideFollowPositionSpeed", true)]
 		public float FollowPositionSpeed = 5f;
 		/// if this is true, the acceleration will be overridden with the one specified here
-		[Tooltip("if this is true, the acceleration will be overridden with the one specified here")]
+		[Tooltip("이것이 사실이라면 가속도는 여기에 지정된 것으로 재정의됩니다.")]
 		public bool OverrideFollowAcceleration = false;
 		/// the value with which to override the acceleration
-		[Tooltip("the speed with which to override the acceleration")]
+		[Tooltip("가속도를 무시하는 속도")]
 		[MMCondition("OverrideFollowAcceleration", true)]
 		public float FollowAcceleration = 0.75f;
 

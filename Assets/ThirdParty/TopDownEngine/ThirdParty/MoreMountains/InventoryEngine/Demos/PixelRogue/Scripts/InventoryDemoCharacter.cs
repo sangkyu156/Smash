@@ -6,13 +6,13 @@ namespace MoreMountains.InventoryEngine
 {	
 
 	[RequireComponent(typeof(Rigidbody2D))]
-	/// <summary>
-	/// Demo character controller, very basic stuff
-	/// </summary>
-	public class InventoryDemoCharacter : MonoBehaviour, MMEventListener<MMInventoryEvent>
+    /// <summary>
+    /// 데모 캐릭터 컨트롤러, 아주 기본적인 것들
+    /// </summary>
+    public class InventoryDemoCharacter : MonoBehaviour, MMEventListener<MMInventoryEvent>
 	{
 		[MMInformation(
-			"A very basic demo character controller, that makes the character move around on the xy axis. Here you can change its speed and bind sprites and equipment inventories.",
+            "캐릭터가 xy축을 중심으로 움직이도록 하는 매우 기본적인 데모 캐릭터 컨트롤러입니다. 여기에서 속도를 변경하고 스프라이트와 장비 인벤토리를 바인딩할 수 있습니다.",
 			MMInformationAttribute.InformationType.Info, false)]
 
 		public string PlayerID = "Player1";

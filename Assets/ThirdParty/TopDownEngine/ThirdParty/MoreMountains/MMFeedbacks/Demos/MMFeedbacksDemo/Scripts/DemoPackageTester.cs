@@ -4,13 +4,13 @@ using UnityEditor;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This class, meant to be used in MMFeedbacks demos, will check for requirements, and output an
-	/// error message if necessary.
-	/// </summary>
-	public class DemoPackageTester : MonoBehaviour
+    /// <summary>
+    /// MMFeedbacks 데모에 사용하기 위한 이 클래스는 요구 사항을 확인하고
+    /// error message if necessary.
+    /// </summary>
+    public class DemoPackageTester : MonoBehaviour
 	{
-		[MMFInformation("This component is only used to display an error in the console in case dependencies for this demo haven't been installed. You can safely remove it if you want, and typically you wouldn't want to keep that in your own game.", MMFInformationAttribute.InformationType.Warning, false)]
+		[MMFInformation("이 구성 요소는 이 데모에 대한 종속성이 설치되지 않은 경우 콘솔에 오류를 표시하는 데만 사용됩니다. 원하는 경우 안전하게 제거할 수 있으며 일반적으로 자신의 게임에 해당 항목을 유지하고 싶지 않을 것입니다.", MMFInformationAttribute.InformationType.Warning, false)]
 		/// does the scene require post processing to be installed?
 		public bool RequiresPostProcessing;
 		/// does the scene require TextMesh Pro to be installed?

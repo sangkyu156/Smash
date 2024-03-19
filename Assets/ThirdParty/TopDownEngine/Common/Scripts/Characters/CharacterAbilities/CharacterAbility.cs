@@ -7,43 +7,43 @@ using System.Linq;
 using static MoreMountains.TopDownEngine.Character;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// A class meant to be overridden that handles a character's ability. 
-	/// </summary>
-	//[RequireComponent(typeof(Character))]
-	public class CharacterAbility : TopDownMonoBehaviour 
+{
+    /// <summary>
+    /// 캐릭터의 능력을 처리하는 재정의 클래스입니다.
+    /// </summary>
+    //[RequireComponent(typeof(Character))]
+    public class CharacterAbility : TopDownMonoBehaviour 
 	{
-		/// the sound fx to play when the ability starts
-		[Tooltip("the sound fx to play when the ability starts")]
+        /// 능력이 시작될 때 재생할 사운드 FX
+        [Tooltip("능력이 시작될 때 재생할 사운드 FX")]
 		public AudioClip AbilityStartSfx;
-		/// the sound fx to play while the ability is running
-		[Tooltip("the sound fx to play while the ability is running")]
+        /// 능력이 실행되는 동안 재생할 사운드 FX
+        [Tooltip("능력이 실행되는 동안 재생할 사운드 FX")]
 		public AudioClip AbilityInProgressSfx;
-		/// the sound fx to play when the ability stops
-		[Tooltip("the sound fx to play when the ability stops")]
+        /// 능력이 중지될 때 재생할 사운드 FX
+        [Tooltip("능력이 중지될 때 재생할 사운드 FX")]
 		public AudioClip AbilityStopSfx;
 
-		/// the feedbacks to play when the ability starts
-		[Tooltip("the feedbacks to play when the ability starts")]
+        /// 능력이 시작될 때 플레이할 피드백
+        [Tooltip("능력이 시작될 때 플레이할 피드백")]
 		public MMFeedbacks AbilityStartFeedbacks;
-		/// the feedbacks to play when the ability stops
-		[Tooltip("the feedbacks to play when the ability stops")]
+        /// 능력이 중지될 때 재생할 피드백
+        [Tooltip("능력이 중지될 때 재생할 피드백")]
 		public MMFeedbacks AbilityStopFeedbacks;
                 
 		[Header("Permission")]
         /// true인 경우 이 능력은 평소대로 수행될 수 있으며, 그렇지 않은 경우 무시됩니다. 예를 들어 이를 사용하여 시간이 지남에 따라 능력을 잠금 해제할 수 있습니다.
         [Tooltip("true인 경우 이 능력은 평소대로 수행될 수 있으며, 그렇지 않은 경우 무시됩니다. 예를 들어 이를 사용하여 시간이 지남에 따라 능력을 잠금 해제할 수 있습니다.")]
 		public bool AbilityPermitted = true;
-        
-		/// an array containing all the blocking movement states. If the Character is in one of these states and tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while Idle or Swimming, for example.
-		[Tooltip("an array containing all the blocking movement states. If the Character is in one of these states and tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while Idle or Swimming, for example.")]
+
+        /// 모든 차단 이동 상태를 포함하는 배열입니다. 캐릭터가 이러한 상태 중 하나에 있고 이 능력을 발동하려고 하면 허용되지 않습니다. 예를 들어, 유휴 상태나 수영 중에 이 기능이 사용되는 것을 방지하는 데 유용합니다.
+        [Tooltip("모든 차단 이동 상태를 포함하는 배열입니다. 캐릭터가 이러한 상태 중 하나에 있고 이 능력을 발동하려고 하면 허용되지 않습니다. 예를 들어, 유휴 상태나 수영 중에 이 기능이 사용되는 것을 방지하는 데 유용합니다.")]
 		public CharacterStates.MovementStates[] BlockingMovementStates;
-		/// an array containing all the blocking condition states. If the Character is in one of these states and tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while dead, for example.
-		[Tooltip("an array containing all the blocking condition states. If the Character is in one of these states and tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while dead, for example.")]
+        /// 모든 차단 조건 상태를 포함하는 배열입니다. 캐릭터가 이러한 상태 중 하나에 있고 이 능력을 발동하려고 하면 허용되지 않습니다. 예를 들어, 이 능력이 죽은 동안 사용되는 것을 방지하는 데 유용합니다.
+        [Tooltip("모든 차단 조건 상태를 포함하는 배열입니다. 캐릭터가 이러한 상태 중 하나에 있고 이 능력을 발동하려고 하면 허용되지 않습니다. 예를 들어, 이 능력이 죽은 동안 사용되는 것을 방지하는 데 유용합니다.")]
 		public CharacterStates.CharacterConditions[] BlockingConditionStates;
-		/// an array containing all the blocking weapon states. If one of the character's weapons is in one of these states and yet the character tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while attacking, for example.
-		[Tooltip("an array containing all the blocking weapon states. If one of the character's weapons is in one of these states and yet the character tries to trigger this ability, it won't be permitted. Useful to prevent this ability from being used while attacking, for example.")]
+        /// 모든 차단 무기 상태를 포함하는 배열입니다. 캐릭터의 무기 중 하나가 이러한 상태 중 하나에 있지만 캐릭터가 이 능력을 발동하려고 시도하는 경우 허용되지 않습니다. 예를 들어, 공격하는 동안 이 능력이 사용되는 것을 방지하는 데 유용합니다.
+        [Tooltip("모든 차단 무기 상태를 포함하는 배열입니다. 캐릭터의 무기 중 하나가 이러한 상태 중 하나에 있지만 캐릭터가 이 능력을 발동하려고 시도하는 경우 허용되지 않습니다. 예를 들어, 공격하는 동안 이 능력이 사용되는 것을 방지하는 데 유용합니다.")]
 		public Weapon.WeaponStates[] BlockingWeaponStates;
 
 		public virtual bool AbilityAuthorized

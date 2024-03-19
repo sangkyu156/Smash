@@ -5,10 +5,10 @@ using System;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class to store ratio display info
-	/// </summary>
-	[Serializable]    
+    /// <summary>
+    /// 비율 표시 정보를 저장하는 클래스
+    /// </summary>
+    [Serializable]    
 	public class Ratio
 	{
 		/// whether or not that ratio should be drawn
@@ -26,10 +26,10 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// A class to handle the automatic display of safe zones for the different ratios setup in the inspector
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Camera/MMAspectRatioSafeZones")]
+    /// <summary>
+    ///인스펙터에서 설정된 다양한 비율에 대한 안전 영역의 자동 표시를 처리하는 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Camera/MMAspectRatioSafeZones")]
 	public class MMAspectRatioSafeZones : MonoBehaviour
 	{
 		[Header("Center")]

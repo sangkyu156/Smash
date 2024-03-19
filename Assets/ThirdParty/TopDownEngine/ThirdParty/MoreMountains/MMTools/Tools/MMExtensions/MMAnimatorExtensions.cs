@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Animator extensions
-	/// </summary>
-	public static class MMAnimatorExtensions
+    /// <summary>
+    /// 애니메이터 확장
+    /// </summary>
+    public static class MMAnimatorExtensions
 	{
 		/// <summary>
 		/// Determines if an animator contains a certain parameter, based on a type and a name

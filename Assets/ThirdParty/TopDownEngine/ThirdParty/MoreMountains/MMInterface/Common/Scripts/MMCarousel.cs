@@ -6,12 +6,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to handle a carousel of UI elements, placed in an HorizontalLayoutGroup. 
-	/// All elements of the carousel need to have the same width.
-	/// </summary>
-	public class MMCarousel : MonoBehaviour
+{
+    /// <summary>
+    /// HorizontalLayoutGroup에 배치된 UI 요소의 캐러셀을 처리하는 클래스입니다.
+    /// 캐러셀의 모든 요소는 동일한 너비를 가져야 합니다.
+    /// </summary>
+    public class MMCarousel : MonoBehaviour
 	{
 		[Header("Binding")]
 		/// the layout group that contains all carousel's elements

@@ -12,7 +12,7 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("Explodudes Bomb Picker")]
 		/// The amount of points to add when collected
-		[Tooltip("The amount of points to add when collected")]
+		[Tooltip("적립 시 추가되는 포인트 금액")]
 		public int BombsToAdd = 1;
 
 		protected CharacterHandleWeapon _characterHandleWeapon;

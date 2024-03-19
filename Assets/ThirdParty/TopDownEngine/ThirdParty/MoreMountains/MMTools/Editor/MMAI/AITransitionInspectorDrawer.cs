@@ -9,16 +9,16 @@ namespace MoreMountains.Tools
 	{
 		const float LineHeight = 16f;
 
-        
-		#if  UNITY_EDITOR
-        
-		/// <summary>
-		/// Draws a Transition inspector, a transition is one or more action(s), one or more decision(s) and associated true/false states
-		/// </summary>
-		/// <param name="rect"></param>
-		/// <param name="prop"></param>
-		/// <param name="label"></param>
-		public override void OnGUI(Rect rect, SerializedProperty prop, GUIContent label)
+
+#if UNITY_EDITOR
+
+        /// <summary>
+        /// 전환 검사기를 그립니다. 전환은 하나 이상의 작업, 하나 이상의 결정 및 관련 참/거짓 상태입니다.
+        /// </summary>
+        /// <param name="rect"></param>
+        /// <param name="prop"></param>
+        /// <param name="label"></param>
+        public override void OnGUI(Rect rect, SerializedProperty prop, GUIContent label)
 		{
 			Rect position = rect;
 			foreach (SerializedProperty a in prop)

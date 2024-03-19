@@ -7,11 +7,11 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A component to handle switches 
-	/// </summary>
-	public class MMDebugMenuSwitch : MMTouchButton 
+{
+    /// <summary>
+    /// 스위치를 처리하는 구성 요소
+    /// </summary>
+    public class MMDebugMenuSwitch : MMTouchButton 
 	{
 		[Header("Switch")]
 		/// a SpriteReplace to represent the switch knob

@@ -7,27 +7,27 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This ability, used on a Player character, will let you click on the ground and have the character move to the click's position
-	/// You'll find a demo of this ability on the LoftSuspendersMouseDriven demo character. You can drag it in the Loft3D demo scene's LevelManager's PlayerPrefabs slot to give it a try.
-	/// For AIs, look at the MousePathfinderAI3D script instead, and its demo in the MinimalPathfinding3D demo scene
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Pathfind To Mouse")]
+    /// <summary>
+    /// 플레이어 캐릭터에 사용되는 이 능력을 사용하면 땅을 클릭하고 캐릭터를 클릭 위치로 이동할 수 있습니다.
+    /// LoftSuspendersMouseDriven 데모 캐릭터에서 이 능력의 데모를 찾을 수 있습니다. Loft3D 데모 장면의 LevelManager의 PlayerPrefabs 슬롯으로 드래그하여 시도해 볼 수 있습니다.
+    /// AI의 경우 대신 MousePathfinderAI3D 스크립트와 MinimalPathfinding3D 데모 장면의 데모를 살펴보세요.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Pathfind To Mouse")]
 	[RequireComponent(typeof(CharacterPathfinder3D))]
 	public class CharacterPathfindToMouse3D : CharacterAbility
 	{
 		[Header("Mouse")]
 		/// the index of the mouse button to read input on
-		[Tooltip("the index of the mouse button to read input on")]
+		[Tooltip("입력을 읽을 마우스 버튼의 인덱스")]
 		public int MouseButtonIndex = 1;
         
 		[Header("OnClick")] 
 		/// a feedback to play at the position of the click
-		[Tooltip("a feedback to play at the position of the click")]
+		[Tooltip("클릭 위치에서 재생하기 위한 피드백")]
 		public MMFeedbacks OnClickFeedbacks;
 
 		/// if this is true, a click or tap on a UI element will block the click and won't cause the character to move
-		[Tooltip("if this is true, a click or tap on a UI element will block the click and won't cause the character to move")]
+		[Tooltip("이것이 사실이라면 UI 요소를 클릭하거나 탭하면 클릭이 차단되고 캐릭터가 움직이지 않습니다.")]
 		public bool UIShouldBlockInput = true;
         
 		public GameObject Destination { get; set; }

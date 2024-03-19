@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event type used to broadcast the fact that an achievement has been unlocked
-	/// </summary>
-	public struct MMAchievementUnlockedEvent
+    /// <summary>
+    /// 업적이 잠금 해제되었다는 사실을 알리는 데 사용되는 이벤트 유형
+    /// </summary>
+    public struct MMAchievementUnlockedEvent
 	{
 		/// the achievement that has been unlocked
 		public MMAchievement Achievement;

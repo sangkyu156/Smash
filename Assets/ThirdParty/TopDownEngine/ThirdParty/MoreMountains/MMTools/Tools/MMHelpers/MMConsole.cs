@@ -2,13 +2,13 @@
 using System.Collections;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// This class displays an on-screen console for easier debugging
-	/// DO NOT ADD THIS CLASS AS A COMPONENT.
-	/// Instead, use the MMDebug.DebugOnScreen methods that will take care of everything
-	/// </summary>
-	public class MMConsole : MonoBehaviour 
+{
+    /// <summary>
+    /// 이 클래스는 보다 쉬운 디버깅을 위해 화면 콘솔을 표시합니다.
+    /// 이 클래스를 구성요소로 추가하지 마세요.
+    /// 대신 모든 것을 처리하는 MMDebug.DebugOnScreen 메서드를 사용하세요.
+    /// </summary>
+    public class MMConsole : MonoBehaviour 
 	{
 		protected string _messageStack;
 

@@ -4,11 +4,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this script to a platform and it'll fall down when walked upon by a playable character
-	/// Add an AutoRespawn component to your platform and it'll get reset when your character dies
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Falling Platform 3D")]
+    /// <summary>
+    /// 이 스크립트를 플랫폼에 추가하면 플레이 가능한 캐릭터가 걸어갈 때 쓰러집니다.
+    /// 플랫폼에 AutoRespawn 구성 요소를 추가하면 캐릭터가 죽을 때 재설정됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Falling Platform 3D")]
 	public class FallingPlatform3D : TopDownMonoBehaviour 
 	{
 		/// the possible states for the platform
@@ -16,20 +16,20 @@ namespace MoreMountains.TopDownEngine
 
 		/// the platform's current state
 		[MMReadOnly]
-		[Tooltip("the platform's current state")]
+		[Tooltip("플랫폼의 현재 상태")]
 		public FallingPlatformStates State;
 
 		/// if this is true, the platform will fall inevitably once touched
-		[Tooltip("if this is true, the platform will fall inevitably once touched")]
+		[Tooltip("이것이 사실이라면 플랫폼을 건드리면 필연적으로 떨어질 것입니다.")]
 		public bool InevitableFall = false;
 		/// the time (in seconds) before the fall of the platform
-		[Tooltip("the time (in seconds) before the fall of the platform")]
+		[Tooltip("플랫폼이 추락하기 전의 시간(초)")]
 		public float TimeBeforeFall = 2f;
 		/// if this is true, the object's rigidbody will be turned non kinematic when falling. Only works in 3D.
-		[Tooltip("if this is true, the object's rigidbody will be turned non kinematic when falling. Only works in 3D.")]
+		[Tooltip("이것이 사실이라면, 물체가 떨어질 때 물체의 강체는 운동학적으로 바뀌게 됩니다. 3D에서만 작동합니다.")]
 		public bool UsePhysics = true;
 		/// the speed at which the platforms falls
-		[Tooltip("the speed at which the platforms falls")]
+		[Tooltip("플랫폼이 떨어지는 속도")]
 		public float NonPhysicsFallSpeed = 2f;
 
 		// private stuff

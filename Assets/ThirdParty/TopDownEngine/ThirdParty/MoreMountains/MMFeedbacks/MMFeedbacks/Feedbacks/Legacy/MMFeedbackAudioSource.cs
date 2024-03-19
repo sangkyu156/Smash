@@ -7,7 +7,7 @@ namespace MoreMountains.Feedbacks
 {
 	[AddComponentMenu("")]
 	[FeedbackPath("Audio/AudioSource")]
-	[FeedbackHelp("This feedback lets you play a target audio source, with some elements at random.")]
+	[FeedbackHelp("이 피드백을 사용하면 일부 요소를 무작위로 사용하여 대상 오디오 소스를 재생할 수 있습니다.")]
 	public class MMFeedbackAudioSource : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

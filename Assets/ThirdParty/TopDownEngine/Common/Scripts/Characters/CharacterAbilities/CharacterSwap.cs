@@ -4,25 +4,25 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a Character and it'll be part of a pool of characters in a scene to swap from. 
-	/// You'll need a CharacterSwapManager in your scene for this to work.
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 기능을 캐릭터에 추가하면 장면에서 교체할 캐릭터 풀의 일부가 됩니다.
+    /// 이 작업을 수행하려면 장면에 CharacterSwapManager가 필요합니다.
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Swap")]
 	public class CharacterSwap : CharacterAbility
 	{
 		[Header("Character Swap")]
 		/// the order in which this character should be picked 
-		[Tooltip("the order in which this character should be picked ")]
+		[Tooltip("이 캐릭터를 선택해야 하는 순서")]
 		public int Order = 0;
 		/// the playerID to put back in the Character class once this character gets swapped
-		[Tooltip("the playerID to put back in the Character class once this character gets swapped")]
+		[Tooltip("이 캐릭터가 교체되면 Character 클래스에 다시 넣을 플레이어 ID입니다.")]
 		public string PlayerID = "Player1";
 
 		[Header("AI")] 
 		/// if this is true, the AI Brain (if there's one on this character) will reset on swap
-		[Tooltip("if this is true, the AI Brain (if there's one on this character) will reset on swap")]
+		[Tooltip("이것이 사실이라면 AI 두뇌(이 캐릭터에 AI 두뇌가 있는 경우)는 교환 시 재설정됩니다.")]
 		public bool ResetAIBrainOnSwap = true;
 
 		protected string _savedPlayerID;

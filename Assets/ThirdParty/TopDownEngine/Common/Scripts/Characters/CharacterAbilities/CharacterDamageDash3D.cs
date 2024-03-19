@@ -9,8 +9,8 @@ namespace MoreMountains.TopDownEngine
 	public class CharacterDamageDash3D : CharacterDash3D
 	{
 		[Header("Damage Dash")]
-		/// the DamageOnTouch object to activate when dashing (usually placed under the Character's model, will require a Collider2D of some form, set to trigger
-		[Tooltip("the DamageOnTouch object to activate when dashing (usually placed under the Character's model, will require a Collider2D of some form, set to trigger")]
+        /// 돌진할 때 활성화할 DamageOnTouch 개체(보통 캐릭터 모델 아래에 배치되며, 트리거하도록 설정된 어떤 형태의 Collider2D가 필요함)
+        [Tooltip("돌진할 때 활성화할 DamageOnTouch 개체(보통 캐릭터 모델 아래에 배치되며, 트리거하도록 설정된 어떤 형태의 Collider2D가 필요함)")]
 		public DamageOnTouch TargetDamageOnTouch;
         
 		protected const string _damageDashingAnimationParameterName = "DamageDashing";

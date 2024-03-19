@@ -11,79 +11,79 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Extend this class to activate something when a button is pressed in a certain zone
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Button Activated")]
+    /// <summary>
+    /// 특정 영역에서 버튼을 눌렀을 때 무언가를 활성화하려면 이 클래스를 확장하세요.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Button Activated")]
 	public class ButtonActivated : TopDownMonoBehaviour 
 	{
 		public enum ButtonActivatedRequirements { Character, ButtonActivator, Either, None }
 		public enum InputTypes { Default, Button, Key }
 
 		[Header("Requirements")]
-		[MMInformation("Here you can specify what is needed for something to interact with this zone. Does it require the ButtonActivation character ability? Can it only be interacted with by the Player? ", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-		/// if this is true, objects with a ButtonActivator class will be able to interact with this zone
-		[Tooltip("if this is true, objects with a ButtonActivator class will be able to interact with this zone")]
+		[MMInformation("여기에서 이 영역과 상호 작용하는 데 필요한 사항을 지정할 수 있습니다. ButtonActivation 캐릭터 능력이 필요합니까? 플레이어만 상호작용할 수 있나요?", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+        /// 이것이 사실이라면 ButtonActivator 클래스가 있는 객체는 이 영역과 상호 작용할 수 있습니다.
+        [Tooltip("이것이 사실이라면 ButtonActivator 클래스가 있는 객체는 이 영역과 상호 작용할 수 있습니다.")]
 		public ButtonActivatedRequirements ButtonActivatedRequirement = ButtonActivatedRequirements.Either;
-		/// if this is true, this can only be activated by player Characters
-		[Tooltip("if this is true, this can only be activated by player Characters")]
+        /// 이것이 사실이라면 플레이어 캐릭터만 활성화할 수 있습니다.
+        [Tooltip("이것이 사실이라면 플레이어 캐릭터만 활성화할 수 있습니다.")]
 		public bool RequiresPlayerType = true;
-		/// if this is true, this zone can only be activated if the character has the required ability
-		[Tooltip("if this is true, this zone can only be activated if the character has the required ability")]
+        /// 이것이 사실이라면 이 영역은 캐릭터가 필요한 능력을 가지고 있는 경우에만 활성화될 수 있습니다.
+        [Tooltip("이것이 사실이라면 이 영역은 캐릭터가 필요한 능력을 가지고 있는 경우에만 활성화될 수 있습니다.")]
 		public bool RequiresButtonActivationAbility = true;
         
 		[Header("Activation Conditions")]
 
-		[MMInformation("Here you can specific how that zone is interacted with. You can have it auto activate, activate only when grounded, or prevent its activation altogether.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// if this is false, the zone won't be activable 
-		[Tooltip("if this is false, the zone won't be activable ")]
+		[MMInformation("여기에서 해당 영역이 상호 작용하는 방식을 구체적으로 지정할 수 있습니다. 자동으로 활성화하거나 접지된 경우에만 활성화하거나 활성화를 완전히 방지할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 이것이 거짓이면 영역을 활성화할 수 없습니다.
+        [Tooltip("이것이 거짓이면 영역을 활성화할 수 없습니다.")]
 		public bool Activable = true;
-		/// if true, the zone will activate whether the button is pressed or not
-		[Tooltip("if true, the zone will activate whether the button is pressed or not")]
+        /// true인 경우 버튼을 누르든 안 누르든 영역이 활성화됩니다.
+        [Tooltip("true인 경우 버튼을 누르든 안 누르든 영역이 활성화됩니다.")]
 		public bool AutoActivation = false;
-		/// the delay, in seconds, during which the character has to be within the zone to activate it
-		[MMCondition("AutoActivation", true)]
-		[Tooltip("the delay, in seconds, during which the character has to be within the zone to activate it")]
+        /// 캐릭터를 활성화하기 위해 캐릭터가 영역 내에 있어야 하는 지연 시간(초)
+        [MMCondition("AutoActivation", true)]
+		[Tooltip("캐릭터를 활성화하기 위해 캐릭터가 영역 내에 있어야 하는 지연 시간(초)")]
 		public float AutoActivationDelay = 0f;
-		/// if this is true, exiting the zone will reset the auto activation delay
-		[MMCondition("AutoActivation", true)]
-		[Tooltip("if this is true, exiting the zone will reset the auto activation delay")]
+        /// 이것이 사실이라면 구역을 나가면 자동 활성화 지연이 재설정됩니다.
+        [MMCondition("AutoActivation", true)]
+		[Tooltip("이것이 사실이라면 구역을 나가면 자동 활성화 지연이 재설정됩니다.")]
 		public bool AutoActivationDelayResetsOnExit = true;
-		/// if this is set to false, the zone won't be activable while not grounded
-		[Tooltip("if this is set to false, the zone won't be activable while not grounded")]
+        /// false로 설정하면 접지되지 않은 동안에는 구역이 활성화되지 않습니다.
+        [Tooltip("false로 설정하면 접지되지 않은 동안에는 구역이 활성화되지 않습니다.")]
 		public bool CanOnlyActivateIfGrounded = false;
-		/// Set this to true if you want the CharacterBehaviorState to be notified of the player's entry into the zone.
-		[Tooltip("Set this to true if you want the CharacterBehaviorState to be notified of the player's entry into the zone.")]
+        /// CharacterBehaviorState가 플레이어의 영역 진입에 대한 알림을 받도록 하려면 이를 true로 설정합니다.
+        [Tooltip("CharacterBehaviorState가 플레이어의 영역 진입에 대한 알림을 받도록 하려면 이를 true로 설정합니다.")]
 		public bool ShouldUpdateState = true;
-		/// if this is true, enter won't be retriggered if another object enters, and exit will only be triggered when the last object exits
-		[Tooltip("if this is true, enter won't be retriggered if another object enters, and exit will only be triggered when the last object exits")]
+        /// 이것이 true인 경우, 다른 개체가 들어오면 Enter가 다시 트리거되지 않으며 마지막 개체가 나갈 때만 Exit가 트리거됩니다.
+        [Tooltip("이것이 true인 경우, 다른 개체가 들어오면 Enter가 다시 트리거되지 않으며 마지막 개체가 나갈 때만 Exit가 트리거됩니다.")]
 		public bool OnlyOneActivationAtOnce = true;
-		/// a layermask with all the layers that can interact with this specific button activated zone
-		[Tooltip("a layermask with all the layers that can interact with this specific button activated zone")]
+        /// 이 특정 버튼 활성화 영역과 상호 작용할 수 있는 모든 레이어가 포함된 레이어 마스크
+        [Tooltip("이 특정 버튼 활성화 영역과 상호 작용할 수 있는 모든 레이어가 포함된 레이어 마스크")]
 		public LayerMask TargetLayerMask = ~0;
 
 		[Header("Number of Activations")]
 
-		[MMInformation("You can decide to have that zone be interactable forever, or just a limited number of times, and can specify a delay between uses (in seconds).",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// if this is set to false, your number of activations will be MaxNumberOfActivations
-		[Tooltip("if this is set to false, your number of activations will be MaxNumberOfActivations")]
+		[MMInformation("해당 영역을 영원히 또는 제한된 횟수만 상호 작용할 수 있도록 결정할 수 있으며 사용 간 지연 시간(초 단위)을 지정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// false로 설정하면 활성화 횟수는 MaxNumberOfActivations가 됩니다.
+        [Tooltip("false로 설정하면 활성화 횟수는 MaxNumberOfActivations가 됩니다.")]
 		public bool UnlimitedActivations = true;
-		/// the number of times the zone can be interacted with
-		[Tooltip("the number of times the zone can be interacted with")]
+        /// 해당 영역과 상호작용할 수 있는 횟수
+        [Tooltip("해당 영역과 상호작용할 수 있는 횟수")]
 		public int MaxNumberOfActivations = 0;
-		/// the delay (in seconds) after an activation during which the zone can't be activated
-		[Tooltip("the delay (in seconds) after an activation during which the zone can't be activated")]
+        /// 영역을 활성화할 수 없는 동안 활성화 후 지연(초)
+        [Tooltip("영역을 활성화할 수 없는 동안 활성화 후 지연(초)")]
 		public float DelayBetweenUses = 0f;
-		/// if this is true, the zone will disable itself (forever or until you manually reactivate it) after its last use
-		[Tooltip("if this is true, the zone will disable itself (forever or until you manually reactivate it) after its last use")]
+        /// 이것이 사실이라면 영역은 마지막 사용 후 자동으로 비활성화됩니다(영구적으로 또는 수동으로 다시 활성화할 때까지).
+        [Tooltip("이것이 사실이라면 영역은 마지막 사용 후 자동으로 비활성화됩니다(영구적으로 또는 수동으로 다시 활성화할 때까지).")]
 		public bool DisableAfterUse = false;
 
 		[Header("Input")]
 
-		/// the selected input type (default, button or key)
-		[Tooltip("the selected input type (default, button or key)")]
+        /// 선택한 입력 유형(기본값, 버튼 또는 키)
+        [Tooltip("선택한 입력 유형(기본값, 버튼 또는 키)")]
 		public InputTypes InputType = InputTypes.Default;
-		#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 			/// the input action to use for this button activated object
 			public InputActionProperty InputSystemAction = new InputActionProperty(
 				new InputAction(
@@ -91,89 +91,89 @@ namespace MoreMountains.TopDownEngine
 					type: InputActionType.Button, 
 					binding: "Keyboard/space", 
 					interactions: "Press(behavior=2)"));
-		#else
-			/// the selected button string used to activate this zone
-			[MMEnumCondition("InputType", (int)InputTypes.Button)]
-			[Tooltip("the selected button string used to activate this zone")]
+#else
+        /// 이 영역을 활성화하는 데 사용되는 선택된 버튼 문자열
+        [MMEnumCondition("InputType", (int)InputTypes.Button)]
+			[Tooltip("이 영역을 활성화하는 데 사용되는 선택된 버튼 문자열")]
 			public string InputButton = "Interact";
-			/// the key used to activate this zone
-			[MMEnumCondition("InputType", (int)InputTypes.Key)]
-			[Tooltip("the key used to activate this zone")]
+        /// 이 영역을 활성화하는 데 사용되는 키
+        [MMEnumCondition("InputType", (int)InputTypes.Key)]
+			[Tooltip("이 영역을 활성화하는 데 사용되는 키")]
 			public KeyCode InputKey = KeyCode.Space;
 		#endif
 
 		[Header("Animation")]
 
-		/// an (absolutely optional) animation parameter that can be triggered on the character when activating the zone	
-		[Tooltip("an (absolutely optional) animation parameter that can be triggered on the character when activating the zone	")]
+        /// 영역을 활성화할 때 캐릭터에 대해 트리거될 수 있는 (절대 선택 사항) 애니메이션 매개변수
+        [Tooltip("영역을 활성화할 때 캐릭터에 대해 트리거될 수 있는 (절대 선택 사항) 애니메이션 매개변수")]
 		public string AnimationTriggerParameterName;
 
 		[Header("Visual Prompt")]
 
-		[MMInformation("You can have this zone show a visual prompt to indicate to the player that it's interactable.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
-		/// if this is true, a prompt will be shown if setup properly
-		[Tooltip("if this is true, a prompt will be shown if setup properly")]
+		[MMInformation("이 영역에서 플레이어에게 상호작용 가능함을 알려주는 시각적 메시지를 표시하도록 할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+        /// 이것이 사실이라면 제대로 설정되었는지 묻는 메시지가 표시됩니다.
+        [Tooltip("이것이 사실이라면 제대로 설정되었는지 묻는 메시지가 표시됩니다.")]
 		public bool UseVisualPrompt = true;
-		/// the gameobject to instantiate to present the prompt
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the gameobject to instantiate to present the prompt")]
+        /// 프롬프트를 표시하기 위해 인스턴스화할 게임 객체
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("프롬프트를 표시하기 위해 인스턴스화할 게임 객체")]
 		public ButtonPrompt ButtonPromptPrefab;
-		/// the text to display in the button prompt
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the text to display in the button prompt")]
+        /// 버튼 프롬프트에 표시할 텍스트
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("버튼 프롬프트에 표시할 텍스트")]
 		public string ButtonPromptText = "A";
-		/// the text to display in the button prompt
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the text to display in the button prompt")]
+        /// 버튼 프롬프트에 표시할 텍스트
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("버튼 프롬프트에 표시할 텍스트")]
 		public Color ButtonPromptColor = MMColors.LawnGreen;
-		/// the color for the prompt's text
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the color for the prompt's text")]
+        /// 프롬프트 텍스트의 색상
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("프롬프트 텍스트의 색상")]
 		public Color ButtonPromptTextColor = MMColors.White;
-		/// If true, the "buttonA" prompt will always be shown, whether the player is in the zone or not.
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("If true, the 'buttonA' prompt will always be shown, whether the player is in the zone or not.")]
+        /// true인 경우 플레이어가 해당 영역에 있든 없든 "buttonA" 프롬프트가 항상 표시됩니다.
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("true인 경우 플레이어가 해당 영역에 있든 없든 \"buttonA\" 프롬프트가 항상 표시됩니다.")]
 		public bool AlwaysShowPrompt = true;
-		/// If true, the "buttonA" prompt will be shown when a player is colliding with the zone
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("If true, the 'buttonA' prompt will be shown when a player is colliding with the zone")]
+        /// true인 경우 플레이어가 영역과 충돌할 때 "buttonA" 프롬프트가 표시됩니다.
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("true인 경우 플레이어가 영역과 충돌할 때 \"buttonA\" 프롬프트가 표시됩니다.")]
 		public bool ShowPromptWhenColliding = true;
-		/// If true, the prompt will hide after use
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("If true, the prompt will hide after use")]
+        /// true인 경우 사용 후 프롬프트가 숨겨집니다.
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("true인 경우 사용 후 프롬프트가 숨겨집니다.")]
 		public bool HidePromptAfterUse = false;
-		/// the position of the actual buttonA prompt relative to the object's center
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the position of the actual buttonA prompt relative to the object's center")]
+        /// 실제 버튼의 위치객체 중심을 기준으로 한 프롬프트
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("실제 버튼의 위치객체 중심을 기준으로 한 프롬프트")]
 		public Vector3 PromptRelativePosition = Vector3.zero;
-		/// the rotation of the actual buttonA prompt 
-		[MMCondition("UseVisualPrompt", true)]
-		[Tooltip("the rotation of the actual buttonA prompt ")]
+        /// 실제 버튼의 회전 프롬프트
+        [MMCondition("UseVisualPrompt", true)]
+		[Tooltip("실제 버튼의 회전 프롬프트")]
 		public Vector3 PromptRotation = Vector3.zero;
 
 		[Header("Feedbacks")]
-		/// a feedback to play when the zone gets activated
-		[Tooltip("a feedback to play when the zone gets activated")]
+        /// 영역이 활성화될 때 재생할 피드백
+        [Tooltip("영역이 활성화될 때 재생할 피드백")]
 		public MMFeedbacks ActivationFeedback;
-		/// a feedback to play when the zone tries to get activated but can't
-		[Tooltip("a feedback to play when the zone tries to get activated but can't")]
+        /// 영역이 활성화되려고 하지만 활성화되지 않을 때 재생하기 위한 피드백
+        [Tooltip("영역이 활성화되려고 하지만 활성화되지 않을 때 재생하기 위한 피드백")]
 		public MMFeedbacks DeniedFeedback;
-		/// a feedback to play when the zone gets entered	
-		[Tooltip("a feedback to play when the zone gets entered	")]
+        /// 영역에 들어갈 때 재생할 피드백	
+        [Tooltip("영역에 들어갈 때 재생할 피드백")]
 		public MMFeedbacks EnterFeedback;
-		/// a feedback to play when the zone gets exited	
-		[Tooltip("a feedback to play when the zone gets exited	")]
+        /// 해당 영역을 벗어날 때 플레이할 피드백
+        [Tooltip("해당 영역을 벗어날 때 플레이할 피드백")]
 		public MMFeedbacks ExitFeedback;
 
 		[Header("Actions")]
-		/// a UnityEvent to trigger when this zone gets activated
-		[Tooltip("a UnityEvent to trigger when this zone gets activated")]
+        /// 이 영역이 활성화될 때 트리거할 UnityEvent
+        [Tooltip("이 영역이 활성화될 때 트리거할 UnityEvent")]
 		public UnityEvent OnActivation;
-		/// a UnityEvent to trigger when this zone gets exited
-		[Tooltip("a UnityEvent to trigger when this zone gets exited")]
+        /// 이 영역이 종료될 때 트리거되는 UnityEvent
+        [Tooltip("이 영역이 종료될 때 트리거되는 UnityEvent")]
 		public UnityEvent OnExit;
         /// 캐릭터가 영역 내에 있을 때 트리거되는 UnityEvent
-        [Tooltip("a UnityEvent to trigger when a character is within the zone")]
+        [Tooltip("캐릭터가 영역 내에 있을 때 트리거되는 UnityEvent")]
 		public UnityEvent OnStay;
 
 		protected Animator _buttonPromptAnimator;

@@ -9,11 +9,11 @@ namespace MoreMountains.Tools
 	/// </summary>
 	public static class MMColors
 	{
-		// via https://gist.github.com/LotteMakesStuff/f7ce43f11e545a151b95b5e87f76304c
-		// NOTE: The follwing color names come from the CSS3 specification, Section 4.3 Extended Color Keywords
-		// http://www.w3.org/TR/css3-color/#svg-color
+        // https://gist.github.com/LotteMakesStuff/f7ce43f11e545a151b95b5e87f76304c를 통해
+        // 참고: 다음 색상 이름은 CSS3 사양, 섹션 4.3 확장 색상 키워드에서 따왔습니다.
+        // http://www.w3.org/TR/css3-color/#svg-color
 
-		public static readonly Color ReunoYellow = new Color32(255, 196, 0, 255);
+        public static readonly Color ReunoYellow = new Color32(255, 196, 0, 255);
 		public static readonly Color BestRed = new Color32(255, 24, 0, 255);
 		public static readonly Color AliceBlue = new Color32(240, 248, 255, 255);
 		public static readonly Color AntiqueWhite = new Color32(250, 235, 215, 255);

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// Represent nongeneralized objects pool.
+    /// 일반화되지 않은 개체 풀을 나타냅니다.
     /// </summary>
     public interface IPool
     {

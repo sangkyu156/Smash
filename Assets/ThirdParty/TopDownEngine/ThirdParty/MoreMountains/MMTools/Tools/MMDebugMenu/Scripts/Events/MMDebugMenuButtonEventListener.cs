@@ -6,18 +6,18 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event fired when a button gets pressed in a MMDebugMenu
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// MMDebugMenu에서 버튼을 눌렀을 때 발생하는 이벤트
+    /// </summary>
+    [Serializable]
 	public class MMDButtonPressedEvent : UnityEvent
 	{
 	}
 
-	/// <summary>
-	/// A class used to listen to button events from a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuButtonEventListener : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 버튼 이벤트를 수신하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuButtonEventListener : MonoBehaviour
 	{
 		[Header("Event")]
 		/// the name of the event to listen to

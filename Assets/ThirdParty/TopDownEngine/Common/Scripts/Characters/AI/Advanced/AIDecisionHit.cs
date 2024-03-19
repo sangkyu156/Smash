@@ -5,15 +5,15 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision returns true if the Character got hit this frame, or after the specified number of hits has been reached.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionHit")]
+    /// <summary>
+    /// 이 결정은 캐릭터가 이 프레임에 히트했거나 지정된 히트 수에 도달한 후에 true를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionHit")]
 	//[RequireComponent(typeof(Health))]
 	public class AIDecisionHit : AIDecision
 	{
-		/// The number of hits required to return true
-		[Tooltip("The number of hits required to return true")]
+        /// true를 반환하는 데 필요한 적중 횟수
+        [Tooltip("true를 반환하는 데 필요한 적중 횟수")]
 		public int NumberOfHits = 1;
 
 		protected int _hitCounter;

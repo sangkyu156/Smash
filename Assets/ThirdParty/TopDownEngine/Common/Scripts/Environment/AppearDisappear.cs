@@ -5,10 +5,10 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to an object (usually a platform but it could be anything really) to have it run on an appearing/disappearing loop, like the appearing platforms in Megaman for example.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Appear and Disappear")]
+    /// <summary>
+    /// 예를 들어 Megaman에 나타나는 플랫폼과 같이 나타나거나 사라지는 루프에서 실행되도록 하려면 이 클래스를 개체(일반적으로 플랫폼이지만 실제로는 무엇이든 될 수 있음)에 추가합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Appear and Disappear")]
 	public class AppearDisappear : TopDownMonoBehaviour
 	{
 		/// the possible states this object can be in
@@ -20,107 +20,107 @@ namespace MoreMountains.TopDownEngine
         
 		[Header("Settings")]
 
-		/// whether the object is active right now or not
-		[Tooltip("whether the object is active right now or not")]
+        /// 개체가 지금 활성화되어 있는지 여부
+        [Tooltip("개체가 지금 활성화되어 있는지 여부")]
 		public bool Active = true;
-		/// the initial state (visible or hidden) the object should start in
-		[Tooltip("the initial state (visible or hidden) the object should start in")]
+        /// 객체가 시작되어야 하는 초기 상태(표시 또는 숨김)
+        [Tooltip("객체가 시작되어야 하는 초기 상태(표시 또는 숨김)")]
 		public AppearDisappearStates InitialState;
-		/// how the object should be activated
-		[Tooltip("how the object should be activated")]
+        /// 객체를 활성화하는 방법
+        [Tooltip("객체를 활성화하는 방법")]
 		public StartModes StartMode = StartModes.Automatic;
-		/// how the object should cycle states (forever, a limited amount of times, or never)
-		[Tooltip("how the object should cycle states (forever, a limited amount of times, or never)")]
+        /// 객체가 상태를 순환하는 방법(영원히, 제한된 횟수 또는 전혀)
+        [Tooltip("객체가 상태를 순환하는 방법(영원히, 제한된 횟수 또는 전혀)")]
 		public CyclingModes CyclingMode = CyclingModes.Forever;
-		/// the number of cycles this object can go through before it stops (only used if CyclingMode is Limited)
-		[Tooltip("the number of cycles this object can go through before it stops (only used if CyclingMode is Limited)")]
+        /// 이 개체가 중지되기 전에 통과할 수 있는 주기 수( CyclingMode가 Limited인 경우에만 사용됨)
+        [Tooltip("이 개체가 중지되기 전에 통과할 수 있는 주기 수( CyclingMode가 Limited인 경우에만 사용됨)")]
 		[MMEnumCondition("CyclingMode", (int)CyclingModes.Limited)]
 		public int CyclesAmount = 1;
 
 
 		[Header("Timing")]
 
-		/// the initial offset to apply to the object's first state change (in seconds)
-		[MMVector("Min", "Max")]
-		[Tooltip("the initial offset to apply to the object's first state change (in seconds)")]
+        /// 객체의 첫 번째 상태 변경에 적용할 초기 오프셋(초)
+        [MMVector("Min", "Max")]
+		[Tooltip("객체의 첫 번째 상태 변경에 적용할 초기 오프셋(초)")]
 		public Vector2 InitialOffset = new Vector2(0f, 0f);
-		/// the min and max duration of the visible state (in seconds)
-		[MMVector("Min", "Max")]
-		[Tooltip("the min and max duration of the visible state (in seconds)")]
+        /// 표시 상태의 최소 및 최대 기간(초)
+        [MMVector("Min", "Max")]
+		[Tooltip("표시 상태의 최소 및 최대 기간(초)")]
 		public Vector2 VisibleDuration = new Vector2(1f, 1f);
-		/// the min and max duration of the hidden state (in seconds)
-		[MMVector("Min", "Max")]
-		[Tooltip("the min and max duration of the hidden state (in seconds)")]
+        /// 숨겨진 상태의 최소 및 최대 기간(초)
+        [MMVector("Min", "Max")]
+		[Tooltip("숨겨진 상태의 최소 및 최대 기간(초)")]
 		public Vector2 HiddenDuration = new Vector2(1f, 1f);
-		/// the min and max duration of the visible to hidden state (in seconds)
-		[MMVector("Min", "Max")]
-		[Tooltip("the min and max duration of the visible to hidden state (in seconds)")]
+        /// 숨겨진 상태에 표시되는 최소 및 최대 기간(초)
+        [MMVector("Min", "Max")]
+		[Tooltip("숨겨진 상태에 표시되는 최소 및 최대 기간(초)")]
 		public Vector2 VisibleToHiddenDuration = new Vector2(1f, 1f);
-		/// the min and max duration of the hidden to visible state (in seconds)
-		[MMVector("Min", "Max")]
-		[Tooltip("the min and max duration of the hidden to visible state (in seconds)")]
+        /// 숨김 상태에서 표시 상태까지의 최소 및 최대 기간(초)
+        [MMVector("Min", "Max")]
+		[Tooltip("숨김 상태에서 표시 상태까지의 최소 및 최대 기간(초)")]
 		public Vector2 HiddenToVisibleDuration = new Vector2(1f, 1f);
                 
 		[Header("Feedbacks")]
 
-		/// the feedback to trigger when reaching the visible state
-		[Tooltip("the feedback to trigger when reaching the visible state")]
+        /// 표시 상태에 도달할 때 트리거할 피드백
+        [Tooltip("표시 상태에 도달할 때 트리거할 피드백")]
 		public MMFeedbacks VisibleFeedback;
-		/// the feedback to trigger when reaching the visible to hidden state
-		[Tooltip("the feedback to trigger when reaching the visible to hidden state")]
+        /// 공개 상태에서 숨겨진 상태에 도달할 때 트리거되는 피드백
+        [Tooltip("공개 상태에서 숨겨진 상태에 도달할 때 트리거되는 피드백")]
 		public MMFeedbacks VisibleToHiddenFeedback;
-		/// the feedback to trigger when reaching the hidden state
-		[Tooltip("the feedback to trigger when reaching the hidden state")]
+        /// 숨겨진 상태에 도달할 때 트리거할 피드백
+        [Tooltip("숨겨진 상태에 도달할 때 트리거할 피드백")]
 		public MMFeedbacks HiddenFeedback;
-		/// the feedback to trigger when reaching the hidden to visible state
-		[Tooltip("the feedback to trigger when reaching the hidden to visible state")]
+        /// 숨겨진 상태에서 보이는 상태에 도달할 때 트리거되는 피드백
+        [Tooltip("숨겨진 상태에서 보이는 상태에 도달할 때 트리거되는 피드백")]
 		public MMFeedbacks HiddenToVisibleFeedback;
 
 		[Header("Bindings")]
-		/// the animator to update
-		[Tooltip("the animator to update")]
+        /// 업데이트할 애니메이터
+        [Tooltip("업데이트할 애니메이터")]
 		public Animator TargetAnimator;
-		/// the game object to show/hide
-		[Tooltip("the game object to show/hide")]
+        /// 표시하거나 숨길 게임 개체
+        [Tooltip("표시하거나 숨길 게임 개체")]
 		public GameObject TargetModel;
-		/// whether or not the object should update its animator (set at the same level) when changing state
-		[Tooltip("whether or not the object should update its animator (set at the same level) when changing state")]
+        /// 상태가 변경될 때 객체가 애니메이터(동일한 수준으로 설정)를 업데이트해야 하는지 여부
+        [Tooltip("상태가 변경될 때 객체가 애니메이터(동일한 수준으로 설정)를 업데이트해야 하는지 여부")]
 		public bool UpdateAnimator = true;
-		/// whether or not the object should update its Collider or Collider2D (set at the same level) when changing state
-		[Tooltip("whether or not the object should update its Collider or Collider2D (set at the same level) when changing state")]
+        /// 상태를 변경할 때 객체가 Collider 또는 Collider2D(동일한 레벨로 설정)를 업데이트해야 하는지 여부
+        [Tooltip("상태를 변경할 때 객체가 Collider 또는 Collider2D(동일한 레벨로 설정)를 업데이트해야 하는지 여부")]
 		public bool EnableDisableCollider = true;
-		/// whether or not the object should hide/show a model when changing state
-		[Tooltip("whether or not the object should hide/show a model when changing state")]
+        /// 상태가 변경될 때 객체가 모델을 숨기거나 표시해야 하는지 여부
+        [Tooltip("상태가 변경될 때 객체가 모델을 숨기거나 표시해야 하는지 여부")]
 		public bool ShowHideModel = false;
 
 		[Header("Trigger Area")]
 
-		/// the area used to detect the presence of a character
-		[Tooltip("the area used to detect the presence of a character")]
+        /// 문자의 존재를 감지하는 데 사용되는 영역
+        [Tooltip("문자의 존재를 감지하는 데 사용되는 영역")]
 		public CharacterDetector TriggerArea;
-		/// whether or not we should prevent this component from appearing when a character is in the area
-		[Tooltip("whether or not we should prevent this component from appearing when a character is in the area")]
+        /// 캐릭터가 해당 영역에 있을 때 이 구성요소가 나타나는 것을 방지해야 하는지 여부
+        [Tooltip("캐릭터가 해당 영역에 있을 때 이 구성요소가 나타나는 것을 방지해야 하는지 여부")]
 		public bool PreventAppearWhenCharacterInArea = true;
-		/// whether or not we should prevent this component from disappearing when a character is in the area
-		[Tooltip("whether or not we should prevent this component from disappearing when a character is in the area")]
+        /// 캐릭터가 해당 영역에 있을 때 이 구성 요소가 사라지는 것을 방지해야 하는지 여부
+        [Tooltip("캐릭터가 해당 영역에 있을 때 이 구성 요소가 사라지는 것을 방지해야 하는지 여부")]
 		public bool PreventDisappearWhenCharacterInArea = false;
 
 		[Header("Debug")]
 
-		/// the current state this object is in
-		[MMReadOnly]
-		[Tooltip("the current state this object is in")]
+        /// 이 객체의 현재 상태
+        [MMReadOnly]
+		[Tooltip("이 객체의 현재 상태")]
 		public AppearDisappearStates _currentState;
-		/// the state this object will be in next
-		[MMReadOnly]
-		[Tooltip("the state this object will be in next")]
+        /// 이 객체가 다음에 있을 상태
+        [MMReadOnly]
+		[Tooltip("이 객체가 다음에 있을 상태")]
 		public AppearDisappearStates _nextState;
-		/// the last time this object changed state
-		[MMReadOnly]
-		[Tooltip("the last time this object changed state")]
+        /// 이 객체가 다음에 있을 상태
+        [MMReadOnly]
+		[Tooltip("이 객체가 다음에 있을 상태")]
 		public float _lastStateChangedAt = 0f;
 		[MMReadOnly]
-		[Tooltip("the last time this object changed state")]
+		[Tooltip("이 객체가 다음에 있을 상태")]
 		public int _cyclesLeft;
 
 		protected const string _animationParameter = "Visible";

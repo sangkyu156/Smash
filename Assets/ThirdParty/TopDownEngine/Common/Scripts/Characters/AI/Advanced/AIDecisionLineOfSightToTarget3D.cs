@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision returns true if there's no obstacle in a straight line between the agent and the brain's target, in 3D
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionLineOfSightToTarget3D")]
+    /// <summary>
+    /// 이 결정은 3D로 에이전트와 뇌의 타겟 사이에 직선상에 장애물이 없으면 참이 됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionLineOfSightToTarget3D")]
 	public class AIDecisionLineOfSightToTarget3D : AIDecision
 	{
-		/// the layermask to consider as obstacles when trying to determine whether a line of sight is present
-		[Tooltip("the layermask to consider as obstacles when trying to determine whether a line of sight is present")]
+        /// 시선이 존재하는지 여부를 결정하려고 할 때 장애물로 간주할 레이어 마스크
+        [Tooltip("시선이 존재하는지 여부를 결정하려고 할 때 장애물로 간주할 레이어 마스크")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
-		/// the offset to apply (from the collider's center) when casting a ray from the agent to its target
-		[Tooltip("the offset to apply (from the collider's center) when casting a ray from the agent to its target")]
+        /// 에이전트에서 대상으로 광선을 캐스팅할 때 충돌체 중심에서 적용할 오프셋입니다.
+        [Tooltip("에이전트에서 대상으로 광선을 캐스팅할 때 충돌체 중심에서 적용할 오프셋입니다.")]
 		public Vector3 LineOfSightOffset = new Vector3(0, 0, 0);
 
 		protected Vector3 _directionToTarget;

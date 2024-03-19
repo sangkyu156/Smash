@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a character, and it'll be able to rotate to face the movement's direction or the weapon's rotation
-	/// </summary>
-	[MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 기능을 캐릭터에 추가하면 이동 방향이나 무기 회전 방향을 향하도록 회전할 수 있습니다.
+    /// </summary>
+    [MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Orientation 3D")]
 	public class CharacterOrientation3D : CharacterAbility
 	{
@@ -19,82 +19,82 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Rotation Mode")]
 
-		/// whether the character should face movement direction, weapon direction, or both, or none
-		[Tooltip("whether the character should face movement direction, weapon direction, or both, or none")]
+        /// 캐릭터가 이동 방향, 무기 방향 또는 둘 다를 향해야 하는지 여부 또는 없음
+        [Tooltip("캐릭터가 이동 방향, 무기 방향 또는 둘 다를 향해야 하는지 여부 또는 없음")]
 		public RotationModes RotationMode = RotationModes.None;
-		/// if this is false, no rotation will occur
-		[Tooltip("if this is false, no rotation will occur")]
+        /// 이것이 false이면 회전이 발생하지 않습니다.
+        [Tooltip("이것이 false이면 회전이 발생하지 않습니다.")]
 		public bool CharacterRotationAuthorized = true;
 
 		[Header("Movement Direction")]
 
-		/// If this is true, we'll rotate our model towards the direction
-		[Tooltip("If this is true, we'll rotate our model towards the direction")]
+        /// 이것이 사실이라면 모델을 다음 방향으로 회전시킵니다.
+        [Tooltip("이것이 사실이라면 모델을 다음 방향으로 회전시킵니다.")]
 		public bool ShouldRotateToFaceMovementDirection = true;
-		/// the current rotation mode
-		[MMCondition("ShouldRotateToFaceMovementDirection", true)]
-		[Tooltip("the current rotation mode")]
+        /// 현재 회전 모드
+        [MMCondition("ShouldRotateToFaceMovementDirection", true)]
+		[Tooltip("현재 회전 모드")]
 		public RotationSpeeds MovementRotationSpeed = RotationSpeeds.Instant;
-		/// the object we want to rotate towards direction. If left empty, we'll use the Character's model
-		[MMCondition("ShouldRotateToFaceMovementDirection", true)]
-		[Tooltip("the object we want to rotate towards direction. If left empty, we'll use the Character's model")]
+        /// 방향을 향해 회전하려는 객체입니다. 비어 있으면 캐릭터 모델을 사용합니다.
+        [MMCondition("ShouldRotateToFaceMovementDirection", true)]
+		[Tooltip("방향을 향해 회전하려는 객체입니다. 비어 있으면 캐릭터 모델을 사용합니다.")]
 		public GameObject MovementRotatingModel;
-		/// the speed at which to rotate towards direction (smooth and absolute only)
-		[MMCondition("ShouldRotateToFaceMovementDirection", true)]
-		[Tooltip("the speed at which to rotate towards direction (smooth and absolute only)")]
+        /// 방향을 향해 회전하는 속도(부드럽고 절대적인 경우에만 해당)
+        [MMCondition("ShouldRotateToFaceMovementDirection", true)]
+		[Tooltip("방향을 향해 회전하는 속도(부드럽고 절대적인 경우에만 해당)")]
 		public float RotateToFaceMovementDirectionSpeed = 10f;
-		/// the threshold after which we start rotating (absolute mode only)
-		[MMCondition("ShouldRotateToFaceMovementDirection", true)]
-		[Tooltip("the threshold after which we start rotating (absolute mode only)")]
+        /// 회전을 시작하는 임계값(절대 모드에만 해당)
+        [MMCondition("ShouldRotateToFaceMovementDirection", true)]
+		[Tooltip("회전을 시작하는 임계값(절대 모드에만 해당)")]
 		public float AbsoluteThresholdMovement = 0.5f;
-		/// the direction of the model
-		[MMReadOnly]
-		[Tooltip("the direction of the model")]
+        /// 모델의 방향v
+        [MMReadOnly]
+		[Tooltip("모델의 방향")]
 		public Vector3 ModelDirection;
-		/// the direction of the model in angle values
-		[MMReadOnly]
-		[Tooltip("the direction of the model in angle values")]
+        /// 각도 값의 모델 방향
+        [MMReadOnly]
+		[Tooltip("각도 값의 모델 방향")]
 		public Vector3 ModelAngles;
 
 		[Header("Weapon Direction")]
 
-		/// If this is true, we'll rotate our model towards the weapon's direction
-		[Tooltip("If this is true, we'll rotate our model towards the weapon's direction")]
+        /// 이것이 사실이라면 모델을 무기 방향으로 회전시킵니다.
+        [Tooltip("이것이 사실이라면 모델을 무기 방향으로 회전시킵니다.")]
 		public bool ShouldRotateToFaceWeaponDirection = true;
 		/// the current rotation mode
 		[MMCondition("ShouldRotateToFaceWeaponDirection", true)]
-		[Tooltip("the current rotation mode")]
+		[Tooltip("현재 회전 모드")]
 		public RotationSpeeds WeaponRotationSpeed = RotationSpeeds.Instant;
 		/// the object we want to rotate towards direction. If left empty, we'll use the Character's model
 		[MMCondition("ShouldRotateToFaceWeaponDirection", true)]
-		[Tooltip("the object we want to rotate towards direction. If left empty, we'll use the Character's model")]
+		[Tooltip("방향을 향해 회전하려는 객체입니다. 비어 있으면 캐릭터 모델을 사용합니다.")]
 		public GameObject WeaponRotatingModel;
 		/// the speed at which to rotate towards direction (smooth and absolute only)
 		[MMCondition("ShouldRotateToFaceWeaponDirection", true)]
-		[Tooltip("the speed at which to rotate towards direction (smooth and absolute only)")]
+		[Tooltip("방향을 향해 회전하는 속도(부드럽고 절대적인 경우에만 해당)")]
 		public float RotateToFaceWeaponDirectionSpeed = 10f;
 		/// the threshold after which we start rotating (absolute mode only)
 		[MMCondition("ShouldRotateToFaceWeaponDirection", true)]
-		[Tooltip("the threshold after which we start rotating (absolute mode only)")]
+		[Tooltip("회전을 시작하는 임계값(절대 모드에만 해당)")]
 		public float AbsoluteThresholdWeapon = 0.5f;
 		/// the threshold after which we start rotating (absolute mode only)
 		[MMCondition("ShouldRotateToFaceWeaponDirection", true)]
-		[Tooltip("the threshold after which we start rotating (absolute mode only)")]
+		[Tooltip("회전을 시작하는 임계값(절대 모드에만 해당)")]
 		public bool LockVerticalRotation = true;
 
 		[Header("Animation")]
 
 		/// the speed at which the instant rotation animation parameter float resets to 0
-		[Tooltip("the speed at which the instant rotation animation parameter float resets to 0")]
+		[Tooltip("순간 회전 애니메이션 매개변수 float가 0으로 재설정되는 속도")]
 		public float RotationSpeedResetSpeed = 2f;
 		/// the speed at which the YRotationOffsetSmoothed should lerp
-		[Tooltip("the speed at which the YRotationOffsetSmoothed should lerp")]
+		[Tooltip("YRotationOffsetSmoothed가 lerp해야 하는 속도")]
 		public float RotationOffsetSmoothSpeed = 1f;
 
 		[Header("Forced Rotation")]
 
 		/// whether the character is being applied a forced rotation
-		[Tooltip("whether the character is being applied a forced rotation")]
+		[Tooltip("캐릭터가 강제 회전을 적용하고 있는지 여부")]
 		public bool ForcedRotation = false;
         /// 외부 스크립트에 의해 적용된 강제 회전
         [MMCondition("ForcedRotation", true)]

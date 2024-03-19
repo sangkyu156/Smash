@@ -5,34 +5,34 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This Action will make the Character patrol along the defined path (see the MMPath inspector for that) until it hits a wall or a hole while following a path.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMovePatrol3D")]
+    /// <summary>
+    /// 이 액션은 캐릭터가 경로를 따라가는 동안 벽이나 구멍에 부딪힐 때까지 정의된 경로(MMPath 검사기 참조)를 따라 순찰하게 만듭니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMovePatrol3D")]
 	//[RequireComponent(typeof(MMPath))]
 	//[RequireComponent(typeof(Character))]
 	//[RequireComponent(typeof(CharacterMovement))]
 	public class AIActionMovePatrol3D : AIAction
 	{        
 		[Header("Obstacle Detection")]
-		/// If set to true, the agent will change direction when hitting an obstacle
-		[Tooltip("If set to true, the agent will change direction when hitting an obstacle")]
+        /// true로 설정하면 에이전트가 장애물에 부딪힐 때 방향을 변경합니다.
+        [Tooltip("true로 설정하면 에이전트가 장애물에 부딪힐 때 방향을 변경합니다.")]
 		public bool ChangeDirectionOnObstacle = true;
-		/// the distance to look for obstacles at
-		[Tooltip("the distance to look for obstacles at")]
+        /// 장애물을 찾는 거리
+        [Tooltip("장애물을 찾는 거리")]
 		public float ObstacleDetectionDistance = 1f;
-		/// the frequency (in seconds) at which to check for obstacles
-		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
+        /// 장애물을 확인하는 빈도(초)
+        [Tooltip("장애물을 확인하는 빈도(초)")]
 		public float ObstaclesCheckFrequency = 1f;
-		/// the layer(s) to look for obstacles on
-		[Tooltip("the layer(s) to look for obstacles on")]
+        /// 장애물을 찾을 레이어
+        [Tooltip("장애물을 찾을 레이어")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
 		/// the coordinates of the last patrol point
 		public Vector3 LastReachedPatrolPoint { get; set; }
 
 		[Header("Debug")]
-		/// the index of the current MMPath element this agent is patrolling towards
-		[Tooltip("the index of the current MMPath element this agent is patrolling towards")]
+        /// 이 에이전트가 순찰하고 있는 현재 MMPath 요소의 인덱스
+        [Tooltip("이 에이전트가 순찰하고 있는 현재 MMPath 요소의 인덱스")]
 		[MMReadOnly]
 		public int CurrentPathIndex = 0;
 

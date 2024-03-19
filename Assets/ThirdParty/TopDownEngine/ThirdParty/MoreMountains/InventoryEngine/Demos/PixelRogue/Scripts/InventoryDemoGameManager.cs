@@ -4,10 +4,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// An example of a game manager, the only significant part being how we trigger in a single place the load of all inventories, in the Start method.
-	/// </summary>
-	public class InventoryDemoGameManager : MMSingleton<InventoryDemoGameManager> 
+    /// <summary>
+    /// 게임 관리자의 예로서 유일하게 중요한 부분은 Start 메서드에서 모든 인벤토리의 로드를 한 곳에서 트리거하는 방법입니다.
+    /// </summary>
+    public class InventoryDemoGameManager : MMSingleton<InventoryDemoGameManager> 
 	{
 		public InventoryDemoCharacter Player { get; protected set; }
 

@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the stereo pan of a target AudioSource over time.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따라 대상 AudioSource의 스테레오 팬을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/AudioSource Stereo Pan")]
-	[FeedbackHelp("This feedback lets you control the stereo pan of a target AudioSource over time.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따라 대상 AudioSource의 스테레오 팬을 제어할 수 있습니다.")]
 	public class MMFeedbackAudioSourceStereoPan : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -24,32 +24,32 @@ namespace MoreMountains.Feedbacks
 
 		[Header("StereoPan Feedback")]
 		/// the channel to emit on
-		[Tooltip("the channel to emit on")]
+		[Tooltip("방출할 채널")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float Duration = 2f;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("StereoPan")]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeStereoPan = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeStereoPan = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
 		[Range(-1f, 1f)]
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapStereoPanZero = 0f;
 		/// the value to remap the curve's 1 to
 		[Range(-1f, 1f)]
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapStereoPanOne = 1f;
 
 

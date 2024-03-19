@@ -18,73 +18,73 @@ namespace MoreMountains.TopDownEngine
 
 		[MMInspectorGroup("Damage Area", true, 22)]
 		/// the possible modes to handle the damage area. In Generated, the MeleeWeapon will create it, in Existing, you can bind an existing damage area - usually nested under the weapon
-		[Tooltip("the possible modes to handle the damage area. In Generated, the MeleeWeapon will create it, in Existing, you can bind an existing damage area - usually nested under the weapon")]
+		[Tooltip("피해 지역을 처리하기 위한 가능한 모드. 생성에서는 MeleeWeapon이 생성하고, 기존에서는 기존 손상 영역을 바인딩할 수 있습니다. 일반적으로 무기 아래에 중첩됩니다.")]
 		public MeleeDamageAreaModes MeleeDamageAreaMode = MeleeDamageAreaModes.Generated;
 		/// the shape of the damage area (rectangle or circle)
-		[Tooltip("the shape of the damage area (rectangle or circle)")]
+		[Tooltip("손상 부위의 모양(직사각형 또는 원형)")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public MeleeDamageAreaShapes DamageAreaShape = MeleeDamageAreaShapes.Rectangle;
 		/// the offset to apply to the damage area (from the weapon's attachment position
-		[Tooltip("the offset to apply to the damage area (from the weapon's attachment position")]
+		[Tooltip("손상 영역에 적용할 오프셋(무기 부착 위치에서)")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public Vector3 AreaOffset = new Vector3(1, 0);
 		/// the size of the damage area
-		[Tooltip("the size of the damage area")]
+		[Tooltip("손상 부위의 크기")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public Vector3 AreaSize = new Vector3(1, 1);
 		/// the trigger filters this melee weapon should apply damage on (by default, it'll apply damage on everything, but you can change this to only apply when targets enter the area, for example)
-		[Tooltip("the trigger filters this melee weapon should apply damage on (by default, it'll apply damage on everything, but you can change this to only apply when targets enter the area, for example)")]
+		[Tooltip("트리거는 이 근접 무기가 피해를 적용해야 한다고 필터링합니다(기본적으로 모든 것에 피해를 적용하지만 예를 들어 대상이 해당 지역에 들어갈 때만 적용되도록 변경할 수 있습니다).")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public DamageOnTouch.TriggerAndCollisionMask TriggerFilter = DamageOnTouch.AllowedTriggerCallbacks;
 		/// the feedback to play when hitting a Damageable
-		[Tooltip("the feedback to play when hitting a Damageable")]
+		[Tooltip("Damageable을 칠 때 재생할 피드백")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public MMFeedbacks HitDamageableFeedback;
 		/// the feedback to play when hitting a non Damageable
-		[Tooltip("the feedback to play when hitting a non Damageable")]
+		[Tooltip("손상되지 않는 공격을 가했을 때 재생되는 피드백")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Generated)]
 		public MMFeedbacks HitNonDamageableFeedback;
 		/// an existing damage area to activate/handle as the weapon is used
-		[Tooltip("an existing damage area to activate/handle as the weapon is used")]
+		[Tooltip("무기를 사용할 때 활성화/처리할 기존 손상 영역")]
 		[MMEnumCondition("MeleeDamageAreaMode", (int)MeleeDamageAreaModes.Existing)]
 		public DamageOnTouch ExistingDamageArea;
 
 		[MMInspectorGroup("Damage Area Timing", true, 23)]
         
 		/// the initial delay to apply before triggering the damage area
-		[Tooltip("the initial delay to apply before triggering the damage area")]
+		[Tooltip("피해 영역을 트리거하기 전에 적용할 초기 지연")]
 		public float InitialDelay = 0f;
 		/// the duration during which the damage area is active
-		[Tooltip("the duration during which the damage area is active")]
+		[Tooltip("손상 영역이 활성화되는 기간")]
 		public float ActiveDuration = 1f;
 
 		[MMInspectorGroup("Damage Caused", true, 24)]
 
 		/// the layers that will be damaged by this object
-		[Tooltip("the layers that will be damaged by this object")]
+		[Tooltip("이 개체에 의해 손상될 레이어")]
 		public LayerMask TargetLayerMask;
 		/// The min amount of health to remove from the player's health
 		[FormerlySerializedAs("DamageCaused")] 
-		[Tooltip("The min amount of health to remove from the player's health")]
+		[Tooltip("플레이어의 체력에서 제거할 최소 체력입니다.")]
 		public float MinDamageCaused = 10f;
 		/// The max amount of health to remove from the player's health
 		[FormerlySerializedAs("DamageCaused")] 
-		[Tooltip("The max amount of health to remove from the player's health")]
+		[Tooltip("플레이어의 체력에서 제거할 최대 체력")]
 		public float MaxDamageCaused = 10f;
 		/// the kind of knockback to apply
-		[Tooltip("the kind of knockback to apply")]
+		[Tooltip("적용할 넉백 종류")]
 		public DamageOnTouch.KnockbackStyles Knockback;
 		/// The force to apply to the object that gets damaged
-		[Tooltip("The force to apply to the object that gets damaged")]
+		[Tooltip("손상된 물체에 가하는 힘")]
 		public Vector3 KnockbackForce = new Vector3(10, 2, 0);
 		/// The direction in which to apply the knockback 
-		[Tooltip("The direction in which to apply the knockback ")]
+		[Tooltip("넉백을 적용할 방향")]
 		public DamageOnTouch.KnockbackDirections KnockbackDirection = DamageOnTouch.KnockbackDirections.BasedOnOwnerPosition;
 		/// The duration of the invincibility frames after the hit (in seconds)
-		[Tooltip("The duration of the invincibility frames after the hit (in seconds)")]
+		[Tooltip("적중 후 무적 프레임의 지속 시간(초)")]
 		public float InvincibilityDuration = 0.5f;
 		/// if this is true, the owner can be damaged by its own weapon's damage area (usually false)
-		[Tooltip("if this is true, the owner can be damaged by its own weapon's damage area (usually false)")]
+		[Tooltip("이것이 사실이라면, 소유자는 자신의 무기의 피해 범위에 따라 피해를 입을 수 있습니다(보통 거짓).")]
 		public bool CanDamageOwner = false;
 
 		protected Collider _damageAreaCollider;

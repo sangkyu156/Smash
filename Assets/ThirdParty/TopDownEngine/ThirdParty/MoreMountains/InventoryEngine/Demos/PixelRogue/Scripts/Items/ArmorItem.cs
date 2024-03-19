@@ -7,10 +7,10 @@ namespace MoreMountains.InventoryEngine
 {	
 	[CreateAssetMenu(fileName = "ArmorItem", menuName = "MoreMountains/InventoryEngine/ArmorItem", order = 2)]
 	[Serializable]
-	/// <summary>
-	/// Demo class for an example armor item
-	/// </summary>
-	public class ArmorItem : InventoryItem 
+    /// <summary>
+    /// 예시 방어구 아이템의 데모 클래스
+    /// </summary>
+    public class ArmorItem : InventoryItem 
 	{
 		[Header("Armor")]
 		public int ArmorIndex;

@@ -6,11 +6,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class to handle cooldown related properties and their resource consumption over time
-	/// Remember to initialize it (once) and update it every frame from another class
-	/// </summary>
-	[System.Serializable]    
+    /// <summary>
+    /// 쿨다운 관련 속성과 시간 경과에 따른 리소스 소비를 처리하는 클래스
+    /// 초기화(한 번)하고 다른 클래스의 모든 프레임을 업데이트하는 것을 기억하세요.
+    /// </summary>
+    [System.Serializable]    
 	public class MMCooldown 
 	{
 		/// all possible states for the object

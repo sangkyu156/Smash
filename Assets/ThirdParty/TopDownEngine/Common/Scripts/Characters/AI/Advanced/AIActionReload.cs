@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to request a reload on the weapon
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionReload")]
+    /// <summary>
+    /// 무기 재장전을 요청하는 데 사용되는 AIACtion
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionReload")]
 	public class AIActionReload : AIAction
 	{
 		public bool OnlyReloadOnceInThisSate = true;

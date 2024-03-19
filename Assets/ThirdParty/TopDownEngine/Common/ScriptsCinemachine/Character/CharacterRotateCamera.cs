@@ -7,10 +7,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An ability that will let the Character rotate its associated camera, using the PlayerID_CameraRotationAxis input axis
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Rotate Camera")]
+    /// <summary>
+    /// PlayerID_CameraRotationAxis 입력 축을 사용하여 캐릭터가 연결된 카메라를 회전할 수 있게 하는 기능입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Rotate Camera")]
 	public class CharacterRotateCamera : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
@@ -18,29 +18,29 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Rotation axis")]
 		/// the space in which to rotate the camera (usually world)
-		[Tooltip("the space in which to rotate the camera (usually world)")]
+		[Tooltip("카메라를 회전할 공간(보통 월드)")]
 		public Space RotationSpace = Space.World;
 		/// the camera's forward vector, usually 0,0,1
-		[Tooltip("the camera's forward vector, usually 0,0,1")]
+		[Tooltip("카메라의 전방 벡터, 일반적으로 0,0,1")]
 		public Vector3 RotationForward = Vector3.forward;
 		/// the axis on which to rotate the camera (usually 0,1,0 in 3D, 0,0,1 in 2D)
-		[Tooltip("the axis on which to rotate the camera (usually 0,1,0 in 3D, 0,0,1 in 2D)")]
+		[Tooltip("카메라를 회전할 축(보통 3D에서는 0,1,0, 2D에서는 0,0,1)")]
 		public Vector3 RotationAxis = Vector3.up;
 
 		[Header("Camera Speed")]
 		/// the speed at which the camera should rotate
-		[Tooltip("the speed at which the camera should rotate")]
+		[Tooltip("카메라가 회전해야 하는 속도")]
 		public float CameraRotationSpeed = 3f;
 		/// the speed at which the camera should interpolate towards its target position
-		[Tooltip("the speed at which the camera should interpolate towards its target position")]
+		[Tooltip("카메라가 대상 위치를 향해 보간해야 하는 속도")]
 		public float CameraInterpolationSpeed = 0.2f;
 
 		[Header("Input Manager")] 
 		/// if this is false, this ability won't read input
-		[Tooltip("if this is false, this ability won't read input")]
+		[Tooltip("이것이 거짓이면 이 능력은 입력을 읽지 않습니다.")]
 		public bool InputAuthorized = true;
 		/// whether or not this ability should make changes on the InputManager to set it in camera driven input mode
-		[Tooltip("whether or not this ability should make changes on the InputManager to set it in camera driven input mode")]
+		[Tooltip("이 기능이 카메라 구동 입력 모드로 설정하기 위해 InputManager를 변경해야 하는지 여부")]
 		public bool AutoSetupInputManager = true;
 
 		protected float _requestedCameraAngle = 0f;

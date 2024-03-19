@@ -5,62 +5,62 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This ability allows the character to "crouch" when pressing the crouch button, which resizes the collider
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Crouch")]
+    /// <summary>
+    /// 이 능력을 사용하면 충돌기의 크기를 조정하는 웅크리기 버튼을 누를 때 캐릭터가 "웅크릴" 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Crouch")]
 	public class CharacterCrouch : CharacterAbility 
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
 		public override string HelpBoxText() { return "This component handles crouch and crawl behaviours. Here you can determine the crouch speed, and whether or not the collider should resize when crouched (to crawl into tunnels for example). If it should, please setup its new size here."; }
 
-		/// if this is true, the character is in ForcedCrouch mode. A CrouchZone or an AI script can do that.
-		[MMReadOnly]
-		[Tooltip("if this is true, the character is in ForcedCrouch mode. A CrouchZone or an AI script can do that.")]
+        /// 이것이 사실이라면 캐릭터는 ForcedCrouch 모드에 있는 것입니다. CrouchZone 또는 AI 스크립트가 이를 수행할 수 있습니다.
+        [MMReadOnly]
+		[Tooltip("이것이 사실이라면 캐릭터는 ForcedCrouch 모드에 있는 것입니다. CrouchZone 또는 AI 스크립트가 이를 수행할 수 있습니다.")]
 		public bool ForcedCrouch = false;
 
 		[Header("Crawl")]
 
-		/// if this is set to false, the character won't be able to crawl, just to crouch
-		[Tooltip("if this is set to false, the character won't be able to crawl, just to crouch")]
+        /// false로 설정하면 캐릭터는 기어갈 수 없고 단지 웅크릴 수 있습니다.
+        [Tooltip("false로 설정하면 캐릭터는 기어갈 수 없고 단지 웅크릴 수 있습니다.")]
 		public bool CrawlAuthorized = true;
-		/// the speed of the character when it's crouching
-		[Tooltip("the speed of the character when it's crouching")]
+        /// 웅크리고 있을 때 캐릭터의 속도
+        [Tooltip("웅크리고 있을 때 캐릭터의 속도")]
 		public float CrawlSpeed = 4f;
 
 		[Space(10)]	
 		[Header("Crouching")]
 
-		/// if this is true, the collider will be resized when crouched
-		[Tooltip("if this is true, the collider will be resized when crouched")]
+        /// 이것이 사실이라면 웅크려 있을 때 충돌체의 크기가 조정됩니다.
+        [Tooltip("이것이 사실이라면 웅크려 있을 때 충돌체의 크기가 조정됩니다.")]
 		public bool ResizeColliderWhenCrouched = false;
-		/// if this is true, the collider will be vertically translated on resize, this can avoid your controller getting teleported into the ground if its center isn't at its y:0
-		[Tooltip("if this is true, the collider will be vertically translated on resize, this can avoid your controller getting teleported into the ground if its center isn't at its y:0")]
+        /// 이것이 사실이라면 충돌체는 크기 조정 시 수직으로 변환됩니다. 이렇게 하면 중앙이 y:0에 있지 않은 경우 컨트롤러가 땅으로 순간이동하는 것을 방지할 수 있습니다.
+        [Tooltip("이것이 사실이라면 충돌체는 크기 조정 시 수직으로 변환됩니다. 이렇게 하면 중앙이 y:0에 있지 않은 경우 컨트롤러가 땅으로 순간이동하는 것을 방지할 수 있습니다.")]
 		[MMCondition("ResizeColliderWhenCrouched", true)]
 		public bool TranslateColliderOnCrouch = false;
-		/// the size to apply to the collider when crouched (if ResizeColliderWhenCrouched is true, otherwise this will be ignored)
-		[Tooltip("the size to apply to the collider when crouched (if ResizeColliderWhenCrouched is true, otherwise this will be ignored)")]
+        /// 웅크리고 있을 때 충돌체에 적용할 크기(ResizeColliderWhenCrouched가 true인 경우 그렇지 않으면 무시됩니다)
+        [Tooltip("웅크리고 있을 때 충돌체에 적용할 크기(ResizeColliderWhenCrouched가 true인 경우 그렇지 않으면 무시됩니다)")]
 		public float CrouchedColliderHeight = 1.25f;
 
 		[Space(10)]	
 		[Header("Offset")]
 
-		/// a list of objects to offset when crouching
-		[Tooltip("a list of objects to offset when crouching")]
+        /// 웅크리고 있을 때 오프셋할 객체 목록
+        [Tooltip("웅크리고 있을 때 오프셋할 객체 목록")]
 		public List<GameObject> ObjectsToOffset;
-		/// the offset to apply to objects when crouching
-		[Tooltip("the offset to apply to objects when crouching")]
+        /// 웅크리고 있을 때 객체에 적용할 오프셋
+        [Tooltip("웅크리고 있을 때 객체에 적용할 오프셋")]
 		public Vector3 OffsetCrouch;
-		/// the offset to apply to objects when crouching AND moving
-		[Tooltip("the offset to apply to objects when crouching AND moving")]
+        /// 웅크리고 움직일 때 객체에 적용할 오프셋
+        [Tooltip("웅크리고 움직일 때 객체에 적용할 오프셋")]
 		public Vector3 OffsetCrawl;
-		/// the speed at which to offset objects
-		[Tooltip("the speed at which to offset objects")]
+        /// 객체를 오프셋하는 속도
+        [Tooltip("객체를 오프셋하는 속도")]
 		public float OffsetSpeed = 5f;
 
-		/// whether or not the character is in a tunnel right now and can't get up
-		[MMReadOnly]
-		[Tooltip("whether or not the character is in a tunnel right now and can't get up")]
+        /// 캐릭터가 지금 터널에 있어서 일어날 수 없는지 여부
+        [MMReadOnly]
+		[Tooltip("캐릭터가 지금 터널에 있어서 일어날 수 없는지 여부")]
 		public bool InATunnel;
 
 		protected List<Vector3> _objectsToOffsetOriginalPositions;

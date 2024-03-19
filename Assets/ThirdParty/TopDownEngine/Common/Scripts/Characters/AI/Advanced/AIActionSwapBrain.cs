@@ -5,14 +5,14 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This simple action lets you swap the brain of an AI at runtime, for a new brain, specified in the inspector
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AI Action Swap Brain")]
+    /// <summary>
+    /// 이 간단한 작업을 통해 런타임 시 AI의 두뇌를 검사기에 지정된 새 두뇌로 교체할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AI Action Swap Brain")]
 	public class AIActionSwapBrain : AIAction
 	{
-		/// the brain to replace the Character's one with
-		[Tooltip("the brain to replace the Character's one with")]
+        /// 캐릭터의 두뇌를 대체할 두뇌
+        [Tooltip("캐릭터의 두뇌를 대체할 두뇌")]
 		public AIBrain NewAIBrain;
 
 		protected Character _character;

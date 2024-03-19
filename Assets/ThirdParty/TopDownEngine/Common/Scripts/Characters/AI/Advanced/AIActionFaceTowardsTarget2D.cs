@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This AI Action will let an agent with a CharacterOrientation2D ability face its target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionFaceTowardsTarget2D")]
+    /// <summary>
+    ///이 AI 작업을 통해 CharacterOrientation2D 능력이 있는 에이전트가 대상을 향하게 됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionFaceTowardsTarget2D")]
 	//[RequireComponent(typeof(CharacterOrientation2D))]
 	public class AIActionFaceTowardsTarget2D : AIAction
 	{

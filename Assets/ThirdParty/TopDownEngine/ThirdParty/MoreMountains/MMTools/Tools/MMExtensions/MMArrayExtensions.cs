@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Array extensions
-	/// </summary>
-	public static class MMArrayExtensions
+    /// <summary>
+    /// 어레이 확장
+    /// </summary>
+    public static class MMArrayExtensions
 	{
 		/// <summary>
 		/// Returns a random value inside the array

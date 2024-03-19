@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a character and it'll rotate or flip to face the direction of movement or the weapon's, or both, or none
-	/// Only add this ability to a 2D character
-	/// </summary>
-	[MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
+    /// <summary>
+    /// 캐릭터에 이 기능을 추가하면 이동 방향이나 무기 방향, 둘 다 또는 없음을 향하도록 회전하거나 뒤집어집니다.
+    /// 이 기능은 2D 캐릭터에만 추가하세요.
+    /// </summary>
+    [MMHiddenProperties("AbilityStartFeedbacks", "AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Rotation 2D")]
 	public class CharacterRotation2D : CharacterAbility
 	{

@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true after the specified duration (in seconds) has passed since the level was loaded.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTimeSinceStart")]
+    /// <summary>
+    /// 이 결정은 레벨이 로드된 후 지정된 기간(초)이 지나면 true를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTimeSinceStart")]
 	public class AIDecisionTimeSinceStart : AIDecision
 	{
-		/// The duration (in seconds) after which to return true
-		[Tooltip("The duration (in seconds) after which to return true")]
+        /// true를 반환할 때까지의 기간(초)입니다.
+        [Tooltip("true를 반환할 때까지의 기간(초)입니다.")]
 		public float AfterTime;
 
 		protected float _startTime;

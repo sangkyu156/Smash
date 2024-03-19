@@ -4,51 +4,51 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Add this script to an object and it will automatically be reactivated and revived when the player respawns.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Spawn/Auto Respawn")]
+{
+    /// <summary>
+    /// 이 스크립트를 개체에 추가하면 플레이어가 다시 생성될 때 자동으로 다시 활성화되고 부활됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Spawn/Auto Respawn")]
 	public class AutoRespawn : TopDownMonoBehaviour, Respawnable 
 	{
 		[Header("Respawn when the player respawns")]
-		/// if this is true, this object will respawn at its last position when the player revives
-		[Tooltip("if this is true, this object will respawn at its last position when the player revives")]
+        /// 이것이 사실이라면 이 개체는 플레이어가 부활할 때 마지막 위치에서 다시 생성됩니다.
+        [Tooltip("이것이 사실이라면 이 개체는 플레이어가 부활할 때 마지막 위치에서 다시 생성됩니다.")]
 		public bool RespawnOnPlayerRespawn = true;
-		/// if this is true, this object will be repositioned at its initial position when the player revives
-		[Tooltip("if this is true, this object will be repositioned at its initial position when the player revives")]
+        /// 이것이 사실이라면 플레이어가 부활할 때 이 개체는 초기 위치로 재배치됩니다.
+        [Tooltip("이것이 사실이라면 플레이어가 부활할 때 이 개체는 초기 위치로 재배치됩니다.")]
 		public bool RepositionToInitOnPlayerRespawn = false;
-		/// if this is true, all components on this object will be disabled on kill
-		[Tooltip("if this is true, all components on this object will be disabled on kill")]
-		public bool DisableAllComponentsOnKill = false;        
-		/// if this is true, this gameobject will be disabled on kill
-		[Tooltip("if this is true, this gameobject will be disabled on kill")]
+        /// 이것이 사실이라면 이 객체의 모든 구성요소는 종료 시 비활성화됩니다.
+        [Tooltip("이것이 사실이라면 이 객체의 모든 구성요소는 종료 시 비활성화됩니다.")]
+		public bool DisableAllComponentsOnKill = false;
+        /// 이것이 사실이라면 이 게임오브젝트는 종료 시 비활성화됩니다.
+        [Tooltip("이것이 사실이라면 이 게임오브젝트는 종료 시 비활성화됩니다.")]
 		public bool DisableGameObjectOnKill = true;        
 
 		[Header("Checkpoints")]
-		/// if this is true, the object will always respawn, whether or not it's associated to a checkpoint
-		[Tooltip("if this is true, the object will always respawn, whether or not it's associated to a checkpoint")]
+        /// 이것이 사실이라면 개체는 체크포인트에 연결되어 있는지 여부에 관계없이 항상 다시 생성됩니다.
+        [Tooltip("이것이 사실이라면 개체는 체크포인트에 연결되어 있는지 여부에 관계없이 항상 다시 생성됩니다.")]
 		public bool IgnoreCheckpointsAlwaysRespawn = true;
-		/// if the player respawns at these checkpoints, the object will be respawned
-		[Tooltip("if the player respawns at these checkpoints, the object will be respawned")]
+        /// 플레이어가 이 체크포인트에서 다시 생성되면 개체가 다시 생성됩니다.
+        [Tooltip("플레이어가 이 체크포인트에서 다시 생성되면 개체가 다시 생성됩니다.")]
 		public List<CheckPoint> AssociatedCheckpoints;
 
 		[Header("Auto respawn after X seconds")]
-		/// if this has a value superior to 0, this object will respawn at its last position X seconds after its death
-		[Tooltip("if this has a value superior to 0, this object will respawn at its last position X seconds after its death")]
+        /// 값이 0보다 높으면 이 개체는 죽은 지 X초 후에 마지막 위치에서 다시 생성됩니다.
+        [Tooltip("값이 0보다 높으면 이 개체는 죽은 지 X초 후에 마지막 위치에서 다시 생성됩니다.")]
 		public float AutoRespawnDuration = 0f;
-		/// the amount of times this object can auto respawn
-		[Tooltip("the amount of times this object can auto respawn, negative value : infinite")]
+        /// 이 개체가 자동으로 다시 생성될 수 있는 횟수
+        [Tooltip("이 개체가 자동으로 다시 생성될 수 있는 횟수")]
 		public int AutoRespawnAmount = 3;
-		/// the remaining amounts of respawns (readonly, controlled by the class at runtime)
-		[Tooltip("the remaining amounts of respawns (readonly, controlled by the class at runtime)")]
+        /// 남은 리스폰 양(읽기 전용, 런타임 시 클래스에 의해 제어됨)
+        [Tooltip("남은 리스폰 양(읽기 전용, 런타임 시 클래스에 의해 제어됨)")]
 		[MMReadOnly]
 		public int AutoRespawnRemainingAmount = 3;
-		/// the effect to instantiate when the player respawns
-		[Tooltip("the effect to instantiate when the player respawns")]
+        /// 플레이어가 다시 생성될 때 인스턴스화할 효과
+        [Tooltip("플레이어가 다시 생성될 때 인스턴스화할 효과")]
 		public GameObject RespawnEffect;
-		/// the sfx to play when the player respawns
-		[Tooltip("the sfx to play when the player respawns")]
+        /// 플레이어가 부활할 때 재생할 SFX
+        [Tooltip("플레이어가 부활할 때 재생할 SFX")]
 		public AudioClip RespawnSfx;
 
 		// respawn

@@ -2,10 +2,10 @@
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event used to broadcast checkbox events from a MMDebugMenu
-	/// </summary>
-	public struct MMDebugMenuCheckboxEvent
+    /// <summary>
+    /// MMDebugMenu에서 체크박스 이벤트를 브로드캐스트하는 데 사용되는 이벤트
+    /// </summary>
+    public struct MMDebugMenuCheckboxEvent
 	{
 		static private event Delegate OnEvent;
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)] private static void RuntimeInitialization() { OnEvent = null; }

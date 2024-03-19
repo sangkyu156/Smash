@@ -5,16 +5,16 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This AI Action will let an agent with a CharacterRotation2D ability (set to ForcedRotation:true) rotate to face its target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRotateTowardsTarget2D")]
+    /// <summary>
+    /// 이 AI 작업을 사용하면 CharacterRotation2D 기능(ForcedRotation:true로 설정)이 있는 에이전트가 대상을 향하도록 회전할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionRotateTowardsTarget2D")]
 	//[RequireComponent(typeof(CharacterRotation2D))]
 	public class AIActionRotateTowardsTarget2D : AIAction
 	{
 		[Header("Lock Rotation")]
-		/// whether or not to lock the X rotation. If set to false, the model will rotate on the x axis, to aim up or down 
-		[Tooltip("whether or not to lock the X rotation. If set to false, the model will rotate on the x axis, to aim up or down")]
+        /// whetherX 회전을 잠글지 여부입니다. false로 설정하면 모델이 x축을 기준으로 회전하여 위 또는 아래를 조준합니다.
+        [Tooltip("X 회전을 잠글지 여부입니다. false로 설정하면 모델이 x축을 기준으로 회전하여 위 또는 아래를 조준합니다.")]
 		public bool LockRotationX = false;
 
 		protected CharacterRotation2D _characterRotation2D;

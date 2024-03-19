@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This class is used to automatically install optional dependencies used in MMFeedbacks
-	/// </summary>
-	public static class MMFDependencyInstaller 
+    /// <summary>
+    /// 이 클래스는 MMFeedbacks에 사용되는 선택적 종속성을 자동으로 설치하는 데 사용됩니다.
+    /// </summary>
+    public static class MMFDependencyInstaller 
 	{
 		#if UNITY_EDITOR
 		static ListRequest _listRequest;

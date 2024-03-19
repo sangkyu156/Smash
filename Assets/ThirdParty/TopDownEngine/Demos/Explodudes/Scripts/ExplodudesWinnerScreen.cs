@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class handles the display of a winner screen in the Explodudes demo scene
-	/// </summary>
-	public class ExplodudesWinnerScreen : TopDownMonoBehaviour, MMEventListener<TopDownEngineEvent>
+    /// <summary>
+    /// 이 클래스는 Explodude 데모 장면에서 승자 화면 표시를 처리합니다.
+    /// </summary>
+    public class ExplodudesWinnerScreen : TopDownMonoBehaviour, MMEventListener<TopDownEngineEvent>
 	{
 		/// the ID of the player we want this screen to appear for
-		[Tooltip("the ID of the player we want this screen to appear for")]
+		[Tooltip("이 화면을 표시하려는 플레이어의 ID")]
 		public string PlayerID = "Player1";
 		/// the canvas group containing the winner screen
-		[Tooltip("the canvas group containing the winner screen")]
+		[Tooltip("승자 화면이 포함된 캔버스 그룹")]
 		public CanvasGroup WinnerScreen;
 
 		/// <summary>

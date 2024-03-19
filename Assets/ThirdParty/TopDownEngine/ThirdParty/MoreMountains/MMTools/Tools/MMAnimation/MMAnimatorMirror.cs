@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class will let you mirror the behaviour of an Animator's parameters on a Source Animator onto the ones of a Target Animator.
-	/// Target will mirror Source.
-	/// Only the parameters existing on both Target and Source will be considered, you'll need to have the same on both before entering runtime.
-	/// </summary>
-	public class MMAnimatorMirror : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 사용하면 소스 애니메이터의 애니메이터 매개변수 동작을 대상 애니메이터의 매개변수 동작에 미러링할 수 있습니다.
+    /// 대상은 소스를 미러링합니다.
+    /// 대상과 소스 모두에 존재하는 매개변수만 고려되며, 런타임에 들어가기 전에 두 매개변수가 동일해야 합니다.
+    /// </summary>
+    public class MMAnimatorMirror : MonoBehaviour
 	{
 		/// a struct used to store bindings
 		public struct MMAnimatorMirrorBind

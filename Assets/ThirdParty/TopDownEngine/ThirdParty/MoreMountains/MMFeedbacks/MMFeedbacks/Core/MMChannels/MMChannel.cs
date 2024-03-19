@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// The possible modes used to identify a channel, either via an int or a MMChannel scriptable object
-	/// </summary>
-	public enum MMChannelModes
+    /// <summary>
+    /// int 또는 MMChannel 스크립트 가능 객체를 통해 채널을 식별하는 데 사용되는 가능한 모드
+    /// </summary>
+    public enum MMChannelModes
 	{
 		Int,
 		MMChannel
 	}
-	
-	/// <summary>
-	/// A data structure used to pass channel information
-	/// </summary>
-	[Serializable]
+
+    /// <summary>
+    /// 채널 정보를 전달하는 데 사용되는 데이터 구조
+    /// </summary>
+    [Serializable]
 	public class MMChannelData
 	{
 		public MMChannelModes MMChannelMode;
@@ -30,10 +30,10 @@ namespace MoreMountains.Feedbacks
 		}
 	}
 
-	/// <summary>
-	/// Extensions class for MMChannelData
-	/// </summary>
-	public static class MMChannelDataExtensions
+    /// <summary>
+    /// MMChannelData의 확장 클래스
+    /// </summary>
+    public static class MMChannelDataExtensions
 	{
 		public static MMChannelData Set(this MMChannelData data, MMChannelModes mode, int channel, MMChannel channelDefinition)
 		{
@@ -43,12 +43,12 @@ namespace MoreMountains.Feedbacks
 			return data;
 		}
 	}
-	
-	/// <summary>
-	/// A scriptable object you can create assets from, to identify Channels, used mostly (but not only) in feedbacks and shakers,
-	/// to determine a channel of communication, usually between emitters and receivers
-	/// </summary>
-	[CreateAssetMenu(menuName = "MoreMountains/MMChannel", fileName = "MMChannel")]
+
+    /// <summary>
+    /// 피드백 및 셰이커에서 주로(그뿐만 아니라) 사용되는 채널을 식별하기 위해 자산을 생성할 수 있는 스크립트 가능한 개체입니다.
+    /// 일반적으로 송신기와 수신기 간의 통신 채널을 결정합니다.
+    /// </summary>
+    [CreateAssetMenu(menuName = "MoreMountains/MMChannel", fileName = "MMChannel")]
 	public class MMChannel : ScriptableObject
 	{
 		public static bool Match(MMChannelData dataA, MMChannelData dataB)

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to have an AI kill itself
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSelfDestruct")]
+    /// <summary>
+    /// AI가 스스로 죽이는 데 사용된 AIACtion
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSelfDestruct")]
 	public class AIActionSelfDestruct : AIAction
 	{
 		public bool OnlyRunOnce = true;

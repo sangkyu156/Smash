@@ -6,11 +6,11 @@ using System;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class will create a cone of vision defined by an angle and a distance around a point. It will look for targets within that field, and draw a mesh to show the cone of vision
-	/// initially inspired by this great tutorial by Sebastian Lague : https://www.youtube.com/watch?v=rQG9aUWarwE - check out his tutorials, they're amazing!
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 이 클래스는 점 주위의 각도와 거리로 정의된 시야 원뿔을 만듭니다. 해당 필드 내에서 대상을 찾고 시야 원뿔을 표시하는 메시를 그립니다.
+    /// 처음에는 Sebastian Lague의 훌륭한 튜토리얼에서 영감을 받았습니다: https://www.youtube.com/watch?v=rQG9aUWarwE - 그의 튜토리얼을 확인해 보세요. 정말 놀랍습니다!
+    /// </summary>
+    [Serializable]
 	[AddComponentMenu("More Mountains/Tools/Vision/MMConeOfVision")]
 	public class MMConeOfVision : MonoBehaviour
 	{

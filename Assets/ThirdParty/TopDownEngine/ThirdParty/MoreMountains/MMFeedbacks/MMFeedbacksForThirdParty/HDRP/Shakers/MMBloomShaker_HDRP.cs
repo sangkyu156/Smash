@@ -8,11 +8,11 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a HDRP bloom post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// HDRP 블룸 사후 처리가 포함된 카메라에 이 클래스를 추가하면 이벤트를 받아 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMBloomShaker_HDRP")]
 	public class MMBloomShaker_HDRP : MMShaker
@@ -22,24 +22,24 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMInspectorGroup("Bloom Intensity", true, 42)]
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapIntensityZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapIntensityOne = 1f;
 
 		[MMInspectorGroup("Bloom Threshold", true, 43)]
 		/// the curve used to animate the threshold value on
-		[Tooltip("the curve used to animate the threshold value on")]
+		[Tooltip("임계값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeThreshold = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapThresholdZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapThresholdOne = 0f;
 
 		#if MM_HDRP

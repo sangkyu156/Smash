@@ -3,11 +3,11 @@ using System.Collections;
 using System;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// This achievement system supports 2 types of achievements : simple (do something > get achievement), and progress based (jump X times, kill X enemies, etc).
-	/// </summary>
-	public enum AchievementTypes { Simple, Progress }
+{
+    /// <summary>
+    /// T그의 업적 시스템은 2가지 유형의 업적을 지원합니다. 단순(무언가 수행 > 업적 달성) 및 진행 기반(X회 점프, X명의 적을 죽이는 등)입니다.
+    /// </summary>
+    public enum AchievementTypes { Simple, Progress }
 
 	[Serializable]
 	public class MMAchievement  

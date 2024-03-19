@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to keep track of tabs and their contents in a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuTabManager : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 탭과 해당 내용을 추적하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuTabManager : MonoBehaviour
 	{
 		/// a list of all the tabs under that manager
 		public List<MMDebugMenuTab> Tabs;

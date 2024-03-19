@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this script to an animation in Mecanim and you'll be able to control its start position and speed
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Animation/MMAnimationModifier")]
+    /// <summary>
+    /// Mecanim의 애니메이션에 이 스크립트를 추가하면 시작 위치와 속도를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Animation/MMAnimationModifier")]
 	public class MMAnimationModifier : StateMachineBehaviour
 	{
 		[MMVectorAttribute("Min", "Max")]

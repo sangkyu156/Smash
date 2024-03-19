@@ -4,15 +4,15 @@ using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Demo class to go from one level to another
-	/// </summary>
-	public class ChangeLevel : MonoBehaviour 
+{
+    /// <summary>
+    /// 한 레벨에서 다른 레벨로 이동하는 데모 수업
+    /// </summary>
+    public class ChangeLevel : MonoBehaviour 
 	{
-		/// The exact name of the scene to go to when entering the ChangeLevel zone
-		[MMInformation("This demo component, when added to a BoxCollider2D, will change the scene to the one specified in the field below when the character enters the collider.", MMInformationAttribute.InformationType.Info,false)]
-		[Tooltip("The exact name of the scene to go to when entering the ChangeLevel zone")]
+        /// ChangeLevel 존에 들어갈 때 갈 장면의 정확한 이름
+        [MMInformation("이 데모 구성 요소를 BoxCollider2D에 추가하면 캐릭터가 충돌체에 들어갈 때 아래 필드에 지정된 장면으로 장면이 변경됩니다.", MMInformationAttribute.InformationType.Info,false)]
+		[Tooltip("ChangeLevel 존에 들어갈 때 갈 장면의 정확한 이름")]
 		public string Destination;
 
 		/// <summary>

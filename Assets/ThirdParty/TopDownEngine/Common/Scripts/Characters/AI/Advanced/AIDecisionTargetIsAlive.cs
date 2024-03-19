@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true if the Brain's current target is alive, false otherwise
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTargetIsAlive")]
+    /// <summary>
+    /// 이 결정은 뇌의 현재 대상이 살아 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionTargetIsAlive")]
 	public class AIDecisionTargetIsAlive : AIDecision
 	{
 		protected Character _character;

@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class is used to display an achievement. Add it to a prefab containing all the required elements listed below.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Achievements/MMAchievementDisplayItem")]
+    /// <summary>
+    /// 이 클래스는 업적을 표시하는 데 사용됩니다. 아래 나열된 모든 필수 요소가 포함된 프리팹에 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Achievements/MMAchievementDisplayItem")]
 	public class MMAchievementDisplayItem : MonoBehaviour 
 	{		
 		public Image BackgroundLocked;

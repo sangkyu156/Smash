@@ -13,10 +13,10 @@ namespace MoreMountains.Tools
 	[Serializable]
 	public class MMDCheckboxFalseEvent : UnityEvent { }
 
-	/// <summary>
-	/// A class used to listen to events from a MMDebugMenu's checkbox
-	/// </summary>
-	public class MMDebugMenuCheckboxEventListener : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu의 체크박스에서 이벤트를 수신하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuCheckboxEventListener : MonoBehaviour
 	{
 		[Header("Events")]
 		/// the name of the event to listen to

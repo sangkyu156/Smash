@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 
+
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This action is used to force your character to switch to another weapon. Just drag a weapon prefab into its NewWeapon slot and you're good to go.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionChangeWeapon")]
+    /// <summary>
+    /// 이 동작은 캐릭터가 다른 무기로 전환하도록 강제하는 데 사용됩니다. 무기 구조물을 NewWeapon 슬롯으로 드래그하기만 하면 됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionChangeWeapon")]
 	//[RequireComponent(typeof(CharacterHandleWeapon))]
 	public class AIActionChangeWeapon : AIAction
 	{
-		/// the new weapon to equip when that action is performed
-		[Tooltip("The new weapon to equip when that action is performed")]
+        /// 해당 작업을 수행할 때 장착할 새로운 무기
+        [Tooltip("해당 작업을 수행할 때 장착할 새로운 무기")]
 		public Weapon NewWeapon;
 
 		protected CharacterHandleWeapon _characterHandleWeapon;

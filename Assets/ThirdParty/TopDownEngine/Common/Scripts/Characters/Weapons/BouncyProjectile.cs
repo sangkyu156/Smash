@@ -4,31 +4,31 @@ using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Projectile class that will bounce off walls instead of exploding on impact
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/BouncyProjectile")]
+{
+    /// <summary>
+    /// 충격 시 폭발하는 대신 벽에 튕겨 나가는 발사체 클래스
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/BouncyProjectile")]
 	public class BouncyProjectile : Projectile 
 	{
 		[Header("Bounciness Tech")]
-		/// the length of the raycast used to detect bounces, should be proportionate to the size and speed of your projectile
-		[Tooltip("the length of the raycast used to detect bounces, should be proportionate to the size and speed of your projectile")]
+        /// 바운스를 감지하는 데 사용되는 레이캐스트의 길이는 발사체의 크기와 속도에 비례해야 합니다.
+        [Tooltip("바운스를 감지하는 데 사용되는 레이캐스트의 길이는 발사체의 크기와 속도에 비례해야 합니다.")]
 		public float BounceRaycastLength = 1f;
-		/// the layers you want this projectile to bounce on
-		[Tooltip("the layers you want this projectile to bounce on")]
+        /// 이 발사체가 튕겨 나가기를 원하는 레이어
+        [Tooltip("이 발사체가 튕겨 나가기를 원하는 레이어")]
 		public LayerMask BounceLayers = LayerManager.ObstaclesLayerMask;
-		/// a feedback to trigger at every bounce
-		[Tooltip("a feedback to trigger at every bounce")]
+        /// 바운스할 때마다 트리거되는 피드백
+        [Tooltip("바운스할 때마다 트리거되는 피드백")]
 		public MMFeedbacks BounceFeedback;
 
 		[Header("Bounciness")]
-		/// the min and max amount of bounces (a value will be picked at random between both bounds)
-		[Tooltip("the min and max amount of bounces (a value will be picked at random between both bounds)")]
+        /// 바운스의 최소 및 최대 양(값은 두 경계 사이에서 무작위로 선택됩니다)
+        [Tooltip("바운스의 최소 및 최대 양(값은 두 경계 사이에서 무작위로 선택됩니다)")]
 		[MMVector("Min", "Max")]
 		public Vector2Int AmountOfBounces = new Vector2Int(10,10);
-		/// the min and max speed multiplier to apply at every bounce (a value will be picked at random between both bounds)
-		[Tooltip("the min and max speed multiplier to apply at every bounce (a value will be picked at random between both bounds)")]
+        /// 바운스할 때마다 적용할 최소 및 최대 속도 승수(값은 두 경계 사이에서 무작위로 선택됩니다)
+        [Tooltip("바운스할 때마다 적용할 최소 및 최대 속도 승수(값은 두 경계 사이에서 무작위로 선택됩니다)")]
 		[MMVector("Min", "Max")]
 		public Vector2 SpeedModifier = Vector2.one;
 

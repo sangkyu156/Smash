@@ -4,25 +4,25 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a Character to have it be able to push rigidbodies around
-	/// Animator parameters : Pushing (bool)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Push 3D")] 
+    /// <summary>
+    /// 강체를 밀 수 있도록 캐릭터에 이 기능을 추가하세요.
+    /// Animator parameters : Pushing (bool)
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Push 3D")] 
 	public class CharacterPush3D : CharacterAbility
 	{
 		[Header("Physics interaction")]
 		/// if this is true, the controller will be able to apply forces to colliding rigidbodies
-		[Tooltip("if this is true, the controller will be able to apply forces to colliding rigidbodies")]
+		[Tooltip("이것이 사실이라면 컨트롤러는 충돌하는 강체에 힘을 가할 수 있습니다.")]
 		public bool AllowPhysicsInteractions = true;
 		/// the length of the ray to cast in front of the character to detect pushables
-		[Tooltip("the length of the ray to cast in front of the character to detect pushables")]
+		[Tooltip("pushable을 감지하기 위해 캐릭터 앞에 투사할 광선의 길이")]
 		public float PhysicsInteractionsRaycastLength = 0.05f;
 		/// the offset to apply to the origin of the physics interaction raycast (by default, the character's collider's center
-		[Tooltip("the offset to apply to the origin of the physics interaction raycast (by default, the character's collider's center")]
+		[Tooltip("물리 상호 작용 레이캐스트의 원점에 적용할 오프셋(기본적으로 캐릭터의 충돌체 중심)")]
 		public Vector3 PhysicsInteractionsRaycastOffset = Vector3.zero;
 		/// the force to apply when colliding with rigidbodies
-		[Tooltip("the force to apply when colliding with rigidbodies")]
+		[Tooltip("강체와 충돌할 때 적용되는 힘")]
 		public float PushPower = 1850f;
 
 		protected const string _pushingAnimationParameterName = "Pushing";

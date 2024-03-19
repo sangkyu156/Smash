@@ -5,14 +5,14 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control chromatic aberration intensity over time. It requires you have in your scene an object with a Volume 
-	/// with HDRP Chromatic Aberration active, and a MMChromaticAberrationShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 색수차 강도를 제어할 수 있습니다. 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// HDRP 색수차가 활성화되고 MMChromaticAberrationShaker_HDRP 구성요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("PostProcess/Chromatic Aberration HDRP")]
-	[FeedbackHelp("This feedback allows you to control chromatic aberration intensity over time. It requires you have in your scene an object with a Volume " +
-	              "with Chromatic Aberration active, and a MMChromaticAberrationShaker_HDRP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 색수차 강도를 제어할 수 있습니다. 장면에 볼륨이 있는 객체가 있어야 합니다. " +
+"색수차가 활성화되고 MMChromaticAberrationShaker_HDRP 구성 요소가 포함되어 있습니다.")]
 	public class MMFeedbackChromaticAberration_HDRP : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -29,11 +29,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// the duration of the shake, in seconds
 		[Tooltip("the duration of the shake, in seconds")]
 		public float Duration = 0.2f;
-		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+        /// 흔들기 후 셰이커 값을 재설정할지 여부
+        [Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -49,11 +49,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the curve to animate the intensity on")]
 		public AnimationCurve Intensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the multiplier to apply to the intensity curve
-		[Tooltip("the multiplier to apply to the intensity curve")]
+		[Tooltip("강도 곡선에 적용할 승수")]
 		[Range(0f, 1f)]
 		public float Amplitude = 1.0f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 
 		/// the duration of this feedback is the duration of the shake

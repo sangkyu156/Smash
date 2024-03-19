@@ -4,20 +4,20 @@ using MoreMountains.Tools;
 using UnityEditor;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Adds a dedicated InventoryEngine menu into the top bar More Mountains entry
-	/// </summary>
-	public static class InventoryEngineMenu 
+{
+    /// <summary>
+    /// 상단 표시줄 추가 산 항목에 전용 InventoryEngine 메뉴를 추가합니다.
+    /// </summary>
+    public static class InventoryEngineMenu 
 	{
 		const string _saveFolderName = "InventoryEngine"; 
 
 		[MenuItem("Tools/More Mountains/Reset all saved inventories",false,31)]
-		/// <summary>
-		/// Adds a menu item to reset all saved inventories directly from Unity. 
-		/// This will remove the whole MMData/InventoryEngine folder, use it with caution.
-		/// </summary>
-		private static void ResetAllSavedInventories()
+        /// <summary>
+        /// Unity에서 직접 저장된 모든 인벤토리를 재설정할 수 있는 메뉴 항목을 추가합니다.
+        /// 이렇게 하면 전체 MMData/InventoryEngine 폴더가 제거되므로 주의해서 사용하세요.
+        /// </summary>
+        private static void ResetAllSavedInventories()
 		{
 			MMSaveLoadManager.DeleteSaveFolder (_saveFolderName);
 			Debug.LogFormat ("Inventories Save Files Reset");

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class handles the startscreen of the Explodudes demo scene
-	/// </summary>
-	public class ExplodudesStartScreen : TopDownMonoBehaviour
+    /// <summary>
+    /// 이 클래스는 Explodude 데모 장면의 시작 화면을 처리합니다.
+    /// </summary>
+    public class ExplodudesStartScreen : TopDownMonoBehaviour
 	{
 		/// <summary>
 		/// On start, enables all its children

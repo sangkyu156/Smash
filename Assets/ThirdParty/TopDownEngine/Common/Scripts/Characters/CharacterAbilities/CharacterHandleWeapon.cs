@@ -18,78 +18,78 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Weapon")]
 
-		/// the initial weapon owned by the character
-		[Tooltip("the initial weapon owned by the character")]
+        /// 캐릭터가 소유한 초기 무기
+        [Tooltip("캐릭터가 소유한 초기 무기")]
 		public Weapon InitialWeapon;
-		/// if this is set to true, the character can pick up PickableWeapons
-		[Tooltip("if this is set to true, the character can pick up PickableWeapons")]
+        /// true로 설정되면 캐릭터가 PickableWeapons를 집을 수 있습니다.
+        [Tooltip("true로 설정되면 캐릭터가 PickableWeapons를 집을 수 있습니다.")]
 		public bool CanPickupWeapons = true;
 
 		[Header("Feedbacks")]
-		/// a feedback that gets triggered at the character level everytime the weapon is used
-		[Tooltip("a feedback that gets triggered at the character level everytime the weapon is used")]
+        /// 무기를 사용할 때마다 캐릭터 수준에서 트리거되는 피드백
+        [Tooltip("무기를 사용할 때마다 캐릭터 수준에서 트리거되는 피드백")]
 		public MMFeedbacks WeaponUseFeedback;
 
 		[Header("Binding")]
         /// 무기가 부착될 위치입니다. 빈칸으로 놔두면 이것이 됩니다. 변환.
         [Tooltip("무기가 부착될 위치입니다. 빈칸으로 놔두면 이것이 됩니다. 변환.")]
 		public Transform WeaponAttachment;
-		/// the position from which projectiles will be spawned (can be safely left empty)
-		[Tooltip("the position from which projectiles will be spawned (can be safely left empty)")]
+        /// 발사체가 생성될 위치(비워두어도 안전함)
+        [Tooltip("발사체가 생성될 위치(비워두어도 안전함)")]
 		public Transform ProjectileSpawn;
-		/// if this is true this animator will be automatically bound to the weapon
-		[Tooltip("if this is true this animator will be automatically bound to the weapon")]
+        /// 이것이 사실이라면 이 애니메이터는 자동으로 무기에 바인딩됩니다.
+        [Tooltip("이것이 사실이라면 이 애니메이터는 자동으로 무기에 바인딩됩니다.")]
 		public bool AutomaticallyBindAnimator = true;
-		/// the ID of the AmmoDisplay this ability should update
-		[Tooltip("the ID of the AmmoDisplay this ability should update")]
+        /// 이 기능이 업데이트해야 하는 AmmoDisplay의 ID
+        [Tooltip("이 기능이 업데이트해야 하는 AmmoDisplay의 ID")]
 		public int AmmoDisplayID = 0;
-		/// if this is true, IK will be automatically setup if possible
-		[Tooltip("if this is true, IK will be automatically setup if possible")]
+        /// 이것이 사실이라면 가능한 경우 IK가 자동으로 설정됩니다.
+        [Tooltip("이것이 사실이라면 가능한 경우 IK가 자동으로 설정됩니다.")]
 		public bool AutoIK = true;
 
 		[Header("Input")]
-		/// if this is true you won't have to release your fire button to auto reload
-		[Tooltip("if this is true you won't have to release your fire button to auto reload")]
+        /// 이것이 사실이라면 자동 재장전을 위해 발사 버튼을 놓을 필요가 없습니다.
+        [Tooltip("이것이 사실이라면 자동 재장전을 위해 발사 버튼을 놓을 필요가 없습니다.")]
 		public bool ContinuousPress = false;
-		/// whether or not this character getting hit should interrupt its attack (will only work if the weapon is marked as interruptable)
-		[Tooltip("whether or not this character getting hit should interrupt its attack (will only work if the weapon is marked as interruptable)")]
+        /// 공격을 받는 캐릭터가 공격을 중단해야 하는지 여부(무기가 중단 가능으로 표시된 경우에만 작동함)
+        [Tooltip("공격을 받는 캐릭터가 공격을 중단해야 하는지 여부(무기가 중단 가능으로 표시된 경우에만 작동함)")]
 		public bool GettingHitInterruptsAttack = false;
-		/// whether or not pushing the secondary axis above its threshold should cause the weapon to shoot
-		[Tooltip("whether or not pushing the secondary axis above its threshold should cause the weapon to shoot")]
+        /// 보조 축을 임계값 이상으로 밀면 무기가 발사되는지 여부
+        [Tooltip("보조 축을 임계값 이상으로 밀면 무기가 발사되는지 여부")]
 		public bool UseSecondaryAxisThresholdToShoot = false;
-		/// if this is true, the ForcedWeaponAimControl mode will be applied to all weapons equipped by this character
-		[Tooltip("if this is true, the ForcedWeaponAimControl mode will be applied to all weapons equipped by this character")]
+        /// 이것이 사실이라면 ForcedWeaponAimControl 모드는 이 캐릭터가 장착한 모든 무기에 적용됩니다.
+        [Tooltip("이것이 사실이라면 ForcedWeaponAimControl 모드는 이 캐릭터가 장착한 모든 무기에 적용됩니다.")]
 		public bool ForceWeaponAimControl = false;
-		/// if ForceWeaponAimControl is true, the AimControls mode to apply to all weapons equipped by this character
-		[Tooltip("if ForceWeaponAimControl is true, the AimControls mode to apply to all weapons equipped by this character")]
+        /// ForceWeaponAimControl이 true인 경우 이 캐릭터가 장착한 모든 무기에 적용할 AimControls 모드
+        [Tooltip("ForceWeaponAimControl이 true인 경우 이 캐릭터가 장착한 모든 무기에 적용할 AimControls 모드")]
 		[MMCondition("ForceWeaponAimControl", true)]
 		public WeaponAim.AimControls ForcedWeaponAimControl = WeaponAim.AimControls.PrimaryMovement;
-		/// if this is true, the character will continuously fire its weapon
-		[Tooltip("if this is true, the character will continuously fire its weapon")]
+        /// 이것이 사실이라면 캐릭터는 계속해서 무기를 발사할 것입니다.
+        [Tooltip("이것이 사실이라면 캐릭터는 계속해서 무기를 발사할 것입니다.")]
 		public bool ForceAlwaysShoot = false;
 
 		[Header("Buffering")]
-		/// whether or not attack input should be buffered, letting you prepare an attack while another is being performed, making it easier to chain them
-		[Tooltip("whether or not attack input should be buffered, letting you prepare an attack while another is being performed, making it easier to chain them")]
+        /// 공격 입력을 버퍼링해야 하는지 여부를 통해 다른 공격이 수행되는 동안 공격을 준비할 수 있어 공격 연결이 더 쉬워집니다.
+        [Tooltip("공격 입력을 버퍼링해야 하는지 여부를 통해 다른 공격이 수행되는 동안 공격을 준비할 수 있어 공격 연결이 더 쉬워집니다.")]
 		public bool BufferInput;
-		/// if this is true, every new input will prolong the buffer
-		[MMCondition("BufferInput", true)]
-		[Tooltip("if this is true, every new input will prolong the buffer")]
+        /// 이것이 사실이라면 모든 새로운 입력은 버퍼를 연장시킵니다.
+        [MMCondition("BufferInput", true)]
+		[Tooltip("이것이 사실이라면 모든 새로운 입력은 버퍼를 연장시킵니다.")]
 		public bool NewInputExtendsBuffer;
-		/// the maximum duration for the buffer, in seconds
-		[MMCondition("BufferInput", true)]
-		[Tooltip("the maximum duration for the buffer, in seconds")]
+        /// 버퍼의 최대 지속 시간(초)
+        [MMCondition("BufferInput", true)]
+		[Tooltip("버퍼의 최대 지속 시간(초)")]
 		public float MaximumBufferDuration = 0.25f;
-		/// if this is true, and if this character is using GridMovement, then input will only be triggered when on a perfect tile
-		[MMCondition("BufferInput", true)]
-		[Tooltip("if this is true, and if this character is using GridMovement, then input will only be triggered when on a perfect tile")]
+        /// 이것이 사실이고 이 캐릭터가 GridMovement를 사용하고 있다면 입력은 완벽한 타일에 있을 때만 트리거됩니다.
+        [MMCondition("BufferInput", true)]
+		[Tooltip("이것이 사실이고 이 캐릭터가 GridMovement를 사용하고 있다면 입력은 완벽한 타일에 있을 때만 트리거됩니다.")]
 		public bool RequiresPerfectTile = false;
         
 		[Header("Debug")]
 
-		/// the weapon currently equipped by the Character
-		[MMReadOnly]
-		[Tooltip("the weapon currently equipped by the Character")]
+        /// 캐릭터가 현재 장착하고 있는 무기
+        [MMReadOnly]
+		[Tooltip("캐릭터가 현재 장착하고 있는 무기")]
 		public Weapon CurrentWeapon;
 
 		/// the ID / index of this CharacterHandleWeapon. This will be used to determine what handle weapon ability should equip a weapon.

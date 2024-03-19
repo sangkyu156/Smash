@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to an object and it will cause damage to objects that collide with it. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Damage/KillZone")]
+    /// <summary>
+    /// 이 구성요소를 개체에 추가하면 충돌하는 개체에 손상을 입힐 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Damage/KillZone")]
 	public class KillZone : TopDownMonoBehaviour
 	{
 		[Header("Targets")]
-		[MMInformation("This component will make your object kill objects that collide with it. Here you can define what layers will be killed.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("이 구성 요소는 개체가 충돌하는 개체를 죽이도록 만듭니다. 여기에서 어떤 레이어를 삭제할지 정의할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		// the layers containing the objects that will be damaged by this object
-		[Tooltip("the layers containing the objects that will be damaged by this object")]
+		[Tooltip("이 개체에 의해 손상될 개체를 포함하는 레이어")]
 		public LayerMask TargetLayerMask = LayerManager.PlayerLayerMask;
 
 		protected Health _colliderHealth;

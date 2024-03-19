@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// This class lets you bind keys to specific slots in a target inventory, and associate an action to execute when that key is pressed.
-	/// A typical use case would be a weapon bar, where pressing 1 equips a gun, pressing 2 equips a shotgun, etc.
-	/// Coincidentally, that's what the PixelRogueWeaponBar demo scene demonstrates.
-	/// </summary>
-	public class InventoryInputActions : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 사용하면 대상 인벤토리의 특정 슬롯에 키를 바인딩하고 해당 키를 누를 때 실행할 작업을 연결할 수 있습니다.
+    /// 일반적인 사용 사례는 무기 막대입니다. 여기서 1을 누르면 총이 장착되고, 2를 누르면 산탄총이 장착됩니다.
+    /// 우연히도 이것이 PixelRogueWeaponBar 데모 장면에서 보여주는 것입니다.
+    /// </summary>
+    public class InventoryInputActions : MonoBehaviour
 	{
-		/// <summary>
-		/// A class used to store slot / key / action bindings 
-		/// </summary>
-		[System.Serializable]
+        /// <summary>
+        /// 슬롯/키/액션 바인딩을 저장하는 데 사용되는 클래스
+        /// </summary>
+        [System.Serializable]
 		public class InventoryInputActionsBindings
 		{
 			/// the slot in the target inventory to bind an action to 
@@ -29,11 +29,11 @@ namespace MoreMountains.InventoryEngine
 			/// whether or not this action should be triggered
 			public bool Active = true;
 		}
-        
-		/// <summary>
-		/// The possible actions that can be caused when activating input
-		/// </summary>
-		public enum Actions
+
+        /// <summary>
+        /// 입력을 활성화할 때 발생할 수 있는 동작
+        /// </summary>
+        public enum Actions
 		{
 			Equip,
 			Use,

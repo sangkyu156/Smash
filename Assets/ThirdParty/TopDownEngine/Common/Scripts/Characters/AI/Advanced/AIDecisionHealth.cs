@@ -5,23 +5,23 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true if the specified Health conditions are met. You can have it be lower, strictly lower, equal, higher or strictly higher than the specified value.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionHealth")]
+    /// <summary>
+    /// 지정된 상태 조건이 충족되면 이 결정은 true를 반환합니다. 지정된 값보다 낮거나, 엄격하게 낮거나, 같거나, 높거나, 엄격하게 높게 설정할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionHealth")]
 	//[RequireComponent(typeof(Health))]
 	public class AIDecisionHealth : AIDecision
 	{
 		/// the different comparison modes
 		public enum ComparisonModes { StrictlyLowerThan, LowerThan, Equals, GreaterThan, StrictlyGreaterThan }
-		/// the comparison mode with which we'll evaluate the HealthValue
-		[Tooltip("the comparison mode with which we'll evaluate the HealthValue")]
+        /// HealthValue를 평가할 비교 모드
+        [Tooltip("HealthValue를 평가할 비교 모드")]
 		public ComparisonModes TrueIfHealthIs;
-		/// the Health value to compare to
-		[Tooltip("the Health value to compare to")]
+        /// 비교할 건강 값
+        [Tooltip("비교할 건강 값")]
 		public int HealthValue;
-		/// whether we want this comparison to be done only once or not
-		[Tooltip("whether we want this comparison to be done only once or not")]
+        /// 이 비교를 한 번만 수행할지 여부
+        [Tooltip("이 비교를 한 번만 수행할지 여부")]
 		public bool OnlyOnce = true;
 
 		protected Health _health;

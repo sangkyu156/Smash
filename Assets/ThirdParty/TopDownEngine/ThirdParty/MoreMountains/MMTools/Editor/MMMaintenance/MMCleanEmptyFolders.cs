@@ -9,10 +9,10 @@ using System;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A maintenance class that removes all empty directories from a project via a menu item
-	/// </summary>
-	public class MMCleanEmptyFolders : MonoBehaviour
+    /// <summary>
+    /// 메뉴 항목을 통해 프로젝트에서 모든 빈 디렉토리를 제거하는 유지 관리 클래스
+    /// </summary>
+    public class MMCleanEmptyFolders : MonoBehaviour
 	{
 		static string _consoleLog = "";
 		static List<DirectoryInfo> _listOfEmptyDirectories = new List<DirectoryInfo>();

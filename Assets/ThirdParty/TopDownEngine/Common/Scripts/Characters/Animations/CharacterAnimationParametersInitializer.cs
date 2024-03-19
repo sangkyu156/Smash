@@ -8,10 +8,10 @@ using UnityEditor.Animations;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A struct used to store character animation parameter definitions, to be used by the CharacterAnimationParametersInitializer class
-	/// </summary>
-	public struct TopDownCharacterAnimationParameter
+    /// <summary>
+    /// CharacterAnimationParametersInitializer 클래스에서 사용할 캐릭터 애니메이션 매개변수 정의를 저장하는 데 사용되는 구조체입니다.
+    /// </summary>
+    public struct TopDownCharacterAnimationParameter
 	{
 		/// the name of the parameter
 		public string ParameterName;
@@ -31,8 +31,8 @@ namespace MoreMountains.TopDownEngine
 	public class CharacterAnimationParametersInitializer : TopDownMonoBehaviour
 	{
 		[Header("Initialization")]
-		/// if this is true, this component will remove itself after adding the character parameters
-		[Tooltip("if this is true, this component will remove itself after adding the character parameters")]
+        /// 이것이 사실이라면 이 구성요소는 문자 매개변수를 추가한 후 자체적으로 제거됩니다.
+        [Tooltip("이것이 사실이라면 이 구성요소는 문자 매개변수를 추가한 후 자체적으로 제거됩니다.")]
 		public bool AutoRemoveAfterInitialization = true;
 		[MMInspectorButton("AddAnimationParameters")]
 		public bool AddAnimationParametersButton;

@@ -8,18 +8,18 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A static class used to save / load peaks once they've been computed
-	/// </summary>
-	public static class PeaksSaver
+    /// <summary>
+    /// 계산된 피크를 저장/로드하는 데 사용되는 정적 클래스
+    /// </summary>
+    public static class PeaksSaver
 	{
 		public static float[] Peaks;
 	}
 
-	/// <summary>
-	/// An event you can listen to that will get automatically triggered for every remapped beat
-	/// </summary>
-	public struct MMBeatEvent
+    /// <summary>
+    /// 리매핑된 모든 비트에 대해 자동으로 트리거되는 이벤트를 들을 수 있습니다.
+    /// </summary>
+    public struct MMBeatEvent
 	{
 		static private event Delegate OnEvent;
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)] private static void RuntimeInitialization() { OnEvent = null; }
@@ -90,28 +90,28 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// This component lets you pick an audio source (either global : the whole scene's audio, a unique source, or the 
-	/// microphone), and will cut it into chunks that you can then use to emit beat events, that other objects can consume and act upon. 
-	/// The sample interval is the frequency at which sound will be analyzed, the amount of spectrum samples will determine the 
-	/// accuracy of the sampling, the window defines the method used to reduce leakage, and the number of bands 
-	/// will determine in how many bands you want to cut the sound. The more bands, the more levers you'll have to play with afterwards.
-	/// In general, for all of these settings, higher values mean better quality and lower performance. The buffer speed determines how 
-	/// fast buffered band levels readjust.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Audio/MMAudioAnalyzer")]
+    /// <summary>
+    /// 이 구성 요소를 사용하면 오디오 소스(전역: 전체 장면의 오디오, 고유 소스 또는
+    /// 마이크) 비트 이벤트를 내보내는 데 사용할 수 있고 다른 객체가 소비하고 작동할 수 있는 덩어리로 잘라냅니다.
+    /// 샘플 간격은 소리가 분석되는 주파수이며, 스펙트럼 샘플의 양에 따라 소리가 결정됩니다.
+    /// 샘플링의 정확성, 창은 누출을 줄이는 데 사용되는 방법 및 밴드 수를 정의합니다.
+    /// 사운드를 잘라낼 밴드 수를 결정합니다. 밴드가 많을수록 나중에 연주해야 할 레버가 많아집니다.
+    /// 일반적으로 이러한 모든 설정에서 값이 높을수록 품질은 좋아지고 성능은 낮아집니다. 버퍼 속도에 따라 방법이 결정됩니다.
+    /// 빠른 버퍼링된 밴드 레벨을 재조정합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Audio/MMAudioAnalyzer")]
 	public class MMAudioAnalyzer : MonoBehaviour
 	{
 		public enum Modes { Global, AudioSource, Microphone }
 
 		[Header("Source")]
-		[MMInformation("This component lets you pick an audio source (either global : the whole scene's audio, a unique source, or the " +
-		               "microphone), and will cut it into chunks that you can then use to emit beat events, that other objects can consume and act upon. " +
-		               "The sample interval is the frequency at which sound will be analyzed, the amount of spectrum samples will determine the " +
-		               "accuracy of the sampling, the window defines the method used to reduce leakage, and the number of bands " +
-		               "will determine in how many bands you want to cut the sound. The more bands, the more levers you'll have to play with afterwards." +
-		               "In general, for all of these settings, higher values mean better quality and lower performance. The buffer speed determines how " +
-		               "fast buffered band levels readjust.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("이 구성 요소를 사용하면 오디오 소스(전역: 전체 장면의 오디오, 고유 소스 또는 " +
+"마이크)를 비트 이벤트를 내보내는 데 사용할 수 있고 다른 객체가 소비하고 작동할 수 있는 덩어리로 잘라냅니다." +
+"샘플 간격은 소리가 분석되는 주파수이며, 스펙트럼 샘플의 양에 따라 " +
+"샘플링의 정확성, 창은 누출을 줄이는 데 사용되는 방법 및 밴드 수를 정의합니다." +
+"사운드를 자르고 싶은 밴드 수를 결정합니다. 밴드가 많을수록 나중에 연주해야 할 레버도 많아집니다." +
+"일반적으로 이러한 모든 설정에서 값이 높을수록 품질은 좋아지고 성능은 낮아집니다. 버퍼 속도에 따라 품질이 결정됩니다." +
+"빠른 버퍼링된 밴드 레벨이 재조정됩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		[MMReadOnlyWhenPlaying]
 		public Modes Mode = Modes.Global;
 		[MMEnumCondition("Mode", (int)Modes.AudioSource)]

@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A class handling the lifecycle of the balls included in the MMFeedbacks demo
-	/// It waits for 2 seconds after the spawn of the ball, and destroys it, playing a MMFeedbacks while it does so
-	/// </summary>
-	public class DemoBall : MonoBehaviour
+    /// <summary>
+    /// MMFeedbacks 데모에 포함된 공의 수명 주기를 처리하는 클래스
+    /// 공이 생성된 후 2초를 기다린 후 공을 파괴하고 그 동안 MMFeedbacks를 재생합니다.
+    /// </summary>
+    public class DemoBall : MonoBehaviour
 	{
 		/// the duration (in seconds) of the life of the ball
 		public float LifeSpan = 2f;

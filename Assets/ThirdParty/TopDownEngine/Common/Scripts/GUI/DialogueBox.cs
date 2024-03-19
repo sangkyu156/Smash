@@ -6,23 +6,23 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Dialogue box class. Don't add this directly to your game, look at DialogueZone instead.
-	/// </summary>
-	public class DialogueBox : TopDownMonoBehaviour
+    /// <summary>
+    /// 대화 상자 클래스. 이것을 게임에 직접 추가하지 말고 대신 DialogueZone을 살펴보세요.
+    /// </summary>
+    public class DialogueBox : TopDownMonoBehaviour
 	{
 		[Header("Dialogue Box")]
 		/// the text panel background
-		[Tooltip("the text panel background")]
+		[Tooltip("텍스트 패널 배경")]
 		public CanvasGroup TextPanelCanvasGroup;
 		/// the text to display
-		[Tooltip("the text to display")]
+		[Tooltip("표시할 텍스트")]
 		public Text DialogueText;
 		/// the Button A prompt
-		[Tooltip("the Button A prompt")]
+		[Tooltip("버튼 A 프롬프트")]
 		public CanvasGroup Prompt;
 		/// the list of images to colorize
-		[Tooltip("the list of images to colorize")]
+		[Tooltip("색상화할 이미지 목록")]
 		public List<Image> ColorImages;
 
 		protected Color _backgroundColor;

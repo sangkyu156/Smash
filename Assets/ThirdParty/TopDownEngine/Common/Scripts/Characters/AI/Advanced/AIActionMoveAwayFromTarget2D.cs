@@ -5,15 +5,15 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterMovement ability. Makes the character move away from the target. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveAwayFromTarget2D")]
+    /// <summary>
+    /// CharacterMovement 능력이 필요합니다. 캐릭터를 대상으로부터 멀어지게 만듭니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveAwayFromTarget2D")]
 	//[RequireComponent(typeof(CharacterMovement))]
 	public class AIActionMoveAwayFromTarget2D : AIAction
 	{
-		/// the maximum distance away from the target this Character can reach.
-		[Tooltip("the maximum distance away from the target this Character can reach.")]
+        /// 이 캐릭터가 도달할 수 있는 대상으로부터 최대 거리입니다.
+        [Tooltip("이 캐릭터가 도달할 수 있는 대상으로부터 최대 거리입니다.")]
 		public float MaximumDistance = 5f;
 
 		protected CharacterMovement _characterMovement;

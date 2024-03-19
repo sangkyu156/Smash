@@ -10,11 +10,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a URP depth of field post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_URP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// 이 클래스를 URP 심도 사후 처리를 사용하여 카메라에 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_URP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMDepthOfFieldShaker_URP")]
 	public class MMDepthOfFieldShaker_URP : MMShaker
@@ -24,38 +24,38 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMInspectorGroup("Focus Distance", true, 51)]
 		/// the curve used to animate the focus distance value on
-		[Tooltip("the curve used to animate the focus distance value on")]
+		[Tooltip("초점 거리 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFocusDistance = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapFocusDistanceZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapFocusDistanceOne = 3f;
 
 		[MMInspectorGroup("Aperture", true, 52)]
 		/// the curve used to animate the aperture value on
-		[Tooltip("the curve used to animate the aperture value on")]
+		[Tooltip("조리개 값에 애니메이션을 적용하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeAperture = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Range(0.1f, 32f)]
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		public float RemapApertureZero = 0f;
 		/// the value to remap the curve's 1 to
 		[Range(0.1f, 32f)]
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		public float RemapApertureOne = 0f;
 
 		[MMInspectorGroup("Focal Length", true, 53)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFocalLength = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(0f, 300f)]
 		public float RemapFocalLengthZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(0f, 300f)]
 		public float RemapFocalLengthOne = 0f;
 

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This Decision will return true if any object on its TargetLayer layermask enters its line of sight. It will also set the Brain's Target to that object. You can choose to have it in ray mode, in which case its line of sight will be an actual line (a raycast), or have it be wider (in which case it'll use a spherecast). You can also specify an offset for the ray's origin, and an obstacle layer mask that will block it.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetLine2D")]
+    /// <summary>
+    /// 이 결정은 TargetLayer 레이어 마스크의 개체가 시선에 들어오면 true를 반환합니다. 또한 뇌의 대상을 해당 개체로 설정합니다. 광선 모드를 선택할 수 있습니다. 이 경우 시야선은 실제 선(레이캐스트)이 되거나 더 넓어집니다(이 경우 스피어캐스트를 사용함). 광선 원점에 대한 오프셋과 이를 차단하는 장애물 레이어 마스크를 지정할 수도 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetLine2D")]
 	//[RequireComponent(typeof(Character))]
 	//[RequireComponent(typeof(CharacterOrientation2D))]
 	public class AIDecisionDetectTargetLine2D : AIDecision
@@ -18,31 +18,31 @@ namespace MoreMountains.TopDownEngine
 		/// the possible detection directions
 		public enum DetectionDirections { Front, Back, Both }
 		/// the detection method
-		[Tooltip("the selected detection method : ray is a single ray, wide ray is more expensive but also more accurate")]
+		[Tooltip("선택된 감지 방법: 광선은 단일 광선이고, 넓은 광선은 더 비싸지만 더 정확합니다.")]
 		public DetectMethods DetectMethod = DetectMethods.Ray;
 		/// the detection direction
-		[Tooltip("the detection direction : front, back, or both")]
+		[Tooltip("감지 방향: 앞, 뒤 또는 둘 다")]
 		public DetectionDirections DetectionDirection = DetectionDirections.Front;
-		/// the width of the ray to cast (if we're in WideRay mode only
-		[Tooltip("the width of the ray to cast (if we're in WideRay mode only")]
+        /// 투사할 광선의 너비(WideRay 모드에만 있는 경우)
+        [Tooltip("투사할 광선의 너비(WideRay 모드에만 있는 경우)")]
 		public float RayWidth = 1f;
-		/// the distance up to which we'll cast our rays
-		[Tooltip("the distance up to which we'll cast our rays")]
+        /// 우리가 광선을 투사할 거리
+        [Tooltip("우리가 광선을 투사할 거리")]
 		public float DetectionDistance = 10f;
-		/// the offset to apply to the ray(s)
-		[Tooltip("the offset to apply to the ray(s)")]
+        /// 광선에 적용할 오프셋
+        [Tooltip("광선에 적용할 오프셋")]
 		public Vector3 DetectionOriginOffset = new Vector3(0,0,0);
-		/// the layer(s) on which we want to search a target on
-		[Tooltip("the layer(s) on which we want to search a target on")]
+        /// 대상을 검색하려는 레이어
+        [Tooltip("대상을 검색하려는 레이어")]
 		public LayerMask TargetLayer;
-		/// the layer(s) on which obstacles are set. Obstacles will block the ray
-		[Tooltip("the layer(s) on which obstacles are set. Obstacles will block the ray")]
+        /// 장애물이 설정된 레이어입니다. 장애물이 광선을 차단합니다.
+        [Tooltip("장애물이 설정된 레이어입니다. 장애물이 광선을 차단합니다.")]
 		public LayerMask ObstaclesLayer = LayerManager.ObstaclesLayerMask;
-		/// a transform to use as the rotation reference for detection raycasts. If you have a rotating model for example, you'll want to set it as your reference transform here.
-		[Tooltip("a transform to use as the rotation reference for detection raycasts. If you have a rotating model for example, you'll want to set it as your reference transform here.")]
+        /// 감지 레이캐스트에 대한 회전 참조로 사용할 변환입니다. 예를 들어 회전 모델이 있는 경우 여기에서 이를 참조 변환으로 설정하고 싶을 것입니다.
+        [Tooltip("감지 레이캐스트에 대한 회전 참조로 사용할 변환입니다. 예를 들어 회전 모델이 있는 경우 여기에서 이를 참조 변환으로 설정하고 싶을 것입니다.")]
 		public Transform ReferenceTransform;
-		/// if this is true, this decision will set the AI Brain's Target to null if no target is found
-		[Tooltip("if this is true, this decision will set the AI Brain's Target to null if no target is found")]
+        /// 이것이 사실이라면 이 결정은 대상이 발견되지 않으면 AI Brain의 대상을 null로 설정합니다.
+        [Tooltip("이것이 사실이라면 이 결정은 대상이 발견되지 않으면 AI Brain의 대상을 null로 설정합니다.")]
 		public bool SetTargetToNullIfNoneIsFound = true;
 
 		protected Vector2 _direction;

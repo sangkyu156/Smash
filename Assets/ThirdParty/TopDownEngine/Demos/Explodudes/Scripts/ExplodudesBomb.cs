@@ -7,71 +7,71 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class used in the Explodudes demo scene to handle the exploding bombs
-	/// </summary>
-	public class ExplodudesBomb : TopDownMonoBehaviour
+    /// <summary>
+    /// 폭발하는 폭탄을 처리하기 위해 Explodude 데모 장면에서 사용되는 클래스
+    /// </summary>
+    public class ExplodudesBomb : TopDownMonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the model of the bomb
-		[Tooltip("the model of the bomb")]
+		[Tooltip("폭탄의 모델")]
 		public Transform BombModel;
 		/// the particle system used for the northbound explosion
-		[Tooltip("the particle system used for the northbound explosion")]
+		[Tooltip("북쪽 방향 폭발에 사용된 입자 시스템")]
 		public ParticleSystem DirectedExplosionN;
 		/// the particle system used for the southbound explosion
-		[Tooltip("the particle system used for the southbound explosion")]
+		[Tooltip("남쪽 방향 폭발에 사용된 입자 시스템")]
 		public ParticleSystem DirectedExplosionS;
 		/// the particle system used for the eastbound explosion
-		[Tooltip("the particle system used for the eastbound explosion")]
+		[Tooltip("동쪽 방향 폭발에 사용된 입자 시스템")]
 		public ParticleSystem DirectedExplosionE;
 		/// the particle system used for the westbound explosion
-		[Tooltip("the particle system used for the westbound explosion")]
+		[Tooltip("서쪽 방향 폭발에 사용된 입자 시스템")]
 		public ParticleSystem DirectedExplosionW;
 
 		[Header("Raycasts")]
 		/// the offset to apply to the base of the obstacle detecting raycast
-		[Tooltip("the offset to apply to the base of the obstacle detecting raycast")]
+		[Tooltip("장애물 감지 레이캐스트의 베이스에 적용할 오프셋")]
 		public Vector3 RaycastOffset = Vector3.zero;
 		/// the max distance of the raycast (should be bigger than the grid)
-		[Tooltip("the max distance of the raycast (should be bigger than the grid)")]
+		[Tooltip("레이캐스트의 최대 거리(그리드보다 커야 함)")]
 		public float MaximumRaycastDistance = 50f;
 		/// the layers to consider as obstacles to the bomb's fire
-		[Tooltip("the layers to consider as obstacles to the bomb's fire")]
+		[Tooltip("폭탄 발사에 대한 장애물로 간주되는 층")]
 		public LayerMask ObstaclesMask = LayerManager.ObstaclesLayerMask;
 		/// the layers to apply damage to
-		[Tooltip("the layers to apply damage to")]
+		[Tooltip("피해를 입힐 레이어")]
 		public LayerMask DamageLayerMask;
 		/// a small offset to apply to the raycasts
-		[Tooltip("a small offset to apply to the raycasts")]
+		[Tooltip("레이캐스트에 적용할 작은 오프셋")]
 		public float SkinWidth = 0.01f;
 
 		[Header("Bomb")]
 		/// the delay (in seconds) before the bomb's explosion
-		[Tooltip("the delay (in seconds) before the bomb's explosion")]
+		[Tooltip("폭탄이 폭발하기 전의 지연 시간(초)")]
 		public float BombDelayBeforeExplosion = 3f;
 		/// the duration (in seconds) for which the bomb is active
-		[Tooltip("the duration (in seconds) for which the bomb is active")]
+		[Tooltip("폭탄이 활성화된 기간(초)")]
 		public float BombExplosionActiveDuration = 0.5f;
 		/// a delay after the bomb has exploded and before it gets destroyed(in seconds)
-		[Tooltip("a delay after the bomb has exploded and before it gets destroyed(in seconds)")]
+		[Tooltip("폭탄이 폭발한 후 파괴되기 전의 지연 시간(초)")]
 		public float BombAdditionalDelayBeforeDestruction = 1.5f;
 		/// the damage applied by the bomb to anything with a Health component
-		[Tooltip("the damage applied by the bomb to anything with a Health component")]
+		[Tooltip("건강 구성요소가 있는 모든 것에 폭탄이 적용하는 피해")]
 		public int BombDamage = 10;
 		/// the distance the bomb affects
-		[Tooltip("the distance the bomb affects")]
+		[Tooltip("폭탄이 영향을 미치는 거리")]
 		public int BombDistanceInGridUnits = 3;
 
 		[Header("Feedbacks")]
 		/// the feedbacks to play when the bomb explodes
-		[Tooltip("the feedbacks to play when the bomb explodes")]
+		[Tooltip("폭탄이 터졌을 때 플레이할 피드백")]
 		public MMFeedbacks ExplosionFeedbacks;
 
 		[Header("Owner")]
 		/// the owner of the bomb
 		[MMReadOnly]
-		[Tooltip("the owner of the bomb")]
+		[Tooltip("폭탄의 주인")]
 		public GameObject Owner;
         
 		protected BoxCollider _boxCollider;

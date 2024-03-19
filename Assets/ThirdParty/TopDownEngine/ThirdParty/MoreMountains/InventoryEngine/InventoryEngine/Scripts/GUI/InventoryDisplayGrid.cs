@@ -2,11 +2,11 @@
 using System.Collections;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// The class used to reference the grid component of an InventoryDisplay
-	/// </summary>
-	public class InventoryDisplayGrid : MonoBehaviour 
+{
+    /// <summary>
+    /// InventoryDisplay의 그리드 구성 요소를 참조하는 데 사용되는 클래스
+    /// </summary>
+    public class InventoryDisplayGrid : MonoBehaviour 
 	{
 				
 	}

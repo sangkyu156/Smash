@@ -12,10 +12,10 @@ namespace MoreMountains.Tools
 	[System.Serializable]
 	public class ProgressEvent : UnityEvent<float>{}
 
-	/// <summary>
-	/// A simple class used to store additive loading settings
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 추가 로딩 설정을 저장하는 데 사용되는 간단한 클래스
+    /// </summary>
+    [Serializable]
 	public class MMAdditiveSceneLoadingManagerSettings
 	{
 		
@@ -23,59 +23,59 @@ namespace MoreMountains.Tools
 		public enum UnloadMethods { None, ActiveScene, AllScenes };
 		
 		/// the name of the MMSceneLoadingManager scene you want to use when in additive mode
-		[Tooltip("the name of the MMSceneLoadingManager scene you want to use when in additive mode")]
+		[Tooltip("추가 모드에서 사용하려는 MMSceneLoadingManager 장면의 이름")]
 		public string LoadingSceneName = "MMAdditiveLoadingScreen";
 		/// when in additive loading mode, the thread priority to apply to the loading
-		[Tooltip("when in additive loading mode, the thread priority to apply to the loading")]
+		[Tooltip("추가 로딩 모드에 있을 때 로딩에 적용할 스레드 우선순위")]
 		public ThreadPriority ThreadPriority = ThreadPriority.High;
 		/// whether or not to make additional sanity checks (better leave this to true)
-		[Tooltip("whether or not to make additional sanity checks (better leave this to true)")]
+		[Tooltip("추가 온전성 검사를 수행할지 여부(true로 두는 것이 좋음)")]
 		public bool SecureLoad = true;
 		/// when in additive loading mode, whether or not to interpolate the progress bar's progress
-		[Tooltip("when in additive loading mode, whether or not to interpolate the progress bar's progress")]
+		[Tooltip("추가 로딩 모드에서 진행률 표시줄의 진행률을 보간할지 여부")]
 		public bool InterpolateProgress = true;
 		/// when in additive loading mode, when in additive loading mode, the duration (in seconds) of the delay before the entry fade
-		[Tooltip("when in additive loading mode, when in additive loading mode, the duration (in seconds) of the delay before the entry fade")]
+		[Tooltip("추가 로딩 모드에 있는 경우, 추가 로딩 모드에 있는 경우 항목이 페이드되기 전의 지연 기간(초)입니다.")]
 		public float BeforeEntryFadeDelay = 0f;
 		/// when in additive loading mode, the duration (in seconds) of the entry fade
-		[Tooltip("when in additive loading mode, the duration (in seconds) of the entry fade")]
+		[Tooltip("추가 로딩 모드에 있을 때 항목 페이드의 지속 시간(초)")]
 		public float EntryFadeDuration = 0.25f;
 		/// when in additive loading mode, the duration (in seconds) of the delay before the entry fade
-		[Tooltip("when in additive loading mode, the duration (in seconds) of the delay before the entry fade")]
+		[Tooltip("추가 로딩 모드에 있을 때 항목이 페이드되기 전의 지연 기간(초)입니다.")]
 		public float AfterEntryFadeDelay = 0.1f;
 		/// when in additive loading mode, the duration (in seconds) of the delay before the exit fade
-		[Tooltip("when in additive loading mode, the duration (in seconds) of the delay before the exit fade")]
+		[Tooltip("추가 로딩 모드에 있을 때 종료 페이드 전 지연 시간(초)입니다.")]
 		public float BeforeExitFadeDelay = 0.25f;
 		/// when in additive loading mode, the duration (in seconds) of the exit fade
-		[Tooltip("when in additive loading mode, the duration (in seconds) of the exit fade")]
+		[Tooltip("추가 로딩 모드에 있을 때 종료 페이드 지속 시간(초)")]
 		public float ExitFadeDuration = 0.2f;
 		/// when in additive loading mode, when in additive loading mode, the tween to use to fade on entry
-		[Tooltip("when in additive loading mode, when in additive loading mode, the tween to use to fade on entry")]
+		[Tooltip("추가 로딩 모드에 있는 경우, 추가 로딩 모드에 있는 경우 항목 시 페이드에 사용할 트윈")]
 		public MMTweenType EntryFadeTween = null;
 		/// when in additive loading mode, the tween to use to fade on exit
-		[Tooltip("when in additive loading mode, the tween to use to fade on exit")]
+		[Tooltip("추가 로딩 모드에 있을 때 종료 시 페이드하는 데 사용할 트윈")]
 		public MMTweenType ExitFadeTween = null;
 		/// when in additive loading mode, the speed at which the loader's progress bar should move
-		[Tooltip("when in additive loading mode, the speed at which the loader's progress bar should move")]
+		[Tooltip("추가 로딩 모드에 있을 때 로더의 진행률 표시줄이 이동해야 하는 속도")]
 		public float ProgressBarSpeed = 5f;
 		/// when in additive loading mode, the selective additive fade mode
-		[Tooltip("when in additive loading mode, the selective additive fade mode")]
+		[Tooltip("첨가제 로딩 모드에 있을 때 선택적 첨가제 페이드 모드")]
 		public MMAdditiveSceneLoadingManager.FadeModes FadeMode = MMAdditiveSceneLoadingManager.FadeModes.FadeInThenOut;
 		/// the chosen way to unload scenes (none, only the active scene, all loaded scenes)
-		[Tooltip("the chosen way to unload scenes (none, only the active scene, all loaded scenes)")]
+		[Tooltip("장면을 언로드하기 위해 선택한 방법(없음, 활성 장면만, 로드된 모든 장면)")]
 		public UnloadMethods UnloadMethod = UnloadMethods.AllScenes;
-		/// the name of the anti spill scene to use when loading additively.
-		/// If left empty, that scene will be automatically created, but you can specify any scene to use for that. Usually you'll want your own anti spill scene to be just an empty scene, but you can customize its lighting settings for example.
-		[Tooltip("the name of the anti spill scene to use when loading additively." +
-		         "If left empty, that scene will be automatically created, but you can specify any scene to use for that. Usually you'll want your own anti spill scene to be just an empty scene, but you can customize its lighting settings for example.")]
+        /// 추가로 로드할 때 사용할 유출 방지 장면의 이름입니다.
+        /// 비워두면 해당 장면이 자동으로 생성되지만 이에 사용할 장면을 지정할 수 있습니다. 일반적으로 유출 방지 장면을 빈 장면으로 만들고 싶지만 예를 들어 조명 설정을 사용자 정의할 수 있습니다.
+        [Tooltip("추가로 로드할 때 사용할 유출 방지 장면의 이름입니다." +
+                 "비워두면 해당 장면이 자동으로 생성되지만 이에 사용할 장면을 지정할 수 있습니다. 일반적으로 유출 방지 장면을 빈 장면으로 만들고 싶지만 예를 들어 조명 설정을 사용자 정의할 수 있습니다.")]
 		public string AntiSpillSceneName = "";
 	}
-	
-	/// <summary>
-	/// A class to load scenes using a loading screen instead of just the default API
-	/// This is a new version of the classic LoadingSceneManager (now renamed to MMSceneLoadingManager for consistency)
-	/// </summary>
-	public class MMAdditiveSceneLoadingManager : MonoBehaviour 
+
+    /// <summary>
+    /// 기본 API 대신 로딩 화면을 사용하여 장면을 로드하는 클래스
+    /// 이는 기존 LoadingSceneManager의 새 버전입니다(일관성을 위해 이제 MMSceneLoadingManager로 이름이 변경됨).
+    /// </summary>
+    public class MMAdditiveSceneLoadingManager : MonoBehaviour 
 	{
 		/// The possible orders in which to play fades (depends on the fade you've set in your loading screen
 		public enum FadeModes { FadeInThenOut, FadeOutThenIn }
@@ -85,56 +85,56 @@ namespace MoreMountains.Tools
 		
 		[Header("Settings")]
 		/// the ID on which to trigger a fade, has to match the ID on the fader in your scene
-		[Tooltip("the ID on which to trigger a fade, has to match the ID on the fader in your scene")]
+		[Tooltip("페이드를 트리거하는 ID는 장면의 페이더에 있는 ID와 일치해야 합니다.")]
 		public int FaderID = 500;
 		/// whether or not to output debug messages to the console
-		[Tooltip("whether or not to output debug messages to the console")]
+		[Tooltip("콘솔에 디버그 메시지를 출력할지 여부")]
 		public bool DebugMode = false;
 
 		[Header("Progress Events")] 
 		/// an event used to update progress 
-		[Tooltip("an event used to update progress")]
+		[Tooltip("진행 상황을 업데이트하는 데 사용되는 이벤트")]
 		public ProgressEvent SetRealtimeProgressValue;
 		/// an event used to update progress with interpolation
-		[Tooltip("an event used to update progress with interpolation")]
+		[Tooltip("보간을 통해 진행 상황을 업데이트하는 데 사용되는 이벤트")]
 		public ProgressEvent SetInterpolatedProgressValue;
 
 		[Header("State Events")]
 		/// an event that will be invoked when the load starts
-		[Tooltip("an event that will be invoked when the load starts")]
+		[Tooltip("로드가 시작될 때 호출될 이벤트")]
 		public UnityEvent OnLoadStarted;
 		/// an event that will be invoked when the delay before the entry fade starts
-		[Tooltip("an event that will be invoked when the delay before the entry fade starts")]
+		[Tooltip("항목 페이드가 시작되기 전 지연이 발생할 때 호출되는 이벤트")]
 		public UnityEvent OnBeforeEntryFade;
 		/// an event that will be invoked when the entry fade starts
-		[Tooltip("an event that will be invoked when the entry fade starts")]
+		[Tooltip("항목 페이드가 시작될 때 호출될 이벤트")]
 		public UnityEvent OnEntryFade;
 		/// an event that will be invoked when the delay after the entry fade starts
-		[Tooltip("an event that will be invoked when the delay after the entry fade starts")]
+		[Tooltip("항목 페이드가 시작된 후 지연이 시작될 때 호출되는 이벤트")]
 		public UnityEvent OnAfterEntryFade;
 		/// an event that will be invoked when the origin scene gets unloaded
-		[Tooltip("an event that will be invoked when the origin scene gets unloaded")]
+		[Tooltip("원본 장면이 언로드될 때 호출될 이벤트")]
 		public UnityEvent OnUnloadOriginScene;
 		/// an event that will be invoked when the destination scene starts loading
-		[Tooltip("an event that will be invoked when the destination scene starts loading")]
+		[Tooltip("대상 장면이 로드되기 시작할 때 호출될 이벤트")]
 		public UnityEvent OnLoadDestinationScene;
 		/// an event that will be invoked when the load of the destination scene is complete
-		[Tooltip("an event that will be invoked when the load of the destination scene is complete")]
+		[Tooltip("대상 장면의 로드가 완료되면 호출될 이벤트")]
 		public UnityEvent OnLoadProgressComplete;
 		/// an event that will be invoked when the interpolated load of the destination scene is complete
-		[Tooltip("an event that will be invoked when the interpolated load of the destination scene is complete")]
+		[Tooltip("대상 장면의 보간된 로드가 완료되면 호출될 이벤트")]
 		public UnityEvent OnInterpolatedLoadProgressComplete;
 		/// an event that will be invoked when the delay before the exit fade starts
-		[Tooltip("an event that will be invoked when the delay before the exit fade starts")]
+		[Tooltip("종료 페이드가 시작되기 전의 지연이 시작될 때 호출될 이벤트")]
 		public UnityEvent OnBeforeExitFade;
 		/// an event that will be invoked when the exit fade starts
-		[Tooltip("an event that will be invoked when the exit fade starts")]
+		[Tooltip("종료 페이드가 시작될 때 호출될 이벤트")]
 		public UnityEvent OnExitFade;
 		/// an event that will be invoked when the destination scene gets activated
-		[Tooltip("an event that will be invoked when the destination scene gets activated")]
+		[Tooltip("대상 장면이 활성화될 때 호출될 이벤트")]
 		public UnityEvent OnDestinationSceneActivation;
 		/// an event that will be invoked when the scene loader gets unloaded
-		[Tooltip("an event that will be invoked when the scene loader gets unloaded")]
+		[Tooltip("씬 로더가 언로드될 때 호출될 이벤트")]
 		public UnityEvent OnUnloadSceneLoader;
 
 		protected static bool _interpolateProgress;

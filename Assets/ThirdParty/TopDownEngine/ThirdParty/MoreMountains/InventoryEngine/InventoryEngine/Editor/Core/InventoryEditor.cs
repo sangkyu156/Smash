@@ -8,10 +8,10 @@ using UnityEngine.UI;
 namespace MoreMountains.InventoryEngine
 {	
 	[CustomEditor(typeof(Inventory),true)]
-	/// <summary>
-	/// Custom editor for the Inventory component
-	/// </summary>
-	public class InventoryEditor : Editor 
+    /// <summary>
+    /// 인벤토리 구성요소용 사용자 정의 편집기
+    /// </summary>
+    public class InventoryEditor : Editor 
 	{
 		/// <summary>
 		/// Gets the target inventory component.

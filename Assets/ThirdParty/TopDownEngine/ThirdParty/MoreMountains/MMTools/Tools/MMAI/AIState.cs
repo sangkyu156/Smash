@@ -13,10 +13,10 @@ namespace MoreMountains.Tools
 	{
 	}
 
-	/// <summary>
-	/// A State is a combination of one or more actions, and one or more transitions. An example of a state could be "_patrolling until an enemy gets in range_".
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 상태는 하나 이상의 작업과 하나 이상의 전환의 조합입니다. 상태의 예로는 "_적이 범위 내에 들어올 때까지 순찰 중_"이 있습니다.
+    /// </summary>
+    [System.Serializable]
 	public class AIState 
 	{
 		/// the name of the state (will be used as a reference in Transitions

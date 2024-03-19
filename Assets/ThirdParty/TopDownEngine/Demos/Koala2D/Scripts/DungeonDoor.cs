@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class used in the Koala demo to handle the dungeon doors
-	/// </summary>
-	[ExecuteInEditMode]
+    /// <summary>
+    /// 던전 문을 처리하기 위해 Koala 데모에서 사용된 클래스
+    /// </summary>
+    [ExecuteInEditMode]
 	public class DungeonDoor : TopDownMonoBehaviour
 	{
 		/// the possible states of the door
@@ -16,18 +16,18 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Bindings)")]
 		/// the top part of the door
-		[Tooltip("the top part of the door")]
+		[Tooltip("문 윗부분")]
 		public GameObject OpenDoorTop;
 		/// the bottom part of the door
-		[Tooltip("the bottom part of the door")]
+		[Tooltip("문 아래쪽 부분")]
 		public GameObject OpenDoorBottom;
 		/// the object to show when the door is closed
-		[Tooltip("the object to show when the door is closed")]
+		[Tooltip("문이 닫혔을 때 보여지는 물체")]
 		public GameObject ClosedDoor;
 
 		[Header("State")]
 		/// the current state of the door
-		[Tooltip("the current state of the door")]
+		[Tooltip("현재 문 상태")]
 		public DoorStates DoorState = DoorStates.Open;
 
 		/// a test button to toggle the door open or closed

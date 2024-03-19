@@ -9,10 +9,10 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store and display a reorderable list of menu items
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 재정렬 가능한 메뉴 항목 목록을 저장하고 표시하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class MMDebugMenuItemList : MMReorderableArray<MMDebugMenuItem>
 	{
 

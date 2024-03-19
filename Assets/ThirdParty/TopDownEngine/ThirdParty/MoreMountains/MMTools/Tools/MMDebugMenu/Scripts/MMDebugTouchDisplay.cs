@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a canvas and it'll automatically reposition TouchPrefabs at the position of touches
-	/// You can set a higher TouchProvision if your game gets more than the default number (6) simultaneous touches
-	/// Disable/enable this mono for it to stop/work
-	/// </summary>
-	public class MMDebugTouchDisplay : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 캔버스에 추가하면 터치 위치에서 TouchPrefabs의 위치가 자동으로 변경됩니다.
+    /// 게임이 기본 동시 터치 수(6)보다 많은 경우 더 높은 TouchProvision을 설정할 수 있습니다.
+    /// 이 모노를 중지/작동하려면 비활성화/활성화합니다.
+    /// </summary>
+    public class MMDebugTouchDisplay : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the canvas to display the TouchPrefabs on

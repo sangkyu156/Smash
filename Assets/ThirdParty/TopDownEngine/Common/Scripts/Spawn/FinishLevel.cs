@@ -12,7 +12,7 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("Finish Level")]
         /// 전환할 레벨의 정확한 이름
-        [Tooltip("the exact name of the level to transition to ")]
+        [Tooltip("전환할 레벨의 정확한 이름")]
 		public string LevelName;
 
         /// <summary>

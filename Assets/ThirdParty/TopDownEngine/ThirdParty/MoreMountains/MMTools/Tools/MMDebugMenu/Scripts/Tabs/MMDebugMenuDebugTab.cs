@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to handle the display of a debug log tab in a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuDebugTab : MonoBehaviour
+    /// <summary>
+    /// MMDebugMenu에서 디버그 로그 탭 표시를 처리하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuDebugTab : MonoBehaviour
 	{
 		/// the scrollrect where the log will be displayed
 		public ScrollRect DebugScrollRect;

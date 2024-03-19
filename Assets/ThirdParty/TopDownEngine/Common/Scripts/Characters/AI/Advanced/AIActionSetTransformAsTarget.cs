@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An AIACtion used to set a specified Transform as the target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetTransformAsTarget")]
+    /// <summary>
+    /// 지정된 변환을 대상으로 설정하는 데 사용되는 AIACtion
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetTransformAsTarget")]
 	public class AIActionSetTransformAsTarget : AIAction
 	{
 		public Transform TargetTransform;

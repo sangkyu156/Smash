@@ -8,10 +8,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace MoreMountains.Tools
 {
 	[ExecuteAlways]
-	/// <summary>
-	/// This static class is in charge of storing the current state of the achievements, unlocking/locking them, and saving them to data files
-	/// </summary>
-	public static class MMAchievementManager
+    /// <summary>
+    /// 이 정적 클래스는 업적의 현재 상태를 저장하고, 업적을 잠금 해제/잠금하고, 데이터 파일에 저장하는 일을 담당합니다.
+    /// </summary>
+    public static class MMAchievementManager
 	{
 		public static List<MMAchievement> AchievementsList { get { return _achievements; }}
 

@@ -8,24 +8,24 @@ namespace MoreMountains.TopDownEngine
 {	
 	[CreateAssetMenu(fileName = "InventoryWeapon", menuName = "MoreMountains/TopDownEngine/InventoryWeapon", order = 2)]
 	[Serializable]
-	/// <summary>
-	/// Weapon item in the TopDown Engine
-	/// </summary>
-	public class InventoryWeapon : InventoryItem 
+    /// <summary>
+    /// TopDown 엔진의 무기 아이템
+    /// </summary>
+    public class InventoryWeapon : InventoryItem 
 	{
 		/// the possible auto equip modes
 		public enum AutoEquipModes { NoAutoEquip, AutoEquip, AutoEquipIfEmptyHanded }
         
 		[Header("Weapon")]
-		[MMInformation("Here you need to bind the weapon you want to equip when picking that item.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기서 해당 아이템을 선택할 때 장착하고 싶은 무기를 바인딩해야 합니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// the weapon to equip
-		[Tooltip("the weapon to equip")]
+		[Tooltip("장착할 무기")]
 		public Weapon EquippableWeapon;
 		/// how to equip this weapon when picked : not equip it, automatically equip it, or only equip it if no weapon is currently equipped
-		[Tooltip("how to equip this weapon when picked : not equip it, automatically equip it, or only equip it if no weapon is currently equipped")]
+		[Tooltip("이 무기를 선택했을 때 장착하는 방법: 장착하지 않음, 자동으로 장착, 현재 무기가 장착되어 있지 않은 경우에만 장착")]
 		public AutoEquipModes AutoEquipMode = AutoEquipModes.NoAutoEquip;
 		/// the ID of the CharacterHandleWeapon you want this weapon to be equipped to
-		[Tooltip("the ID of the CharacterHandleWeapon you want this weapon to be equipped to")]
+		[Tooltip("이 무기에 장착하려는 CharacterHandleWeapon의 ID")]
 		public int HandleWeaponID = 1;
 
 		/// <summary>

@@ -6,18 +6,18 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterMovement ability. Makes the character move up to the specified MinimumDistance in the direction of the target. 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveTowardsTarget2D")]
+    /// <summary>
+    /// RequiresCharacterMovement 능력. 캐릭터가 대상 방향으로 지정된 최소 거리만큼 이동하도록 합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveTowardsTarget2D")]
 	//[RequireComponent(typeof(CharacterMovement))]
 	public class AIActionMoveTowardsTarget2D : AIAction
 	{
-		/// if this is true, movement will be constrained to not overstep a certain distance to the target on the x axis
-		[Tooltip("if this is true, movement will be constrained to not overstep a certain distance to the target on the x axis")]
+        /// 이것이 사실이라면, x축의 대상까지의 특정 거리를 넘지 않도록 이동이 제한됩니다.
+        [Tooltip("이것이 사실이라면, x축의 대상까지의 특정 거리를 넘지 않도록 이동이 제한됩니다.")]
 		public bool UseMinimumXDistance = true;
-		/// the minimum distance from the target this Character can reach on the x axis.
-		[FormerlySerializedAs("MinimumDistance")] [Tooltip("the minimum distance from the target this Character can reach on the x axis.")]
+        /// 이 캐릭터가 x축에서 도달할 수 있는 대상으로부터의 최소 거리입니다.
+        [FormerlySerializedAs("MinimumDistance")] [Tooltip("이 캐릭터가 x축에서 도달할 수 있는 대상으로부터의 최소 거리입니다.")]
 		public float MinimumXDistance = 1f;
 		
 		protected Vector2 _direction;

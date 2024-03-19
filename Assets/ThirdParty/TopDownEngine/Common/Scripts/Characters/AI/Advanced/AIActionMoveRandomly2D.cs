@@ -5,33 +5,33 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Requires a CharacterMovement ability. 
-	/// Makes the character move randomly, until it finds an obstacle in its path, in which case it'll pick a new direction at random
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveRandomly2D")]
+    /// <summary>
+    /// CharacterMovement 능력이 필요합니다.
+    /// 캐릭터가 경로에서 장애물을 발견할 때까지 무작위로 움직이게 하며, 이 경우 무작위로 새로운 방향을 선택합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMoveRandomly2D")]
 	//[RequireComponent(typeof(CharacterMovement))]
 	public class AIActionMoveRandomly2D : AIAction
 	{
 		[Header("Duration")]
-		/// the maximum time a character can spend going in a direction without changing
-		[Tooltip("the maximum time a character can spend going in a direction without changing")]
+        /// 캐릭터가 방향을 바꾸지 않고 이동하는 데 보낼 수 있는 최대 시간
+        [Tooltip("the캐릭터가 방향을 바꾸지 않고 이동하는 데 보낼 수 있는 최대 시간")]
 		public float MaximumDurationInADirection = 2f;
 		[Header("Obstacles")]
-		/// the layers the character will try to avoid
-		[Tooltip("the layers the character will try to avoid")]
+        /// 캐릭터가 피하려고 하는 레이어
+        [Tooltip("캐릭터가 피하려고 하는 레이어")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
-		/// the minimum distance from the target this Character can reach.
-		[Tooltip("the minimum distance from the target this Character can reach.")]
+        /// 이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.
+        [Tooltip("이 캐릭터가 도달할 수 있는 대상으로부터의 최소 거리입니다.")]
 		public float ObstaclesDetectionDistance = 1f;
-		/// the frequency (in seconds) at which to check for obstacles
-		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
+        /// 장애물을 확인하는 빈도(초)
+        [Tooltip("장애물을 확인하는 빈도(초)")]
 		public float ObstaclesCheckFrequency = 0f;
-		/// the minimal random direction to randomize from
-		[Tooltip("the minimal random direction to randomize from")]
+        /// 무작위로 추출할 최소 무작위 방향
+        [Tooltip("무작위로 추출할 최소 무작위 방향")]
 		public Vector2 MinimumRandomDirection = new Vector2(-1f, -1f);
-		/// the maximum random direction to randomize from
-		[Tooltip("the maximum random direction to randomize from")]
+        /// 무작위화할 최대 무작위 방향
+        [Tooltip("무작위화할 최대 무작위 방향")]
 		public Vector2 MaximumRandomDirection = new Vector2(1f, 1f);
 
 		protected CharacterMovement _characterMovement;

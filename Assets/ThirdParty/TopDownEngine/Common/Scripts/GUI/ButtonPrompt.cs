@@ -12,25 +12,25 @@ namespace MoreMountains.TopDownEngine
 	public class ButtonPrompt : TopDownMonoBehaviour
 	{
 		[Header("Bindings")]
-		/// the image to use as the prompt's border
-		[Tooltip("the image to use as the prompt's border")]
+        /// 프롬프트의 테두리로 사용할 이미지
+        [Tooltip("프롬프트의 테두리로 사용할 이미지")]
 		public Image Border;
-		/// the image to use as background
-		[Tooltip("the image to use as background")]
+        /// 배경으로 사용할 이미지
+        [Tooltip("배경으로 사용할 이미지")]
 		public Image Background;
-		/// the canvas group of the prompt's container
-		[Tooltip("the canvas group of the prompt's container")]
+        /// 프롬프트 컨테이너의 캔버스 그룹
+        [Tooltip("프롬프트 컨테이너의 캔버스 그룹")]
 		public CanvasGroup ContainerCanvasGroup;
-		/// the Text component of the prompt
-		[Tooltip("the Text component of the prompt")]
+        /// 프롬프트의 텍스트 구성 요소
+        [Tooltip("프롬프트의 텍스트 구성 요소")]
 		public Text PromptText;
 
 		[Header("Durations")]
-		/// the duration of the fade in, in seconds
-		[Tooltip("the duration of the fade in, in seconds")]
+        /// 페이드 인 지속 시간(초)
+        [Tooltip("페이드 인 지속 시간(초)")]
 		public float FadeInDuration = 0.2f;
-		/// the duration of the fade out, in seconds
-		[Tooltip("the duration of the fade out, in seconds")]
+        /// 페이드 아웃 기간(초)
+        [Tooltip("페이드 아웃 기간(초)")]
 		public float FadeOutDuration = 0.2f;
         
 		protected Color _alphaZero = new Color(1f, 1f, 1f, 0f);

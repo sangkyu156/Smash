@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An ability that casts a cone of vision around the character.
-	/// </summary>
-	[RequireComponent(typeof(MMConeOfVision))]
+    /// <summary>
+    /// 캐릭터 주위에 시야의 원뿔을 캐스팅하는 능력입니다.
+    /// </summary>
+    [RequireComponent(typeof(MMConeOfVision))]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Cone of Vision")]
 	public class CharacterConeOfVision : TopDownMonoBehaviour
 	{

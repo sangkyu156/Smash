@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will trigger a MMBlink object, letting you blink something
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you trigger a blink on an MMBlink object.")]
+    /// <summary>
+    /// 이 피드백은 MMBlink 개체를 트리거하여 무언가를 깜박일 수 있게 합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 MMBlink 개체에서 깜박임을 트리거할 수 있습니다.")]
 	[FeedbackPath("Renderer/MMBlink")]
 	public class MMFeedbackBlink : MMFeedback
 	{
@@ -25,10 +25,10 @@ namespace MoreMountains.Feedbacks
         
 		[Header("Blink")]
 		/// the target object to blink
-		[Tooltip("the target object to blink")]
+		[Tooltip("깜박이는 대상 객체")]
 		public MMBlink TargetBlink;
 		/// the selected mode for this feedback
-		[Tooltip("the selected mode for this feedback")]
+		[Tooltip("이 피드백을 위해 선택된 모드")]
 		public BlinkModes BlinkMode = BlinkModes.Toggle;
 
 		/// <summary>

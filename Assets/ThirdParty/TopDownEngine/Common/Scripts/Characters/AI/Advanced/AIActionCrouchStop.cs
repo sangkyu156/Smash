@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This action forces the character to stop crouching if it can
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionCrouchStop")]
+    /// <summary>
+    /// 이 동작은 가능하다면 캐릭터가 웅크리는 것을 멈추도록 강제합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionCrouchStop")]
 	//[RequireComponent(typeof(CharacterCrouch))]
 	public class AIActionCrouchStop : AIAction
 	{

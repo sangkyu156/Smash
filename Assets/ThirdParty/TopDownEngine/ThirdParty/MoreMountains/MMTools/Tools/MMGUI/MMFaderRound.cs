@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// The Fader class can be put on an Image, and it'll intercept MMFadeEvents and turn itself on or off accordingly.
-	/// </summary>
-	[RequireComponent(typeof(CanvasGroup))]
+    /// <summary>
+    /// Fader 클래스는 이미지에 배치될 수 있으며 MMFadeEvents를 가로채서 그에 따라 자체적으로 켜거나 끌 것입니다.
+    /// </summary>
+    [RequireComponent(typeof(CanvasGroup))]
 	[AddComponentMenu("More Mountains/Tools/GUI/MMFaderRound")]
 	public class MMFaderRound : MonoBehaviour, MMEventListener<MMFadeEvent>, MMEventListener<MMFadeInEvent>, MMEventListener<MMFadeOutEvent>, MMEventListener<MMFadeStopEvent>
 	{

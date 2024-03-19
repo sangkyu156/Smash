@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// 2D Implementation of the CinemachineZone abstract class
-	/// </summary>
-	[RequireComponent(typeof(Collider2D))]
+    /// <summary>
+    /// CinemachineZone 추상 클래스의 2D 구현
+    /// </summary>
+    [RequireComponent(typeof(Collider2D))]
 	public class MMCinemachineZone2D : MMCinemachineZone
 	{
 		protected Collider2D _collider2D;

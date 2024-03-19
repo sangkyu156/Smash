@@ -12,53 +12,53 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Magnetic")]        
 		/// the layermask this magnetic element is attracted to
-		[Tooltip("the layermask this magnetic element is attracted to")]
+		[Tooltip("이 자기 요소가 끌리는 레이어 마스크")]
 		public LayerMask TargetLayerMask = LayerManager.PlayerLayerMask;
 		/// whether or not to start moving when something on the target layer mask enters this magnetic element's trigger
-		[Tooltip("whether or not to start moving when something on the target layer mask enters this magnetic element's trigger")]
+		[Tooltip("대상 레이어 마스크의 무언가가 이 자기 요소의 트리거에 들어갈 때 이동을 시작할지 여부")]
 		public bool StartMagnetOnEnter = true;
 		/// whether or not to stop moving when something on the target layer mask exits this magnetic element's trigger
-		[Tooltip("whether or not to stop moving when something on the target layer mask exits this magnetic element's trigger")]
+		[Tooltip("대상 레이어 마스크의 무언가가 이 자기 요소의 트리거에서 나갈 때 이동을 멈출지 여부")]
 		public bool StopMagnetOnExit = false;
 		/// a unique ID for this type of magnetic objects. This can then be used by a MagneticEnabler to target only that specific ID. An ID of 0 will be picked by all MagneticEnablers automatically.
-		[Tooltip("a unique ID for this type of magnetic objects. This can then be used by a MagneticEnabler to target only that specific ID. An ID of 0 will be picked by all MagneticEnablers automatically.")]
+		[Tooltip("이러한 유형의 자기 물체에 대한 고유 ID입니다. 그런 다음 MagneticEnabler에서 이를 사용하여 해당 특정 ID만 대상으로 지정할 수 있습니다. ID 0은 모든 MagneticEnabler에서 자동으로 선택됩니다.")]
 		public int MagneticTypeID = 0;
 
 		[Header("Target")]
 		/// the offset to apply to the followed target
-		[Tooltip("the offset to apply to the followed target")]
+		[Tooltip("뒤따르는 타겟에 적용할 오프셋")]
 		public Vector3 Offset;
 
 		[Header("Position Interpolation")]
 		/// whether or not we need to interpolate the movement
-		[Tooltip("whether or not we need to interpolate the movement")]
+		[Tooltip("움직임을 보간해야 하는지 여부")]
 		public bool InterpolatePosition = true;
 		/// the speed at which to interpolate the follower's movement
 		[MMCondition("InterpolatePosition", true)]
-		[Tooltip("the speed at which to interpolate the follower's movement")]
+		[Tooltip("추종자의 움직임을 보간하는 속도")]
 		public float FollowPositionSpeed = 5f;
 		/// the acceleration to apply to the object once it starts following
 		[MMCondition("InterpolatePosition", true)]
-		[Tooltip("the acceleration to apply to the object once it starts following")]
+		[Tooltip("물체가 따라가기 시작하면 물체에 적용할 가속도")]
 		public float FollowAcceleration = 0.75f;
 
 		[Header("Mode")]
 		/// the update at which the movement happens
-		[Tooltip("the update at which the movement happens")]
+		[Tooltip("움직임이 일어나는 업데이트")]
 		public UpdateModes UpdateMode = UpdateModes.Update;
 
 		[Header("State")]
 		/// an object this magnetic object should copy the active state on
-		[Tooltip("an object this magnetic object should copy the active state on")]
+		[Tooltip("이 자기 물체가 활성 상태를 복사해야 하는 물체")]
 		public GameObject CopyState;
 		
 		[Header("Debug")]
 		/// the target to follow, read only, for debug only
-		[Tooltip("the target to follow, read only, for debug only")]
+		[Tooltip("따라갈 대상, 읽기 전용, 디버그 전용")]
 		[MMReadOnly]
 		public Transform Target;
 		/// whether or not the object is currently following its target's position
-		[Tooltip("whether or not the object is currently following its target's position")]
+		[Tooltip("객체가 현재 대상의 위치를 ​​따르고 있는지 여부")]
 		[MMReadOnly]
 		public bool FollowPosition = true;
 

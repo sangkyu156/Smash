@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will request the load of a new scene, using the method of your choice
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will request the load of a new scene, using the method of your choice")]
+    /// <summary>
+    /// 이 피드백은 선택한 방법을 사용하여 새 장면의 로드를 요청합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 선택한 방법을 사용하여 새 장면의 로드를 요청합니다.")]
 	[FeedbackPath("Scene/Load Scene")]
 	public class MMFeedbackLoadScene : MMFeedback
 	{
@@ -19,13 +19,13 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SceneColor; } }
-		#endif
+#endif
 
-		/// the possible ways to load a new scene :
-		/// - direct : uses Unity's SceneManager API
-		/// - MMSceneLoadingManager : the simple, original MM way of loading scenes
-		/// - MMAdditiveSceneLoadingManager : a more advanced way of loading scenes, with (way) more options
-		public enum LoadingModes { Direct, MMSceneLoadingManager, MMAdditiveSceneLoadingManager }
+        /// the possible ways to load a new scene :
+        /// - direct : Unity의 SceneManager API를 사용합니다.
+        /// - MMSceneLoadingManager : 장면을 로딩하는 간단하고 독창적인 MM 방식
+        /// - MMAdditiveSceneLoadingManager : 더 많은 옵션을 갖춘 고급 장면 로딩 방식
+        public enum LoadingModes { Direct, MMSceneLoadingManager, MMAdditiveSceneLoadingManager }
 
 		[Header("Scene Names")]
 		/// the name of the loading screen scene to use
@@ -99,10 +99,12 @@ namespace MoreMountains.Feedbacks
 			switch (LoadingMode)
 			{
 				case LoadingModes.Direct:
-					SceneManager.LoadScene(DestinationSceneName);
+                    Debug.Log("SceneManager(유니티에서 제공하는) 를 이용하여 씬전환함");
+                    SceneManager.LoadScene(DestinationSceneName);
 					break;
 				case LoadingModes.MMSceneLoadingManager:
-					MMSceneLoadingManager.LoadScene(DestinationSceneName, LoadingSceneName);
+                    Debug.Log("MMSceneLoadingManager 를 이용하여 씬전환함");
+                    MMSceneLoadingManager.LoadScene(DestinationSceneName, LoadingSceneName);
 					break;
 				case LoadingModes.MMAdditiveSceneLoadingManager:
 					MMAdditiveSceneLoadingManager.LoadScene(DestinationSceneName, LoadingSceneName, 

@@ -10,7 +10,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 {
 	[AddComponentMenu("")]
 	[FeedbackPath("Camera/Cinemachine Impulse Clear")]
-	[FeedbackHelp("This feedback lets you trigger a Cinemachine Impulse clear, stopping instantly any impulse that may be playing.")]
+	[FeedbackHelp("이 피드백을 통해 Cinemachine Impulse 클리어를 트리거하여 재생 중인 모든 임펄스를 즉시 중지할 수 있습니다.")]
 	public class MMFeedbackCinemachineImpulseClear : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

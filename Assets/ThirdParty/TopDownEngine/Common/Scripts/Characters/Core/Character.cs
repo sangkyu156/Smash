@@ -7,15 +7,15 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class will pilot the TopDownController component of your character.
-	/// This is where you'll implement all of your character's game rules, like jump, dash, shoot, stuff like that.
-	/// Animator parameters : Grounded (bool), xSpeed (float), ySpeed (float), 
-	/// CollidingLeft (bool), CollidingRight (bool), CollidingBelow (bool), CollidingAbove (bool), Idle (bool)
-	/// Random : a random float between 0 and 1, updated every frame, useful to add variance to your state entry transitions for example
-	/// RandomConstant : a random int (between 0 and 1000), generated at Start and that'll remain constant for the entire lifetime of this animator, useful to have different characters of the same type 
-	/// </summary>
-	[SelectionBase]
+    /// <summary>
+    /// 이 클래스는 캐릭터의 TopDownController 구성 요소를 조종합니다.
+    /// 이곳은 점프, 돌진, 사격 등과 같은 캐릭터의 모든 게임 규칙을 구현하는 곳입니다.
+    /// 애니메이터 매개변수: Grounded(bool), xSpeed(float), ySpeed(float),
+    /// CollidingLeft (bool), CollidingRight (bool), CollidingBelow (bool), CollidingAbove (bool), Idle (bool)
+    /// Random : 0과 1 사이의 무작위 부동 소수점, 매 프레임 업데이트, 예를 들어 상태 항목 전환에 변화를 추가하는 데 유용합니다.
+    /// RandomConstant : 시작 시 생성되고 이 애니메이터의 전체 수명 동안 일정하게 유지되는 임의의 정수(0에서 1000 사이). 동일한 유형의 다른 캐릭터를 갖는 데 유용합니다.
+    /// </summary>
+    [SelectionBase]
 	[AddComponentMenu("TopDown Engine/Character/Core/Character")] 
 	public class Character : TopDownMonoBehaviour
 	{
@@ -29,58 +29,58 @@ namespace MoreMountains.TopDownEngine
 		/// the possible character types : player controller or AI (controlled by the computer)
 		public enum CharacterTypes { Player, AI }
 
-		[MMInformation("The Character script is the mandatory basis for all Character abilities. Your character can either be a Non Player Character, controlled by an AI, or a Player character, controlled by the player. In this case, you'll need to specify a PlayerID, which must match the one specified in your InputManager. Usually 'Player1', 'Player2', etc.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// Is the character player-controlled or controlled by an AI ?
-		[Tooltip("Is the character player-controlled or controlled by an AI ?")]
+		[MMInformation("캐릭터 스크립트는 모든 캐릭터 능력의 필수 기반입니다. 귀하의 캐릭터는 AI가 제어하는 ​​비플레이어 캐릭터일 수도 있고, 플레이어가 제어하는 ​​플레이어 캐릭터일 수도 있습니다. 이 경우, PlayerID를 지정해야 하며, 이는 InputManager에 지정된 것과 일치해야 합니다. 일반적으로 'Player1', 'Player2' 등입니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 캐릭터는 플레이어가 제어합니까, 아니면 AI가 제어합니까?
+        [Tooltip("캐릭터는 플레이어가 제어합니까, 아니면 AI가 제어합니까?")]
 		public CharacterTypes CharacterType = CharacterTypes.AI;
-		/// Only used if the character is player-controlled. The PlayerID must match an input manager's PlayerID. It's also used to match Unity's input settings. So you'll be safe if you keep to Player1, Player2, Player3 or Player4
-		[Tooltip("Only used if the character is player-controlled. The PlayerID must match an input manager's PlayerID. It's also used to match Unity's input settings. So you'll be safe if you keep to Player1, Player2, Player3 or Player4")]
+        /// 캐릭터가 플레이어가 제어하는 ​​경우에만 사용됩니다. PlayerID는 입력 관리자의 PlayerID와 일치해야 합니다. 또한 Unity의 입력 설정을 일치시키는 데에도 사용됩니다. 따라서 Player1, Player2, Player3 또는 Player4를 유지하면 안전할 것입니다.
+        [Tooltip("캐릭터가 플레이어가 제어하는 ​​경우에만 사용됩니다. PlayerID는 입력 관리자의 PlayerID와 일치해야 합니다. 또한 Unity의 입력 설정을 일치시키는 데에도 사용됩니다. 따라서 Player1, Player2, Player3 또는 Player4를 유지하면 안전할 것입니다.")]
 		public string PlayerID = "";
 		/// the various states of the character
 		public CharacterStates CharacterState { get; protected set; }
 
 		[Header("Animator")]
-		[MMInformation("The engine will try and find an animator for this character. If it's on the same gameobject it should have found it. If it's nested somewhere, you'll need to bind it below. You can also decide to get rid of it altogether, in that case, just uncheck 'use mecanim'.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("엔진은 이 캐릭터에 대한 애니메이터를 찾으려고 노력할 것입니다. 동일한 게임 객체에 있다면 그것을 찾았어야 합니다. 어딘가에 중첩되어 있는 경우 아래에 바인딩해야 합니다. 완전히 제거하기로 결정할 수도 있습니다. 이 경우 '메카님 사용'을 선택 취소하면 됩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the character animator
-		[Tooltip("the character animator, that this class and all abilities should update parameters on")]
+		[Tooltip("이 클래스와 모든 능력이 매개변수를 업데이트해야 하는 캐릭터 애니메이터")]
 		public Animator CharacterAnimator;
-		/// Set this to false if you want to implement your own animation system
-		[Tooltip("Set this to false if you want to implement your own animation system")]
+        /// 자신만의 애니메이션 시스템을 구현하려면 false로 설정하세요.
+        [Tooltip("자신만의 애니메이션 시스템을 구현하려면 false로 설정하세요.")]
 		public bool UseDefaultMecanim = true;
-		/// If this is true, sanity checks will be performed to make sure animator parameters exist before updating them. Turning this to false will increase performance but will throw errors if you're trying to update non existing parameters. Make sure your animator has the required parameters.
-		[Tooltip("If this is true, sanity checks will be performed to make sure animator parameters exist before updating them. Turning this to false will increase performance but will throw errors if you're trying to update non existing parameters. Make sure your animator has the required parameters.")]
+        /// 이것이 사실이라면 애니메이터 매개변수를 업데이트하기 전에 존재하는지 확인하기 위해 온전성 검사가 수행됩니다. 이를 false로 설정하면 성능이 향상되지만 존재하지 않는 매개변수를 업데이트하려고 하면 오류가 발생합니다. 애니메이터에 필수 매개변수가 있는지 확인하세요.
+        [Tooltip("이것이 사실이라면 애니메이터 매개변수를 업데이트하기 전에 존재하는지 확인하기 위해 온전성 검사가 수행됩니다. 이를 false로 설정하면 성능이 향상되지만 존재하지 않는 매개변수를 업데이트하려고 하면 오류가 발생합니다. 애니메이터에 필수 매개변수가 있는지 확인하세요.")]
 		public bool RunAnimatorSanityChecks = false;
-		/// if this is true, animator logs for the associated animator will be turned off to avoid potential spam
-		[Tooltip("if this is true, animator logs for the associated animator will be turned off to avoid potential spam")]
+        /// 이것이 사실인 경우 잠재적인 스팸을 방지하기 위해 연결된 애니메이터에 대한 애니메이터 로그가 꺼집니다.
+        [Tooltip("이것이 사실인 경우 잠재적인 스팸을 방지하기 위해 연결된 애니메이터에 대한 애니메이터 로그가 꺼집니다.")]
 		public bool DisableAnimatorLogs = true;
 
 		[Header("Bindings")]
-		[MMInformation("Leave this unbound if this is a regular, sprite-based character, and if the SpriteRenderer and the Character are on the same GameObject. If not, you'll want to parent the actual model to the Character object, and bind it below. See the 3D demo characters for an example of that. The idea behind that is that the model may move, flip, but the collider will remain unchanged.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// the 'model' (can be any gameobject) used to manipulate the character. Ideally it's separated (and nested) from the collider/TopDown controller/abilities, to avoid messing with collisions.
-		[Tooltip("the 'model' (can be any gameobject) used to manipulate the character. Ideally it's separated (and nested) from the collider/TopDown controller/abilities, to avoid messing with collisions.")]
+		[MMInformation("이것이 일반 스프라이트 기반 캐릭터이고 SpriteRenderer와 캐릭터가 동일한 GameObject에 있는 경우 이를 바인딩되지 않은 상태로 둡니다. 그렇지 않은 경우 실제 모델을 Character 개체의 부모로 지정하고 아래에 바인딩할 수 있습니다. 이에 대한 예는 3D 데모 캐릭터를 참조하세요. 그 뒤에 있는 아이디어는 모델이 움직이고 뒤집힐 수 있지만 충돌체는 변경되지 않은 상태로 유지된다는 것입니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 캐릭터를 조작하는 데 사용되는 '모델'(모든 게임오브젝트일 수 있음)입니다. 이상적으로는 충돌로 인한 혼란을 피하기 위해 충돌체/TopDown 컨트롤러/능력에서 분리(및 중첩)됩니다.
+        [Tooltip("캐릭터를 조작하는 데 사용되는 '모델'(모든 게임오브젝트일 수 있음)입니다. 이상적으로는 충돌로 인한 혼란을 피하기 위해 충돌체/TopDown 컨트롤러/능력에서 분리(및 중첩)됩니다.")]
 		public GameObject CharacterModel;
-		/// the Health script associated to this Character, will be grabbed automatically if left empty
-		[Tooltip("the Health script associated to this Character, will be grabbed automatically if left empty")]
+        /// 이 캐릭터와 관련된 Health 스크립트는 비어 있으면 자동으로 가져옵니다.
+        [Tooltip("이 캐릭터와 관련된 Health 스크립트는 비어 있으면 자동으로 가져옵니다.")]
 		public Health CharacterHealth;
         
 		[Header("Events")]
-		[MMInformation("Here you can define whether or not you want to have that character trigger events when changing state. See the MMTools' State Machine doc for more info.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// If this is true, the Character's state machine will emit events when entering/exiting a state
-		[Tooltip("If this is true, the Character's state machine will emit events when entering/exiting a state")]
+		[MMInformation("여기서 상태 변경 시 해당 캐릭터가 이벤트를 트리거하도록 할지 여부를 정의할 수 있습니다. 자세한 내용은 MMTools의 상태 머신 문서를 참조하세요.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 이것이 사실이라면 캐릭터의 상태 머신은 상태에 들어가거나 나갈 때 이벤트를 내보냅니다.
+        [Tooltip("이것이 사실이라면 캐릭터의 상태 머신은 상태에 들어가거나 나갈 때 이벤트를 내보냅니다.")]
 		public bool SendStateChangeEvents = true;
         
 		[Header("Abilities")]
-		/// A list of gameobjects (usually nested under the Character) under which to search for additional abilities
-		[Tooltip("A list of gameobjects (usually nested under the Character) under which to search for additional abilities")]
+        /// 추가 능력을 검색할 게임 개체 목록(일반적으로 캐릭터 아래에 중첩됨)
+        [Tooltip("추가 능력을 검색할 게임 개체 목록(일반적으로 캐릭터 아래에 중첩됨)")]
 		public List<GameObject> AdditionalAbilityNodes;
         
 		[Header("AI")]
-		/// The brain currently associated with this character, if it's an Advanced AI. By default the engine will pick the one on this object, but you can attach another one if you'd like
-		[Tooltip("The brain currently associated with this character, if it's an Advanced AI. By default the engine will pick the one on this object, but you can attach another one if you'd like")]
+        /// 고급 AI인 경우 현재 이 캐릭터와 연결된 두뇌입니다. 기본적으로 엔진은 이 개체에 있는 개체를 선택하지만 원하는 경우 다른 개체를 연결할 수 있습니다.
+        [Tooltip("고급 AI인 경우 현재 이 캐릭터와 연결된 두뇌입니다. 기본적으로 엔진은 이 개체에 있는 개체를 선택하지만 원하는 경우 다른 개체를 연결할 수 있습니다.")]
 		public AIBrain CharacterBrain;
 
-		/// Whether to optimize this character for mobile. Will disable its cone of vision on mobile
-		[Tooltip("Whether to optimize this character for mobile. Will disable its cone of vision on mobile")]
+        /// 이 캐릭터를 모바일에 최적화할지 여부입니다. 모바일에서 시야 원뿔이 비활성화됩니다.
+        [Tooltip("이 캐릭터를 모바일에 최적화할지 여부입니다. 모바일에서 시야 원뿔이 비활성화됩니다.")]
 		public bool OptimizeForMobile = true;
 
 		/// State Machines

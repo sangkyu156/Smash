@@ -5,17 +5,17 @@ using UnityEngine.InputSystem;
 #endif
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// Special kind of inventory display, with a dedicated key associated to it, to allow for shortcuts for use and equip
-	/// </summary>
-	public class InventoryHotbar : InventoryDisplay 
+{
+    /// <summary>
+    /// 사용 및 장비에 대한 단축키를 허용하는 전용 키가 연결된 특별한 종류의 인벤토리 디스플레이
+    /// </summary>
+    public class InventoryHotbar : InventoryDisplay 
 	{
-		/// the possible actions that can be done on objects in the hotbar
-		public enum HotbarPossibleAction { Use, Equip }
+        /// 단축바에 있는 개체에 대해 수행할 수 있는 가능한 작업
+        public enum HotbarPossibleAction { Use, Equip }
 		[Header("Hotbar")]
 
-		[MMInformation("Here you can define the keys your hotbar will listen to to activate the hotbar's action.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기서는 핫바의 동작을 활성화하기 위해 핫바가 수신할 키를 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
 		
 		public InputActionProperty HotbarInputAction = new InputActionProperty(

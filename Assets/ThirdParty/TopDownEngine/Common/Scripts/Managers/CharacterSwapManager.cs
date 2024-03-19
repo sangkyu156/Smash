@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to an empty component in your scene, and it'll allow you to swap characters in your scene when pressing the SwapButton (P, by default)
-	/// Each character in your scene will need to have a CharacterSwap class on it, and the corresponding PlayerID.
-	/// You can see an example of such a setup in the MinimalCharacterSwap demo scene
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/CharacterSwapManager")]
+    /// <summary>
+    /// 이 클래스를 장면의 빈 구성 요소에 추가하면 SwapButton(기본적으로 P)을 누를 때 장면의 문자를 바꿀 수 있습니다.
+    /// 장면의 각 캐릭터에는 CharacterSwap 클래스와 해당 PlayerID가 있어야 합니다.
+    /// MinimalCharacterSwap 데모 장면에서 이러한 설정의 예를 볼 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/CharacterSwapManager")]
 	public class CharacterSwapManager : MMSingleton<CharacterSwapManager>, MMEventListener<TopDownEngineEvent>
 	{
 		[Header("Character Swap")]
@@ -21,11 +21,11 @@ namespace MoreMountains.TopDownEngine
 			public Key SwapKey = Key.P;
 		#else
 		/// the name of the axis to use to catch input and trigger a swap on press
-		[Tooltip("the name of the axis to use to catch input and trigger a swap on press")]
+		[Tooltip("입력을 포착하고 누를 때 전환을 트리거하는 데 사용할 축의 이름")]
 		public string SwapButtonName = "Player1_SwapCharacter";
 		#endif
 		/// the PlayerID set on the Characters you want to swap between
-		[Tooltip("the PlayerID set on the Characters you want to swap between")]
+		[Tooltip("교체하려는 캐릭터에 설정된 PlayerID")]
 		public string PlayerID = "Player1";
 
 		protected CharacterSwap[] _characterSwapArray;

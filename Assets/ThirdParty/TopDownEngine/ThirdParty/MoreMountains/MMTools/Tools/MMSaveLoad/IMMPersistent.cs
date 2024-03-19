@@ -1,8 +1,8 @@
 ﻿namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An interface classes that want to be saved by the MMPersistencyManager need to implement 
-	/// </summary>
+    /// <summary>
+    /// MMPersistencyManager를 통해 저장하려는 인터페이스 클래스를 구현해야 합니다.
+    /// </summary>
     public interface IMMPersistent
     {
 	    /// <summary>

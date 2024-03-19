@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// This test class lets you play with the Inventory API.
-	/// You can see it in action in the PixelRogueRoom2 demo scene
-	/// </summary>
-	public class InventoryTester : MonoBehaviour
+    /// <summary>
+    /// 이 테스트 클래스를 사용하면 Inventory API를 가지고 놀 수 있습니다.
+    /// PixelRogueRoom2 데모 장면에서 실제로 작동하는 모습을 볼 수 있습니다.
+    /// </summary>
+    public class InventoryTester : MonoBehaviour
 	{
 		[Header("Add item")] 
 		/// an item to add when pressing the AddItemTest button 

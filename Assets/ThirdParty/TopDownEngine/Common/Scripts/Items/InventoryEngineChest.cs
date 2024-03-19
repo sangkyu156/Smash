@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to an object in your scene to have it act like a chest. You'll need a key operated zone to open it, and item picker(s) on it to fill its contents
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/InventoryEngineChest")]
+    /// <summary>
+    /// 이 구성 요소를 장면의 개체에 추가하여 상자처럼 작동하도록 합니다. 열려면 키로 작동하는 영역이 필요하고, 내용을 채우려면 항목 선택기가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/InventoryEngineChest")]
 	public class InventoryEngineChest : TopDownMonoBehaviour 
 	{
 		protected Animator _animator;

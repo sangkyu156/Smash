@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store choices contents
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 선택 내용을 저장하는 데 사용되는 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMDebugMenuChoiceEntry
 	{
 		/// the button associated to this choice
@@ -21,10 +21,10 @@ namespace MoreMountains.Tools
 		public string ButtonEventName = "ButtonEvent";
 	}
 
-	/// <summary>
-	/// A class used to bind a Choice menu item to a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuItemChoices : MonoBehaviour
+    /// <summary>
+    /// Choice 메뉴 항목을 MMDebugMenu에 바인딩하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuItemChoices : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the sprite to use when the button is active

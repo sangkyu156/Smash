@@ -5,42 +5,42 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a character or object with a Health class, and its health will auto refill based on the settings here
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Health/Health Auto Refill")]
+    /// <summary>
+    /// 이 클래스를 건강 클래스가 있는 캐릭터나 개체에 추가하면 해당 건강이 여기 설정에 따라 자동으로 채워집니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Health/Health Auto Refill")]
 	public class HealthAutoRefill : TopDownMonoBehaviour
 	{
-		/// the possible refill modes :
-		/// - linear : constant health refill at a certain rate per second
-		/// - bursts : periodic bursts of health
-		public enum RefillModes { Linear, Bursts }
+        /// 가능한 리필 모드 :
+        /// - linear : 초당 특정 속도로 지속적인 체력 재충전
+        /// - bursts : 주기적인 건강 폭발
+        public enum RefillModes { Linear, Bursts }
 
 		[Header("Mode")]
 		/// the selected refill mode 
-		[Tooltip("the selected refill mode ")]
+		[Tooltip("선택한 리필 모드")]
 		public RefillModes RefillMode;
 
 		[Header("Cooldown")]
 		/// how much time, in seconds, should pass before the refill kicks in
-		[Tooltip("how much time, in seconds, should pass before the refill kicks in")]
+		[Tooltip("리필이 시작되기 전에 얼마나 많은 시간(초)이 지나야 합니까?")]
 		public float CooldownAfterHit = 1f;
         
 		[Header("Refill Settings")]
 		/// if this is true, health will refill itself when not at full health
-		[Tooltip("if this is true, health will refill itself when not at full health")]
+		[Tooltip("이것이 사실이라면 체력이 완전히 회복되지 않았을 때 체력이 저절로 회복됩니다.")]
 		public bool RefillHealth = true;
 		/// the amount of health per second to restore when in linear mode
 		[MMEnumCondition("RefillMode", (int)RefillModes.Linear)]
-		[Tooltip("the amount of health per second to restore when in linear mode")]
+		[Tooltip("선형 모드에서 복원할 초당 체력 양")]
 		public float HealthPerSecond;
 		/// the amount of health to restore per burst when in burst mode
 		[MMEnumCondition("RefillMode", (int)RefillModes.Bursts)]
-		[Tooltip("the amount of health to restore per burst when in burst mode")]
+		[Tooltip("버스트 모드에서 버스트당 회복할 체력의 양")]
 		public float HealthPerBurst = 5;
 		/// the duration between two health bursts, in seconds
 		[MMEnumCondition("RefillMode", (int)RefillModes.Bursts)]
-		[Tooltip("the duration between two health bursts, in seconds")]
+		[Tooltip("두 번의 체력 폭발 사이의 지속 시간(초)")]
 		public float DurationBetweenBursts = 2f;
 
 		protected Health _health;

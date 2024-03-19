@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Camera extensions
-	/// </summary>
-	public static class MMCameraExtensions
+    /// <summary>
+    /// 카메라 확장
+    /// </summary>
+    public static class MMCameraExtensions
 	{
 		/// <summary>
 		/// Returns the width of the camera in world space units, at the specified depths for perspective cameras, everywhere for orthographic ones

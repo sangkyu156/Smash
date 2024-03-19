@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to display the achievements on screen. 
-	/// The AchievementDisplayItems will be parented to it, so it's better if it has a LayoutGroup (Vertical or Horizontal) too.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Achievements/MMAchievementDisplayer")]
+    /// <summary>
+    /// 화면에 업적을 표시하는 데 사용되는 클래스입니다.
+    /// AchievementDisplayItems의 상위 항목이 되므로 LayoutGroup(세로 또는 가로)도 있는 것이 더 좋습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Achievements/MMAchievementDisplayer")]
 	public class MMAchievementDisplayer : MonoBehaviour, MMEventListener<MMAchievementUnlockedEvent>
 	{
 		[Header("Achievements")]

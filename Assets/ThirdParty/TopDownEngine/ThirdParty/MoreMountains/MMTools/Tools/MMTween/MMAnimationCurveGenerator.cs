@@ -9,11 +9,11 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class will let you create and save a .curves asset in the specified path
-	/// This asset will include curves (anti or not) from the MMTween library, to use anywhere animation curves are required
-	/// </summary>
-	public class MMAnimationCurveGenerator : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 사용하면 지정된 경로에 .curves 자산을 생성하고 저장할 수 있습니다.
+    /// 이 자산에는 애니메이션 곡선이 필요한 모든 곳에서 사용할 수 있도록 MMTween 라이브러리의 곡선(안티 여부)이 포함됩니다.
+    /// </summary>
+    public class MMAnimationCurveGenerator : MonoBehaviour
 	{
 		[Header("Save settings")]
 		/// the path to save the asset at

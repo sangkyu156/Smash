@@ -2,12 +2,12 @@
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A improved list that lets you parse it and automatically have it loop to the start or end when you reach the end or start
-	/// To use it : set the CurrentIndex to whatever you want, then use IncrementCurrentIndex / DecrementCurrentIndex to move it, get the current element via Current
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class MMCircularList<T> : List<T>
+    /// <summary>
+    /// 구문을 분석하고 끝이나 시작에 도달하면 자동으로 시작이나 끝으로 반복되도록 하는 개선된 목록
+    /// 사용하려면: CurrentIndex를 원하는 대로 설정한 다음 IncrementCurrentIndex / DecrementCurrentIndex를 사용하여 이동하고 Current를 통해 현재 요소를 가져옵니다.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class MMCircularList<T> : List<T>
 	{
 		private int _currentIndex = 0;
 		

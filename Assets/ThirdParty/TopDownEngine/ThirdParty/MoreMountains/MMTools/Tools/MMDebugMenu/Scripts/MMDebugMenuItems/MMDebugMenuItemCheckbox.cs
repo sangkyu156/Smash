@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to bind a checkbox to a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuItemCheckbox : MonoBehaviour
+    /// <summary>
+    /// 체크박스를 MMDebugMenu에 바인딩하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuItemCheckbox : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the switch used to display the checkbox

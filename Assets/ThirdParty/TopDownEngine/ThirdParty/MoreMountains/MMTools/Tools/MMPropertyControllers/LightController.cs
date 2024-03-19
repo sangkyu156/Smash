@@ -4,15 +4,15 @@ using System.Reflection;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to control the intensity of a light
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Property Controllers/LightController")]
+    /// <summary>
+    /// 빛의 세기를 조절하는데 사용되는 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Property Controllers/LightController")]
 	public class LightController : MonoBehaviour
 	{
 		[Header("Binding")]
-		[MMInformation("Use this component to control the properties of one or more lights at runtime. Plays well with a FloatController. " +
-		               "This component will try to auto set the TargetLight if there's a Light component on this object.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("런타임에 하나 이상의 조명 속성을 제어하려면 이 구성요소를 사용합니다. FloatController와 잘 작동합니다. " +
+                       "이 구성 요소는 이 객체에 Light 구성 요소가 있는 경우 TargetLight를 자동 설정하려고 시도합니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		/// the light to control 
 		public Light TargetLight;
 		/// the lights to control

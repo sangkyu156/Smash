@@ -5,16 +5,14 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control color grading post exposure, hue shift, saturation and contrast over time. 
-	/// It requires you have in your scene an object with a PostProcessVolume 
-	/// with Color Grading active, and a MMColorGradingShaker component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 노출 후 색상 그레이딩, 색조 변화, 채도 및 대비를 제어할 수 있습니다.
+    /// 이를 위해서는 장면에 컬러 그레이딩이 활성화된 PostProcessVolume과 MMColorGradingShaker 구성 요소가 있는 객체가 있어야 합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("PostProcess/Color Grading")]
-	[FeedbackHelp("This feedback allows you to control color grading post exposure, hue shift, saturation and contrast over time. " +
-	              "It requires you have in your scene an object with a PostProcessVolume " +
-	              "with Color Grading active, and a MMColorGradingShaker component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 노출 후 색상 그레이딩, 색조 변화, 채도 및 대비를 제어할 수 있습니다. " +
+                  "이를 위해서는 장면에 컬러 그레이딩이 활성화된 PostProcessVolume과 MMColorGradingShaker 구성 요소가 있는 객체가 있어야 합니다.")]
 	public class MMFeedbackColorGrading : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

@@ -2,10 +2,10 @@
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object and it'll persist across scenes 
-	/// </summary>
-	public class MMDontDestroyOnLoad : MonoBehaviour
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 장면 전체에 걸쳐 지속됩니다. 
+    /// </summary>
+    public class MMDontDestroyOnLoad : MonoBehaviour
 	{
 		/// <summary>
 		/// On Awake we make sure our object will not destroy on the next scene load

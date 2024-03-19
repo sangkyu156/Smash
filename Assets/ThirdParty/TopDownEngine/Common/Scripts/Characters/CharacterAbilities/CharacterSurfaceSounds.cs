@@ -7,14 +7,14 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	
-	/// <summary>
-	/// Add this component to a character and it'll let you define a number of surfaces and associate walk and run sounds to them
-	/// It will also let you trigger events when entering or exiting these surfaces
-	/// Important : Surfaces are evaluated from top to bottom. The first surface definition that matches the current detected
-	/// ground will be considered the current surface. So make sure your order them accordingly.
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks", "AbilityStartFeedbacks")]
+
+    /// <summary>
+    /// 이 구성요소를 캐릭터에 추가하면 여러 표면을 정의하고 걷기 및 달리기 소리를 표면에 연결할 수 있습니다.
+    /// 또한 이러한 표면에 들어가거나 나갈 때 이벤트를 트리거할 수도 있습니다.
+    /// Important : 표면은 위에서 아래로 평가됩니다. 감지된 전류와 일치하는 첫 번째 표면 정의
+    /// 지면은 현재 표면으로 간주됩니다. 따라서 그에 따라 주문하십시오.
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks", "AbilityStartFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Surface Sounds")] 
 	public class CharacterSurfaceSounds : CharacterAbility
 	{	

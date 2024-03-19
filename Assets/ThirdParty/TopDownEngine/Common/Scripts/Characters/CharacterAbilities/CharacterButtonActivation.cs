@@ -20,11 +20,11 @@ namespace MoreMountains.TopDownEngine
 		public bool InButtonActivatedZone {get;set;}
 		/// true if the zone is automated
 		public bool InButtonAutoActivatedZone { get; set; }
-		/// if this is true, characters won't be able to jump while in a button activated zone
-		[Tooltip("if this is true, characters won't be able to jump while in a button activated zone")]
-		public bool PreventJumpInButtonActivatedZone = true; 
-		/// the current button activated zone
-		[Tooltip("the current button activated zone this character is in")]
+        /// 이것이 사실이라면 버튼이 활성화된 영역에 있는 동안 캐릭터는 점프할 수 없습니다.
+        [Tooltip("이것이 사실이라면 버튼이 활성화된 영역에 있는 동안 캐릭터는 점프할 수 없습니다.")]
+		public bool PreventJumpInButtonActivatedZone = true;
+        /// 이 캐릭터가 있는 현재 버튼 활성화 구역
+        [Tooltip("이 캐릭터가 있는 현재 버튼 활성화 구역")]
 		[MMReadOnly]
 		public ButtonActivated ButtonActivatedZone;
 

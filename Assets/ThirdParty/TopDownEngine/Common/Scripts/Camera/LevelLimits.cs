@@ -3,23 +3,23 @@ using System.Collections;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a boxcollider to signify the bounds of your level
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Camera/LevelLimits")]
+    /// <summary>
+    /// 레벨의 경계를 나타내기 위해 이 클래스를 boxcollider에 추가하세요.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Camera/LevelLimits")]
 	public class LevelLimits : TopDownMonoBehaviour
 	{
 		/// left x coordinate
-		[Tooltip("Left x coordinate")]
+		[Tooltip("왼쪽 x 좌표")]
 		public float LeftLimit;
 		/// right x coordinate
-		[Tooltip("Right x coordinate")]
+		[Tooltip("오른쪽 x 좌표")]
 		public float RightLimit;
 		/// bottom y coordinate 
-		[Tooltip("Bottom y coordinate ")]
+		[Tooltip("하단 y 좌표 ")]
 		public float BottomLimit;
 		/// top y coordinate
-		[Tooltip("Top y coordinate")]
+		[Tooltip("상단 Y 좌표")]
 		public float TopLimit;
 
 		protected BoxCollider2D _collider;

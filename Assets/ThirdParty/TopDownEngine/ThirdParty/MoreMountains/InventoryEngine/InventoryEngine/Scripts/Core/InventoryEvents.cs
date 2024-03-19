@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MoreMountains.InventoryEngine
-{	
-	/// <summary>
-	/// The possible inventory related events
-	/// </summary>
-	public enum MMInventoryEventType { Pick, Select, Click, Move, UseRequest, ItemUsed, EquipRequest, ItemEquipped, UnEquipRequest, ItemUnEquipped, Drop, Destroy, Error, Redraw, ContentChanged, InventoryOpens, InventoryCloseRequest, InventoryCloses, InventoryLoaded, Installed, CancelInstallation }
+{
+    /// <summary>
+    /// 가능한 재고 관련 이벤트
+    /// </summary>
+    public enum MMInventoryEventType { Pick, Select, Click, Move, UseRequest, ItemUsed, EquipRequest, ItemEquipped, UnEquipRequest, ItemUnEquipped, Drop, Destroy, Error, Redraw, ContentChanged, InventoryOpens, InventoryCloseRequest, InventoryCloses, InventoryLoaded, Installed, CancelInstallation }
 
-	/// <summary>
-	/// Inventory events are used throughout the Inventory Engine to let other interested classes know that something happened to an inventory.  
-	/// </summary>
-	public struct MMInventoryEvent
+    /// <summary>
+    /// 인벤토리 이벤트는 인벤토리 엔진 전체에서 사용되어 관심 있는 다른 클래스에 인벤토리에 문제가 발생했음을 알립니다.
+    /// </summary>
+    public struct MMInventoryEvent
 	{
 		/// the type of event
 		public MMInventoryEventType InventoryEventType;

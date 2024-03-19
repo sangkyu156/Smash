@@ -5,41 +5,41 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This decision will return true if an object on its TargetLayer layermask is within its specified radius, false otherwise. It will also set the Brain's Target to that object.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetRadius2D")]
+    /// <summary>
+    /// 이 결정은 TargetLayer 레이어 마스크의 개체가 지정된 반경 내에 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다. 또한 뇌의 대상을 해당 개체로 설정합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetRadius2D")]
 	//[RequireComponent(typeof(CharacterOrientation2D))]
 	public class AIDecisionDetectTargetRadius2D : AIDecision
 	{
 		public enum ObstaclesDetectionModes { Boxcast, Raycast }
-        
-		/// the radius to search our target in
-		[Tooltip("the radius to search our target in")]
+
+        /// 목표물을 검색할 반경
+        [Tooltip("목표물을 검색할 반경")]
 		public float Radius = 3f;
-		/// the center of the search circle
-		[Tooltip("the center of the search circle")]
+        /// 검색 서클의 중심
+        [Tooltip("검색 서클의 중심")]
 		public Vector3 DetectionOriginOffset = new Vector3(0, 0, 0);
-		/// the layer(s) to search our target on
-		[Tooltip("the layer(s) to search our target on")]
+        /// 대상을 검색할 레이어
+        [Tooltip("대상을 검색할 레이어")]
 		public LayerMask TargetLayer;
-		/// whether or not to look for obstacles
-		[Tooltip("whether or not to look for obstacles")]
+        /// 장애물을 찾을지 말지
+        [Tooltip("장애물을 찾을지 말지")]
 		public bool ObstacleDetection = true;
-		/// the layer(s) to look for obstacles on
-		[Tooltip("the layer(s) to look for obstacles on")]
+        /// 장애물을 찾을 레이어
+        [Tooltip("장애물을 찾을 레이어")]
 		public LayerMask ObstacleMask = LayerManager.ObstaclesLayerMask;
-		/// the method to use to detect obstacles
-		[Tooltip("the method to use to detect obstacles")]
+        /// 장애물을 감지하는 데 사용하는 방법
+        [Tooltip("장애물을 감지하는 데 사용하는 방법")]
 		public ObstaclesDetectionModes ObstaclesDetectionMode = ObstaclesDetectionModes.Raycast;
-		/// if this is true, this AI will be able to consider itself (or its children) a target
-		[Tooltip("if this is true, this AI will be able to consider itself (or its children) a target")] 
+        /// 이것이 사실이라면 이 AI는 자신(또는 그 자식)을 대상으로 간주할 수 있습니다.
+        [Tooltip("이것이 사실이라면 이 AI는 자신(또는 그 자식)을 대상으로 간주할 수 있습니다.")] 
 		public bool CanTargetSelf = false;
-		/// the frequency (in seconds) at which to check for obstacles
-		[Tooltip("the frequency (in seconds) at which to check for obstacles")]
+        /// 장애물을 확인하는 빈도(초)
+        [Tooltip("장애물을 확인하는 빈도(초)")]
 		public float TargetCheckFrequency = 1f;
-		/// the maximum amount of targets the overlap detection can acquire
-		[Tooltip("the maximum amount of targets the overlap detection can acquire")]
+        /// 중첩 감지가 획득할 수 있는 최대 대상 수
+        [Tooltip("중첩 감지가 획득할 수 있는 최대 대상 수")]
 		public int OverlapMaximum = 10;
 
 		protected Collider2D _collider;

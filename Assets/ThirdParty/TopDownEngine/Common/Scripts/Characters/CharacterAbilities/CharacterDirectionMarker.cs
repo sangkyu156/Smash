@@ -5,83 +5,83 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This ability lets you orient an object towards either the movement direction or aim direction of your character
-	/// That object can be anything you want (a sprite, a model, a line, etc)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Direction Marker")]
+    /// <summary>
+    /// 이 능력을 사용하면 캐릭터의 이동 방향이나 조준 방향으로 개체의 방향을 지정할 수 있습니다.
+    /// 해당 객체는 원하는 무엇이든 될 수 있습니다(스프라이트, 모델, 선 등).
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Direction Marker")]
 	public class CharacterDirectionMarker : CharacterAbility
 	{
 		/// the possible modes rotation can be based on
 		public enum Modes { MovementDirection, AimDirection, None }
         
-		[Header("Direction Marker")] 
-		/// the object to rotate
-		[Tooltip("the object to rotate")]
+		[Header("Direction Marker")]
+        /// 회전할 객체
+        [Tooltip("회전할 객체")]
 		public Transform DirectionMarker;
-		/// a unique ID used to reference the marker ability
-		[Tooltip("a unique ID used to reference the marker ability")]
+        /// 마커 능력을 참조하는 데 사용되는 고유 ID
+        [Tooltip("마커 능력을 참조하는 데 사용되는 고유 ID")]
 		public int DirectionMarkerID;
-		/// the selected mode to pick direction on
-		[Tooltip("the selected mode to pick direction on")]
+        /// 방향을 선택하기 위해 선택한 모드
+        [Tooltip("방향을 선택하기 위해 선택한 모드")]
 		public Modes Mode = Modes.MovementDirection;
         
 		[Header("Position")]
-		/// the offset to apply as the center of rotation
-		[Tooltip("the offset to apply as the center of rotation")]
+        /// 회전 중심으로 적용할 오프셋
+        [Tooltip("회전 중심으로 적용할 오프셋")]
 		public Vector3 RotationCenterOffset = Vector3.zero;
-		/// the axis to consider as up when aiming
-		[Tooltip("the axis to consider as up when aiming")]
+        /// 조준할 때 위쪽으로 간주하는 축
+        [Tooltip("조준할 때 위쪽으로 간주하는 축")]
 		public Vector3 UpVector = Vector3.up;
-		/// the axis to consider as forward when aiming
-		[Tooltip("the axis to consider as forward when aiming")]
+        /// 조준할 때 전방으로 간주할 축
+        [Tooltip("조준할 때 전방으로 간주할 축")]
 		public Vector3 ForwardVector = Vector3.forward;
-		/// if this is true, the marker won't be able to rotate on its X axis
-		[Tooltip("if this is true, the marker won't be able to rotate on its X axis")]
+        /// 이것이 사실이라면 마커는 X축에서 회전할 수 없습니다.
+        [Tooltip("이것이 사실이라면 마커는 X축에서 회전할 수 없습니다.")]
 		public bool PreventXRotation = false;
-		/// if this is true, the marker won't be able to rotate on its Y axis
-		[Tooltip("if this is true, the marker won't be able to rotate on its Y axis")]
+        /// 이것이 사실이라면 마커는 Y축에서 회전할 수 없습니다.
+        [Tooltip("이것이 사실이라면 마커는 Y축에서 회전할 수 없습니다.")]
 		public bool PreventYRotation = false;
-		/// if this is true, the marker won't be able to rotate on its Z axis
-		[Tooltip("if this is true, the marker won't be able to rotate on its Z axis")]
+        /// 이것이 사실이라면 마커는 Z축에서 회전할 수 없습니다.
+        [Tooltip("이것이 사실이라면 마커는 Z축에서 회전할 수 없습니다.")]
 		public bool PreventZRotation = false;
 
-		[Header("Offset along magnitude")] 
-		/// whether or not to offset the position along the direction's magnitude (for example, moving faster could move the marker further away from the character)
-		[Tooltip("whether or not to offset the position along the direction's magnitude (for example, moving faster could move the marker further away from the character)")]
+		[Header("Offset along magnitude")]
+        /// 방향의 크기에 따라 위치를 오프셋할지 여부(예를 들어 더 빠르게 이동하면 마커가 캐릭터에서 더 멀리 이동할 수 있음)
+        [Tooltip("방향의 크기에 따라 위치를 오프셋할지 여부(예를 들어 더 빠르게 이동하면 마커가 캐릭터에서 더 멀리 이동할 수 있음)")]
 		public bool OffsetAlongMagnitude = false;
-		/// the minimum bounds of the velocity's magnitude
-		[Tooltip("the minimum bounds of the velocity's magnitude")]
+        /// 속도 크기의 최소 경계
+        [Tooltip("속도 크기의 최소 경계")]
 		[MMCondition("OffsetAlongMagnitude", true)]
 		public float MinimumVelocity = 0f;
-		/// the maximum bounds of the velocity's magnitude
-		[Tooltip("the maximum bounds of the velocity's magnitude")]
+        /// 속도 크기의 최대 경계
+        [Tooltip("속도 크기의 최대 경계")]
 		[MMCondition("OffsetAlongMagnitude", true)]
 		public float MaximumVelocity = 7f;
-		/// the distance at which to position the marker when at the lowest velocity
-		[Tooltip("the distance at which to position the marker when at the lowest velocity")]
+        /// 가장 낮은 속도에 있을 때 마커를 배치할 거리
+        [Tooltip("가장 낮은 속도에 있을 때 마커를 배치할 거리")]
 		[MMCondition("OffsetAlongMagnitude", true)]
 		public float OffsetRemapMin = 0f;
-		/// the distance at which to position the marker when at the highest velocity
-		[Tooltip("the distance at which to position the marker when at the highest velocity")]
+        /// 최고 속도에 있을 때 마커를 배치할 거리
+        [Tooltip("최고 속도에 있을 때 마커를 배치할 거리")]
 		[MMCondition("OffsetAlongMagnitude", true)]
 		public float OffsetRemapMax = 1f;
         
 		[Header("Auto Disable")]
-		/// whether or not to disable the marker when the movement magnitude is under a certain threshold
-		[Tooltip("whether or not to disable the marker when the movement magnitude is under a certain threshold")]
+        /// 이동 크기가 특정 임계값 미만일 때 마커를 비활성화할지 여부
+        [Tooltip("이동 크기가 특정 임계값 미만일 때 마커를 비활성화할지 여부")]
 		public bool DisableBelowThreshold = false;
-		/// the threshold below which to disable the marker
-		[Tooltip("the threshold below which to disable the marker")]
+        /// 마커를 비활성화하는 임계값
+        [Tooltip("마커를 비활성화하는 임계값")]
 		[MMCondition("DisableBelowThreshold", true)]
 		public float DisableThreshold = 0.1f;
         
-		[Header("Interpolation")] 
-		/// whether or not to interpolate the rotation
-		[Tooltip("whether or not to interpolate the rotation")]
+		[Header("Interpolation")]
+        /// 회전을 보간할지 여부
+        [Tooltip("회전을 보간할지 여부")]
 		public bool Interpolate = false;
-		/// the rate at which to interpolate the rotation
-		[Tooltip("the rate at which to interpolate the rotation")]
+        /// 회전을 보간하는 속도
+        [Tooltip("회전을 보간하는 속도")]
 		[MMCondition("Interpolate", true)] 
 		public float InterpolateRate = 5f;
         

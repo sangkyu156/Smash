@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An Action that will set the last known position of the target as the new Target
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetLastKnownPositionAsTarget")]
+    /// <summary>
+    /// 대상의 마지막으로 알려진 위치를 새 대상으로 설정하는 작업
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionSetLastKnownPositionAsTarget")]
 	public class AIActionSetLastKnownPositionAsTarget : AIAction
 	{
 		protected Transform _targetTransform;

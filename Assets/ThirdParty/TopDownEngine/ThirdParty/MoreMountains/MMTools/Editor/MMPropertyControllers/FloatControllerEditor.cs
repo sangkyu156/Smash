@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the FloatController, conditional hiding and dropdown fill
-	/// </summary>
-	[CustomEditor(typeof(FloatController), true)]
+    /// <summary>
+    /// FloatController용 사용자 정의 편집기, 조건부 숨기기 및 드롭다운 채우기
+    /// </summary>
+    [CustomEditor(typeof(FloatController), true)]
 	[CanEditMultipleObjects]    
 	public class FloatControllerEditor : Editor
 	{

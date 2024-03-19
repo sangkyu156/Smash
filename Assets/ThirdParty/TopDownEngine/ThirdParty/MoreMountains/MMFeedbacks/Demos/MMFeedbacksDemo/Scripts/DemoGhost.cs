@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A class used on the MMFeedback's demo ghost
-	/// </summary>
-	public class DemoGhost : MonoBehaviour
+    /// <summary>
+    /// MMFeedback의 데모 고스트에 사용되는 클래스
+    /// </summary>
+    public class DemoGhost : MonoBehaviour
 	{
 		/// <summary>
 		/// Called via animation event, disables the object

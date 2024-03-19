@@ -7,17 +7,17 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this ability to a 3D character and it'll be able to dash (cover the specified distance in the specified time)
-	///
-	/// Animation parameters :
-	/// Dashing : true if the character is currently dashing
-	/// DashStarted : true when the dash starts
-	/// DashingDirectionX : the x component of the dash direction, normalized
-	/// DashingDirectionY : the y component of the dash direction, normalized
-	/// DashingDirectionZ : the z component of the dash direction, normalized
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Dash 3D")]
+    /// <summary>
+    /// 3D 캐릭터에 이 기능을 추가하면 대시(지정된 시간에 지정된 거리를 이동)할 수 있습니다.
+    ///
+    /// Animation parameters :
+    /// Dashing : 캐릭터가 현재 돌진 중이면 true
+    /// DashStarted : 대시가 시작되면 true
+    /// DashingDirectionX : 정규화된 대시 방향의 x 구성요소
+    /// DashingDirectionY : 정규화된 대시 방향의 y 구성요소
+    /// DashingDirectionZ : 정규화된 대시 방향의 z 구성요소
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Dash 3D")]
 	public class CharacterDash3D : CharacterAbility
 	{
 		/// the possible dash modes (fixed = always the same direction)
@@ -26,41 +26,41 @@ namespace MoreMountains.TopDownEngine
 		public enum DashSpaces { World, Local }
 
 		/// the current dash mode
-		[Tooltip("the current dash mode (fixed : always the same direction, MainMovement : usually your left stick, SecondaryMovement : usually your right stick, MousePosition : the cursor's position")]
+		[Tooltip("현재 대시 모드(고정: 항상 같은 방향, MainMovement: 일반적으로 왼쪽 스틱, SecondaryMovement: 일반적으로 오른쪽 스틱, MousePosition: 커서 위치")]
 		public DashModes DashMode = DashModes.MainMovement;
 
 		[Header("Dash")]
 		/// the space in which the dash should happen, either local or world
 		public DashSpaces DashSpace = DashSpaces.World;
-		/// the direction of the dash, relative to the character
-		[Tooltip("the direction of the dash, relative to the character")]
+        /// 문자를 기준으로 대시의 방향
+        [Tooltip("문자를 기준으로 대시의 방향")]
 		public Vector3 DashDirection = Vector3.forward;
-		/// the distance to cover
-		[Tooltip("the distance to cover")]
+        /// 커버할 수 있는 거리
+        [Tooltip("커버할 수 있는 거리")]
 		public float DashDistance = 10f;
-		/// the duration of the dash
-		[Tooltip("the duration of the dash, in seconds")]
+        /// 대시의 지속 시간
+        [Tooltip("대시의 지속 시간")]
 		public float DashDuration = 0.5f;
-		/// the curve to apply to the dash's acceleration
-		[Tooltip("the curve to apply to the dash's acceleration")]
+        /// 대시의 가속도에 적용할 곡선
+        [Tooltip("대시의 가속도에 적용할 곡선")]
 		public AnimationCurve DashCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
-		/// if this is true, dash will be allowed while jumping, otherwise it'll be ignored
-		[Tooltip("if this is true, dash will be allowed while jumping, otherwise it'll be ignored")]
+        /// 이것이 사실이라면 점프하는 동안 대시가 허용되고, 그렇지 않으면 무시됩니다.
+        [Tooltip("이것이 사실이라면 점프하는 동안 대시가 허용되고, 그렇지 않으면 무시됩니다.")]
 		public bool AllowDashWhenJumping = false;
 
 		[Header("Cooldown")]
-		/// this ability's cooldown
-		[Tooltip("this ability's cooldown")]
+        /// 이 능력의 재사용 대기시간
+        [Tooltip("이 능력의 재사용 대기시간")]
 		public MMCooldown Cooldown;
         
-		[Header("Damage")] 
-		/// if this is true, this character won't receive any damage while a dash is in progress
-		[Tooltip("if this is true, this character won't receive any damage while a dash is in progress")]
+		[Header("Damage")]
+        /// 이것이 사실이라면 이 캐릭터는 대시가 진행되는 동안 어떠한 피해도 받지 않을 것입니다.
+        [Tooltip("이것이 사실이라면 이 캐릭터는 대시가 진행되는 동안 어떠한 피해도 받지 않을 것입니다.")]
 		public bool InvincibleWhileDashing = false; 
 
 		[Header("Feedbacks")]
-		/// the feedbacks to play when dashing
-		[Tooltip("the feedbacks to play when dashing")]
+        /// 대시할 때 플레이할 피드백
+        [Tooltip("대시할 때 플레이할 피드백")]
 		public MMFeedbacks DashFeedback;
 
 		protected bool _dashing;

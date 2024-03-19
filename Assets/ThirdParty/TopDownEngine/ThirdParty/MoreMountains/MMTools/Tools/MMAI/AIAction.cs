@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Actions are behaviours and describe what your character is doing. Examples include patrolling, shooting, jumping, etc. 
-	/// </summary>
-	public abstract class AIAction : MonoBehaviour
+    /// <summary>
+    /// 액션은 행동이며 캐릭터가 무엇을 하는지 설명합니다. 예를 들면 순찰, 사격, 점프 등이 있습니다.
+    /// </summary>
+    public abstract class AIAction : MonoBehaviour
 	{
 		public enum InitializationModes { EveryTime, OnlyOnce, }
 

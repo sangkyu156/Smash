@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to bind a title item to a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuItemTitle : MonoBehaviour
+    /// <summary>
+    /// 제목 항목을 MMDebugMenu에 바인딩하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuItemTitle : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the text comp used to display the title

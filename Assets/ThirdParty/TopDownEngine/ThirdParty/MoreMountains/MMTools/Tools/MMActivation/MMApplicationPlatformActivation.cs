@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store bindings
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 바인딩을 저장하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class PlatformBindings
 	{
 		public enum PlatformActions { DoNothing, Disable }
@@ -16,10 +16,10 @@ namespace MoreMountains.Tools
 		public PlatformActions PlatformAction = PlatformActions.DoNothing;
 	}
 
-	/// <summary>
-	/// Add this class to a gameobject, and it'll enable/disable it based on platform context, using Application.platform to detect the platform
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Activation/MMApplicationPlatformActivation")]
+    /// <summary>
+    /// 이 클래스를 게임 개체에 추가하면 플랫폼을 감지하기 위해 Application.platform을 사용하여 플랫폼 컨텍스트에 따라 활성화/비활성화됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Activation/MMApplicationPlatformActivation")]
 	public class MMApplicationPlatformActivation : MonoBehaviour
 	{
 		/// the possible times at which this script can run

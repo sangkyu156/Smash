@@ -6,10 +6,10 @@ using System.Collections.Generic;
 namespace MoreMountains.Tools
 {
 	[CreateAssetMenu(fileName="AchievementList",menuName="MoreMountains/Achievement List")]
-	/// <summary>
-	/// A scriptable object containing a list of achievements. You need to create one and store it in a Resources folder for this to work.
-	/// </summary>
-	public class MMAchievementList : ScriptableObject 
+    /// <summary>
+    /// 업적 목록이 포함된 스크립트 가능한 개체입니다. 이 작업을 수행하려면 하나를 만들고 리소스 폴더에 저장해야 합니다.
+    /// </summary>
+    public class MMAchievementList : ScriptableObject 
 	{
 		/// the unique ID of this achievement list. This is used to save/load data.
 		public string AchievementsListID = "AchievementsList";

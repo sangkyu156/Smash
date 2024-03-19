@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A debug menu helper, meant to help create quick mobile friendly debug menus
-	/// </summary>
-	public class MMDebugMenu : MonoBehaviour
+    /// <summary>
+    /// 모바일 친화적인 디버그 메뉴를 빠르게 생성하는 데 도움이 되는 디버그 메뉴 도우미
+    /// </summary>
+    public class MMDebugMenu : MonoBehaviour
 	{
 		/// the possible directions for the menu to appear
 		public enum ToggleDirections { TopToBottom, LeftToRight, RightToLeft, BottomToTop }

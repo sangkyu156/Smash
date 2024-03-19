@@ -9,10 +9,10 @@ namespace MoreMountains.InventoryEngine
 {
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(InventoryDisplay),true)]
-	/// <summary>
-	/// Custom editor for the InventoryDisplay component
-	/// </summary>
-	public class InventoryDisplayEditor : Editor 
+    /// <summary>
+    /// InventoryDisplay 구성요소용 사용자 정의 편집기
+    /// </summary>
+    public class InventoryDisplayEditor : Editor 
 	{
 		/// <summary>
 		/// Gets the target inventory component.

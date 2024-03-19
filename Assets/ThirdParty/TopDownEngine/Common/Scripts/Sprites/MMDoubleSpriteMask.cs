@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This setup uses two sprite masks, bound in the inspector, to enable one and then disable the other to mask specific parts of a level
-	/// </summary>
-	public class MMDoubleSpriteMask : MonoBehaviour, MMEventListener<MMSpriteMaskEvent>
+    /// <summary>
+    /// 이 설정은 인스펙터에 바인딩된 두 개의 스프라이트 마스크를 사용하여 하나를 활성화한 다음 다른 하나를 비활성화하여 레벨의 특정 부분을 마스크합니다.
+    /// </summary>
+    public class MMDoubleSpriteMask : MonoBehaviour, MMEventListener<MMSpriteMaskEvent>
 	{
 		[Header("Masks")]
 
 		/// the first sprite mask
-		[Tooltip("the first sprite mask")]
+		[Tooltip("첫 번째 스프라이트 마스크")]
 		public MMSpriteMask Mask1;
 		/// the second sprite mask
-		[Tooltip("the second sprite mask")]
+		[Tooltip("두 번째 스프라이트 마스크")]
 		public MMSpriteMask Mask2;
 
 		protected MMSpriteMask _currentMask;

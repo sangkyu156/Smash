@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An Action that will set the target to null, resetting it
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionResetTarget")]
+    /// <summary>
+    /// 대상을 null로 설정하고 재설정하는 작업
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionResetTarget")]
 	public class AIActionResetTarget : AIAction
 	{
 		/// <summary>

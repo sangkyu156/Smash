@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to bind a value item to a MMDebugMenu
-	/// </summary>
-	public class MMDebugMenuItemValue : MonoBehaviour
+    /// <summary>
+    /// 값 항목을 MMDebugMenu에 바인딩하는 데 사용되는 클래스
+    /// </summary>
+    public class MMDebugMenuItemValue : MonoBehaviour
 	{
 		[Header("Bindings")]
 		/// the label to display next to the value

@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// This class shows a simple example of a storage box, that will display a target inventory when the Player character is on top of it, and close it when the character exits the zone.
-	/// </summary>
-	public class InventoryDemoStorageBox : MonoBehaviour
+    /// <summary>
+    /// 이 클래스는 플레이어 캐릭터가 그 위에 있을 때 대상 인벤토리를 표시하고 캐릭터가 영역을 나갈 때 닫히는 저장 상자의 간단한 예를 보여줍니다.
+    /// </summary>
+    public class InventoryDemoStorageBox : MonoBehaviour
 	{
 		public CanvasGroup TargetCanvasGroup;
 

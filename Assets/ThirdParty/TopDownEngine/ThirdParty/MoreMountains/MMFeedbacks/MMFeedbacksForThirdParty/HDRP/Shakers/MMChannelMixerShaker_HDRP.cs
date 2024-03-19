@@ -8,11 +8,11 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a HDRP color adjustments post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// HDRP 색상 조정 후처리를 사용하여 이 클래스를 카메라에 추가하면 이벤트를 받아 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMChannelMixerShaker_HDRP")]
 	public class MMChannelMixerShaker_HDRP : MMShaker
@@ -22,14 +22,14 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMInspectorGroup("Red", true, 42)]
 		/// the curve used to animate the red value on
-		[Tooltip("the curve used to animate the red value on")]
+		[Tooltip("빨간색 값에 애니메이션을 적용하는 데 사용된 곡선")]
 		public AnimationCurve ShakeRed = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapRedZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapRedOne = 200f;
 
@@ -38,24 +38,24 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the curve used to animate the green value on")]
 		public AnimationCurve ShakeGreen = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapGreenZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapGreenOne = 200f;
 
 		[MMInspectorGroup("Blue", true, 44)]
 		/// the curve used to animate the blue value on
-		[Tooltip("the curve used to animate the blue value on")]
+		[Tooltip("파란색 값에 애니메이션을 적용하는 데 사용된 곡선")]
 		public AnimationCurve ShakeBlue = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
-		[Tooltip("the value to remap the curve's 0 to")]
+		[Tooltip("곡선의 0을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapBlueZero = 0f;
 		/// the value to remap the curve's 1 to
-		[Tooltip("the value to remap the curve's 1 to")]
+		[Tooltip("곡선의 1을 다시 매핑할 값")]
 		[Range(-200f, 200f)]
 		public float RemapBlueOne = 200f;
         

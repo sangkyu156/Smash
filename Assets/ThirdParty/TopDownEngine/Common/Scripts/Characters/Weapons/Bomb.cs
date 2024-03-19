@@ -4,43 +4,43 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A basic melee weapon class, that will activate a "hurt zone" when the weapon is used
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Bomb")]
+    /// <summary>
+    /// 무기를 사용할 때 "상처 구역"을 활성화하는 기본 근접 무기 클래스
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Bomb")]
 	public class Bomb : TopDownMonoBehaviour 
 	{
 		/// the shape of the bomb's damage area
 		public enum DamageAreaShapes { Rectangle, Circle }
 
 		[Header("Explosion")]
-		/// the delay before the bomb explodes
-		[Tooltip("the delay before the bomb explodes")]
+        /// 폭탄이 터지기 전의 지연
+        [Tooltip("폭탄이 터지기 전의 지연")]
 		public float TimeBeforeExplosion = 2f;
-		/// a vfx to instantiate when the bomb explodes
-		[Tooltip("a vfx to instantiate when the bomb explodes")]
+        /// 폭탄이 폭발할 때 인스턴스화할 VFX
+        [Tooltip("폭탄이 폭발할 때 인스턴스화할 VFX")]
 		public GameObject ExplosionEffect;
-		/// a sound to play when the bomb explodes
-		[Tooltip("a sound to play when the bomb explodes")]
+        /// 폭탄이 터질 때 재생되는 소리
+        [Tooltip("폭탄이 터질 때 재생되는 소리")]
 		public AudioClip ExplosionSfx;
 
 		[Header("Flicker")]
-		/// whether or not the sprite should flicker before explosion
-		[Tooltip("whether or not the sprite should flicker before explosion")]
+        /// 폭발하기 전에 스프라이트가 깜박여야 하는지 여부
+        [Tooltip("폭발하기 전에 스프라이트가 깜박여야 하는지 여부")]
 		public bool FlickerSprite = true;
-		/// the duration before the flicker starts
-		[Tooltip("the duration before the flicker starts")]
+        /// 깜박임이 시작되기 전까지의 시간
+        [Tooltip("깜박임이 시작되기 전까지의 시간")]
 		public float TimeBeforeFlicker = 1f;
-		/// the name of the property that should flicker
-		[Tooltip("the name of the property that should flicker")]
+        /// 깜박여야 하는 속성의 이름
+        [Tooltip("깜박여야 하는 속성의 이름")]
 		public string MaterialPropertyName = "_Color";
 
 		[Header("Damage Area")]
-		/// the collider of the damage area
-		[Tooltip("the collider of the damage area")]
+        /// 피해 지역의 충돌체
+        [Tooltip("피해 지역의 충돌체")]
 		public Collider2D DamageAreaCollider;
-		/// the duration of the damage area
-		[Tooltip("the duration of the damage area")]
+        /// 피해 지역의 지속 시간
+        [Tooltip("피해 지역의 지속 시간")]
 		public float DamageAreaActiveDuration = 1f;
 
 		protected float _timeSinceStart;

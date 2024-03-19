@@ -16,13 +16,13 @@ namespace MoreMountains.TopDownEngine
 		[Header("Points of Entry")]
 
         /// 진입점을 사용할지 여부입니다. 그렇지 않으면 다음 레벨로 넘어가게 됩니다.
-        [Tooltip("Whether or not to use entry points. If you don't, you'll simply move on to the next level")]
+        [Tooltip("진입점을 사용할지 여부입니다. 그렇지 않으면 다음 레벨로 넘어가게 됩니다.")]
 		public bool UseEntryPoints = false;
         /// 다음 레벨로 이동할 진입점 인덱스
-        [Tooltip("The index of the point of entry to move to in the next level")]
+        [Tooltip("다음 레벨로 이동할 진입점 인덱스")]
 		public int PointOfEntryIndex;
         /// 다음 레벨로 이동할 때 향하는 방향
-        [Tooltip("The direction to face when moving to the next level")]
+        [Tooltip("다음 레벨로 이동할 때 향하는 방향")]
 		public Character.FacingDirections FacingDirection;
 
         /// <summary>

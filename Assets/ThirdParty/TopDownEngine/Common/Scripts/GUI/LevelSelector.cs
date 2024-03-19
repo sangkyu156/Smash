@@ -5,22 +5,22 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This component allows the definition of a level that can then be accessed and loaded. Used mostly in the level map scene.
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/GUI/LevelSelector")]
+    /// <summary>
+    /// 이 구성요소를 사용하면 액세스하고 로드할 수 있는 레벨을 정의할 수 있습니다. 주로 레벨 맵 장면에서 사용됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/GUI/LevelSelector")]
 	public class LevelSelector : TopDownMonoBehaviour
 	{
 		/// the exact name of the target level
-		[Tooltip("the exact name of the target level")]
+		[Tooltip("목표 레벨의 정확한 이름")]
 		public string LevelName;
 
 		/// if this is true, GoToLevel will ignore the LevelManager and do a direct call
-		[Tooltip("if this is true, GoToLevel will ignore the LevelManager and do a direct call")]
+		[Tooltip("이것이 사실이라면 GoToLevel은 LevelManager를 무시하고 직접 호출을 수행합니다.")]
 		public bool DoNotUseLevelManager = false;
 
 		/// if this is true, any persistent character will be destroyed when loading the new level
-		[Tooltip("if this is true, any persistent character will be destroyed when loading the new level")]
+		[Tooltip("이것이 사실이라면 새 레벨을 로드할 때 모든 영구 캐릭터가 삭제됩니다.")]
 		public bool DestroyPersistentCharacter = false;
 
 		/// <summary>

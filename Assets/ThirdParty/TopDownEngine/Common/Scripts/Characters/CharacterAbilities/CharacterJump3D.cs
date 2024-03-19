@@ -6,49 +6,49 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This ability will allow a character to jump in 3D
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Jump 3D")]
+    /// <summary>
+    /// 이 능력을 사용하면 캐릭터가 3D로 점프할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/Abilities/Character Jump 3D")]
 	public class CharacterJump3D : CharacterAbility 
 	{
 		[Header("Jump Settings")]
-		/// whether or not the jump should be proportional to press (if yes, releasing the button will stop the jump)
-		[Tooltip("whether or not the jump should be proportional to press (if yes, releasing the button will stop the jump)")]
+        /// 점프가 누르기에 비례해야 하는지 여부(그렇다면 버튼을 놓으면 점프가 중지됩니다)
+        [Tooltip("점프가 누르기에 비례해야 하는지 여부(그렇다면 버튼을 놓으면 점프가 중지됩니다)")]
 		public bool JumpProportionalToPress = true;
-		/// the minimum amount of time after the jump's start before releasing the jump button has any effect
-		[Tooltip("the minimum amount of time after the jump's start before releasing the jump button has any effect")]
+        /// 점프 시작 후 점프 버튼을 놓기 전까지의 최소 시간은 효과가 있습니다.
+        [Tooltip("점프 시작 후 점프 버튼을 놓기 전까지의 최소 시간은 효과가 있습니다.")]
 		public float MinimumPressTime = 0.4f;
-		/// the force to apply to the jump, the higher the jump, the faster the jump
-		[Tooltip("the force to apply to the jump, the higher the jump, the faster the jump")]
+        /// 점프에 적용되는 힘, 점프가 높을수록 점프 속도가 빨라집니다.
+        [Tooltip("점프에 적용되는 힘, 점프가 높을수록 점프 속도가 빨라집니다.")]
 		public float JumpForce = 800f;
-		/// the height the jump should have
-		[Tooltip("the height the jump should have")]
+        /// 점프해야 할 높이
+        [Tooltip("점프해야 할 높이")]
 		public float JumpHeight = 4f;
 
 		[Header("Slopes")]
-		/// whether or not the character can jump if standing on a slope too steep to walk on
-		[Tooltip("whether or not the character can jump if standing on a slope too steep to walk on")]
+        /// 너무 가파른 경사면에 서서 걸을 수 없는 경우 캐릭터가 점프할 수 있는지 여부
+        [Tooltip("너무 가파른 경사면에 서서 걸을 수 없는 경우 캐릭터가 점프할 수 있는지 여부")]
 		public bool CanJumpOnTooSteepSlopes = true;
-		/// whether or not standing on a slope too steep to walk on should reset jump counters 
-		[Tooltip("whether or not standing on a slope too steep to walk on should reset jump counters")]
+        /// 걷기에 너무 가파른 경사면에 서 있으면 점프 카운터가 재설정되어야 하는지 여부
+        [Tooltip("걷기에 너무 가파른 경사면에 서 있으면 점프 카운터가 재설정되어야 하는지 여부")]
 		public bool ResetJumpsOnTooSteepSlopes = false;
         
 		[Header("Number of Jumps")]
-		/// the maximum number of jumps allowed (0 : no jump, 1 : normal jump, 2 : double jump, etc...)
-		[Tooltip("the maximum number of jumps allowed (0 : no jump, 1 : normal jump, 2 : double jump, etc...)")]
+        /// 허용되는 최대 점프 수 (0 : 점프 없음, 1 : 일반 점프, 2 : 더블 점프 등...)
+        [Tooltip("허용되는 최대 점프 수 (0 : 점프 없음, 1 : 일반 점프, 2 : 더블 점프 등...)")]
 		public int NumberOfJumps = 1;
-		/// the number of jumps left to the character
-		[MMReadOnly]
-		[Tooltip("the number of jumps left to the character")]
+        /// 캐릭터에게 남은 점프 횟수
+        [MMReadOnly]
+		[Tooltip("캐릭터에게 남은 점프 횟수")]
 		public int NumberOfJumpsLeft = 0;
 
 		[Header("Feedbacks")]
-		/// the feedback to play when the jump starts
-		[Tooltip("the feedback to play when the jump starts")]
+        /// 점프가 시작될 때 재생할 피드백
+        [Tooltip("점프가 시작될 때 재생할 피드백")]
 		public MMFeedbacks JumpStartFeedback;
-		/// the feedback to play when the jump stops
-		[Tooltip("the feedback to play when the jump stops")]
+        /// 점프가 멈출 때 재생할 피드백
+        [Tooltip("점프가 멈출 때 재생할 피드백")]
 		public MMFeedbacks JumpStopFeedback;
 
 		protected bool _doubleJumping;

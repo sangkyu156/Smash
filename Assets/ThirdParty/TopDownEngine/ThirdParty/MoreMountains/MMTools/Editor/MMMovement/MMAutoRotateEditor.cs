@@ -3,10 +3,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the MMAutoRotate component
-	/// </summary>
-	[CustomEditor(typeof(MMAutoRotate), true)]
+    /// <summary>
+    /// MMAutoRotate 구성 요소용 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMAutoRotate), true)]
 	[CanEditMultipleObjects]
 	public class MMAutoRotateEditor : Editor
 	{

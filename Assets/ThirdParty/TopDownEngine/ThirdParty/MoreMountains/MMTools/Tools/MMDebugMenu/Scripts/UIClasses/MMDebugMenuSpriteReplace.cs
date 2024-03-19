@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 using UnityEngine.UI;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A class to add to an image to have it act like a button with a different sprite for on and off states
-	/// </summary>
-	public class MMDebugMenuSpriteReplace : MonoBehaviour 
+{
+    /// <summary>
+    /// 켜기 및 끄기 상태에 대해 다른 스프라이트가 있는 버튼처럼 작동하도록 이미지에 추가하는 클래스입니다.
+    /// </summary>
+    public class MMDebugMenuSpriteReplace : MonoBehaviour 
 	{
 		/// the sprite to use when in the "on" state
 		public Sprite OnSprite;

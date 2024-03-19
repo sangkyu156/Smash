@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 namespace MoreMountains.TopDownEngine
 {	
 	[System.Serializable]
-	/// <summary>
-	/// A serializable entity to store deadline demo scenes, whether they've been completed, unlocked, how many stars can and have been collected
-	/// </summary>
-	public class DeadlineScene
+    /// <summary>
+    /// 완료 여부, 잠금 해제 여부, 수집할 수 있고 수집한 별 수 등 마감 시연 장면을 저장하는 직렬화 가능한 엔터티입니다.
+    /// </summary>
+    public class DeadlineScene
 	{
 		public string SceneName;
 		public bool LevelComplete = false;
@@ -19,10 +19,10 @@ namespace MoreMountains.TopDownEngine
 	}
 
 	[System.Serializable]
-	/// <summary>
-	/// A serializable entity used to store progress : a list of scenes with their internal status (see above), how many lives are left, and how much we can have
-	/// </summary>
-	public class DeadlineProgress
+    /// <summary>
+    /// 진행 상황을 저장하는 데 사용되는 직렬화 가능한 엔터티: 내부 상태가 포함된 장면 목록(위 참조), 남은 생명 수 및 얻을 수 있는 양
+    /// </summary>
+    public class DeadlineProgress
 	{
 		public string StoredCharacterName;
 		public int InitialMaximumLives = 0;
@@ -33,12 +33,12 @@ namespace MoreMountains.TopDownEngine
 		public string[] Collectibles;
 	}
 
-	/// <summary>
-	/// The DeadlineProgressManager class acts as an example of how you can implement progress management in your game.
-	/// There's no general class for that in the engine, for the simple reason that no two games will want to save the exact same things.
-	/// But this should show you how it's done, and you can then copy and paste that into your own class (or extend this one, whatever you prefer).
-	/// </summary>
-	public class DeadlineProgressManager : MMSingleton<DeadlineProgressManager>, MMEventListener<TopDownEngineEvent>, MMEventListener<TopDownEngineStarEvent>
+    /// <summary>
+    /// DeadlineProgressManager 클래스는 게임에서 진행 관리를 구현하는 방법의 예 역할을 합니다.
+    /// 엔진에는 이에 대한 일반 클래스가 없습니다. 두 게임 모두 똑같은 것을 저장하려고 하지 않기 때문입니다.
+    /// 하지만 이것이 어떻게 완료되었는지 보여줄 것이며, 그런 다음 이를 복사하여 자신의 클래스에 붙여넣을 수 있습니다(또는 원하는 대로 이 클래스를 확장할 수 있습니다).
+    /// </summary>
+    public class DeadlineProgressManager : MMSingleton<DeadlineProgressManager>, MMEventListener<TopDownEngineEvent>, MMEventListener<TopDownEngineStarEvent>
 	{
 		public int InitialMaximumLives { get; set; }
 		public int InitialCurrentLives { get; set; }
@@ -48,7 +48,7 @@ namespace MoreMountains.TopDownEngine
 		public Character Jules;
 
 		/// the list of scenes that we'll want to consider for our game
-		[Tooltip("the list of scenes that we'll want to consider for our game")]
+		[Tooltip("게임에서 고려하고 싶은 장면 목록")]
 		public DeadlineScene[] Scenes;
 
 		[MMInspectorButton("CreateSaveGame")]

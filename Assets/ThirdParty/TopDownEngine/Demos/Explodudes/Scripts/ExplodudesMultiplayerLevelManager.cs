@@ -7,17 +7,17 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// An example class of how you can extend the MultiplayerLevelManager to implement your own specific rules.
-	/// This one's rules are as follows :
-	/// - if all players (but one) are dead, the game stops and whoever got the most coins wins
-	/// - at the end of the game, a Winner screen is displayed and tapping Jump anywhere restarts the game
-	/// </summary>
-	public class ExplodudesMultiplayerLevelManager : MultiplayerLevelManager
+    /// <summary>
+    /// MultiplayerLevelManager를 확장하여 자신만의 특정 규칙을 구현하는 방법에 대한 예제 클래스입니다.
+    /// 이놈의 규칙은 다음과 같습니다 :
+    /// - 모든 플레이어(한 명 제외)가 죽으면 게임이 중단되고 가장 많은 코인을 얻은 사람이 승리합니다.
+    /// - 게임이 끝나면 승자 화면이 표시되고 아무데나 점프를 누르면 게임이 다시 시작됩니다.
+    /// </summary>
+    public class ExplodudesMultiplayerLevelManager : MultiplayerLevelManager
 	{
 		[Header("Explodudes Settings")]
 		/// the duration of the game, in seconds
-		[Tooltip("the duration of the game, in seconds")]
+		[Tooltip("게임 시간(초)")]
 		public int GameDuration = 99;
 		/// the ID of the winner
 		public string WinnerID { get; set; }

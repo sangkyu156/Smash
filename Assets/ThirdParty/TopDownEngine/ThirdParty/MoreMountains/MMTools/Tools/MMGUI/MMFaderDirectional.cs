@@ -6,52 +6,52 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// The Fader class can be put on an Image, and it'll intercept MMFadeEvents and turn itself on or off accordingly.
-	/// This specific fader will move from left to right, right to left, top to bottom or bottom to top
-	/// </summary>
-	[RequireComponent(typeof(CanvasGroup))]
+    /// <summary>
+    /// Fader 클래스는 이미지에 배치될 수 있으며 MMFadeEvents를 가로채서 그에 따라 자체적으로 켜거나 끌 것입니다.
+    /// 이 특정 페이더는 왼쪽에서 오른쪽으로, 오른쪽에서 왼쪽으로, 위에서 아래로 또는 아래에서 위로 이동합니다.
+    /// </summary>
+    [RequireComponent(typeof(CanvasGroup))]
 	[AddComponentMenu("More Mountains/Tools/GUI/MMFaderDirectional")]
 	public class MMFaderDirectional : MonoBehaviour, MMEventListener<MMFadeEvent>, MMEventListener<MMFadeInEvent>, MMEventListener<MMFadeOutEvent>, MMEventListener<MMFadeStopEvent>
 	{
-		/// the possible directions this fader can move in
-		public enum Directions { TopToBottom, LeftToRight, RightToLeft, BottomToTop }
+        /// 이 페이더가 움직일 수 있는 가능한 방향
+        public enum Directions { TopToBottom, LeftToRight, RightToLeft, BottomToTop }
 
 		[Header("Identification")]
 		/// the ID for this fader (0 is default), set more IDs if you need more than one fader
-		[Tooltip("the ID for this fader (0 is default), set more IDs if you need more than one fader")]
+		[Tooltip("이 페이더의 ID(기본값은 0), 하나 이상의 페이더가 필요한 경우 더 많은 ID를 설정하십시오.")]
 		public int ID;
 
 		[Header("Directional Fader")]
 		/// the direction this fader should move in when fading in
-		[Tooltip("the direction this fader should move in when fading in")]
+		[Tooltip("페이드 인할 때 이 페이더가 움직여야 하는 방향")]
 		public Directions FadeInDirection = Directions.LeftToRight;
 		/// the direction this fader should move in when fading out
-		[Tooltip("the direction this fader should move in when fading out")]
+		[Tooltip("페이드 아웃 시 이 페이더가 움직여야 하는 방향")]
 		public Directions FadeOutDirection = Directions.LeftToRight;
         
 		[Header("Timing")]
 		/// the default duration of the fade in/out
-		[Tooltip("the default duration of the fade in/out")]
+		[Tooltip("페이드 인/아웃의 기본 지속 시간")]
 		public float DefaultDuration = 0.2f;
 		/// the default curve to use for this fader
-		[Tooltip("the default curve to use for this fader")]
+		[Tooltip("이 페이더에 사용할 기본 곡선")]
 		public MMTweenType DefaultTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
 		/// whether or not the fade should happen in unscaled time 
-		[Tooltip("whether or not the fade should happen in unscaled time")]
+		[Tooltip("스케일링되지 않은 시간에 페이드가 발생해야 하는지 여부")]
 		public bool IgnoreTimescale = true;
 		/// whether or not to automatically disable this fader on init
-		[Tooltip("whether or not to automatically disable this fader on init")]
+		[Tooltip("초기화 시 이 페이더를 자동으로 비활성화할지 여부")]
 		public bool DisableOnInit = true;
 
 		[Header("Delay")]
 		/// a delay (in seconds) to apply before playing this fade
-		[Tooltip("a delay (in seconds) to apply before playing this fade")]
+		[Tooltip("이 페이드를 재생하기 전에 적용할 지연(초)")]
 		public float InitialDelay = 0f;
 
 		[Header("Interaction")]
 		/// whether or not the fader should block raycasts when visible
-		[Tooltip("whether or not the fader should block raycasts when visible")]
+		[Tooltip("페이더가 보일 때 레이캐스트를 차단해야 하는지 여부")]
 		public bool ShouldBlockRaycasts = false; 
 
 		/// the width of the fader

@@ -5,28 +5,28 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class to handle the 3D doors in the Loft demo
-	/// </summary>
-	public class Door3D : TopDownMonoBehaviour
+    /// <summary>
+    /// Loft 데모에서 3D 문을 처리하는 클래스
+    /// </summary>
+    public class Door3D : TopDownMonoBehaviour
 	{
 		[Header("Angles")]
 
 		/// the min angle the door can open at
-		[Tooltip("the min angle the door can open at")]
+		[Tooltip("문이 열릴 수 있는 최소 각도")]
 		public float MinAngle = 90f;
 		/// the max angle the door can open at
-		[Tooltip("the max angle the door can open at")]
+		[Tooltip("문이 열릴 수 있는 최대 각도")]
 		public float MaxAngle = 270f;
 		/// the min angle at which the door locks when open
-		[Tooltip("the min angle at which the door locks when open")]
+		[Tooltip("문이 열렸을 때 문이 잠기는 최소 각도")]
 		public float MinAngleLock = 90f;
 		/// the max angle at which the door locks when open
-		[Tooltip("the max angle at which the door locks when open")]
+		[Tooltip("문이 열렸을 때 문이 잠기는 최대 각도")]
 		public float MaxAngleLock = 270f;
 		[Header("Safe Lock")]
 		/// the duration of the "safe lock", a period during which the door is set to kinematic, to prevent glitches. That period ends after that safe lock duration, once the player has exited the door's area
-		[Tooltip("the duration of the 'safe lock', a period during which the door is set to kinematic, to prevent glitches. That period ends after that safe lock duration, once the player has exited the door's area")]
+		[Tooltip("결함을 방지하기 위해 도어가 운동학적으로 설정되는 기간인 '안전 잠금' 기간. 해당 기간은 플레이어가 문 영역을 벗어나면 안전 잠금 기간 이후 종료됩니다.")]
 		public float SafeLockDuration = 1f;
 
 		[Header("Binding")]

@@ -7,28 +7,28 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A base class, meant to be extended, defining a Feedback. A Feedback is an action triggered by a MMFeedbacks, usually in reaction to the player's input or actions,
-	/// to help communicate both emotion and legibility, improving game feel.
-	/// To create a new feedback, extend this class and override its Custom methods, declared at the end of this class. You can look at the many examples for reference.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 피드백을 정의하는 확장용 기본 클래스입니다. 피드백은 일반적으로 플레이어의 입력이나 작업에 대한 반응으로 MMFeedbacks에 의해 트리거되는 작업입니다.
+    /// 감정과 가독성을 모두 전달하여 게임 느낌을 향상시킵니다.
+    /// 새 피드백을 생성하려면 이 클래스를 확장하고 이 클래스 끝에 선언된 사용자 정의 메서드를 재정의합니다. 참고할 수 있는 다양한 사례를 살펴보실 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[System.Serializable]
 	[ExecuteAlways]
 	public abstract class MMFeedback : MonoBehaviour
 	{
 		/// whether or not this feedback is active
-		[Tooltip("whether or not this feedback is active")]
+		[Tooltip("이 피드백이 활성화되어 있는지 여부")]
 		public bool Active = true;
 		/// the name of this feedback to display in the inspector
-		[Tooltip("the name of this feedback to display in the inspector")]
+		[Tooltip("인스펙터에 표시할 피드백의 이름")]
 		public string Label = "MMFeedback";
 		/// the chance of this feedback happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)
-		[Tooltip("the chance of this feedback happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)")]
+		[Tooltip("이 피드백이 발생할 확률(퍼센트: 100: 항상 발생, 0: 전혀 발생하지 않음, 50: 두 번의 호출에 한 번 발생 등)")]
 		[Range(0,100)]
 		public float Chance = 100f;
 		/// a number of timing-related values (delay, repeat, etc)
-		[Tooltip("a number of timing-related values (delay, repeat, etc)")]
+		[Tooltip("다양한 타이밍 관련 값(지연, 반복 등)")]
 		public MMFeedbackTiming Timing;
 		/// the Owner of the feedback, as defined when calling the Initialization method
 		public GameObject Owner { get; set; }

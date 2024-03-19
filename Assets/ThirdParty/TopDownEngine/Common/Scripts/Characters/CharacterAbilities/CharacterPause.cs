@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a character and it'll be able to activate/desactivate the pause
-	/// </summary>
-	[MMHiddenProperties("AbilityStopFeedbacks")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 일시 정지를 활성화/비활성화할 수 있습니다.
+    /// </summary>
+    [MMHiddenProperties("AbilityStopFeedbacks")]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Pause")]
 	public class CharacterPause : CharacterAbility
 	{
@@ -17,24 +17,24 @@ namespace MoreMountains.TopDownEngine
 		
 		[Header("Pause audio tracks")]
 		/// whether or not to mute the sfx track when the game pauses, and to unmute it when it unpauses 
-		[Tooltip("whether or not to mute the sfx track when the game pauses, and to unmute it when it unpauses")]
+		[Tooltip("게임이 일시 정지될 때 sfx 트랙을 음소거할지, 일시 정지가 해제되면 음소거를 해제할지 여부")]
 		public bool MuteSfxTrackSounds = true;
 		/// whether or not to mute the UI track when the game pauses, and to unmute it when it unpauses 
-		[Tooltip("whether or not to mute the UI track when the game pauses, and to unmute it when it unpauses")]
+		[Tooltip("게임이 일시 중지될 때 UI 트랙을 음소거할지, 일시 중지가 해제될 때 음소거를 해제할지 여부")]
 		public bool MuteUITrackSounds = false;
 		/// whether or not to mute the music track when the game pauses, and to unmute it when it unpauses 
-		[Tooltip("whether or not to mute the music track when the game pauses, and to unmute it when it unpauses")]
+		[Tooltip("게임이 일시 중지될 때 음악 트랙을 음소거할지 여부와 일시 중지가 해제될 때 음소거를 해제할지 여부")]
 		public bool MuteMusicTrackSounds = false;
 		/// whether or not to mute the master track when the game pauses, and to unmute it when it unpauses 
-		[Tooltip("whether or not to mute the master track when the game pauses, and to unmute it when it unpauses")]
+		[Tooltip("게임이 일시 중지될 때 마스터 트랙을 음소거할지, 일시 중지가 해제될 때 음소거를 해제할지 여부")]
 		public bool MuteMasterTrackSounds = false;
 
 		[Header("Hooks")] 
 		/// a UnityEvent that will trigger when the game pauses 
-		[Tooltip("a UnityEvent that will trigger when the game pauses")]
+		[Tooltip("게임이 일시 중지될 때 트리거되는 UnityEvent")]
 		public UnityEvent OnPause;
 		/// a UnityEvent that will trigger when the game unpauses
-		[Tooltip("a UnityEvent that will trigger when the game unpauses")]
+		[Tooltip("게임이 일시정지 해제될 때 트리거되는 UnityEvent")]
 		public UnityEvent OnUnpause;
 
 

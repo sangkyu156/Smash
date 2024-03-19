@@ -4,22 +4,23 @@ using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 
+
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This action is used to play a MMFeedbacks
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMMFeedbacks")]
+    /// <summary>
+    /// 이 작업은 MMFeedbacks를 재생하는 데 사용됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionMMFeedbacks")]
 	public class AIActionMMFeedbacks : AIAction
 	{
-		/// The MMFeedbacks to play when this action gets performed by the AIBrain
-		[Tooltip("The MMFeedbacks to play when this action gets performed by the AIBrain")]
+        /// AIBrain이 이 작업을 수행할 때 재생할 MMFeedbacks
+        [Tooltip("AIBrain이 이 작업을 수행할 때 재생할 MMFeedbacks")]
 		public MMFeedbacks TargetFeedbacks;
-		/// If this is false, the feedback will be played every PerformAction (by default every frame while in this state), otherwise it'll only play once, when entering the state
-		[Tooltip("If this is false, the feedback will be played every PerformAction (by default every frame while in this state), otherwise it'll only play once, when entering the state")]
+        /// false인 경우 피드백은 PerformAction마다(기본적으로 이 상태에 있는 동안 프레임마다) 재생되고, 그렇지 않으면 상태에 들어갈 때 한 번만 재생됩니다.
+        [Tooltip("false인 경우 피드백은 PerformAction마다(기본적으로 이 상태에 있는 동안 프레임마다) 재생되고, 그렇지 않으면 상태에 들어갈 때 한 번만 재생됩니다.")]
 		public bool OnlyPlayWhenEnteringState = true;
-		/// If this is true, the target game object the TargetFeedbacks is on will be set active when performing this action
-		[Tooltip("If this is true, the target game object the TargetFeedbacks is on will be set active when performing this action")]
+        /// 이것이 true인 경우 이 작업을 수행할 때 TargetFeedbacks가 있는 대상 게임 개체가 활성 상태로 설정됩니다.
+        [Tooltip("이것이 true인 경우 이 작업을 수행할 때 TargetFeedbacks가 있는 대상 게임 개체가 활성 상태로 설정됩니다.")]
 		public bool SetTargetGameObjectActive = false;
 
 		protected bool _played = false;

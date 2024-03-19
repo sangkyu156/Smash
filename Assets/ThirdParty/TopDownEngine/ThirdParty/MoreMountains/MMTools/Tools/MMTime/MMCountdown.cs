@@ -12,10 +12,10 @@ namespace MoreMountains.Tools
 	public class MMCountdown : MMMonoBehaviour
 	{
 		[Serializable]
-		/// <summary>
-		/// A class to store floor information
-		/// </summary>
-		public class MMCountdownFloor
+        /// <summary>
+        /// 층 정보를 저장하는 클래스
+        /// </summary>
+        public class MMCountdownFloor
 		{
 			/// the value (in seconds) for this floor. Every FloorValue, the corresponding event will be triggered
 			public float FloorValue;
@@ -30,7 +30,7 @@ namespace MoreMountains.Tools
 		public enum MMCountdownDirections { Ascending, Descending }
 
 		[MMInspectorGroup("Countdown", true, 18)]
-		[MMInformation("You can define the bounds of the countdown (how much it should count down from, and to how much, the format it should be displayed in (standard Unity float ToString formatting).", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("카운트다운 범위(카운트다운해야 하는 정도와 표시되는 형식(표준 Unity float ToString 형식))을 정의할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		/// the time (in seconds) to count down from
 		public float CountdownFrom = 60f;
 		/// the time (in seconds) to count down to
@@ -59,9 +59,9 @@ namespace MoreMountains.Tools
 		public bool Milliseconds = false;
 
 		[MMInspectorGroup("Settings", true, 20)]
-		[MMInformation("You can choose whether or not the countdown should automatically start on its Start, at what frequency (in seconds) it should refresh (0 means every frame), and the countdown's speed multiplier " +
-		               "(2 will be twice as fast, 0.5 half normal speed, etc). Floors are used to define and trigger events when certain floors are reached. For each floor, define a floor value (in seconds). Everytime this floor gets reached, the corresponding event will be triggered." +
-		               "Bind events here to trigger them when the countdown reaches its To destination, or every time it gets refreshed.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("시작 시 카운트다운이 자동으로 시작되어야 하는지 여부, 새로 고쳐야 하는 빈도(초 단위)(0은 모든 프레임을 의미) 및 카운트다운 속도 승수를 선택할 수 있습니다. " +
+                       "(2는 2배 빠르며, 0.5는 정상 속도의 절반입니다.) 층은 특정 층에 도달할 때 이벤트를 정의하고 트리거하는 데 사용됩니다. 각 층에 대해 층 값(초)을 정의합니다. 이 층에 도달할 때마다 해당 이벤트가 발생합니다." +
+                       "카운트다운이 대상에 도달하거나 새로 고쳐질 때마다 이벤트를 트리거하려면 여기에 이벤트를 바인딩하세요.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		/// if this is true, the countdown will start as soon as this object Starts
 		public bool AutoStart = true;
 		/// if this is true, the countdown will automatically go back to its initial value when it reaches its destination

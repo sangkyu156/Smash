@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Use this class to enable or disable other gameobjects automatically on Start or Awake
-	/// </summary>
+    /// <summary>
+    /// 이 클래스를 사용하면 Start 또는 Awake에서 자동으로 다른 게임 객체를 활성화하거나 비활성화할 수 있습니다.
+    /// </summary>
 
-	[AddComponentMenu("More Mountains/Tools/Activation/MMActivationOnStart")]
+    [AddComponentMenu("More Mountains/Tools/Activation/MMActivationOnStart")]
 	public class MMActivationOnStart : MonoBehaviour
 	{
 		/// The possible modes that define whether this should run at Awake or Start

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class is used in the Deadline demos to mark collectibles and disable them if they've been collected in a past visit of the level
-	/// </summary>
-	public class DeadlineCollectible : TopDownMonoBehaviour
+    /// <summary>
+    /// 이 클래스는 Deadline 데모에서 수집품을 표시하고 이전 레벨 방문에서 수집한 경우 비활성화하는 데 사용됩니다.
+    /// </summary>
+    public class DeadlineCollectible : TopDownMonoBehaviour
 	{
 		public string CollectibleName = "";
 		

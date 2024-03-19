@@ -8,11 +8,11 @@ using UnityEditor;
 
 namespace MoreMountains.InventoryEngine
 {
-	#if UNITY_EDITOR
-	/// <summary>
-	/// This class lets you specify (in code, by editing it) symbols that will be added to the build settings' define symbols list automatically
-	/// </summary>
-	[InitializeOnLoad]
+#if UNITY_EDITOR
+    /// <summary>
+    /// 이 클래스를 사용하면 빌드 설정의 기호 정의 목록에 자동으로 추가될 기호를 코드에서 편집하여 지정할 수 있습니다.
+    /// </summary>
+    [InitializeOnLoad]
 	public class InventoryEngineDefineSymbols
 	{
 		/// <summary>

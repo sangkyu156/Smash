@@ -5,8 +5,8 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// The possible classes an item can be a part of
-	/// </summary>
-	public enum ItemClasses { Neutral, Armor, Weapon, Ammo, HealthBonus, Barrier }
+    /// <summary>
+    /// 항목이 포함될 수 있는 가능한 클래스
+    /// </summary>
+    public enum ItemClasses { Neutral, Armor, Weapon, Ammo, HealthBonus, Barrier }
 }

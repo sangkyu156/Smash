@@ -11,11 +11,11 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this attribute to a class and its Execution Order will be changed to the value specified in parameters
-	/// Usage : [ExecutionOrder(66)]
-	/// </summary>
-	public class MMExecutionOrderAttribute : Attribute
+    /// <summary>
+    /// 이 속성을 클래스에 추가하면 해당 실행 순서가 매개변수에 지정된 값으로 변경됩니다.
+    /// 사용법 : [ExecutionOrder(66)]
+    /// </summary>
+    public class MMExecutionOrderAttribute : Attribute
 	{
 		#if UNITY_EDITOR
 		/// the execution order you want for the class this attribute is applied to 

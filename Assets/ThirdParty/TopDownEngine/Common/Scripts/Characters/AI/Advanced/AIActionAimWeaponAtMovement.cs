@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Aims the weapon at the current movement when not shooting
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionAimWeaponAtMovement")]
+    /// <summary>
+    /// 총을 쏘지 않을 때 현재 움직임에 무기를 조준합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionAimWeaponAtMovement")]
 	//[RequireComponent(typeof(CharacterHandleWeapon))]
 	public class AIActionAimWeaponAtMovement : AIAction
 	{

@@ -6,18 +6,17 @@ using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class that combines a progress bar and a text display
-	/// and that can be used to display the current ammo level of a weapon
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/GUI/AmmoDisplay")]
+    /// <summary>
+    /// 진행률 표시줄과 텍스트 표시를 결합하고 무기의 현재 탄약 수준을 표시하는 데 사용할 수 있는 클래스입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/GUI/AmmoDisplay")]
 	public class AmmoDisplay : MMProgressBar 
 	{
-		/// the ID of the AmmoDisplay 
-		[Tooltip("the ID of the AmmoDisplay ")]
+        /// AmmoDisplay의 ID
+        [Tooltip("AmmoDisplay의 ID")]
 		public int AmmoDisplayID = 0;
-		/// the Text object used to display the current ammo numbers
-		[Tooltip("the Text object used to display the current ammo numbers")]
+        /// 현재 탄약 번호를 표시하는 데 사용되는 Text 객체
+        [Tooltip("현재 탄약 번호를 표시하는 데 사용되는 Text 객체")]
 		public Text TextDisplay;
 
 		protected int _totalAmmoLastTime, _maxAmmoLastTime, _ammoInMagazineLastTime, _magazineSizeLastTime;

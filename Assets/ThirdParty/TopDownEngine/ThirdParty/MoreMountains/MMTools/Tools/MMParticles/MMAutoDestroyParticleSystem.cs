@@ -3,11 +3,11 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a ParticleSystem so it auto destroys once it has stopped emitting.
-	/// Make sure your ParticleSystem isn't looping, otherwise this script will be useless
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Particles/MMAutoDestroyParticleSystem")]
+    /// <summary>
+    /// 이 클래스를 ParticleSystem에 추가하면 방출이 중지되면 자동으로 소멸됩니다.
+    /// ParticleSystem이 반복되지 않는지 확인하십시오. 그렇지 않으면 이 스크립트는 쓸모가 없습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Particles/MMAutoDestroyParticleSystem")]
 	public class MMAutoDestroyParticleSystem : MonoBehaviour 
 	{
 		/// True if the ParticleSystem should also destroy its parent

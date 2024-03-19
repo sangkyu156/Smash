@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the MMScreenSafeZones component
-	/// </summary>
-	[CustomEditor(typeof(MMAspectRatioSafeZones), true)]
+    /// <summary>
+    /// MMScreenSafeZones 구성 요소용 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMAspectRatioSafeZones), true)]
 	[CanEditMultipleObjects]
 	public class MMAspectRatioSafeZonesEditor : Editor
 	{
