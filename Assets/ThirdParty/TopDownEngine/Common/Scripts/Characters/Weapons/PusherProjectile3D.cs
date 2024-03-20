@@ -5,17 +5,17 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a projectile (in 3D) and it'll be able to push stuff (opening doors for example)
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Pusher Projectile 3D")]
+    /// <summary>
+    /// 이 구성 요소를 발사체(3D)에 추가하면 물건을 밀 수 있습니다(예: 문 열기).
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Pusher Projectile 3D")]
 	public class PusherProjectile3D : TopDownMonoBehaviour
 	{
 		/// the amount of force to apply when colliding
-		[Tooltip("the amount of force to apply when colliding")]
+		[Tooltip("충돌할 때 적용되는 힘의 양")]
 		public float PushPower = 10f;
 		/// an offset to apply on the projectile's forward to account for super high speeds. This will affect the position the force is applied at. Usually 0 will be fine
-		[Tooltip("an offset to apply on the projectile's forward to account for super high speeds. This will affect the position the force is applied at. Usually 0 will be fine")]
+		[Tooltip("초고속을 고려하여 발사체의 전방에 적용할 오프셋입니다. 이는 힘이 적용되는 위치에 영향을 미칩니다. 일반적으로 0이면 괜찮습니다.")]
 		public float PositionOffset = 0f;
 
 		protected Rigidbody _pushedRigidbody;

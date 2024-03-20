@@ -11,15 +11,15 @@ namespace MoreMountains.Tools
 		Stop,
 		Free
 	}
-    
-	/// <summary>
-	/// An event used to control a specific sound on the MMSoundManager.
-	/// You can either search for it by ID, or directly pass an audiosource if you have it.
-	///
-	/// Example : MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, 33);
-	/// will cause the sound(s) with an ID of 33 to stop playing
-	/// </summary>
-	public struct MMSoundManagerSoundControlEvent
+
+    /// <summary>
+    /// MMSoundManager에서 특정 사운드를 제어하는 ​​데 사용되는 이벤트입니다.
+    /// ID로 검색할 수도 있고, 오디오 소스가 있는 경우 직접 전달할 수도 있습니다.
+    ///
+    /// Example : MMSoundManagerSoundControlEvent.Trigger(MMSoundManagerSoundControlEventTypes.Stop, 33);
+    /// ID가 33인 사운드의 재생이 중지됩니다.
+    /// </summary>
+    public struct MMSoundManagerSoundControlEvent
 	{
 		/// the ID of the sound to control (has to match the one used to play it)
 		public int SoundID;

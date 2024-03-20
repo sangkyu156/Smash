@@ -8,14 +8,14 @@ namespace MoreMountains.Tools
 	{
 		Pause, Play, Stop, Free, FreeAllButPersistent, FreeAllLooping
 	}
-    
-	/// <summary>
-	/// This event will let you pause/play/stop/free all sounds playing through the MMSoundManager at once
-	///
-	/// Example : MMSoundManagerAllSoundsControlEvent.Trigger(MMSoundManagerAllSoundsControlEventTypes.Stop);
-	/// will stop all sounds playing at once
-	/// </summary>
-	public struct MMSoundManagerAllSoundsControlEvent
+
+    /// <summary>
+    /// 이 이벤트를 사용하면 MMSoundManager를 통해 재생되는 모든 사운드를 한 번에 일시 중지/재생/중지/해제할 수 있습니다.
+    ///
+    /// Example : MMSoundManagerAllSoundsControlEvent.Trigger(MMSoundManagerAllSoundsControlEventTypes.Stop);
+    /// 모든 소리 재생을 한 번에 중지합니다.
+    /// </summary>
+    public struct MMSoundManagerAllSoundsControlEvent
 	{
 		public MMSoundManagerAllSoundsControlEventTypes EventType;
         

@@ -8,20 +8,20 @@ using Cinemachine;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback will let you change the priorities of your cameras. 
-	/// It requires a bit of setup : adding a MMCinemachinePriorityListener to your different cameras, with unique Channel values on them.
-	/// Optionally, you can add a MMCinemachinePriorityBrainListener on your Cinemachine Brain to handle different transition types and durations.
-	/// Then all you have to do is pick a channel and a new priority on your feedback, and play it. Magic transition!
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 통해 카메라의 우선순위를 변경할 수 있습니다.
+    /// 약간의 설정이 필요합니다. MMCinemachinePriorityListener를 고유한 채널 값과 함께 다양한 카메라에 추가합니다.
+    /// 선택적으로 Cinemachine Brain에 MMCinemachinePriorityBrainListener를 추가하여 다양한 전환 유형과 기간을 처리할 수 있습니다.
+    /// 그런 다음 피드백에 대한 채널과 새로운 우선순위를 선택하고 재생하기만 하면 됩니다. 마법의 전환!
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_CINEMACHINE
 	[FeedbackPath("Camera/Cinemachine Transition")]
 	#endif
-	[FeedbackHelp("This feedback will let you change the priorities of your cameras. It requires a bit of setup : " +
-	              "adding a MMCinemachinePriorityListener to your different cameras, with unique Channel values on them. " +
-	              "Optionally, you can add a MMCinemachinePriorityBrainListener on your Cinemachine Brain to handle different transition types and durations. " +
-	              "Then all you have to do is pick a channel and a new priority on your feedback, and play it. Magic transition!")]
+	[FeedbackHelp("이 피드백을 통해 카메라의 우선순위를 변경할 수 있습니다. 약간의 설정이 필요합니다: " +
+"고유한 채널 값을 사용하여 다양한 카메라에 MMCinemachinePriorityListener를 추가합니다." +
+"선택적으로 Cinemachine Brain에 MMCinemachinePriorityBrainListener를 추가하여 다양한 전환 유형과 기간을 처리할 수 있습니다." +
+"그렇다면 당신이 해야 할 일은 피드백에 대한 채널과 새로운 우선순위를 선택하고 재생하는 것뿐입니다. 마법의 전환!")]
 	public class MMF_CinemachineTransition : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -43,31 +43,31 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Cinemachine Transition", true, 52)]
 		/// the selected mode (either via event, or via direct binding of a specific camera)
-		[Tooltip("the selected mode (either via event, or via direct binding of a specific camera)")]
+		[Tooltip("선택한 모드(이벤트를 통해 또는 특정 카메라의 직접 바인딩을 통해)")]
 		public Modes Mode = Modes.Event;
 		#if MM_CINEMACHINE
 		/// the virtual camera to target
-		[Tooltip("the virtual camera to target")]
+		[Tooltip("대상으로 삼을 가상 카메라")]
 		[MMFEnumCondition("Mode", (int)Modes.Binding)]
 		public CinemachineVirtualCamera TargetVirtualCamera;
 		#endif
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetValuesAfterTransition = true;
 
 		[Header("Priority")]
 		/// the new priority to apply to all virtual cameras on the specified channel
-		[Tooltip("the new priority to apply to all virtual cameras on the specified channel")]
+		[Tooltip("지정된 채널의 모든 가상 카메라에 적용할 새로운 우선순위")]
 		public int NewPriority = 10;
 		/// whether or not to force all virtual cameras on other channels to reset their priority to zero
-		[Tooltip("whether or not to force all virtual cameras on other channels to reset their priority to zero")]
+		[Tooltip("다른 채널의 모든 가상 카메라를 강제로 우선순위를 0으로 재설정할지 여부")]
 		public bool ForceMaxPriority = true;
 		/// whether or not to apply a new blend
-		[Tooltip("whether or not to apply a new blend")]
+		[Tooltip("새로운 블렌드를 적용할지 여부")]
 		public bool ForceTransition = false;
 		#if MM_CINEMACHINE
 		/// the new blend definition to apply
-		[Tooltip("the new blend definition to apply")]
+		[Tooltip("적용할 새 블렌드 정의")]
 		[MMFCondition("ForceTransition", true)]
 		public CinemachineBlendDefinition BlendDefintion;
 

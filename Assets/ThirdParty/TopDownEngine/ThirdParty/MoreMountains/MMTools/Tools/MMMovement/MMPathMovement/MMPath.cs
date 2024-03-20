@@ -7,10 +7,10 @@ using MoreMountains.Tools;
 namespace MoreMountains.Tools
 {
 	[System.Serializable]
-	/// <summary>
-	/// This class describes a node on an MMPath
-	/// </summary>
-	public class MMPathMovementElement
+    /// <summary>
+    /// 이 클래스는 MMPath의 노드를 설명합니다.
+    /// </summary>
+    public class MMPathMovementElement
 	{
 		/// the point that make up the path the object will follow
 		public Vector3 PathElementPosition;
@@ -18,10 +18,10 @@ namespace MoreMountains.Tools
 		public float Delay;
 	}
 
-	/// <summary>
-	/// Add this component to an object and you'll be able to define a path, that can then be used by another component
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMPath")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 다른 구성 요소에서 사용할 수 있는 경로를 정의할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMPath")]
 	public class MMPath : MonoBehaviour 
 	{
 		/// the possible cycle options
@@ -40,10 +40,10 @@ namespace MoreMountains.Tools
 		}
 
 		[Header("Path")]
-		[MMInformation("Here you can select the '<b>Cycle Option</b>'. Back and Forth will have your object follow the path until its end, and go back to the original point. If you select Loop, the path will be closed and the object will move along it until told otherwise. If you select Only Once, the object will move along the path from the first to the last point, and remain there forever.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기에서 '<b>주기 옵션</b>'을 선택할 수 있습니다. 앞뒤로 개체가 끝까지 경로를 따라 갔다가 원래 지점으로 돌아갑니다. 루프를 선택하면 경로가 닫히고 달리 지정될 때까지 개체가 경로를 따라 이동합니다. 한 번만 선택하면 개체는 첫 번째 지점에서 마지막 지점까지 경로를 따라 이동하고 해당 위치에 영원히 유지됩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		public CycleOptions CycleOption;
 
-		[MMInformation("Add points to the <b>Path</b> (set the size of the path first), then position the points using either the inspector or by moving the handles directly in scene view. For each path element you can specify a delay (in seconds). The order of the points will be the order the object follows.\nFor looping paths, you can then decide if the object will go through the points in the Path in Ascending (1, 2, 3...) or Descending (Last, Last-1, Last-2...) order.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("<b>경로</b>에 점을 추가한 다음(경로의 크기를 먼저 설정), 검사기를 사용하거나 장면 보기에서 직접 핸들을 움직여 점의 위치를 ​​지정하세요. 각 경로 요소에 대해 지연(초)을 지정할 수 있습니다. 점의 순서는 개체가 따르는 순서입니다.\n루프 경로의 경우 개체가 오름차순(1, 2, 3...) 또는 내림차순(마지막, 마지막-1, 마지막-2...) 순서입니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the initial movement direction : ascending > will go from the points 0 to 1, 2, etc ; descending > will go from the last point to last-1, last-2, etc
 		public MovementDirection LoopInitialMovementDirection = MovementDirection.Ascending;
 		/// the points that make up the path the object will follow

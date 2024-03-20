@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This event will let you pause 
-	///
-	/// Example : MMSoundManagerSoundFadeEvent.Trigger(33, 2f, 0.3f, new MMTweenType(MMTween.MMTweenCurve.EaseInElastic));
-	/// will fade the sound with an ID of 33 towards a volume of 0.3, over 2 seconds, on an elastic curve
-	/// </summary>
-	public struct MMSoundManagerSoundFadeEvent
+    /// <summary>
+    /// 이 이벤트를 통해 일시중지할 수 있습니다.
+    ///
+    /// Example : MMSoundManagerSoundFadeEvent.Trigger(33, 2f, 0.3f, new MMTweenType(MMTween.MMTweenCurve.EaseInElastic));
+    /// 탄성 곡선에서 2초에 걸쳐 ID가 33인 사운드를 볼륨 0.3 방향으로 페이드합니다.
+    /// </summary>
+    public struct MMSoundManagerSoundFadeEvent
 	{
 		public enum Modes { PlayFade, StopFade }
 

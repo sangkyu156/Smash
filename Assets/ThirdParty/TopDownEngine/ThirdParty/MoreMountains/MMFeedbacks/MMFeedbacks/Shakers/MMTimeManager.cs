@@ -72,36 +72,36 @@ namespace MoreMountains.Feedbacks
 		}
 	}
 
-	/// <summary>
-	/// Put this component in your scene and it'll catch MMFreezeFrameEvents and MMTimeScaleEvents, allowing you to control the flow of time.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMTimeManager")]
+    /// <summary>
+    /// 이 구성 요소를 장면에 넣으면 MMFreezeFrameEvents 및 MMTimeScaleEvents를 포착하여 시간 흐름을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMTimeManager")]
 	public class MMTimeManager : MMSingleton<MMTimeManager>
 	{	
 		[Header("Default Values")]
-		[MMFInformationAttribute("Put this component in your scene and it'll catch MMFreezeFrameEvents and MMTimeScaleEvents, allowing you to control the flow of time.", MMFInformationAttribute.InformationType.Info, false)]
+		[MMFInformationAttribute("이 구성 요소를 장면에 넣으면 MMFreezeFrameEvents 및 MMTimeScaleEvents를 포착하여 시간 흐름을 제어할 수 있습니다.", MMFInformationAttribute.InformationType.Info, false)]
 		/// The reference time scale, to which the system will go back to after all time is changed
-		[Tooltip("The reference time scale, to which the system will go back to after all time is changed")]
+		[Tooltip("모든 시간이 변경된 후 시스템이 다시 돌아가는 기준 시간 척도입니다.")]
 		public float NormalTimeScale = 1f;
 
 		[Header("Impacted Values")] 
 		/// whether or not to update Time.timeScale when changing time scale
-		[Tooltip("whether or not to update Time.timeScale when changing time scale")]
+		[Tooltip("시간 척도 변경 시 Time.timeScale 업데이트 여부")]
 		public bool UpdateTimescale = true; 
 		/// whether or not to update Time.fixedDeltaTime when changing time scale
-		[Tooltip("whether or not to update Time.fixedDeltaTime when changing time scale")]
+		[Tooltip("시간 척도 변경 시 Time.fixedDeltaTime 업데이트 여부")]
 		public bool UpdateFixedDeltaTime = true; 
 		/// whether or not to update Time.maximumDeltaTime when changing time scale
-		[Tooltip("whether or not to update Time.maximumDeltaTime when changing time scale")]
+		[Tooltip("시간 척도 변경 시 Time.maximumDeltaTime 업데이트 여부")]
 		public bool UpdateMaximumDeltaTime = true;
 		
 		[Header("Debug")]
 		/// the current, real time, time scale
-		[Tooltip("the current, real time, time scale")]
+		[Tooltip("현재, 실시간, 시간 척도")]
 		[MMFReadOnly]
 		public float CurrentTimeScale = 1f;
 		/// the time scale the system is lerping towards
-		[Tooltip("the time scale the system is lerping towards")]
+		[Tooltip("시스템이 지향하는 시간 척도")]
 		[MMFReadOnly]
 		public float TargetTimeScale = 1f;
 		

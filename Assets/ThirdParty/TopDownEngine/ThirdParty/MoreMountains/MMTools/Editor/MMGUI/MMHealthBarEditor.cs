@@ -8,10 +8,10 @@ namespace MoreMountains.Tools
 {	
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(MMHealthBar),true)]
-	/// <summary>
-	/// Custom editor for health bars (mostly a switch for prefab based / drawn bars
-	/// </summary>
-	public class HealthBarEditor : Editor 
+    /// <summary>
+    /// 체력 막대용 사용자 정의 편집기(주로 조립식 기반/그려진 막대용 스위치)
+    /// </summary>
+    public class HealthBarEditor : Editor 
 	{
 		public MMHealthBar HealthBarTarget 
 		{ 

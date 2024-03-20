@@ -6,11 +6,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the font size of a target TMP over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the font size of a target TMP over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 글꼴 크기를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 글꼴 크기를 제어할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Font Size")]
 	#endif

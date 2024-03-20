@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Game object extensions
-	/// </summary>
-	public static class GameObjectExtensions
+    /// <summary>
+    /// 게임 개체 확장
+    /// </summary>
+    public static class GameObjectExtensions
 	{
 		static List<Component> m_ComponentCache = new List<Component>();
 

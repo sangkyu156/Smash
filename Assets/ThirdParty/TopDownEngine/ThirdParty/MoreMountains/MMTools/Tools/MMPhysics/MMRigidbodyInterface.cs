@@ -2,12 +2,12 @@
 using System.Collections;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// This class acts as an interface to allow the demo levels to work whether the environment (colliders, rigidbodies) are set as 2D or 3D.
-	/// If you already know for sure that you're going for a 2D or 3D game, I suggest you replace the use of this class with the appropriate classes.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Rigidbody Interface/MMRigidbodyInterface")]
+{
+    /// <summary>
+    /// 이 클래스는 환경(충돌체, 강체)이 2D 또는 3D로 설정되어 있는지 여부에 관계없이 데모 레벨이 작동할 수 있도록 하는 인터페이스 역할을 합니다.
+    /// 2D 또는 3D 게임을 할 것이라는 것을 이미 알고 있다면 이 클래스의 사용을 적절한 클래스로 바꾸는 것이 좋습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Rigidbody Interface/MMRigidbodyInterface")]
 	public class MMRigidbodyInterface : MonoBehaviour 
 	{	
 		/// <summary>

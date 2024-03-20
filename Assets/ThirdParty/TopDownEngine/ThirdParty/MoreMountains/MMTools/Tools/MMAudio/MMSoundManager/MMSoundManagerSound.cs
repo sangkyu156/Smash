@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple struct used to store information about the sounds played by the MMSoundManager
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    ///MMSoundManager가 재생하는 사운드에 대한 정보를 저장하는 데 사용되는 간단한 구조체입니다.
+    /// </summary>
+    [Serializable]
 	public struct MMSoundManagerSound
 	{
 		/// the ID of the sound 

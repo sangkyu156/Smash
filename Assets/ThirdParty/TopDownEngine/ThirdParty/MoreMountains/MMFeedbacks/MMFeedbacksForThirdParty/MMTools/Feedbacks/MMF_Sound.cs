@@ -14,7 +14,7 @@ namespace MoreMountains.Feedbacks
 	[ExecuteAlways]
 	[AddComponentMenu("")]
 	[FeedbackPath("Audio/Sound")]
-	[FeedbackHelp("This feedback lets you play the specified AudioClip, either via event (you'll need something in your scene to catch a MMSfxEvent, for example a MMSoundManager), or cached (AudioSource gets created on init, and is then ready to be played), or on demand (instantiated on Play). For all these methods you can define a random volume between min/max boundaries (just set the same value in both fields if you don't want randomness), random pitch, and an optional AudioMixerGroup.")]
+	[FeedbackHelp("이 피드백을 사용하면 이벤트(MMSoundManager와 같은 MMSfxEvent를 포착하려면 장면에 무언가가 필요함)를 통해 또는 캐시(AudioSource가 초기화 시 생성된 다음 재생할 준비가 됨)를 통해 지정된 AudioClip을 재생할 수 있습니다. 또는 주문형(Play에서 인스턴스화). 이러한 모든 방법에 대해 최소/최대 경계(임의성을 원하지 않는 경우 두 필드에 동일한 값을 설정), 임의 피치 및 선택적 AudioMixerGroup 사이에서 임의의 볼륨을 정의할 수 있습니다.")]
 	public class MMF_Sound : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback can act as a pause but also as a start point for your loops. Add a FeedbackLooper below this (and after a few feedbacks) and your MMFeedbacks will loop between both
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback can act as a pause but also as a start point for your loops. Add a FeedbackLooper below this (and after a few feedbacks) and your MMFeedbacks will loop between both.")]
+    /// <summary>
+    /// 이 피드백은 일시 중지 역할을 할 수도 있지만 루프의 시작점 역할도 할 수 있습니다. 이 아래에 FeedbackLooper를 추가하고 몇 가지 피드백 후에 MMFeedback이 두 가지 사이에서 반복됩니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 일시 중지 역할을 할 수도 있지만 루프의 시작점 역할도 할 수 있습니다. 이 아래에 FeedbackLooper를 추가하고 몇 가지 피드백 후에 MMFeedback이 두 가지 사이에서 반복됩니다.")]
 	[FeedbackPath("Loop/Looper Start")]
 	public class MMFeedbackLooperStart : MMFeedbackPause
 	{

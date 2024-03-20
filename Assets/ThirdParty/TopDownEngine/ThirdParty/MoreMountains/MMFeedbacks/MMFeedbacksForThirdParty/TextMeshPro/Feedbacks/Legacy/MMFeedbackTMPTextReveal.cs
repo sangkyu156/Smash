@@ -7,11 +7,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you reveal words, lines, or characters in a target TMP, one at a time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you reveal words, lines, or characters in a target TMP, one at a time")]
+    /// <summary>
+    /// 이 피드백을 통해 대상 TMP의 단어, 줄 또는 문자를 한 번에 하나씩 표시할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 대상 TMP의 단어, 줄 또는 문자를 한 번에 하나씩 표시할 수 있습니다.")]
 	[FeedbackPath("TextMesh Pro/TMP Text Reveal")]
 	public class MMFeedbackTMPTextReveal : MMFeedback
 	{

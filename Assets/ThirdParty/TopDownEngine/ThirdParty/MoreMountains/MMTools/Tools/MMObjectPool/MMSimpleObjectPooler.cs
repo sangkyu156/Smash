@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple object pool outputting a single type of objects
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Object Pool/MMSimpleObjectPooler")]
+    /// <summary>
+    /// 단일 유형의 객체를 출력하는 간단한 객체 풀
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Object Pool/MMSimpleObjectPooler")]
 	public class MMSimpleObjectPooler : MMObjectPooler 
 	{
 		/// the game object we'll instantiate 

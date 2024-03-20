@@ -7,17 +7,17 @@ namespace MoreMountains.Tools
 {
 	public class MMTilemapGridRenderer 
 	{
-		/// <summary>
-		/// Renders the specified grid on the specified tilemap, with optional slow mode (only works at runtime)
-		/// </summary>
-		/// <param name="grid"></param>
-		/// <param name="tilemap"></param>
-		/// <param name="tile"></param>
-		/// <param name="slowRender"></param>
-		/// <param name="slowRenderDuration"></param>
-		/// <param name="slowRenderTweenType"></param>
-		/// <param name="slowRenderSupport"></param>
-		public static void RenderGrid(int[,] grid, MMTilemapGeneratorLayer layer, bool slowRender = false, float slowRenderDuration = 1f, 
+        /// <summary>
+        /// 선택적 저속 모드를 사용하여 지정된 타일맵에 지정된 그리드를 렌더링합니다(런타임에만 작동).
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="tilemap"></param>
+        /// <param name="tile"></param>
+        /// <param name="slowRender"></param>
+        /// <param name="slowRenderDuration"></param>
+        /// <param name="slowRenderTweenType"></param>
+        /// <param name="slowRenderSupport"></param>
+        public static void RenderGrid(int[,] grid, MMTilemapGeneratorLayer layer, bool slowRender = false, float slowRenderDuration = 1f, 
 			MMTweenType slowRenderTweenType = null, MonoBehaviour slowRenderSupport = null)
 		{
 			if (layer.FusionMode == MMTilemapGeneratorLayer.FusionModes.Normal)

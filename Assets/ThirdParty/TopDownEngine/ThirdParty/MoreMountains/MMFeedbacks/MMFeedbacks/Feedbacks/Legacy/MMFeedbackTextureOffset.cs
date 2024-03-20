@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control the texture offset of a target material over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you control the texture offset of a target material over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상 재질의 텍스처 오프셋을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 재질의 텍스처 오프셋을 제어할 수 있습니다.")]
 	[FeedbackPath("Renderer/Texture Offset")]
 	public class MMFeedbackTextureOffset : MMFeedback
 	{
@@ -24,34 +24,34 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Material")]
 		/// the renderer on which to change texture offset on
-		[Tooltip("the renderer on which to change texture offset on")]
+		[Tooltip("텍스처 오프셋을 변경할 렌더러")]
 		public Renderer TargetRenderer;
 		/// the material index
-		[Tooltip("the material index")]
+		[Tooltip("재료 지수")]
 		public int MaterialIndex = 0;
 		/// the property name, for example _MainTex_ST, or _MainTex if you don't have UseMaterialPropertyBlocks set to true
-		[Tooltip("the property name, for example _MainTex_ST, or _MainTex if you don't have UseMaterialPropertyBlocks set to true")]
+		[Tooltip("속성 이름(예: _MainTex_ST 또는 UseMaterialPropertyBlocks가 true로 설정되지 않은 경우 _MainTex)")]
 		public string MaterialPropertyName = "_MainTex_ST";
 		/// whether the feedback should affect the material instantly or over a period of time
-		[Tooltip("whether the feedback should affect the material instantly or over a period of time")]
+		[Tooltip("피드백이 자료에 즉시 영향을 미칠지, 아니면 일정 기간에 걸쳐 영향을 미칠지 여부")]
 		public Modes Mode = Modes.OverTime;
 		/// how long the material should change over time
-		[Tooltip("how long the material should change over time")]
+		[Tooltip("시간이 지남에 따라 재료가 얼마나 오랫동안 변해야 하는지")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public float Duration = 0.2f;
 		/// whether or not the values should be relative 
-		[Tooltip("whether or not the values should be relative")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.")] 
 		public bool UseMaterialPropertyBlocks = false;
         
 		[Header("Intensity")]
 		/// the curve to tween the offset on
-		[Tooltip("the curve to tween the offset on")]
+		[Tooltip("오프셋을 트위닝할 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public AnimationCurve OffsetCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the offset curve's 0 to
@@ -63,7 +63,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public Vector2 RemapOne = Vector2.one;
 		/// the value to move the intensity to in instant mode
-		[Tooltip("the value to move the intensity to in instant mode")]
+		[Tooltip("인스턴트 모드에서 강도를 이동할 값")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public Vector2 InstantOffset;
 

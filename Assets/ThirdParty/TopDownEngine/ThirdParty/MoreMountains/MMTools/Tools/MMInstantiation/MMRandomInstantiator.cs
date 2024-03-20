@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an empty object, bind a few prefabs into its RandomPool slots, and it'll instantiate one of them at its position/rotation on Start or Awake
-	/// You can also call its InstantiateRandomObject method at any time, and it'll instantiate another random object on demand, 
-	/// potentially destroying the previous one if you decide so
-	/// </summary>
-	public class MMRandomInstantiator : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 빈 개체에 추가하고 몇 개의 프리팹을 RandomPool 슬롯에 바인딩하면 Start 또는 Awake의 위치/회전에서 그 중 하나를 인스턴스화합니다.
+    /// 언제든지 InstantiateRandomObject 메서드를 호출할 수 있으며 요청 시 다른 임의 개체를 인스턴스화합니다.
+    /// 결정하면 이전 항목을 잠재적으로 파괴할 수 있습니다.
+    /// </summary>
+    public class MMRandomInstantiator : MonoBehaviour
 	{
 		/// the possible start modes
 		public enum StartModes { Awake, Start, None }

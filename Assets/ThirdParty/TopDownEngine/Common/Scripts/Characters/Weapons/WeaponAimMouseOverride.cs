@@ -8,28 +8,28 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a WeaponAim, and it'll automatically handle switching its weapon aim control mode to mouse if mouse becomes active.
-	/// If you then touch any of the gamepad axis again, it'll switch back aim control to it.
-	/// The WeaponAim control mode needs to be initially set to a gamepad control mode
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Weapon Aim Mouse Override")]
+    /// <summary>
+    /// 이 구성 요소를 WeaponAim에 추가하면 마우스가 활성화되면 무기 조준 제어 모드를 마우스로 자동 전환하는 작업이 자동으로 처리됩니다.
+    /// 그런 다음 게임패드 축 중 하나를 다시 터치하면 조준 제어가 해당 축으로 다시 전환됩니다.
+    /// WeaponAim 제어 모드는 초기에 게임패드 제어 모드로 설정되어야 합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Weapon Aim Mouse Override")]
 	public class WeaponAimMouseOverride : MonoBehaviour
 	{
 		[Header("Behavior")]
-		[MMInformation("Add this component to a WeaponAim, and it'll automatically handle switching its weapon aim control mode to mouse if mouse becomes active. " +
-		               "If you then touch any of the gamepad axis again, it'll switch back aim control to it. " +
-		               "The WeaponAim control mode needs to be initially set to a gamepad control mode", 
+		[MMInformation("이 구성 요소를 WeaponAim에 추가하면 마우스가 활성화되면 무기 조준 제어 모드를 마우스로 자동 전환하는 작업이 자동으로 처리됩니다. " +
+"그런 다음 게임패드 축 중 하나를 다시 터치하면 조준 제어가 다시 해당 축으로 전환됩니다." +
+"WeaponAim 제어 모드는 처음에 게임패드 제어 모드로 설정되어야 합니다.", 
 						MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 		
 		/// if this is true, mouse position will be evaluated, and if it differs from the one last frame, we'll switch to mouse control mode
-		[Tooltip("if this is true, mouse position will be evaluated, and if it differs from the one last frame, we'll switch to mouse control mode")]
+		[Tooltip("이것이 사실이라면 마우스 위치가 평가되고, 마지막 프레임과 다르면 마우스 제어 모드로 전환됩니다.")]
 		public bool CheckMouse = true;
 		/// if this is true, the primary axis will be evaluated, and if it differs from the one last frame, we'll switch back to the initial control mode
-		[Tooltip("if this is true, the primary axis will be evaluated, and if it differs from the one last frame, we'll switch back to the initial control mode")]
+		[Tooltip("이것이 사실이라면 기본 축이 평가되고, 마지막 프레임과 다르면 초기 제어 모드로 다시 전환됩니다.")]
 		public bool CheckPrimaryAxis = true;
 		/// if this is true, the secondary axis will be evaluated, and if it differs from the one last frame, we'll switch back to the initial control mode
-		[Tooltip("if this is true, the secondary axis will be evaluated, and if it differs from the one last frame, we'll switch back to the initial control mode")]
+		[Tooltip("이것이 사실이라면 보조 축이 평가되고 마지막 프레임과 다를 경우 초기 제어 모드로 다시 전환됩니다.")]
 		public bool CheckSecondaryAxis = true;
 		
 		protected WeaponAim _weaponAim;

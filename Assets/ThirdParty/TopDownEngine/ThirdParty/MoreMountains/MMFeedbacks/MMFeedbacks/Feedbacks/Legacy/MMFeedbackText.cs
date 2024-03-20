@@ -5,10 +5,10 @@ using UnityEngine.UI;
 namespace MoreMountains.Feedbacks
 {
 	/// <summary>
-	/// This feedback lets you control the contents of a target Text over time
+	/// 이 피드백을 사용하면 시간이 지남에 따라 대상 텍스트의 내용을 제어할 수 있습니다.
 	/// </summary>
 	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the contents of a target Text over time.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 텍스트의 내용을 제어할 수 있습니다.")]
 	[FeedbackPath("UI/Text")]
 	public class MMFeedbackText : MMFeedback
 	{
@@ -23,12 +23,12 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Target")]
 		/// the Text component to control
-		[Tooltip(" Text component to control")]
+		[Tooltip("제어할 텍스트 구성요소")]
 		public Text TargetText;
 
         
 		/// the new text to replace the old one with
-		[Tooltip("the new text to replace the old one with")]
+		[Tooltip("이전 텍스트를 대체할 새 텍스트")]
 		[TextArea]
 		public string NewText = "Hello World";
 

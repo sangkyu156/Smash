@@ -5,10 +5,10 @@ using UnityEngine.Tilemaps;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A super simple component you can add to a tilemap to get a button to clean it from all tiles
-	/// </summary>
-	public class MMTilemapCleaner : MonoBehaviour
+    /// <summary>
+    /// 타일맵에 추가하여 모든 타일에서 타일을 정리하는 버튼을 얻을 수 있는 매우 간단한 구성 요소입니다.
+    /// </summary>
+    public class MMTilemapCleaner : MonoBehaviour
 	{
 		/// Debug buttons
 		[MMInspectorButton("Clean")] 

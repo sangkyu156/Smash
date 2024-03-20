@@ -3,29 +3,29 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A class used to handle the movement and behaviour of floating texts, usually used to display damage text.
-	/// This is designed to be spawned by a MMFloatingTextSpawner, not used on its own.
-	/// It also requires a specific hierarchy. You'll find examples of it in the MMTools/Tools/MMFloatingText/Prefabs folder
-	/// </summary>
-	public class MMFloatingText : MonoBehaviour
+    /// <summary>
+    /// 부동 텍스트의 움직임과 동작을 처리하는 데 사용되는 클래스로, 일반적으로 피해 텍스트를 표시하는 데 사용됩니다.
+    /// 이는 자체적으로 사용되지 않고 MMFloatingTextSpawner에 의해 생성되도록 설계되었습니다.
+    /// 또한 특정 계층 구조가 필요합니다. MMTools/Tools/MMFloatingText/Prefabs 폴더에서 해당 예제를 찾을 수 있습니다.
+    /// </summary>
+    public class MMFloatingText : MonoBehaviour
 	{
 		[Header("Bindings")]
 
 		/// the part of the prefab that we'll move
-		[Tooltip("the part of the prefab that we'll move")]
+		[Tooltip("우리가 이동할 조립식 부분")]
 		public Transform MovingPart;
 		/// the part of the prefab that we'll rotate to face the target camera
-		[Tooltip("the part of the prefab that we'll rotate to face the target camera")]
+		[Tooltip("대상 카메라를 향하도록 회전할 프리팹 부분")]
 		public Transform Billboard;
 		/// the TextMesh used to display the value
-		[Tooltip("the TextMesh used to display the value")]
+		[Tooltip("값을 표시하는 데 사용되는 TextMesh")]
 		public TextMesh TargetTextMesh;
         
 		[Header("Debug")]
 
 		/// the direction of this floating text, used for debug only
-		[Tooltip("the direction of this floating text, used for debug only")]
+		[Tooltip("디버그에만 사용되는 이 부동 텍스트의 방향")]
 		[MMReadOnly]
 		public Vector3 Direction = Vector3.up;
 

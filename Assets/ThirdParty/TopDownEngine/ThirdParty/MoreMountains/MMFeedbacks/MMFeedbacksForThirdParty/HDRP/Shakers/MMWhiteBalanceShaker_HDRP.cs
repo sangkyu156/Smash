@@ -8,11 +8,11 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a white balance post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// 화이트 밸런스 사후 처리가 포함된 카메라에 이 클래스를 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMWhiteBalanceShaker_HDRP")]
 	public class MMWhiteBalanceShaker_HDRP : MMShaker

@@ -5,11 +5,11 @@ using UnityEngine.Tilemaps;
 using Random = System.Random;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A collection of helper methods for interacting with Tilemaps
-	/// </summary>
-	public class MMTilemap : MonoBehaviour
+{
+    /// <summary>
+    /// 타일맵과 상호작용하기 위한 도우미 메서드 모음
+    /// </summary>
+    public class MMTilemap : MonoBehaviour
 	{
 		/// <summary>
 		/// Returns a random world position on the specified tilemap/grid combo, filled or not based on the shouldBeFilled flag 

@@ -5,11 +5,11 @@ using System;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class meant to be used in conjunction with an object pool (simple or multiple)
-	/// to spawn objects regularly, at a frequency randomly chosen between the min and max values set in its inspector
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Automation/TimedSpawner")]
+    /// <summary>
+    /// 객체 풀(단순 또는 다중)과 함께 사용되는 클래스
+    /// 인스펙터에 설정된 최소값과 최대값 사이에서 무작위로 선택된 빈도로 객체를 정기적으로 생성합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Automation/TimedSpawner")]
 	public class TimedSpawner : TopDownMonoBehaviour 
 	{
 		/// the object pooler associated to this spawner
@@ -17,13 +17,13 @@ namespace MoreMountains.TopDownEngine
 		
 		[Header("Spawn")]
 		/// whether or not this spawner can spawn
-		[Tooltip("whether or not this spawner can spawn")]
+		[Tooltip("이 생성자가 생성될 수 있는지 여부")]
 		public bool CanSpawn = true;
 		/// the minimum frequency possible, in seconds
-		[Tooltip("the minimum frequency possible, in seconds")]
+		[Tooltip("가능한 최소 빈도(초)")]
 		public float MinFrequency = 1f;
 		/// the maximum frequency possible, in seconds
-		[Tooltip("the maximum frequency possible, in seconds")]
+		[Tooltip("가능한 최대 빈도(초)")]
 		public float MaxFrequency = 1f;
 
 		[Header("Debug")]

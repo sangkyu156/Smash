@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// List extensions
-	/// </summary>
-	public static class ListExtensions
+    /// <summary>
+    /// 목록 확장자
+    /// </summary>
+    public static class ListExtensions
 	{
 		/// <summary>
 		/// Swaps two items in a list

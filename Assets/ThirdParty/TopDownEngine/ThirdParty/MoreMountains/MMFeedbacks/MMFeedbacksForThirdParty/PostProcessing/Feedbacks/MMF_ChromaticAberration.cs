@@ -5,16 +5,16 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control chromatic aberration intensity over time. It requires you have in your scene an object with a PostProcessVolume
-	/// with Chromatic Aberration active, and a MMChromaticAberrationShaker component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 색수차 강도를 제어할 수 있습니다. 장면에 PostProcessVolume이 있는 객체가 있어야 합니다.
+    /// 색수차가 활성화되고 MMChromaticAberrationShaker 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_POSTPROCESSING
 	[FeedbackPath("PostProcess/Chromatic Aberration")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control chromatic aberration intensity over time. It requires you have in your scene an object with a PostProcessVolume " +
-	              "with Chromatic Aberration active, and a MMChromaticAberrationShaker component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 색수차 강도를 제어할 수 있습니다. 이를 위해서는 장면에 PostProcessVolume이 있는 객체가 있어야 합니다. " +
+"색수차가 활성화되고 MMChromaticAberrationShaker 구성 요소가 포함되어 있습니다.")]
 	public class MMF_ChromaticAberration : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -51,14 +51,14 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Intensity", true, 45)]
 		/// the curve to animate the intensity on
-		[Tooltip("the curve to animate the intensity on")]
+		[Tooltip("강도에 애니메이션을 적용하는 곡선")]
 		public AnimationCurve Intensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the multiplier to apply to the intensity curve
 		[Tooltip("the multiplier to apply to the intensity curve")]
 		[Range(0f, 1f)]
 		public float Amplitude = 1.0f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 
 		/// <summary>

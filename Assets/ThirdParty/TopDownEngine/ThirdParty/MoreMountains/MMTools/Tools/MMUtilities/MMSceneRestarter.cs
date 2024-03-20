@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component lets you restart a scene by pressing a key
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Utilities/MMSceneRestarter")]
+    /// <summary>
+    /// 이 구성요소를 사용하면 키를 눌러 장면을 다시 시작할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Utilities/MMSceneRestarter")]
 	public class MMSceneRestarter : MonoBehaviour
 	{
 		/// the possible restart modes

@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you trigger save, load, and reset on MMSoundManager settings. You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 통해 MMSoundManager 설정에 대한 저장, 로드 및 재설정을 실행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Save and Load")]
-	[FeedbackHelp("This feedback will let you trigger save, load, and reset on MMSoundManager settings. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("이 피드백을 통해 MMSoundManager 설정에 대한 저장, 로드 및 재설정을 실행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMFeedbackMMSoundManagerSaveLoad : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -28,7 +28,7 @@ namespace MoreMountains.Feedbacks
 
 		[Header("MMSoundManager Save and Load")] 
 		/// the selected mode to interact with save settings on the MMSoundManager
-		[Tooltip("the selected mode to interact with save settings on the MMSoundManager")]
+		[Tooltip("MMSoundManager의 저장 설정과 상호 작용하기 위해 선택한 모드")]
 		public Modes Mode = Modes.Save;
         
 		/// <summary>

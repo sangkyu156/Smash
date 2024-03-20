@@ -9,11 +9,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you reveal words, lines, or characters in a target TMP, one at a time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you reveal words, lines, or characters in a target TMP, one at a time")]
+    /// <summary>
+    /// 이 피드백을 통해 대상 TMP의 단어, 줄 또는 문자를 한 번에 하나씩 표시할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 대상 TMP의 단어, 줄 또는 문자를 한 번에 하나씩 표시할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Text Reveal")]
 	#endif
@@ -135,30 +135,30 @@ namespace MoreMountains.Feedbacks
 		[MMFInspectorGroup("Change Text", true, 13)]
 
 		/// whether or not to replace the current TMP target's text on play
-		[Tooltip("whether or not to replace the current TMP target's text on play")]
+		[Tooltip("재생 시 현재 TMP 대상의 텍스트를 바꿀지 여부")]
 		public bool ReplaceText = false;
 		/// the new text to replace the old one with
-		[Tooltip("the new text to replace the old one with")]
+		[Tooltip("이전 텍스트를 대체할 새 텍스트")]
 		[TextArea]
 		public string NewText = "Hello World";
 
 		[MMFInspectorGroup("Reveal", true, 14)]
 		/// the selected way to reveal the text (character by character, word by word, or line by line)
-		[Tooltip("the selected way to reveal the text (character by character, word by word, or line by line)")]
+		[Tooltip("텍스트를 표시하기 위해 선택한 방법(문자별, 단어별 또는 줄별)")]
 		public RevealModes RevealMode = RevealModes.Character;
 		/// whether to define duration by the time interval between two unit reveals, or by the total duration the reveal should take
-		[Tooltip("whether to define duration by the time interval between two unit reveals, or by the total duration the reveal should take")]
+		[Tooltip("두 단위 공개 사이의 시간 간격으로 지속 시간을 정의할지 아니면 공개에 소요되는 총 지속 시간으로 정의할지 여부")]
 		public DurationModes DurationMode = DurationModes.Interval;
 		/// the interval (in seconds) between two reveals
-		[Tooltip("the interval (in seconds) between two reveals")]
+		[Tooltip("두 공개 사이의 간격(초)")]
 		[MMFEnumCondition("DurationMode", (int)DurationModes.Interval)]
 		public float IntervalBetweenReveals = 0.05f;
 		/// the total duration of the text reveal, in seconds
-		[Tooltip("the total duration of the text reveal, in seconds")]
+		[Tooltip("텍스트 공개의 총 지속 시간(초)")]
 		[MMFEnumCondition("DurationMode", (int)DurationModes.TotalDuration)]
 		public float RevealDuration = 1f;
 		/// a UnityEvent to invoke every time a reveal happens (word, line or character)
-		[Tooltip("a UnityEvent to invoke every time a reveal happens (word, line or character)")]
+		[Tooltip("공개가 발생할 때마다 호출할 UnityEvent(단어, 줄 또는 문자)")]
 		public UnityEvent OnReveal;
 
 		protected float _delay;

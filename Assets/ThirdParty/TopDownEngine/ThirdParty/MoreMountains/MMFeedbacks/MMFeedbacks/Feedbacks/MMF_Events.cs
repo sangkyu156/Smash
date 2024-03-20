@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A feedback to bind Unity events to and trigger them when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to bind any type of Unity events to this feebdack's Play, Stop, Initialization and Reset methods.")]
+    /// <summary>
+    /// Unity 이벤트를 바인딩하고 재생할 때 트리거하는 피드백
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 모든 유형의 Unity 이벤트를 이 feebdack의 Play, Stop, 초기화 및 재설정 메서드에 바인딩할 수 있습니다.")]
 	[FeedbackPath("Events/Unity Events")]
 	public class MMF_Events : MMF_Feedback
 	{

@@ -6,10 +6,10 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A floating text variant using TextMeshPro instead of regular TextMesh
-	/// </summary>
-	public class MMFloatingTextMeshPro : MMFloatingText
+    /// <summary>
+    /// 일반 TextMesh 대신 TextMeshPro를 사용하는 부동 텍스트 변형
+    /// </summary>
+    public class MMFloatingTextMeshPro : MMFloatingText
 	{
 		#if MM_TEXTMESHPRO
 		[Header("TextMeshPro")]

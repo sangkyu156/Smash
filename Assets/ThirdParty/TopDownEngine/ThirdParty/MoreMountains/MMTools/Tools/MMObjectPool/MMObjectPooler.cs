@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// A base class, meant to be extended depending on the use (simple, multiple object pooler), and used as an interface by the spawners.
-	/// Still handles common stuff like singleton and initialization on start().
-	/// DO NOT add this class to a prefab, nothing would happen. Instead, add SimpleObjectPooler or MultipleObjectPooler.
-	/// </summary>
-	public abstract class MMObjectPooler : MonoBehaviour
+{
+    /// <summary>
+    /// 용도(단순, 다중 개체 풀러)에 따라 확장되고 생성자에 의해 인터페이스로 사용되는 기본 클래스입니다.
+    /// 여전히 싱글톤 및 start() 초기화와 같은 일반적인 작업을 처리합니다.
+    /// 이 클래스를 프리팹에 추가하지 마세요. 아무 일도 일어나지 않습니다. 대신 SimpleObjectPooler 또는 MultipleObjectPooler를 추가하세요.
+    /// </summary>
+    public abstract class MMObjectPooler : MonoBehaviour
 	{
 		/// singleton pattern
 		public static MMObjectPooler Instance;

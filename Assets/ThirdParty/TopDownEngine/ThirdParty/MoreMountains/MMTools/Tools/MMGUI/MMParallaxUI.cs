@@ -6,12 +6,12 @@ using UnityEngine;
 #endif
 
 namespace MoreMountains.Tools
-{ 
-	/// <summary>
-	/// Use this class to bind a number of UI layers to the movements of a mouse cursor, or a mobile device gyroscope, or even have it be piloted by another script
-	/// By setting different speed/amplitude values for each of your UI layers, you'll be able to create a nice parallax effect
-	/// </summary>
-	public class MMParallaxUI : MonoBehaviour
+{
+    /// <summary>
+    /// 이 클래스를 사용하여 여러 UI 레이어를 마우스 커서 또는 모바일 장치 자이로스코프의 움직임에 바인딩하거나 다른 스크립트로 조종하도록 할 수도 있습니다.
+    /// 각 UI 레이어에 대해 서로 다른 속도/진폭 값을 설정하면 멋진 시차 효과를 만들 수 있습니다.
+    /// </summary>
+    public class MMParallaxUI : MonoBehaviour
 	{
 		/// <summary>
 		/// A class used to store layer settings

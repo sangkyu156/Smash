@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback allows you to trigger a target MMFeedbacks, or any MMFeedbacks on the specified Channel within a certain range. You'll need an MMFeedbacksShaker on them.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to trigger a target MMFeedbacks, or any MMFeedbacks on the specified Channel within a certain range. You'll need an MMFeedbacksShaker on them.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 대상 MMFeedback 또는 특정 범위 내에서 지정된 채널의 모든 MMFeedback을 트리거할 수 있습니다. MMFeedbacksShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 MMFeedback 또는 특정 범위 내에서 지정된 채널의 모든 MMFeedback을 트리거할 수 있습니다. MMFeedbacksShaker가 필요합니다.")]
 	[FeedbackPath("Feedbacks/Feedbacks Player")]
 	public class MMF_Feedbacks : MMF_Feedback
 	{
@@ -45,25 +45,25 @@ namespace MoreMountains.Feedbacks
 		[MMFInspectorGroup("Feedbacks", true, 79)]
         
 		/// the selected mode for this feedback
-		[Tooltip("the selected mode for this feedback")]
+		[Tooltip("이 피드백을 위해 선택된 모드")]
 		public Modes Mode = Modes.PlayFeedbacksInArea;
         
 		/// a specific MMFeedbacks / MMF_Player to play
 		[MMFEnumCondition("Mode", (int)Modes.PlayTargetFeedbacks)]
-		[Tooltip("a specific MMFeedbacks / MMF_Player to play")]
+		[Tooltip("재생할 특정 MMFeedbacks / MMF_Player")]
 		public MMFeedbacks TargetFeedbacks;
         
 		/// whether or not to use a range
 		[MMFEnumCondition("Mode", (int)Modes.PlayFeedbacksInArea)]
-		[Tooltip("whether or not to use a range")]
+		[Tooltip("범위를 사용할지 여부")]
 		public bool OnlyTriggerPlayersInRange = false;
 		/// the range of the event, in units
 		[MMFEnumCondition("Mode", (int)Modes.PlayFeedbacksInArea)]
-		[Tooltip("the range of the event, in units")]
+		[Tooltip("이벤트 범위(단위)")]
 		public float EventRange = 100f;
 		/// the transform to use to broadcast the event as origin point
 		[MMFEnumCondition("Mode", (int)Modes.PlayFeedbacksInArea)]
-		[Tooltip("the transform to use to broadcast the event as origin point")]
+		[Tooltip("이벤트를 원점으로 방송하는 데 사용할 변환")]
 		public Transform EventOriginTransform;
 
 		/// <summary>

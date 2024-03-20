@@ -9,11 +9,11 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools 
 {
-	/// <summary>
-	/// Add this class to a camera and you'll be able to pilot it using the horizontal/vertical axis, and up/down controls set via its inspector. 
-	/// It's got an activation button, a run button, and an option to slow down time (this will require a MMTimeManager present in the scene)
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Camera/MMGhostCamera")]
+    /// <summary>
+    /// 이 클래스를 카메라에 추가하면 수평/수직 축과 인스펙터를 통해 설정된 위/아래 컨트롤을 사용하여 조종할 수 있습니다.
+    /// 활성화 버튼, 실행 버튼, 시간을 늦추는 옵션이 있습니다(이를 위해서는 장면에 MMTimeManager가 필요합니다).
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Camera/MMGhostCamera")]
 	public class MMGhostCamera : MonoBehaviour
 	{
 		[Header("Speed")]

@@ -19,98 +19,98 @@ namespace MoreMountains.Feedbacks
 		
 		[MMFInspectorGroup("Feedback Settings", true, 0, false, true)]
 		/// whether or not this feedback is active
-		[Tooltip("whether or not this feedback is active")]
+		[Tooltip("이 피드백이 활성화되어 있는지 여부")]
 		public bool Active = true;
 
 		[HideInInspector] public int UniqueID;
 
 		/// the name of this feedback to display in the inspector
-		[Tooltip("the name of this feedback to display in the inspector")]
+		[Tooltip("인스펙터에 표시할 피드백의 이름")]
 		public string Label = "MMFeedback";
 
 		/// whether to broadcast this feedback's message using an int or a scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what.
 		/// MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable
 		[Tooltip(
-			"whether to broadcast this feedback's message using an int or a scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what. " +
-			"MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable")]
+            "int 또는 스크립트 가능한 객체를 사용하여 이 피드백의 메시지를 브로드캐스트할지 여부. Int는 설정이 간단하지만 지저분해질 수 있으며 int가 무엇에 해당하는지 기억하기 어렵게 만들 수 있습니다. " +
+"MMChannel 스크립트 가능 개체를 미리 생성해야 하지만 읽기 쉬운 이름이 제공되고 확장성이 더 뛰어납니다.")]
 		public MMChannelModes ChannelMode = MMChannelModes.Int;
 
 		/// the ID of the channel on which this feedback will communicate 
-		[Tooltip("the ID of the channel on which this feedback will communicate")]
+		[Tooltip("이 피드백이 전달될 채널의 ID")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.Int)]
 		public int Channel = 0;
 
 		/// the MMChannel definition asset to use to broadcast this feedback. The shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel,
 		/// right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name
 		[Tooltip(
-			"the MMChannel definition asset to use to broadcast this feedback. The shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel, " +
-			"right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name")]
+            "이 피드백을 브로드캐스트하는 데 사용할 MMChannel 정의 자산입니다. 셰이커는 이벤트를 수신하기 위해 동일한 MMChannel 정의를 참조해야 합니다. MMChannel을 생성하려면 " +
+"프로젝트(일반적으로 Data 폴더)의 아무 곳이나 마우스 오른쪽 버튼으로 클릭하고 MoreMountains > MMChannel로 이동한 다음 고유한 이름으로 이름을 지정합니다.")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.MMChannel)]
 		public MMChannel MMChannelDefinition = null;
 
 		/// the chance of this feedback happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)
 		[Tooltip(
-			"the chance of this feedback happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)")]
+            "이 피드백이 발생할 확률(퍼센트: 100: 항상 발생, 0: 전혀 발생하지 않음, 50: 두 번의 호출에 한 번 발생 등)")]
 		[Range(0, 100)]
 		public float Chance = 100f;
 
 		/// use this color to customize the background color of the feedback in the MMF_Player's list
-		[Tooltip("use this color to customize the background color of the feedback in the MMF_Player's list")]
+		[Tooltip("이 색상을 사용하여 MMF_Player 목록에서 피드백의 배경색을 사용자 정의합니다.")]
 		public Color DisplayColor = Color.black;
 
 		/// a number of timing-related values (delay, repeat, etc)
-		[Tooltip("a number of timing-related values (delay, repeat, etc)")]
+		[Tooltip("다양한 타이밍 관련 값(지연, 반복 등)")]
 		public MMFeedbackTiming Timing;
 		
 		/// a set of settings letting you define automated target acquisition for this feedback, to (for example) automatically grab the target on this game object, or a parent, a child, or on a reference holder
-		[Tooltip("a set of settings letting you define automated target acquisition for this feedback, to (for example) automatically grab the target on this game object, or a parent, a child, or on a reference holder")]
+		[Tooltip("예를 들어 이 게임 개체, 부모, 자식 또는 참조 홀더의 대상을 자동으로 잡기 위해 이 피드백에 대한 자동화된 대상 획득을 정의할 수 있는 설정 세트")]
 		public MMFeedbackTargetAcquisition AutomatedTargetAcquisition;
 		
 		[MMFInspectorGroup(_randomnessGroupName, true, 58, false, true)]
 		/// if this is true, intensity will be multiplied by a random value on play, picked between RandomMultiplier.x and RandomMultiplier.y
 		[Tooltip(
-			"if this is true, intensity will be multiplied by a random value on play, picked between RandomMultiplier.x and RandomMultiplier.y")]
+            "이것이 사실이라면, RandomMultiplier.x와 RandomMultiplier.y 사이에서 선택되는 플레이 시 강도에 임의의 값이 곱해집니다.")]
 		public bool RandomizeOutput = false;
 
 		/// a random value (randomized between its x and y) by which to multiply the output of this feedback, if RandomizeOutput is true
 		[Tooltip(
-			"a random value (randomized between its x and y) by which to multiply the output of this feedback, if RandomizeOutput is true")]
+            "RandomizeOutput이 true인 경우 이 피드백의 출력에 곱할 임의의 값(x와 y 사이에서 무작위로 지정됨)")]
 		[MMFCondition("RandomizeOutput", true)]
 		[MMFVector("Min", "Max")]
 		public Vector2 RandomMultiplier = new Vector2(0.8f, 1f);
 
 		/// if this is true, this feedback's duration will be multiplied by a random value on play, picked between RandomDurationMultiplier.x and RandomDurationMultiplier.y
 		[Tooltip(
-			"if this is true, this feedback's duration will be multiplied by a random value on play, picked between RandomDurationMultiplier.x and RandomDurationMultiplier.y")]
+            "이것이 사실이라면 이 피드백의 지속 시간은 RandomDurationMultiplier.x와 RandomDurationMultiplier.y 사이에서 선택되는 플레이 시 임의의 값으로 곱해집니다.")]
 		public bool RandomizeDuration = false;
 
 		/// a random value (randomized between its x and y) by which to multiply the duration of this feedback, if RandomizeDuration is true
 		[Tooltip(
-			"a random value (randomized between its x and y) by which to multiply the duration of this feedback, if RandomizeDuration is true")]
+            "RandomizeDuration이 true인 경우 이 피드백의 지속 시간을 곱할 임의 값(x와 y 사이에서 무작위로 지정됨)")]
 		[MMFCondition("RandomizeDuration", true)]
 		[MMFVector("Min", "Max")]
 		public Vector2 RandomDurationMultiplier = new Vector2(0.5f, 2f);
 
 		[MMFInspectorGroup(_rangeGroupName, true, 47)]
 		/// if this is true, only shakers within the specified range will respond to this feedback
-		[Tooltip("if this is true, only shakers within the specified range will respond to this feedback")]
+		[Tooltip("이것이 사실이라면 지정된 범위 내의 셰이커만 이 피드백에 응답합니다.")]
 		public bool UseRange = false;
 
 		/// when in UseRange mode, only shakers within that distance will respond to this feedback
-		[Tooltip("when in UseRange mode, only shakers within that distance will respond to this feedback")]
+		[Tooltip("UseRange 모드에서는 해당 거리 내에 있는 셰이커만 이 피드백에 반응합니다.")]
 		public float RangeDistance = 5f;
 
 		/// when in UseRange mode, whether or not to modify the shake intensity based on the RangeFallOff curve  
-		[Tooltip("when in UseRange mode, whether or not to modify the shake intensity based on the RangeFallOff curve")]
+		[Tooltip("UseRange 모드에서 RangeFallOff 곡선을 기반으로 흔들림 강도를 수정할지 여부")]
 		public bool UseRangeFalloff = false;
 
 		/// the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)
 		[Tooltip(
-			"the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)")]
+            "폴오프를 정의하는 데 사용할 애니메이션 곡선(x에서 0은 범위 중심을 나타내고 1은 최대 거리를 나타냄)")]
 		public AnimationCurve RangeFalloff = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
 
 		/// the values to remap the falloff curve's y axis' 0 and 1
-		[Tooltip("the values to remap the falloff curve's y axis' 0 and 1")] [MMFVector("Zero", "One")]
+		[Tooltip("폴오프 곡선의 y축을 다시 매핑하는 값 '0과 1'")] [MMFVector("Zero", "One")]
 		public Vector2 RemapRangeFalloff = new Vector2(0f, 1f);
 
 		/// the Owner of the feedback, as defined when calling the Initialization method

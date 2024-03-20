@@ -5,10 +5,10 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// A class used to store and manage common Nice Vibrations feedback settings
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 일반적인 Nice Vibrations 피드백 설정을 저장하고 관리하는 데 사용되는 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMFeedbackNVSettings
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

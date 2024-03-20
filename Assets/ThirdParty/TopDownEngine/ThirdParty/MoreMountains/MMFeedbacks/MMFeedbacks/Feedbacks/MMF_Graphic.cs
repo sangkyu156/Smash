@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you change the color of a target Graphic over time.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you change the color of a target Graphic over time.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간이 지남에 따라 대상 그래픽의 색상을 변경할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간이 지남에 따라 대상 그래픽의 색상을 변경할 수 있습니다.")]
 	[FeedbackPath("UI/Graphic")]
 	public class MMF_Graphic : MMF_Feedback
 	{
@@ -34,34 +34,34 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Graphic", true, 54, true)]
 		/// the Graphic to affect when playing the feedback
-		[Tooltip("the Graphic to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 그래픽")]
 		public Graphic TargetGraphic;
 		/// whether the feedback should affect the Graphic instantly or over a period of time
-		[Tooltip("whether the feedback should affect the Graphic instantly or over a period of time")]
+		[Tooltip("피드백이 그래픽에 즉시 영향을 미칠지, 아니면 일정 기간에 걸쳐 영향을 미칠지 여부")]
 		public Modes Mode = Modes.OverTime;
 		/// how long the Graphic should change over time
-		[Tooltip("how long the Graphic should change over time")]
+		[Tooltip("시간이 지남에 따라 그래픽이 얼마나 오랫동안 변경되어야 하는지")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public float Duration = 0.2f;
 		/// whether or not that Graphic should be turned off on start
-		[Tooltip("whether or not that Graphic should be turned off on start")]
+		[Tooltip("시작 시 그래픽을 꺼야 하는지 여부")]
 		public bool StartsOff = false;
 		/// if this is true, the target will be disabled when this feedbacks is stopped
-		[Tooltip("if this is true, the target will be disabled when this feedbacks is stopped")] 
+		[Tooltip("이것이 사실이라면 이 피드백이 중지되면 대상이 비활성화됩니다.")] 
 		public bool DisableOnStop = false;
         
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// whether or not to modify the color of the Graphic
-		[Tooltip("whether or not to modify the color of the Graphic")]
+		[Tooltip("그래픽 색상 수정 여부")]
 		public bool ModifyColor = true;
 		/// the colors to apply to the Graphic over time
-		[Tooltip("the colors to apply to the Graphic over time")]
+		[Tooltip("시간이 지남에 따라 그래픽에 적용할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public Gradient ColorOverTime;
 		/// the color to move to in instant mode
-		[Tooltip("the color to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public Color InstantColor;
 

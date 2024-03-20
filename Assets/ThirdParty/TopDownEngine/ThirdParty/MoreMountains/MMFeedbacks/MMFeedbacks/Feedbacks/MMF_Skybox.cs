@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you change the scene's skybox on play, replacing it with another one, either a specific one, or one picked at random among multiple skyboxes.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you change the scene's skybox on play, replacing it with another one, either a specific one, or one picked at random among multiple skyboxes.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 재생 중인 장면의 스카이박스를 다른 스카이박스(특정 스카이박스 또는 여러 스카이박스 중에서 무작위로 선택한 스카이박스)로 변경할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 재생 중인 장면의 스카이박스를 다른 스카이박스(특정 스카이박스 또는 여러 스카이박스 중에서 무작위로 선택한 스카이박스)로 변경할 수 있습니다.")]
 	[FeedbackPath("Renderer/Skybox")]
 	public class MMF_Skybox : MMF_Feedback
 	{

@@ -3,30 +3,30 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store ragdoll body parts informations
-	/// </summary>
-	public class RagdollBodyPart
+    /// <summary>
+    /// 봉제인형 신체 부위 정보를 저장하는 데 사용되는 클래스
+    /// </summary>
+    public class RagdollBodyPart
 	{
 		public Transform BodyPartTransform;
 		public Vector3 StoredPosition;
 		public Quaternion StoredRotation;
 	}
 
-	/// <summary>
-	/// Use this class to pilot a ragdoll on a character that is usually driven by an animator and have it fall elegantly
-	/// If you have parts of your ragdoll that you don't want to be affected by this script (a weapon for example), just add a MMRagdollerIgnore component to them
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Animation/MMRagdoller")]
+    /// <summary>
+    /// 일반적으로 애니메이터가 조종하는 캐릭터에 봉제 인형을 조종하고 우아하게 떨어지게 하려면 이 클래스를 사용합니다.
+    /// 이 스크립트의 영향을 받지 않으려는 봉제인형 부분(예: 무기)이 있는 경우 해당 부분에 MMRagdollerIgnore 구성 요소를 추가하기만 하면 됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Animation/MMRagdoller")]
 	public class MMRagdoller : MonoBehaviour
 	{
-		/// <summary>
-		/// The possible states of the ragdoll : 
-		/// - animated : driven by an animator controller, rigidbodies asleep
-		/// - ragdolling : full ragdoll mode, purely physics driven
-		/// - blending : transitioning between ragdolling and animated
-		/// </summary>
-		public enum RagdollStates
+        /// <summary>
+        /// 봉제 인형의 가능한 상태:
+        /// - Animated: 애니메이터 컨트롤러에 의해 구동되고 강체는 잠자기 상태입니다.
+        /// - Ragdolling: 완전한 래그돌 모드, 순수하게 물리학 기반
+        /// - Blending : 래그돌링과 애니메이션 간 전환
+        /// </summary>
+        public enum RagdollStates
 		{
 			Animated,
 			Ragdolling,

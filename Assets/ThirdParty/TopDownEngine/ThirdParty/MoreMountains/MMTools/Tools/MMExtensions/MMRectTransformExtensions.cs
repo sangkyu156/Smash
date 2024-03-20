@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// RectTransform extensions
-	/// </summary>
-	public static class MMRectTransformExtensions
+    /// <summary>
+    /// RectTransform 확장
+    /// </summary>
+    public static class MMRectTransformExtensions
 	{
 		/// <summary>
 		/// Sets the left offset of a rect transform to the specified value

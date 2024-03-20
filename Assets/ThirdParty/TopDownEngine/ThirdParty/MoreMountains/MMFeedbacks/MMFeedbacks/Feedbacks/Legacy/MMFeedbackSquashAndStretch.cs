@@ -7,12 +7,12 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you modify the scale of an object on an axis while the other two axis (or only one) get automatically modified to conserve mass
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 한 축의 개체 크기를 수정하는 동시에 다른 두 축(또는 하나만)은 자동으로 수정되어 질량을 보존할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Transform/Squash and Stretch")]
-	[FeedbackHelp("This feedback will let you modify the scale of an object on an axis while the other two axis (or only one) get automatically modified to conserve mass.")]
+	[FeedbackHelp("이 피드백을 사용하면 한 축의 개체 크기를 수정하는 동시에 다른 두 축(또는 하나만)은 자동으로 수정되어 질량을 보존할 수 있습니다.")]
 	public class MMFeedbackSquashAndStretch : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -33,22 +33,22 @@ namespace MoreMountains.Feedbacks
 		/// the object to animate
 		[Tooltip("the object to animate")]
 		public Transform SquashAndStretchTarget;
-		/// the mode this feedback should operate on
-		/// Absolute : follows the curve
-		/// Additive : adds to the current scale of the target
-		/// ToDestination : sets the scale to the destination target, whatever the current scale is
-		[Tooltip("the mode this feedback should operate on" +
-		         "Absolute : follows the curve" +
-		         "Additive : adds to the current scale of the target" +
-		         "ToDestination : sets the scale to the destination target, whatever the current scale is")]
+        /// 이 피드백이 작동해야 하는 모드
+        /// Absolute : 곡선을 따른다
+        /// Additive : 대상의 현재 규모에 추가
+        /// ToDestination : 현재 스케일이 무엇이든 대상 대상으로 스케일을 설정합니다.
+        [Tooltip("이 피드백이 작동해야 하는 모드" +
+                 "Absolute : 곡선을 따른다" +
+                 "Additive : 대상의 현재 규모에 추가" +
+                 "ToDestination : 현재 스케일이 무엇이든 대상 대상으로 스케일을 설정합니다.")]
 		public Modes Mode = Modes.Absolute;
 
 		public PossibleAxis Axis = PossibleAxis.YtoXZ;
 		/// whether this feedback should play in scaled or unscaled time
-		[Tooltip("whether this feedback should play in scaled or unscaled time")]
+		[Tooltip("이 피드백이 확장된 시간에 재생되어야 하는지 또는 확장되지 않은 시간에 재생되어야 하는지 여부")]
 		public TimeScales TimeScale = TimeScales.Scaled;
 		/// the duration of the animation
-		[Tooltip("the duration of the animation")]
+		[Tooltip("애니메이션 지속 시간")]
 		public float AnimateScaleDuration = 0.2f;
 		/// the value to remap the curve's 0 value to
 		[Tooltip("the value to remap the curve's 0 value to")]
@@ -58,23 +58,23 @@ namespace MoreMountains.Feedbacks
 		[FormerlySerializedAs("Multiplier")]
 		public float RemapCurveOne = 2f;
 		/// how much should be added to the curve
-		[Tooltip("how much should be added to the curve")]
+		[Tooltip("곡선에 얼마나 추가해야 할까요?")]
 		public float Offset = 0f;
         
 		/// the curve along which to animate the scale
-		[Tooltip("the curve along which to animate the scale")]
+		[Tooltip("스케일에 애니메이션을 적용할 곡선")]
 		public AnimationCurve AnimateCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
        
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, initial and destination scales will be recomputed on every play
-		[Tooltip("if this is true, initial and destination scales will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 및 대상 스케일이 다시 계산됩니다.")]
 		public bool DetermineScaleOnPlay = false;
 
 		[Header("To Destination")]
 		/// the scale to reach when in ToDestination mode
-		[Tooltip("the scale to reach when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 도달할 스케일")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public float DestinationScale = 2f;
 

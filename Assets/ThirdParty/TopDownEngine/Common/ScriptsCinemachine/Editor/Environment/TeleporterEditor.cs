@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Custom editor for Teleporters that draws their name in scene view
-	/// </summary>
-	[CanEditMultipleObjects]
+    /// <summary>
+    /// 장면 보기에 이름을 그리는 텔레포터용 사용자 정의 편집기
+    /// </summary>
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(Teleporter), true)]
 	[InitializeOnLoad]
 	public class TeleporterEditor : Editor

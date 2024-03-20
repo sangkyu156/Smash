@@ -6,7 +6,7 @@ using Object = UnityEngine.Object;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// Helper class to create generic pools.
+    /// 일반 풀을 생성하는 도우미 클래스입니다.
     /// </summary>
     public static class Pool
     {

@@ -4,25 +4,25 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component will automatically update scale and rotation 
-	/// Put it one level below the top, and have the model one level below that
-	/// Hierarchy should be as follows :
-	/// 
-	/// Parent (where the logic (and optionnally rigidbody lies)
-	/// - MMSquashAndStretch
-	/// - - Model / sprite
-	/// 
-	/// Make sure this intermediary layer only has one child
-	/// If movement feels glitchy make sure your rigidbody is on Interpolate
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMSquashAndStretch")]
+    /// <summary>
+    /// 이 구성요소는 크기 및 회전을 자동으로 업데이트합니다.
+    /// 상단보다 한 레벨 아래에 배치하고 모델은 그보다 한 레벨 아래에 둡니다.
+    /// 계층 구조는 다음과 같아야 합니다.
+    ///
+    /// 상위(논리(및 선택적으로 강체가 있는 위치))
+    /// - MMSquashAndStretch
+    /// - - Model / sprite
+    /// 
+    /// 이 중간 레이어에는 하위 항목이 하나만 있는지 확인하세요.
+    /// 움직임이 이상하다고 느껴지면 강체가 보간 모드에 있는지 확인하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMSquashAndStretch")]
 	public class MMSquashAndStretch : MonoBehaviour
 	{
 		public enum Timescales { Regular, Unscaled }
 		public enum Modes { Rigidbody, Rigidbody2D, Position }
 
-		[MMInformation("This component will apply squash and stretch based on velocity (either position based or computed from a Rigidbody. It has to be put on an intermediary level in the hierarchy, between the logic (top level) and the model (bottom level).", MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("이 구성 요소는 속도(위치 기반 또는 Rigidbody에서 계산)를 기반으로 스쿼시 및 스트레치를 적용합니다. 논리(최상위 수준)와 모델(최하위 수준) 사이의 계층 구조의 중간 수준에 배치되어야 합니다.", MMInformationAttribute.InformationType.Info, false)]
 		[Header("Velocity Detection")]
 		/// the possible ways to get velocity from
 		public Modes Mode = Modes.Position;

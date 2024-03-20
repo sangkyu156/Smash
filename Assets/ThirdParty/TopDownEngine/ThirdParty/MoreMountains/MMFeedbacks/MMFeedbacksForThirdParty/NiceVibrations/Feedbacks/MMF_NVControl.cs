@@ -6,14 +6,14 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this feedback to interact with haptics at a global level, stopping them all, enabling or disabling them, adjusting their global level or initializing/release the haptic engine
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 글로벌 수준에서 햅틱과 상호 작용하고, 모두 중지하고, 활성화 또는 비활성화하고, 글로벌 수준을 조정하거나 햅틱 엔진을 초기화/해제하려면 이 피드백을 추가하세요.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
 	[FeedbackPath("Haptics/Haptic Control")]
 	#endif
-	[FeedbackHelp("Add this feedback to interact with haptics at a global level, stopping them all, enabling or disabling them, adjusting their global level or initializing/release the haptic engine.")]
+	[FeedbackHelp("글로벌 수준에서 햅틱과 상호 작용하고, 모두 중지하고, 활성화 또는 비활성화하고, 글로벌 수준을 조정하거나 햅틱 엔진을 초기화/해제하려면 이 피드백을 추가하세요.")]
 	public class MMF_NVControl : MMF_Feedback
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

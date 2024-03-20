@@ -7,14 +7,14 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this feedback to play a continuous haptic of the specified amplitude and frequency over a certain duration. This feedback will also let you randomize these, and modulate them over time.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 특정 기간 동안 지정된 진폭과 주파수의 지속적인 햅틱을 재생하려면 이 피드백을 추가하세요. 또한 이 피드백을 통해 이러한 항목을 무작위로 지정하고 시간이 지남에 따라 조정할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
 	[FeedbackPath("Haptics/Haptic Continuous")]
 	#endif
-	[FeedbackHelp("Add this feedback to play a continuous haptic of the specified amplitude and frequency over a certain duration. This feedback will also let you randomize these, and modulate them over time.")]
+	[FeedbackHelp("특정 기간 동안 지정된 진폭과 주파수의 지속적인 햅틱을 재생하려면 이 피드백을 추가하세요. 또한 이 피드백을 통해 이러한 항목을 무작위로 지정하고 시간이 지남에 따라 조정할 수 있습니다.")]
 	public class MMF_NVContinuous : MMF_Feedback
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

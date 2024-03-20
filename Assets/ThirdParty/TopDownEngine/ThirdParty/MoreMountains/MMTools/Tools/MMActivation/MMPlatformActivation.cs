@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a gameobject, and it'll enable/disable it based on platform context, using conditional defintions to do so
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Activation/MMPlatformActivation")]
+    /// <summary>
+    /// 이 클래스를 게임 객체에 추가하면 조건부 정의를 사용하여 플랫폼 컨텍스트에 따라 활성화/비활성화됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Activation/MMPlatformActivation")]
 	public class MMPlatformActivation : MonoBehaviour
 	{
 		/// the possible times at which this script can run

@@ -8,18 +8,18 @@ using UnityEngine.Rendering.HighDefinition;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a HDRP FilmGrain post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_HDRP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// HDRP FilmGrain 사후 처리가 포함된 카메라에 이 클래스를 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_HDRP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMFilmGrainShaker_HDRP")]
 	public class MMFilmGrainShaker_HDRP : MMShaker
 	{
 		[MMInspectorGroup("Film Grain Intensity", true, 47)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]

@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class, meant to be extended, used to control a MMProperty and get/set its value
-	/// </summary>
-	public abstract class MMPropertyLink
+    /// <summary>
+    /// MMProperty를 제어하고 해당 값을 가져오거나 설정하는 데 사용되는 확장 예정 클래스입니다.
+    /// </summary>
+    public abstract class MMPropertyLink
 	{
 		protected bool _getterSetterInitialized = false;
         

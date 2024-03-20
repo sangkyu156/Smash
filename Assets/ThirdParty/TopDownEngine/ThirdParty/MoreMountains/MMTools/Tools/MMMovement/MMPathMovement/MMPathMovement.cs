@@ -7,10 +7,10 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object and it'll be able to move along a path defined from its inspector.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMPathMovement")]
+    /// <summary>
+    /// 이 구성요소를 개체에 추가하면 개체는 해당 검사기에서 정의된 경로를 따라 이동할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMPathMovement")]
 	public class MMPathMovement : MonoBehaviour 
 	{
 		/// the possible movement types
@@ -25,46 +25,46 @@ namespace MoreMountains.Tools
 		public enum AlignmentModes { None, ThisRotation, ParentRotation }
 
 		[Header("Path")]
-		[MMInformation("Here you can select the '<b>Cycle Option</b>'. Back and Forth will have your object follow the path until its end, and go back to the original point. If you select Loop, the path will be closed and the object will move along it until told otherwise. If you select Only Once, the object will move along the path from the first to the last point, and remain there forever.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기에서 '<b>주기 옵션</b>'을 선택할 수 있습니다. 앞뒤로 개체가 끝까지 경로를 따라 갔다가 원래 지점으로 돌아갑니다. 루프를 선택하면 경로가 닫히고 달리 지정될 때까지 개체가 경로를 따라 이동합니다. 한 번만 선택하면 개체는 첫 번째 지점에서 마지막 지점까지 경로를 따라 이동하고 해당 위치에 영원히 유지됩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		public CycleOptions CycleOption;
 
-		[MMInformation("Add points to the <b>Path</b> (set the size of the path first), then position the points using either the inspector or by moving the handles directly in scene view. For each path element you can specify a delay (in seconds). The order of the points will be the order the object follows.\nFor looping paths, you can then decide if the object will go through the points in the Path in Ascending (1, 2, 3...) or Descending (Last, Last-1, Last-2...) order.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("<b>경로</b>에 점을 추가한 다음(경로의 크기를 먼저 설정), 검사기를 사용하거나 장면 보기에서 직접 핸들을 움직여 점의 위치를 ​​지정하세요. 각 경로 요소에 대해 지연(초)을 지정할 수 있습니다. 점의 순서는 개체가 따르는 순서입니다.\n루프 경로의 경우 개체가 오름차순(1, 2, 3...) 또는 내림차순(마지막, 마지막-1, 마지막-2...) 순서입니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the initial movement direction : ascending > will go from the points 0 to 1, 2, etc ; descending > will go from the last point to last-1, last-2, etc
-		[Tooltip("the initial movement direction : ascending > will go from the points 0 to 1, 2, etc ; descending > will go from the last point to last-1, last-2, etc")]
+		[Tooltip("초기 이동 방향: 오름차순 > 지점 0에서 1, 2 등으로 이동합니다. 내림차순 > 마지막 지점에서 last-1, last-2 등으로 이동합니다.")]
 		public MovementDirection LoopInitialMovementDirection = MovementDirection.Ascending;
 		/// the points that make up the path the object will follow
-		[Tooltip("the points that make up the path the object will follow")]
+		[Tooltip("물체가 따라갈 경로를 구성하는 점")]
 		public List<MMPathMovementElement> PathElements;
 
 		[Header("Path Alignment")] 
 		/// whether to align the path on nothing, this object's rotation, or this object's parent's rotation
-		[Tooltip("whether to align the path on nothing, this object's rotation, or this object's parent's rotation")]
+		[Tooltip("아무것도 없는 위치, 이 개체의 회전 또는 이 개체의 부모 회전에 경로를 정렬할지 여부")]
 		public AlignmentModes AlignmentMode = AlignmentModes.None;
 		
 		[Header("Movement")]
-		[MMInformation("Set the <b>speed</b> at which the path will be crawled, and if the movement should be constant or eased.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("경로가 크롤링되는 <b>속도</b>를 설정하고 움직임이 일정해야 하는지 아니면 완화되어야 하는지를 설정하세요.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the movement speed
 		[Tooltip("the movement speed")]
 		public float MovementSpeed = 1;
 		/// returns the current speed at which the object is traveling
 		public Vector3 CurrentSpeed { get; protected set; }
 		/// the movement type of the object
-		[Tooltip("the movement type of the object")]
+		[Tooltip("물체의 이동 유형")]
 		public PossibleAccelerationType AccelerationType = PossibleAccelerationType.ConstantSpeed;
 		/// the acceleration to apply to an object traveling between two points of the path.
-		[Tooltip("the acceleration to apply to an object traveling between two points of the path.")] 
+		[Tooltip("경로의 두 지점 사이를 이동하는 객체에 적용되는 가속도입니다.")] 
 		public AnimationCurve Acceleration = new AnimationCurve(new Keyframe(0,1f),new Keyframe(1f,0f));
 		/// the chosen update mode (update, fixed update, late update)
-		[Tooltip("the chosen update mode (update, fixed update, late update)")]
+		[Tooltip("선택한 업데이트 모드(업데이트, 고정 업데이트, 늦은 업데이트)")]
 		public UpdateModes UpdateMode = UpdateModes.Update;
 
 		[Header("Settings")]
-		[MMInformation("The <b>MinDistanceToGoal</b> is used to check if we've (almost) reached a point in the Path. The 2 other settings here are for debug only, don't change them.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("<b>MinDistanceToGoal</b>은 경로의 지점에 (거의) 도달했는지 확인하는 데 사용됩니다. 여기에 있는 다른 2가지 설정은 디버그 전용이므로 변경하지 마세요.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the minimum distance to a point at which we'll arbitrarily decide the point's been reached
-		[Tooltip("the minimum distance to a point at which we'll arbitrarily decide the point's been reached")]
+		[Tooltip("지점에 도달했다고 임의로 결정하는 지점까지의 최소 거리")]
 		public float MinDistanceToGoal = .1f;
 		/// the original position of the transform, hidden and shouldn't be accessed
-		[Tooltip("the original position of the transform, hidden and shouldn't be accessed")]
+		[Tooltip("변환의 원래 위치는 숨겨져 있으며 접근하면 안 됩니다.")]
 		protected Vector3 _originalTransformPosition;
 		/// if this is true, the object can move along the path
 		public virtual bool CanMove { get; set; }

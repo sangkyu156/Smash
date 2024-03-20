@@ -6,10 +6,10 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store options for MMSoundManager play
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// MMSoundManager 재생을 위한 옵션을 저장하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public struct MMSoundManagerPlayOptions
 	{
 		/// the track on which to play the sound

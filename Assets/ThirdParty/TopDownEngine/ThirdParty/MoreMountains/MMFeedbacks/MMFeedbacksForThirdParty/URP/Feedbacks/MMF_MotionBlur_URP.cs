@@ -5,18 +5,18 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control URP motion blur intensity over time.
-	/// It requires you have in your scene an object with a Volume 
-	/// with MotionBlur active, and a MMMotionBlurShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 URP 모션 블러 강도를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// MotionBlur가 활성화되어 있고 MMMotionBlurShaker_URP 구성 요소가 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_URP
 	[FeedbackPath("PostProcess/Motion Blur URP")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control motion blur intensity over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with MotionBlur active, and a MMMotionBlurShaker_URP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 모션 블러 강도를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"MotionBlur가 활성화되어 있고 MMMotionBlurShaker_URP 구성 요소가 있습니다.")]
 	public class MMF_MotionBlur_URP : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

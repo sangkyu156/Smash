@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class lets you output the value corresponding to one of the basic signal types it contains. Useful to draw basic signal curves.
-	/// </summary>
-	public class MMSignal
+    /// <summary>
+    /// 이 클래스를 사용하면 포함된 기본 신호 유형 중 하나에 해당하는 값을 출력할 수 있습니다. 기본 신호 곡선을 그리는 데 유용합니다.
+    /// </summary>
+    public class MMSignal
 	{
 		public enum SignalType
 		{

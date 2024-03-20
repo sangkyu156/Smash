@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// You can add this class to a slider in your UI and it'll let you control a target Track volume
-	/// via the MMSoundManager
-	/// </summary>
-	public class MMSoundManagerTrackVolumeSlider :  MonoBehaviour, 
+    /// <summary>
+    /// 이 클래스를 UI의 슬라이더에 추가하면 대상 트랙 볼륨을 제어할 수 있습니다.
+    /// MMSoundManager를 통해
+    /// </summary>
+    public class MMSoundManagerTrackVolumeSlider :  MonoBehaviour, 
 													MMEventListener<MMSoundManagerEvent>, 
 													MMEventListener<MMSoundManagerTrackEvent>,
 													MMEventListener<MMSoundManagerTrackFadeEvent>

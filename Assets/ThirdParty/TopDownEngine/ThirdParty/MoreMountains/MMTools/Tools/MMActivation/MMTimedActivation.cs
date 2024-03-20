@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object and it'll be auto destroyed X seconds after its Start()
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Activation/MMTimedActivation")]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하면 Start() 후 X초 후에 자동으로 삭제됩니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Activation/MMTimedActivation")]
 	public class MMTimedActivation : MonoBehaviour
 	{
 		/// the possible activation modes

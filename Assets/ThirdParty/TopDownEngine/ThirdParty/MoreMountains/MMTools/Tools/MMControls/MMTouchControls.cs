@@ -11,13 +11,13 @@ namespace MoreMountains.Tools
 	public class MMTouchControls : MonoBehaviour 
 	{
 		public enum InputForcedMode { None, Mobile, Desktop }
-		[MMInformation("If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS. You can also force mobile or desktop (keyboard, gamepad) controls using the dropdown below.\nNote that if you don't need mobile controls and/or GUI this component can also work on its own, just put it on an empty GameObject instead.", MMInformationAttribute.InformationType.Info,false)]
-		/// If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS. 
-		/// You can also force mobile or desktop (keyboard, gamepad) controls using the dropdown below.Note that if you don't need mobile controls 
-		/// and/or GUI this component can also work on its own, just put it on an empty GameObject instead.
-		[Tooltip("If you check Auto Mobile Detection, the engine will automatically switch to mobile controls when your build target is Android or iOS." +
-		         "You can also force mobile or desktop (keyboard, gamepad) controls using the dropdown below.Note that if you don't need mobile controls " +
-		         "and/or GUI this component can also work on its own, just put it on an empty GameObject instead.")]
+		[MMInformation("자동 모바일 감지를 선택하면 빌드 타겟이 Android 또는 iOS일 때 엔진이 자동으로 모바일 컨트롤로 전환됩니다. 아래 드롭다운을 사용하여 모바일 또는 데스크톱(키보드, 게임 패드) 컨트롤을 강제할 수도 있습니다.\n모바일 컨트롤 및/또는 GUI가 필요하지 않은 경우 이 구성 요소는 자체적으로 작동할 수도 있습니다. 대신 빈 게임 개체에 넣기만 하면 됩니다. ", MMInformationAttribute.InformationType.Info,false)]
+        /// 자동 모바일 감지를 선택하면 빌드 타겟이 Android 또는 iOS일 때 엔진이 자동으로 모바일 컨트롤로 전환됩니다.
+        /// 아래 드롭다운을 사용하여 모바일 또는 데스크톱(키보드, 게임패드) 제어를 강제할 수도 있습니다. 모바일 제어가 필요하지 않은 경우 참고하세요.
+        /// 및/또는 GUI 이 구성 요소는 자체적으로 작동할 수도 있습니다. 대신 빈 GameObject에 배치하면 됩니다.
+        [Tooltip("자동 모바일 감지를 선택하면 빌드 타겟이 Android 또는 iOS일 때 엔진이 자동으로 모바일 컨트롤로 전환됩니다." +
+"아래 드롭다운을 사용하여 모바일 또는 데스크톱(키보드, 게임패드) 제어를 강제할 수도 있습니다. 모바일 제어가 필요하지 않은 경우 참고하세요." +
+"및/또는 GUI 이 구성 요소는 자체적으로 작동할 수도 있으며 대신 빈 GameObject에 배치하기만 하면 됩니다.")]
 		public bool AutoMobileDetection = true;
 		/// Force desktop mode (gamepad, keyboard...) or mobile (touch controls) 
 		[Tooltip("Force desktop mode (gamepad, keyboard...) or mobile (touch controls)")]

@@ -7,24 +7,24 @@ using System.Security.Cryptography;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An interface to implement save and load using different methods (binary, json, etc)
-	/// </summary>
-	public interface IMMSaveLoadManagerMethod
+    /// <summary>
+    /// 다양한 방법(바이너리, json 등)을 사용하여 저장 및 로드를 구현하는 인터페이스
+    /// </summary>
+    public interface IMMSaveLoadManagerMethod
 	{
 		void Save(object objectToSave, FileStream saveFile);
 		object Load(System.Type objectType, FileStream saveFile);
 	}
 
-	/// <summary>
-	/// The possible methods to save and load files to and from disk available in the MMSaveLoadManager
-	/// </summary>
-	public enum MMSaveLoadManagerMethods { Json, JsonEncrypted, Binary, BinaryEncrypted };
+    /// <summary>
+    /// MMSaveLoadManager에서 사용할 수 있는 디스크에 파일을 저장하고 로드하는 가능한 방법
+    /// </summary>
+    public enum MMSaveLoadManagerMethods { Json, JsonEncrypted, Binary, BinaryEncrypted };
 
-	/// <summary>
-	/// This class implements methods to encrypt and decrypt streams
-	/// </summary>
-	public abstract class MMSaveLoadManagerEncrypter
+    /// <summary>
+    /// 이 클래스는 스트림을 암호화하고 해독하는 메서드를 구현합니다.
+    /// </summary>
+    public abstract class MMSaveLoadManagerEncrypter
 	{
 		/// <summary>
 		/// The Key to use to save and load the file

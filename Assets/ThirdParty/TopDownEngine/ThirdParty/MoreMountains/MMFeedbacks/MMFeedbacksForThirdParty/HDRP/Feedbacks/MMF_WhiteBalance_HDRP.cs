@@ -5,14 +5,14 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control white balance temperature and tint over time. 
-	/// It requires you have in your scene an object with a Volume with White Balance active, and a MMWhiteBalanceShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control white balance temperature and tint over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with WhiteBalance active, and a MMWhiteBalanceShaker_HDRP component.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 화이트 밸런스 온도와 색조를 제어할 수 있습니다.
+    /// 장면에 화이트 밸런스가 활성화된 볼륨과 MMWhiteBalanceShaker_HDRP 구성 요소가 있는 개체가 있어야 합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 화이트 밸런스 온도와 색조를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"WhiteBalance가 활성화되어 있고 MMWhiteBalanceShaker_HDRP 구성 요소가 있습니다.")]
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/White Balance HDRP")]
 	#endif

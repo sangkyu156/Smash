@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the stereo pan of a target AudioSource over time.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따라 대상 AudioSource의 스테레오 팬을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/AudioSource Stereo Pan")]
-	[FeedbackHelp("This feedback lets you control the stereo pan of a target AudioSource over time.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따라 대상 AudioSource의 스테레오 팬을 제어할 수 있습니다.")]
 	public class MMF_AudioSourceStereoPan : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

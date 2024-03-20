@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// this feedback will let you apply forces and torques (relative or not) to a Rigidbody
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you apply forces and torques (relative or not) to a Rigidbody.")]
+    /// <summary>
+    /// 이 피드백을 통해 Rigidbody에 힘과 토크(상대적이든 아니든)를 적용할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 Rigidbody에 힘과 토크(상대적이든 아니든)를 적용할 수 있습니다.")]
 	[FeedbackPath("GameObject/Rigidbody2D")]
 	public class MMFeedbackRigidbody2D : MMFeedback
 	{

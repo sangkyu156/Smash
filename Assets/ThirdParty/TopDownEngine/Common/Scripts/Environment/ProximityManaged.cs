@@ -6,27 +6,27 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class to add to any object in your scene to mark it as managed by a proximity manager.
-	/// </summary>
-	public class ProximityManaged : TopDownMonoBehaviour
+    /// <summary>
+    /// 근접 관리자가 관리하는 것으로 표시하기 위해 장면의 개체에 추가하는 클래스입니다.
+    /// </summary>
+    public class ProximityManaged : TopDownMonoBehaviour
 	{
 		[Header("Thresholds")]
 		/// the distance from the proximity center (the player) under which the object should be enabled
-		[Tooltip("the distance from the proximity center (the player) under which the object should be enabled")]
+		[Tooltip("개체를 활성화해야 하는 근접 중심(플레이어)으로부터의 거리")]
 		public float EnableDistance = 35f;
 		/// the distance from the proximity center (the player) after which the object should be disabled
-		[Tooltip("the distance from the proximity center (the player) after which the object should be disabled")]
+		[Tooltip("객체가 비활성화되어야 하는 근접 중심(플레이어)으로부터의 거리")]
 		public float DisableDistance = 45f;
 
 		/// whether or not this object was disabled by the ProximityManager
 		[MMReadOnly]
-		[Tooltip("whether or not this object was disabled by the ProximityManager")]
+		[Tooltip("ProximityManager에 의해 이 객체가 비활성화되었는지 여부")]
 		public bool DisabledByManager;
 
 		[Header("Debug")] 
 		/// a debug manager to add this object to, only used for debug
-		[Tooltip("a debug manager to add this object to, only used for debug")]
+		[Tooltip("이 개체를 추가할 디버그 관리자이며 디버그에만 사용됩니다.")]
 		public ProximityManager DebugProximityManager;
 		/// a debug button to add this object to the debug manager
 		[MMInspectorButton("DebugAddObject")]

@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.InventoryEngine
 {
-	/// <summary>
-	/// A very small class used to reset inventories and persistence data in the PixelRogue demos
-	/// </summary>
-	public class PixelRogueDemoResetAll : MonoBehaviour
+    /// <summary>
+    /// PixelRogue 데모에서 인벤토리 및 지속성 데이터를 재설정하는 데 사용되는 매우 작은 클래스
+    /// </summary>
+    public class PixelRogueDemoResetAll : MonoBehaviour
 	{
 		const string _inventorySaveFolderName = "InventoryEngine"; 
 		

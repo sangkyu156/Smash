@@ -9,42 +9,42 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("Shaker Settings", true, 3)]
 		/// whether to listen on a channel defined by an int or by a MMChannel scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what.
 		/// MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable
-		[Tooltip("whether to listen on a channel defined by an int or by a MMChannel scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what. " +
-		         "MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable")]
+		[Tooltip("int 또는 MMChannel 스크립트 가능 개체로 정의된 채널을 수신할지 여부입니다. Int는 설정이 간단하지만 지저분해질 수 있으며 int가 무엇에 해당하는지 기억하기 어렵게 만들 수 있습니다. " +
+"MMChannel 스크립트 가능 개체를 미리 생성해야 하지만 읽기 쉬운 이름이 제공되고 확장성이 더 뛰어납니다.")]
 		public MMChannelModes ChannelMode = MMChannelModes.Int;
 		/// the channel to listen to - has to match the one on the feedback
-		[Tooltip("the channel to listen to - has to match the one on the feedback")]
+		[Tooltip("들을 채널 - 피드백에 있는 채널과 일치해야 합니다.")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.Int)]
 		public int Channel = 0;
 		/// the MMChannel definition asset to use to listen for events. The feedbacks targeting this shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel,
 		/// right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name
-		[Tooltip("the MMChannel definition asset to use to listen for events. The feedbacks targeting this shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel, " +
-		         "right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name")]
+		[Tooltip("이벤트를 수신하는 데 사용할 MMChannel 정의 자산입니다. 이 셰이커를 대상으로 하는 피드백은 이벤트를 수신하기 위해 동일한 MMChannel 정의를 참조해야 합니다. MMChannel을 생성하려면 " +
+"프로젝트(일반적으로 Data 폴더)의 아무 곳이나 마우스 오른쪽 버튼으로 클릭하고 MoreMountains > MMChannel로 이동한 다음 고유한 이름으로 이름을 지정합니다.")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.MMChannel)]
 		public MMChannel MMChannelDefinition = null;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 0.2f;
 		/// if this is true this shaker will play on awake
-		[Tooltip("if this is true this shaker will play on awake")]
+		[Tooltip("이것이 사실이라면 이 셰이커는 깨어 있을 것입니다")]
 		public bool PlayOnAwake = false;
 		/// if this is true, the shaker will shake permanently as long as its game object is active
-		[Tooltip("if this is true, the shaker will shake permanently as long as its game object is active")]
+		[Tooltip("이것이 사실이라면 게임 개체가 활성화되어 있는 동안 셰이커는 영구적으로 흔들릴 것입니다.")]
 		public bool PermanentShake = false;
 		/// if this is true, a new shake can happen while shaking
-		[Tooltip("if this is true, a new shake can happen while shaking")]
+		[Tooltip("이것이 사실이라면 흔들면서 새로운 흔들림이 일어날 수 있습니다")]
 		public bool Interruptible = true;
 		/// if this is true, this shaker will always reset target values, regardless of how it was called
-		[Tooltip("if this is true, this shaker will always reset target values, regardless of how it was called")]
+		[Tooltip("이것이 사실이라면 이 셰이커는 호출 방법에 관계없이 항상 목표 값을 재설정합니다.")]
 		public bool AlwaysResetTargetValuesAfterShake = false;
 		/// if this is true, this shaker will ignore any value passed in an event that triggered it, and will instead use the values set on its inspector
-		[Tooltip("if this is true, this shaker will ignore any value passed in an event that triggered it, and will instead use the values set on its inspector")]
+		[Tooltip("이것이 사실인 경우 이 셰이커는 이를 트리거한 이벤트에 전달된 모든 값을 무시하고 대신 해당 검사기에 설정된 값을 사용합니다.")]
 		public bool OnlyUseShakerValues = false;
 		/// a cooldown, in seconds, after a shake, during which no other shake can start
-		[Tooltip("a cooldown, in seconds, after a shake, during which no other shake can start")]
+		[Tooltip("흔들기 후 다른 흔들림이 시작될 수 없는 쿨다운(초)")]
 		public float CooldownBetweenShakes = 0f;
 		/// whether or not this shaker is shaking right now
-		[Tooltip("whether or not this shaker is shaking right now")]
+		[Tooltip("지금 이 셰이커가 흔들리고 있는지 아닌지")]
 		[MMFReadOnly]
 		public bool Shaking = false;
         

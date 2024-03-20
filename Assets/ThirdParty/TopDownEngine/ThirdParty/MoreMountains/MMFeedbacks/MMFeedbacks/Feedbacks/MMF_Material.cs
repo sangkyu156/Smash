@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 namespace MoreMountains.Feedbacks
 {
 	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you change the material of the target renderer everytime it's played.")]
+	[FeedbackHelp("이 피드백을 사용하면 재생될 때마다 대상 렌더러의 재질을 변경할 수 있습니다.")]
 	[FeedbackPath("Renderer/Material")]
 	public class MMF_Material : MMF_Feedback
 	{
@@ -31,10 +31,10 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Target Material", true, 61, true)]
 		/// the renderer to change material on
-		[Tooltip("the renderer to change material on")]
+		[Tooltip("재료를 변경할 렌더러")]
 		public Renderer TargetRenderer;
 		/// the list of material indexes we want to change on the target renderer. If left empty, will only target the material at index 0 
-		[FormerlySerializedAs("MaterialIndexes")] [Tooltip("the list of material indexes we want to change on the target renderer. If left empty, will only target the material at index 0")]
+		[FormerlySerializedAs("MaterialIndexes")] [Tooltip("대상 렌더러에서 변경하려는 머티리얼 인덱스 목록입니다. 비워두면 인덱스 0의 재료만 대상으로 합니다.")]
 		public int[] RendererMaterialIndexes;
         
 		[MMFInspectorGroup("Material Change", true, 33)]
@@ -43,17 +43,17 @@ namespace MoreMountains.Feedbacks
 		public Methods Method;
 		/// whether or not the sequential order should loop
 		[MMFEnumCondition("Method", (int)Methods.Sequential)]
-		[Tooltip("whether or not the sequential order should loop")]
+		[Tooltip("순차 순서가 반복되어야 하는지 여부")]
 		public bool Loop = true;
 		/// whether or not to always pick a new material in random mode
 		[MMFEnumCondition("Method", (int)Methods.Random)]        
-		[Tooltip("whether or not to always pick a new material in random mode")]
+		[Tooltip("항상 무작위 모드에서 새로운 재료를 선택할지 여부")]
 		public bool AlwaysNewMaterial = true;
 		/// the initial index to start with
-		[Tooltip("the initial index to start with")]
+		[Tooltip("시작할 초기 인덱스")]
 		public int InitialIndex = 0;
 		/// the list of materials to pick from
-		[Tooltip("the list of materials to pick from")]
+		[Tooltip("선택할 재료 목록")]
 		public List<Material> Materials;
 
 		[MMFInspectorGroup("Interpolation", true, 35)]

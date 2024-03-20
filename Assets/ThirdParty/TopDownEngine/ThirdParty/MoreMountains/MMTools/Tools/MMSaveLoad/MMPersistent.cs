@@ -5,27 +5,27 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A persistent class that can save the essential parts of an object :
-	/// its transform data (position, rotation, scale) and its active state
-	/// This inherits from MMPersistentBase and implements the IMMPersistent interface
-	/// It's a good example of how to implement the interface's OnSave and OnLoad methods
-	/// </summary>
-	public class MMPersistent : MMPersistentBase
+    /// <summary>
+    /// 객체의 필수 부분을 저장할 수 있는 영속 클래스:
+    /// 변환 데이터(위치, 회전, 크기 조정) 및 활성 상태
+    /// 이는 MMPersistantBase를 상속하고 IMMPercious 인터페이스를 구현합니다.
+    /// 인터페이스의 OnSave 및 OnLoad 메서드를 구현하는 방법에 대한 좋은 예입니다.
+    /// </summary>
+    public class MMPersistent : MMPersistentBase
 	{
 		
 		[Header("Properties")]
 		/// whether or not to save this object's position
-		[Tooltip("whether or not to save this object's position")]
+		[Tooltip("이 객체의 위치를 ​​저장할지 여부")]
 		public bool SavePosition = true;
 		/// whether or not to save this object's rotation
-		[Tooltip("whether or not to save this object's rotation")]
+		[Tooltip("이 객체의 회전을 저장할지 여부")]
 		public bool SaveLocalRotation = true;
 		/// whether or not to save this object's scale
-		[Tooltip("whether or not to save this object's scale")]
+		[Tooltip("이 개체의 크기를 저장할지 여부")]
 		public bool SaveLocalScale = true;
 		/// whether or not to save this object's active state
-		[Tooltip("whether or not to save this object's active state")]
+		[Tooltip("이 개체의 활성 상태를 저장할지 여부")]
 		public bool SaveActiveState = true;
 		
 		/// <summary>

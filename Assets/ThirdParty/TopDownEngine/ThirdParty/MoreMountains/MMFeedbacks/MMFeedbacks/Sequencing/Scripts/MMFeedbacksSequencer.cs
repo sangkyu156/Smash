@@ -6,14 +6,14 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A MMSequencer with ready made slots to play MMFeedbacks
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMFeedbacksSequencer")]
+    /// <summary>
+    /// MMFeedback을 재생할 수 있도록 준비된 슬롯이 있는 MMSequencer
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMFeedbacksSequencer")]
 	public class MMFeedbacksSequencer : MMSequencer
 	{
 		/// the list of audio clips to play (one per track)
-		[Tooltip("the list of audio clips to play (one per track)")]
+		[Tooltip("재생할 오디오 클립 목록(트랙당 하나)")]
 		public List<MMFeedbacks> Feedbacks;
 
 		/// <summary>

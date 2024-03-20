@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to pick a property, and remap its value for emission/broadcast
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 속성을 선택하고 방출/브로드캐스트에 대한 값을 다시 매핑하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class MMPropertyEmitter : MMPropertyPicker 
 	{
 		/// the min value to clamp this property value to

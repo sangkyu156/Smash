@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// this feedback will "hold", or wait, until all previous feedbacks have been executed, and will then pause the execution of your MMFeedbacks sequence, for the specified duration
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will 'hold', or wait, until all previous feedbacks have been executed, and will then pause the execution of your MMFeedbacks sequence, for the specified duration.")]
+    /// <summary>
+    /// 이 피드백은 모든 이전 피드백이 실행될 때까지 "보류"하거나 대기한 다음 지정된 기간 동안 MMFeedbacks 시퀀스의 실행을 일시 중지합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 이전 피드백이 모두 실행될 때까지 '유지'하거나 대기한 다음 지정된 기간 동안 MMFeedbacks 시퀀스의 실행을 일시 중지합니다.")]
 	[FeedbackPath("Pause/Holding Pause")]
 	public class MMFeedbackHoldingPause : MMFeedbackPause
 	{

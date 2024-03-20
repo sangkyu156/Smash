@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control a specific sound (or sounds), targeted by SoundID, which has to match the SoundID of the sound you intially played. You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 처음에 재생한 사운드의 SoundID와 일치해야 하는 SoundID를 대상으로 하는 특정 사운드(들)을 제어할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Sound Control")]
-	[FeedbackHelp("This feedback will let you control a specific sound (or sounds), targeted by SoundID, which has to match the SoundID of the sound you intially played. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 처음에 재생한 사운드의 SoundID와 일치해야 하는 SoundID를 대상으로 하는 특정 사운드(들)을 제어할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMF_MMSoundManagerSoundControl : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

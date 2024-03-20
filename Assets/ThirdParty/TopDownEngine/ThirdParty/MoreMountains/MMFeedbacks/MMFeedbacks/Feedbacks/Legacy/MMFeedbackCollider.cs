@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you enable/disable/toggle a target collider, or change its trigger status
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you enable/disable/toggle a target collider, or change its trigger status")]
+    /// <summary>
+    /// 이 피드백을 통해 대상 충돌기를 활성화/비활성화/전환하거나 트리거 상태를 변경할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 대상 충돌기를 활성화/비활성화/전환하거나 트리거 상태를 변경할 수 있습니다.")]
 	[FeedbackPath("GameObject/Collider")]
 	public class MMFeedbackCollider : MMFeedback
 	{
@@ -25,7 +25,7 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Collider")]
 		/// the collider to act upon
-		[Tooltip("the collider to act upon")]
+		[Tooltip("행동할 충돌체")]
 		public Collider TargetCollider;
 		/// the effect the feedback will have on the target collider's status 
 		public Modes Mode = Modes.Disable;

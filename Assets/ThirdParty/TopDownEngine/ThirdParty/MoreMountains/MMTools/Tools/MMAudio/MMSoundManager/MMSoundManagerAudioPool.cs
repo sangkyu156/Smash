@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class manages an object pool of audiosources
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 이 클래스는 오디오 소스의 개체 풀을 관리합니다.
+    /// </summary>
+    [Serializable]
 	public class MMSoundManagerAudioPool 
 	{
 		protected List<AudioSource> _pool;

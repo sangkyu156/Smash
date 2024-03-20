@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Custom editor for MMSequencer, handles recalibration and sequencer display
-	/// </summary>
-	[CustomEditor(typeof(MMSequencer), true)]
+    /// <summary>
+    /// MMSequencer용 사용자 정의 편집기, 재보정 및 시퀀서 표시 처리
+    /// </summary>
+    [CustomEditor(typeof(MMSequencer), true)]
 	[CanEditMultipleObjects]
 	public class MMSequencerEditor : Editor
 	{

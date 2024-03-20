@@ -5,11 +5,11 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you transition to a target AudioMixer Snapshot over a specified time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you transition to a target AudioMixer Snapshot over a specified time")]
+    /// <summary>
+    /// 이 피드백을 통해 지정된 시간 동안 대상 AudioMixer 스냅샷으로 전환할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 지정된 시간 동안 대상 AudioMixer 스냅샷으로 전환할 수 있습니다.")]
 	[FeedbackPath("Audio/AudioMixer Snapshot Transition")]
 	public class MMF_AudioMixerSnapshotTransition : MMF_Feedback
 	{
@@ -24,13 +24,13 @@ namespace MoreMountains.Feedbacks
         
 		[MMFInspectorGroup("AudioMixer Snapshot", true, 44)]
 		/// the target audio mixer snapshot we want to transition to 
-		[Tooltip("the target audio mixer snapshot we want to transition to")]
+		[Tooltip("전환하려는 대상 오디오 믹서 스냅샷")]
 		public AudioMixerSnapshot TargetSnapshot;
 		/// the audio mixer snapshot we want to transition from, optional, only needed if you plan to play this feedback in reverse 
-		[Tooltip("the audio mixer snapshot we want to transition from, optional, only needed if you plan to play this feedback in reverse")]
+		[Tooltip("전환하려는 오디오 믹서 스냅샷(선택 사항)은 이 피드백을 역방향으로 재생하려는 경우에만 필요합니다.")]
 		public AudioMixerSnapshot OriginalSnapshot;
 		/// the duration, in seconds, over which to transition to the selected snapshot
-		[Tooltip("the duration, in seconds, over which to transition to the selected snapshot")]
+		[Tooltip("선택한 스냅샷으로 전환하는 기간(초)")]
 		public float TransitionDuration = 1f;
         
 		/// <summary>

@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Use this class to offset an animation by a random range
-	/// </summary>
-	[RequireComponent(typeof(Animator))]
+    /// <summary>
+    /// 이 클래스를 사용하여 임의의 범위로 애니메이션을 오프셋합니다.
+    /// </summary>
+    [RequireComponent(typeof(Animator))]
 	[AddComponentMenu("More Mountains/Tools/Animation/MMOffsetAnimation")]
 	public class MMOffsetAnimation : MonoBehaviour
 	{

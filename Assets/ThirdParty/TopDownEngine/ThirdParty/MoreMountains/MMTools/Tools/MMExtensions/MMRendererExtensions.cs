@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MoreMountains.Tools
 {
 	/// <summary>
-	/// Renderer extensions
+	/// Renderer 확장
 	/// </summary>
 	public static class RendererExtensions
 	{

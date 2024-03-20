@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MoreMountains.Tools
 {
 	/// <summary>
-	/// Transform extensions
+	/// Transform 확장
 	/// </summary>
 	public static class TransformExtensions
 	{

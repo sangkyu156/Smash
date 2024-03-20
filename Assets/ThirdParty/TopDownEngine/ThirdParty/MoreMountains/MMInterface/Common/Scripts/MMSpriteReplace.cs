@@ -5,15 +5,15 @@ using MoreMountains.Tools;
 using UnityEngine.UI;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to add to an Image or SpriteRenderer to have it act like a button with a different sprite for on and off states
-	/// </summary>
-	public class MMSpriteReplace : MonoBehaviour 
+{
+    /// <summary>
+    /// 켜기 및 끄기 상태에 대해 다른 스프라이트가 있는 버튼처럼 작동하도록 Image 또는 SpriteRenderer에 추가하는 클래스입니다.
+    /// </summary>
+    public class MMSpriteReplace : MonoBehaviour 
 	{
 
 		[Header("Sprites")]
-		[MMInformation("Add this to an Image or a SpriteRenderer to be able to swap between two sprites.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("두 스프라이트 사이를 교환할 수 있도록 Image 또는 SpriteRenderer에 이를 추가합니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
 
 		/// the sprite to use when in the "on" state
 		public Sprite OnSprite;

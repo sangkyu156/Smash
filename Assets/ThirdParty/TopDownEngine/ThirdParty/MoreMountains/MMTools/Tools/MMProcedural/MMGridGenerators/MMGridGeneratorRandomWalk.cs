@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid with a path carved by a drunkard walk algorithm
-	/// See http://pcg.wikidot.com/pcg-algorithm:drunkard-walk
-	/// </summary>
-	public class MMGridGeneratorRandomWalk : MMGridGenerator
+    /// <summary>
+    /// 술취한 산책 알고리즘으로 조각된 경로를 사용하여 그리드를 생성합니다.
+    /// http://pcg.wikidot.com/pcg-algorithm:drunkard-walk 참조
+    /// </summary>
+    public class MMGridGeneratorRandomWalk : MMGridGenerator
 	{
 		/// <summary>
 		/// Generates a grid with a path carved by a drunkard walk algorithm

@@ -5,18 +5,18 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control color grading post exposure, hue shift, saturation and contrast over time. 
-	/// It requires you have in your scene an object with a PostProcessVolume 
-	/// with Color Grading active, and a MMColorGradingShaker component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 노출 후 색상 그레이딩, 색조 변화, 채도 및 대비를 제어할 수 있습니다.
+    /// 장면에 PostProcessVolume이 있는 객체가 있어야 합니다.
+    /// 컬러 그레이딩이 활성화되어 있고 MMColorGradingShaker 구성 요소가 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_POSTPROCESSING
 	[FeedbackPath("PostProcess/Color Grading")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control color grading post exposure, hue shift, saturation and contrast over time. " +
-	              "It requires you have in your scene an object with a PostProcessVolume " +
-	              "with Color Grading active, and a MMColorGradingShaker component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 노출 후 색상 그레이딩, 색조 변화, 채도 및 대비를 제어할 수 있습니다. " +
+"장면에 PostProcessVolume이 있는 객체가 있어야 합니다." +
+"컬러 그레이딩이 활성화되어 있고 MMColorGradingShaker 구성 요소가 있습니다.")]
 	public class MMF_ColorGrading : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -34,21 +34,21 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Color Grading", true, 46)]
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 1f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[MMFInspectorGroup("Post Exposure", true, 47)]
 		/// the curve used to animate the focus distance value on
-		[Tooltip("the curve used to animate the focus distance value on")]
+		[Tooltip("초점 거리 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakePostExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -59,7 +59,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Hue Shift", true, 48)]
 		/// the curve used to animate the aperture value on
-		[Tooltip("the curve used to animate the aperture value on")]
+		[Tooltip("조리개 값에 애니메이션을 적용하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeHueShift = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -72,7 +72,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Saturation", true, 49)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeSaturation = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -85,7 +85,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Contrast", true, 50)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeContrast = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]

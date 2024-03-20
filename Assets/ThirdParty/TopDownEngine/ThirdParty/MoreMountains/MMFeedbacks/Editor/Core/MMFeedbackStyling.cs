@@ -3,10 +3,10 @@ using UnityEditor;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A class used to regroup most of the styling options for the MMFeedback editors
-	/// </summary>
-	public static class MMFeedbackStyling
+    /// <summary>
+    /// MMFeedback 편집기에 대한 대부분의 스타일 옵션을 재그룹화하는 데 사용되는 클래스
+    /// </summary>
+    public static class MMFeedbackStyling
 	{
 		public static readonly GUIStyle SmallTickbox = new GUIStyle("ShurikenToggle");
 

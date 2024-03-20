@@ -5,15 +5,15 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control URP depth of field focus distance, aperture and focal length over time. 
-	/// It requires you have in your scene an object with a Volume 
-	/// with Depth of Field active, and a MMDepthOfFieldShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control URP depth of field focus distance, aperture and focal length over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Depth of Field active, and a MMDepthOfFieldShaker_URP component.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 URP 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 심도가 활성화되고 MMDepthOfFieldShaker_URP 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 URP 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"피사계 심도가 활성화되고 MMDepthOfFieldShaker_URP 구성 요소가 포함되어 있습니다.")]
 	#if MM_URP
 	[FeedbackPath("PostProcess/Depth Of Field URP")]
 	#endif

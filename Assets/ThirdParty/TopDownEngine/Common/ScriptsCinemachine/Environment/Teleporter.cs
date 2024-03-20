@@ -7,10 +7,10 @@ using MoreMountains.Feedbacks;
 namespace MoreMountains.TopDownEngine
 {	
 	[AddComponentMenu("TopDown Engine/Environment/Teleporter")]
-	/// <summary>
-	/// Add this script to a trigger collider2D or collider to teleport objects from that object to its destination
-	/// </summary>
-	public class Teleporter : ButtonActivated 
+    /// <summary>
+    /// 해당 개체에서 대상으로 개체를 순간 이동하려면 collider2D 또는 collider 트리거에 이 스크립트를 추가하세요.
+    /// </summary>
+    public class Teleporter : ButtonActivated 
 	{
 		/// the possible modes the teleporter can interact with the camera system on activation, either doing nothing, teleporting the camera to a new position, or blending between Cinemachine virtual cameras
 		public enum CameraModes { DoNothing, TeleportCamera, CinemachinePriority }
@@ -22,110 +22,110 @@ namespace MoreMountains.TopDownEngine
 		[Header("Teleporter")]
 
 		/// if true, this won't teleport non player characters
-		[Tooltip("if true, this won't teleport non player characters")]
+		[Tooltip("true인 경우 플레이어가 아닌 캐릭터는 순간이동하지 않습니다.")]
 		public bool OnlyAffectsPlayer = true;
 		/// the offset to apply when exiting this teleporter
-		[Tooltip("the offset to apply when exiting this teleporter")]
+		[Tooltip("이 텔레포터를 나갈 때 적용할 오프셋")]
 		public Vector3 ExitOffset;
 		/// the selected teleportation mode 
-		[Tooltip("the selected teleportation mode ")]
+		[Tooltip("선택한 순간이동 모드")]
 		public TeleportationModes TeleportationMode = TeleportationModes.Instant;
 		/// the curve to apply to the teleportation tween 
 		[MMEnumCondition("TeleportationMode", (int)TeleportationModes.Tween)]
-		[Tooltip("the curve to apply to the teleportation tween")]
+		[Tooltip("순간 이동 트윈에 적용할 곡선")]
 		public MMTween.MMTweenCurve TweenCurve = MMTween.MMTweenCurve.EaseInCubic;
 		/// whether or not to maintain the x value of the teleported object on exit
-		[Tooltip("whether or not to maintain the x value of the teleported object on exit")]
+		[Tooltip("종료 시 순간 이동된 개체의 x 값을 유지할지 여부")]
 		public bool MaintainXEntryPositionOnExit = false;
 		/// whether or not to maintain the y value of the teleported object on exit
-		[Tooltip("whether or not to maintain the y value of the teleported object on exit")]
+		[Tooltip("종료 시 순간 이동된 개체의 Y 값을 유지할지 여부")]
 		public bool MaintainYEntryPositionOnExit = false;
 		/// whether or not to maintain the z value of the teleported object on exit
-		[Tooltip("whether or not to maintain the z value of the teleported object on exit")]
+		[Tooltip("종료 시 순간 이동된 개체의 Z 값을 유지할지 여부")]
 		public bool MaintainZEntryPositionOnExit = false;
 
 		[Header("Destination")]
 
 		/// the teleporter's destination
-		[Tooltip("the teleporter's destination")]
+		[Tooltip("텔레포터의 목적지")]
 		public Teleporter Destination;
 		/// if this is true, the teleported object will be put on the destination's ignore list, to prevent immediate re-entry. If your 
 		/// destination's offset is far enough from its center, you can set that to false
-		[Tooltip("if this is true, the teleported object will be put on the destination's ignore list, to prevent immediate re-entry. If your destination's offset is far enough from its center, you can set that to false")]
+		[Tooltip("이것이 사실이라면 순간이동된 개체는 즉각적인 재진입을 방지하기 위해 대상의 무시 목록에 추가됩니다. 목적지의 오프셋이 중심에서 충분히 멀리 떨어져 있으면 이를 false로 설정할 수 있습니다.")]
 		public bool AddToDestinationIgnoreList = true;
 
 		[Header("Rooms")]
 
 		/// the chosen camera mode
-		[Tooltip("the chosen camera mode")]
+		[Tooltip("선택한 카메라 모드")]
 		public CameraModes CameraMode = CameraModes.TeleportCamera;
 		/// the room this teleporter belongs to
-		[Tooltip("the room this teleporter belongs to")]
+		[Tooltip("이 텔레포터가 속한 방")]
 		public Room CurrentRoom;
 		/// the target room
-		[Tooltip("the target room")]
+		[Tooltip("대상 방")]
 		public Room TargetRoom;
         
 		[Header("MMFader Transition")]
 
 		/// if this is true, a fade to black will occur when teleporting
-		[Tooltip("if this is true, a fade to black will occur when teleporting")]
+		[Tooltip("이것이 사실이라면 순간이동 시 검은색으로 변하는 현상이 발생합니다.")]
 		public bool TriggerFade = false;
 		/// the ID of the fader to target
 		[MMCondition("TriggerFade", true)]
-		[Tooltip("the ID of the fader to target")]
+		[Tooltip("타겟으로 하는 페이더의 ID")]
 		public int FaderID = 0;
 		/// the curve to use to fade to black
-		[Tooltip("the curve to use to fade to black")]
+		[Tooltip("검은색으로 페이드하는 데 사용할 곡선")]
 		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
 		/// if this is true, fade events will ignore timescale
-		[Tooltip("if this is true, fade events will ignore timescale")]
+		[Tooltip("이것이 사실이라면 페이드 이벤트는 시간 척도를 무시합니다.")]
 		public bool FadeIgnoresTimescale = false;
 
 		[Header("Mask")]
 
 		/// whether or not we should ask to move a MMSpriteMask on activation
-		[Tooltip("whether or not we should ask to move a MMSpriteMask on activation")]
+		[Tooltip("활성화 시 MMSpriteMask 이동을 요청해야 하는지 여부")]
 		public bool MoveMask = true;
 		/// the curve to move the mask along to
 		[MMCondition("MoveMask", true)]
-		[Tooltip("the curve to move the mask along to")]
+		[Tooltip("마스크를 이동할 곡선")]
 		public MMTween.MMTweenCurve MoveMaskCurve = MMTween.MMTweenCurve.EaseInCubic;
 		/// the method to move the mask
 		[MMCondition("MoveMask", true)]
-		[Tooltip("the method used to move the mask")]
+		[Tooltip("마스크를 이동하는 데 사용되는 방법")]
 		public MMSpriteMaskEvent.MMSpriteMaskEventTypes MoveMaskMethod = MMSpriteMaskEvent.MMSpriteMaskEventTypes.ExpandAndMoveToNewPosition;
 		/// the duration of the mask movement (usually the same as the DelayBetweenFades
 		[MMCondition("MoveMask", true)]
-		[Tooltip("the duration of the mask movement (usually the same as the DelayBetweenFades")]
+		[Tooltip("마스크 이동 기간(보통 DelayBetweenFades와 동일)")]
 		public float MoveMaskDuration = 0.2f;
 
 		[Header("Freeze")]
 		/// whether or not time should be frozen during the transition
-		[Tooltip("whether or not time should be frozen during the transition")]
+		[Tooltip("전환 중에 시간을 멈춰야 하는지 여부")]
 		public bool FreezeTime = false;
 		/// whether or not the character should be frozen (input blocked) for the duration of the transition
-		[Tooltip("whether or not the character should be frozen (input blocked) for the duration of the transition")]
+		[Tooltip("전환이 진행되는 동안 캐릭터가 정지(입력 차단)되어야 하는지 여부")]
 		public bool FreezeCharacter = true;
 
 		[Header("Teleport Sequence")]
 		/// the timescale to use for the teleport sequence
-		[Tooltip("the timescale to use for the teleport sequence")]
+		[Tooltip("텔레포트 시퀀스에 사용할 시간 척도")]
 		public TimeModes TimeMode = TimeModes.Unscaled;
 		/// the delay (in seconds) to apply before running the sequence
-		[Tooltip("the delay (in seconds) to apply before running the sequence")]
+		[Tooltip("시퀀스를 실행하기 전에 적용할 지연(초)")]
 		public float InitialDelay = 0.1f;
 		/// the duration (in seconds) after the initial delay covering for the fade out of the scene
-		[Tooltip("the duration (in seconds) after the initial delay covering for the fade out of the scene")]
+		[Tooltip("장면의 페이드 아웃을 덮는 초기 지연 이후의 지속 시간(초)")]
 		public float FadeOutDuration = 0.2f;
 		/// the duration (in seconds) to wait for after the fade out and before the fade in
-		[Tooltip("the duration (in seconds) to wait for after the fade out and before the fade in")]
+		[Tooltip("페이드 아웃 후와 페이드 인 전에 대기하는 기간(초)")]
 		public float DelayBetweenFades = 0.3f;
 		/// the duration (in seconds) after the initial delay covering for the fade in of the scene
-		[Tooltip("the duration (in seconds) after the initial delay covering for the fade in of the scene")]
+		[Tooltip("장면의 페이드 인을 위한 초기 지연 이후의 지속 시간(초)입니다.")]
 		public float FadeInDuration = 0.2f;
 		/// the duration (in seconds) to apply after the fade in of the scene
-		[Tooltip("the duration (in seconds) to apply after the fade in of the scene")]
+		[Tooltip("장면의 페이드 인 이후 적용할 지속 시간(초)")]
 		public float FinalDelay = 0.1f;
 
 		public float LocalTime => (TimeMode == TimeModes.Unscaled) ? Time.unscaledTime : Time.time;

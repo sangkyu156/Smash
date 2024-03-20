@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Custom editor for Rooms that draws their name in scene view
-	/// </summary>
-	[CanEditMultipleObjects]
+    /// <summary>
+    /// 장면 보기에 이름을 그리는 Room용 사용자 정의 편집기
+    /// </summary>
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(Room), true)]
 	[InitializeOnLoad]
 	public class RoomEditor : Editor

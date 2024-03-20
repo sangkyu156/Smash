@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to a GUI Image to have it act as a button. 
-	/// Bind pressed down, pressed continually and released actions to it from the inspector
-	/// Handles mouse and multi touch
-	/// </summary>
-	[RequireComponent(typeof(Rect))]
+    /// <summary>
+    /// 이 구성 요소를 GUI 이미지에 추가하여 버튼 역할을 하도록 하세요.
+    /// 눌려진 상태, 계속 눌려진 상태 및 인스펙터에서 해당 작업에 대한 해제된 작업을 바인딩합니다.
+    /// 마우스 및 멀티 터치 처리
+    /// </summary>
+    [RequireComponent(typeof(Rect))]
 	[RequireComponent(typeof(CanvasGroup))]
 	[AddComponentMenu("More Mountains/Tools/Controls/MMTouchButton")]
 	public class MMTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, ISubmitHandler
@@ -19,100 +19,100 @@ namespace MoreMountains.Tools
 		[Header("Interaction")] 
 		/// whether or not this button can be interacted with
 		public bool Interactable = true;
-		
-		/// The different possible states for the button : 
-		/// Off (default idle state), ButtonDown (button pressed for the first time), ButtonPressed (button being pressed), ButtonUp (button being released), Disabled (unclickable but still present on screen)
-		/// ButtonDown and ButtonUp will only last one frame, the others will last however long you press them / disable them / do nothing
-		public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp, Disabled }
+
+        /// 버튼에 가능한 다양한 상태는 다음과 같습니다.
+        /// Off(기본 유휴 상태), ButtonDown(처음으로 버튼을 눌렀음), ButtonPressed(버튼을 눌렀음), ButtonUp(버튼을 놓는 중), 비활성화(클릭할 수 없지만 화면에는 계속 표시됨)
+        /// ButtonDown 및 ButtonUp은 한 프레임만 지속되며, 다른 프레임은 누르는 동안 지속됩니다/비활성화/아무 작업도 수행하지 않습니다.
+        public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp, Disabled }
 		[Header("Binding")]
 		/// The method(s) to call when the button gets pressed down
-		[Tooltip("The method(s) to call when the button gets pressed down")]
+		[Tooltip("버튼을 눌렀을 때 호출할 메서드")]
 		public UnityEvent ButtonPressedFirstTime;
 		/// The method(s) to call when the button gets released
-		[Tooltip("The method(s) to call when the button gets released")]
+		[Tooltip("버튼을 놓을 때 호출할 메서드")]
 		public UnityEvent ButtonReleased;
 		/// The method(s) to call while the button is being pressed
-		[Tooltip("The method(s) to call while the button is being pressed")]
+		[Tooltip("버튼을 누르고 있는 동안 호출할 메서드")]
 		public UnityEvent ButtonPressed;
 
 		[Header("Sprite Swap")]
-		[MMInformation("Here you can define, for disabled and pressed states, if you want a different sprite, and a different color.", MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기에서 비활성화된 상태와 누른 상태에 대해 다른 스프라이트와 다른 색상을 원하는지 정의할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// the sprite to use on the button when it's in the disabled state
-		[Tooltip("the sprite to use on the button when it's in the disabled state")]
+		[Tooltip("비활성화된 상태에 있을 때 버튼에 사용할 스프라이트")]
 		public Sprite DisabledSprite;
 		/// whether or not to change color when the button is disabled
-		[Tooltip("whether or not to change color when the button is disabled")]
+		[Tooltip("버튼이 비활성화되었을 때 색상을 변경할지 여부")]
 		public bool DisabledChangeColor = false;
 		/// the color to use when the button is disabled
-		[Tooltip("the color to use when the button is disabled")]
+		[Tooltip("버튼이 비활성화되었을 때 사용할 색상")]
 		[MMCondition("DisabledChangeColor", true)]
 		public Color DisabledColor = Color.white;
 		/// the sprite to use on the button when it's in the pressed state
-		[Tooltip("the sprite to use on the button when it's in the pressed state")]
+		[Tooltip("버튼이 눌려진 상태일 때 버튼에 사용할 스프라이트")]
 		public Sprite PressedSprite;
 		/// whether or not to change the button color on press
-		[Tooltip("whether or not to change the button color on press")]
+		[Tooltip("누를 때 버튼 색상을 변경할지 여부")]
 		public bool PressedChangeColor = false;
 		/// the color to use when the button is pressed
-		[Tooltip("the color to use when the button is pressed")]
+		[Tooltip("버튼을 눌렀을 때 사용할 색상")]
 		[MMCondition("PressedChangeColor", true)]
 		public Color PressedColor= Color.white;
 		/// the sprite to use on the button when it's in the highlighted state
-		[Tooltip("the sprite to use on the button when it's in the highlighted state")]
+		[Tooltip("강조 표시된 상태에 있을 때 버튼에 사용할 스프라이트")]
 		public Sprite HighlightedSprite;
 		/// whether or not to change color when highlighting the button
-		[Tooltip("whether or not to change color when highlighting the button")]
+		[Tooltip("버튼을 강조 표시할 때 색상을 변경할지 여부")]
 		public bool HighlightedChangeColor = false;
 		/// the color to use when the button is highlighted 
-		[Tooltip("the color to use when the button is highlighted")]
+		[Tooltip("버튼이 강조 표시될 때 사용할 색상")]
 		[MMCondition("HighlightedChangeColor", true)]
 		public Color HighlightedColor = Color.white;
 
 		[Header("Opacity")]
-		[MMInformation("Here you can set different opacities for the button when it's pressed, idle, or disabled. Useful for visual feedback.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기에서는 버튼을 눌렀을 때, 유휴 상태일 때, 비활성화되었을 때 버튼의 불투명도를 다르게 설정할 수 있습니다. 시각적 피드백에 유용합니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// the new opacity to apply to the canvas group when the button is pressed
-		[Tooltip("the opacity to apply to the canvas group when the button is pressed")]
+		[Tooltip("버튼을 눌렀을 때 캔버스 그룹에 적용할 불투명도")]
 		public float PressedOpacity = 1f;
 		/// the new opacity to apply to the canvas group when the button is idle
-		[Tooltip("the new opacity to apply to the canvas group when the button is idle")]
+		[Tooltip("버튼이 유휴 상태일 때 캔버스 그룹에 적용할 새로운 불투명도")]
 		public float IdleOpacity = 1f;
 		/// the new opacity to apply to the canvas group when the button is disabled
-		[Tooltip("the new opacity to apply to the canvas group when the button is disabled")]
+		[Tooltip("버튼이 비활성화되었을 때 캔버스 그룹에 적용할 새로운 불투명도")]
 		public float DisabledOpacity = 1f;
 
 		[Header("Delays")]
-		[MMInformation("Specify here the delays to apply when the button is pressed initially, and when it gets released. Usually you'll keep them at 0.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("버튼을 처음 눌렀을 때와 버튼을 놓을 때 적용할 지연을 여기에서 지정합니다. 일반적으로 0으로 유지합니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// the delay to apply to events when the button gets pressed for the first time
-		[Tooltip("the delay to apply to events when the button gets pressed for the first time")]
+		[Tooltip("버튼을 처음 눌렀을 때 이벤트에 적용되는 지연")]
 		public float PressedFirstTimeDelay = 0f;
 		/// the delay to apply to events when the button gets released
-		[Tooltip("the delay to apply to events when the button gets released")]
+		[Tooltip("버튼을 놓을 때 이벤트에 적용할 지연")]
 		public float ReleasedDelay = 0f;
 
 		[Header("Buffer")]
 		/// the duration (in seconds) after a press during which the button can't be pressed again
-		[Tooltip("the duration (in seconds) after a press during which the button can't be pressed again")]
+		[Tooltip("버튼을 누른 후 다시 누를 수 없는 기간(초)")]
 		public float BufferDuration = 0f;
 
 		[Header("Animation")]
-		[MMInformation("Here you can bind an animator, and specify animation parameter names for the various states.",MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기서 애니메이터를 바인딩하고 다양한 상태에 대한 애니메이션 매개변수 이름을 지정할 수 있습니다.", MMInformationAttribute.InformationType.Info,false)]
 		/// an animator you can bind to this button to have its states updated to reflect the button's states
-		[Tooltip("an animator you can bind to this button to have its states updated to reflect the button's states")]
+		[Tooltip("이 버튼에 바인딩하여 버튼의 상태를 반영하도록 상태를 업데이트할 수 있는 애니메이터")]
 		public Animator Animator;
 		/// the name of the animation parameter to turn true when the button is idle
-		[Tooltip("the name of the animation parameter to turn true when the button is idle")]
+		[Tooltip("버튼이 유휴 상태일 때 true로 전환되는 애니메이션 매개변수의 이름")]
 		public string IdleAnimationParameterName = "Idle";
 		/// the name of the animation parameter to turn true when the button is disabled
-		[Tooltip("the name of the animation parameter to turn true when the button is disabled")]
+		[Tooltip("버튼이 비활성화되었을 때 true로 바뀔 애니메이션 매개변수의 이름")]
 		public string DisabledAnimationParameterName = "Disabled";
 		/// the name of the animation parameter to turn true when the button is pressed
-		[Tooltip("the name of the animation parameter to turn true when the button is pressed")]
+		[Tooltip("버튼을 눌렀을 때 true가 되는 애니메이션 매개변수의 이름")]
 		public string PressedAnimationParameterName = "Pressed";
 
 		[Header("Mouse Mode")]
-		[MMInformation("If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better to leave it unchecked if you're going for touch input).", MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("이것을 true로 설정하면 실제로 버튼을 눌러야 트리거됩니다. 그렇지 않으면 간단한 마우스 오버만으로 트리거됩니다(터치 입력을 하려는 경우 선택하지 않은 상태로 두는 것이 좋습니다).", MMInformationAttribute.InformationType.Info,false)]
 		/// If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better for touch input).
-		[Tooltip("If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better for touch input).")]
+		[Tooltip("이를 true로 설정하면 실제로 버튼을 눌러야 트리거됩니다. 그렇지 않으면 간단한 호버만으로 트리거됩니다(터치 입력에 더 좋음).")]
 		public bool MouseMode = false;
 
 		public bool ReturnToInitialSpriteAutomatically { get; set; }

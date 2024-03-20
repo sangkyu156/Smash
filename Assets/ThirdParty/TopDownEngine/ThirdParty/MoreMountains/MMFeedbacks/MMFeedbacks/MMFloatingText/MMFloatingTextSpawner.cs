@@ -25,13 +25,13 @@ namespace MoreMountains.Feedbacks
 			OnEvent?.Invoke(channelData, spawnPosition, value, direction, intensity, forceLifetime, lifetime, forceColor, animateColorGradient, useUnscaledTime);
 		} 
 	}
-	#endregion
+    #endregion
 
-	/// <summary>
-	/// This class will let you pool, recycle and spawn floating texts, usually to show damage info.
-	/// It requires as input a MMFloatingText object.
-	/// </summary>
-	public class MMFloatingTextSpawner : MMMonoBehaviour
+    /// <summary>
+    /// 이 클래스를 사용하면 일반적으로 손상 정보를 표시하기 위해 부동 텍스트를 모으고, 재활용하고 생성할 수 있습니다.
+    /// 입력으로 MMFloatingText 개체가 필요합니다.
+    /// </summary>
+    public class MMFloatingTextSpawner : MMMonoBehaviour
 	{
 		/// whether to spawn a single prefab or one at random 
 		public  enum PoolerModes { Simple, Multiple }
@@ -42,63 +42,63 @@ namespace MoreMountains.Feedbacks
         
 		/// whether to listen on a channel defined by an int or by a MMChannel scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what.
 		/// MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable
-		[Tooltip("whether to listen on a channel defined by an int or by a MMChannel scriptable object. Ints are simple to setup but can get messy and make it harder to remember what int corresponds to what. " +
-		         "MMChannel scriptable objects require you to create them in advance, but come with a readable name and are more scalable")]
+		[Tooltip("int 또는 MMChannel 스크립트 가능 개체로 정의된 채널을 수신할지 여부입니다. Int는 설정이 간단하지만 지저분해질 수 있으며 int가 무엇에 해당하는지 기억하기 어렵게 만들 수 있습니다. " +
+"MMChannel 스크립트 가능 개체를 미리 생성해야 하지만 읽기 쉬운 이름이 제공되고 확장성이 더 뛰어납니다.")]
 		public MMChannelModes ChannelMode = MMChannelModes.Int;
 		/// the channel to listen to - has to match the one on the feedback
-		[Tooltip("the channel to listen to - has to match the one on the feedback")]
+		[Tooltip("들을 채널 - 피드백에 있는 채널과 일치해야 합니다.")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.Int)]
 		public int Channel = 0;
 		/// the MMChannel definition asset to use to listen for events. The feedbacks targeting this shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel,
 		/// right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name
-		[Tooltip("the MMChannel definition asset to use to listen for events. The feedbacks targeting this shaker will have to reference that same MMChannel definition to receive events - to create a MMChannel, " +
-		         "right click anywhere in your project (usually in a Data folder) and go MoreMountains > MMChannel, then name it with some unique name")]
+		[Tooltip("이벤트를 수신하는 데 사용할 MMChannel 정의 자산입니다. 이 셰이커를 대상으로 하는 피드백은 이벤트를 수신하기 위해 동일한 MMChannel 정의를 참조해야 합니다. MMChannel을 생성하려면 " +
+"프로젝트(일반적으로 Data 폴더)의 아무 곳이나 마우스 오른쪽 버튼으로 클릭하고 MoreMountains > MMChannel로 이동한 다음 고유한 이름으로 이름을 지정합니다.")]
 		[MMEnumCondition("ChannelMode", (int)MMChannelModes.MMChannel)]
 		public MMChannel MMChannelDefinition = null;
 		/// whether or not this spawner can spawn at this time
-		[Tooltip("whether or not this spawner can spawn at this time")]
+		[Tooltip("이 생성기가 현재 생성될 수 있는지 여부")]
 		public bool CanSpawn = true;
 		/// whether or not this spawner should spawn objects on unscaled time
-		[Tooltip("whether or not this spawner should spawn objects on unscaled time")]
+		[Tooltip("이 생성자가 크기 조정되지 않은 시간에 객체를 생성해야 하는지 여부")]
 		public bool UseUnscaledTime = false;
         
 		[MMInspectorGroup("Pooler", true, 24)]
 
 		/// the selected pooler mode (single prefab or multiple ones)
-		[Tooltip("the selected pooler mode (single prefab or multiple ones)")]
+		[Tooltip("선택한 풀러 모드(단일 조립식 또는 다중 조립식)")]
 		public PoolerModes PoolerMode = PoolerModes.Simple;
 		/// the prefab to spawn (ignored if in multiple mode)
-		[Tooltip("the prefab to spawn (ignored if in multiple mode)")]
+		[Tooltip("생성할 프리팹(다중 모드인 경우 무시됨)")]
 		public MMFloatingText PooledSimpleMMFloatingText;
 		/// the prefabs to spawn (ignored if in simple mode)
-		[Tooltip("the prefabs to spawn (ignored if in simple mode)")]
+		[Tooltip("스폰할 프리팹(간단 모드에서는 무시됨)")]
 		public List<MMFloatingText> PooledMultipleMMFloatingText;
 		/// the amount of objects to pool to avoid having to instantiate them at runtime. Should be bigger than the max amount of texts you plan on having on screen at any given moment
-		[Tooltip("the amount of objects to pool to avoid having to instantiate them at runtime. Should be bigger than the max amount of texts you plan on having on screen at any given moment")]
+		[Tooltip("런타임에 인스턴스화할 필요가 없도록 풀링할 개체의 양. 특정 순간에 화면에 표시할 최대 텍스트 양보다 커야 합니다.")]
 		public int PoolSize = 20;
 		/// whether or not to nest the waiting pools
-		[Tooltip("whether or not to nest the waiting pools")]
+		[Tooltip("대기 풀을 중첩할지 여부")]
 		public bool NestWaitingPool = true;
 		/// whether or not to mutualize the waiting pools
-		[Tooltip("whether or not to mutualize the waiting pools")]
+		[Tooltip("대기 풀을 상호화할지 여부")]
 		public bool MutualizeWaitingPools = true;
 		/// whether or not the text pool can expand if the pool is empty
-		[Tooltip("whether or not the text pool can expand if the pool is empty")]
+		[Tooltip("텍스트 풀이 비어 있으면 텍스트 풀을 확장할 수 있는지 여부")]
 		public bool PoolCanExpand = true;
 
 		[MMInspectorGroup("Spawn Settings", true, 14)]
 
 		/// the random min and max lifetime duration for the spawned texts (in seconds)
-		[Tooltip("the random min and max lifetime duration for the spawned texts (in seconds)")]
+		[Tooltip("생성된 텍스트의 임의 최소 및 최대 수명 기간(초)")]
 		[MMVector("Min", "Max")] 
 		public Vector2 Lifetime = Vector2.one;
         
 		[Header("Spawn Position Offset")]
 		/// the random min position at which to spawn the text, relative to its intended spawn position
-		[Tooltip("the random min position at which to spawn the text, relative to its intended spawn position")]
+		[Tooltip("의도한 생성 위치를 기준으로 텍스트를 생성할 임의의 최소 위치")]
 		public Vector3 SpawnOffsetMin = Vector3.zero;
 		/// the random max position at which to spawn the text, relative to its intended spawn position
-		[Tooltip("the random max position at which to spawn the text, relative to its intended spawn position")]
+		[Tooltip("의도한 생성 위치를 기준으로 텍스트를 생성할 임의의 최대 위치")]
 		public Vector3 SpawnOffsetMax = Vector3.zero;
 
 		[MMInspectorGroup("Animate Position", true, 15)] 
@@ -106,51 +106,51 @@ namespace MoreMountains.Feedbacks
 		[Header("Movement")]
 
 		/// whether or not to animate the movement of spawned texts
-		[Tooltip("whether or not to animate the movement of spawned texts")]
+		[Tooltip("생성된 텍스트의 움직임에 애니메이션을 적용할지 여부s")]
 		public bool AnimateMovement = true;
 		/// whether or not to animate the X movement of spawned texts
-		[Tooltip("whether or not to animate the X movement of spawned texts")]
+		[Tooltip("생성된 텍스트의 X 움직임에 애니메이션을 적용할지 여부")]
 		public bool AnimateX = false;
 		/// the value to which the x movement curve's zero should be remapped to
-		[Tooltip("the value to which the x movement curve's zero should be remapped to")]
+		[Tooltip("x 이동 곡선의 0이 다시 매핑되어야 하는 값")]
 		[MMCondition("AnimateX", true)] 
 		public Vector2 RemapXZero = Vector2.zero;
 		/// the value to which the x movement curve's one should be remapped to
-		[Tooltip("the value to which the x movement curve's one should be remapped to")]
+		[Tooltip("x 이동 곡선의 값을 다시 매핑해야 하는 값")]
 		[MMCondition("AnimateX", true)] 
 		public Vector2 RemapXOne = Vector2.one;
 		/// the curve on which to animate the x movement
-		[Tooltip("the curve on which to animate the x movement")]
+		[Tooltip("x 움직임을 애니메이션화할 곡선")]
 		[MMCondition("AnimateX", true)]
 		public AnimationCurve AnimateXCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 		/// whether or not to animate the Y movement of spawned texts
-		[Tooltip("whether or not to animate the Y movement of spawned texts")]
+		[Tooltip("생성된 텍스트의 Y 움직임에 애니메이션을 적용할지 여부")]
 		public bool AnimateY = true;
 		/// the value to which the y movement curve's zero should be remapped to
-		[Tooltip("the value to which the y movement curve's zero should be remapped to")]
+		[Tooltip("y 이동 곡선의 0이 다시 매핑되어야 하는 값")]
 		[MMCondition("AnimateY", true)] 
 		public Vector2 RemapYZero = Vector2.zero;
 		/// the value to which the y movement curve's one should be remapped to
-		[Tooltip("the value to which the y movement curve's one should be remapped to")]
+		[Tooltip("y 이동 곡선의 값을 다시 매핑해야 하는 값")]
 		[MMCondition("AnimateY", true)]
 		public Vector2 RemapYOne = new Vector2(5f, 5f);
 		/// the curve on which to animate the y movement
-		[Tooltip("the curve on which to animate the y movement")]
+		[Tooltip("y 움직임을 애니메이션화할 곡선")]
 		[MMCondition("AnimateY", true)]
 		public AnimationCurve AnimateYCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 		/// whether or not to animate the Z movement of spawned texts
-		[Tooltip("whether or not to animate the Z movement of spawned texts")]
+		[Tooltip("생성된 텍스트의 Z 이동에 애니메이션을 적용할지 여부")]
 		public bool AnimateZ = false;
 		/// the value to which the z movement curve's zero should be remapped to
-		[Tooltip("the value to which the z movement curve's zero should be remapped to")]
+		[Tooltip("z 이동 곡선의 0이 다시 매핑되어야 하는 값")]
 		[MMCondition("AnimateZ", true)] 
 		public Vector2 RemapZZero = Vector2.zero;
 		/// the value to which the z movement curve's one should be remapped to
-		[Tooltip("the value to which the z movement curve's one should be remapped to")]
+		[Tooltip("z 이동 곡선의 이동 곡선을 다시 매핑해야 하는 값")]
 		[MMCondition("AnimateZ", true)] 
 		public Vector2 RemapZOne = Vector2.one;
 		/// the curve on which to animate the z movement
-		[Tooltip("the curve on which to animate the z movement")]
+		[Tooltip("z 움직임을 애니메이션화할 곡선")]
 		[MMCondition("AnimateZ", true)]
 		public AnimationCurve AnimateZCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
         
@@ -159,112 +159,112 @@ namespace MoreMountains.Feedbacks
 		[Header("Alignment")]
 
 		/// the selected alignment mode (whether the spawned text should have a fixed alignment, orient to match the initial spawn direction, or its movement curve)
-		[Tooltip("the selected alignment mode (whether the spawned text should have a fixed alignment, orient to match the initial spawn direction, or its movement curve)")]
+		[Tooltip("선택한 정렬 모드(생성된 텍스트가 고정 정렬을 가져야 하는지, 초기 생성 방향과 일치하도록 방향을 지정해야 하는지 또는 해당 이동 곡선)")]
 		public AlignmentModes AlignmentMode = AlignmentModes.Fixed;
 		/// when in fixed mode, the direction in which to keep the spawned texts
-		[Tooltip("when in fixed mode, the direction in which to keep the spawned texts")]
+		[Tooltip("고정 모드에서 생성된 텍스트를 유지할 방향")]
 		[MMEnumCondition("AlignmentMode", (int)AlignmentModes.Fixed)]
 		public Vector3 FixedAlignment = Vector3.up;
 
 		[Header("Billboard")]
 
 		/// whether or not spawned texts should always face the camera
-		[Tooltip("whether or not spawned texts should always face the camera")]
+		[Tooltip("생성된 텍스트가 항상 카메라를 향해야 하는지 여부")]
 		public bool AlwaysFaceCamera;
 		/// whether or not this spawner should automatically grab the main camera on start
-		[Tooltip("whether or not this spawner should automatically grab the main camera on start")]
+		[Tooltip("이 생성자가 시작 시 자동으로 기본 카메라를 잡아야 하는지 여부")]
 		[MMCondition("AlwaysFaceCamera", true)]
 		public bool AutoGrabMainCameraOnStart = true;
 		/// if not in auto grab mode, the camera to use for billboards
-		[Tooltip("if not in auto grab mode, the camera to use for billboards")]
+		[Tooltip("자동 잡기 모드가 아닌 경우 광고판에 사용할 카메라")]
 		[MMCondition("AlwaysFaceCamera", true)]
 		public Camera TargetCamera;
                 
 		[MMInspectorGroup("Animate Scale", true, 46)]
 
 		/// whether or not to animate the scale of spawned texts
-		[Tooltip("whether or not to animate the scale of spawned texts")]
+		[Tooltip("생성된 텍스트의 크기에 애니메이션을 적용할지 여부")]
 		public bool AnimateScale = true;
 		/// the value to which the scale curve's zero should be remapped to
-		[Tooltip("the value to which the scale curve's zero should be remapped to")]
+		[Tooltip("스케일 곡선의 0이 다시 매핑되어야 하는 값")]
 		[MMCondition("AnimateScale", true)]
 		public Vector2 RemapScaleZero = Vector2.zero;
 		/// the value to which the scale curve's one should be remapped to
-		[Tooltip("the value to which the scale curve's one should be remapped to")]
+		[Tooltip("스케일 곡선의 값을 다시 매핑해야 하는 값")]
 		[MMCondition("AnimateScale", true)]
 		public Vector2 RemapScaleOne = Vector2.one;
 		/// the curve on which to animate the scale
-		[Tooltip("the curve on which to animate the scale")]
+		[Tooltip("스케일을 애니메이션화할 곡선")]
 		[MMCondition("AnimateScale", true)]
 		public AnimationCurve AnimateScaleCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.15f, 1f), new Keyframe(0.85f, 1f), new Keyframe(1f, 0f));
         
 		[MMInspectorGroup("Animate Color", true, 55)]
 
 		/// whether or not to animate the spawned text's color over time
-		[Tooltip("whether or not to animate the spawned text's color over time")]
+		[Tooltip("시간이 지남에 따라 생성된 텍스트의 색상에 애니메이션을 적용할지 여부")]
 		public bool AnimateColor = false;
 		/// the gradient over which to animate the spawned text's color over time
-		[Tooltip("the gradient over which to animate the spawned text's color over time")]
+		[Tooltip("시간이 지남에 따라 생성된 텍스트의 색상에 애니메이션을 적용할 그라데이션")]
 		[GradientUsage(true)]
 		public Gradient AnimateColorGradient = new Gradient();
 
 		[MMInspectorGroup("Animate Opacity", true, 45)]
 
 		/// whether or not to animate the opacity of the spawned texts
-		[Tooltip("whether or not to animate the opacity of the spawned texts")]
+		[Tooltip("생성된 텍스트의 불투명도에 애니메이션을 적용할지 여부")]
 		public bool AnimateOpacity = true;
 		/// the value to which the opacity curve's zero should be remapped to
-		[Tooltip("the value to which the opacity curve's zero should be remapped to")]
+		[Tooltip("불투명도 곡선의 0이 다시 매핑되어야 하는 값")]
 		[MMCondition("AnimateOpacity", true)]
 		public Vector2 RemapOpacityZero = Vector2.zero;
 		/// the value to which the opacity curve's one should be remapped to
-		[Tooltip("the value to which the opacity curve's one should be remapped to")]
+		[Tooltip("불투명도 곡선의 값을 다시 매핑해야 하는 값")]
 		[MMCondition("AnimateOpacity", true)]
 		public Vector2 RemapOpacityOne = Vector2.one;
 		/// the curve on which to animate the opacity
-		[Tooltip("the curve on which to animate the opacity")]
+		[Tooltip("불투명도에 애니메이션을 적용할 곡선")]
 		[MMCondition("AnimateOpacity", true)]
 		public AnimationCurve AnimateOpacityCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.2f, 1f), new Keyframe(0.8f, 1f), new Keyframe(1f, 0f));
 
 		[MMInspectorGroup("Intensity Multipliers", true, 45)]
 
 		/// whether or not the intensity multiplier should impact lifetime
-		[Tooltip("whether or not the intensity multiplier should impact lifetime")]
+		[Tooltip("강도 승수가 수명에 영향을 미치는지 여부")]
 		public bool IntensityImpactsLifetime = false;
 		/// when getting an intensity multiplier, the value by which to multiply the lifetime
-		[Tooltip("when getting an intensity multiplier, the value by which to multiply the lifetime")]
+		[Tooltip("강도 승수를 얻을 때 수명에 곱할 값")]
 		[MMCondition("IntensityImpactsLifetime", true)]
 		public float IntensityLifetimeMultiplier = 1f;
 		/// whether or not the intensity multiplier should impact movement
-		[Tooltip("whether or not the intensity multiplier should impact movement")]
+		[Tooltip("강도 승수가 움직임에 영향을 미치는지 여부")]
 		public bool IntensityImpactsMovement = false;
 		/// when getting an intensity multiplier, the value by which to multiply the movement values
-		[Tooltip("when getting an intensity multiplier, the value by which to multiply the movement values")]
+		[Tooltip("강도 승수를 얻을 때 이동 값에 곱할 값")]
 		[MMCondition("IntensityImpactsMovement", true)]
 		public float IntensityMovementMultiplier = 1f;
 		/// whether or not the intensity multiplier should impact scale
-		[Tooltip("whether or not the intensity multiplier should impact scale")]
+		[Tooltip("강도 승수가 규모에 영향을 미치는지 여부")]
 		public bool IntensityImpactsScale = false;
 		/// when getting an intensity multiplier, the value by which to multiply the scale values
-		[Tooltip("when getting an intensity multiplier, the value by which to multiply the scale values")]
+		[Tooltip("강도 승수를 얻을 때 스케일 값에 곱할 값")]
 		[MMCondition("IntensityImpactsScale", true)]
 		public float IntensityScaleMultiplier = 1f;
 
 		[MMInspectorGroup("Debug", true, 12)]
 
 		/// a random value to display when pressing the TestSpawnOne button
-		[Tooltip("a random value to display when pressing the TestSpawnOne button")]
+		[Tooltip("TestSpawnOne 버튼을 누를 때 표시할 임의의 값")]
 		public Vector2Int DebugRandomValue = new Vector2Int(100, 500);
 		/// the min and max bounds within which to pick a value to output when pressing the TestSpawnMany button
-		[Tooltip("the min and max bounds within which to pick a value to output when pressing the TestSpawnMany button")]
+		[Tooltip("TestSpawnMany 버튼을 눌렀을 때 출력할 값을 선택하는 최소 및 최대 경계")]
 		[MMVector("Min", "Max")] 
 		public Vector2 DebugInterval = new Vector2(0.3f, 0.5f);
 		/// a button used to test the spawn of one text
-		[Tooltip("a button used to test the spawn of one text")]
+		[Tooltip("하나의 텍스트 생성을 테스트하는 데 사용되는 버튼")]
 		[MMInspectorButton("TestSpawnOne")]
 		public bool TestSpawnOneBtn;
 		/// a button used to start/stop the spawn of texts at regular intervals
-		[Tooltip("a button used to start/stop the spawn of texts at regular intervals")]
+		[Tooltip("일정한 간격으로 텍스트 생성을 시작/중지하는 데 사용되는 버튼")]
 		[MMInspectorButton("TestSpawnMany")]
 		public bool TestSpawnManyBtn;
         

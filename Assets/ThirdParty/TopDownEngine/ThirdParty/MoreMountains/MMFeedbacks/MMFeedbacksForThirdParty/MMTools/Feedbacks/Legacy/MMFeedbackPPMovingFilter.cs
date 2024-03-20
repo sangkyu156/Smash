@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will trigger a post processing moving filter event, meant to be caught by a MMPostProcessingMovableFilter object
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will trigger a post processing moving filter event, meant to be caught by a MMPostProcessingMovableFilter object")]
+    /// <summary>
+    /// 이 피드백은 MMPostProcessingMovableFilter 개체에 의해 포착되는 사후 처리 이동 필터 이벤트를 트리거합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 MMPostProcessingMovableFilter 개체에 의해 포착되는 사후 처리 이동 필터 이벤트를 트리거합니다.")]
 	[FeedbackPath("PostProcess/PPMovingFilter")]
 	public class MMFeedbackPPMovingFilter : MMFeedback
 	{
@@ -25,16 +25,16 @@ namespace MoreMountains.Feedbacks
 
 		[Header("PostProcessing Profile Moving Filter")]
 		/// the selected mode for this feedback 
-		[Tooltip("the selected mode for this feedback")]
+		[Tooltip("이 피드백을 위해 선택된 모드")]
 		public Modes Mode = Modes.Toggle;
 		/// the channel to target
 		[Tooltip("the channel to target")]
 		public int Channel = 0;
 		/// the duration of the transition
-		[Tooltip("the duration of the transition")]
+		[Tooltip("전환 기간")]
 		public float TransitionDuration = 1f;
 		/// the curve to move along to
-		[Tooltip("the curve to move along to")]
+		[Tooltip("따라 이동하는 곡선")]
 		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
         
 		/// the duration of this feedback is the duration of the transition

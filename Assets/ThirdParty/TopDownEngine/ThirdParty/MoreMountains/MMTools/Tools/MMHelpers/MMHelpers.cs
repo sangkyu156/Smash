@@ -5,12 +5,12 @@ using System;
 using System.Reflection;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// Various helpers
-	/// </summary>
+{
+    /// <summary>
+    /// 다양한 도우미
+    /// </summary>
 
-	public static class MMHelpers 
+    public static class MMHelpers 
 	{
 		public static T CopyComponent<T>(T original, GameObject destination) where T : Component
 		{

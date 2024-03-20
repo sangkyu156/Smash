@@ -5,13 +5,13 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// the possible types of wiggle
-	public enum WiggleTypes { None, Random, PingPong, Noise, Curve }
+    /// 가능한 흔들림 유형
+    public enum WiggleTypes { None, Random, PingPong, Noise, Curve }
 
-	/// <summary>
-	/// A class to store public wiggle properties
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 공용 흔들기 속성을 저장하는 클래스
+    /// </summary>
+    [Serializable]
 	public class WiggleProperties
 	{
 		[Header("Status")]
@@ -116,10 +116,10 @@ namespace MoreMountains.Feedbacks
 		}
 	}
 
-	/// <summary>
-	/// A struct used to store internal wiggle properties
-	/// </summary>
-	public struct InternalWiggleProperties
+    /// <summary>
+    /// 내부 흔들기 속성을 저장하는 데 사용되는 구조체
+    /// </summary>
+    public struct InternalWiggleProperties
 	{
 		public Vector3 returnVector;
 		public Vector3 newValue;
@@ -140,38 +140,38 @@ namespace MoreMountains.Feedbacks
 		public bool ping;
 	}
 
-	/// <summary>
-	/// Add this class to a GameObject to be able to control its position/rotation/scale individually and periodically, allowing it to "wiggle" (or just move however you want on a periodic basis)
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMWiggle")]
+    /// <summary>
+    /// 이 클래스를 GameObject에 추가하면 해당 위치/회전/크기 조정을 개별적으로, 주기적으로 제어하여 "흔들기"(또는 주기적으로 원하는 대로 움직일 수 있음)를 허용할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Various/MMWiggle")]
 	public class MMWiggle : MonoBehaviour 
 	{
 		/// the possible update modes
 		public enum UpdateModes { Update, FixedUpdate, LateUpdate }
 
 		/// the selected update mode
-		[Tooltip("the selected update mode")]
+		[Tooltip("선택한 업데이트 모드")]
 		public UpdateModes UpdateMode = UpdateModes.Update;
 		/// whether or not position wiggle is active
-		[Tooltip("whether or not position wiggle is active")]
+		[Tooltip("위치 흔들기 활성화 여부")]
 		public bool PositionActive = false;
 		/// whether or not rotation wiggle is active
-		[Tooltip("whether or not rotation wiggle is active")]
+		[Tooltip("회전 흔들기 활성화 여부")]
 		public bool RotationActive = false;
 		/// whether or not scale wiggle is active
-		[Tooltip("whether or not scale wiggle is active")]
+		[Tooltip("스케일 흔들기 활성화 여부")]
 		public bool ScaleActive = false;
 		/// all public info related to position wiggling
-		[Tooltip("all public info related to position wiggling")]
+		[Tooltip("포지션 변동과 관련된 모든 공개 정보")]
 		public WiggleProperties PositionWiggleProperties;
 		/// all public info related to rotation wiggling
-		[Tooltip("all public info related to rotation wiggling")]
+		[Tooltip("회전 흔들기 관련 모든 공개 정보")]
 		public WiggleProperties RotationWiggleProperties;
 		/// all public info related to scale wiggling
-		[Tooltip("all public info related to scale wiggling")]
+		[Tooltip("스케일 흔들기와 관련된 모든 공개 정보")]
 		public WiggleProperties ScaleWiggleProperties;
 		/// a debug duration used in conjunction with the debug buttons
-		[Tooltip("a debug duration used in conjunction with the debug buttons")]
+		[Tooltip("디버그 버튼과 함께 사용되는 디버그 기간")]
 		public float DebugWiggleDuration = 2f;
 
 		protected InternalWiggleProperties _positionInternalProperties;

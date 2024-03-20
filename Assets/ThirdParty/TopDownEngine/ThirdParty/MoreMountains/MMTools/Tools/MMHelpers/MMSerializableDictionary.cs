@@ -6,25 +6,25 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A serializable dictionary implementation, as Unity still can't serialize Dictionaries natively
-	/// 
-	/// How to use :
-	///
-	/// For each type of dictionary you want to serialize, create a serializable class that inherits from MMSerializableDictionary,
-	/// and override the constructor and the SerializationInfo constructor, like so (here with a string/int Dictionary) :
-	///
-	/// [Serializable]
-	/// public class DictionaryStringInt : MMSerializableDictionary<string, int>
-	/// {
-	///   public DictionaryStringInt() : base() { }
-	///   protected DictionaryStringInt(SerializationInfo info, StreamingContext context) : base(info, context) { }
-	/// }
-	///  
-	/// </summary>
-	/// <typeparam name="TKey"></typeparam>
-	/// <typeparam name="TValue"></typeparam>
-	[Serializable]
+    /// <summary>
+    /// Unity는 여전히 기본적으로 사전을 직렬화할 수 없기 때문에 직렬화 가능한 사전 구현입니다.
+    ///
+    /// 사용하는 방법 :
+    ///
+    /// 직렬화하려는 각 사전 유형에 대해 MMSerializedDictionary에서 상속되는 직렬화 가능 클래스를 생성합니다.
+    /// 다음과 같이 생성자와 SerializationInfo 생성자를 재정의합니다(여기서는 string/int 사전 사용).
+    ///
+    /// [Serializable]
+    /// public class DictionaryStringInt : MMSerializableDictionary<string, int>
+    /// {
+    ///   public DictionaryStringInt() : base() { }
+    ///   protected DictionaryStringInt(SerializationInfo info, StreamingContext context) : base(info, context) { }
+    /// }
+    ///  
+    /// </summary>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
+    [Serializable]
 	public class MMSerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 	{
 		[SerializeField] 

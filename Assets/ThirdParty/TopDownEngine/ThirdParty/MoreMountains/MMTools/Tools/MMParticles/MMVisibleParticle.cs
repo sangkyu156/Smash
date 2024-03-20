@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Adds this class to particles to force their sorting layer
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Particles/MMVisibleParticle")]
+    /// <summary>
+    /// 이 클래스를 입자에 추가하여 정렬 레이어를 강제합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Particles/MMVisibleParticle")]
 	public class MMVisibleParticle : MonoBehaviour {
 
 		/// <summary>

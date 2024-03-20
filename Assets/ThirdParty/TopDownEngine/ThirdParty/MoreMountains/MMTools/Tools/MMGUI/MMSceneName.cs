@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component, when added on a Text component, will display the name of the level
-	/// </summary>
-	public class MMSceneName : MonoBehaviour
+    /// <summary>
+    /// 이 구성 요소는 텍스트 구성 요소에 추가되면 레벨 이름을 표시합니다.
+    /// </summary>
+    public class MMSceneName : MonoBehaviour
 	{
 		protected Text _text;
 

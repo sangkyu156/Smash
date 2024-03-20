@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the reverb level of a reverb filter. You'll need a MMAudioFilterReverbShaker on your filter.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 리버브 필터의 리버브 레벨을 제어할 수 있습니다. 필터에는 MMAudioFilterReverbShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/Audio Filter Reverb")]
-	[FeedbackHelp("This feedback lets you control a low pass audio filter over time. You'll need a MMAudioFilterReverbShaker on your filter.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 저역 통과 오디오 필터를 제어할 수 있습니다. 필터에는 MMAudioFilterReverbShaker가 필요합니다.")]
 	public class MMF_AudioFilterReverb : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -36,10 +36,10 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("whether or not to reset the target's values after shake")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeReverb = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeReverb = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
 		[Range(-10000f, 2000f)]

@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you change the color of a target sprite renderer over time, and flip it on X or Y. You can also use it to command one or many MMSpriteRendererShakers.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you change the color of a target sprite renderer over time, and flip it on X or Y. You can also use it to command one or many MMSpriteRendererShakers.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상 스프라이트 렌더러의 색상을 변경하고 X 또는 Y로 뒤집을 수 있습니다. 또한 이를 사용하여 하나 이상의 MMSpriteRendererShaker를 명령할 수도 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 스프라이트 렌더러의 색상을 변경하고 X 또는 Y로 뒤집을 수 있습니다. 또한 이를 사용하여 하나 이상의 MMSpriteRendererShaker를 명령할 수도 있습니다.")]
 	[FeedbackPath("Renderer/SpriteRenderer")]
 	public class MMFeedbackSpriteRenderer : MMFeedback
 	{
@@ -27,77 +27,77 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Sprite Renderer")]
 		/// the SpriteRenderer to affect when playing the feedback
-		[Tooltip("the SpriteRenderer to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 SpriteRenderer")]
 		public SpriteRenderer BoundSpriteRenderer;
 		/// whether the feedback should affect the sprite renderer instantly or over a period of time
-		[Tooltip("whether the feedback should affect the sprite renderer instantly or over a period of time")]
+		[Tooltip("피드백이 스프라이트 렌더러에 즉시 영향을 미칠지, 아니면 일정 기간 동안 영향을 미칠지 여부")]
 		public Modes Mode = Modes.OverTime;
 		/// how long the sprite renderer should change over time
-		[Tooltip("how long the sprite renderer should change over time")]
+		[Tooltip("스프라이트 렌더러가 시간에 따라 변경되어야 하는 시간")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent, (int)Modes.ToDestinationColor, (int)Modes.ToDestinationColorAndBack)]
 		public float Duration = 0.2f;
 		/// whether or not that sprite renderer should be turned off on start
-		[Tooltip("whether or not that sprite renderer should be turned off on start")]
+		[Tooltip("시작 시 스프라이트 렌더러를 꺼야 하는지 여부")]
 		public bool StartsOff = false;
 		/// the channel to broadcast on
 		[Tooltip("the channel to broadcast on")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public int Channel = 0;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to broadcast a range to only affect certain shakers
-		[Tooltip("whether or not to broadcast a range to only affect certain shakers")]
+		[Tooltip("특정 셰이커에만 영향을 미치도록 범위를 방송할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool UseRange = false;
 		/// the range of the event, in units
-		[Tooltip("the range of the event, in units")]
+		[Tooltip("이벤트 범위(단위)")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public float EventRange = 100f;
 		/// the transform to use to broadcast the event as origin point
-		[Tooltip("the transform to use to broadcast the event as origin point")]
+		[Tooltip("이벤트를 원점으로 방송하는 데 사용할 변환")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public Transform EventOriginTransform;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// whether to grab the initial color to (potentially) go back to at init or when the feedback plays
-		[Tooltip("whether to grab the initial color to (potentially) go back to at init or when the feedback plays")] 
+		[Tooltip("(잠재적으로) 초기화 시로 돌아가기 위해 초기 색상을 가져올지 아니면 피드백이 재생될 때할지 여부")] 
 		public InitialColorModes InitialColorMode = InitialColorModes.InitialColorOnPlay;
         
 		[Header("Color")]
 		/// whether or not to modify the color of the sprite renderer
-		[Tooltip("whether or not to modify the color of the sprite renderer")]
+		[Tooltip("스프라이트 렌더러의 색상을 수정할지 여부")]
 		public bool ModifyColor = true;
 		/// the colors to apply to the sprite renderer over time
-		[Tooltip("the colors to apply to the sprite renderer over time")]
+		[Tooltip("시간이 지남에 따라 스프라이트 렌더러에 적용할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public Gradient ColorOverTime;
 		/// the color to move to in instant mode
-		[Tooltip("the color to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant, (int)Modes.ShakerEvent)]
 		public Color InstantColor;
         
 		/// the color to move to in ToDestination mode
-		[Tooltip("the color to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant, (int)Modes.ToDestinationColor, (int)Modes.ToDestinationColorAndBack)]
 		public Color ToDestinationColor = Color.red;
 		/// the color to move to in ToDestination mode
-		[Tooltip("the color to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant, (int)Modes.ToDestinationColor, (int)Modes.ToDestinationColorAndBack)]
 		public AnimationCurve ToDestinationColorCurve = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(1, 1f));
         
 		[Header("Flip")]
 		/// whether or not to flip the sprite on X
-		[Tooltip("whether or not to flip the sprite on X")]
+		[Tooltip("X에서 스프라이트를 뒤집을지 여부")]
 		public bool FlipX = false;
 		/// whether or not to flip the sprite on Y
-		[Tooltip("whether or not to flip the sprite on Y")]
+		[Tooltip("Y에서 스프라이트를 뒤집을지 여부")]
 		public bool FlipY = false;
 
 		/// the duration of this feedback is the duration of the sprite renderer, or 0 if instant

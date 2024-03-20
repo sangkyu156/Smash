@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you output a message to the console, using a custom MM debug method, or Log, Assertion, Error or Warning logs.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you output a message to the console, using a custom MM debug method, or Log, Assertion, Error or Warning logs.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 사용자 정의 MM 디버그 방법이나 로그, 어설션, 오류 또는 경고 로그를 사용하여 콘솔에 메시지를 출력할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 사용자 정의 MM 디버그 방법이나 로그, 어설션, 오류 또는 경고 로그를 사용하여 콘솔에 메시지를 출력할 수 있습니다.")]
 	[FeedbackPath("Debug/Log")]
 	public class MMFeedbackDebugLog : MMFeedback
 	{
@@ -28,19 +28,19 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Debug")] 
 		/// the selected debug mode
-		[Tooltip("the selected debug mode")]
+		[Tooltip("선택한 디버그 모드")]
 		public DebugLogModes DebugLogMode = DebugLogModes.DebugLogTime;
 
 		/// the message to display 
-		[Tooltip("the message to display")]
+		[Tooltip("표시할 메시지")]
 		[TextArea] 
 		public string DebugMessage;
 		/// the color of the message when in DebugLogTime mode
-		[Tooltip("the color of the message when in DebugLogTime mode")]
+		[Tooltip("DebugLogTime 모드일 때 메시지의 색상")]
 		[MMFEnumCondition("DebugLogMode", (int) DebugLogModes.DebugLogTime)]
 		public Color DebugColor = Color.cyan;
 		/// whether or not to display the frame count when in DebugLogTime mode
-		[Tooltip("whether or not to display the frame count when in DebugLogTime mode")]
+		[Tooltip("DebugLogTime 모드에서 프레임 수를 표시할지 여부")]
 		[MMFEnumCondition("DebugLogMode", (int) DebugLogModes.DebugLogTime)]
 		public bool DisplayFrameCount = true;
 

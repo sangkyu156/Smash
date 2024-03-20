@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Turns an object active or inactive at the various stages of the feedback
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to change the state of a behaviour on a target gameobject from active to inactive (or the opposite), on init, play, stop or reset. " +
-	              "For each of these you can specify if you want to force a state (enabled or disabled), or toggle it (enabled becomes disabled, disabled becomes enabled).")]
+    /// <summary>
+    /// 피드백의 다양한 단계에서 객체를 활성화 또는 비활성화합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 게임 개체의 동작 상태를 활성에서 비활성(또는 그 반대로), 초기화, 재생, 중지 또는 재설정 시 변경할 수 있습니다. " +
+"각각에 대해 상태를 강제로 적용할지(활성화 또는 비활성화) 또는 토글할지(활성화는 비활성화, 비활성화는 활성화) 지정할 수 있습니다.")]
 	[FeedbackPath("GameObject/Enable Behaviour")]
 	public class MMFeedbackEnable : MMFeedback
 	{
@@ -25,35 +25,35 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Set Active")]
 		/// the gameobject we want to change the active state of
-		[Tooltip("the gameobject we want to change the active state of")]
+		[Tooltip("활성 상태를 변경하려는 게임 개체")]
 		public Behaviour TargetBehaviour;
 
 		/// whether or not we should alter the state of the target object on init
-		[Tooltip("whether or not we should alter the state of the target object on init")]
+		[Tooltip("초기화 시 대상 객체의 상태를 변경해야 하는지 여부")]
 		public bool SetStateOnInit = false;
 		/// how to change the state on init
 		[MMFCondition("SetStateOnInit", true)]
-		[Tooltip("how to change the state on init")]
+		[Tooltip("초기화 시 상태를 변경하는 방법")]
 		public PossibleStates StateOnInit = PossibleStates.Disabled;
 		/// whether or not we should alter the state of the target object on play
-		[Tooltip("whether or not we should alter the state of the target object on play")]
+		[Tooltip("플레이 중인 대상 객체의 상태를 변경해야 하는지 여부")]
 		public bool SetStateOnPlay = false;
 		/// how to change the state on play
 		[MMFCondition("SetStateOnPlay", true)]
 		[Tooltip("how to change the state on play")]
 		public PossibleStates StateOnPlay = PossibleStates.Disabled;
 		/// whether or not we should alter the state of the target object on stop
-		[Tooltip("whether or not we should alter the state of the target object on stop")]
+		[Tooltip("정지 시 대상 객체의 상태를 변경해야 하는지 여부")]
 		public bool SetStateOnStop = false;
 		/// how to change the state on stop
-		[Tooltip("how to change the state on stop")]
+		[Tooltip("중지 시 상태를 변경하는 방법")]
 		[MMFCondition("SetStateOnStop", true)]
 		public PossibleStates StateOnStop = PossibleStates.Disabled;
 		/// whether or not we should alter the state of the target object on reset
-		[Tooltip("whether or not we should alter the state of the target object on reset")]
+		[Tooltip("재설정 시 대상 객체의 상태를 변경해야 하는지 여부")]
 		public bool SetStateOnReset = false;
 		/// how to change the state on reset
-		[Tooltip("how to change the state on reset")]
+		[Tooltip("재설정 시 상태를 변경하는 방법")]
 		[MMFCondition("SetStateOnReset", true)]
 		public PossibleStates StateOnReset = PossibleStates.Disabled;
 

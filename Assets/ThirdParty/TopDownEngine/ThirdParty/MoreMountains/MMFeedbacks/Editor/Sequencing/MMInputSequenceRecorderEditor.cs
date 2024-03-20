@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Custom editor for sequence recorder
-	/// </summary>
-	[CustomEditor(typeof(MMInputSequenceRecorder), true)]
+    /// <summary>
+    /// 시퀀스 레코더용 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMInputSequenceRecorder), true)]
 	[CanEditMultipleObjects]
 	public class MMInputSequenceRecorderEditor : Editor
 	{

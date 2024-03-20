@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to receive level values from a MMRadioBroadcaster, and apply it to (almost) any value on any object
-	/// </summary>
-	[MMRequiresConstantRepaint]
+    /// <summary>
+    /// MMRadioBroadcaster에서 레벨 값을 수신하고 이를 모든 객체의 (거의) 모든 값에 적용하는 데 사용되는 클래스입니다.
+    /// </summary>
+    [MMRequiresConstantRepaint]
 	public class MMRadioReceiver : MMMonoBehaviour
 	{
 		[Header("Target")]

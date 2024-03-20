@@ -7,34 +7,34 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A generic level manager meant to handle multiplayer scenes (specifically spawn and camera modes
-	/// It's recommended to extend it to implement your own specific gameplay rules
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Managers/MultiplayerLevelManager")]
+    /// <summary>
+    /// 멀티플레이어 장면(특히 스폰 및 카메라 모드)을 처리하기 위한 일반 레벨 관리자
+    /// 자신만의 특정 게임플레이 규칙을 구현하도록 확장하는 것이 좋습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Managers/MultiplayerLevelManager")]
 	public class MultiplayerLevelManager : LevelManager
 	{
 		[Header("Multiplayer spawn")]
 		/// the list of checkpoints (in order) to use to spawn characters
-		[Tooltip("the list of checkpoints (in order) to use to spawn characters")]
+		[Tooltip("캐릭터를 생성하는 데 사용할 체크포인트 목록(순서대로)")]
 		public List<CheckPoint> SpawnPoints;
 		/// the types of cameras to choose from
 		public enum CameraModes { Split, Group }
 
 		[Header("Cameras")]
 		/// the selected camera mode (either group, all targets in one screen, or split screen)
-		[Tooltip("the selected camera mode (either group, all targets in one screen, or split screen)")]
+		[Tooltip("선택한 카메라 모드(그룹, 한 화면의 모든 대상 또는 분할 화면)")]
 		public CameraModes CameraMode = CameraModes.Split;
 		/// the group camera rig
-		[Tooltip("the group camera rig")]
+		[Tooltip("그룹 카메라 장비")]
 		public GameObject GroupCameraRig;
 		/// the split camera rig
-		[Tooltip("the split camera rig")]
+		[Tooltip("분할 카메라 장비")]
 		public GameObject SplitCameraRig;
 
 		[Header("GUI Manager")]
 		/// the multiplayer GUI Manager
-		[Tooltip("the multiplayer GUI Manager")]
+		[Tooltip("멀티플레이어 GUI 관리자")]
 		public MultiplayerGUIManager MPGUIManager;
 
 		/// <summary>

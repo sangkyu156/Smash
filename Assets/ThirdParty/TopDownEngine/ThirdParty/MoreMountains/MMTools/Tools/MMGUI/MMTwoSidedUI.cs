@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class lets you define an axis on which to flip a "two sided" UI element (made of two separate and usually aligned objects, effectively turning each side on/off everytime the container's scale goes above/below a certain threshold
-	/// </summary>
-	[ExecuteAlways]
+    /// <summary>
+    /// 이 클래스를 사용하면 "양면" UI 요소(두 개의 개별적이고 일반적으로 정렬된 개체로 구성되어 컨테이너의 크기가 특정 임계값을 초과/미달할 때마다 효과적으로 각 측면을 켜거나 끄는)를 뒤집을 축을 정의할 수 있습니다.
+    /// </summary>
+    [ExecuteAlways]
 	public class MMTwoSidedUI : MonoBehaviour
 	{
 		/// the possible axis on which to flip the double object

@@ -6,19 +6,19 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a particle system at runtime, and it'll expose controls to play/pause/stop it from the inspector
-	/// Because Unity's built-in controls somehow lack pause when in play mode
-	/// </summary>
-	[RequireComponent(typeof(ParticleSystem))]
+    /// <summary>
+    /// 런타임에 이 클래스를 파티클 시스템에 추가하면 인스펙터에서 재생/일시 중지/중지할 수 있는 컨트롤이 노출됩니다.
+    /// Unity의 내장 컨트롤에는 재생 모드에 있을 때 일시 중지 기능이 없기 때문입니다.
+    /// </summary>
+    [RequireComponent(typeof(ParticleSystem))]
 	public class MMRuntimeParticleControl : MonoBehaviour
 	{
-		/// <summary>
-		/// The possible modes for the tracker :
-		/// Basic will work with the main module's duration
-		/// ForcedBounds lets you specify within which bounds the slider should move
-		/// </summary>
-		public enum TrackerModes { Basic, ForcedBounds }
+        /// <summary>
+        /// 추적기에 가능한 모드:
+        /// Basic은 메인 모듈의 지속 시간과 함께 작동합니다.
+        /// ForcedBounds를 사용하면 슬라이더가 이동해야 하는 범위를 지정할 수 있습니다.
+        /// </summary>
+        public enum TrackerModes { Basic, ForcedBounds }
         
 		[Header("Base Controls")]
 		/// a test button to play the associated particle system 

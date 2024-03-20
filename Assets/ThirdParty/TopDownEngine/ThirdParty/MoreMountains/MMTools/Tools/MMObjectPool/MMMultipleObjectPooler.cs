@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 namespace MoreMountains.Tools
 {	
 	[Serializable]
-	/// <summary>
-	/// Multiple object pooler object.
-	/// </summary>
-	public class MMMultipleObjectPoolerObject
+    /// <summary>
+    /// 다중 개체 풀러 개체입니다.
+    /// </summary>
+    public class MMMultipleObjectPoolerObject
 	{
 		public GameObject GameObjectToPool;
 		public int PoolSize;
@@ -24,10 +24,10 @@ namespace MoreMountains.Tools
 	/// </summary>
 	public enum MMPoolingMethods { OriginalOrder, OriginalOrderSequential, RandomBetweenObjects, RandomPoolSizeBased }
 
-	/// <summary>
-	/// This class allows you to have a pool of various objects to pool from.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Object Pool/MMMultipleObjectPooler")]
+    /// <summary>
+    /// 이 클래스를 사용하면 풀링할 다양한 개체의 풀을 가질 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Object Pool/MMMultipleObjectPooler")]
 	public class MMMultipleObjectPooler : MMObjectPooler
 	{
 		/// the list of objects to pool

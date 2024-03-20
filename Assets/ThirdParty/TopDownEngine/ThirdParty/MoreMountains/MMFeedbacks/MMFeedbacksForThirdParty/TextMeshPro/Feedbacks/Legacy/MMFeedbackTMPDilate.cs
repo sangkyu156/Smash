@@ -7,11 +7,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you dilate a TMP text over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you dilate a TMP text over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 TMP 텍스트를 확장할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 TMP 텍스트를 확장할 수 있습니다.")]
 	[FeedbackPath("TextMesh Pro/TMP Dilate")]
 	public class MMFeedbackTMPDilate : MMFeedback
 	{
@@ -29,23 +29,23 @@ namespace MoreMountains.Feedbacks
 		#if MM_TEXTMESHPRO
 		[Header("Target")]
 		/// the TMP_Text component to control
-		[Tooltip("the TMP_Text component to control")]
+		[Tooltip("제어할 TMP_Text 구성 요소")]
 		public TMP_Text TargetTMPText;
 		#endif
 
 		[Header("Dilate")]
 		/// whether or not values should be relative
-		[Tooltip("whether or not values should be relative")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 		/// the selected mode
 		[Tooltip("the selected mode")]
 		public MMFeedbackBase.Modes Mode = MMFeedbackBase.Modes.OverTime;
 		/// the duration of the feedback, in seconds
-		[Tooltip("the duration of the feedback, in seconds")]
+		[Tooltip("피드백 기간(초)")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public float Duration = 0.5f;
 		/// the curve to tween on
-		[Tooltip("the curve to tween on")]
+		[Tooltip("트위닝할 곡선")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType DilateCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(0.3f, 1f), new Keyframe(1, 0.5f)));
 		/// the value to remap the curve's 0 to
@@ -57,11 +57,11 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public float RemapOne = 1f;
 		/// the value to move to in instant mode
-		[Tooltip("the value to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 값")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.Instant)]
 		public float InstantDilate;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 
 		protected float _initialDilate;

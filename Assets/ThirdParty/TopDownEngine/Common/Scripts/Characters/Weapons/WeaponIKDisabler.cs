@@ -5,31 +5,31 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// You can add this class next to a WeaponIK component (so usually on a Character's Animator), and it'll let you
-	/// disable IK and optionally reparent the WeaponAttachment during certain animations 
-	/// </summary>
-	public class WeaponIKDisabler : TopDownMonoBehaviour
+    /// <summary>
+    /// 이 클래스를 WeaponIK 구성 요소(일반적으로 캐릭터 애니메이터) 옆에 추가할 수 있으며 다음을 수행할 수 있습니다.
+    /// IK를 비활성화하고 선택적으로 특정 애니메이션 중에 WeaponAttachment의 부모를 다시 지정합니다.
+    /// </summary>
+    public class WeaponIKDisabler : TopDownMonoBehaviour
 	{
 		[Header("Animation Parameter Names")] 
 		/// a list of animation parameter names which, if true, should cause IK to be disabled
-		[Tooltip("a list of animation parameter names which, if true, should cause IK to be disabled")]
+		[Tooltip("true인 경우 IK를 비활성화해야 하는 애니메이션 매개변수 이름 목록")]
 		public List<string> AnimationParametersPreventingIK;
         
 		[Header("Attachments")]
 		/// the WeaponAttachment transform to reparent
-		[Tooltip("the WeaponAttachment transform to reparent")]
+		[Tooltip("WeaponAttachment를 상위로 변환")]
 		public Transform WeaponAttachment;
 		/// the transform the WeaponAttachment will be reparented to when certain animation parameters are true
-		[Tooltip("the transform the WeaponAttachment will be reparented to when certain animation parameters are true")]
+		[Tooltip("특정 애니메이션 매개변수가 true일 때 WeaponAttachment의 상위가 변경되는 변환입니다.")]
 		public Transform WeaponAttachmentParentNoIK;
 
 		[Header("Settings")]
 		/// whether or not to match parent position when disabling IK
-		[Tooltip("whether or not to match parent position when disabling IK")]
+		[Tooltip("IK를 비활성화할 때 상위 위치와 일치할지 여부")]
 		public bool FollowParentPosition = false;
 		/// whether or not to disable weapon aim when disabling IK
-		[Tooltip("whether or not to disable weapon aim when disabling IK")]
+		[Tooltip("IK를 비활성화할 때 무기 조준을 비활성화할지 여부")]
 		public bool ControlWeaponAim = false;
 
 		protected Transform _initialParent;

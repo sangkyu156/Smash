@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Turns an object active or inactive at the various stages of the feedback
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to trigger any MMFeedbacks on the specified Channel within a certain range. You'll need an MMFeedbacksShaker on them.")]
+    /// <summary>
+    /// 피드백의 다양한 단계에서 객체를 활성화 또는 비활성화합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 특정 범위 내의 지정된 채널에서 MMFeedback을 트리거할 수 있습니다. MMFeedbacksShaker가 필요합니다.")]
 	[FeedbackPath("GameObject/MMFeedbacks")]
 	public class MMFeedbackFeedbacks : MMFeedback
 	{
@@ -26,13 +26,13 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the channel to broadcast on")]
 		public int Channel = 0;
 		/// whether or not to use a range
-		[Tooltip("whether or not to use a range")]
+		[Tooltip("범위를 사용할지 여부")]
 		public bool UseRange = false;
 		/// the range of the event, in units
-		[Tooltip("the range of the event, in units")]
+		[Tooltip("이벤트 범위(단위)")]
 		public float EventRange = 100f;
 		/// the transform to use to broadcast the event as origin point
-		[Tooltip("the transform to use to broadcast the event as origin point")]
+		[Tooltip("이벤트를 원점으로 방송하는 데 사용할 변환")]
 		public Transform EventOriginTransform;
 
 		/// <summary>

@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class that lets you create polygon collider 2D out of mesh filters
-	/// </summary>
-	public class MMMeshToPolygonCollider2D : MonoBehaviour
+    /// <summary>
+    /// 메시 필터로 폴리곤 콜라이더 2D를 생성할 수 있는 클래스
+    /// </summary>
+    public class MMMeshToPolygonCollider2D : MonoBehaviour
 	{
 		/// <summary>
 		/// Generates a PolygonCollider2D out of a meshfilter

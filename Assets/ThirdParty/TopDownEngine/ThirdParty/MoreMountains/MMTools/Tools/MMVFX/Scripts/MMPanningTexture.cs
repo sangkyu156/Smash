@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Use this class on a sprite or mesh to have its texture pan according to the specified speed
-	/// You can also force a sorting layer name 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/VFX/PanningTexture")]
+    /// <summary>
+    ///지정된 속도에 따라 텍스처 팬을 가지려면 스프라이트나 메시에 이 클래스를 사용하세요.
+    /// 정렬 레이어 이름을 강제로 지정할 수도 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/VFX/PanningTexture")]
 	public class MMPanningTexture : MonoBehaviour
 	{
 		[MMInformation("This script will let you pan a texture on an attached Renderer.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
@@ -21,10 +21,10 @@ namespace MoreMountains.Tools
 		/// the name of the sorting layer to render the texture at
 		public string SortingLayerName = "Above";
 		/// the property name, for example "_MainTex"
-		[Tooltip("the property name, for example _MainTex")]
+		[Tooltip("속성 이름(예: _MainTex)")]
 		public string MaterialPropertyName = "_MainTex_ST";
 		/// the index of the material
-		[Tooltip("the index of the material")]
+		[Tooltip("재료의 인덱스")]
 		public int MaterialIndex = 0;
         
 		protected RawImage _rawImage;

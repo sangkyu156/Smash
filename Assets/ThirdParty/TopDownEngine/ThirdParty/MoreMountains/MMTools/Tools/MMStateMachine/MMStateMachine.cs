@@ -23,53 +23,53 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// Public interface for the state machine.
-	/// </summary>
-	public interface MMIStateMachine
+    /// <summary>
+    /// 상태 머신의 공개 인터페이스입니다.
+    /// </summary>
+    public interface MMIStateMachine
 	{
 		bool TriggerEvents { get; set; }
 	}
 
-	/// <summary>
-	/// StateMachine manager, designed with simplicity in mind (as simple as a state machine can be anyway).
-	/// To use it, you need an enum. For example : public enum CharacterConditions { Normal, ControlledMovement, Frozen, Paused, Dead }
-	/// Declare it like so : public StateMachine<CharacterConditions> ConditionStateMachine;
-	/// Initialize it like that : ConditionStateMachine = new StateMachine<CharacterConditions>();
-	/// Then from anywhere, all you need to do is update its state when needed, like that for example : ConditionStateMachine.ChangeState(CharacterConditions.Dead);
-	/// The state machine will store for you its current and previous state, accessible at all times, and will also optionnally trigger events on enter/exit of these states.
-	/// </summary>
-	public class MMStateMachine<T> : MMIStateMachine where T : struct, IComparable, IConvertible, IFormattable
+    /// <summary>
+    /// StateMachine 관리자는 단순성을 염두에 두고 설계되었습니다(어차피 상태 머신만큼 단순할 수 있음).
+    /// 이를 사용하려면 열거형이 필요합니다. 예: public enum CharacterConditions { Normal, ControlledMovement, Frozen, Paused, Dead }
+    /// 다음과 같이 선언합니다. public StateMachine<CharacterConditions> ConditionStateMachine;
+    /// 다음과 같이 초기화합니다. ConditionStateMachine = new StateMachine<CharacterConditions>();
+    /// 그런 다음 어디서든 필요할 때 상태를 업데이트하기만 하면 됩니다. 예를 들면 다음과 같습니다. ConditionStateMachine.ChangeState(CharacterConditions.Dead);
+    /// 상태 머신은 현재 및 이전 상태를 저장하고 언제든지 액세스할 수 있으며 선택적으로 이러한 상태의 시작/종료 시 이벤트를 트리거합니다.
+    /// </summary>
+    public class MMStateMachine<T> : MMIStateMachine where T : struct, IComparable, IConvertible, IFormattable
 	{
-		/// If you set TriggerEvents to true, the state machine will trigger events when entering and exiting a state. 
-		/// Additionnally, it has options to trigger events on state change that can be listened to from any listener, without a delegate's hard binding, like so :
-		/// let's assume in some class we have a public MMStateMachine<CharacterStates.MovementStates> MovementState, and we use that to track the state of a moving character (idle, walking, running etc)
-		/// in any other class, we could do :
-		/// public class TestListener : MonoBehaviour, MMEventListener<MMStateChangeEvent<CharacterStates.MovementStates>>
-		/// {
-		/// 	// triggered every time a state change event occurs
-		/// 	public void OnMMEvent(MMStateChangeEvent<CharacterStates.MovementStates> stateChangeEvent)
-		/// 	{
-		/// 		if (stateChangeEvent.NewState == CharacterStates.MovementStates.Crawling)
-		/// 		{
-		/// 			//do something - in a real life scenario you'd probably make sure you have the right target, etc.
-		/// 		}
-		/// 	}
-		/// 
-		/// 	private void OnEnable() // on enable we start listening for these events
-		/// 	{
-		/// 		MMEventManager.AddListener<MMStateChangeEvent<CharacterStates.MovementStates>>(this);
-		/// 	}
-		/// 
-		/// 	private void OnDisable() // on disable we stop listening for these events
-		/// 	{
-		/// 		MMEventManager.RemoveListener<MMStateChangeEvent<CharacterStates.MovementStates>>(this);
-		/// 	}
-		/// }
-		/// Now every time this character's movement state changes, the OnMMEvent method will be called, and you can do whatever you want with it.
-		/// 
-		/// whether or not this state machine broadcasts events 
-		public bool TriggerEvents { get; set; }
+        /// TriggerEvents를 true로 설정하면 상태 시스템은 상태에 들어가고 나갈 때 이벤트를 트리거합니다.
+        /// 또한 다음과 같이 대리자의 하드 바인딩 없이 모든 리스너에서 수신할 수 있는 상태 변경 시 이벤트를 트리거하는 옵션이 있습니다.
+        /// 일부 클래스에 공개 MMStateMachine<CharacterStates.MovementStates> MovementState가 있고 이를 사용하여 움직이는 캐릭터의 상태(유휴, 걷기, 달리기 등)를 추적한다고 가정해 보겠습니다.
+        /// 다른 클래스에서는 할 수 있습니다. :
+        /// public class TestListener : MonoBehaviour, MMEventListener<MMStateChangeEvent<CharacterStates.MovementStates>>
+        /// {
+        /// 	// triggered every time a state change event occurs
+        /// 	public void OnMMEvent(MMStateChangeEvent<CharacterStates.MovementStates> stateChangeEvent)
+        /// 	{
+        /// 		if (stateChangeEvent.NewState == CharacterStates.MovementStates.Crawling)
+        /// 		{
+        /// 			//do something - in a real life scenario you'd probably make sure you have the right target, etc.
+        /// 		}
+        /// 	}
+        /// 
+        /// 	private void OnEnable() // on enable we start listening for these events
+        /// 	{
+        /// 		MMEventManager.AddListener<MMStateChangeEvent<CharacterStates.MovementStates>>(this);
+        /// 	}
+        /// 
+        /// 	private void OnDisable() // on disable we stop listening for these events
+        /// 	{
+        /// 		MMEventManager.RemoveListener<MMStateChangeEvent<CharacterStates.MovementStates>>(this);
+        /// 	}
+        /// }
+        /// 이제 이 캐릭터의 이동 상태가 변경될 때마다 OnMMEvent 메서드가 호출되며 이를 통해 원하는 작업을 수행할 수 있습니다.
+        ///
+        /// 이 상태 머신이 이벤트를 브로드캐스트하는지 여부
+        public bool TriggerEvents { get; set; }
 		/// the name of the target gameobject
 		public GameObject Target;
 		/// the current character's movement state
@@ -78,28 +78,28 @@ namespace MoreMountains.Tools
 		public T PreviousState { get; protected set; }
 
 		public delegate void OnStateChangeDelegate();
-		/// an event you can listen to to listen locally to changes on that state machine
-		/// to listen to them, from any class : 
-		/// void OnEnable()
-		/// {
-		///    yourReferenceToTheStateMachine.OnStateChange += OnStateChange;
-		/// }
-		/// void OnDisable()
-		/// {
-		///    yourReferenceToTheStateMachine.OnStateChange -= OnStateChange;
-		/// }
-		/// void OnStateChange()
-		/// {
-		///    // Do something
-		/// }
-		public OnStateChangeDelegate OnStateChange;
+        ///해당 상태 머신의 변경 사항을 로컬에서 듣기 위해 들을 수 있는 이벤트
+        /// 모든 수업에서 듣기 : 
+        /// void OnEnable()
+        /// {
+        ///    yourReferenceToTheStateMachine.OnStateChange += OnStateChange;
+        /// }
+        /// void OnDisable()
+        /// {
+        ///    yourReferenceToTheStateMachine.OnStateChange -= OnStateChange;
+        /// }
+        /// void OnStateChange()
+        /// {
+        ///    // Do something
+        /// }
+        public OnStateChangeDelegate OnStateChange;
 
-		/// <summary>
-		/// Creates a new StateMachine, with a targetName (used for events, usually use GetInstanceID()), and whether you want to use events with it or not
-		/// </summary>
-		/// <param name="targetName">Target name.</param>
-		/// <param name="triggerEvents">If set to <c>true</c> trigger events.</param>
-		public MMStateMachine(GameObject target, bool triggerEvents)
+        /// <summary>
+        /// targetName(이벤트에 사용되며 일반적으로 GetInstanceID() 사용)과 함께 이벤트를 사용할지 여부를 사용하여 새 StateMachine을 생성합니다.
+        /// </summary>
+        /// <param name="targetName">Target name.</param>
+        /// <param name="triggerEvents">If set to <c>true</c> trigger events.</param>
+        public MMStateMachine(GameObject target, bool triggerEvents)
 		{
 			this.Target = target;
 			this.TriggerEvents = triggerEvents;

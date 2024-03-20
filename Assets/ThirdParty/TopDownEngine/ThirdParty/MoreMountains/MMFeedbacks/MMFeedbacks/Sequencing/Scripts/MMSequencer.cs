@@ -7,63 +7,63 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This class lets you design a quantized MMSequence using a sequencer interface, and lets you play a quantized sequence, triggering events on beats if specified
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMSequencer")]
+    /// <summary>
+    /// 이 클래스를 사용하면 시퀀서 인터페이스를 사용하여 양자화된 MMSequence를 디자인할 수 있고, 지정된 경우 비트에 따라 이벤트를 트리거하여 양자화된 시퀀스를 재생할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMSequencer")]
 	public class MMSequencer : MonoBehaviour
 	{
 		[Header("Sequence")]
 		/// the sequence to design on or to play
-		[Tooltip("the sequence to design on or to play")]
+		[Tooltip("디자인하거나 플레이할 순서")]
 		public MMSequence Sequence;
 		/// the intended BPM for playback and design
-		[Tooltip("the intended BPM for playback and design")]
+		[Tooltip("재생 및 디자인을 위한 의도된 BPM")]
 		public int BPM = 160;
 		/// the number of notes in the sequence
-		[Tooltip("the number of notes in the sequence")]
+		[Tooltip("시퀀스의 음표 수")]
 		public int SequencerLength = 8;
 
 		[Header("Playback")]
 		/// whether the sequence should loop or not when played back
-		[Tooltip("whether the sequence should loop or not when played back")]
+		[Tooltip("재생할 때 시퀀스를 반복할지 여부")]
 		public bool Loop = true;
 		/// if this is true the sequence will play in random order
-		[Tooltip("if this is true the sequence will play in random order")]
+		[Tooltip("이것이 사실이라면 시퀀스는 무작위 순서로 재생됩니다.")]
 		public bool RandomSequence = false;
 		/// whether that sequencer should start playing on application start
-		[Tooltip("whether that sequencer should start playing on application start")]
+		[Tooltip("해당 시퀀서가 애플리케이션 시작 시 재생을 시작해야 하는지 여부")]
 		public bool PlayOnStart = false;
         
 		[Header("Metronome")]
 		/// a sound to play every beat
-		[Tooltip("a sound to play every beat")]
+		[Tooltip("매 비트마다 재생되는 사운드")]
 		public AudioClip MetronomeSound;
 		/// the volume of the metronome sound
-		[Tooltip("the volume of the metronome sound")]
+		[Tooltip("메트로놈 소리의 볼륨")]
 		[Range(0f, 1f)]
 		public float MetronomeVolume = 0.2f;
 
 		[Header("Events")]
 		/// a list of events to play every time an active beat is found on each track (one event per track)
-		[Tooltip("a list of events to play every time an active beat is found on each track (one event per track)")]
+		[Tooltip("각 트랙에서 활성 비트가 발견될 때마다 재생할 이벤트 목록(트랙당 하나의 이벤트)")]
 		public List<UnityEvent> TrackEvents;
 
 		[Header("Monitor")]
 		/// true if the sequencer is playing right now
-		[Tooltip("true if the sequencer is playing right now")]
+		[Tooltip("시퀀서가 지금 재생 중이면 true")]
 		[MMFReadOnly]
 		public bool Playing = false;
 		/// true if the sequencer has been played once
-		[Tooltip("true if the sequencer has been played once")]
+		[Tooltip("시퀀서가 한 번 재생된 경우 true")]
 		[HideInInspector]
 		public bool PlayedOnce = false;
 		/// true if a perfect beat was found this frame
-		[Tooltip("true if a perfect beat was found this frame")]
+		[Tooltip("이 프레임에서 완벽한 비트가 발견되면 true입니다.")]
 		[MMFReadOnly]
 		public bool BeatThisFrame = false;
 		/// the index of the last played bit (our position in the playing sequence)
-		[Tooltip("the index of the last played bit (our position in the playing sequence)")]
+		[Tooltip("마지막으로 재생된 비트의 인덱스(재생 순서에서의 위치)")]
 		[MMFReadOnly]
 		public int LastBeatIndex = 0;
 

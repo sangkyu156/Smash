@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Turns an object active or inactive at the various stages of the feedback
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to set global properties on your shader, or enable/disable keywords.")]
+    /// <summary>
+    /// 피드백의 다양한 단계에서 객체를 활성화 또는 비활성화합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 셰이더의 전역 속성을 설정하거나 키워드를 활성화/비활성화할 수 있습니다.")]
 	[FeedbackPath("Renderer/Shader Global")]
 	public class MMF_ShaderGlobal : MMF_Feedback
 	{
@@ -25,42 +25,42 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Shader Global", true, 24)]
 		/// the selected mode for this feedback
-		[Tooltip("the selected mode for this feedback")]
+		[Tooltip("이 피드백을 위해 선택된 모드")]
 		public Modes Mode = Modes.SetGlobalFloat;
 		/// the name of the global property
-		[Tooltip("the name of the global property")]
+		[Tooltip("전역 속성의 이름")]
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalColor, (int)Modes.SetGlobalFloat, (int)Modes.SetGlobalInt, (int)Modes.SetGlobalMatrix, (int)Modes.SetGlobalTexture, (int)Modes.SetGlobalVector)]
 		public string PropertyName = "";
 		/// the name ID of the property retrieved by Shader.PropertyToID
-		[Tooltip("the name ID of the property retrieved by Shader.PropertyToID")]
+		[Tooltip("Shader.PropertyToID에 의해 검색된 속성의 이름 ID")]
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalColor, (int)Modes.SetGlobalFloat, (int)Modes.SetGlobalInt, (int)Modes.SetGlobalMatrix, (int)Modes.SetGlobalTexture, (int)Modes.SetGlobalVector)]
 		public int PropertyNameID = 0;
 		/// a global color property for all shaders
-		[Tooltip("a global color property for all shaders")]
+		[Tooltip("모든 셰이더에 대한 전역 색상 속성")]
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalColor)]
 		public Color GlobalColor = Color.yellow;
 		/// a global float property for all shaders
-		[Tooltip("a global float property for all shaders")] 
+		[Tooltip("모든 셰이더에 대한 전역 부동 속성")] 
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalFloat)]
 		public float GlobalFloat = 1f;
 		/// a global int property for all shaders
-		[Tooltip("a global int property for all shaders")] 
+		[Tooltip("모든 셰이더에 대한 전역 int 속성")] 
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalInt)]
 		public int GlobalInt = 1;
 		/// a global matrix property for all shaders
-		[Tooltip("a global matrix property for all shaders")] 
+		[Tooltip("모든 셰이더에 대한 전역 매트릭스 속성")] 
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalMatrix)]
 		public Matrix4x4 GlobalMatrix = Matrix4x4.identity;
 		/// a global texture property for all shaders
-		[Tooltip("a global texture property for all shaders")] 
+		[Tooltip("모든 셰이더에 대한 전역 텍스처 속성")] 
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalTexture)]
 		public RenderTexture GlobalTexture;
 		/// a global vector property for all shaders
-		[Tooltip("a global vector property for all shaders")] 
+		[Tooltip("모든 셰이더에 대한 전역 벡터 속성")] 
 		[MMFEnumCondition("Mode", (int)Modes.SetGlobalVector)]
 		public Vector4 GlobalVector;
 		/// a global shader keyword
-		[Tooltip("a global shader keyword")] 
+		[Tooltip("전역 셰이더 키워드")] 
 		[MMFEnumCondition("Mode", (int)Modes.EnableKeyword, (int)Modes.DisableKeyword)]
 		public string Keyword;
 

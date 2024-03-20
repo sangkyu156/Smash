@@ -5,11 +5,11 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A feedback to bind Unity events to and trigger them when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to bind any type of Unity events to this feebdack's Play, Stop, Initialization and Reset methods.")]
+    /// <summary>
+    /// Unity 이벤트를 바인딩하고 재생할 때 트리거하는 피드백
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 모든 유형의 Unity 이벤트를 이 feebdack의 Play, Stop, 초기화 및 재설정 메서드에 바인딩할 수 있습니다.")]
 	[FeedbackPath("Events/Events")]
 	public class MMFeedbackEvents : MMFeedback
 	{
@@ -22,16 +22,16 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Events")]
 		/// the events to trigger when the feedback is played
-		[Tooltip("the events to trigger when the feedback is played")]
+		[Tooltip("피드백이 재생될 때 트리거되는 이벤트")]
 		public UnityEvent PlayEvents;
 		/// the events to trigger when the feedback is stopped
-		[Tooltip("the events to trigger when the feedback is stopped")]
+		[Tooltip("피드백이 중지될 때 트리거되는 이벤트")]
 		public UnityEvent StopEvents;
 		/// the events to trigger when the feedback is initialized
-		[Tooltip("the events to trigger when the feedback is initialized")]
+		[Tooltip("피드백이 초기화될 때 트리거할 이벤트")]
 		public UnityEvent InitializationEvents;
 		/// the events to trigger when the feedback is reset
-		[Tooltip("the events to trigger when the feedback is reset")]
+		[Tooltip("피드백이 재설정될 때 트리거되는 이벤트")]
 		public UnityEvent ResetEvents;
 
 		/// <summary>

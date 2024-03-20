@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to an object with a trigger box collider 2D, and it'll become a pickable object, able to permit or forbid an ability on a Character
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Pickable Ability")]
+    /// <summary>
+    /// 트리거 상자 충돌기 2D가 있는 개체에 이 클래스를 추가하면 선택 가능한 개체가 되어 캐릭터의 능력을 허용하거나 금지할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Pickable Ability")]
 	public class PickableAbility : PickableItem
 	{
 		public enum Methods
@@ -17,10 +17,10 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Pickable Ability")] 
 		/// whether this object should permit or forbid an ability when picked
-		[Tooltip("whether this object should permit or forbid an ability when picked")]
+		[Tooltip("이 개체를 선택할 때 능력을 허용할지 금지할지 여부")]
 		public Methods Method = Methods.Permit;
 		/// whether or not only characters of Player type should be able to pick this 
-		[Tooltip("whether or not only characters of Player type should be able to pick this")]
+		[Tooltip("플레이어 유형의 캐릭터만 선택할 수 있는지 여부")]
 		public bool OnlyPickableByPlayerCharacters = true;
 
 		[HideInInspector] public string AbilityTypeAsString;

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Float extensions
-	/// </summary>
-	public static class MMFloatExtensions
+    /// <summary>
+    /// 플로트 확장
+    /// </summary>
+    public static class MMFloatExtensions
 	{
 		/// <summary>
 		/// Normalizes an angle in degrees

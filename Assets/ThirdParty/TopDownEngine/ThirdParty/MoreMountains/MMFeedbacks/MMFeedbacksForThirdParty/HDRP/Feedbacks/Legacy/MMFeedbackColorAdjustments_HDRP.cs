@@ -5,16 +5,16 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control color adjustments' post exposure, hue shift, saturation and contrast over time.
-	/// It requires you have in your scene an object with a Volume 
-	/// with Color Adjustments active, and a MMColorAdjustmentsShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 색상 조정의 노출 후, 색조 변화, 채도 및 대비를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 색상 조정이 활성화되고 MMColorAdjustmentsShaker_HDRP 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("PostProcess/Color Adjustments HDRP")]
-	[FeedbackHelp("This feedback allows you to control color adjustments' post exposure, hue shift, saturation and contrast over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Color Adjustments active, and a MMColorAdjustmentsShaker_HDRP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 색상 조정의 노출 후, 색조 변화, 채도 및 대비를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"색상 조정이 활성화되어 있고 MMColorAdjustmentsShaker_HDRP 구성 요소가 있습니다.")]
 	public class MMFeedbackColorAdjustments_HDRP : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -26,24 +26,24 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[Header("Color Grading")]
 		/// the channel to emit on
-		[Tooltip("the channel to emit on")]
+		[Tooltip("방출할 채널")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 1f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Post Exposure")]
 		/// the curve used to animate the focus distance value on
-		[Tooltip("the curve used to animate the focus distance value on")]
+		[Tooltip("초점 거리 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakePostExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -96,22 +96,22 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// None : nothing will happen,
 		/// gradient : evaluates the color over time on that gradient, from left to right,
 		/// interpolate : lerps from the current color to the destination one 
-		[Tooltip("the selected color filter mode :" +
-		         "None : nothing will happen," +
-		         "gradient : evaluates the color over time on that gradient, from left to right," +
-		         "interpolate : lerps from the current color to the destination one ")]
+		[Tooltip("선택한 컬러 필터 모드 :" +
+"없음: 아무 일도 일어나지 않습니다." +
+"gradient : 왼쪽에서 오른쪽으로 해당 그라디언트에서 시간이 지남에 따라 색상을 평가합니다." +
+"보간: 현재 색상에서 대상 색상으로 이동합니다.")]
 		public MMColorAdjustmentsShaker_HDRP.ColorFilterModes ColorFilterMode = MMColorAdjustmentsShaker_HDRP.ColorFilterModes.None;
 		/// the gradient to use to animate the color filter over time
-		[Tooltip("the gradient to use to animate the color filter over time")]
+		[Tooltip("시간이 지남에 따라 색상 필터에 애니메이션을 적용하는 데 사용할 그라데이션")]
 		[MMFEnumCondition("ColorFilterMode", (int)MMColorAdjustmentsShaker_HDRP.ColorFilterModes.Gradient)]
 		[GradientUsage(true)]
 		public Gradient ColorFilterGradient;
 		/// the destination color when in interpolate mode
-		[Tooltip("the destination color when in interpolate mode")]
+		[Tooltip("보간 모드에 있을 때의 대상 색상")]
 		[MMFEnumCondition("ColorFilterMode", (int) MMColorAdjustmentsShaker_HDRP.ColorFilterModes.Interpolate)]
 		public Color ColorFilterDestination = Color.yellow;
 		/// the curve to use when interpolating towards the destination color
-		[Tooltip("the curve to use when interpolating towards the destination color")]
+		[Tooltip("대상 색상을 향해 보간할 때 사용할 곡선")]
 		[MMFEnumCondition("ColorFilterMode", (int) MMColorAdjustmentsShaker_HDRP.ColorFilterModes.Interpolate)]
 		public AnimationCurve ColorFilterCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 

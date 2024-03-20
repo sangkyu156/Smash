@@ -5,14 +5,14 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to an object and it'll trigger the specified actions on pick
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Pickable Action")]
+    /// <summary>
+    /// 이 클래스를 객체에 추가하면 선택 시 지정된 작업이 트리거됩니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Pickable Action")]
 	public class PickableAction : PickableItem
 	{
 		/// the action(s) to trigger when picked
-		[Tooltip("the action(s) to trigger when picked")]
+		[Tooltip("선택 시 트리거할 작업")]
 		public UnityEvent PickEvent;
 
 		/// <summary>

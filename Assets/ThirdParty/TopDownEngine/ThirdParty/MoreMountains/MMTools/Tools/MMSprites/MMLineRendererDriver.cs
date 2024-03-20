@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component, added to a line renderer, will let you fill a list of transforms, and bind their positions to the linerenderer's positions.
-	/// </summary>
-	[RequireComponent(typeof(LineRenderer))]
+    /// <summary>
+    /// 라인 렌더러에 추가된 이 구성 요소를 사용하면 변환 목록을 채우고 해당 위치를 라이너 렌더러의 위치에 바인딩할 수 있습니다.
+    /// </summary>
+    [RequireComponent(typeof(LineRenderer))]
 	public class MMLineRendererDriver : MonoBehaviour
 	{
 		[Header("Position Drivers")]

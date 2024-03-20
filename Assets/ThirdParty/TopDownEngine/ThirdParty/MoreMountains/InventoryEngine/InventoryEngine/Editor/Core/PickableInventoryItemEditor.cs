@@ -9,10 +9,10 @@ using System.Reflection;
 namespace MoreMountains.InventoryEngine
 {	
 	[CustomEditor(typeof(ItemPicker), true)]
-	/// <summary>
-	/// Pickable inventory item editor.
-	/// </summary>
-	public class PickableInventoryItemEditor : Editor 
+    /// <summary>
+    /// 선택 가능한 인벤토리 아이템 편집기.
+    /// </summary>
+    public class PickableInventoryItemEditor : Editor 
 	{
 		protected int _targetInventoryIndex = 0;
 		protected List<string> _targetInventoriesList = new List<string>();

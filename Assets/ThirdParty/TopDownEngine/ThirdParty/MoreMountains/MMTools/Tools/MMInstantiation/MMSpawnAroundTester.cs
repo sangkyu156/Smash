@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A tester class used to show how the MMSpawnAround class can be used
-	/// </summary>
-	public class MMSpawnAroundTester : MonoBehaviour
+    /// <summary>
+    ///MMSpawnAround 클래스를 사용하는 방법을 보여주기 위해 사용되는 테스터 클래스
+    /// </summary>
+    public class MMSpawnAroundTester : MonoBehaviour
 	{
 		/// a GameObject to instantiate and position around this object 
 		public GameObject ObjectToInstantiate;

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a simple grid filled with random points 
-	/// </summary>
-	public class MMGridGeneratorRandom : MMGridGenerator
+    /// <summary>
+    /// 임의의 점으로 채워진 간단한 그리드를 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorRandom : MMGridGenerator
 	{
 		/// <summary>
 		/// Generates a simple grid filled with random points 

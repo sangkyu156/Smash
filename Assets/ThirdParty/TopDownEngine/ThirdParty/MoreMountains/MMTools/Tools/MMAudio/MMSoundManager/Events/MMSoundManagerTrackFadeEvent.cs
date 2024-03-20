@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This event will let you order the MMSoundManager to fade an entire track's sounds' volume towards the specified FinalVolume
-	///
-	/// Example : MMSoundManagerTrackFadeEvent.Trigger(MMSoundManager.MMSoundManagerTracks.Music, 2f, 0.5f, new MMTweenType(MMTween.MMTweenCurve.EaseInCubic));
-	/// will fade the volume of the music track towards 0.5, over 2 seconds, using an ease in cubic tween 
-	/// </summary>
-	public struct MMSoundManagerTrackFadeEvent
+    /// <summary>
+    /// 이 이벤트를 사용하면 MMSoundManager가 전체 트랙의 사운드 볼륨을 지정된 FinalVolume 방향으로 페이드하도록 명령할 수 있습니다.
+    ///
+    /// Example : MMSoundManagerTrackFadeEvent.Trigger(MMSoundManager.MMSoundManagerTracks.Music, 2f, 0.5f, new MMTweenType(MMTween.MMTweenCurve.EaseInCubic));
+    /// 큐빅 트윈의 이즈를 사용하여 음악 트랙의 볼륨을 2초에 걸쳐 0.5 방향으로 페이드합니다.
+    /// </summary>
+    public struct MMSoundManagerTrackFadeEvent
 	{
 		public enum Modes { PlayFade, StopFade }
 

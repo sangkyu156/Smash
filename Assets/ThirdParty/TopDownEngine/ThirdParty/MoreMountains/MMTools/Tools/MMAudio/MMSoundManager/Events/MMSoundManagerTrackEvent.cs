@@ -14,14 +14,14 @@ namespace MoreMountains.Tools
 		StopTrack,
 		FreeTrack
 	}
-    
-	/// <summary>
-	/// This feedback will let you mute, unmute, play, pause, stop, free or set the volume of a selected track
-	///
-	/// Example :  MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.PauseTrack,MMSoundManager.MMSoundManagerTracks.UI);
-	/// will pause the entire UI track
-	/// </summary>
-	public struct MMSoundManagerTrackEvent
+
+    /// <summary>
+    /// 이 피드백을 통해 선택한 트랙의 음소거, 음소거 해제, 재생, 일시중지, 중지, 해제 또는 볼륨 설정을 수행할 수 있습니다.
+    ///
+    /// Example :  MMSoundManagerTrackEvent.Trigger(MMSoundManagerTrackEventTypes.PauseTrack,MMSoundManager.MMSoundManagerTracks.UI);
+    /// 전체 UI 트랙을 일시중지합니다.
+    /// </summary>
+    public struct MMSoundManagerTrackEvent
 	{
 		/// the order to pass to the track
 		public MMSoundManagerTrackEventTypes TrackEventType;

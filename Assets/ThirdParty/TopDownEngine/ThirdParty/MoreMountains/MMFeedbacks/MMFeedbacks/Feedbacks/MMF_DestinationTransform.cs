@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you animate the position/rotation/scale of a target transform to match the one of a destination transform.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you animate the position/rotation/scale of a target transform to match the one of a destination transform.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 대상 변환의 위치/회전/배율을 대상 변환과 일치하도록 애니메이션화할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 변환의 위치/회전/배율을 대상 변환과 일치하도록 애니메이션화할 수 있습니다.")]
 	[FeedbackPath("Transform/Destination")]
 	public class MMF_DestinationTransform : MMF_Feedback
 	{
@@ -30,23 +30,23 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Target to animate", true, 61, true)]
 		/// the target transform we want to animate properties on
-		[Tooltip("the target transform we want to animate properties on")]
+		[Tooltip("속성에 애니메이션을 적용하려는 대상 변환")]
 		public Transform TargetTransform;
         
 		/// whether or not we want to force an origin transform. If not, the current position of the target transform will be used as origin instead
-		[Tooltip("whether or not we want to force an origin transform. If not, the current position of the target transform will be used as origin instead")]
+		[Tooltip("원점 변환을 강제할지 여부. 그렇지 않은 경우 대상 변환의 현재 위치가 대신 원점으로 사용됩니다.")]
 		public bool ForceOrigin = false;
 		/// the transform to use as origin in ForceOrigin mode
-		[Tooltip("the transform to use as origin in ForceOrigin mode")]
+		[Tooltip("ForceOrigin 모드에서 원점으로 사용할 변환")]
 		[MMFCondition("ForceOrigin", true)] 
 		public Transform Origin;
 		/// the destination transform whose properties we want to match 
-		[Tooltip("the destination transform whose properties we want to match")]
+		[Tooltip("일치시키려는 속성이 있는 대상 변환")]
 		public Transform Destination;
         
 		[MMFInspectorGroup("Transition", true, 63)]
 		/// a global curve to animate all properties on, unless dedicated ones are specified
-		[Tooltip("a global curve to animate all properties on, unless dedicated ones are specified")]
+		[Tooltip("전용 속성이 지정되지 않는 한 모든 속성에 애니메이션을 적용하는 전역 곡선")]
 		public MMTweenType GlobalAnimationTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the duration of the transition, in seconds
 		[Tooltip("the duration of the transition, in seconds")]
@@ -87,15 +87,15 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Separate Curves", true, 65)]
 		/// whether or not to use a separate animation curve to animate the position
-		[Tooltip("whether or not to use a separate animation curve to animate the position")]
+		[Tooltip("위치에 애니메이션을 적용하기 위해 별도의 애니메이션 곡선을 사용할지 여부")]
 		public bool SeparatePositionCurve = false;
 		/// the curve to use to animate the position on
-		[Tooltip("the curve to use to animate the position on")]
+		[Tooltip("위치를 애니메이션하는 데 사용할 곡선")]
 		[MMFCondition("SeparatePositionCurve", true)]
 		public MMTweenType AnimatePositionTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
         
 		/// whether or not to use a separate animation curve to animate the rotation
-		[Tooltip("whether or not to use a separate animation curve to animate the rotation")]
+		[Tooltip("회전에 애니메이션을 적용하기 위해 별도의 애니메이션 곡선을 사용할지 여부")]
 		public bool SeparateRotationCurve = false;
 		/// the curve to use to animate the rotation on
 		[Tooltip("the curve to use to animate the rotation on")]
@@ -103,10 +103,10 @@ namespace MoreMountains.Feedbacks
 		public MMTweenType AnimateRotationTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
         
 		/// whether or not to use a separate animation curve to animate the scale
-		[Tooltip("whether or not to use a separate animation curve to animate the scale")]
+		[Tooltip("스케일에 애니메이션을 적용하기 위해 별도의 애니메이션 곡선을 사용할지 여부")]
 		public bool SeparateScaleCurve = false;
 		/// the curve to use to animate the scale on
-		[Tooltip("the curve to use to animate the scale on")]
+		[Tooltip("스케일에 애니메이션을 적용하는 데 사용할 곡선")]
 		[MMFCondition("SeparateScaleCurve", true)]
 		public MMTweenType AnimateScaleTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
         

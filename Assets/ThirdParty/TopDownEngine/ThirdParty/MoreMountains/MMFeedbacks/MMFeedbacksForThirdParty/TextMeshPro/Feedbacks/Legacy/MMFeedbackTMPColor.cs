@@ -7,11 +7,11 @@ using System.Collections;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the color of a target TMP over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the color of a target TMP over time.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간이 지남에 따라 대상 TMP의 색상을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간이 지남에 따라 대상 TMP의 색상을 제어할 수 있습니다.")]
 	[FeedbackPath("TextMesh Pro/TMP Color")]
 	public class MMFeedbackTMPColor : MMFeedback
 	{
@@ -30,43 +30,43 @@ namespace MoreMountains.Feedbacks
 		#if MM_TEXTMESHPRO
 		[Header("Target")]
 		/// the TMP_Text component to control
-		[Tooltip(" TMP_Text component to control")]
+		[Tooltip("제어할 TMP_Text 구성 요소")]
 		public TMP_Text TargetTMPText;
 		#endif
 
 		[Header("Color")]
-		/// the selected color mode :
-		/// None : nothing will happen,
-		/// gradient : evaluates the color over time on that gradient, from left to right,
-		/// interpolate : lerps from the current color to the destination one 
-		[Tooltip("the selected color mode :" +
-		         "None : nothing will happen," +
-		         "gradient : evaluates the color over time on that gradient, from left to right," +
-		         "interpolate : lerps from the current color to the destination one ")]
+        /// 선택한 색상 모드 :
+        /// None : nothing will happen,
+        /// gradient : evaluates the color over time on that gradient, from left to right,
+        /// interpolate : lerps from the current color to the destination one 
+        [Tooltip("선택한 색상 모드 :" +
+                 "None : 아무 일도 일어나지 않습니다." +
+                 "gradient : 왼쪽에서 오른쪽으로 해당 그래디언트의 시간 경과에 따른 색상을 평가합니다." +
+                 "interpolate : 현재 색상에서 대상 색상으로 이동합니다.")]
 		public ColorModes ColorMode = ColorModes.Interpolate;
 		/// how long the color of the text should change over time
-		[Tooltip("how long the color of the text should change over time")]
+		[Tooltip("시간이 지남에 따라 텍스트 색상이 얼마나 오랫동안 변경되어야 하는지")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Interpolate, (int)ColorModes.Gradient)]
 		public float Duration = 0.2f;
 		/// the color to apply
-		[Tooltip("the color to apply")]
+		[Tooltip("적용할 색상")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Instant)]
 		public Color InstantColor = Color.yellow;
 		/// the gradient to use to animate the color over time
-		[Tooltip("the gradient to use to animate the color over time")]
+		[Tooltip("시간이 지남에 따라 색상에 애니메이션을 적용하는 데 사용할 그라데이션")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Gradient)]
 		[GradientUsage(true)]
 		public Gradient ColorGradient;
 		/// the destination color when in interpolate mode
-		[Tooltip("the destination color when in interpolate mode")]
+		[Tooltip("보간 모드에 있을 때의 대상 색상")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Interpolate)]
 		public Color DestinationColor = Color.yellow;
 		/// the curve to use when interpolating towards the destination color
-		[Tooltip("the curve to use when interpolating towards the destination color")]
+		[Tooltip("대상 색상을 향해 보간할 때 사용할 곡선")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Interpolate)]
 		public AnimationCurve ColorCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 
 		protected Color _initialColor;

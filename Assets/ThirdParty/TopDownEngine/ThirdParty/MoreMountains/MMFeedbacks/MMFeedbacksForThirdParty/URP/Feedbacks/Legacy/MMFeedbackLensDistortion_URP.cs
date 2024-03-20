@@ -5,16 +5,16 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control URP lens distortion intensity over time. 
-	/// It requires you have in your scene an object with a Volume 
-	/// with Lens Distortion active, and a MMLensDistortionShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 URP 렌즈 왜곡 강도를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 렌즈 왜곡이 활성화되고 MMLensDistortionShaker_URP 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("PostProcess/Lens Distortion URP")]
-	[FeedbackHelp("This feedback allows you to control URP lens distortion intensity over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Lens Distortion active, and a MMLensDistortionShaker_URP component.")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 URP 렌즈 왜곡 강도를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"렌즈 왜곡이 활성화되고 MMLensDistortionShaker_URP 구성 요소가 포함되어 있습니다.")]
 	public class MMFeedbackLensDistortion_URP : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -29,21 +29,21 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the channel to emit on")]
 		public int Channel = 0;
 		/// the duration of the shake in seconds
-		[Tooltip("the duration of the shake in seconds")]
+		[Tooltip("흔들리는 시간(초)")]
 		public float Duration = 0.8f;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Intensity")]
 		/// whether or not to add to the initial intensity value
-		[Tooltip("whether or not to add to the initial intensity value")]
+		[Tooltip("초기 강도 값에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 		/// the curve to animate the intensity on
-		[Tooltip("the curve to animate the intensity on")]
+		[Tooltip("강도에 애니메이션을 적용하는 곡선")]
 		public AnimationCurve Intensity = new AnimationCurve(new Keyframe(0, 0),
 			new Keyframe(0.2f, 1),
 			new Keyframe(0.25f, -1),

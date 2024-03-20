@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A test class used to demonstrate the MMObservable pattern in the MMObservableDemo scene
-	/// This one disables itself on Awake, and passively listens for changes, even when disabled
-	/// </summary>
-	public class MMObservableDemoObserverAutoSleep : MonoBehaviour
+    /// <summary>
+    /// MMObservableDemo 장면에서 MMObservable 패턴을 시연하는 데 사용되는 테스트 클래스
+    /// 이것은 Awake에서 자체적으로 비활성화되고 비활성화된 경우에도 변경 사항을 수동적으로 수신합니다.
+    /// </summary>
+    public class MMObservableDemoObserverAutoSleep : MonoBehaviour
 	{
 		public MMObservableDemoSubject TargetSubject;
 

@@ -13,51 +13,51 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("Gravity")]
 		/// the current gravity to apply to our character (positive goes down, negative goes up, higher value, higher acceleration)
-		[Tooltip("the current gravity to apply to our character (positive goes down, negative goes up, higher value, higher acceleration)")]
+		[Tooltip("캐릭터에 적용할 현재 중력(양수는 낮아지고, 음수는 올라갑니다. 값이 높을수록 가속도도 높아집니다)")]
 		public float Gravity = 40f;
 		/// whether or not the gravity is currently being applied to this character
-		[Tooltip("whether or not the gravity is currently being applied to this character")]
+		[Tooltip("현재 이 캐릭터에 중력이 적용되고 있는지 여부")]
 		public bool GravityActive = true;
 
 		[Header("General Raycasts")]
 		/// by default, the length of the raycasts used to get back to normal size will be auto generated based on your character's normal/standing height, but here you can specify a different value
-		[Tooltip("by default, the length of the raycasts used to get back to normal size will be auto generated based on your character's normal/standing height, but here you can specify a different value")]
+		[Tooltip("기본적으로 일반 크기로 돌아가는 데 사용되는 레이캐스트의 길이는 캐릭터의 일반/서 있는 키를 기준으로 자동 생성되지만 여기서는 다른 값을 지정할 수 있습니다.")]
 		public float CrouchedRaycastLengthMultiplier = 1f;
 		/// if this is true, extra raycasts will be cast on all 4 sides to detect obstacles and feed the CollidingWithCardinalObstacle bool, only useful when working with grid movement, or if you need that info for some reason
-		[Tooltip("if this is true, extra raycasts will be cast on all 4 sides to detect obstacles and feed the CollidingWithCardinalObstacle bool, only useful when working with grid movement, or if you need that info for some reason")]
+		[Tooltip("이것이 사실이라면 장애물을 감지하고 CollidingWithCardinalObstacle bool을 제공하기 위해 추가 레이캐스트가 4개 측면 모두에 캐스팅됩니다. 이는 그리드 이동 작업을 할 때나 어떤 이유로든 해당 정보가 필요한 경우에만 유용합니다.")]
 		public bool PerformCardinalObstacleRaycastDetection = false;
 
 		/// the current speed of the character
 		[MMReadOnly]
-		[Tooltip("the current speed of the character")]
+		[Tooltip("현재 캐릭터의 속도")]
 		public Vector3 Speed;
 		/// the current velocity
 		[MMReadOnly]
-		[Tooltip("the current velocity in units/second")]
+		[Tooltip("현재 속도(단위/초)")]
 		public Vector3 Velocity;
 		/// the velocity of the character last frame
 		[MMReadOnly]
-		[Tooltip("the velocity of the character last frame")]
+		[Tooltip("캐릭터의 마지막 프레임 속도")]
 		public Vector3 VelocityLastFrame;
 		/// the current acceleration
 		[MMReadOnly]
-		[Tooltip("the current acceleration")]
+		[Tooltip("현재 가속도")]
 		public Vector3 Acceleration;
 		/// whether or not the character is grounded
 		[MMReadOnly]
-		[Tooltip("whether or not the character is grounded")]
+		[Tooltip("캐릭터가 접지되어 있는지 여부")]
 		public bool Grounded;
 		/// whether or not the character got grounded this frame
 		[MMReadOnly]
-		[Tooltip("whether or not the character got grounded this frame")]
+		[Tooltip("캐릭터가 이 프레임에 접지되었는지 여부")]
 		public bool JustGotGrounded;
 		/// the current movement of the character
 		[MMReadOnly]
-		[Tooltip("the current movement of the character")]
+		[Tooltip("현재 캐릭터의 움직임")]
 		public Vector3 CurrentMovement;
 		/// the direction the character is going in
 		[MMReadOnly]
-		[Tooltip("the direction the character is going in")]
+		[Tooltip("캐릭터가 가는 방향")]
 		public Vector3 CurrentDirection;
 		/// the current friction
 		[MMReadOnly]
@@ -65,11 +65,11 @@ namespace MoreMountains.TopDownEngine
 		public float Friction;
 		/// the current added force, to be added to the character's movement
 		[MMReadOnly]
-		[Tooltip("the current added force, to be added to the character's movement")]
+		[Tooltip("캐릭터의 움직임에 추가될 현재 추가된 힘")]
 		public Vector3 AddedForce;
 		/// whether or not the character is in free movement mode or not
 		[MMReadOnly]
-		[Tooltip("whether or not the character is in free movement mode or not")]
+		[Tooltip("캐릭터가 자유 이동 모드에 있는지 여부")]
 		public bool FreeMovement = true;
         
 		/// the collider's center coordinates

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Prevents fast moving objects from going through colliders by casting a ray backwards after each movement
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMPreventPassingThrough3D")]
+    /// <summary>
+    /// 각 움직임 후에 광선을 뒤로 던져 빠르게 움직이는 물체가 충돌체를 통과하는 것을 방지합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMPreventPassingThrough3D")]
 	public class MMPreventPassingThrough3D : MonoBehaviour 
 	{
 		/// the layer mask to search obstacles on

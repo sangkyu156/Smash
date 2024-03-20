@@ -4,10 +4,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A simple component meant to be added to the pause button
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/GUI/PauseButton")]
+    /// <summary>
+    /// 일시정지 버튼에 추가할 간단한 구성요소
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/GUI/PauseButton")]
 	public class PauseButton : TopDownMonoBehaviour
 	{
 		/// <summary>

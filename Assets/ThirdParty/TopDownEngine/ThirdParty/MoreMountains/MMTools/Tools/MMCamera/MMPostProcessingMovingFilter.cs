@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event used to move filters on and off a camera
-	/// </summary>
-	public struct MMPostProcessingMovingFilterEvent
+    /// <summary>
+    /// 카메라에서 필터를 켜고 끄는 데 사용되는 이벤트
+    /// </summary>
+    public struct MMPostProcessingMovingFilterEvent
 	{
 		static private event Delegate OnEvent;
 
@@ -36,18 +36,18 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// 
-	/// This class lets you create moving filters, very much like the old gelatin camera filters, that will move to connect to your camera
-	/// Typically a moving filter should be made of a MMPostProcessingMovingFilter component, 
-	/// a PostProcessing volume, and a BoxCollider (recommended size is 1,1,1 if you want to use the default offset)
-	/// The filter will move on the y axis.
-	/// 
-	/// Use : 
-	/// MMPostProcessingMovingFilterEvent.Trigger(MMTween.MMTweenCurve.EaseInOutCubic, TrueOrFalse, Duration, ChannelID);
-	/// 
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Camera/MMPostProcessingMovingFilter")]
+    /// <summary>
+    /// 
+    /// 이 클래스를 사용하면 기존 젤라틴 카메라 필터와 매우 유사하게 이동하여 카메라에 연결되는 움직이는 필터를 만들 수 있습니다.
+    /// 일반적으로 이동 필터는 MMPostProcessingMovingFilter 구성 요소로 구성되어야 합니다.
+    /// PostProcessing 볼륨 및 BoxCollider(기본 오프셋을 사용하려는 경우 권장 크기는 1,1,1)
+    /// 필터는 y축으로 이동합니다.
+    /// 
+    /// Use : 
+    /// MMPostProcessingMovingFilterEvent.Trigger(MMTween.MMTweenCurve.EaseInOutCubic, TrueOrFalse, Duration, ChannelID);
+    /// 
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Camera/MMPostProcessingMovingFilter")]
 	public class MMPostProcessingMovingFilter : MonoBehaviour
 	{
 		public enum TimeScales

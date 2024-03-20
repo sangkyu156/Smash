@@ -12,7 +12,7 @@ using UnityEditor;
 namespace MoreMountains.TopDownEngine 
 {
     /// <summary>
-    /// A Sprite with a Weight value for randomization.
+    /// 무작위화를 위한 가중치 값이 있는 스프라이트입니다.
     /// </summary>
     [Serializable]
     public struct WeightedSprite 
@@ -28,8 +28,8 @@ namespace MoreMountains.TopDownEngine
     }
 
     /// <summary>
-    /// Weighted Random Tiles are tiles which randomly pick a sprite from a given list of sprites and a target location, and displays that sprite.
-    /// The sprites can be weighted with a value to change its probability of appearing. The Sprite displayed for the Tile is randomized based on its location and will be fixed for that particular location.
+    /// Weighted Random Tiles는 주어진 스프라이트 목록과 대상 위치에서 스프라이트를 무작위로 선택하고 해당 스프라이트를 표시하는 타일입니다.
+    /// 스프라이트에 값을 부여하여 나타날 확률을 변경할 수 있습니다. 타일에 대해 표시되는 Sprite는 해당 위치에 따라 무작위로 지정되며 해당 특정 위치에 대해 고정됩니다.
     /// </summary>
     [Serializable]
     public class WeightedRandomTile : Tile 

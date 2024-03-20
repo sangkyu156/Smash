@@ -12,7 +12,7 @@ namespace MoreMountains.Feedbacks
 	[ExecuteAlways]
 	[AddComponentMenu("")]
 	[FeedbackPath("Audio/Sound")]
-	[FeedbackHelp("This feedback lets you play the specified AudioClip, either via event (you'll need something in your scene to catch a MMSfxEvent, for example a MMSoundManager), or cached (AudioSource gets created on init, and is then ready to be played), or on demand (instantiated on Play). For all these methods you can define a random volume between min/max boundaries (just set the same value in both fields if you don't want randomness), random pitch, and an optional AudioMixerGroup.")]
+	[FeedbackHelp("이 피드백을 사용하면 이벤트(MMSoundManager와 같은 MMSfxEvent를 포착하려면 장면에 무언가가 필요함)를 통해 또는 캐시(AudioSource가 초기화 시 생성된 다음 재생할 준비가 됨)를 통해 지정된 AudioClip을 재생할 수 있습니다. 또는 주문형(Play에서 인스턴스화). 이러한 모든 방법에 대해 최소/최대 경계(임의성을 원하지 않는 경우 두 필드에 동일한 값을 설정), 임의 피치 및 선택적 AudioMixerGroup 사이에서 임의의 볼륨을 정의할 수 있습니다.")]
 	public class MMFeedbackSound : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -20,24 +20,24 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
-		#endif
+#endif
 
-		/// <summary>
-		/// The possible methods to play the sound with. 
-		/// Event : sends a MMSfxEvent, you'll need a class to catch this event and play the sound
-		/// Cached : creates and stores an audiosource to play the sound with, parented to the owner
-		/// OnDemand : creates an audiosource and destroys it everytime you want to play the sound
-		/// </summary>
-		public enum PlayMethods { Event, Cached, OnDemand, Pool }
+        /// <summary>
+        /// 사운드를 재생할 수 있는 방법.
+        /// Event : MMSfxEvent를 보내는 경우 이 이벤트를 포착하고 사운드를 재생하려면 클래스가 필요합니다.
+        /// Cached : 소유자를 부모로 삼아 사운드를 재생할 오디오 소스를 생성하고 저장합니다.
+        /// OnDemand : 오디오 소스를 생성하고 사운드를 재생하려고 할 때마다 이를 파괴합니다.
+        /// </summary>
+        public enum PlayMethods { Event, Cached, OnDemand, Pool }
 
 		[Header("Sound")]
 		/// the sound clip to play
-		[Tooltip("the sound clip to play")]
+		[Tooltip("재생할 사운드 클립")]
 		public AudioClip Sfx;
 
 		[Header("Random Sound")]
 		/// an array to pick a random sfx from
-		[Tooltip("an array to pick a random sfx from")]
+		[Tooltip("임의의 sfx를 선택하는 배열")]
 		public AudioClip[] RandomSfx;
 
 		[Header("Test")]
@@ -48,10 +48,10 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Method")]
 		/// the play method to use when playing the sound (event, cached or on demand)
-		[Tooltip("the play method to use when playing the sound (event, cached or on demand)")]
+		[Tooltip("사운드를 재생할 때 사용할 재생 방법(이벤트, 캐시 또는 요청 시)")]
 		public PlayMethods PlayMethod = PlayMethods.Event;
 		/// the size of the pool when in Pool mode
-		[Tooltip("the size of the pool when in Pool mode")]
+		[Tooltip("풀 모드에 있을 때 풀의 크기")]
 		[MMFEnumCondition("PlayMethod", (int)PlayMethods.Pool)]
 		public int PoolSize = 10;
 
@@ -73,9 +73,9 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Mixer")]
 		/// the audiomixer to play the sound with (optional)
-		[Tooltip("the audiomixer to play the sound with (optional)")]
+		[Tooltip("사운드를 재생할 오디오 믹서(선택 사항)")]
 		public AudioMixerGroup SfxAudioMixerGroup;
-		[Tooltip("the audiosource priority, to be specified if needed between 0 (highest) and 256")] 
+		[Tooltip("필요한 경우 0(가장 높음)에서 256 사이로 지정되는 오디오 소스 우선순위")] 
 		public int Priority = 128;
 
 

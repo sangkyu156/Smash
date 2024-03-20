@@ -6,11 +6,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you pilot a MMPlaylist
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you pilot a MMPlaylist")]
+    /// <summary>
+    /// 이 피드백을 통해 MMPlaylist를 시험해 볼 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 MMPlaylist를 시험해 볼 수 있습니다.")]
 	[FeedbackPath("Audio/MMPlaylist")]
 	public class MMF_Playlist : MMF_Feedback
 	{
@@ -27,10 +27,10 @@ namespace MoreMountains.Feedbacks
  
 		[MMFInspectorGroup("MMPlaylist", true, 13)]
 		/// the action to call on the playlist
-		[Tooltip("the action to call on the playlist")]
+		[Tooltip("재생목록에서 호출할 작업")]
 		public Modes Mode = Modes.PlayNext;
 		/// the index of the song to play
-		[Tooltip("the index of the song to play")]
+		[Tooltip("재생할 노래의 인덱스")]
 		[MMEnumCondition("Mode", (int)Modes.PlaySongAt)]
 		public int SongIndex = 0;
         

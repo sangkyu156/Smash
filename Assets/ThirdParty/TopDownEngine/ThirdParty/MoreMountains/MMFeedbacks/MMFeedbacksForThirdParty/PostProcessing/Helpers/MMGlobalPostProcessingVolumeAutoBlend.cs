@@ -6,10 +6,10 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Use this class to have a global PP volume auto blend its weight on cue, between a start and end values
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMGlobalPostProcessingVolumeAutoBlend")]
+    /// <summary>
+    /// 전역 PP 볼륨이 시작 값과 끝 값 사이에서 큐에 가중치를 자동으로 혼합하도록 하려면 이 클래스를 사용하십시오.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMGlobalPostProcessingVolumeAutoBlend")]
 	#if MM_POSTPROCESSING
 	[RequireComponent(typeof(PostProcessVolume))]
 	#endif
@@ -23,52 +23,52 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Header("Blend")]
 		/// the trigger mode for this MMGlobalPostProcessingVolumeAutoBlend
 		/// Start : will play automatically on enable
-		[Tooltip("the trigger mode for this MMGlobalPostProcessingVolumeAutoBlend")]
+		[Tooltip("이 MMGlobalPostProcessingVolumeAutoBlend의 트리거 모드")]
 		public BlendTriggerModes BlendTriggerMode = BlendTriggerModes.OnEnable;
 		/// the duration of the blend (in seconds)
-		[Tooltip("the duration of the blend (in seconds)")]
+		[Tooltip("혼합 기간(초)")]
 		public float BlendDuration = 1f;
 		/// the curve to use to blend
-		[Tooltip("the curve to use to blend")]
+		[Tooltip("블렌드에 사용할 곡선")]
 		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
 
 		[Header("Weight")]
 		/// the weight at the start of the blend
-		[Tooltip("the weight at the start of the blend")]
+		[Tooltip("블렌드 시작 시의 무게")]
 		[Range(0f, 1f)]
 		public float InitialWeight = 0f;
 		/// the desired weight at the end of the blend
-		[Tooltip("the desired weight at the end of the blend")]
+		[Tooltip("블렌드 종료 시 원하는 무게")]
 		[Range(0f, 1f)]
 		public float FinalWeight = 1f;
 
 		[Header("Behaviour")]
 		/// the timescale to operate on
-		[Tooltip("the timescale to operate on")]
+		[Tooltip("작업할 기간\r\n")]
 		public TimeScales TimeScale = TimeScales.Unscaled;
 		/// whether or not the associated volume should be disabled at 0
-		[Tooltip("whether or not the associated volume should be disabled at 0")]
+		[Tooltip("관련 볼륨을 0에서 비활성화해야 하는지 여부")]
 		public bool DisableVolumeOnZeroWeight = true;
 		/// whether or not this blender should disable itself at 0
-		[Tooltip("whether or not this blender should disable itself at 0")]
+		[Tooltip("이 블렌더가 0에서 비활성화되어야 하는지 여부")]
 		public bool DisableSelfAfterEnd = true;
 		/// whether or not this blender can be interrupted
-		[Tooltip("whether or not this blender can be interrupted")]
+		[Tooltip("이 블렌더를 중단할 수 있는지 여부")]
 		public bool Interruptable = true;
 		/// whether or not this blender should pick the current value as its starting point
-		[Tooltip("whether or not this blender should pick the current value as its starting point")]
+		[Tooltip("이 블렌더가 현재 값을 시작점으로 선택해야 하는지 여부")]
 		public bool StartFromCurrentValue = true;
 		/// reset to initial value on end 
-		[Tooltip("reset to initial value on end ")]
+		[Tooltip("종료 시 초기값으로 재설정 ")]
 		public bool ResetToInitialValueOnEnd = false;
 
 		[Header("Tests")]
 		/// test blend button
-		[Tooltip("test blend button")]
+		[Tooltip("테스트 혼합 버튼")]
 		[MMFInspectorButton("Blend")]
 		public bool TestBlend;
 		/// test blend back button
-		[Tooltip("test blend back button")]
+		[Tooltip("테스트 블렌드 뒤로 버튼")]
 		[MMFInspectorButton("BlendBack")]
 		public bool TestBlendBackwards;
 

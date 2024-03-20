@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to pilot a MMPlaylist
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Audio/MMPlaylistRemote")]
+    /// <summary>
+    /// MMPlaylist를 시험하는 데 사용되는 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Audio/MMPlaylistRemote")]
 	public class MMPlaylistRemote : MonoBehaviour
 	{
 		public int Channel = 0;

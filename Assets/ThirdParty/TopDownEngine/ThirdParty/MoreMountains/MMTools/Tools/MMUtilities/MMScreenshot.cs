@@ -6,17 +6,17 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an empty game object in your scene and it'll let you take screenshots (meant to be used in Editor)
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Utilities/MMScreenshot")]
+    /// <summary>
+    /// 이 클래스를 장면의 빈 게임 개체에 추가하면 스크린샷을 찍을 수 있습니다(에디터에서 사용됨).
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Utilities/MMScreenshot")]
 	public class MMScreenshot : MonoBehaviour
 	{
 		/// the name of the folder (relative to the project's root) to save screenshots to
 		public string FolderName = "Screenshots";
-		/// the method to use to take the screenshot. Screencapture uses the API of the same name, and will let you keep 
-		/// whatever ratio the game view has, RenderTexture renders to a texture of the specified resolution
-		public enum Methods { ScreenCapture, RenderTexture }
+        /// 스크린샷을 찍는 데 사용하는 방법입니다. Screencapture는 동일한 이름의 API를 사용하며
+        /// 게임 뷰의 비율이 무엇이든, RenderTexture는 지정된 해상도의 텍스처로 렌더링합니다.
+        public enum Methods { ScreenCapture, RenderTexture }
 
 		[Header("Screenshot")]
 		/// the selected method to take a screenshot with. 

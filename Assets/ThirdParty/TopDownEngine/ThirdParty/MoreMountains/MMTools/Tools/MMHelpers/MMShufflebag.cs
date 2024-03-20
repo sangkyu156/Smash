@@ -6,23 +6,23 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class to use to get more controlled randomness, taking values out of the bag randomly, and never getting them again.
-	///
-	/// Usage :
-	///
-	/// var shuffleBag = new ShuffleBag(40);
-	/// for (int i = 0; i<40; i++)
-	/// {
-	///     newValue = something;
-	///     shuffleBag.Add(newValue, amount);
-	/// }
-	///
-	/// then :
-	/// float something = shuffleBag.Pick();
-	///
-	/// </summary>
-	public class MMShufflebag<T> 
+    /// <summary>
+    /// 더 통제된 무작위성을 얻고, 가방에서 무작위로 값을 꺼내고, 다시는 가져오지 않는 데 사용하는 클래스입니다.
+    ///
+    /// 용법 :
+    ///
+    /// var shuffleBag = new ShuffleBag(40);
+    /// for (int i = 0; i<40; i++)
+    /// {
+    ///     newValue = something;
+    ///     shuffleBag.Add(newValue, amount);
+    /// }
+    ///
+    /// then :
+    /// float something = shuffleBag.Pick();
+    ///
+    /// </summary>
+    public class MMShufflebag<T> 
 	{
 		public int Capacity { get { return _contents.Capacity; } }
 		public int Size { get { return _contents.Count; } }

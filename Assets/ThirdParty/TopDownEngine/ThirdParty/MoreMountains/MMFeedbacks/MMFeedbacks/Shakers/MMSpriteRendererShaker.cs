@@ -5,27 +5,27 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to a SpriteRenderer to have it receive MMSpriteRendererShakeEvents from feedbacks or to shake it locally
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Renderer/MMSpriteRendererShaker")]
+    /// <summary>
+    /// SpriteRenderer에 이를 추가하여 피드백에서 MMSpriteRendererShakeEvents를 수신하거나 로컬에서 흔들도록 합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Renderer/MMSpriteRendererShaker")]
 	[RequireComponent(typeof(SpriteRenderer))]
 	public class MMSpriteRendererShaker : MMShaker
 	{
 		[MMInspectorGroup("SpriteRenderer", true, 39)]
 		/// the SpriteRenderer to affect when playing the feedback
-		[Tooltip("the SpriteRenderer to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 SpriteRenderer")]
 		public SpriteRenderer BoundSpriteRenderer;
 		/// whether or not that SpriteRenderer should be turned off on start
-		[Tooltip("whether or not that SpriteRenderer should be turned off on start")]
+		[Tooltip("시작 시 SpriteRenderer를 꺼야 하는지 여부")]
 		public bool StartsOff = true;
 
 		[MMInspectorGroup("Color", true, 40)]
 		/// whether or not this shaker should modify color 
-		[Tooltip("whether or not this shaker should modify color")]
+		[Tooltip("이 셰이커가 colo를 수정해야 하는지 여부r")]
 		public bool ModifyColor = true;
 		/// the colors to apply to the SpriteRenderer over time
-		[Tooltip("the colors to apply to the SpriteRenderer over time")]
+		[Tooltip("시간이 지남에 따라 SpriteRenderer에 적용할 색상")]
 		public Gradient ColorOverTime;
 
 		[MMInspectorGroup("Flip", true, 41)]

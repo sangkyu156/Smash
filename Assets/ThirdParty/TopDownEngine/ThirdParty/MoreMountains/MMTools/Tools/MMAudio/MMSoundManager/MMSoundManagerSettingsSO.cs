@@ -7,10 +7,10 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class to save sound settings (music on or off, sfx on or off)
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 사운드 설정을 저장하는 클래스(음악 켜기 또는 끄기, SFX 켜기 또는 끄기)
+    /// </summary>
+    [Serializable]
 	[CreateAssetMenu(menuName = "MoreMountains/Audio/MMSoundManagerSettings")]
 	public class MMSoundManagerSettingsSO : ScriptableObject
 	{

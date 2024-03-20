@@ -27,16 +27,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the channel to emit on")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 1f;
 		/// whether or not to add to the initial intensity
-		[Tooltip("whether or not to add to the initial intensity")]
+		[Tooltip("초기 강도에 추가할지 여부")]
 		public bool RelativeIntensity = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Post Exposure")]

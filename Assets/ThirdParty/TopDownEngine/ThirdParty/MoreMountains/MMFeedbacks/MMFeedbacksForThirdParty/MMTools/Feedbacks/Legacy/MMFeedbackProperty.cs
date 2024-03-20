@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you target (almost) any property, on any object in your scene. 
-	/// It also works on scriptable objects. Drag an object, select a property, and setup your feedback " +
-	/// to update that property over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you target (almost) any property, on any object in your scene. " +
-	              "It also works on scriptable objects. Drag an object, select a property, and setup your feedback " +
-	              "to update that property over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 장면의 모든 개체에 대한 (거의) 모든 속성을 대상으로 지정할 수 있습니다.
+    /// 스크립트 가능한 객체에서도 작동합니다. 개체를 드래그하고 속성을 선택하고 피드백을 설정하세요. " +
+    /// 시간이 지남에 따라 해당 속성을 업데이트합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 장면의 모든 개체에 대한 (거의) 모든 속성을 대상으로 지정할 수 있습니다. " +
+"스크립트 가능한 개체에서도 작동합니다. 개체를 드래그하고 속성을 선택하고 피드백을 설정합니다. " +
+"시간이 지남에 따라 해당 속성을 업데이트합니다.")]
 	[FeedbackPath("GameObject/Property")]
 	public class MMFeedbackProperty : MMFeedback
 	{
@@ -28,30 +28,30 @@ namespace MoreMountains.Feedbacks
         
 		[Header("Target Property")]
 		/// the receiver to write the level to
-		[Tooltip("the receiver to write the level to")]
+		[Tooltip("레벨을 쓸 수신기")]
 		public MMPropertyReceiver Target;
 
 		[Header("Mode")]
 		/// whether the feedback should affect the target property instantly or over a period of time
-		[Tooltip("whether the feedback should affect the target property instantly or over a period of time")]
+		[Tooltip("피드백이 대상 속성에 즉시 영향을 미치는지 또는 일정 기간에 걸쳐 영향을 미치는지 여부")]
 		public Modes Mode = Modes.OverTime;
 		/// how long the target property should change over time
-		[Tooltip("how long the target property should change over time")]
+		[Tooltip("시간이 지남에 따라 대상 속성이 변경되어야 하는 기간")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public float Duration = 0.2f;
 		/// whether or not that target property should be turned off on start
-		[Tooltip("whether or not that target property should be turned off on start")]
+		[Tooltip("시작 시 해당 대상 속성을 꺼야 하는지 여부")]
 		public bool StartsOff = false;
 		/// whether or not the values should be relative or not
-		[Tooltip("whether or not the values should be relative or not")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 
 		[Header("Level")]
 		/// the curve to tween the intensity on
-		[Tooltip("the curve to tween the intensity on")]
+		[Tooltip("강도를 트위닝하는 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public MMTweenType LevelCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the intensity curve's 0 to
@@ -63,7 +63,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
 		public float RemapLevelOne = 1f;
 		/// the value to move the intensity to in instant mode
-		[Tooltip("the value to move the intensity to in instant mode")]
+		[Tooltip("인스턴트 모드에서 강도를 이동할 값")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public float InstantLevel;
 

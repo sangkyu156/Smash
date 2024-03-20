@@ -2,10 +2,10 @@
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Rect extensions
-	/// </summary>
-	public static class RectExtensions
+    /// <summary>
+    /// Rect 확장
+    /// </summary>
+    public static class RectExtensions
 	{
 		/// <summary>
 		/// Returns true if this rectangle intersects the other specified rectangle

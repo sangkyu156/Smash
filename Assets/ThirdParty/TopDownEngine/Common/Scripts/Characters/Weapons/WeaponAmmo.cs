@@ -14,25 +14,25 @@ namespace MoreMountains.TopDownEngine
 		[Header("Ammo")]
 		
 		/// the ID of this ammo, to be matched on the ammo display if you use one
-		[Tooltip("the ID of this ammo, to be matched on the ammo display if you use one")]
+		[Tooltip("이 탄약의 ID(사용하는 경우 탄약 표시에 일치)")]
 		public string AmmoID;
 		/// the name of the inventory where the system should look for ammo
-		[Tooltip("the name of the inventory where the system should look for ammo")]
+		[Tooltip("시스템이 탄약을 찾아야 하는 인벤토리의 이름")]
 		public string AmmoInventoryName = "MainInventory";
 		/// the theoretical maximum of ammo
-		[Tooltip("the theoretical maximum of ammo")]
+		[Tooltip("이론적 최대 탄약")]
 		public int MaxAmmo = 100;
 		/// if this is true, everytime you equip this weapon, it'll auto fill with ammo
-		[Tooltip("if this is true, everytime you equip this weapon, it'll auto fill with ammo")]
+		[Tooltip("이것이 사실이라면 이 무기를 장착할 때마다 자동으로 탄약이 채워집니다.")]
 		public bool ShouldLoadOnStart = true;
 
 		/// if this is true, everytime you equip this weapon, it'll auto fill with ammo
-		[Tooltip("if this is true, everytime you equip this weapon, it'll auto fill with ammo")]
+		[Tooltip("이것이 사실이라면 이 무기를 장착할 때마다 자동으로 탄약이 채워집니다.")]
 		public bool ShouldEmptyOnSave = true;
 
 		/// the current amount of ammo available in the inventory
 		[MMReadOnly]
-		[Tooltip("the current amount of ammo available in the inventory")]
+		[Tooltip("현재 인벤토리에서 사용할 수 있는 탄약의 양")]
 		public int CurrentAmmoAvailable;
 		/// the inventory where ammo for this weapon is stored
 		public Inventory AmmoInventory { get; set; }

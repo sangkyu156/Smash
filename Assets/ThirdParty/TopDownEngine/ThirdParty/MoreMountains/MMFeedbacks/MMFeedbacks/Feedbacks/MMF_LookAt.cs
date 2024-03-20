@@ -10,7 +10,7 @@ namespace MoreMountains.Feedbacks
     /// 또한 이를 사용하여 올바른 채널의 MMLookAtShaker가 듣고 조치를 취할 수 있는 MMLookAtShake 이벤트를 브로드캐스트할 수도 있습니다.
     /// </summary>
     [AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you animate the rotation of a transform to look at a target over time. You can also use it to broadcast a MMLookAtShake event, that MMLookAtShakers on the right channel will be able to listen for and act upon.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상을 볼 수 있도록 변환 회전에 애니메이션을 적용할 수 있습니다. 또한 이를 사용하여 올바른 채널의 MMLookAtShaker가 듣고 조치를 취할 수 있는 MMLookAtShake 이벤트를 브로드캐스트할 수도 있습니다.")]
 	[FeedbackPath("Transform/LookAt")]
 	public class MMF_LookAt : MMF_Feedback
 	{
@@ -61,56 +61,56 @@ namespace MoreMountains.Feedbacks
 		
 		[MMFInspectorGroup("Look at settings", true, 37, true)]
 		/// the duration of this feedback, in seconds
-		[Tooltip("the duration of this feedback, in seconds")]
+		[Tooltip("이 피드백의 지속 시간(초)")]
 		public float Duration = 1f;
 		/// the curve over which to animate the look at transition
-		[Tooltip("the curve over which to animate the look at transition")]
+		[Tooltip("전환 시 모습에 애니메이션을 적용할 곡선")]
 		public MMTweenType LookAtTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// whether or not to lock rotation on the x axis
-		[Tooltip("whether or not to lock rotation on the x axis")]
+		[Tooltip("x축 회전을 잠글지 여부")]
 		public bool LockXAxis = false;
 		/// whether or not to lock rotation on the y axis
-		[Tooltip("whether or not to lock rotation on the y axis")]
+		[Tooltip("y축 회전을 잠글지 여부")]
 		public bool LockYAxis = false;
 		/// whether or not to lock rotation on the z axis
-		[Tooltip("whether or not to lock rotation on the z axis")]
+		[Tooltip("z축 회전을 잠글지 여부")]
 		public bool LockZAxis = false;
 
 		[MMFInspectorGroup("What we want to rotate", true, 37, true)]
 		/// whether to make a certain transform look at a target, or to broadcast an event
-		[Tooltip("whether to make a certain transform look at a target, or to broadcast an event")]
+		[Tooltip("특정 변환이 대상을 보도록 할지 아니면 이벤트를 브로드캐스트할지 여부")]
 		public Modes Mode = Modes.Direct;
 		/// in Direct mode, the transform to rotate to have it look at our target
-		[Tooltip("in Direct mode, the transform to rotate to have it look at our target")]
+		[Tooltip("Direct 모드에서는 대상을 보기 위해 회전하는 변환입니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.Direct)]
 		public Transform TransformToRotate;
 		/// the vector representing the up direction on the object we want to rotate and look at our target
-		[Tooltip("the vector representing the up direction on the object we want to rotate and look at our target")]
+		[Tooltip("회전하고 대상을 바라보려는 객체의 위쪽 방향을 나타내는 벡터")]
 		[MMFEnumCondition("Mode", (int)Modes.Direct)]
 		public UpwardVectors UpwardVector = UpwardVectors.Up;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.Event)]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.Event)]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[MMFInspectorGroup("What we want to look at", true, 37, true)]
 		/// the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector
-		[Tooltip("the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector")]
+		[Tooltip("다양한 대상 모드: 살펴볼 특정 변환, 세계 위치의 좌표 또는 방향 벡터")]
 		public LookAtTargetModes LookAtTargetMode = LookAtTargetModes.Transform;
         /// 우리가 보고 싶은 변환
         [Tooltip("우리가 보고 싶은 변환")]
 		[MMFEnumCondition("LookAtTargetMode", (int)LookAtTargetModes.Transform)]
 		public Transform LookAtTarget;
 		/// the coordinates of a point the world that we want to look at
-		[Tooltip("the coordinates of a point the world that we want to look at")]
+		[Tooltip("우리가 보고 싶은 세계의 한 지점의 좌표")]
 		[MMFEnumCondition("LookAtTargetMode", (int)LookAtTargetModes.TargetWorldPosition)]
 		public Vector3 LookAtTargetWorldPosition = Vector3.forward;
 		/// a direction (from our rotating object) that we want to look at
-		[Tooltip("a direction (from our rotating object) that we want to look at")]
+		[Tooltip("우리가 보고 싶은 방향(회전하는 물체로부터)")]
 		[MMFEnumCondition("LookAtTargetMode", (int)LookAtTargetModes.Direction)]
 		public Vector3 LookAtDirection = Vector3.forward;
 		

@@ -8,12 +8,12 @@ using UnityEngine.Tilemaps;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class to put on a tilemap so it acts as a shadow/copy of another reference tilemap.
-	/// Useful for wall shadows for example.
-	/// Offsetting the tilemap and changing its sorting order etc is done via the regular components
-	/// </summary>
-	[ExecuteAlways]
+    /// <summary>
+    /// 타일맵에 배치하여 다른 참조 타일맵의 그림자/사본 역할을 하는 클래스입니다.
+    /// 예를 들어 벽 그림자에 유용합니다.
+    /// 타일맵 오프셋 및 정렬 순서 변경 등은 일반 구성 요소를 통해 수행됩니다.
+    /// </summary>
+    [ExecuteAlways]
 	[AddComponentMenu("More Mountains/Tools/Tilemaps/MMTilemapShadow")]
 	[RequireComponent(typeof(Tilemap))]
 	public class MMTilemapShadow : MonoBehaviour

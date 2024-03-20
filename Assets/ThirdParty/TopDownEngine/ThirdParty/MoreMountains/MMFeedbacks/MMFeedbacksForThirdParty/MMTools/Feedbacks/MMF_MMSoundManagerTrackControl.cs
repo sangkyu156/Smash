@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control all sounds playing on a specific track (master, UI, music, sfx), and play, pause, mute, unmute, resume, stop, free them all at once. You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 특정 트랙(마스터, UI, 음악, sfx)에서 재생되는 모든 사운드를 제어하고 재생, 일시 중지, 음소거, 음소거 해제, 재개, 중지, 해제를 한 번에 수행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Track Control")]
-	[FeedbackHelp("This feedback will let you control all sounds playing on a specific track (master, UI, music, sfx), and play, pause, mute, unmute, resume, stop, free them all at once. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 특정 트랙(마스터, UI, 음악, sfx)에서 재생되는 모든 사운드를 제어하고 재생, 일시 중지, 음소거, 음소거 해제, 재개, 중지, 해제를 한 번에 수행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMF_MMSoundManagerTrackControl : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

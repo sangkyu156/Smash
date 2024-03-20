@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component lets you parent the transform you put it on to any target parent (or to the root if none is set), on Awake, Start or anytime you call its Parent() method
-	/// </summary>
-	public class MMParentingOnStart : MonoBehaviour
+    /// <summary>
+    /// 이 구성 요소를 사용하면 Awake, Start 또는 Parent() 메서드를 호출할 때마다 대상 상위 항목(또는 아무것도 설정되지 않은 경우 루트)에 적용한 변환의 상위 항목을 지정할 수 있습니다.
+    /// </summary>
+    public class MMParentingOnStart : MonoBehaviour
 	{
 		/// the possible modes this can run on
 		public enum Modes { Awake, Start, Script }

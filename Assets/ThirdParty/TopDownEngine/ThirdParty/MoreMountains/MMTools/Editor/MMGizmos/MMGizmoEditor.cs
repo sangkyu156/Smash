@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// a custom editor for the MMGizmo component 
-	/// </summary>
-	[CustomEditor(typeof(MMGizmo), true)]
+    /// <summary>
+    /// MMGizmo 구성요소용 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMGizmo), true)]
 	[CanEditMultipleObjects]
 	public class MMGizmoEditor : Editor
 	{

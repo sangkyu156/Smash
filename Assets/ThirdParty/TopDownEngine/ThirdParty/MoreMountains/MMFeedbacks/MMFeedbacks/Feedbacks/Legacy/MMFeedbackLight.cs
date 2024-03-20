@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control the color and intensity of a Light when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the color and intensity of a Light in your scene for a certain duration (or instantly).")]
+    /// <summary>
+    /// 이 피드백을 사용하면 재생 시 조명의 색상과 강도를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 특정 기간 동안(또는 즉시) 장면의 조명 색상과 강도를 제어할 수 있습니다.")]
 	[FeedbackPath("Light")]
 	public class MMFeedbackLight : MMFeedback
 	{
@@ -24,68 +24,68 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Light")]
 		/// the light to affect when playing the feedback
-		[Tooltip("the light to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 조명")]
 		public Light BoundLight;
 		/// whether the feedback should affect the light instantly or over a period of time
-		[Tooltip("whether the feedback should affect the light instantly or over a period of time")]
+		[Tooltip("피드백이 조명에 즉시 영향을 미치는지 또는 일정 기간 동안 영향을 미치는지 여부")]
 		public Modes Mode = Modes.OverTime;
 		/// how long the light should change over time
-		[Tooltip("how long the light should change over time")]
+		[Tooltip("시간이 지남에 따라 빛이 얼마나 오랫동안 변해야 하는지")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public float Duration = 0.2f;
 		/// whether or not that light should be turned off on start
-		[Tooltip("whether or not that light should be turned off on start")]
+		[Tooltip("시작 시 조명을 꺼야 하는지 여부")]
 		public bool StartsOff = true;
 		/// whether or not the values should be relative or not
-		[Tooltip("whether or not the values should be relative or not")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 		/// the channel to broadcast on
 		[Tooltip("the channel to broadcast on")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public int Channel = 0;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to broadcast a range to only affect certain shakers
-		[Tooltip("whether or not to broadcast a range to only affect certain shakers")]
+		[Tooltip("특정 셰이커에만 영향을 미치도록 범위를 방송할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public bool UseRange = false;
 		/// the range of the event, in units
-		[Tooltip("the range of the event, in units")]
+		[Tooltip("이벤트 범위(단위)")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public float EventRange = 100f;
 		/// the transform to use to broadcast the event as origin point
-		[Tooltip("the transform to use to broadcast the event as origin point")]
+		[Tooltip("이벤트를 원점으로 방송하는 데 사용할 변환")]
 		[MMFEnumCondition("Mode", (int)Modes.ShakerEvent)]
 		public Transform EventOriginTransform;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, the light will be disabled when this feedbacks is stopped
-		[Tooltip("if this is true, the light will be disabled when this feedbacks is stopped")] 
+		[Tooltip("이것이 사실이라면 이 피드백이 중지되면 조명이 비활성화됩니다.")] 
 		public bool DisableOnStop = true;
 
 		[Header("Color")]
 		/// whether or not to modify the color of the light
-		[Tooltip("whether or not to modify the color of the light")]
+		[Tooltip("빛의 색상을 수정할지 여부")]
 		public bool ModifyColor = true;
 		/// the colors to apply to the light over time
-		[Tooltip("the colors to apply to the light over time")]
+		[Tooltip("시간이 지남에 따라 빛에 적용할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public Gradient ColorOverTime;
 		/// the color to move to in instant mode
-		[Tooltip("the color to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 색상")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant, (int)Modes.ShakerEvent)]
 		public Color InstantColor;
 
 		[Header("Intensity")]
 		/// the curve to tween the intensity on
-		[Tooltip("the curve to tween the intensity on")]
+		[Tooltip("강도를 트위닝하는 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public AnimationCurve IntensityCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the intensity curve's 0 to
@@ -97,13 +97,13 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public float RemapIntensityOne = 1f;
 		/// the value to move the intensity to in instant mode
-		[Tooltip("the value to move the intensity to in instant mode")]
+		[Tooltip("인스턴트 모드에서 강도를 이동할 값")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public float InstantIntensity;
 
 		[Header("Range")]
 		/// the range to apply to the light over time
-		[Tooltip("the range to apply to the light over time")]
+		[Tooltip("인스턴트 모드에서 강도를 이동하기 위해 시간 경과에 따라 빛에 적용할 범위 값")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public AnimationCurve RangeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the range curve's 0 to
@@ -115,13 +115,13 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public float RemapRangeOne = 10f;
 		/// the value to move the intensity to in instant mode
-		[Tooltip("the value to move the intensity to in instant mode")]
+		[Tooltip("인스턴트 모드에서 강도를 이동할 값")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public float InstantRange;
 
 		[Header("Shadow Strength")]
 		/// the range to apply to the light over time
-		[Tooltip("the range to apply to the light over time")]
+		[Tooltip("인스턴트 모드에서 강도를 이동하기 위해 시간 경과에 따라 빛에 적용할 범위 값")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public AnimationCurve ShadowStrengthCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the shadow strength's curve's 0 to
@@ -133,7 +133,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ShakerEvent)]
 		public float RemapShadowStrengthOne = 1f;
 		/// the value to move the shadow strength to in instant mode
-		[Tooltip("the value to move the shadow strength to in instant mode")]
+		[Tooltip("인스턴트 모드에서 그림자 강도를 이동할 값입니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant)]
 		public float InstantShadowStrength;
 

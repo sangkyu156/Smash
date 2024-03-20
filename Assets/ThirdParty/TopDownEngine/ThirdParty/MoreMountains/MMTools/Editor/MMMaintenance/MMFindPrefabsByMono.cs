@@ -7,10 +7,10 @@ using System.Collections.Generic;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// As static class that lets you look for missing scripts on any prefab in your project, or for prefabs equipped with a certain type of MonoBehaviour
-	/// </summary>
-	public class MMFindPrefabsByMono : EditorWindow
+    /// <summary>
+    /// 프로젝트의 프리팹 또는 특정 유형의 MonoBehaviour가 장착된 프리팹에서 누락된 스크립트를 찾을 수 있는 정적 클래스
+    /// </summary>
+    public class MMFindPrefabsByMono : EditorWindow
 	{
 		protected Vector2 _scrollView;
 		protected string[] _tabs = new string[] { "Find prefabs with missing components", "Find prefabs by MonoBehaviour" };

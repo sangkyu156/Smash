@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you trigger cross fades on a target Graphic.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you trigger cross fades on a target Graphic.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 대상 그래픽에서 크로스 페이드를 트리거할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 그래픽에서 크로스 페이드를 트리거할 수 있습니다.")]
 	[FeedbackPath("UI/Graphic CrossFade")]
 	public class MMF_GraphicCrossFade : MMF_Feedback
 	{
@@ -34,10 +34,10 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Graphic Cross Fade", true, 54, true)]
 		/// the Graphic to affect when playing the feedback
-		[Tooltip("the Graphic to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 그래픽")]
 		public Graphic TargetGraphic;
 		/// whether the feedback should affect the Image instantly or over a period of time
-		[Tooltip("whether the feedback should affect the Image instantly or over a period of time")]
+		[Tooltip("피드백이 이미지에 즉시 영향을 미칠지, 아니면 일정 기간에 걸쳐 영향을 미칠지 여부")]
 		public Modes Mode = Modes.Alpha;
 		/// how long the Graphic should change over time
 		[Tooltip("how long the Graphic should change over time")]
@@ -51,11 +51,11 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Color)]
 		public Color TargetColor = Color.red;
 		/// whether or not the crossfade should also tween the alpha channel
-		[Tooltip("whether or not the crossfade should also tween the alpha channel")]
+		[Tooltip("크로스페이드가 알파 채널도 트위닝해야 하는지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.Color)]
 		public bool UseAlpha = true;
 		/// if this is true, the target will be disabled when this feedbacks is stopped
-		[Tooltip("if this is true, the target will be disabled when this feedbacks is stopped")] 
+		[Tooltip("이것이 사실이라면 이 피드백이 중지되면 대상이 비활성화됩니다.")] 
 		public bool DisableOnStop = false;
         
 		protected Coroutine _coroutine;

@@ -4,10 +4,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to make a camera orbit around a target
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Camera/MMOrbitalCamera")]
+    /// <summary>
+    /// 대상 주위의 카메라 궤도를 만드는 데 사용되는 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Camera/MMOrbitalCamera")]
 	public class MMOrbitalCamera : MonoBehaviour
 	{
 		/// the possible input modes for this camera

@@ -5,14 +5,14 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control Panini Projection distance and crop to fit over time. 
-	/// It requires you have in your scene an object with a Volume with Bloom active, and a MMPaniniProjectionShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control Panini Projection distance and crop to fit over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with PaniniProjection active, and a MMPaniniProjectionShaker_HDRP component.")]
+    /// <summary>
+    /// 이 피드백을 통해 파니니 투사 거리를 제어하고 시간 경과에 따라 자르기를 조정할 수 있습니다.
+    /// 이를 위해서는 장면에 Bloom이 활성화된 볼륨이 있는 객체와 MMPaniniProjectionShaker_HDRP 구성 요소가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 파니니 투사 거리를 제어하고 시간 경과에 따라 자르기를 조정할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"PaniniProjection이 활성화되어 있고 MMPaniniProjectionShaker_HDRP 구성 요소가 있습니다.")]
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/Panini Projection HDRP")]
 	#endif

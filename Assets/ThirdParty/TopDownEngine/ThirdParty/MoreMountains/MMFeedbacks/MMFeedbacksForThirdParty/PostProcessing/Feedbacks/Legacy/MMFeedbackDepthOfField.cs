@@ -5,15 +5,15 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control depth of field focus distance, aperture and focal length over time. 
-	/// It requires you have in your scene an object with a PostProcessVolume 
-	/// with Depth of Field active, and a MMDepthOfFieldShaker component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control depth of field focus distance, aperture and focal length over time. " +
-	              "It requires you have in your scene an object with a PostProcessVolume " +
-	              "with Depth of Field active, and a MMDepthOfFieldShaker component.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 피사계 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다.
+    /// 장면에 PostProcessVolume이 있는 객체가 있어야 합니다.
+    /// 심도가 활성화되고 MMDepthOfFieldShaker 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 피사계 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다. " +
+"장면에 PostProcessVolume이 있는 객체가 있어야 합니다." +
+"Depth of Field가 활성화되어 있고 MMDepthOfFieldShaker 구성 요소가 있습니다.")]
 	[FeedbackPath("PostProcess/Depth Of Field")]
 	public class MMFeedbackDepthOfField : MMFeedback
 	{
@@ -29,16 +29,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the channel to emit on")]
 		public int Channel = 0;
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float ShakeDuration = 2f;
 		/// whether or not to add to the initial values
-		[Tooltip("whether or not to add to the initial values")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeValues = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[Header("Focus Distance")]

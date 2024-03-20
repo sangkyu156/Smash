@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the MMSoundManager, used to display custom track controls
-	/// </summary>
-	#if UNITY_EDITOR
-	[CustomEditor(typeof(MMSoundManager), true)]
+    /// <summary>
+    /// 사용자 정의 트랙 컨트롤을 표시하는 데 사용되는 MMSoundManager용 사용자 정의 편집기
+    /// </summary>
+#if UNITY_EDITOR
+    [CustomEditor(typeof(MMSoundManager), true)]
 	[CanEditMultipleObjects]
 	public class MMSoundManagerEditor : Editor
 	{

@@ -4,10 +4,10 @@ using System.Reflection;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple class used to control properties on a transform
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Property Controllers/TransformController")]
+    /// <summary>
+    ///변환의 속성을 제어하는 ​​데 사용되는 간단한 클래스
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Property Controllers/TransformController")]
 	public class TransformController : MonoBehaviour
 	{
 		[Header("Position")]

@@ -8,14 +8,14 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this feedback to be able to trigger haptic feedbacks via the NiceVibration library.
-	/// It'll let you create transient or continuous vibrations, play presets or advanced patterns via AHAP files, and stop any vibration at any time
-	/// This feedback has been deprecated, and is just here to avoid errors in case you were to update from an old version. Use the new haptic feedbacks instead.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// NiceVibration 라이브러리를 통해 촉각 피드백을 트리거할 수 있도록 이 피드백을 추가하세요.
+    /// 일시적 또는 연속 진동을 생성하고, AHAP 파일을 통해 사전 설정 또는 고급 패턴을 재생하고, 언제든지 진동을 중지할 수 있습니다.
+    /// 이 피드백은 더 이상 사용되지 않으며 이전 버전에서 업데이트하는 경우 오류를 방지하기 위해 여기에 있습니다. 대신 새로운 촉각 피드백을 사용하세요.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Haptics/Haptics DEPRECATED!")]
-	[FeedbackHelp("This feedback has been deprecated, and is just here to avoid errors in case you were to update from an old version. Use the new haptic feedbacks instead.")]
+	[FeedbackHelp("이 피드백은 더 이상 사용되지 않으며 이전 버전에서 업데이트하는 경우 오류를 방지하기 위해 여기에 있습니다. 대신 새로운 촉각 피드백을 사용하세요.")]
 	public class MMFeedbackHaptics : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -34,7 +34,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		// NATIVE PRESET -----------------------------------------------------------------------------------------------------
 		[Header("Haptics")]
 		/// the method to use when triggering this haptic feedback
-		[Tooltip("the method to use when triggering this haptic feedback")]
+		[Tooltip("이 햅틱 피드백을 트리거할 때 사용하는 방법")]
 		public HapticMethods HapticMethod = HapticMethods.NativePreset;
 		/// the type of native preset to use
 		[Tooltip("the type of native preset to use")]

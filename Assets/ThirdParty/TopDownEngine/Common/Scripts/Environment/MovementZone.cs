@@ -6,16 +6,16 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a trigger collider and it will let you apply a movement speed multiplier to characters entering it
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Movement Zone")]
+    /// <summary>
+    /// 이 클래스를 트리거 충돌체에 추가하면 클래스에 들어가는 캐릭터에 이동 속도 배율을 적용할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Movement Zone")]
 	public class MovementZone : ButtonActivated
 	{
-		/// <summary>
-		/// A class used to store a movement zone's settings 
-		/// </summary>
-		public class MovementZoneCollidingEntity
+        /// <summary>
+        /// 이동 영역의 설정을 저장하는 데 사용되는 클래스 
+        /// </summary>
+        public class MovementZoneCollidingEntity
 		{
 			public Character TargetCharacter;
 			public CharacterMovement TargetCharacterMovement;
@@ -23,7 +23,7 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Movement Zone")]
 		/// the new movement multiplier to apply
-		[Tooltip("the new movement multiplier to apply")]
+		[Tooltip("적용할 새로운 이동 승수")]
 		public float MovementSpeedMultiplier = 0.5f;
 
 		protected List<MovementZoneCollidingEntity> CollidingEntities;

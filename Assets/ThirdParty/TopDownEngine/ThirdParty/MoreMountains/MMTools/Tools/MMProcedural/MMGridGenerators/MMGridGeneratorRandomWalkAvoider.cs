@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid with a path carved by a drunkard walk algorithm that will avoid another grid's walls
-	/// </summary>
-	public class MMGridGeneratorRandomWalkAvoider : MMGridGenerator
+    /// <summary>
+    /// 다른 그리드의 벽을 피하는 술취한 산책 알고리즘에 의해 새겨진 경로가 있는 그리드를 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorRandomWalkAvoider : MMGridGenerator
 	{
 		/// <summary>
 		/// Generates a grid with a path carved by a drunkard walk algorithm that will avoid another grid's walls

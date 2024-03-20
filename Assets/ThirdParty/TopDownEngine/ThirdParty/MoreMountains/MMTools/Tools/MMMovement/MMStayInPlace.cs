@@ -6,10 +6,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class forces a transform to stay at a fixed position, rotation and/or scale.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Movement/MMStayInPlace")]
+    /// <summary>
+    /// 이 클래스는 변환이 고정된 위치, 회전 및/또는 크기를 유지하도록 강제합니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Movement/MMStayInPlace")]
 	public class MMStayInPlace : MonoBehaviour
 	{
 		public enum Spaces { World, Local }

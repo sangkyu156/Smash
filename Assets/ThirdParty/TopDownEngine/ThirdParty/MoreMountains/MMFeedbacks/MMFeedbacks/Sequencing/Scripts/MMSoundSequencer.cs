@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A MMSequencer with ready made slots to play sounds
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMSoundSequencer")]
+    /// <summary>
+    /// 사운드를 재생할 수 있도록 준비된 슬롯이 있는 MM시퀀서
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMSoundSequencer")]
 	public class MMSoundSequencer : MMSequencer
 	{
 		/// the list of audio clips to play (one per track)

@@ -9,10 +9,10 @@ using System.Reflection;
 namespace MoreMountains.Tools
 {	
 	[CustomPropertyDrawer (typeof(MMInformationAttribute))]
-	/// <summary>
-	/// This class allows the display of a message box (warning, info, error...) next to a property (before or after)
-	/// </summary>
-	public class MMInformationAttributeDrawer : PropertyDrawer 
+    /// <summary>
+    /// 이 클래스를 사용하면 속성(이전 또는 이후) 옆에 메시지 상자(경고, 정보, 오류...)를 표시할 수 있습니다.
+    /// </summary>
+    public class MMInformationAttributeDrawer : PropertyDrawer 
 	{
 		// determines the space after the help box, the space before the text box, and the width of the help box icon
 		const int spaceBeforeTheTextBox = 5;

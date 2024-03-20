@@ -3,11 +3,11 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// A thrown object type of projectile, useful for grenades and such
-	/// </summary>
-	[RequireComponent(typeof(Rigidbody2D))]
+{
+    /// <summary>
+    /// 던진 물체 유형의 발사체로 수류탄 등에 유용합니다.
+    /// </summary>
+    [RequireComponent(typeof(Rigidbody2D))]
 	[AddComponentMenu("TopDown Engine/Weapons/ThrownObject")]
 	public class ThrownObject : Projectile 
 	{

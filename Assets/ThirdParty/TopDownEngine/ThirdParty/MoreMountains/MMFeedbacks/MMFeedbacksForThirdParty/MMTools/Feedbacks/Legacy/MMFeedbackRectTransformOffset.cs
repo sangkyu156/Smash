@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the offset of the lower left corner of the rectangle relative to the lower left anchor, and the offset of the upper right corner of the rectangle relative to the upper right anchor.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the offset of the lower left corner of the rectangle relative to the lower left anchor, and the offset of the upper right corner of the rectangle relative to the upper right anchor.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 왼쪽 하단 앵커를 기준으로 직사각형의 왼쪽 하단 모서리 오프셋과 오른쪽 상단 앵커를 기준으로 직사각형 오른쪽 상단 모서리의 오프셋을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 왼쪽 하단 앵커를 기준으로 직사각형의 왼쪽 하단 모서리 오프셋과 오른쪽 상단 앵커를 기준으로 직사각형 오른쪽 상단 모서리의 오프셋을 제어할 수 있습니다.")]
 	[FeedbackPath("UI/RectTransform Offset")]
 	public class MMFeedbackRectTransformOffset : MMFeedbackBase
 	{
@@ -22,7 +22,7 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Offset Min")]
 		/// whether we should modify the offset min or not
-		[Tooltip("whether we should modify the offset min or not")]
+		[Tooltip("오프셋 최소값을 수정해야 하는지 여부")]
 		public bool ModifyOffsetMin = true;
 		/// the curve to animate the min offset on
 		[Tooltip("the curve to animate the min offset on")]
@@ -39,7 +39,7 @@ namespace MoreMountains.Feedbacks
         
 		[Header("Offset Max")]
 		/// whether we should modify the offset max or not
-		[Tooltip("whether we should modify the offset max or not")]
+		[Tooltip("오프셋 최대값을 수정해야 하는지 여부")]
 		public bool ModifyOffsetMax = true;
 		/// the curve to animate the max offset on
 		[Tooltip("the curve to animate the max offset on")]

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A test class used to demonstrate how MMObservable works in the MMObservableTest demo scene  
-	/// </summary>
-	public class MMObservableDemoSubject : MonoBehaviour
+    /// <summary>
+    /// MMObservableTest 데모 장면에서 MMObservable이 어떻게 작동하는지 보여주기 위해 사용되는 테스트 클래스
+    /// </summary>
+    public class MMObservableDemoSubject : MonoBehaviour
 	{
 		/// a public float we expose, outputting the x position of our object
 		public MMObservable<float> PositionX = new MMObservable<float>();

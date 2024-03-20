@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback animates the rotation of the specified object when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will animate the target's rotation on the 3 specified animation curves (one per axis), for the specified duration (in seconds).")]
+    /// <summary>
+    /// 이 피드백은 재생 시 지정된 개체의 회전에 애니메이션을 적용합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 지정된 기간(초) 동안 지정된 3개의 애니메이션 곡선(축당 하나)에서 대상의 회전을 애니메이션화합니다.")]
 	[FeedbackPath("Transform/Rotation")]
 	public class MMF_Rotation : MMF_Feedback
 	{
@@ -32,18 +32,18 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Rotation Target", true, 61, true)]
 		/// the object whose rotation you want to animate
-		[Tooltip("the object whose rotation you want to animate")]
+		[Tooltip("회전을 애니메이션화하려는 객체")]
 		public Transform AnimateRotationTarget;
 
 		[MMFInspectorGroup("Transition", true, 63)]
 		/// whether this feedback should animate in absolute values or additive
-		[Tooltip("whether this feedback should animate in absolute values or additive")]
+		[Tooltip("이 피드백이 절대값으로 애니메이션되어야 하는지 아니면 추가로 애니메이션되어야 하는지 여부")]
 		public Modes Mode = Modes.Absolute;
 		/// whether this feedback should play on local or world rotation
-		[Tooltip("whether this feedback should play on local or world rotation")]
+		[Tooltip("이 피드백이 로컬 또는 월드 회전에서 재생되어야 하는지 여부")]
 		public Space RotationSpace = Space.World;
 		/// the duration of the transition
-		[Tooltip("the duration of the transition")]
+		[Tooltip("전환 기간")]
 		public float AnimateRotationDuration = 0.2f;
 		/// the value to remap the curve's 0 value to
 		[Tooltip("the value to remap the curve's 0 value to")]
@@ -54,13 +54,13 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public float RemapCurveOne = 360f;
 		/// if this is true, should animate the X rotation
-		[Tooltip("if this is true, should animate the X rotation")]
+		[Tooltip("이것이 사실이라면 X 회전에 애니메이션을 적용해야 합니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public bool AnimateX = true;
 		
 		
 		/// how the x part of the rotation should animate over time, in degrees
-		[Tooltip("how the x part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 x 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMFCondition("AnimateX")]
 		public MMTweenType AnimateRotationTweenX = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Y rotation
@@ -68,7 +68,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public bool AnimateY = true;
 		/// how the y part of the rotation should animate over time, in degrees
-		[Tooltip("how the y part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 y 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMFCondition("AnimateY")]
 		public MMTweenType AnimateRotationTweenY = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Z rotation
@@ -76,7 +76,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public bool AnimateZ = true;
 		/// how the z part of the rotation should animate over time, in degrees
-		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 z 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMFCondition("AnimateZ")]
 		public MMTweenType AnimateRotationTweenZ = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		

@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A custom editor displaying a foldable list of MMFeedbacks, a dropdown to add more, as well as test buttons to test your feedbacks at runtime
-	/// </summary>
-	[CanEditMultipleObjects]
+    /// <summary>
+    /// 폴더형 MMFeedback 목록, 더 추가할 수 있는 드롭다운, 런타임 시 피드백을 테스트할 수 있는 테스트 버튼을 표시하는 사용자 정의 편집기
+    /// </summary>
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(MMPlotter), true)]
 	public class MMPlotterEditor : Editor
 	{

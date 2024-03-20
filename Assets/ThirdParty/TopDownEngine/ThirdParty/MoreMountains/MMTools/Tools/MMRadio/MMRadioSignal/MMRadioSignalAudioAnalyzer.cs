@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to expose a beat level from a target MMAudioAnalyzer, to be broadcasted by a MMAudioBroadcaster
-	/// </summary>
-	public class MMRadioSignalAudioAnalyzer : MMRadioSignal
+    /// <summary>
+    /// MMAudioBroadcaster에 의해 방송될 대상 MMAudioAnalyzer의 비트 레벨을 노출하는 데 사용되는 클래스
+    /// </summary>
+    public class MMRadioSignalAudioAnalyzer : MMRadioSignal
 	{
 		[Header("Audio Analyzer")]
 		/// the MMAudioAnalyzer to read the value on

@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A feedback used to control all sounds playing on the MMSoundManager at once. It'll let you pause, play, stop and free (stop and returns the audiosource to the pool) sounds.  You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// MMSoundManager에서 재생되는 모든 사운드를 한 번에 제어하는 ​​데 사용되는 피드백입니다. 사운드를 일시 중지, 재생, 중지하고 해제(중지하고 오디오 소스를 풀로 반환)할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager All Sounds Control")]
-	[FeedbackHelp("A feedback used to control all sounds playing on the MMSoundManager at once. It'll let you pause, play, stop and free (stop and returns the audiosource to the pool) sounds. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("MMSoundManager에서 재생되는 모든 사운드를 한 번에 제어하는 ​​데 사용되는 피드백입니다. 사운드를 일시 중지, 재생, 중지하고 해제(중지하고 오디오 소스를 풀로 반환)할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMF_MMSoundManagerAllSoundsControl : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -26,7 +26,7 @@ namespace MoreMountains.Feedbacks
         
 		[MMFInspectorGroup("MMSoundManager All Sounds Control", true, 30)]
 		/// The selected control mode. 
-		[Tooltip("The selected control mode")]
+		[Tooltip("선택한 제어 모드")]
 		public MMSoundManagerAllSoundsControlEventTypes ControlMode = MMSoundManagerAllSoundsControlEventTypes.Pause;
 
 		/// <summary>

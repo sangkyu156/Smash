@@ -7,11 +7,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the outline width of a target TMP over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the outline width of a target TMP over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 윤곽선 너비를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 윤곽선 너비를 제어할 수 있습니다.")]
 	[FeedbackPath("TextMesh Pro/TMP Outline Width")]
 	public class MMFeedbackTMPOutlineWidth : MMFeedbackBase
 	{

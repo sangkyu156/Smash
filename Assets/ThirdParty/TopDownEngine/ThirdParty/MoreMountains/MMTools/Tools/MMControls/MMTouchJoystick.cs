@@ -15,13 +15,13 @@ namespace MoreMountains.Tools
 	[System.Serializable]
 	public class JoystickFloatEvent : UnityEvent<float> {}
 
-	/// <summary>
-	/// Joystick input class.
-	/// In charge of the behaviour of the joystick mobile touch input.
-	/// Bind its actions from the inspector
-	/// Handles mouse and multi touch
-	/// </summary>
-	[RequireComponent(typeof(Rect))]
+    /// <summary>
+    /// 조이스틱 입력 클래스.
+    /// 조이스틱 모바일 터치 입력 동작을 담당합니다.
+    /// 인스펙터의 액션을 바인딩합니다.
+    /// 마우스 및 멀티 터치 처리
+    /// </summary>
+    [RequireComponent(typeof(Rect))]
 	[RequireComponent(typeof(CanvasGroup))]
 	[AddComponentMenu("More Mountains/Tools/Controls/MMTouchJoystick")]
 	public class MMTouchJoystick : MMMonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler

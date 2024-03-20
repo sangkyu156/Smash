@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A test class used to demonstrate the MMObservable in the MMObservableTest demo scene    
-	/// </summary>
-	public class MMObservableDemoObserver : MonoBehaviour
+    /// <summary>
+    /// MMObservableTest 데모 장면에서 MMObservable을 시연하는 데 사용되는 테스트 클래스
+    /// </summary>
+    public class MMObservableDemoObserver : MonoBehaviour
 	{
 		/// the subject to look at
 		public MMObservableDemoSubject TargetSubject;    

@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This component will let you have a UI object follow the mouse position
-	/// </summary>
-	public class MMUIFollowMouse : MonoBehaviour
+    /// <summary>
+    /// 이 구성 요소를 사용하면 UI 개체가 마우스 위치를 따르도록 할 수 있습니다.
+    /// </summary>
+    public class MMUIFollowMouse : MonoBehaviour
 	{
 		public Canvas TargetCanvas { get; set; }
 		protected Vector2 _newPosition;

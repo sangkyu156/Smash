@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to an object to randomize its position/rotation/scale on demand or automatically
-	/// </summary>
-	#if UNITY_EDITOR
-	[ExecuteAlways]
+    /// <summary>
+    /// 이 구성 요소를 개체에 추가하여 요청 시 또는 자동으로 위치/회전/크기를 무작위로 지정합니다.
+    /// </summary>
+#if UNITY_EDITOR
+    [ExecuteAlways]
 	#endif
 	public class MMTransformRandomizer : MonoBehaviour
 	{

@@ -7,11 +7,11 @@ using UnityEngine.InputSystem;
 namespace MoreMountains.TopDownEngine
 {
 	[RequireComponent(typeof(Weapon))]
-	/// <summary>
-	/// Add this component to a Weapon and you'll be able to aim it (meaning you'll rotate it)
-	/// Supported control modes are mouse, primary movement (you aim wherever you direct your character) and secondary movement (using a secondary axis, separate from the movement).
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Weapon Aim 2D")]
+    /// <summary>
+    /// 이 구성요소를 무기에 추가하면 무기를 조준할 수 있습니다(회전한다는 의미).
+    /// 지원되는 제어 모드는 마우스, 기본 이동(캐릭터가 향하는 곳 어디든 조준) 및 보조 이동(이동과 별도로 보조 축 사용)입니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Weapon Aim 2D")]
 	public class WeaponAim2D : WeaponAim
 	{
 		protected Vector2 _inputMovement;

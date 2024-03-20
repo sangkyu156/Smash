@@ -10,11 +10,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a URP vignette post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	#if MM_URP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// URP 비네팅 사후 처리를 사용하여 이 클래스를 카메라에 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+#if MM_URP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMMotionBlurShaker_URP")]
 	public class MMMotionBlurShaker_URP : MMShaker

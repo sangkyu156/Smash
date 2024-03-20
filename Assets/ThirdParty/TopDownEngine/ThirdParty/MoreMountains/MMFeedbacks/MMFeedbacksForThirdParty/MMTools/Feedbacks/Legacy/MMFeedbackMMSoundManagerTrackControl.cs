@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control all sounds playing on a specific track (master, UI, music, sfx), and play, pause, mute, unmute, resume, stop, free them all at once. You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 특정 트랙(마스터, UI, 음악, sfx)에서 재생되는 모든 사운드를 제어하고 재생, 일시 중지, 음소거, 음소거 해제, 재개, 중지, 해제를 한 번에 수행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Track Control")]
-	[FeedbackHelp("This feedback will let you control all sounds playing on a specific track (master, UI, music, sfx), and play, pause, mute, unmute, resume, stop, free them all at once. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 특정 트랙(마스터, UI, 음악, sfx)에서 재생되는 모든 사운드를 제어하고 재생, 일시 중지, 음소거, 음소거 해제, 재개, 중지, 해제를 한 번에 수행할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMFeedbackMMSoundManagerTrackControl : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -28,13 +28,13 @@ namespace MoreMountains.Feedbacks
         
 		[Header("MMSoundManager Track Control")]
 		/// the track to mute/unmute/pause/play/stop/free/etc
-		[Tooltip("the track to mute/unmute/pause/play/stop/free/etc")]
+		[Tooltip("음소거/음소거 해제/일시 중지/재생/중지/무료/등을 위한 트랙")]
 		public MMSoundManager.MMSoundManagerTracks Track;
 		/// the selected control mode to interact with the track. Free will stop all sounds and return them to the pool
-		[Tooltip("the selected control mode to interact with the track. Free will stop all sounds and return them to the pool")]
+		[Tooltip("트랙과 상호 작용하기 위해 선택한 제어 모드. Free는 모든 소리를 중지하고 풀로 반환합니다.")]
 		public ControlModes ControlMode = ControlModes.Pause;
 		/// if setting the volume, the volume to assign to the track 
-		[Tooltip("if setting the volume, the volume to assign to the track")]
+		[Tooltip("볼륨을 설정하는 경우 트랙에 할당할 볼륨")]
 		[MMEnumCondition("ControlMode", (int) ControlModes.SetVolume)]
 		public float Volume = 0.5f;
 

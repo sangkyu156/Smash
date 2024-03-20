@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MoreMountains.Tools
 {
 	/// <summary>
-	/// Scrollrect extensions
+	/// Scrollrect 확장
 	/// </summary>
 	public static class ScrollRectExtensions
 	{

@@ -3,10 +3,10 @@ using System;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Persistent humble singleton, basically a classic singleton but will destroy any other older components of the same type it finds on awake
-	/// </summary>
-	public class MMPersistentHumbleSingleton<T> : MonoBehaviour	where T : Component
+    /// <summary>
+    /// 지속적 겸손 싱글톤, 기본적으로 클래식 싱글톤이지만 깨어 있을 때 발견되는 동일한 유형의 다른 이전 구성 요소를 모두 파괴합니다.
+    /// </summary>
+    public class MMPersistentHumbleSingleton<T> : MonoBehaviour	where T : Component
 	{
 		/// whether or not this singleton already has an instance 
 		public static bool HasInstance => _instance != null;

@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to generate signals, normalized values between 0 and 1
-	/// You can then use these values from a MMRadioBroadcaster, or simply evaluate its value to use wherever you want, 
-	/// like a supercharged animation curve. In that case, simply disable the component, and read from it using its Evaluate method
-	/// </summary>
-	public class MMRadioSignalGenerator : MMRadioSignal
+    /// <summary>
+    /// 신호를 생성하는 데 사용되는 클래스, 0과 1 사이의 정규화된 값
+    /// 그런 다음 MMRadioBroadcaster에서 이 값을 사용하거나 간단히 해당 값을 평가하여 원하는 곳 어디에서나 사용할 수 있습니다.
+    /// 슈퍼차지된 애니메이션 곡선과 같습니다. 이 경우 구성 요소를 비활성화하고 Evaluate 메서드를 사용하여 구성 요소를 읽으십시오.
+    /// </summary>
+    public class MMRadioSignalGenerator : MMRadioSignal
 	{
 		/// whether or not to display an animated preview
 		public bool AnimatedPreview = false;

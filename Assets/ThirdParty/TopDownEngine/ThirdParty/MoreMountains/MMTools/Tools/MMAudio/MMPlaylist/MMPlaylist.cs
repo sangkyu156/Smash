@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class stores all the info related to items in a playlist
-	/// </summary>
+    /// <summary>
+    /// 이 클래스는 재생목록의 항목과 관련된 모든 정보를 저장합니다.
+    /// </summary>
 
-	public struct MMPlaylistPlayEvent
+    public struct MMPlaylistPlayEvent
 	{
 		static private event Delegate OnEvent;
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)] private static void RuntimeInitialization() { OnEvent = null; }

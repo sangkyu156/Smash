@@ -4,19 +4,19 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class to handle a platform that moves in 2D along a set of nodes
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Moving Platform 2D")]
+    /// <summary>
+    /// 노드 집합을 따라 2D로 이동하는 플랫폼을 처리하는 클래스
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Moving Platform 2D")]
 	public class MovingPlatform2D : MMPathMovement
 	{
 		[Header("Safe Distance")]
 		/// whether or not to use Safe Distance mode, to force the character to move onto the platform 
-		[Tooltip("whether or not to use Safe Distance mode, to force the character to move onto the platform ")]
+		[Tooltip("캐릭터를 플랫폼 위로 강제로 이동시키기 위해 안전 거리 모드를 사용할지 여부")]
 		public bool UseSafeDistance = false;
 		/// the distance to move the character at in safe distance mode
 		[MMCondition("UseSafeDistance", true)]
-		[Tooltip("the distance to move the character at in safe distance mode")]
+		[Tooltip("안전 거리 모드에서 캐릭터를 이동할 거리")]
 		public float ForcedSafeDistance = 1f;
 
 		protected TopDownController2D _topdDownController2D;

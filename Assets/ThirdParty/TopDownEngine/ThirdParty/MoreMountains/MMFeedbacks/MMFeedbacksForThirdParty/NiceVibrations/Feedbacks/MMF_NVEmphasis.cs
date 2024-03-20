@@ -6,14 +6,14 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Use this feedback to play an Emphasis haptics, short haptic bursts whose amplitude and frequency can be controlled in real time, also called Transients in CoreHaptics/iOS
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하여 진폭과 주파수를 실시간으로 제어할 수 있는 짧은 햅틱 버스트인 강조 햅틱(CoreHaptics/iOS에서는 과도 현상이라고도 함)을 재생합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
 	[FeedbackPath("Haptics/Haptic Emphasis")]
 	#endif 
-	[FeedbackHelp("Use this feedback to play an Emphasis haptics, short haptic bursts whose amplitude and frequency can be controlled in real time, also called Transients in CoreHaptics/iOS")]
+	[FeedbackHelp("이 피드백을 사용하여 진폭과 주파수를 실시간으로 제어할 수 있는 짧은 햅틱 버스트인 강조 햅틱(CoreHaptics/iOS에서는 과도 현상이라고도 함)을 재생합니다.")]
 	public class MMF_NVEmphasis : MMF_Feedback
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

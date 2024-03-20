@@ -5,10 +5,10 @@ using UnityEngine.Tilemaps;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// An event type used to set a new size for the mask from any class
-	/// </summary>
-	public struct MMSpriteMaskEvent
+    /// <summary>
+    /// 모든 클래스의 마스크에 대한 새 크기를 설정하는 데 사용되는 이벤트 유형
+    /// </summary>
+    public struct MMSpriteMaskEvent
 	{
 		public enum MMSpriteMaskEventTypes { MoveToNewPosition, ExpandAndMoveToNewPosition, DoubleMask }
 
@@ -39,41 +39,41 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// This class will automatically look for sprite renderers, particle systems, tilemaps in the scene, and change their SpriteMaskInteraction settings according to the one set in the inspector
-	/// Use the NoMask tag on objects you don't want automatically setup
-	/// </summary>
-	public class MMSpriteMask : MonoBehaviour, MMEventListener<MMSpriteMaskEvent>
+    /// <summary>
+    /// 이 클래스는 자동으로 장면의 스프라이트 렌더러, 파티클 시스템, 타일맵을 찾고 인스펙터에 설정된 것에 따라 SpriteMaskInteraction 설정을 변경합니다.
+    /// 자동 설정을 원하지 않는 개체에는 NoMask 태그를 사용하세요.
+    /// </summary>
+    public class MMSpriteMask : MonoBehaviour, MMEventListener<MMSpriteMaskEvent>
 	{
 		/// the possible timescales this mask can operate on
 		public enum Timescales { Scaled, Unscaled }
 
 		[Header("Scale")]
 		/// the scale multiplier to apply to the sprite mask
-		[Tooltip("the scale multiplier to apply to the sprite mask")]
+		[Tooltip("스프라이트 마스크에 적용할 배율 승수")]
 		public float ScaleMultiplier = 100f;
 
 		[Header("Auto setup")]
 		/// whether or not all sprite renderers should be converted
-		[Tooltip("whether or not all sprite renderers should be converted")]
+		[Tooltip("모든 스프라이트 렌더러를 변환해야 하는지 여부")]
 		public bool AutomaticallySetupSpriteRenderers = true;
 		/// whether or not all particle systems should be converted
-		[Tooltip("whether or not all particle systems should be converted")]
+		[Tooltip("모든 입자 시스템을 변환해야 하는지 여부")]
 		public bool AutomaticallySetupParticleSystems = true;
 		/// whether or not all tilemaps should be converted
-		[Tooltip("whether or not all tilemaps should be converted")]
+		[Tooltip("모든 타일맵을 변환해야 하는지 여부")]
 		public bool AutomaticallySetupTilemaps = true;
 
 		[Header("Behaviour")]
 
 		/// if this is true, this mask will move when catching a sprite mask event
-		[Tooltip("if this is true, this mask will move when catching a sprite mask event")]
+		[Tooltip("이것이 사실이라면 이 마스크는 스프라이트 마스크 이벤트를 포착할 때 움직일 것입니다.")]
 		public bool CatchEvents = true;
 		/// the timescale this mask operates on
-		[Tooltip("the timescale this mask operates on")]
+		[Tooltip("이 마스크가 작동하는 시간 척도")]
 		public Timescales Timescale = Timescales.Unscaled;
 		/// the type of interaction to apply to all renderers
-		[Tooltip("the type of interaction to apply to all renderers")]
+		[Tooltip("모든 렌더러에 적용할 상호 작용 유형")]
 		public SpriteMaskInteraction MaskInteraction = SpriteMaskInteraction.VisibleInsideMask;
 
 		public float MaskTime { get { float time = (Timescale == Timescales.Unscaled) ? Time.unscaledTime : Time.time; return time; } }

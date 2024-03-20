@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A helper class to handle geometry related operations    
-	/// </summary>    
-	public static class MMGeometry
+    /// <summary>
+    /// 기하학 관련 작업을 처리하는 도우미 클래스  
+    /// </summary>    
+    public static class MMGeometry
 	{
 		// Based on https://answers.unity.com/questions/1019436/get-outeredge-vertices-c.html
 		public struct MMEdge

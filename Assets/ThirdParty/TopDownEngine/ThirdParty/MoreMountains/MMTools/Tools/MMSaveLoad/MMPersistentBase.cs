@@ -4,24 +4,24 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A base class implementing the IMMPersistent interface, designed to be extended
-	/// This mostly takes care of the GUID generation and validation
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 확장되도록 설계된 IMMPersistant 인터페이스를 구현하는 기본 클래스
+    /// 이는 주로 GUID 생성 및 유효성 검사를 처리합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	public class MMPersistentBase : MonoBehaviour, IMMPersistent
 	{
 		[Header("Save")] 
 		/// whether or not this object should be saved
-		[Tooltip("whether or not this object should be saved")]
+		[Tooltip("이 개체를 저장해야 할지 여부")]
 		public bool SaveActive = true;
 
 		[Header("ID")]
 		/// an optional suffix to add to the GUID, to make it more readable
-		[Tooltip("an optional suffix to add to the GUID, to make it more readable")]
+		[Tooltip("더 읽기 쉽게 GUID에 추가할 선택적 접미사")]
 		public string UniqueIDSuffix;
 		/// the object's unique ID
-		[Tooltip("the object's unique ID")]
+		[Tooltip("객체의 고유 ID")]
 		[SerializeField]
 		[MMReadOnly]
 		protected string _guid;

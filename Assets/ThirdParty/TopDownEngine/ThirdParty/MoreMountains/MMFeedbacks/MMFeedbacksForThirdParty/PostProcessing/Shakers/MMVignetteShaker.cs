@@ -7,10 +7,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a vignette post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMVignetteShaker")]
+    /// <summary>
+    /// 비네팅 사후 처리를 사용하여 이 클래스를 카메라에 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMVignetteShaker")]
 	#if MM_POSTPROCESSING
 	[RequireComponent(typeof(PostProcessVolume))]
 	#endif
@@ -18,10 +18,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 	{
 		[MMInspectorGroup("Vignette Intensity", true, 53)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeIntensity = true;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -34,10 +34,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMInspectorGroup("Vignette Color", true, 51)]
 		/// whether or not to also animate  the vignette's color
-		[Tooltip("whether or not to also animate the vignette's color")]
+		[Tooltip("비네트의 색상에도 애니메이션을 적용할지 여부")]
 		public bool InterpolateColor = false;
 		/// the curve to animate the color on
-		[Tooltip("the curve to animate the color on")]
+		[Tooltip("색상에 애니메이션을 적용할 곡선")]
 		public AnimationCurve ColorCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.05f, 1f), new Keyframe(0.95f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -48,7 +48,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Range(0f, 1f)]
 		public float RemapColorOne = 1f;
 		/// the color to lerp towards
-		[Tooltip("the color to lerp towards")]
+		[Tooltip("향해 달려가는 색깔")]
 		public Color TargetColor = Color.red;
 
 

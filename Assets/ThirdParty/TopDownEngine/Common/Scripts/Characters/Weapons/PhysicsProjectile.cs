@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Use this class for physics based projectiles (meant to be thrown by a ProjectileWeapon)
-	/// </summary>
-	public class PhysicsProjectile : Projectile
+    /// <summary>
+    /// 물리 기반 발사체(ProjectileWeapon에 의해 투척됨)에 이 클래스를 사용합니다.
+    /// </summary>
+    public class PhysicsProjectile : Projectile
 	{
 		[Header("Physics")] 
 		public float InitialForce = 10f;

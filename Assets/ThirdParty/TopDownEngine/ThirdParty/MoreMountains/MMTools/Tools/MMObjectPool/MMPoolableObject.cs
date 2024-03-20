@@ -3,11 +3,11 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to an object that you expect to pool from an objectPooler. 
-	/// Note that these objects can't be destroyed by calling Destroy(), they'll just be set inactive (that's the whole point).
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Object Pool/MMPoolableObject")]
+    /// <summary>
+    /// objectPooler에서 풀링할 것으로 예상되는 개체에 이 클래스를 추가합니다.
+    /// 이러한 객체는 Destroy()를 호출하여 파괴할 수 없으며 단지 비활성화 상태로 설정된다는 점에 유의하십시오(그게 요점입니다).
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Object Pool/MMPoolableObject")]
 	public class MMPoolableObject : MMObjectBounds
 	{
 		[Header("Events")]

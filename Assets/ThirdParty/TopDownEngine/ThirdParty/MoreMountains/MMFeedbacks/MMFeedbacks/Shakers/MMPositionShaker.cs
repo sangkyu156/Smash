@@ -6,80 +6,80 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This shaker will let you move the position of a transform, either once or permanently, shaking its position for the specified duration and within the specified range.
-	/// You can apply that shake along a direction, randomized or not, with optional noise and attenuation
-	/// </summary>
-	public class MMPositionShaker : MMShaker
+    /// <summary>
+    /// 이 셰이커를 사용하면 변환 위치를 한 번 또는 영구적으로 이동하여 지정된 기간 동안 지정된 범위 내에서 해당 위치를 흔들 수 있습니다.
+    /// 선택적 노이즈 및 감쇠를 사용하여 무작위 여부에 관계없이 방향을 따라 흔들림을 적용할 수 있습니다.
+    /// </summary>
+    public class MMPositionShaker : MMShaker
 	{
 		public enum Modes { Transform, RectTransform }
 
 		[MMInspectorGroup("Target", true, 41)]
 		/// whether this shaker should target Transforms or RectTransforms
-		[Tooltip("whether this shaker should target Transforms or RectTransforms")]
+		[Tooltip("이 셰이커가 Transforms 또는 RectTransforms를 대상으로 해야 하는지 여부")]
 		public Modes Mode = Modes.Transform;
 		/// the transform to shake the position of. If left blank, this component will target the transform it's put on.
-		[Tooltip("the transform to shake the position of. If left blank, this component will target the transform it's put on.")]
+		[Tooltip("위치를 흔드는 변환입니다. 비워 두면 이 구성 요소는 적용된 변환을 대상으로 합니다.")]
 		[MMEnumCondition("Mode", (int)Modes.Transform)]
 		public Transform TargetTransform;
 		/// the rect transform to shake the position of. If left blank, this component will target the transform it's put on.
-		[Tooltip("the rect transform to shake the position of. If left blank, this component will target the transform it's put on.")]
+		[Tooltip("위치를 흔들기 위한 ret 변환입니다. 비워 두면 이 구성 요소는 적용된 변환을 대상으로 합니다.")]
 		[MMEnumCondition("Mode", (int)Modes.RectTransform)]
 		public RectTransform TargetRectTransform;
 
 		[MMInspectorGroup("Shake Settings", true, 42)]
 		/// the speed at which the transform should shake
-		[Tooltip("the speed at which the transform should shake")]
+		[Tooltip("변환이 흔들리는 속도")]
 		public float ShakeSpeed = 20f;
 		/// the maximum distance from its initial position the transform will move to during the shake
-		[Tooltip("the maximum distance from its initial position the transform will move to during the shake")]
+		[Tooltip("흔들림 중에 변환이 이동할 초기 위치로부터의 최대 거리")]
 		public float ShakeRange = 0.5f;
 		/// an offset to apply to the oscillation
-		[Tooltip("an offset to apply to the oscillation")]
+		[Tooltip("진동에 적용할 오프셋")]
 		public float OscillationOffset = 0f;
         
 		[MMInspectorGroup("Direction", true, 43)]
 		/// the direction along which to shake the transform's position
-		[Tooltip("the direction along which to shake the transform's position")]
+		[Tooltip("변환 위치를 흔들려는 방향")]
 		public Vector3 ShakeMainDirection = Vector3.up;
 		/// if this is true, instead of using ShakeMainDirection as the direction of the shake, a random vector3 will be generated, randomized between ShakeMainDirection and ShakeAltDirection
-		[Tooltip("if this is true, instead of using ShakeMainDirection as the direction of the shake, a random vector3 will be generated, randomized between ShakeMainDirection and ShakeAltDirection")]
+		[Tooltip("이것이 사실이라면 ShakeMainDirection을 흔들기 방향으로 사용하는 대신 무작위 벡터3가 생성되어 ShakeMainDirection과 ShakeAltDirection 사이에서 무작위로 생성됩니다.")]
 		public bool RandomizeDirection = false;
 		/// when in RandomizeDirection mode, a vector against which to randomize the main direction
-		[Tooltip("when in RandomizeDirection mode, a vector against which to randomize the main direction")]
+		[Tooltip("RandomizeDirection 모드에 있을 때 주 방향을 무작위화할 벡터")]
 		[MMCondition("RandomizeDirection", true)]
 		public Vector3 ShakeAltDirection = Vector3.up;
 		/// if this is true, a new direction will be randomized every time a shake happens
-		[Tooltip("if this is true, a new direction will be randomized every time a shake happens")]
+		[Tooltip("이것이 사실이라면 흔들릴 때마다 새로운 방향이 무작위로 지정됩니다.")]
 		public bool RandomizeDirectionOnPlay = false;
 
 		[MMInspectorGroup("Directional Noise", true, 47)]
 		/// whether or not to add noise to the main direction
-		[Tooltip("whether or not to add noise to the main direction")]
+		[Tooltip("주 방향에 노이즈를 추가할지 여부")]
 		public bool AddDirectionalNoise = true;
 		/// when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMax
-		[Tooltip("when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMax")]
+		[Tooltip("방향성 노이즈를 추가할 때 노이즈 강도는 이 값과 DirectionalNoiseStrengthMax 사이에서 무작위로 지정됩니다.")]
 		[MMCondition("AddDirectionalNoise", true)]
 		public Vector3 DirectionalNoiseStrengthMin = new Vector3(0.25f, 0.25f, 0.25f);
 		/// when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMin
-		[Tooltip("when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMin")]
+		[Tooltip("방향성 노이즈를 추가할 때 노이즈 강도는 이 값과 DirectionalNoiseStrengthMin 사이에서 무작위로 지정됩니다.")]
 		[MMCondition("AddDirectionalNoise", true)]
 		public Vector3 DirectionalNoiseStrengthMax = new Vector3(0.25f, 0.25f, 0.25f);
         
 		[MMInspectorGroup("Randomness", true, 44)]
 		/// a unique seed you can use to get different outcomes when shaking more than one transform at once
-		[Tooltip("a unique seed you can use to get different outcomes when shaking more than one transform at once")]
+		[Tooltip("한 번에 둘 이상의 변환을 흔들 때 다른 결과를 얻는 데 사용할 수 있는 고유한 시드")]
 		public Vector3 RandomnessSeed;
 		/// whether or not to generate a unique seed automatically on every shake
-		[Tooltip("whether or not to generate a unique seed automatically on every shake")]
+		[Tooltip("흔들릴 때마다 고유한 시드를 자동으로 생성할지 여부")]
 		public bool RandomizeSeedOnShake = true;
 
 		[MMInspectorGroup("One Time", true, 45)]
 		/// whether or not to use attenuation, which will impact the amplitude of the shake, along the defined curve
-		[Tooltip("whether or not to use attenuation, which will impact the amplitude of the shake, along the defined curve")]
+		[Tooltip("정의된 곡선을 따라 흔들림의 진폭에 영향을 미치는 감쇠를 사용할지 여부")]
 		public bool UseAttenuation = true;
 		/// the animation curve used to define attenuation, impacting the amplitude of the shake
-		[Tooltip("the animation curve used to define attenuation, impacting the amplitude of the shake")]
+		[Tooltip("감쇠를 정의하는 데 사용되는 애니메이션 곡선으로 흔들림의 진폭에 영향을 미칩니다.")]
 		[MMCondition("UseAttenuation", true)]
 		public AnimationCurve AttenuationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 

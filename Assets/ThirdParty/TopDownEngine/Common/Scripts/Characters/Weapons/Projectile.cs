@@ -4,53 +4,53 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Projectile class to be used along with projectile weapons
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Projectile")]
+{
+    /// <summary>
+    /// 발사체 무기와 함께 사용되는 발사체 클래스
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Projectile")]
 	public class Projectile : MMPoolableObject  
 	{
 		public enum MovementVectors { Forward, Right, Up}
 		
 		[Header("Movement")]
 		/// if true, the projectile will rotate at initialization towards its rotation
-		[Tooltip("if true, the projectile will rotate at initialization towards its rotation")]
+		[Tooltip("true인 경우 발사체는 초기화 시 회전 방향으로 회전합니다.")]
 		public bool FaceDirection = true;
 		/// if true, the projectile will rotate towards movement
-		[Tooltip("if true, the projectile will rotate towards movement")]
+		[Tooltip("true인 경우 발사체가 움직임을 향해 회전합니다.")]
 		public bool FaceMovement = false;
 		/// if FaceMovement is true, the projectile's vector specified below will be aligned to the movement vector, usually you'll want to go with Forward in 3D, Right in 2D
-		[Tooltip("if FaceMovement is true, the projectile's vector specified below will be aligned to the movement vector, usually you'll want to go with Forward in 3D, Right in 2D")]
+		[Tooltip("FaceMovement가 true인 경우 아래에 지정된 발사체의 벡터는 이동 벡터에 정렬됩니다. 일반적으로 3D에서는 앞으로, 2D에서는 오른쪽으로 가고 싶을 것입니다.")]
 		[MMCondition("FaceMovement", true)]
 		public MovementVectors MovementVector = MovementVectors.Forward;
 
 		/// the speed of the object (relative to the level's speed)
-		[Tooltip("the speed of the object (relative to the level's speed)")]
+		[Tooltip("객체의 속도(레벨 속도에 상대적)")]
 		public float Speed = 0;
 		/// the acceleration of the object over time. Starts accelerating on enable.
-		[Tooltip("the acceleration of the object over time. Starts accelerating on enable.")]
+		[Tooltip("시간에 따른 물체의 가속도. 활성화되면 가속이 시작됩니다.")]
 		public float Acceleration = 0;
 		/// the current direction of the object
-		[Tooltip("the current direction of the object")]
+		[Tooltip("물체의 현재 방향")]
 		public Vector3 Direction = Vector3.left;
 		/// if set to true, the spawner can change the direction of the object. If not the one set in its inspector will be used.
-		[Tooltip("if set to true, the spawner can change the direction of the object. If not the one set in its inspector will be used.")]
+		[Tooltip("true로 설정하면 생성자가 객체의 방향을 변경할 수 있습니다. 그렇지 않은 경우 해당 검사기에 설정된 것이 사용됩니다.")]
 		public bool DirectionCanBeChangedBySpawner = true;
 		/// the flip factor to apply if and when the projectile is mirrored
-		[Tooltip("the flip factor to apply if and when the projectile is mirrored")]
+		[Tooltip("발사체가 미러링되는 경우 적용할 반전 계수")]
 		public Vector3 FlipValue = new Vector3(-1,1,1);
 		/// set this to true if your projectile's model (or sprite) is facing right, false otherwise
-		[Tooltip("set this to true if your projectile's model (or sprite) is facing right, false otherwise")]
+		[Tooltip("발사체의 모델(또는 스프라이트)이 오른쪽을 향하고 있으면 true로 설정하고, 그렇지 않으면 false로 설정합니다.")]
 		public bool ProjectileIsFacingRight = true;
 
 		[Header("Spawn")]
-		[MMInformation("Here you can define an initial delay (in seconds) during which this object won't take or cause damage. This delay starts when the object gets enabled. You can also define whether the projectiles should damage their owner (think rockets and the likes) or not",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("여기서 이 개체가 손상을 입거나 손상을 입히지 않는 초기 지연(초)을 정의할 수 있습니다. 이 지연은 개체가 활성화되면 시작됩니다. 발사체가 소유자(로켓 등)에 피해를 입힐지 여부도 정의할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the initial delay during which the projectile can't be destroyed
-		[Tooltip("the initial delay during which the projectile can't be destroyed")]
+		[Tooltip("발사체가 파괴될 수 없는 초기 지연 시간")]
 		public float InitialInvulnerabilityDuration=0f;
 		/// should the projectile damage its owner?
-		[Tooltip("should the projectile damage its owner?")]
+		[Tooltip("발사체가 소유자에게 피해를 입혀야 합니까?")]
 		public bool DamageOwner = false;
 
 		/// Returns the associated damage on touch zone

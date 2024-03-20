@@ -5,10 +5,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A scriptable object used to store data for MMSoundManager play
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// MMSoundManager 재생을 위한 데이터를 저장하는 데 사용되는 스크립트 가능한 개체
+    /// </summary>
+    [Serializable]
 	[CreateAssetMenu(menuName = "MoreMountains/Audio/MMF_SoundData")]
 	public class MMF_MMSoundManagerSoundData : ScriptableObject
 	{

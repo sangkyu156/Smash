@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the min and max anchors of a RectTransform over time. That's the normalized position in the parent RectTransform that the lower left and upper right corners are anchored to.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the min and max anchors of a RectTransform over time. That's the normalized position in the parent RectTransform that the lower left and upper right corners are anchored to.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 RectTransform의 최소 및 최대 앵커를 제어할 수 있습니다. 이는 왼쪽 하단과 오른쪽 상단 모서리가 고정되는 상위 RectTransform의 정규화된 위치입니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 RectTransform의 최소 및 최대 앵커를 제어할 수 있습니다. 이는 왼쪽 하단과 오른쪽 상단 모서리가 고정되는 상위 RectTransform의 정규화된 위치입니다.")]
 	[FeedbackPath("UI/RectTransform Anchor")]
 	public class MMF_RectTransformAnchor : MMF_FeedbackBase
 	{
@@ -23,15 +23,15 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Target RectTransform", true, 37, true)]
 		/// the target RectTransform to control
-		[Tooltip("the target RectTransform to control")]
+		[Tooltip("제어할 대상 RectTransform")]
 		public RectTransform TargetRectTransform;
 
 		[MMFInspectorGroup("Anchor Min", true, 43)] 
 		/// whether or not to modify the min anchor
-		[Tooltip("whether or not to modify the min anchor")]
+		[Tooltip("최소 앵커 수정 여부")]
 		public bool ModifyAnchorMin = true;
 		/// the curve to animate the min anchor on
-		[Tooltip("the curve to animate the min anchor on")]
+		[Tooltip("최소 앵커에 애니메이션을 적용하는 곡선")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType AnchorMinCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the min anchor curve's 0 on
@@ -45,10 +45,10 @@ namespace MoreMountains.Feedbacks
         
 		[MMFInspectorGroup("Anchor Max", true, 44)]
 		/// whether or not to modify the max anchor
-		[Tooltip("whether or not to modify the max anchor")]
+		[Tooltip("최대 앵커 수정 여부")]
 		public bool ModifyAnchorMax = true;
 		/// the curve to animate the max anchor on
-		[Tooltip("the curve to animate the max anchor on")]
+		[Tooltip("최대 앵커에 애니메이션을 적용하는 곡선")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType AnchorMaxCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the max anchor curve's 0 on

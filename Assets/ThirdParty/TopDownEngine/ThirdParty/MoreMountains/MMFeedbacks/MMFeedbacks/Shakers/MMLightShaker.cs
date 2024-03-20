@@ -5,36 +5,36 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to a light to have it receive MMLightShakeEvents from feedbacks or to shake it locally
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/Lights/MMLightShaker")]
+    /// <summary>
+    /// 피드백에서 MMLightShakeEvents를 수신하거나 로컬에서 흔들려면 조명에 이것을 추가하세요.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/Lights/MMLightShaker")]
 	[RequireComponent(typeof(Light))]
 	public class MMLightShaker : MMShaker
 	{
 		[MMInspectorGroup("Light", true, 37)]
 		/// the light to affect when playing the feedback
-		[Tooltip("the light to affect when playing the feedback")]
+		[Tooltip("피드백을 재생할 때 영향을 미치는 조명")]
 		public Light BoundLight;
 		/// whether or not that light should be turned off on start
-		[Tooltip("whether or not that light should be turned off on start")]
+		[Tooltip("시작 시 조명을 꺼야 하는지 여부")]
 		public bool StartsOff = true;
 		/// whether or not the values should be relative or not
-		[Tooltip("whether or not the values should be relative or not")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 
 		[MMInspectorGroup("Color", true, 41)]
 		/// whether or not this shaker should modify color 
-		[Tooltip("whether or not this shaker should modify color")]
+		[Tooltip("이 셰이커의 색상을 수정해야 하는지 여부")]
 		public bool ModifyColor = true;
 		/// the colors to apply to the light over time
-		[Tooltip("the colors to apply to the light over time")]
+		[Tooltip("시간이 지남에 따라 빛에 적용할 색상")]
 		public Gradient ColorOverTime;
 
 		[MMInspectorGroup("Intensity", true, 40)]
 		/// the intensity to apply to the light over time
 		/// the curve to tween the intensity on
-		[Tooltip("the intensity to apply to the light over time")]
+		[Tooltip("시간이 지남에 따라 빛에 적용되는 강도")]
 		public AnimationCurve IntensityCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the intensity curve's 0 to
 		[Tooltip("the value to remap the intensity curve's 0 to")]
@@ -45,7 +45,7 @@ namespace MoreMountains.Feedbacks
 
 		[MMInspectorGroup("Range", true, 39)]
 		/// the range to apply to the light over time
-		[Tooltip("the range to apply to the light over time")]
+		[Tooltip("시간 경과에 따라 라이트에 적용할 범위")]
 		public AnimationCurve RangeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the range curve's 0 to
 		[Tooltip("the value to remap the range curve's 0 to")]
@@ -56,7 +56,7 @@ namespace MoreMountains.Feedbacks
 
 		[MMInspectorGroup("Shadow Strength", true, 38)]
 		/// the range to apply to the light over time
-		[Tooltip("the range to apply to the light over time")]
+		[Tooltip("시간 경과에 따라 라이트에 적용할 범위")]
 		public AnimationCurve ShadowStrengthCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the shadow strength's curve's 0 to
 		[Tooltip("the value to remap the shadow strength's curve's 0 to")]

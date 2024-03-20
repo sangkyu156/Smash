@@ -6,11 +6,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the line spacing of a target TMP over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the line spacing of a target TMP over time.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 줄 간격을 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 대상 TMP의 줄 간격을 제어할 수 있습니다.")]
 	[FeedbackPath("TextMesh Pro/TMP Line Spacing")]
 	public class MMFeedbackTMPLineSpacing : MMFeedbackBase
 	{
@@ -22,13 +22,13 @@ namespace MoreMountains.Feedbacks
 		#if MM_TEXTMESHPRO
 		[Header("Target")]
 		/// the TMP_Text component to control
-		[Tooltip("the TMP_Text component to control")]
+		[Tooltip("제어할 TMP_Text 구성 요소")]
 		public TMP_Text TargetTMPText;
 		#endif
 
 		[Header("Paragraph Spacing")]
 		/// the curve to tween on
-		[Tooltip("the curve to tween on")]
+		[Tooltip("트위닝할 곡선")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType LineSpacingCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the curve's 0 to
@@ -40,7 +40,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public float RemapOne = 10f;
 		/// the value to move to in instant mode
-		[Tooltip("the value to move to in instant mode")]
+		[Tooltip("인스턴트 모드에서 이동할 값")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.Instant)]
 		public float InstantFontSize;
         

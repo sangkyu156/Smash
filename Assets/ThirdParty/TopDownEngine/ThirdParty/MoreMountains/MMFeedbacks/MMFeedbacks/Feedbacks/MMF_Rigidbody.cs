@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// this feedback will let you apply forces and torques (relative or not) to a Rigidbody
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you apply forces and torques (relative or not) to a Rigidbody.")]
+    /// <summary>
+    /// 이 피드백을 통해 Rigidbody에 힘과 토크(상대적이든 아니든)를 적용할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 Rigidbody에 힘과 토크(상대적이든 아니든)를 적용할 수 있습니다.")]
 	[FeedbackPath("GameObject/Rigidbody")]
 	public class MMF_Rigidbody : MMF_Feedback
 	{
@@ -27,13 +27,13 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Rigidbody", true, 61, true)]
 		/// the rigidbody to target on play
-		[Tooltip("the rigidbody to target on play")]
+		[Tooltip("플레이 시 목표로 삼을 강체")]
 		public Rigidbody TargetRigidbody;
 		/// a list of extra rigidbodies to target on play
-		[Tooltip("a list of extra rigidbodies to target on play")]
+		[Tooltip("플레이 시 목표로 삼을 추가 강체 목록")]
 		public List<Rigidbody> ExtraTargetRigidbodies;
 		/// the selected mode for this feedback
-		[Tooltip("the selected mode for this feedback")]
+		[Tooltip("이 피드백을 위해 선택된 모드")]
 		public Modes Mode = Modes.AddForce;
 		/// the min force or torque to apply
 		[Tooltip("the min force or torque to apply")]
@@ -42,7 +42,7 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the max force or torque to apply")]
 		public Vector3 MaxForce;
 		/// the force mode to apply
-		[Tooltip("the force mode to apply")]
+		[Tooltip("적용할 강제 모드")]
 		public ForceMode AppliedForceMode = ForceMode.Impulse;
 
 		protected Vector3 _force;

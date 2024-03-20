@@ -5,38 +5,38 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This struct lets you declare observable properties.
-	/// For example, let's say you have a class called Character, and you declare its speed like so : 
-	/// 
-	/// public MMObservable<float> Speed;
-	/// 
-	/// then, in any other class, you can register to OnValueChanged events on that property (usually in OnEnable) :
-	/// 
-	/// protected virtual void OnEnable()
-	/// {
-	///     _myCharacter.Speed.OnValueChanged += OnSpeedChange;
-	/// }
-	/// 
-	/// and unsubscribe like so :
-	/// 
-	/// protected virtual void OnDisable()
-	/// {
-	///     _myCharacter.Speed.OnValueChanged -= OnSpeedChange;
-	/// }
-	/// 
-	/// and then all you need is a method to handle that speed change :
-	/// 
-	/// protected virtual void OnSpeedChange()
-	/// {
-	///     Debug.Log(_myCharacter.Speed.Value);
-	/// }
-	/// 
-	/// You can look at the MMObservableTest demo scene for an example of how it's used.
-	/// 
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public struct MMObservable<T>
+    /// <summary>
+    /// 이 구조체를 사용하면 관찰 가능한 속성을 선언할 수 있습니다.
+    /// 예를 들어 Character라는 클래스가 있고 속도를 다음과 같이 선언한다고 가정해 보겠습니다.
+    ///
+    /// public MMObservable<float> Speed;
+    ///
+    /// 그런 다음 다른 클래스에서 해당 속성(일반적으로 OnEnable)에 대한 OnValueChanged 이벤트에 등록할 수 있습니다.
+    /// 
+    /// protected virtual void OnEnable()
+    /// {
+    ///     _myCharacter.Speed.OnValueChanged += OnSpeedChange;
+    /// }
+    /// 
+    /// 다음과 같이 구독을 취소하세요.
+    /// 
+    /// protected virtual void OnDisable()
+    /// {
+    ///     _myCharacter.Speed.OnValueChanged -= OnSpeedChange;
+    /// }
+    /// 
+    /// 그런 다음 필요한 것은 해당 속도 변화를 처리하는 방법입니다.
+    /// 
+    /// protected virtual void OnSpeedChange()
+    /// {
+    ///     Debug.Log(_myCharacter.Speed.Value);
+    /// }
+    /// 
+    /// 사용 방법에 대한 예를 보려면 MMObservableTest 데모 장면을 볼 수 있습니다.
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public struct MMObservable<T>
 	{
 		public Action OnValueChanged;
 		public Action<T> OnValueChangedTo;

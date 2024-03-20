@@ -5,42 +5,42 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This class lets you record sequences via input presses
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMInputSequenceRecorder")]
+    /// <summary>
+    /// 이 클래스를 사용하면 입력 누르기를 통해 시퀀스를 기록할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Sequencing/MMInputSequenceRecorder")]
 	[ExecuteAlways]
 	public class MMInputSequenceRecorder : MonoBehaviour
 	{
 		[Header("Target")]
 		/// the target scriptable object to write to
-		[Tooltip("the target scriptable object to write to")]
+		[Tooltip("쓸 대상 스크립트 가능 객체")]
 		public MMSequence SequenceScriptableObject;
 
 		[Header("Recording")]
 		/// whether this recorder is recording right now or not
 		[MMFReadOnly]
-		[Tooltip("whether this recorder is recording right now or not")]
+		[Tooltip("이 녹음기가 지금 녹음 중인지 아닌지")]
 		public bool Recording;
 		/// whether any silence between the start of the recording and the first press should be removed or not
-		[Tooltip("whether any silence between the start of the recording and the first press should be removed or not")]
+		[Tooltip("녹음 시작과 첫 번째 누르기 사이의 무음을 제거해야 하는지 여부")]
 		public bool RemoveInitialSilence = true;
 		/// whether this recording should write on top of existing entries or not
-		[Tooltip("whether this recording should write on top of existing entries or not")]
+		[Tooltip("이 녹음이 기존 항목 위에 기록되어야 하는지 여부")]
 		public bool AdditiveRecording = false;
 		/// whether this recorder should start recording when entering play mode
-		[Tooltip("whether this recorder should start recording when entering play mode")]
+		[Tooltip("재생 모드에 들어갈 때 이 레코더가 녹음을 시작해야 하는지 여부")]
 		public bool StartRecordingOnGameStart = false;
 		/// the offset to apply to entries
-		[Tooltip("the offset to apply to entries")]
+		[Tooltip("항목에 적용할 오프셋")]
 		public float RecordingStartOffset = 0f;
 
 		[Header("Recorder Keys")]
 		/// the key binding for recording start
-		[Tooltip("the key binding for recording start")]
+		[Tooltip("녹음 시작을 위한 키 바인딩")]
 		public KeyCode StartRecordingHotkey = KeyCode.Home;
 		/// the key binding for recording stop
-		[Tooltip("the key binding for recording stop")]
+		[Tooltip("녹음 중지를 위한 키 바인딩")]
 		public KeyCode StopRecordingHotkey = KeyCode.End;
 
 		protected MMSequenceNote _note;

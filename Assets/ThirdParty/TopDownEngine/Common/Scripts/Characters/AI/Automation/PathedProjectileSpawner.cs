@@ -4,27 +4,27 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Spawns pathed projectiles
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Automation/PathedProjectileSpawner")]
+    /// <summary>
+    /// Spawns pathed 발사체
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Automation/PathedProjectileSpawner")]
 	public class PathedProjectileSpawner : TopDownMonoBehaviour 
 	{
-		[MMInformation("A GameObject with this component will spawn projectiles at the specified fire rate.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("이 구성 요소가 포함된 GameObject는 지정된 발사 속도로 발사체를 생성합니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the pathed projectile's destination
-		[Tooltip("the pathed projectile's destination")]
+		[Tooltip("경로가 지정된 발사체의 목적지")]
 		public Transform Destination;
 		/// the projectiles to spawn
-		[Tooltip("the projectiles to spawn")]
+		[Tooltip("스폰되는 발사체")]
 		public PathedProjectile Projectile;
 		/// the effect to instantiate at each spawn
-		[Tooltip("the effect to instantiate at each spawn")]
+		[Tooltip("각 생성 시 인스턴스화할 효과")]
 		public GameObject SpawnEffect;
 		/// the speed of the projectiles
-		[Tooltip("the speed of the projectiles")]
+		[Tooltip("발사체의 속도")]
 		public float Speed;
 		/// the frequency of the spawns
-		[Tooltip("the frequency of the spawns")]
+		[Tooltip("스폰의 빈도")]
 		public float FireRate;
 		
 		protected float _nextShotInSeconds;

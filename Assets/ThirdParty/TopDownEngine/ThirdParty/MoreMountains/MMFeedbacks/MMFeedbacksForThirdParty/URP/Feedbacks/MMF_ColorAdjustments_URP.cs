@@ -5,15 +5,15 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control color adjustments' post exposure, hue shift, saturation and contrast over time.
-	/// It requires you have in your scene an object with a Volume 
-	/// with Color Adjustments active, and a MMColorAdjustmentsShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control color adjustments' post exposure, hue shift, saturation and contrast over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Color Adjustments active, and a MMColorAdjustmentsShaker_URP component.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 색상 조정의 노출 후, 색조 변화, 채도 및 대비를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 색상 조정이 활성화되고 MMColorAdjustmentsShaker_URP 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 색상 조정의 노출 후, 색조 변화, 채도 및 대비를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"색상 조정이 활성화되어 있고 MMColorAdjustmentsShaker_URP 구성 요소가 있습니다.")]
 	#if MM_URP
 	[FeedbackPath("PostProcess/Color Adjustments URP")]
 	#endif

@@ -5,18 +5,18 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control HDRP lens distortion intensity over time. 
-	/// It requires you have in your scene an object with a Volume 
-	/// with Lens Distortion active, and a MMLensDistortionShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 HDRP 렌즈 왜곡 강도를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 렌즈 왜곡이 활성화되고 MMLensDistortionShaker_HDRP 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/Lens Distortion HDRP")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control HDRP lens distortion intensity over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Lens Distortion active, and a MMLensDistortionShaker_HDRP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 HDRP 렌즈 왜곡 강도를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"렌즈 왜곡이 활성화되고 MMLensDistortionShaker_HDRP 구성 요소가 포함되어 있습니다.")]
 	public class MMF_LensDistortion_HDRP : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

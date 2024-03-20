@@ -15,7 +15,7 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("Overlap Detection")]
 		/// the maximum amount of targets the overlap detection can acquire
-		[Tooltip("the maximum amount of targets the overlap detection can acquire")]
+		[Tooltip("중첩 감지가 획득할 수 있는 최대 대상 수")]
 		public int OverlapMaximum = 10;
         
 		protected Vector3 _aimDirection;

@@ -5,18 +5,18 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control HDRP vignette intensity over time.
-	/// It requires you have in your scene an object with a Volume 
-	/// with Vignette active, and a MMVignetteShaker_HDRP component.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따른 HDRP 비네트 강도를 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// Vignette가 활성화되어 있고 MMVignetteShaker_HDRP 구성 요소가 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/Vignette HDRP")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control vignette intensity over time. " +
-	              "It requires you have in your scene an object with a Volume " +
-	              "with Vignette active, and a MMVignetteShaker_HDRP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 비네팅 강도를 제어할 수 있습니다. " +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"Vignette가 활성화되어 있고 MMVignetteShaker_HDRP 구성 요소가 있습니다.")]
 	public class MMF_Vignette_HDRP : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

@@ -4,30 +4,30 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class allows for a 3D character to grab its current weapon's handles, and look wherever it's aiming.
-	/// There's a bit of setup involved. You need to have a CharacterHandleWeapon component on your character, it needs an animator with IKPass active (this is set in the Layers tab of the animator)
-	/// the animator's avatar MUST be set as humanoid
-	/// And you need to put that script on the same gameobject as the animator (otherwise it won't work). 
-	/// Finally, you need to set left and right handles (or only one of these) on your weapon(s). 
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Weapon IK")]
+    /// <summary>
+    /// 이 클래스를 사용하면 3D 캐릭터가 현재 무기의 핸들을 잡고 조준하는 곳을 볼 수 있습니다.
+    /// 약간의 설정이 필요합니다. 캐릭터에 CharacterHandleWeapon 구성 요소가 있어야 하며, IKPass가 활성화된 애니메이터가 필요합니다(이는 애니메이터의 레이어 탭에서 설정됨).
+    /// 애니메이터의 아바타는 반드시 휴머노이드로 설정되어야 합니다.
+    /// 그리고 해당 스크립트를 애니메이터와 동일한 게임 개체에 배치해야 합니다(그렇지 않으면 작동하지 않습니다).
+    /// 마지막으로 무기에 왼쪽 및 오른쪽 핸들(또는 둘 중 하나만)을 설정해야 합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Weapon IK")]
 	public class WeaponIK : TopDownMonoBehaviour
 	{
 		[Header("Bindings")]
 		/// The transform to use as a target for the left hand
-		[Tooltip("The transform to use as a target for the left hand")]
+		[Tooltip("왼손의 대상으로 사용할 변환")]
 		public Transform LeftHandTarget = null;
 		/// The transform to use as a target for the right hand
-		[Tooltip("The transform to use as a target for the right hand")]
+		[Tooltip("오른손의 대상으로 사용할 변환")]
 		public Transform RightHandTarget = null;
 
 		[Header("Attachments")]
 		/// whether or not to attach the left hand to its target
-		[Tooltip("whether or not to attach the left hand to its target")]
+		[Tooltip("왼손을 타겟에 붙일지 여부")]
 		public bool AttachLeftHand = true;
 		/// whether or not to attach the right hand to its target
-		[Tooltip("whether or not to attach the right hand to its target")]
+		[Tooltip("오른손을 타겟에 붙일지 여부")]
 		public bool AttachRightHand = true;
         
 		[Header("Head")]

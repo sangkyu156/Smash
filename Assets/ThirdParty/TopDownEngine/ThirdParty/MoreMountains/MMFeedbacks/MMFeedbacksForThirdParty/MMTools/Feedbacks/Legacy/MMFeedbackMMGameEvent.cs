@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will trigger a MMGameEvent of the specified name when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will trigger a MMGameEvent of the specified name when played")]
+    /// <summary>
+    /// 이 피드백은 재생 시 지정된 이름의 MMGameEvent를 트리거합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 재생 시 지정된 이름의 MMGameEvent를 트리거합니다.")]
 	[FeedbackPath("Events/MMGameEvent")]
 	public class MMFeedbackMMGameEvent : MMFeedback
 	{

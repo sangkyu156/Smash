@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback allows you to control one or more target MMF Players
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control one or more target MMF Players")]
+    /// <summary>
+    /// 이 피드백을 통해 하나 이상의 대상 MMF 플레이어를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 하나 이상의 대상 MMF 플레이어를 제어할 수 있습니다.")]
 	[FeedbackPath("Feedbacks/MMF Player Control")]
 	public class MMF_PlayerControl : MMF_Feedback
 	{
@@ -45,7 +45,7 @@ namespace MoreMountains.Feedbacks
 		[MMFInspectorGroup("MMF Player", true, 79)]
         
 		/// a list of target MMF_Players to play
-		[Tooltip("a specific MMFeedbacks / MMF_Player to play")]
+		[Tooltip("재생할 특정 MMFeedbacks / MMF_Player")]
 		public List<MMF_Player> TargetPlayers;
 
 		public Modes Mode = Modes.PlayFeedbacks;

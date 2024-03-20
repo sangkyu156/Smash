@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 using UnityEngine.UI;
 
 namespace MoreMountains.MMInterface
-{	
-	/// <summary>
-	/// A class to add to a button so that its sprite cycles through X sprites when pressed
-	/// </summary>
-	public class MMSpriteReplaceCycle : MonoBehaviour 
+{
+    /// <summary>
+    ///버튼을 눌렀을 때 스프라이트가 X 스프라이트를 순환하도록 버튼에 추가하는 클래스입니다.
+    /// </summary>
+    public class MMSpriteReplaceCycle : MonoBehaviour 
 	{
 		/// the list of sprites to cycle through
 		public Sprite[] Sprites;

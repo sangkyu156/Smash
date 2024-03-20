@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class stores MMSoundManager settings and lets you tweak them from the MMSoundManagerSettingsSO's inspector
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 이 클래스는 MMSoundManager 설정을 저장하고 MMSoundManagerSettingsSO의 검사기에서 해당 설정을 조정할 수 있게 해줍니다.
+    /// </summary>
+    [Serializable]
 	public class MMSoundManagerSettings
 	{
 		public const float _minimalVolume = 0.0001f;
@@ -100,7 +100,7 @@ namespace MoreMountains.Tools
 		[Tooltip("whether or not the MMSoundManager should automatically load settings when starting")]
 		public bool AutoLoad = true;
 		/// whether or not each change in the settings should be automaticall saved. If not, you'll have to call a save MMSoundManager event for settings to be saved.
-		[Tooltip("whether or not each change in the settings should be automaticall saved. If not, you'll have to call a save MMSoundManager event for settings to be saved.")]
+		[Tooltip("설정의 각 변경 사항을 자동으로 저장할지 여부입니다. 그렇지 않은 경우 설정을 저장하려면 save MMSoundManager 이벤트를 호출해야 합니다.")]
 		public bool AutoSave = false;
 	}
 }

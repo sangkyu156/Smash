@@ -5,16 +5,16 @@ using System;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// The formulas described here are (loosely) based on Robert Penner's easing equations http://robertpenner.com/easing/
-	/// </summary>
+    /// <summary>
+    /// 여기에 설명된 공식은 (느슨하게) Robert Penner의 완화 방정식(http://robertpenner.com/easing/)을 기반으로 합니다.
+    /// </summary>
 
-	public class MMTween : MonoBehaviour
+    public class MMTween : MonoBehaviour
 	{
-		/// <summary>
-		/// A list of all the possible curves you can tween a value along
-		/// </summary>
-		public enum MMTweenCurve
+        /// <summary>
+        /// 값을 트위닝할 수 있는 가능한 모든 곡선 목록
+        /// </summary>
+        public enum MMTweenCurve
 		{
 			LinearTween,        
 			EaseInQuadratic,    EaseOutQuadratic,   EaseInOutQuadratic,

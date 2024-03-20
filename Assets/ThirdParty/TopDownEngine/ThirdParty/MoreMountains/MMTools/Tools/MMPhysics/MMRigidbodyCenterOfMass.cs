@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a Rigidbody or Rigidbody2D to be able to edit its center of mass from the inspector directly
-	/// </summary>
-	public class MMRigidbodyCenterOfMass : MonoBehaviour
+    /// <summary>
+    /// 인스펙터에서 질량 중심을 직접 편집할 수 있도록 이 클래스를 Rigidbody 또는 Rigidbody2D에 추가하세요.
+    /// </summary>
+    public class MMRigidbodyCenterOfMass : MonoBehaviour
 	{
 		/// the possible modes this class can start on
 		public enum AutomaticSetModes { Awake, Start, ScriptOnly }

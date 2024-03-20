@@ -8,10 +8,10 @@ namespace MoreMountains.Feedbacks
 	/// the possible states for sequence notes
 	public enum MMSequenceTrackStates { Idle, Down, Up }
 
-	/// <summary>
-	/// A class describing the contents of a sequence note, basically a timestamp and the ID to play at that timestamp
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 시퀀스 노트의 내용, 기본적으로 타임스탬프와 해당 타임스탬프에서 재생할 ID를 설명하는 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMSequenceNote
 	{
 		public float Timestamp;
@@ -26,10 +26,10 @@ namespace MoreMountains.Feedbacks
 		}
 	}
 
-	/// <summary>
-	/// A class describing the properties of a sequence's track : ID, color (for the inspector), Key (for the recorder), State (for the recorder)
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 시퀀스 트랙의 속성을 설명하는 클래스: ID, 색상(검사기용), 키(리코더용), 상태(리코더용)
+    /// </summary>
+    [System.Serializable]
 	public class MMSequenceTrack
 	{
 		public int ID = 0;
@@ -55,48 +55,48 @@ namespace MoreMountains.Feedbacks
 		}
 	}
 
-	/// <summary>
-	/// A class used to store sequence notes
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// 시퀀스 노트를 저장하는 데 사용되는 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMSequenceList
 	{
 		public List<MMSequenceNote> Line;
 	}
 
-	/// <summary>
-	/// This scriptable object holds "sequences", data used to record and play events in sequence
-	/// MMSequences can be played by MMFeedbacks from their Timing section, by Sequencers and potentially other classes
-	/// </summary>
-	[CreateAssetMenu(menuName = "MoreMountains/Sequencer/MMSequence")]
+    /// <summary>
+    /// 이 스크립팅 가능한 객체에는 이벤트를 순차적으로 기록하고 재생하는 데 사용되는 데이터인 "시퀀스"가 들어 있습니다.
+    /// MMS시퀀스는 타이밍 섹션의 MMFeedback, 시퀀서 및 잠재적으로 다른 클래스에 의해 재생될 수 있습니다.
+    /// </summary>
+    [CreateAssetMenu(menuName = "MoreMountains/Sequencer/MMSequence")]
 	public class MMSequence : ScriptableObject
 	{
 		[Header("Sequence")]
 		/// the length (in seconds) of the sequence
-		[Tooltip("the length (in seconds) of the sequence")]
+		[Tooltip("시퀀스의 길이(초)")]
 		[MMFReadOnly]
 		public float Length;
 		/// the original sequence (as outputted by the input sequence recorder)
-		[Tooltip("the original sequence (as outputted by the input sequence recorder)")]
+		[Tooltip("원본 시퀀스(입력 시퀀스 레코더에서 출력됨)")]
 		public MMSequenceList OriginalSequence;
 		/// the duration in seconds to apply after the last input
-		[Tooltip("the duration in seconds to apply after the last input")]
+		[Tooltip("마지막 입력 이후 적용되는 기간(초)")]
 		public float EndSilenceDuration = 0f;
 
 		[Header("Sequence Contents")]
 		/// the list of tracks for this sequence
-		[Tooltip("the list of tracks for this sequence")]
+		[Tooltip("이 시퀀스의 트랙 목록")]
 		public List<MMSequenceTrack> SequenceTracks;
 
 		[Header("Quantizing")]
 		/// whether this sequence should be used in quantized form or not
-		[Tooltip("whether this sequence should be used in quantized form or not")]
+		[Tooltip("이 시퀀스를 양자화 형식으로 사용해야 하는지 여부")]
 		public bool Quantized;
 		/// the target BPM for this sequence
-		[Tooltip("the target BPM for this sequence")]
+		[Tooltip("이 시퀀스의 목표 BPM")]
 		public int TargetBPM = 120;
 		/// the contents of the quantized sequence
-		[Tooltip("the contents of the quantized sequence")]
+		[Tooltip("양자화된 시퀀스의 내용")]
 		public List<MMSequenceList> QuantizedSequence;
         
 		[Space]

@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class to a UI slider and it'll let you trigger events when the cursor moves past a certain step
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/GUI/MMSliderStep")]
+    /// <summary>
+    /// 이 클래스를 UI 슬라이더에 추가하면 커서가 특정 단계를 지나갈 때 이벤트를 트리거할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/GUI/MMSliderStep")]
 	[RequireComponent(typeof(Slider))]
 	public class MMSliderStep : MonoBehaviour
 	{

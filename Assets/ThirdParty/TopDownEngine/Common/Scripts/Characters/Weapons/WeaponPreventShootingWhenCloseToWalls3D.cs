@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a weapon and it'll prevent shooting when close to an obstacle (as defined by the ObstacleLayerMask)
-	/// </summary>
-	[RequireComponent(typeof(Weapon))]
+    /// <summary>
+    /// 이 클래스를 무기에 추가하면 장애물에 가까울 때 사격을 방지합니다(ObstacleLayerMask에 의해 정의됨).
+    /// </summary>
+    [RequireComponent(typeof(Weapon))]
 	[AddComponentMenu("TopDown Engine/Weapons/Weapon Prevent Shooting when Close to Walls 3D")]
 	public class WeaponPreventShootingWhenCloseToWalls3D : WeaponPreventShooting
 	{
 		[Header("Raycast Settings")]
 		/// the angle to consider when deciding whether or not there's a wall in front of the weapon (usually 5 degrees is fine)
-		[Tooltip("the angle to consider when deciding whether or not there's a wall in front of the weapon (usually 5 degrees is fine)")]
+		[Tooltip("무기 앞에 벽이 있는지 없는지 판단할 때 고려해야 할 각도(보통 5도 정도가 적당함)")]
 		public float Angle = 5f;
 		/// the max distance to the wall we want to prevent shooting from
-		[Tooltip("the max distance to the wall we want to prevent shooting from")]
+		[Tooltip("총격을 방지하려는 벽까지의 최대 거리")]
 		public float Distance = 2f;
 		/// the offset to apply to the detection (in addition and relative to the weapon's position)
-		[Tooltip("the offset to apply to the detection (in addition and relative to the weapon's position)")]
+		[Tooltip("탐지에 적용할 오프셋(무기 위치에 추가로)")]
 		public Vector3 RaycastOriginOffset = Vector3.zero;
 		/// the layers to consider as obstacles
-		[Tooltip("the layers to consider as obstacles")]
+		[Tooltip("장애물로 간주되는 레이어")]
 		public LayerMask ObstacleLayerMask = LayerManager.ObstaclesLayerMask;
 
 		protected RaycastHit _hitLeft;

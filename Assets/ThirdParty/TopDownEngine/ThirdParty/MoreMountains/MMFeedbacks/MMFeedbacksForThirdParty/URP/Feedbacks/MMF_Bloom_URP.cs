@@ -5,12 +5,12 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control bloom intensity and threshold over time. It requires you have in your scene an object with a Volume with Bloom active, and a MMBloomShaker_URP component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control bloom intensity and threshold over time. It requires you have in your scene an object with a Volume " +
-	              "with Bloom active, and a MMBloomShaker_URP component.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 블룸 강도와 임계값을 제어할 수 있습니다. 이를 위해서는 장면에 Bloom이 활성화된 볼륨이 있는 객체와 MMBloomShaker_URP 구성 요소가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 블룸 강도와 임계값을 제어할 수 있습니다. 장면에 볼륨이 있는 객체가 있어야 합니다. " +
+"블룸이 활성화되어 있고 MMBloomShaker_URP 구성 요소가 있습니다.")]
 	#if MM_URP
 	[FeedbackPath("PostProcess/Bloom URP")]
 	#endif

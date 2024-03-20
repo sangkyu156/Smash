@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// The 2D version of the WeaponAutoAim, meant to be used on objects equipped with a WeaponAim2D.
-	/// It'll detect targets within the defined radius, pick the closest, and force the WeaponAim component to aim at them if a target is found
-	/// </summary>
-	[RequireComponent(typeof(WeaponAim2D))]
+    /// <summary>
+    /// WeaponAutoAim의 2D 버전으로, WeaponAim2D가 장착된 개체에 사용됩니다.
+    /// 정의된 반경 내의 대상을 감지하고 가장 가까운 것을 선택하고 대상이 발견되면 WeaponAim 구성 요소가 해당 대상을 조준하도록 강제합니다.
+    /// </summary>
+    [RequireComponent(typeof(WeaponAim2D))]
 	[AddComponentMenu("TopDown Engine/Weapons/Weapon Auto Aim 2D")]
 	public class WeaponAutoAim2D : WeaponAutoAim
 	{
 		/// the maximum amount of targets the overlap detection can acquire
-		[Tooltip("the maximum amount of targets the overlap detection can acquire")]
+		[Tooltip("중첩 감지가 획득할 수 있는 최대 대상 수")]
 		public int OverlapMaximum = 10;
         
 		protected CharacterOrientation2D _orientation2D;

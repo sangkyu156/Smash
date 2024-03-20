@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to broadcast a level to MMRadioReceiver(s), either directly or via events
-	/// It can read from pretty much any value on any class
-	/// </summary>
-	[MMRequiresConstantRepaint]
+    /// <summary>
+    /// 직접적으로 또는 이벤트를 통해 MMRadioReceiver에 레벨을 브로드캐스트하는 데 사용되는 클래스
+    /// 모든 클래스의 거의 모든 값을 읽을 수 있습니다.
+    /// </summary>
+    [MMRequiresConstantRepaint]
 	public class MMRadioBroadcaster : MMMonoBehaviour
 	{
 		[Header("Source")]

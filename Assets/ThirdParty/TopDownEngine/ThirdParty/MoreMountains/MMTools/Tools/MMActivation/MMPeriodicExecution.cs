@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class will let you trigger a OnRandomInterval event periodically, at random intervals
-	/// </summary>
-	public class MMPeriodicExecution : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 사용하면 OnRandomInterval 이벤트를 무작위 간격으로 주기적으로 트리거할 수 있습니다.
+    /// </summary>
+    public class MMPeriodicExecution : MonoBehaviour
 	{
 		/// the min and max duration of the interval between two events, in seconds
 		[MMVector("Min", "Max")]

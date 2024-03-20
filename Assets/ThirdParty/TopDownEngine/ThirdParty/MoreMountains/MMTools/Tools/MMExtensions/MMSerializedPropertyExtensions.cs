@@ -9,10 +9,10 @@ using UnityEditor;
  
 namespace MoreMountains.Tools 
 {
-	/// <summary>
-	/// Serialized property extensions
-	/// </summary>
-	public static class MMSerializedPropertyExtensions 
+    /// <summary>
+    /// Serialized property 확장
+    /// </summary>
+    public static class MMSerializedPropertyExtensions 
 	{
 		#if UNITY_EDITOR
 		/// <summary>

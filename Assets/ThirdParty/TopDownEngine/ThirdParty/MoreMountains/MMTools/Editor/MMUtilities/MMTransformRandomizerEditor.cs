@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the MMTransformRandomizer class
-	/// </summary>
-	[CustomEditor(typeof(MMTransformRandomizer), true)]
+    /// <summary>
+    /// MMTransformRandomizer 클래스용 사용자 정의 편집기
+    /// </summary>
+    [CustomEditor(typeof(MMTransformRandomizer), true)]
 	[CanEditMultipleObjects]
 	public class MMTransformRandomizerEditor : Editor
 	{

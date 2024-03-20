@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the cutoff frequency of a high pass filter. You'll need a MMAudioFilterHighPassShaker on your filter.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 통해 하이 패스 필터의 차단 주파수를 제어할 수 있습니다. 필터에 MMAudioFilterHighPassShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/Audio Filter High Pass")]
-	[FeedbackHelp("This feedback lets you control a high pass audio filter over time. You'll need a MMAudioFilterHighPassShaker on your filter.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따른 하이패스 오디오 필터를 제어할 수 있습니다. 필터에 MMAudioFilterHighPassShaker가 필요합니다.")]
 	public class MMF_AudioFilterHighPass : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -36,10 +36,10 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("whether or not to reset the target's values after shake")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeHighPass = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeHighPass = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
 		[Range(10f, 22000f)]

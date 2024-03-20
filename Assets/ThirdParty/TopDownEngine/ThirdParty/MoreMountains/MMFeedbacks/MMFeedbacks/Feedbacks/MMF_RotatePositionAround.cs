@@ -6,11 +6,11 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will animate the target's position (not its rotation), on an arc around the specified rotation center, for the specified duration (in seconds).
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will animate the target's position (not its rotation), on an arc around the specified rotation center, for the specified duration (in seconds).")]
+    /// <summary>
+    /// 이 피드백은 지정된 기간(초) 동안 지정된 회전 중심 주위의 호에서 대상의 위치(회전 아님)에 애니메이션을 적용합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 지정된 기간(초) 동안 지정된 회전 중심 주위의 호에서 대상의 위치(회전 아님)에 애니메이션을 적용합니다.")]
 	[FeedbackPath("Transform/Rotate Position Around")]
 	public class MMF_RotatePositionAround : MMF_Feedback
 	{
@@ -31,15 +31,15 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Animation Targets", true, 61, true)]
 		/// the object whose rotation you want to animate
-		[Tooltip("the object whose rotation you want to animate")]
+		[Tooltip("회전을 애니메이션화하려는 객체")]
 		public Transform AnimateRotationTarget;
 		/// the object around which to rotate AnimateRotationTarget
-		[Tooltip("the object around which to rotate AnimateRotationTarget")]
+		[Tooltip("AnimateRotationTarget을 회전할 객체")]
 		public Transform AnimateRotationCenter;
 		
 		[MMFInspectorGroup("Transition", true, 63)]
 		/// the duration of the transition
-		[Tooltip("the duration of the transition")]
+		[Tooltip("전환 기간")]
 		public float AnimateRotationDuration = 0.2f;
 		/// the value to remap the curve's 0 value to
 		[Tooltip("the value to remap the curve's 0 value to")]
@@ -48,31 +48,31 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the value to remap the curve's 1 value to")]
 		public float RemapCurveOne = 180f;
 		/// if this is true, should animate movement on the X axis
-		[Tooltip("if this is true, should animate movement on the X axis")]
+		[Tooltip("이것이 사실이라면 X축의 움직임을 애니메이션화해야 합니다.")]
 		public bool AnimateX = false;
 		/// how the x part of the movement should animate over time, in degrees
-		[Tooltip("how the x part of the movement should animate over time, in degrees")]
+		[Tooltip("시간이 지남에 따라 움직임의 x 부분이 각도 단위로 애니메이션되는 방식")]
 		[MMCondition("AnimateX", true)]
 		public AnimationCurve AnimateRotationX = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate movement on the Y axis
-		[Tooltip("if this is true, should animate movement on the Y axis")]
+		[Tooltip("이것이 사실이라면 y축의 움직임을 애니메이션화해야 합니다.")]
 		public bool AnimateY = true;
 		/// how the y part of the rotation should animate over time, in degrees
-		[Tooltip("how the y part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 y 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMCondition("AnimateY", true)]
 		public AnimationCurve AnimateRotationY = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate movement on the Z axis
-		[Tooltip("if this is true, should animate movement on the Z axis")]
+		[Tooltip("이것이 사실이라면 z축의 움직임을 애니메이션화해야 합니다.")]
 		public bool AnimateZ = false;
 		/// how the z part of the rotation should animate over time, in degrees
-		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 z 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMCondition("AnimateZ", true)]
 		public AnimationCurve AnimateRotationZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, initial and destination rotations will be recomputed on every play
-		[Tooltip("if this is true, initial and destination rotations will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 및 대상 회전이 다시 계산됩니다.")]
 		public bool DetermineRotationOnPlay = false;
         
 		/// the duration of this feedback is the duration of the rotation

@@ -8,20 +8,20 @@ using UnityEngine.InputSystem;
 #endif
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// The possible directions a swipe can have
-	/// </summary>
-	public enum MMPossibleSwipeDirections { Up, Down, Left, Right }
+{
+    /// <summary>
+    /// 스와이프로 가능한 방향
+    /// </summary>
+    public enum MMPossibleSwipeDirections { Up, Down, Left, Right }
 
 
 	[System.Serializable]
 	public class SwipeEvent : UnityEvent<MMSwipeEvent> {}
 
-	/// <summary>
-	/// An event usually triggered when a swipe happens. It contains the swipe "base" direction, and detailed information if needed (angle, length, origin and destination
-	/// </summary>
-	public struct MMSwipeEvent
+    /// <summary>
+    /// 일반적으로 스와이프가 발생할 때 트리거되는 이벤트입니다. 여기에는 스와이프 "기본" 방향과 필요한 경우 자세한 정보(각도, 길이, 출발지 및 목적지)가 포함되어 있습니다.
+    /// </summary>
+    public struct MMSwipeEvent
 	{
 		public MMPossibleSwipeDirections SwipeDirection;
 		public float SwipeAngle;
@@ -61,31 +61,31 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// Add a swipe manager to your scene, and it'll trigger MMSwipeEvents everytime a swipe happens. From its inspector you can determine the minimal length of a swipe. Shorter swipes will be ignored
-	/// </summary>
-	[RequireComponent(typeof(RectTransform))]
+    /// <summary>
+    /// 스와이프 관리자를 장면에 추가하면 스와이프가 발생할 때마다 MMSwipeEvents가 트리거됩니다. 검사기에서 스와이프의 최소 길이를 결정할 수 있습니다. 더 짧은 스와이프는 무시됩니다.
+    /// </summary>
+    [RequireComponent(typeof(RectTransform))]
 	[AddComponentMenu("More Mountains/Tools/Controls/MMSwipeZone")]
 	public class MMSwipeZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 	{
 		/// the minimal length of a swipe
-		[Tooltip("the minimal length of a swipe")]
+		[Tooltip("스와이프의 최소 길이")]
 		public float MinimalSwipeLength = 50f;
 		/// the maximum press length of a swipe
-		[Tooltip("the maximum press length of a swipe")]
+		[Tooltip("t스와이프의 최대 누름 길이")]
 		public float MaximumPressLength = 10f;
 
 		/// The method(s) to call when the zone is swiped
-		[Tooltip("The method(s) to call when the zone is swiped")]
+		[Tooltip("영역을 스와이프할 때 호출할 메서드")]
 		public SwipeEvent ZoneSwiped;
 		/// The method(s) to call while the zone is being pressed
-		[Tooltip("The method(s) to call while the zone is being pressed")]
+		[Tooltip("영역을 누르고 있는 동안 호출할 메서드")]
 		public UnityEvent ZonePressed;
 
 		[Header("Mouse Mode")]
-		[MMInformation("If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better for touch input).", MMInformationAttribute.InformationType.Info,false)]
+		[MMInformation("이를 true로 설정하면 실제로 버튼을 눌러야 트리거됩니다. 그렇지 않으면 간단한 호버만으로 트리거됩니다(터치 입력에 더 좋음).", MMInformationAttribute.InformationType.Info,false)]
 		/// If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better for touch input).
-		[Tooltip("If you set this to true, you'll need to actually press the button for it to be triggered, otherwise a simple hover will trigger it (better for touch input).")]
+		[Tooltip("이를 true로 설정하면 실제로 버튼을 눌러야 트리거됩니다. 그렇지 않으면 간단한 호버만으로 트리거됩니다(터치 입력에 더 좋음).")]
 		public bool MouseMode = false;
 
 		protected Vector2 _firstTouchPosition;

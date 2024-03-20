@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class lets you randomly spawn objects within its bounds (defined by a 3D collider)
-	/// </summary>
-	[RequireComponent(typeof(Collider))]
+    /// <summary>
+    /// 이 클래스를 사용하면 해당 경계(3D 충돌기로 정의됨) 내에서 객체를 무작위로 생성할 수 있습니다.
+    /// </summary>
+    [RequireComponent(typeof(Collider))]
 	public class MMRandomBoundsInstantiator : MonoBehaviour
 	{
 		/// the possible start modes

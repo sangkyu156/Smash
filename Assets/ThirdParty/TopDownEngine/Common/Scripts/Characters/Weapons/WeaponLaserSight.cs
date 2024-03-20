@@ -4,10 +4,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a weapon and it'll project a laser ray towards the direction the weapon is facing
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Weapons/Weapon Laser Sight")]
+    /// <summary>
+    /// 이 클래스를 무기에 추가하면 무기가 향하는 방향으로 레이저 광선을 투사합니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Weapons/Weapon Laser Sight")]
 	public class WeaponLaserSight : TopDownMonoBehaviour 
 	{
 		/// the possible modes this weapon laser sight can run on, 3D by default
@@ -16,38 +16,38 @@ namespace MoreMountains.TopDownEngine
 		[Header("General Settings")]
 
 		/// whether this laser should work in 2D or 3D
-		[Tooltip("whether this laser should work in 2D or 3D")]
+		[Tooltip("이 레이저가 2D에서 작동해야 하는지 아니면 3D에서 작동해야 하는지 여부")]
 		public Modes Mode = Modes.ThreeD;
 		/// if this is false, raycasts won't be computed for this laser sight
-		[Tooltip("if this is false, raycasts won't be computed for this laser sight")]
+		[Tooltip("이것이 거짓이면 이 레이저 시력에 대해 레이캐스트가 계산되지 않습니다.")]
 		public bool PerformRaycast = true;
 		/// if this is false, the laser won't be drawn
 		[MMCondition("PerformRaycast")]
-		[Tooltip("if this is false, the laser won't be drawn")]
+		[Tooltip("이것이 거짓이면 레이저가 그려지지 않습니다.")]
 		public bool DrawLaser = true;
 
 		[Header("Raycast Settings")]
 
 		/// the origin of the raycast used to detect obstacles
-		[Tooltip("the origin of the raycast used to detect obstacles")]
+		[Tooltip("장애물을 감지하는 데 사용되는 레이캐스트의 출처")]
 		public Vector3 RaycastOriginOffset;
 		/// the origin of the visible laser
-		[Tooltip("the origin of the visible laser")]
+		[Tooltip("가시광선 레이저의 기원")]
 		public Vector3 LaserOriginOffset;
 		/// the maximum distance to which we should draw the laser
-		[Tooltip("the maximum distance to which we should draw the laser")]
+		[Tooltip("레이저를 끌어야 하는 최대 거리")]
 		public float LaserMaxDistance = 50;
 		/// the collision mask containing all layers that should stop the laser
-		[Tooltip("the collision mask containing all layers that should stop the laser")]
+		[Tooltip("레이저를 멈춰야 하는 모든 레이어를 포함하는 충돌 마스크")]
 		public LayerMask LaserCollisionMask;
 
 		[Header("Laser")]
 
 		/// the width of the laser
-		[Tooltip("the width of the laser")]
+		[Tooltip("레이저의 폭")]
 		public Vector2 LaserWidth = new Vector2(0.05f, 0.05f);
 		/// the material used to render the laser
-		[Tooltip("the material used to render the laser")]
+		[Tooltip("레이저를 렌더링하는 데 사용되는 재료")]
 		public Material LaserMaterial;
 
 		public LineRenderer _line { get; protected set; }

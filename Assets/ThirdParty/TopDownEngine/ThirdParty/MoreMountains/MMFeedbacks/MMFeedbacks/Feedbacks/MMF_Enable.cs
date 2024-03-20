@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Turns an object active or inactive at the various stages of the feedback
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to change the state of a behaviour on a target gameobject from active to inactive (or the opposite), on init, play, stop or reset. " +
-	              "For each of these you can specify if you want to force a state (enabled or disabled), or toggle it (enabled becomes disabled, disabled becomes enabled).")]
+    /// <summary>
+    /// 피드백의 다양한 단계에서 객체를 활성화 또는 비활성화합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 게임 개체의 동작 상태를 활성에서 비활성(또는 그 반대로), 초기화, 재생, 중지 또는 재설정 시 변경할 수 있습니다. " +
+"각각에 대해 상태를 강제로 적용할지(활성화 또는 비활성화) 또는 토글할지(활성화는 비활성화, 비활성화는 활성화) 지정할 수 있습니다.")]
 	[FeedbackPath("GameObject/Enable Behaviour")]
 	public class MMF_Enable : MMF_Feedback
 	{
@@ -28,13 +28,13 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Enable Target Monobehaviour", true, 86, true)]
 		/// the gameobject we want to change the active state of
-		[Tooltip("the gameobject we want to change the active state of")]
+		[Tooltip("활성 상태를 변경하려는 게임 개체")]
 		public Behaviour TargetBehaviour;
 		/// a list of extra gameobjects we want to change the active state of
-		[Tooltip("a list of extra gameobjects we want to change the active state of")]
+		[Tooltip("활성 상태를 변경하려는 추가 게임 개체 목록")]
 		public List<Behaviour> ExtraTargetBehaviours;
 		/// whether or not we should alter the state of the target object on init
-		[Tooltip("whether or not we should alter the state of the target object on init")]
+		[Tooltip("초기화 시 대상 객체의 상태를 변경해야 하는지 여부")]
 		public bool SetStateOnInit = false;
 		/// how to change the state on init
 		[MMFCondition("SetStateOnInit", true)]
@@ -58,7 +58,7 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("whether or not we should alter the state of the target object on reset")]
 		public bool SetStateOnReset = false;
 		/// how to change the state on reset
-		[Tooltip("how to change the state on reset")]
+		[Tooltip("재설정 시 상태를 변경하는 방법")]
 		[MMFCondition("SetStateOnReset", true)]
 		public PossibleStates StateOnReset = PossibleStates.Disabled;
 

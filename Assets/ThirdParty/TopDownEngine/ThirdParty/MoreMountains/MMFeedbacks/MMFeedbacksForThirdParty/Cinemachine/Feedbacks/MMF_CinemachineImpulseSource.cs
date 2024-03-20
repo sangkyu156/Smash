@@ -10,7 +10,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 	#if MM_CINEMACHINE
 	[FeedbackPath("Camera/Cinemachine Impulse Source")]
 	#endif
-	[FeedbackHelp("This feedback lets you generate an impulse on a Cinemachine Impulse source. You'll need a Cinemachine Impulse Listener on your camera for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 Cinemachine Impulse 소스에 임펄스를 생성할 수 있습니다. 이 작업을 수행하려면 카메라에 Cinemachine Impulse Listener가 필요합니다.")]
 	public class MMF_CinemachineImpulseSource : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -29,7 +29,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMFInspectorGroup("Cinemachine Impulse Source", true, 28)]
 
 		/// the velocity to apply to the impulse shake
-		[Tooltip("the velocity to apply to the impulse shake")]
+		[Tooltip("충격 흔들림에 적용할 속도")]
 		public Vector3 Velocity = new Vector3(1f,1f,1f);
 		#if MM_CINEMACHINE
 			/// the impulse definition to broadcast
@@ -40,7 +40,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 			protected override void AutomateTargetAcquisition() => ImpulseSource = FindAutomatedTarget<CinemachineImpulseSource>();
 		#endif
 		/// whether or not to clear impulses (stopping camera shakes) when the Stop method is called on that feedback
-		[Tooltip("whether or not to clear impulses (stopping camera shakes) when the Stop method is called on that feedback")]
+		[Tooltip("해당 피드백에 대해 Stop 메소드가 호출될 때 자극을 제거할지(카메라 흔들림 중지) 여부")]
 		public bool ClearImpulseOnStop = false;
         
 		protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)

@@ -6,14 +6,15 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this feedback to play a .haptic clip, optionally randomizing its level and frequency
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// .haptic 클립을 재생하려면 이 피드백을 추가하고 선택적으로 레벨과 빈도를 무작위로 지정합니다.
+
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
 	[FeedbackPath("Haptics/Haptic Clip")]
 	#endif
-	[FeedbackHelp("This feedback will let you play a haptic clip, and randomize its level and frequency.")]
+	[FeedbackHelp("이 피드백을 사용하면 햅틱 클립을 재생하고 해당 클립의 레벨과 주파수를 무작위로 지정할 수 있습니다.")]
 	public class MMF_NVClip : MMF_Feedback
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

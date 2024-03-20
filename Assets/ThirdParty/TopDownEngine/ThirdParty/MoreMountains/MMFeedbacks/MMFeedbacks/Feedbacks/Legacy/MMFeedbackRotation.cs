@@ -5,11 +5,11 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback animates the rotation of the specified object when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will animate the target's rotation on the 3 specified animation curves (one per axis), for the specified duration (in seconds).")]
+    /// <summary>
+    /// 이 피드백은 재생 시 지정된 개체의 회전에 애니메이션을 적용합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 지정된 기간(초) 동안 지정된 3개의 애니메이션 곡선(축당 하나)에서 대상의 회전을 애니메이션화합니다.")]
 	[FeedbackPath("Transform/Rotation")]
 	public class MMFeedbackRotation : MMFeedback
 	{
@@ -27,21 +27,21 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Rotation Target")]
 		/// the object whose rotation you want to animate
-		[Tooltip("the object whose rotation you want to animate")]
+		[Tooltip("회전을 애니메이션화하려는 객체")]
 		public Transform AnimateRotationTarget;
 
 		[Header("Animation")]
 		/// whether this feedback should animate in absolute values or additive
-		[Tooltip("whether this feedback should animate in absolute values or additive")]
+		[Tooltip("이 피드백이 절대값으로 애니메이션되어야 하는지 아니면 추가로 애니메이션되어야 하는지 여부")]
 		public Modes Mode = Modes.Absolute;
 		/// whether this feedback should play in scaled or unscaled time
-		[Tooltip("whether this feedback should play in scaled or unscaled time")]
+		[Tooltip("이 피드백이 확장된 시간에 재생되어야 하는지 또는 확장되지 않은 시간에 재생되어야 하는지 여부")]
 		public TimeScales TimeScale = TimeScales.Scaled;
 		/// whether this feedback should play on local or world rotation
-		[Tooltip("whether this feedback should play on local or world rotation")]
+		[Tooltip("이 피드백이 로컬 또는 월드 회전에서 재생되어야 하는지 여부")]
 		public Space RotationSpace = Space.World;
 		/// the duration of the transition
-		[Tooltip("the duration of the transition")]
+		[Tooltip("전환 기간")]
 		public float AnimateRotationDuration = 0.2f;
 		/// the value to remap the curve's 0 value to
 		[Tooltip("the value to remap the curve's 0 value to")]
@@ -52,7 +52,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public float RemapCurveOne = 360f;
 		/// if this is true, should animate the X rotation
-		[Tooltip("if this is true, should animate the X rotation")]
+		[Tooltip("이것이 사실이라면 X 회전에 애니메이션을 적용해야 합니다")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public bool AnimateX = true;
 		/// how the x part of the rotation should animate over time, in degrees
@@ -72,27 +72,27 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public bool AnimateZ = true;
 		/// how the z part of the rotation should animate over time, in degrees
-		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
+		[Tooltip("회전의 z 부분이 시간에 따라 어떻게 애니메이션화되어야 하는지(도 단위)")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
 		public AnimationCurve AnimateRotationZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, initial and destination rotations will be recomputed on every play
-		[Tooltip("if this is true, initial and destination rotations will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 및 대상 회전이 다시 계산됩니다.")]
 		public bool DetermineRotationOnPlay = false;
         
 		[Header("To Destination")]
 		/// the space in which the ToDestination mode should operate 
-		[Tooltip("the space in which the ToDestination mode should operate")]
+		[Tooltip("ToDestination 모드가 동작해야 하는 공간")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public Space ToDestinationSpace = Space.World;
 		/// the angles to match when in ToDestination mode
-		[Tooltip("the angles to match when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 일치시킬 각도")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public Vector3 DestinationAngles = new Vector3(0f, 180f, 0f);
 		/// the animation curve to use when animating to destination (individual x,y,z curves above won't be used)
-		[Tooltip("the animation curve to use when animating to destination (individual x,y,z curves above won't be used)")]
+		[Tooltip("대상으로 애니메이션을 적용할 때 사용할 애니메이션 곡선(위의 개별 x, y, z 곡선은 사용되지 않음)")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
         

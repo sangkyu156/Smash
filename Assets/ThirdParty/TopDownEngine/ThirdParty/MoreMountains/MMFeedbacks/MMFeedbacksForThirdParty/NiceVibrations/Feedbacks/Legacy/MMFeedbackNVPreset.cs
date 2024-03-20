@@ -6,14 +6,14 @@ using Lofelt.NiceVibrations;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Use this feedback to play a preset haptic, limited but super simple predifined haptic patterns
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하여 사전 설정된 햅틱, 제한적이지만 매우 간단한 사전 정의된 햅틱 패턴을 재생합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED
 	[FeedbackPath("Haptics/Haptic Preset")]
 	#endif
-	[FeedbackHelp("Use this feedback to play a preset haptic, limited but super simple predifined haptic patterns")]
+	[FeedbackHelp("이 피드백을 사용하여 사전 설정된 햅틱, 제한적이지만 매우 간단한 사전 정의된 햅틱 패턴을 재생합니다.")]
 	public class MMFeedbackNVPreset : MMFeedback
 	{
 		#if MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED

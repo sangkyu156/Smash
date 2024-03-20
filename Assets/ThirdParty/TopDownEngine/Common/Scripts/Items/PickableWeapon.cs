@@ -4,18 +4,18 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a collectible to have the player change weapon when collecting it
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Items/Pickable Weapon")]
+    /// <summary>
+    /// 플레이어가 수집할 때 무기를 변경하도록 하려면 이 클래스를 수집품에 추가하세요.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Items/Pickable Weapon")]
 	public class PickableWeapon : PickableItem
 	{
 		[Header("Pickable Weapon")]
 		/// the new weapon the player gets when collecting this object
-		[Tooltip("the new weapon the player gets when collecting this object")]
+		[Tooltip("이 개체를 수집할 때 플레이어가 얻는 새로운 무기")]
 		public Weapon WeaponToGive;
 		/// the ID of the CharacterHandleWeapon ability you want this weapon to go to (1 by default)
-		[Tooltip("the ID of the CharacterHandleWeapon ability you want this weapon to go to (1 by default)")]
+		[Tooltip("이 무기로 이동하려는 CharacterHandleWeapon 능력의 ID(기본값은 1)")]
 		public int HandleWeaponID = 1;
 
 

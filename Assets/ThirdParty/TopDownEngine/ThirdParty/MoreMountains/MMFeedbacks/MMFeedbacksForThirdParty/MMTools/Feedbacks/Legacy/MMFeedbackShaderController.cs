@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control values on a target ShaderController, letting you modify the behaviour and aspect of a shader driven material at runtime
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you trigger a one time play on a target ShaderController.")]
+    /// <summary>
+    /// 이 피드백을 통해 대상 ShaderController의 값을 제어하고 런타임 시 셰이더 기반 재질의 동작과 측면을 수정할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 ShaderController에서 일회성 재생을 트리거할 수 있습니다.")]
 	[FeedbackPath("Renderer/ShaderController")]
 	public class MMFeedbackShaderController : MMFeedback
 	{
@@ -24,52 +24,52 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Float Controller")]
 		/// the mode this controller is in
-		[Tooltip("the mode this controller is in")]
+		[Tooltip("이 컨트롤러의 모드")]
 		public Modes Mode = Modes.OneTime;
 		/// the float controller to trigger a one time play on
-		[Tooltip("the float controller to trigger a one time play on")]
+		[Tooltip("일회성 재생을 트리거하는 플로트 컨트롤러")]
 		public ShaderController TargetShaderController;
 		/// an optional list of float controllers to trigger a one time play on
-		[Tooltip("an optional list of float controllers to trigger a one time play on")]
+		[Tooltip("일회성 재생을 트리거하는 플로트 컨트롤러의 선택적 목록")]
 		public List<ShaderController> TargetShaderControllerList;
 		/// whether this should revert to original at the end
-		[Tooltip("whether this should revert to original at the end")]
+		[Tooltip("마지막에 원본으로 되돌릴지 여부")]
 		public bool RevertToInitialValueAfterEnd = false;
 		/// the duration of the One Time shake
-		[Tooltip("the duration of the One Time shake")]
+		[Tooltip("One Time Shake의 지속 시간")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
 		public float OneTimeDuration = 1f;
 		/// the amplitude of the One Time shake (this will be multiplied by the curve's height)
-		[Tooltip("the amplitude of the One Time shake (this will be multiplied by the curve's height)")]
+		[Tooltip("일회성 흔들림의 진폭(이에 곡선 높이를 곱함)")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
 		public float OneTimeAmplitude = 1f;
 		/// the low value to remap the normalized curve value to 
-		[Tooltip("the low value to remap the normalized curve value to")]
+		[Tooltip("정규화된 곡선 값을 다시 매핑할 낮은 값")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
 		public float OneTimeRemapMin = 0f;
 		/// the high value to remap the normalized curve value to 
-		[Tooltip("the high value to remap the normalized curve value to")]
+		[Tooltip("정규화된 곡선 값을 다시 매핑할 높은 값")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
 		public float OneTimeRemapMax = 1f;
 		/// the curve to apply to the one time shake
-		[Tooltip("the curve to apply to the one time shake")]
+		[Tooltip("일회성 흔들기에 적용할 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
 		public AnimationCurve OneTimeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 
 		/// the new value towards which to move the current value
-		[Tooltip("the new value towards which to move the current value")]
+		[Tooltip("현재 값을 이동할 새 값")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public float ToDestinationValue = 1f;
 		/// the duration over which to interpolate the target value
-		[Tooltip("the duration over which to interpolate the target value")]
+		[Tooltip("목표 값을 보간하는 기간")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public float ToDestinationDuration = 1f;
 		/// the color to aim for (when targetting a Color property
-		[Tooltip("the color to aim for (when targetting a Color property")]
+		[Tooltip("목표로 삼을 색상(Color 속성을 대상으로 하는 경우)")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public Color ToDestinationColor = Color.red;
 		/// the curve over which to interpolate the value
-		[Tooltip("the curve over which to interpolate the value")]
+		[Tooltip("값을 보간할 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 

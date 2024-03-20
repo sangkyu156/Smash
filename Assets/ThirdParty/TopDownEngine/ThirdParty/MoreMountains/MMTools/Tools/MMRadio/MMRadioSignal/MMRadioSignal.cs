@@ -9,18 +9,18 @@ namespace MoreMountains.Tools
 	[System.Serializable]
 	public class MMRadioSignalOnValueChange : UnityEvent<float> { }
 
-	/// <summary>
-	/// A class used to define a signal, meant to be broadcasted by a MMRadioBroadcaster
-	/// It'll output a Level value to broadcast, using one time, persistent or driven modes    
-	/// Meant to be extended
-	/// </summary>
-	public abstract class MMRadioSignal : MonoBehaviour
+    /// <summary>
+    /// MMRadioBroadcaster에 의해 방송되는 신호를 정의하는 데 사용되는 클래스
+    /// 일회성 지속 모드 또는 구동 모드를 사용하여 브로드캐스트할 레벨 값을 출력합니다.
+    /// 확장을 의미함
+    /// </summary>
+    public abstract class MMRadioSignal : MonoBehaviour
 	{
-		/// the possible modes a radio signal can operate on
-		/// - one time : plays its signal once, goes back to sleep
-		/// - outputs a signal constantly while not sleeping
-		/// - driven : lets you drive the level value from another script
-		public enum SignalModes { OneTime, Persistent, Driven }
+        /// 무선 신호가 작동할 수 있는 가능한 모드
+        /// - one time : 신호를 한 번 재생하고 다시 절전 모드로 전환됩니다.
+        /// -Persistent : 잠들지 않는 동안 지속적으로 신호를 출력합니다.
+        /// - driven : 다른 스크립트에서 레벨 값을 구동할 수 있습니다.
+        public enum SignalModes { OneTime, Persistent, Driven }
 		/// whether this signal operates on scaled or unscaled time
 		public enum TimeScales { Unscaled, Scaled }
 		/// the level, to read from a MMRadioBroadcaster

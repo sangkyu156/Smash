@@ -7,11 +7,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the alpha of a target TMP over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the alpha of a target TMP over time.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간 경과에 따른 대상 TMP의 알파를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간 경과에 따른 대상 TMP의 알파를 제어할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Alpha")]
 	#endif
@@ -49,22 +49,22 @@ namespace MoreMountains.Feedbacks
 		/// None : nothing will happen,
 		/// gradient : evaluates the color over time on that gradient, from left to right,
 		/// interpolate : lerps from the current color to the destination one 
-		[Tooltip("the selected color mode :" +
-		         "Instant : the alpha will change instantly to the target one," +
-		         "Curve : the alpha will be interpolated along the curve," +
-		         "interpolate : lerps from the current color to the destination one ")]
+		[Tooltip("선택한 색상 모드 :" +
+"Instant  : 알파가 즉시 목표 알파로 변경됩니다." +
+"Curve : 알파가 곡선을 따라 보간됩니다." +
+"interpolate : 현재 색상에서 대상 색상으로 이동합니다.")]
 		public AlphaModes AlphaMode = AlphaModes.Interpolate;
 		/// how long the color of the text should change over time
-		[Tooltip("how long the color of the text should change over time")]
+		[Tooltip("시간이 지남에 따라 텍스트 색상이 얼마나 오랫동안 변경되어야 하는지")]
 		[MMFEnumCondition("AlphaMode", (int)AlphaModes.Interpolate, (int)AlphaModes.ToDestination)]
 		public float Duration = 0.2f;
 		/// the alpha to apply when in instant mode
-		[Tooltip("the alpha to apply when in instant mode")]
+		[Tooltip("인스턴트 모드에 있을 때 적용할 알파")]
 		[MMFEnumCondition("AlphaMode", (int)AlphaModes.Instant)]
 		public float InstantAlpha = 1f;
 
 		/// the curve to use when interpolating towards the destination alpha
-		[Tooltip("the curve to use when interpolating towards the destination alpha")]
+		[Tooltip("대상 알파를 향해 보간할 때 사용할 곡선")]
 		[MMFEnumCondition("AlphaMode", (int)AlphaModes.Interpolate, (int)AlphaModes.ToDestination)]
 		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
 		/// the value to which the curve's 0 should be remapped
@@ -76,12 +76,12 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("AlphaMode", (int)AlphaModes.Interpolate)]
 		public float CurveRemapOne = 1f;
 		/// the alpha to aim towards when in ToDestination mode
-		[Tooltip("the alpha to aim towards when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 목표로 삼을 알파")]
 		[MMFEnumCondition("AlphaMode", (int)AlphaModes.ToDestination)]
 		public float DestinationAlpha = 1f;
 
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 
 		protected float _initialAlpha;

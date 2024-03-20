@@ -5,20 +5,20 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback will let you pilot a Global PostProcessing Volume AutoBlend URP component. A GPPVAB component is placed on a PostProcessing Volume, and will let you control and blend its weight over time on demand.    
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you pilot a Global PostProcessing Volume AutoBlend URP component. A GPPVAB component is placed on a PostProcessing Volume, and will let you control and blend its weight over time on demand.")]
+    /// <summary>
+    /// 이 피드백을 통해 전역 후처리 볼륨 AutoBlend URP 구성 요소를 시험해 볼 수 있습니다. GPPVAB 구성 요소는 PostProcessing Volume에 배치되며 필요에 따라 시간 경과에 따라 가중치를 제어하고 혼합할 수 있습니다.    
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 전역 후처리 볼륨 AutoBlend URP 구성 요소를 시험해 볼 수 있습니다. GPPVAB 구성 요소는 PostProcessing Volume에 배치되며 필요에 따라 시간 경과에 따라 가중치를 제어하고 혼합할 수 있습니다.")]
 	[FeedbackPath("PostProcess/Global PP Volume Auto Blend URP")]
 	public class MMFeedbackGlobalPPVolumeAutoBlend_URP : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
 		public static bool FeedbackTypeAuthorized = true;
-		/// the possible modes for this feedback :
-		/// - default : will let you trigger Blend() and BlendBack() on the blender
-		/// - override : lets you specify new initial, final, duration and curve values on the blender, and triggers a Blend()
-		public enum Modes { Default, Override }
+        /// 이 피드백에 가능한 모드는 다음과 같습니다.
+        /// - default : 블렌더에서 Blend() 및 BlendBack()을 트리거할 수 있습니다.
+        /// - override : 블렌더에서 새로운 초기, 최종, 지속 시간 및 곡선 값을 지정하고 Blend()를 트리거할 수 있습니다.
+        public enum Modes { Default, Override }
 		/// the possible actions when in Default mode
 		public enum Actions { Blend, BlendBack }
 

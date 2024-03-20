@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Layermask Extensions
-	/// </summary>
-	public static class LayermaskExtensions
+    /// <summary>
+    /// Layermask 확장
+    /// </summary>
+    public static class LayermaskExtensions
 	{
 		/// <summary>
 		/// Returns bool if layer is within layermask

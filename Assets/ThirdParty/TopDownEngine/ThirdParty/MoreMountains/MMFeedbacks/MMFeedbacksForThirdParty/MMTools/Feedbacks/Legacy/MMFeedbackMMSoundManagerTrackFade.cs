@@ -8,12 +8,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you fade all the sounds on a specific track at once. You will need a MMSoundManager in your scene for this to work.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 특정 트랙의 모든 사운드를 한 번에 페이드할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Track Fade")]
-	[FeedbackHelp("This feedback will let you fade all the sounds on a specific track at once. You will need a MMSoundManager in your scene for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 특정 트랙의 모든 사운드를 한 번에 페이드할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager가 필요합니다.")]
 	public class MMFeedbackMMSoundManagerTrackFade : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -28,17 +28,17 @@ namespace MoreMountains.Feedbacks
         
 		[Header("MMSoundManager Track Fade")]
 		/// the track to fade the volume on
-		[Tooltip("the track to fade the volume on")]
+		[Tooltip("볼륨을 페이드할 트랙")]
 		public MMSoundManager.MMSoundManagerTracks Track;
 		/// the duration of the fade, in seconds
-		[Tooltip("the duration of the fade, in seconds")]
+		[Tooltip("페이드 지속 시간(초)")]
 		public float FadeDuration = 1f;
 		/// the volume to reach at the end of the fade
-		[Tooltip("the volume to reach at the end of the fade")]
+		[Tooltip("페이드가 끝날 때 도달할 볼륨")]
 		[Range(MMSoundManagerSettings._minimalVolume,MMSoundManagerSettings._maxVolume)]
 		public float FinalVolume = MMSoundManagerSettings._minimalVolume;
 		/// the tween to operate the fade on
-		[Tooltip("the tween to operate the fade on")]
+		[Tooltip("페이드를 작동할 트윈")]
 		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutQuartic);
         
 		/// <summary>

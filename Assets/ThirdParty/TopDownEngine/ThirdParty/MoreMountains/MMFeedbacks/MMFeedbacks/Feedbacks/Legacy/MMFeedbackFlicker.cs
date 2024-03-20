@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will make the bound renderer flicker for the set duration when played (and restore its initial color when stopped)
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you flicker the color of a specified renderer (sprite, mesh, etc) for a certain duration, at the specified octave, and with the specified color. Useful when a character gets hit, for example (but so much more!).")]
+    /// <summary>
+    /// 이 피드백은 재생 시 설정된 기간 동안 바운드 렌더러를 깜박이게 합니다(그리고 중지되면 초기 색상을 복원합니다).
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 특정 기간 동안 지정된 옥타브에서 지정된 색상으로 지정된 렌더러(스프라이트, 메시 등)의 색상을 깜박일 수 있습니다. 예를 들어, 캐릭터가 맞았을 때 유용합니다(하지만 훨씬 더 많습니다!).")]
 	[FeedbackPath("Renderer/Flicker")]
 	public class MMFeedbackFlicker : MMFeedback
 	{
@@ -17,39 +17,39 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.RendererColor; } }
-		#endif
+#endif
 
-		/// the possible modes
-		/// Color : will control material.color
-		/// PropertyName : will target a specific shader property by name
-		public enum Modes { Color, PropertyName }
+        /// the possible modes
+        /// Color : Material.color를 제어합니다.
+        /// PropertyName : 이름으로 특정 셰이더 속성을 타겟팅합니다.
+        public enum Modes { Color, PropertyName }
 
 		[Header("Flicker")]
 		/// the renderer to flicker when played
-		[Tooltip("the renderer to flicker when played")]
+		[Tooltip("재생할 때 렌더러가 깜박입니다.")]
 		public Renderer BoundRenderer;
 		/// the selected mode to flicker the renderer 
-		[Tooltip("the selected mode to flicker the renderer")]
+		[Tooltip("렌더러를 깜박이게 하기 위해 선택한 모드")]
 		public Modes Mode = Modes.Color;
 		/// the name of the property to target
 		[MMFEnumCondition("Mode", (int)Modes.PropertyName)]
-		[Tooltip("the name of the property to target")]
+		[Tooltip("타겟팅할 속성의 이름")]
 		public string PropertyName = "_Tint";
 		/// the duration of the flicker when getting damage
-		[Tooltip("the duration of the flicker when getting damage")]
+		[Tooltip("피해를 입을 때 깜박이는 지속 시간")]
 		public float FlickerDuration = 0.2f;
 		/// the frequency at which to flicker
-		[Tooltip("the frequency at which to flicker")]
+		[Tooltip("깜박이는 빈도")]
 		public float FlickerOctave = 0.04f;
 		/// the color we should flicker the sprite to 
-		[Tooltip("the color we should flicker the sprite to")]
+		[Tooltip("스프라이트를 깜박여야 하는 색상")]
 		[ColorUsage(true, true)]
 		public Color FlickerColor = new Color32(255, 20, 20, 255);
 		/// the list of material indexes we want to flicker on the target renderer. If left empty, will only target the material at index 0 
-		[Tooltip("the list of material indexes we want to flicker on the target renderer. If left empty, will only target the material at index 0")]
+		[Tooltip("대상 렌더러에서 깜박이려는 머티리얼 인덱스 목록입니다. 비워두면 인덱스 0의 재료만 대상으로 합니다.")]
 		public int[] MaterialIndexes;
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.")] 
 		public bool UseMaterialPropertyBlocks = false;
 
 		/// the duration of this feedback is the duration of the flicker

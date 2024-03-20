@@ -5,10 +5,10 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Custom editor for the ShaderController, conditional hiding 
-	/// </summary>
-	[CustomEditor(typeof(ShaderController), true)]
+    /// <summary>
+    /// ShaderController용 사용자 정의 편집기, 조건부 숨기기
+    /// </summary>
+    [CustomEditor(typeof(ShaderController), true)]
 	[CanEditMultipleObjects]
 	public class ShaderControllerEditor : Editor
 	{

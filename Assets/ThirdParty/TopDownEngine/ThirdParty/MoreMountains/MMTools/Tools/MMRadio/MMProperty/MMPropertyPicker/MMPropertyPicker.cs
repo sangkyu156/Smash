@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to pick a property on a target object / component / scriptable object
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 대상 객체/컴포넌트/스크립트 가능 객체의 속성을 선택하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class MMPropertyPicker
 	{
 		/// the target object to look for a property on

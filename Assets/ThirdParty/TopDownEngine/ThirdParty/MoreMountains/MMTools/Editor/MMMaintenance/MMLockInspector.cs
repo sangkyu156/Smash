@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A simple class that lets you lock the current inspector by pressing ctrl (or cmd) + L
-	/// Pressing the same shortcut again unlocks the 
-	/// </summary>
-	public class MMLockInspector : MonoBehaviour
+    /// <summary>
+    /// ctrl(또는 cmd) + L을 눌러 현재 검사기를 잠글 수 있는 간단한 클래스
+    /// 동일한 단축키를 다시 누르면 잠금이 해제됩니다.
+    /// </summary>
+    public class MMLockInspector : MonoBehaviour
 	{
 		[MenuItem("Tools/More Mountains/Lock Inspector %l")]
 		static public void LockInspector()

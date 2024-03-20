@@ -23,10 +23,10 @@ namespace MoreMountains.Tools
 		}
 	}
 
-	/// <summary>
-	/// A generic drawer for all MMMonoBehaviour, handles both the Group and RequiresConstantRepaint attributes
-	/// </summary>
-	[CanEditMultipleObjects]
+    /// <summary>
+    /// 모든 MMMonoBehaviour에 대한 일반 서랍은 Group 및 RequiresConstantRepaint 속성을 모두 처리합니다.
+    /// </summary>
+    [CanEditMultipleObjects]
 	[CustomEditor(typeof(MMMonoBehaviour), true, isFallback = true)]
 	public class MMMonoBehaviourDrawer : UnityEditor.Editor
 	{

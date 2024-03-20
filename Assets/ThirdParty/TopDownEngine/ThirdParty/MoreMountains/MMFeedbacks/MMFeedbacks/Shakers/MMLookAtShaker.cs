@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this to an object and it'll be able to listen for MMFLookAtShakeEvents, and when one is received, it will rotate its associated transform accordingly
-	/// </summary>
-	public class MMLookAtShaker : MMShaker
+    /// <summary>
+    /// 이것을 개체에 추가하면 MMFLookAtShakeEvents를 수신할 수 있으며, 하나가 수신되면 그에 따라 관련 변환이 회전됩니다.
+    /// </summary>
+    public class MMLookAtShaker : MMShaker
 	{
 		[MMInspectorGroup("Look at settings", true, 37)]
 		/// the duration of this shake, in seconds
 		[Tooltip("the duration of this shake, in seconds")]
 		public float Duration = 1f;
 		/// the curve over which to animate the look at transition
-		[Tooltip("the curve over which to animate the look at transition")]
+		[Tooltip("전환 시 모습에 애니메이션을 적용할 곡선")]
 		public MMTweenType LookAtTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// whether or not to lock rotation on the x axis
 		[Tooltip("whether or not to lock rotation on the x axis")]
@@ -29,25 +29,25 @@ namespace MoreMountains.Feedbacks
 
 		[MMInspectorGroup("What we want to rotate", true, 37)]
 		/// in Direct mode, the transform to rotate to have it look at our target - if left empty, will be the transform this shaker is on
-		[Tooltip("in Direct mode, the transform to rotate to have it look at our target - if left empty, will be the transform this shaker is on")]
+		[Tooltip("직접 모드에서는 대상을 보기 위해 회전하는 변환입니다. 비어 있는 경우 이 셰이커가 켜져 있는 변환이 됩니다.")]
 		public Transform TransformToRotate;
 		/// the vector representing the up direction on the object we want to rotate and look at our target
 		public MMF_LookAt.UpwardVectors UpwardVector = MMF_LookAt.UpwardVectors.Up;
 
 		[MMInspectorGroup("What we want to look at", true, 37)]
 		/// the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector
-		[Tooltip("the different target modes : either a specific transform to look at, the coordinates of a world position, or a direction vector")]
+		[Tooltip("다양한 대상 모드: 살펴볼 특정 변환, 세계 위치의 좌표 또는 방향 벡터")]
 		public MMF_LookAt.LookAtTargetModes LookAtTargetMode = MMF_LookAt.LookAtTargetModes.Transform;
 		/// the transform we want to look at 
-		[Tooltip("the transform we want to look at")]
+		[Tooltip("우리가 보고 싶은 변환")]
 		[MMFEnumCondition("LookAtTargetMode", (int)MMF_LookAt.LookAtTargetModes.Transform)]
 		public Transform LookAtTarget;
 		/// the coordinates of a point the world that we want to look at
-		[Tooltip("the coordinates of a point the world that we want to look at")]
+		[Tooltip("우리가 보고 싶은 세계의 한 지점의 좌표")]
 		[MMFEnumCondition("LookAtTargetMode", (int)MMF_LookAt.LookAtTargetModes.TargetWorldPosition)]
 		public Vector3 LookAtTargetWorldPosition = Vector3.forward;
 		/// a direction (from our rotating object) that we want to look at
-		[Tooltip("a direction (from our rotating object) that we want to look at")]
+		[Tooltip("우리가 보고 싶은 방향(회전하는 물체로부터)")]
 		[MMFEnumCondition("LookAtTargetMode", (int)MMF_LookAt.LookAtTargetModes.Direction)]
 		public Vector3 LookAtDirection = Vector3.forward;
 		

@@ -7,11 +7,11 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will play the associated particles system on play, and stop it on stop
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will simply play the specified ParticleSystem (from your scene) when played.")]
+    /// <summary>
+    /// 이 피드백은 재생 시 관련 입자 시스템을 재생하고 중지 시 중지합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 재생 시 지정된 ParticleSystem(장면에서)을 재생합니다.")]
 	[FeedbackPath("Particles/Particles Play")]
 	public class MMFeedbackParticles : MMFeedback
 	{
@@ -26,19 +26,19 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Bound Particles")]
 		/// whether to Play, Stop or Pause the target particle system when that feedback is played
-		[Tooltip("whether to Play, Stop or Pause the target particle system when that feedback is played")]
+		[Tooltip("해당 피드백이 재생될 때 대상 입자 시스템을 재생, 중지 또는 일시 중지할지 여부")]
 		public Modes Mode = Modes.Play;
 		/// the particle system to play with this feedback
-		[Tooltip("the particle system to play with this feedback")]
+		[Tooltip("이 피드백을 다룰 파티클 시스템")]
 		public ParticleSystem BoundParticleSystem;
 		/// a list of (optional) particle systems 
-		[Tooltip("a list of (optional) particle systems")]
+		[Tooltip("(선택적) 입자 시스템 목록")]
 		public List<ParticleSystem> RandomParticleSystems;
 		/// if this is true, the particles will be moved to the position passed in parameters
-		[Tooltip("if this is true, the particles will be moved to the position passed in parameters")]
+		[Tooltip("이것이 사실이라면 입자는 매개변수에 전달된 위치로 이동됩니다.")]
 		public bool MoveToPosition = false;
 		/// if this is true, the particle system's object will be set active on play
-		[Tooltip("if this is true, the particle system's object will be set active on play")]
+		[Tooltip("이것이 사실이라면 입자 시스템의 객체는 플레이 시 활성 상태로 설정됩니다.")]
 		public bool ActivateOnPlay = false;
 
 		/// <summary>

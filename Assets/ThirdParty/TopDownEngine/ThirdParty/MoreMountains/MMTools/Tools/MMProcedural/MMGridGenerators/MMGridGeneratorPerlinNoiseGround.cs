@@ -5,10 +5,10 @@ using Random = System.Random;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid with a ground floor
-	/// </summary>
-	public class MMGridGeneratorPerlinNoiseGround : MMGridGenerator
+    /// <summary>
+    /// 1층이 있는 그리드를 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorPerlinNoiseGround : MMGridGenerator
 	{
 		/// <summary>
 		/// Generates a grid with a ground floor

@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class will automatically draw a circle to match the radius of the auto aim weapon if there's one
-	/// </summary>
-	[RequireComponent(typeof(LineRenderer))]
+    /// <summary>
+    /// 이 클래스는 자동 조준 무기가 있는 경우 해당 무기의 반경과 일치하는 원을 자동으로 그립니다.
+    /// </summary>
+    [RequireComponent(typeof(LineRenderer))]
 	[AddComponentMenu("TopDown Engine/Weapons/Weapon Auto Aim Radius Circle")]
 	public class WeaponAutoAimRadiusCircle : MMLineRendererCircle
 	{

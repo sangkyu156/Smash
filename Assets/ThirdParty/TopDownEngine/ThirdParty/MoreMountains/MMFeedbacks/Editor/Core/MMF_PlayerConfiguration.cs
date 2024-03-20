@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// An asset to store copy information, as well as global feedback settings.
-	/// It requires that one (and only one) MMFeedbacksConfiguration asset be created and stored in a Resources folder.
-	/// That's already done when installing MMFeedbacks.
-	/// </summary>
-	[CreateAssetMenu(menuName = "MoreMountains/MMFeedbacks/Configuration", fileName = "MMFeedbacksConfiguration")]
+    /// <summary>
+    /// 사본 정보와 글로벌 피드백 설정을 저장하는 자산입니다.
+    /// 단 하나의 MMFeedbacksConfiguration 자산을 생성하고 Resources 폴더에 저장해야 합니다.
+    /// MMFeedbacks를 설치할 때 이미 완료되었습니다.
+    /// </summary>
+    [CreateAssetMenu(menuName = "MoreMountains/MMFeedbacks/Configuration", fileName = "MMFeedbacksConfiguration")]
 	public class MMF_PlayerConfiguration : ScriptableObject
 	{
 		private static MMF_PlayerConfiguration _instance;

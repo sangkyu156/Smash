@@ -4,11 +4,11 @@ using MoreMountains.Tools;
 using UnityEditor;
 
 namespace MoreMountains.Tools
-{	
-	/// <summary>
-	/// This class adds a MoreMountains entry in Unity's top menu, allowing to enable/disable the help texts from the engine's inspectors
-	/// </summary>
-	public static class MMMenuHelp
+{
+    /// <summary>
+    /// 이 클래스는 Unity의 최상위 메뉴에 MoreMountains 항목을 추가하여 엔진 검사기의 도움말 텍스트를 활성화/비활성화할 수 있습니다.
+    /// </summary>
+    public static class MMMenuHelp
 	{
 		[MenuItem("Tools/More Mountains/Enable Help in Inspectors", false,0)]
 		/// <summary>

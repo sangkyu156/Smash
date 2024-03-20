@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will trigger a one time play on a target FloatController
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you trigger a fade event.")]
+    /// <summary>
+    /// 이 피드백은 대상 FloatController에서 일회성 재생을 트리거합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 페이드 이벤트를 트리거할 수 있습니다.")]
 	[FeedbackPath("Camera/Fade")]
 	public class MMF_Fade : MMF_Feedback
 	{
@@ -22,49 +22,49 @@ namespace MoreMountains.Feedbacks
 		#endif
 		/// the different possible types of fades
 		public enum FadeTypes { FadeIn, FadeOut, Custom }
-		/// the different ways to send the position to the fader :
-		/// - FeedbackPosition : fade at the position of the feedback, plus an optional offset
-		/// - Transform : fade at the specified Transform's position, plus an optional offset
-		/// - WorldPosition : fade at the specified world position vector, plus an optional offset
-		/// - Script : the position passed in parameters when calling the feedback
-		public enum PositionModes { FeedbackPosition, Transform, WorldPosition, Script }
+        /// 위치를 페이더로 보내는 다양한 방법 :
+        /// - FeedbackPosition : 피드백 위치에서 페이드하고 선택적 오프셋
+        /// - Transform : 지정된 변환 위치에서 페이드하고 선택적 오프셋을 추가합니다.
+        /// - WorldPosition : 지정된 월드 위치 벡터에서 페이드하고 선택적 오프셋을 추가합니다.
+        /// - Script : 피드백 호출 시 매개변수로 전달되는 위치
+        public enum PositionModes { FeedbackPosition, Transform, WorldPosition, Script }
 
 		[MMFInspectorGroup("Fade", true, 43)]
 		/// the type of fade we want to use when this feedback gets played
-		[Tooltip("the type of fade we want to use when this feedback gets played")]
+		[Tooltip("이 피드백이 재생될 때 사용하려는 페이드 유형")]
 		public FadeTypes FadeType;
 		/// the ID of the fader(s) to pilot
-		[Tooltip("the ID of the fader(s) to pilot")]
+		[Tooltip("파일럿할 페이더의 ID")]
 		public int ID = 0;
 		/// the duration (in seconds) of the fade
-		[Tooltip("the duration (in seconds) of the fade")]
+		[Tooltip("페이드 지속 시간(초)")]
 		public float Duration = 1f;
 		/// the curve to use for this fade
-		[Tooltip("the curve to use for this fade")]
+		[Tooltip("이 페이드에 사용할 곡선")]
 		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
 		/// whether or not this fade should ignore timescale
-		[Tooltip("whether or not this fade should ignore timescale")]
+		[Tooltip("이 페이드가 시간 척도를 무시해야 하는지 여부")]
 		public bool IgnoreTimeScale = true;
 
 		[Header("Custom")]
 		/// the target alpha we're aiming for with this fade
-		[Tooltip("the target alpha we're aiming for with this fade")]
+		[Tooltip("이 페이드로 우리가 목표로 하는 목표 알파")]
 		public float TargetAlpha;
 
 		[Header("Position")]
 		/// the chosen way to position the fade 
-		[Tooltip("the chosen way to position the fade")]
+		[Tooltip("페이드 위치를 정하기 위해 선택한 방법")]
 		public PositionModes PositionMode = PositionModes.FeedbackPosition;
 		/// the transform on which to center the fade
-		[Tooltip("the transform on which to center the fade")]
+		[Tooltip("페이드의 중심이 되는 변환")]
 		[MMFEnumCondition("PositionMode", (int)PositionModes.Transform)]
 		public Transform TargetTransform;
 		/// the coordinates on which to center the fadet
-		[Tooltip("the coordinates on which to center the fade")]
+		[Tooltip("페이드의 중심이 되는 좌표")]
 		[MMFEnumCondition("PositionMode", (int)PositionModes.WorldPosition)]
 		public Vector3 TargetPosition;
 		/// the position offset to apply when centering the fade
-		[Tooltip("the position offset to apply when centering the fade")]
+		[Tooltip("페이드를 중앙에 배치할 때 적용할 위치 오프셋")]
 		public Vector3 PositionOffset;
 
 		/// the duration of this feedback is the duration of the fade

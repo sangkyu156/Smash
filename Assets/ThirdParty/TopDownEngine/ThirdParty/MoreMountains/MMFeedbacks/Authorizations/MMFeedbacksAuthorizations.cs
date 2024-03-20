@@ -3,10 +3,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// Add this class to an empty object in your scene and it will prevent any unchecked feedback in its inspector from playing
-	/// </summary>
-	public partial class MMFeedbacksAuthorizations : MMMonoBehaviour
+    /// <summary>
+    /// 이 클래스를 장면의 빈 개체에 추가하면 검사기에서 확인되지 않은 피드백이 재생되지 않습니다.
+    /// </summary>
+    public partial class MMFeedbacksAuthorizations : MMMonoBehaviour
 	{
 		[MMInspectorGroup("Animation", true, 16)] [MMInspectorButton("ToggleAnimation")]
 		public bool ToggleAnimationButton;

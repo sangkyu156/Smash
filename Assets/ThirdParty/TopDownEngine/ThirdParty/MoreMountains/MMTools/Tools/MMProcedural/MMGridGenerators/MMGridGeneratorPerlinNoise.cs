@@ -5,10 +5,10 @@ using Random = System.Random;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid of the specified size based on a seeded perlin noise, the smaller the seed, the blockier the grid
-	/// </summary>
-	public class MMGridGeneratorPerlinNoise : MMGridGenerator 
+    /// <summary>
+    /// 시드된 펄린 노이즈를 기반으로 지정된 크기의 그리드를 생성합니다. 시드가 작을수록 그리드는 더 차단됩니다.
+    /// </summary>
+    public class MMGridGeneratorPerlinNoise : MMGridGenerator 
 	{
            
 		/// <summary>

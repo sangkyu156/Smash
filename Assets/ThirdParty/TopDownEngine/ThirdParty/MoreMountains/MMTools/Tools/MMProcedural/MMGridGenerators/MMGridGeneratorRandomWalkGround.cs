@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Uses random walk to generate a ground with controlled elevation
-	/// </summary>
-	public class MMGridGeneratorRandomWalkGround : MMGridGenerator
+    /// <summary>
+    /// 무작위 보행을 사용하여 고도가 제어된 지면을 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorRandomWalkGround : MMGridGenerator
 	{
 		/// <summary>
 		/// Uses random walk to generate a ground with controlled elevation

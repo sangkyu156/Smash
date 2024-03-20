@@ -5,10 +5,10 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this class to a trigger and it will allow you to modify the time scale when entering it, for the specified duration and settings
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Environment/Time Zone")]
+    /// <summary>
+    /// 이 클래스를 트리거에 추가하면 입력 시 지정된 기간 및 설정에 대해 시간 척도를 수정할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Environment/Time Zone")]
 	public class TimeZone : ButtonActivated
 	{
 		/// the possible modes for this zone
@@ -17,20 +17,20 @@ namespace MoreMountains.TopDownEngine
 		[Header("Time Zone")]
 
 		/// whether this zone will modify time on entry for a certain duration, or until it is exited
-		[Tooltip("whether this zone will modify time on entry for a certain duration, or until it is exited")]
+		[Tooltip("이 구역이 특정 기간 동안 입장 시간을 수정할지, 아니면 나갈 때까지 시간을 수정할지 여부")]
 		public Modes Mode = Modes.DurationBased;
 
 		/// the new timescale to apply
-		[Tooltip("the new timescale to apply")]
+		[Tooltip("적용할 새로운 기간")]
 		public float TimeScale = 0.5f;
 		/// the duration to apply the new timescale for
-		[Tooltip("the duration to apply the new timescale for")]
+		[Tooltip("새로운 기간을 적용할 기간")]
 		public float Duration = 1f;
 		/// whether or not the timescale should be lerped
-		[Tooltip("whether or not the timescale should be lerped")]
+		[Tooltip("시간 척도를 위반해야 하는지 여부")]
 		public bool LerpTimeScale = true;
 		/// the speed at which to lerp the timescale
-		[Tooltip("the speed at which to lerp the timescale")]
+		[Tooltip("시간 척도를 조정하는 속도")]
 		public float LerpSpeed = 5f;
 
 		/// <summary>

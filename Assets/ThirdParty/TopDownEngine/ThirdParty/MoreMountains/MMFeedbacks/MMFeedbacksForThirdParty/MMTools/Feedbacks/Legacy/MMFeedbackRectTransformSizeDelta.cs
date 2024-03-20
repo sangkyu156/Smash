@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the size delta property (the size of this RectTransform relative to the distances between the anchors) of a RectTransform, over time 
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the size delta property (the size of this RectTransform relative to the distances between the anchors) of a RectTransform, over time")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따라 RectTransform의 크기 델타 속성(앵커 사이의 거리에 상대적인 이 RectTransform의 크기)을 제어할 수 있습니다. 
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따라 RectTransform의 크기 델타 속성(앵커 사이의 거리에 상대적인 이 RectTransform의 크기)을 제어할 수 있습니다.")]
 	[FeedbackPath("UI/RectTransformSizeDelta")]
 	public class MMFeedbackRectTransformSizeDelta : MMFeedbackBase
 	{
@@ -18,12 +18,12 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Target")]
 		/// the rect transform we want to impact
-		[Tooltip("the rect transform we want to impact")]
+		[Tooltip("우리가 영향을 미치고 싶은 직사각형 변환")]
 		public RectTransform TargetRectTransform;
         
 		[Header("Size Delta")]
 		/// the speed at which we should animate the size delta
-		[Tooltip("the speed at which we should animate the size delta")]
+		[Tooltip("크기 델타에 애니메이션을 적용해야 하는 속도")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType SpeedCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the curve's 0 to

@@ -6,14 +6,14 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// A simple component you can use to control a weapon and have it start and stop on demand, without having a character to handle it
-    /// You can see it in action in the KoalaHealth demo scene, it's powering that demo's cannons
+    /// 무기를 제어하고, 무기를 다룰 캐릭터가 없어도 필요에 따라 무기를 시작하고 중지하는 데 사용할 수 있는 간단한 구성 요소입니다.
+    /// KoalaHealth 데모 장면에서 실제로 작동하는 것을 볼 수 있습니다. 데모의 대포에 전력을 공급하고 있습니다.
     /// </summary>
     public class WeaponHandler : TopDownMonoBehaviour
     {
         [Header("Weapon")]
         /// the weapon you want this component to pilot
-        [Tooltip("the weapon you want this component to pilot")]
+        [Tooltip("이 구성요소가 조종할 무기")]
         public Weapon TargetWeapon;
 
         [Header("Debug")] 

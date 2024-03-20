@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 namespace MoreMountains.Tools 
 {
-	/// <summary>
-	/// A class used to pick a property and modify its value
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 속성을 선택하고 해당 값을 수정하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	public class MMPropertyReceiver : MMPropertyPicker
 	{
 		/// values will only be modified if this is true

@@ -8,10 +8,10 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store MMInputExecution bindings, associating a target keycode to UnityEvents
-	/// </summary>
-	[System.Serializable]
+    /// <summary>
+    /// MMInputExecution 바인딩을 저장하고 대상 키코드를 UnityEvents에 연결하는 데 사용되는 클래스
+    /// </summary>
+    [System.Serializable]
 	public class MMInputExecutionBinding
 	{
 		#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER

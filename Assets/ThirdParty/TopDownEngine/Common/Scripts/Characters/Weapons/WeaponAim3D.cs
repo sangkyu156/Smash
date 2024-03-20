@@ -16,24 +16,24 @@ namespace MoreMountains.TopDownEngine
 	{
 		[Header("3D")] 
 		/// if this is true, aim will be unrestricted to angles, and will aim freely in all 3 axis, useful when dealing with AI and elevation
-		[Tooltip("if this is true, aim will be unrestricted to angles, and will aim freely in all 3 axis, useful when dealing with AI and elevation")]
+		[Tooltip("이것이 사실이라면 조준은 각도에 제한되지 않고 3축 모두에서 자유롭게 조준하게 되며 AI와 고도를 처리할 때 유용합니다.")]
 		public bool Unrestricted3DAim = false;
 	    
 		[Header("Reticle and slopes")]
 		/// whether or not the reticle should move vertically to stay above slopes
 		[MMEnumCondition("ReticleType", (int)ReticleTypes.Scene, (int)ReticleTypes.UI)]
-		[Tooltip("whether or not the reticle should move vertically to stay above slopes")]
+		[Tooltip("슬로프 위에 머물기 위해 레티클이 수직으로 움직여야 하는지 여부")]
 		public bool ReticleMovesWithSlopes = false;
 		/// the layers the reticle should consider as obstacles to move on
 		[MMEnumCondition("ReticleType", (int)ReticleTypes.Scene, (int)ReticleTypes.UI)]
-		[Tooltip("the layers the reticle should consider as obstacles")]
+		[Tooltip("레티클이 장애물로 간주해야 하는 레이어")]
 		public LayerMask ReticleObstacleMask = LayerManager.ObstaclesLayerMask;
 		/// the maximum slope elevation for the reticle
 		[MMEnumCondition("ReticleType", (int)ReticleTypes.Scene, (int)ReticleTypes.UI)]
-		[Tooltip("the maximum slope elevation for the reticle")]
+		[Tooltip("레티클의 최대 경사 고도")]
 		public float MaximumSlopeElevation = 50f;
 		/// if this is true, the aim system will try to compensate when aim direction is null (for example when you haven't set any primary input yet)
-		[Tooltip("if this is true, the aim system will try to compensate when aim direction is null (for example when you haven't set any primary input yet)")]
+		[Tooltip("이것이 사실이라면 조준 시스템은 조준 방향이 null일 때(예를 들어 아직 기본 입력을 설정하지 않은 경우) 보정을 시도합니다.")]
 		public bool AvoidNullAim = true;
 
 		protected Vector2 _inputMovement;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid of the specified size, either entirely full or empty
-	/// </summary>
-	public class MMGridGeneratorFull : MMGridGenerator 
+    /// <summary>
+    /// 완전히 가득 차거나 비어 있는 지정된 크기의 그리드를 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorFull : MMGridGenerator 
 	{
 		/// <summary>
 		/// Generates a grid of the specified size, either entirely full or empty

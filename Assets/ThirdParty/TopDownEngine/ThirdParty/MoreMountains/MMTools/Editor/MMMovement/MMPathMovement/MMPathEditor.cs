@@ -6,10 +6,10 @@ using System.Collections;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This class adds names for each LevelMapPathElement next to it on the scene view, for easier setup
-	/// </summary>
-	[CustomEditor(typeof(MMPath),true)]
+    /// <summary>
+    /// 이 클래스는 더 쉬운 설정을 위해 장면 뷰에서 옆에 있는 각 LevelMapPathElement의 이름을 추가합니다.
+    /// </summary>
+    [CustomEditor(typeof(MMPath),true)]
 	[InitializeOnLoad]
 	public class MMPathEditor : Editor 
 	{		

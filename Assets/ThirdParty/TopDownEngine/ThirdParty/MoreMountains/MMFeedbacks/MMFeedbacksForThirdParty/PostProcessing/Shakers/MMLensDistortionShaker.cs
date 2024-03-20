@@ -7,10 +7,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Add this class to a Camera with a lens distortion post processing and it'll be able to "shake" its values by getting events
-	/// </summary>
-	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMLensDistortionShaker")]
+    /// <summary>
+    /// 렌즈 왜곡 사후 처리가 포함된 카메라에 이 클래스를 추가하면 이벤트를 가져와 해당 값을 "흔들" 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMLensDistortionShaker")]
 	#if MM_POSTPROCESSING
 	[RequireComponent(typeof(PostProcessVolume))]
 	#endif
@@ -18,10 +18,10 @@ namespace MoreMountains.FeedbacksForThirdParty
 	{
 		[MMInspectorGroup("Lens Distortion Intensity", true, 51)]
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeIntensity = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0),
 			new Keyframe(0.2f, 1),
 			new Keyframe(0.25f, -1),

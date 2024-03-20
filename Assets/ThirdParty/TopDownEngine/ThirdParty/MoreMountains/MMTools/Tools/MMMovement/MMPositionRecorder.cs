@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this class on a Transform, and it'll record its position periodically
-	/// The Positions array can then be read from anywhere to know where that object was in the past
-	/// </summary>
-	public class MMPositionRecorder : MonoBehaviour
+    /// <summary>
+    /// 이 클래스를 Transform에 추가하면 주기적으로 위치가 기록됩니다.
+    /// 그런 다음 Positions 배열을 어디에서나 읽어 해당 객체가 과거에 어디에 있었는지 알 수 있습니다.
+    /// </summary>
+    public class MMPositionRecorder : MonoBehaviour
 	{
 		/// the possible modes to run this recorder on 
 		public enum Modes { Framecount, Time }

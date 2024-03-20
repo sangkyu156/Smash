@@ -8,11 +8,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you update a TMP text value over time, with a value going from A to B over time, on a curve
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you update a TMP text value over time, with a value going from A to B over time, on a curve")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 곡선에서 A에서 B로 값이 바뀌는 TMP 텍스트 값을 업데이트할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 곡선에서 A에서 B로 값이 바뀌는 TMP 텍스트 값을 업데이트할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Count To")]
 	#endif
@@ -44,25 +44,25 @@ namespace MoreMountains.Feedbacks
         
 		[MMFInspectorGroup("Count Settings", true, 13)]
 		/// the value from which to count from
-		[Tooltip("the value from which to count from")]
+		[Tooltip("계산할 값")]
 		public float CountFrom = 0f;
 		/// the value to count towards
-		[Tooltip("the value to count towards")]
+		[Tooltip("계산할 값")]
 		public float CountTo = 10f;
 		/// the curve on which to animate the count
-		[Tooltip("the curve on which to animate the count")]
+		[Tooltip("카운트에 애니메이션을 적용할 곡선")]
 		public MMTweenType CountingCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the duration of the count, in seconds
-		[Tooltip("the duration of the count, in seconds")]
+		[Tooltip("카운트 기간(초)")]
 		public float Duration = 5f;
 		/// the format with which to display the count
-		[Tooltip("the format with which to display the count")]
+		[Tooltip("개수를 표시하는 형식")]
 		public string Format = "00.00";
 		/// whether or not value should be floored
-		[Tooltip("whether or not value should be floored")]
+		[Tooltip("가치를 바닥에 두어야 하는지 여부")]
 		public bool FloorValues = true;
 		/// the minimum frequency (in seconds) at which to refresh the text field
-		[Tooltip("the minimum frequency (in seconds) at which to refresh the text field")]
+		[Tooltip("텍스트 필드를 새로 고치는 최소 빈도(초)")]
 		public float MinRefreshFrequency = 0f;
 
 		protected string _newText;

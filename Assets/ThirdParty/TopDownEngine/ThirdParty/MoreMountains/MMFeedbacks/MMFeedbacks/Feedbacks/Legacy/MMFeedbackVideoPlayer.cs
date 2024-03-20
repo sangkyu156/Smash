@@ -6,11 +6,11 @@ using UnityEngine.Video;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control video players in all sorts of ways (Play, Pause, Toggle, Stop, Prepare, StepForward, StepBackward, SetPlaybackSpeed, SetDirectAudioVolume, SetDirectAudioMute, GoToFrame, ToggleLoop)
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control video players in all sorts of ways (Play, Pause, Toggle, Stop, Prepare, StepForward, StepBackward, SetPlaybackSpeed, SetDirectAudioVolume, SetDirectAudioMute, GoToFrame, ToggleLoop)")]
+    /// <summary>
+    /// 이 피드백을 사용하면 모든 종류의 방법(재생, 일시 중지, 전환, 중지, 준비, StepForward, StepBackward, SetPlaybackSpeed, SetDirectAudioVolume, SetDirectAudioMute, GoToFrame, ToggleLoop)으로 비디오 플레이어를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 모든 종류의 방법(재생, 일시 중지, 전환, 중지, 준비, StepForward, StepBackward, SetPlaybackSpeed, SetDirectAudioVolume, SetDirectAudioMute, GoToFrame, ToggleLoop)으로 비디오 플레이어를 제어할 수 있습니다.")]
 	[FeedbackPath("UI/Video Player")]
 	public class MMFeedbackVideoPlayer : MMFeedback
 	{
@@ -25,33 +25,33 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Video Player")]
 		/// the Video Player to control with this feedback
-		[Tooltip("the Video Player to control with this feedback")]
+		[Tooltip("이 피드백으로 제어할 비디오 플레이어")]
 		public VideoPlayer TargetVideoPlayer;
 
 		/// the Video Player to control with this feedback
-		[Tooltip("the Video Player to control with this feedback")]
+		[Tooltip("이 피드백으로 제어할 비디오 플레이어")]
 		public VideoActions VideoAction = VideoActions.Pause;
 
 		/// the frame at which to jump when in GoToFrame mode
-		[Tooltip("the frame at which to jump when in GoToFrame mode")]
+		[Tooltip("GoToFrame 모드에 있을 때 점프할 프레임")]
 		[MMFEnumCondition("VideoAction", (int)VideoActions.GoToFrame)]
 		public long TargetFrame = 10;
         
 		/// the new playback speed (between 0 and 10)
-		[Tooltip("the new playback speed (between 0 and 10)")]
+		[Tooltip("새로운 재생 속도(0에서 10 사이)")]
 		[MMFEnumCondition("VideoAction", (int)VideoActions.SetPlaybackSpeed)]
 		public float PlaybackSpeed = 2f;
 
 		/// the track index on which to control volume
-		[Tooltip("the track index on which to control volume")]
+		[Tooltip("볼륨을 제어할 트랙 인덱스")]
 		[MMFEnumCondition("VideoAction", (int)VideoActions.SetDirectAudioMute, (int)VideoActions.SetDirectAudioVolume)]
 		public int TrackIndex = 0;
 		/// the new volume for the specified track, between 0 and 1
-		[Tooltip("the new volume for the specified track, between 0 and 1")]
+		[Tooltip("지정된 트랙의 새 볼륨(0과 1 사이)")]
 		[MMFEnumCondition("VideoAction", (int)VideoActions.SetDirectAudioVolume)]
 		public float Volume = 1f;
 		/// whether to mute the track or not when that feedback plays
-		[Tooltip("whether to mute the track or not when that feedback plays")]
+		[Tooltip("해당 피드백이 재생될 때 트랙을 음소거할지 여부")]
 		[MMFEnumCondition("VideoAction", (int)VideoActions.SetDirectAudioMute)]
 		public bool Mute = true;
 

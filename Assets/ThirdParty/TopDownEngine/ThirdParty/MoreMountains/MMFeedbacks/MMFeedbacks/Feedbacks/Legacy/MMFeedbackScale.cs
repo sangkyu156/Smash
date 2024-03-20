@@ -6,12 +6,12 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will animate the scale of the target object over time when played
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백은 재생 시 시간이 지남에 따라 대상 개체의 크기에 애니메이션을 적용합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Transform/Scale")]
-	[FeedbackHelp("This feedback will animate the target's scale on the 3 specified animation curves, for the specified duration (in seconds). You can apply a multiplier, that will multiply each animation curve value.")]
+	[FeedbackHelp("이 피드백은 지정된 기간(초) 동안 지정된 3개의 애니메이션 곡선에서 대상의 크기를 애니메이션화합니다. 각 애니메이션 곡선 값을 곱하는 승수를 적용할 수 있습니다.")]
 	public class MMFeedbackScale : MMFeedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -26,23 +26,23 @@ namespace MoreMountains.Feedbacks
 		#endif
 
 		[Header("Scale")]
-		/// the mode this feedback should operate on
-		/// Absolute : follows the curve
-		/// Additive : adds to the current scale of the target
-		/// ToDestination : sets the scale to the destination target, whatever the current scale is
-		[Tooltip("the mode this feedback should operate on" +
-		         "Absolute : follows the curve" +
-		         "Additive : adds to the current scale of the target" +
-		         "ToDestination : sets the scale to the destination target, whatever the current scale is")]
+        /// 이 피드백이 작동해야 하는 모드
+        /// Absolute : 곡선을 따른다
+        /// Additive : 대상의 현재 규모에 추가됩니다.
+        /// ToDestination : 현재 스케일이 무엇이든 간에 스케일을 대상 대상으로 설정합니다.
+        [Tooltip("이 피드백이 작동해야 하는 모드" +
+                 "Absolute : 곡선을 따른다" +
+                 "Additive : 대상의 현재 규모에 추가됩니다." +
+                 "ToDestination : 현재 스케일이 무엇이든 간에 스케일을 대상 대상으로 설정합니다.")]
 		public Modes Mode = Modes.Absolute;
 		/// whether this feedback should play in scaled or unscaled time
-		[Tooltip("whether this feedback should play in scaled or unscaled time")]
+		[Tooltip("이 피드백이 확장된 시간에 재생되어야 하는지 또는 확장되지 않은 시간에 재생되어야 하는지 여부")]
 		public TimeScales TimeScale = TimeScales.Scaled;
 		/// the object to animate
-		[Tooltip("the object to animate")]
+		[Tooltip("애니메이션할 개체")]
 		public Transform AnimateScaleTarget;
 		/// the duration of the animation
-		[Tooltip("the duration of the animation")]
+		[Tooltip("애니메이션 지속 시간")]
 		public float AnimateScaleDuration = 0.2f;
 		/// the value to remap the curve's 0 value to
 		[Tooltip("the value to remap the curve's 0 value to")]
@@ -52,39 +52,39 @@ namespace MoreMountains.Feedbacks
 		[FormerlySerializedAs("Multiplier")]
 		public float RemapCurveOne = 2f;
 		/// how much should be added to the curve
-		[Tooltip("how much should be added to the curve")]
+		[Tooltip("곡선에 얼마나 추가해야 할까요?")]
 		public float Offset = 0f;
 		/// if this is true, should animate the X scale value
-		[Tooltip("if this is true, should animate the X scale value")]
+		[Tooltip("이것이 사실이라면 X 스케일 값에 애니메이션을 적용해야 합니다.")]
 		public bool AnimateX = true;
 		/// the x scale animation definition
-		[Tooltip("the x scale animation definition")]
+		[Tooltip("x 스케일 애니메이션 정의")]
 		[MMFCondition("AnimateX", true)]
 		public AnimationCurve AnimateScaleX = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
 		/// if this is true, should animate the Y scale value
-		[Tooltip("if this is true, should animate the Y scale value")]
+		[Tooltip("이것이 사실이라면 Y 스케일 값에 애니메이션을 적용해야 합니다.\r\n")]
 		public bool AnimateY = true;
 		/// the y scale animation definition
-		[Tooltip("the y scale animation definition")]
+		[Tooltip("y 스케일 애니메이션 정의")]
 		[MMFCondition("AnimateY", true)]
 		public AnimationCurve AnimateScaleY = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
 		/// if this is true, should animate the z scale value
-		[Tooltip("if this is true, should animate the z scale value")]
+		[Tooltip("이것이 사실이라면 z 스케일 값에 애니메이션을 적용해야 합니다.")]
 		public bool AnimateZ = true;
 		/// the z scale animation definition
-		[Tooltip("the z scale animation definition")]
+		[Tooltip("Z 스케일 애니메이션 정의")]
 		[MMFCondition("AnimateZ", true)]
 		public AnimationCurve AnimateScaleZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, initial and destination scales will be recomputed on every play
-		[Tooltip("if this is true, initial and destination scales will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 및 대상 스케일이 다시 계산됩니다.")]
 		public bool DetermineScaleOnPlay = false;
 
 		[Header("To Destination")]
 		/// the scale to reach when in ToDestination mode
-		[Tooltip("the scale to reach when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 도달할 스케일")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public Vector3 DestinationScale = new Vector3(0.5f, 0.5f, 0.5f);
 

@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Auto-referenced ScriptableObject instances of type T
-	/// An example usage for ReferenceHolder<T> that can be used with any class type
-	/// </summary>
-	public class MMReferencedScriptableObject<T> : ScriptableObject where T : ScriptableObject
+    /// <summary>
+    /// T 유형의 자동 참조된 ScriptableObject 인스턴스
+    /// 모든 클래스 유형과 함께 사용할 수 있는 ReferenceHolder<T>의 사용 예
+    /// </summary>
+    public class MMReferencedScriptableObject<T> : ScriptableObject where T : ScriptableObject
 	{
 		private MMReferenceHolder<T> _instances;
 		protected virtual T Typed => _typed = _typed ?? this as T; private T _typed;

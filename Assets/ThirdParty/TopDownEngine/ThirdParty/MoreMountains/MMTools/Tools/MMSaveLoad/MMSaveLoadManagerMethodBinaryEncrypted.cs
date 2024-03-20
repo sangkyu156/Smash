@@ -8,10 +8,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This save load method saves and loads files as encrypted binary files
-	/// </summary>
-	public class MMSaveLoadManagerMethodBinaryEncrypted : MMSaveLoadManagerEncrypter, IMMSaveLoadManagerMethod
+    /// <summary>
+    /// 이 저장 로드 방법은 파일을 암호화된 바이너리 파일로 저장하고 로드합니다.
+    /// </summary>
+    public class MMSaveLoadManagerMethodBinaryEncrypted : MMSaveLoadManagerEncrypter, IMMSaveLoadManagerMethod
 	{
 		/// <summary>
 		/// Saves the specified object to disk at the specified location after encrypting it 

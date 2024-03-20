@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you control the color and intensity of a Light when played
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the color and intensity of a Light in your scene for a certain duration (or instantly).")]
+    /// <summary>
+    /// 이 피드백을 사용하면 재생 시 조명의 색상과 강도를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 특정 기간 동안(또는 즉시) 장면의 조명 색상과 강도를 제어할 수 있습니다.")]
 	[FeedbackPath("Light")]
 	public class MMF_Light : MMF_Feedback
 	{

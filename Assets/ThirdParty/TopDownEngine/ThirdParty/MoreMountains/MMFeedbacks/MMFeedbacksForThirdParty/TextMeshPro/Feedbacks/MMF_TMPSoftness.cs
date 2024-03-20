@@ -7,11 +7,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you tweak the softness of a TMP text over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you tweak the softness of a TMP text over time.")]
+    /// <summary>
+    /// 이 피드백을 통해 시간이 지남에 따라 TMP 텍스트의 부드러움을 조정할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 시간이 지남에 따라 TMP 텍스트의 부드러움을 조정할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Softness")]
 	#endif
@@ -46,13 +46,13 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Softness", true, 13)]
 		/// whether or not values should be relative
-		[Tooltip("whether or not values should be relative")]
+		[Tooltip("값이 상대적이어야 하는지 여부")]
 		public bool RelativeValues = true;
 		/// the selected mode
 		[Tooltip("the selected mode")]
 		public MMFeedbackBase.Modes Mode = MMFeedbackBase.Modes.OverTime;
 		/// the duration of the feedback, in seconds
-		[Tooltip("the duration of the feedback, in seconds")]
+		[Tooltip("피드백 기간(초)")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public float Duration = 0.5f;
 		/// the curve to tween on
@@ -72,7 +72,7 @@ namespace MoreMountains.Feedbacks
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.Instant)]
 		public float InstantSoftness;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 
 		protected float _initialSoftness;

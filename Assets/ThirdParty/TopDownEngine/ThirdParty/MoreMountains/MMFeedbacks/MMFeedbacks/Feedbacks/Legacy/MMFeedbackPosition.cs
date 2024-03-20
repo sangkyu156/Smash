@@ -5,11 +5,11 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// this feedback will let you animate the position of 
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will animate the target object's position over time, for the specified duration, from the chosen initial position to the chosen destination. These can either be relative Vector3 offsets from the Feedback's position, or Transforms. If you specify transforms, the Vector3 values will be ignored.")]
+    /// <summary>
+    /// 이 피드백을 통해
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 선택한 초기 위치에서 선택한 대상까지 지정된 기간 동안 시간이 지남에 따라 대상 개체의 위치에 애니메이션을 적용합니다. 이는 피드백 위치로부터의 상대적 Vector3 오프셋이거나 변환일 수 있습니다. 변환을 지정하면 Vector3 값이 무시됩니다.")]
 	[FeedbackPath("Transform/Position")]
 	public class MMFeedbackPosition : MMFeedback
 	{
@@ -25,24 +25,24 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Position Target")]
 		/// the object this feedback will animate the position for
-		[Tooltip("the object this feedback will animate the position for")]
+		[Tooltip("이 피드백이 위치에 애니메이션을 적용할 개체")]
 		public GameObject AnimatePositionTarget;
 
 		[Header("Animation")]
 		/// the mode this animation should follow (either going from A to B, or moving along a curve)
-		[Tooltip("the mode this animation should follow (either going from A to B, or moving along a curve)")]
+		[Tooltip("이 애니메이션이 따라야 하는 모드(A에서 B로 이동하거나 곡선을 따라 이동)")]
 		public Modes Mode = Modes.AtoB;
 		/// whether this feedback should play in scaled or unscaled time
-		[Tooltip("whether this feedback should play in scaled or unscaled time")]
+		[Tooltip("이 피드백이 확장된 시간에 재생되어야 하는지 또는 확장되지 않은 시간에 재생되어야 하는지 여부")]
 		public TimeScales TimeScale = TimeScales.Scaled;
 		/// the space in which to move the position in
-		[Tooltip("the space in which to move the position in")]
+		[Tooltip("위치를 이동할 공간")]
 		public Spaces Space = Spaces.World;
 		/// the duration of the animation on play
-		[Tooltip("the duration of the animation on play")]
+		[Tooltip("재생 중인 애니메이션의 지속 시간")]
 		public float AnimatePositionDuration = 0.2f;
 		/// the acceleration of the movement
-		[Tooltip("the acceleration of the movement")]
+		[Tooltip("움직임의 가속")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.ToDestination)]
 		public AnimationCurve AnimatePositionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
 		/// the value to remap the curve's 0 value to
@@ -55,54 +55,54 @@ namespace MoreMountains.Feedbacks
 		[FormerlySerializedAs("CurveMultiplier")]
 		public float RemapCurveOne = 1f;
 		/// if this is true, the x position will be animated
-		[Tooltip("if this is true, the x position will be animated")]
+		[Tooltip("이것이 사실이라면 x 위치가 애니메이션됩니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
 		public bool AnimateX;
 		/// the acceleration of the movement
-		[Tooltip("the acceleration of the movement")]
+		[Tooltip("움직임의 가속")]
 		[MMFCondition("AnimateX", true)]
 		public AnimationCurve AnimatePositionCurveX = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// if this is true, the y position will be animated
-		[Tooltip("if this is true, the y position will be animated")]
+		[Tooltip("이것이 사실이라면 y 위치가 애니메이션됩니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
 		public bool AnimateY;
 		/// the acceleration of the movement
-		[Tooltip("the acceleration of the movement")]
+		[Tooltip("움직임의 가속")]
 		[MMFCondition("AnimateY", true)]
 		public AnimationCurve AnimatePositionCurveY = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// if this is true, the z position will be animated
-		[Tooltip("if this is true, the z position will be animated")]
+		[Tooltip("이것이 사실이라면 z 위치가 애니메이션됩니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
 		public bool AnimateZ;
 		/// the acceleration of the movement
-		[Tooltip("the acceleration of the movement")]
+		[Tooltip("움직임의 가속")]
 		[MMFCondition("AnimateZ", true)]
 		public AnimationCurve AnimatePositionCurveZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
         
 		[Header("Positions")]
 		/// if this is true, the initial position won't be added to init and destination
-		[Tooltip("if this is true, the initial position won't be added to init and destination")]
+		[Tooltip("if이는 사실입니다. 초기 위치는 init 및 대상에 추가되지 않습니다.")]
 		public bool RelativePosition = true;
 		/// if this is true, initial and destination positions will be recomputed on every play
-		[Tooltip("if this is true, initial and destination positions will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 위치와 대상 위치가 다시 계산됩니다.")]
 		public bool DeterminePositionsOnPlay = false;
 		/// the initial position
-		[Tooltip("the initial position")]
+		[Tooltip("초기 위치")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.AlongCurve)]
 		public Vector3 InitialPosition = Vector3.zero;
 		/// the destination position
-		[Tooltip("the destination position")]
+		[Tooltip("목적지 위치")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.ToDestination)]
 		public Vector3 DestinationPosition = Vector3.one;
 		/// the initial transform - if set, takes precedence over the Vector3 above
-		[Tooltip("the initial transform - if set, takes precedence over the Vector3 above")]
+		[Tooltip("초기 변환 - 설정된 경우 위의 Vector3보다 우선합니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.AlongCurve)]
 		public Transform InitialPositionTransform;
 		/// the destination transform - if set, takes precedence over the Vector3 above
-		[Tooltip("the destination transform - if set, takes precedence over the Vector3 above")]
+		[Tooltip("대상 변환 - 설정된 경우 위의 Vector3보다 우선합니다.")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.ToDestination)]
 		public Transform DestinationPositionTransform;
 		/// the duration of this feedback is the duration of its animation

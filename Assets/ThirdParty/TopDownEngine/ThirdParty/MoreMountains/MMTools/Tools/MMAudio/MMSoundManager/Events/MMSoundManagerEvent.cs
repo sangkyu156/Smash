@@ -11,14 +11,14 @@ namespace MoreMountains.Tools
 		ResetSettings,
 		SettingsLoaded
 	}
-    
-	/// <summary>
-	/// This event will let you trigger a save/load/reset on the MMSoundManager settings
-	///
-	/// Example : MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.SaveSettings);
-	/// will save settings. 
-	/// </summary>
-	public struct MMSoundManagerEvent
+
+    /// <summary>
+    /// 이 이벤트를 사용하면 MMSoundManager 설정에서 저장/로드/재설정을 트리거할 수 있습니다.
+    ///
+    /// Example : MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.SaveSettings);
+    /// 설정을 저장합니다.
+    /// </summary>
+    public struct MMSoundManagerEvent
 	{
 		public MMSoundManagerEventTypes EventType;
         

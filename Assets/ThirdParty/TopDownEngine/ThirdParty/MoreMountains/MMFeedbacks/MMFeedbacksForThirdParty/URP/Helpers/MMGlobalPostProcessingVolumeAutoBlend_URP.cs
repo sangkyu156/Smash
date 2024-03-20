@@ -7,11 +7,11 @@ using UnityEngine.Rendering.Universal;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// Use this class to have a global PP volume auto blend its weight on cue, between a start and end values
-	/// </summary>
-	#if MM_URP
-	[RequireComponent(typeof(Volume))]
+    /// <summary>
+    /// 전역 PP 볼륨이 시작 값과 끝 값 사이에서 큐에 가중치를 자동으로 혼합하도록 하려면 이 클래스를 사용하십시오.
+    /// </summary>
+#if MM_URP
+    [RequireComponent(typeof(Volume))]
 	#endif
 	[AddComponentMenu("More Mountains/Feedbacks/Shakers/PostProcessing/MMGlobalPostProcessingVolumeAutoBlend_URP")]
 	public class MMGlobalPostProcessingVolumeAutoBlend_URP : MonoBehaviour

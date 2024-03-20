@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// This helper class, meant to be used by the MMAdditiveSceneLoadingManager, creates a temporary scene to store objects that might get instantiated, and empties it in the destination scene once loading is complete
-	/// </summary>
-	public class MMSceneLoadingAntiSpill
+    /// <summary>
+    /// MMAdditiveSceneLoadingManager에서 사용되는 이 도우미 클래스는 인스턴스화될 수 있는 개체를 저장하기 위한 임시 장면을 만들고 로드가 완료되면 대상 장면에서 이를 비웁니다.
+    /// </summary>
+    public class MMSceneLoadingAntiSpill
 	{
 		protected Scene _antiSpillScene;
 		protected Scene _destinationScene;

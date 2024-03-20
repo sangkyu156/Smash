@@ -4,14 +4,14 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class handles a X-players split screen setup
-	/// </summary>
-	public class MultiplayerSplitCameraRig : TopDownMonoBehaviour, MMEventListener<MMGameEvent>
+    /// <summary>
+    /// 이 클래스는 X-players 분할 화면 설정을 처리합니다.
+    /// </summary>
+    public class MultiplayerSplitCameraRig : TopDownMonoBehaviour, MMEventListener<MMGameEvent>
 	{
 		[Header("Multiplayer Split Camera Rig")]
 		/// the list of camera controllers to bind to level manager players on load
-		[Tooltip("the list of camera controllers to bind to level manager players on load")]
+		[Tooltip("로드 시 레벨 관리자 플레이어에 바인딩할 카메라 컨트롤러 목록")]
 		public List<CinemachineCameraController> CameraControllers;
 
 		/// <summary>

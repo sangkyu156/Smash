@@ -5,10 +5,10 @@ using System;
 namespace MoreMountains.Tools
 {
 	[Serializable]
-	/// <summary>
-	/// A serializable class used to store an achievement into a save file
-	/// </summary>
-	public class SerializedMMAchievement
+    /// <summary>
+    /// 업적을 저장 파일에 저장하는 데 사용되는 직렬화 가능 클래스
+    /// </summary>
+    public class SerializedMMAchievement
 	{
 		public string AchievementID;
 		public bool UnlockedStatus;

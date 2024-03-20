@@ -5,11 +5,11 @@ using TMPro;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will let you change the text of a target TMP text component
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you change the text of a target TMP text component")]
+    /// <summary>
+    /// 이 피드백을 사용하면 대상 TMP 텍스트 구성 요소의 텍스트를 변경할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 대상 TMP 텍스트 구성 요소의 텍스트를 변경할 수 있습니다.")]
 	#if MM_TEXTMESHPRO
 	[FeedbackPath("TextMesh Pro/TMP Text")]
 	#endif
@@ -35,7 +35,7 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("the target TMP_Text component we want to change the text on")]
 		public TMP_Text TargetTMPText;
 		/// the new text to replace the old one with
-		[Tooltip("the new text to replace the old one with")]
+		[Tooltip("이전 텍스트를 대체할 새 텍스트")]
 		[TextArea]
 		public string NewText = "Hello World";
 		#endif

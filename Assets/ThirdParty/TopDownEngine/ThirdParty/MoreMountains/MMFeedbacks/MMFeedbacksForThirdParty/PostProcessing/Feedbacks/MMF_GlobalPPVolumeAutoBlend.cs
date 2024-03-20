@@ -4,12 +4,12 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback will let you pilot a Global PostProcessing Volume AutoBlend component. A GPPVAB component is placed on a PostProcessing Volume, and will let you control and blend its weight over time on demand.    
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will let you pilot a Global PostProcessing Volume AutoBlend component. " +
-	              "A GPPVAB component is placed on a PostProcessing Volume, and will let you control and blend its weight over time on demand.")]
+    /// <summary>
+    /// 이 피드백을 통해 Global PostProcessing Volume AutoBlend 구성 요소를 시험해 볼 수 있습니다. GPPVAB 구성 요소는 PostProcessing Volume에 배치되며 필요에 따라 시간 경과에 따라 가중치를 제어하고 혼합할 수 있습니다.  
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 Global PostProcessing Volume AutoBlend 구성 요소를 시험해 볼 수 있습니다. " +
+"GPPVAB 구성 요소는 PostProcessing Volume에 배치되며 필요에 따라 시간 경과에 따라 무게를 제어하고 혼합할 수 있습니다.")]
 	#if MM_POSTPROCESSING
 	[FeedbackPath("PostProcess/Global PP Volume Auto Blend")]
 	#endif
@@ -58,33 +58,33 @@ namespace MoreMountains.FeedbacksForThirdParty
                
 		[MMFInspectorGroup("PostProcess Volume Blend", true, 53, true)]
 		/// the target auto blend to pilot with this feedback
-		[Tooltip("the target auto blend to pilot with this feedback")]
+		[Tooltip("이 피드백으로 시험할 대상 자동 블렌드")]
 		public MMGlobalPostProcessingVolumeAutoBlend TargetAutoBlend;
 		/// the chosen mode
 		[Tooltip("the chosen mode")]
 		public Modes Mode = Modes.Default;
 		/// the chosen action when in default mode
-		[Tooltip("the chosen action when in default mode")]
+		[Tooltip("기본 모드에서 선택한 동작")]
 		[MMFEnumCondition("Mode", (int)Modes.Default)]
 		public Actions BlendAction = Actions.Blend;
 		/// the duration of the blend, in seconds when in override mode
-		[Tooltip("the duration of the blend, in seconds when in override mode")]
+		[Tooltip("오버라이드 모드에 있을 때 블렌드 지속 시간(초)")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public float BlendDuration = 1f;
 		/// the curve to apply to the blend
-		[Tooltip("the curve to apply to the blend")]
+		[Tooltip("블렌드에 적용할 곡선")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public AnimationCurve BlendCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
 		/// the weight to blend from
-		[Tooltip("the weight to blend from")]
+		[Tooltip("블렌딩할 무게 from")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public float InitialWeight = 0f;
 		/// the weight to blend to
-		[Tooltip("the weight to blend to")]
+		[Tooltip("블렌딩할 무게 to")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public float FinalWeight = 1f;
 		/// whether or not to reset to the initial value at the end of the shake
-		[Tooltip("whether or not to reset to the initial value at the end of the shake")]
+		[Tooltip("흔들기 종료 시 초기값으로 재설정할지 여부")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public bool ResetToInitialValueOnEnd = true;
         

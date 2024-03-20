@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the position of a RectTransform's pivot over time
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you control the position of a RectTransform's pivot over time")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간 경과에 따라 RectTransform의 피벗 위치를 제어할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간 경과에 따라 RectTransform의 피벗 위치를 제어할 수 있습니다.")]
 	[FeedbackPath("UI/RectTransform Pivot")]
 	public class MMF_RectTransformPivot : MMF_FeedbackBase
 	{
@@ -23,12 +23,12 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Target RectTransform", true, 37, true)]
 		/// the RectTransform whose position you want to control over time 
-		[Tooltip("the RectTransform whose position you want to control over time")]
+		[Tooltip("시간에 따라 위치를 제어하려는 RectTransform")]
 		public RectTransform TargetRectTransform;
         
 		[MMFInspectorGroup("Pivot", true, 39)] 
 		/// The curve along which to evaluate the position of the RectTransform's pivot
-		[Tooltip("The curve along which to evaluate the position of the RectTransform's pivot")]
+		[Tooltip("RectTransform의 피벗 위치를 평가하는 곡선")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
 		public MMTweenType SpeedCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the position to remap the curve's 0 to 

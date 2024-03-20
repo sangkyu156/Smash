@@ -6,11 +6,11 @@ using UnityEngine.UI;
 namespace MoreMountains.Tools
 {
 
-	/// <summary>
-	/// A class used to control a float in any other class, over time
-	/// To use it, simply drag a monobehaviour in its target field, pick a control mode (ping pong or random), and tweak the settings
-	/// </summary>
-	[MMRequiresConstantRepaint]
+    /// <summary>
+    /// 시간이 지남에 따라 다른 클래스의 부동 소수점을 제어하는 ​​데 사용되는 클래스
+    /// 이를 사용하려면 대상 필드에 단일 동작을 드래그하고 제어 모드(핑퐁 또는 무작위)를 선택한 다음 설정을 조정하면 됩니다.
+    /// </summary>
+    [MMRequiresConstantRepaint]
 	[AddComponentMenu("More Mountains/Tools/Property Controllers/ShaderController")]
 	public class ShaderController : MMMonoBehaviour
 	{
@@ -25,254 +25,254 @@ namespace MoreMountains.Tools
 
 		[Header("Target")]
 		/// the type of renderer to pilot
-		[Tooltip("the type of renderer to pilot")]
+		[Tooltip("파일럿할 렌더러 유형")]
 		public TargetTypes TargetType = TargetTypes.Renderer;
 		/// the renderer with the shader you want to control
-		[Tooltip("the renderer with the shader you want to control")]
+		[Tooltip("제어하려는 셰이더가 포함된 렌더러")]
 		[MMEnumCondition("TargetType",(int)TargetTypes.Renderer)]
 		public Renderer TargetRenderer;
 		/// the ID of the material in the Materials array on the target renderer (usually 0)
-		[Tooltip("the ID of the material in the Materials array on the target renderer (usually 0)")]
+		[Tooltip("대상 렌더러의 Materials 배열에 있는 재질의 ID(일반적으로 0)")]
 		[MMEnumCondition("TargetType", (int)TargetTypes.Renderer)]
 		public int TargetMaterialID = 0;
 		/// the Image with the shader you want to control
-		[Tooltip("the Image with the shader you want to control")]
+		[Tooltip("제어하려는 셰이더가 포함된 이미지")]
 		[MMEnumCondition("TargetType", (int)TargetTypes.Image)]
 		public Image TargetImage;
 		/// if this is true, the 'materialForRendering' for this Image will be used, instead of the regular material
-		[Tooltip("if this is true, the 'materialForRendering' for this Image will be used, instead of the regular material")]
+		[Tooltip("이것이 사실이라면 일반 재질 대신 이 이미지의 'materialForRendering'이 사용됩니다.")]
 		[MMEnumCondition("TargetType", (int)TargetTypes.Image)]
 		public bool UseMaterialForRendering = false;
 		/// the RawImage with the shader you want to control
-		[Tooltip("the RawImage with the shader you want to control")]
+		[Tooltip("제어하려는 셰이더가 포함된 RawImage")]
 		[MMEnumCondition("TargetType", (int)TargetTypes.RawImage)]
 		public RawImage TargetRawImage;
 		/// the Text with the shader you want to control
-		[Tooltip("the Text with the shader you want to control")]
+		[Tooltip("제어하려는 셰이더가 포함된 텍스트")]
 		[MMEnumCondition("TargetType", (int)TargetTypes.Text)]
 		public Text TargetText;
 		/// if this is true, material will be cached on Start
-		[Tooltip("if this is true, material will be cached on Start")]
+		[Tooltip("이것이 사실이라면 시작 시 자료가 캐시됩니다.")]
 		public bool CacheMaterial = true;
 		/// if this is true, an instance of the material will be created on start so that this controller only affects its target
-		[Tooltip("if this is true, an instance of the material will be created on start so that this controller only affects its target")]
+		[Tooltip("이것이 사실이라면, 이 컨트롤러가 대상에만 영향을 미치도록 머티리얼 인스턴스가 시작 시 생성됩니다.")]
 		public bool CreateMaterialInstance = false;
 		/// the EXACT name of the property to affect
-		[Tooltip("the EXACT name of the property to affect")]
+		[Tooltip("영향을 미칠 부동산의 정확한 이름")]
 		public string TargetPropertyName;
 		/// the type of the property to affect
-		[Tooltip("the type of the property to affect")]
+		[Tooltip("영향을 미치는 속성의 유형")]
 		public PropertyTypes PropertyType = PropertyTypes.Float;
 		/// whether or not to affect its x component
-		[Tooltip("whether or not to affect its x component")]
+		[Tooltip("X 구성요소에 영향을 미칠지 여부")]
 		[MMEnumCondition("PropertyType", (int)PropertyTypes.Vector)]
 		public bool X;
 		/// whether or not to affect its y component
-		[Tooltip("whether or not to affect its y component")]
+		[Tooltip("Y 구성요소에 영향을 미칠지 여부")]
 		[MMEnumCondition("PropertyType", (int)PropertyTypes.Vector)]
 		public bool Y;
 		/// whether or not to affect its z component
-		[Tooltip("whether or not to affect its z component")]
+		[Tooltip("Z 구성요소에 영향을 미칠지 여부")]
 		[MMEnumCondition("PropertyType", (int)PropertyTypes.Vector)]
 		public bool Z;
 		/// whether or not to affect its w component
-		[Tooltip("whether or not to affect its w component")]
+		[Tooltip("w 구성요소에 영향을 미칠지 여부")]
 		[MMEnumCondition("PropertyType", (int)PropertyTypes.Vector)]
 		public bool W;
 
 		[Header("Color")]
 		/// whether to move from a color to another, or to evalute colors on a ramp
-		[Tooltip("whether to move from a color to another, or to evalute colors on a ramp")]
+		[Tooltip("한 색상에서 다른 색상으로 이동할지 아니면 경사로에서 색상을 평가할지 여부")]
 		public ColorModes ColorMode = ColorModes.TwoColors;
 		/// the ramp along which to lerp when in ramp color mode
-		[Tooltip("the ramp along which to lerp when in ramp color mode")]
+		[Tooltip("램프 색상 모드에 있을 때 따라갈 램프")]
 		[GradientUsage(true)]
 		public Gradient ColorRamp;
 		/// the color to lerp from	
-		[Tooltip("the color to lerp from")]
+		[Tooltip("lerp할 색상")]
 		[ColorUsage(true, true)]
 		public Color FromColor = Color.black;
 		/// the color to lerp to	
-		[Tooltip("the color to lerp to")]
+		[Tooltip("lerp 할 색상")]
 		[ColorUsage(true, true)]
 		public Color ToColor = Color.white;
 
 		[Header("Global Settings")]
 		/// the control mode (ping pong or random)
-		[Tooltip("the control mode (ping pong or random)")]
+		[Tooltip("제어 모드(탁구 또는 무작위)")]
 		public ControlModes ControlMode;
 		/// whether or not the updated value should be added to the initial one
-		[Tooltip("whether or not the updated value should be added to the initial one")]
+		[Tooltip("업데이트된 값을 초기 값에 추가해야 하는지 여부")]
 		public bool AddToInitialValue = false;
 		/// whether or not to use unscaled time
-		[Tooltip("whether or not to use unscaled time")]
+		[Tooltip("크기 조정되지 않은 시간을 사용할지 여부")]
 		public bool UseUnscaledTime = true;
 		/// whether or not you want to revert to the InitialValue after the control ends
-		[Tooltip("whether or not you want to revert to the InitialValue after the control ends")]
+		[Tooltip("컨트롤이 끝난 후 초기 값으로 되돌릴지 여부")]
 		public bool RevertToInitialValueAfterEnd = true;
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
-		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
+		[Tooltip("이것이 사실이라면 이 구성요소는 재료의 인스턴스에서 작업하는 대신 재료 특성 블록을 사용합니다.")] 
 		[MMEnumCondition("TargetType", (int)TargetTypes.Renderer)]
 		public bool UseMaterialPropertyBlocks = false;
 		/// if using material property blocks on a sprite renderer, you'll want to make sure the sprite texture gets passed to the block when updating it. For that, you need to specify your sprite's material's shader's texture property name. If you're not working with a sprite renderer, you can safely ignore this.
-		[Tooltip("if using material property blocks on a sprite renderer, you'll want to make sure the sprite texture gets passed to the block when updating it. For that, you need to specify your sprite's material's shader's texture property name. If you're not working with a sprite renderer, you can safely ignore this.")]
+		[Tooltip("스프라이트 렌더러에서 재료 속성 블록을 사용하는 경우 업데이트할 때 스프라이트 텍스처가 블록에 전달되는지 확인하는 것이 좋습니다. 이를 위해서는 스프라이트 머티리얼 셰이더의 텍스처 속성 이름을 지정해야 합니다. 스프라이트 렌더러로 작업하지 않는 경우에는 이를 무시해도 됩니다.")]
 		[MMCondition("UseMaterialPropertyBlocks", true)]
 		public string SpriteRendererTextureProperty = "_MainTex";
 		/// whether or not to perform extra safety checks (safer, more costly)
-		[Tooltip("whether or not to perform extra safety checks (safer, more costly)")]
+		[Tooltip("추가 안전 점검 수행 여부(더 안전하고 비용이 더 많이 듭니다)")]
 		public bool SafeMode = false;
 
 		[Header("Ping Pong")]
 		/// the curve to apply to the tween
-		[Tooltip("the curve to apply to the tween")]
+		[Tooltip("트윈에 적용할 곡선")]
 		public MMTweenType Curve;
 		/// the minimum value for the ping pong
-		[Tooltip("the minimum value for the ping pong")]
+		[Tooltip("탁구의 최소값")]
 		public float MinValue = 0f;
 		/// the maximum value for the ping pong
-		[Tooltip("the maximum value for the ping pong")]
+		[Tooltip("탁구의 최대값")]
 		public float MaxValue = 5f;
 		/// the duration of one ping (or pong)
-		[Tooltip("the duration of one ping (or pong)")]
+		[Tooltip("한 번의 핑(또는 퐁)의 지속 시간")]
 		public float Duration = 1f;
 		/// the duration of the pause between two ping (or pongs) (in seconds)
-		[Tooltip("the duration of the pause between two ping (or pongs) (in seconds)")]
+		[Tooltip("두 개의 핑(또는 퐁) 사이의 일시 중지 기간(초)")]
 		public float PingPongPauseDuration = 1f;
 
 		[Header("Loop")]
 		/// the curve to apply to the tween
-		[Tooltip("the curve to apply to the tween")]
+		[Tooltip("트윈에 적용할 곡선")]
 		public MMTweenType LoopCurve;
 		/// the start value for the loop tween
-		[Tooltip("the start value for the loop tween")]
+		[Tooltip("루프 트윈의 시작 값")]
 		public float LoopStartValue = 0f;
 		/// the end value for the loop tween
-		[Tooltip("the end value for the loop tween")]
+		[Tooltip("루프 트윈의 최종 값")]
 		public float LoopEndValue = 5f;
 		/// the duration of one loop
-		[Tooltip("the duration of one loop")]
+		[Tooltip("한 루프의 지속 시간")]
 		public float LoopDuration = 1f;
 		/// the duration of the pause between two loops (in seconds)
-		[Tooltip("the duration of the pause between two loops (in seconds)")]
+		[Tooltip("두 루프 사이의 일시 중지 기간(초)")]
 		public float LoopPauseDuration = 1f;
 
 		[Header("Driven")]
 		/// the value that will be applied to the controlled float in driven mode 
-		[Tooltip("the value that will be applied to the controlled float in driven mode")]
+		[Tooltip("구동 모드에서 제어된 플로트에 적용될 값")]
 		public float DrivenLevel = 0f;
 
 		[Header("Random")]
 		/// the noise amplitude
-		[Tooltip("the noise amplitude")]
+		[Tooltip("소음 진폭")]
 		[MMVector("Min", "Max")]
 		public Vector2 Amplitude = new Vector2(0f,5f);
 		/// the noise frequency
-		[Tooltip("the noise frequency")]
+		[Tooltip("소음 주파수")]
 		[MMVector("Min", "Max")]
 		public Vector2 Frequency = new Vector2(1f, 1f);
 		/// the noise shift
-		[Tooltip("the noise shift")]
+		[Tooltip("소음 변화")]
 		[MMVector("Min", "Max")]
 		public Vector2 Shift = new Vector2(0f, 1f);
 
 		/// if this is true, will let you remap the noise value (without amplitude) to the bounds you've specified
-		[Tooltip("if this is true, will let you remap the noise value (without amplitude) to the bounds you've specified")]
+		[Tooltip("이것이 사실이라면 노이즈 값(진폭 제외)을 지정한 경계로 다시 매핑할 수 있습니다.")]
 		public bool RemapNoiseValues = false;
 		/// the value to which to remap the random's zero bound
-		[Tooltip("the value to which to remap the random's zero bound")]
+		[Tooltip("무작위의 영점 경계를 다시 매핑할 값")]
 		[MMCondition("RemapNoiseValues", true)]
 		public float RemapNoiseZero = 0f;
 		/// the value to which to remap the random's one bound
-		[Tooltip("the value to which to remap the random's one bound")]
+		[Tooltip("무작위의 한 경계를 다시 매핑할 값")]
 		[MMCondition("RemapNoiseValues", true)]
 		public float RemapNoiseOne = 1f;
         
 		[Header("OneTime")]
 		/// the duration of the One Time shake
-		[Tooltip("the duration of the One Time shake")]
+		[Tooltip("One Time Shake의 지속 시간")]
 		public float OneTimeDuration = 1f;
 		/// the amplitude of the One Time shake (this will be multiplied by the curve's height)
-		[Tooltip("the amplitude of the One Time shake (this will be multiplied by the curve's height)")]
+		[Tooltip("일회성 흔들림의 진폭(이에 곡선 높이를 곱함)")]
 		public float OneTimeAmplitude = 1f;
 		/// the low value to remap the normalized curve value to 
-		[Tooltip("the low value to remap the normalized curve value to")]
+		[Tooltip("정규화된 곡선 값을 다시 매핑할 낮은 값")]
 		public float OneTimeRemapMin = 0f;
 		/// the high value to remap the normalized curve value to 
-		[Tooltip("the high value to remap the normalized curve value to")]
+		[Tooltip("정규화된 곡선 값을 다시 매핑할 높은 값")]
 		public float OneTimeRemapMax = 1f;
 		/// the curve to apply to the one time shake
-		[Tooltip("the curve to apply to the one time shake")]
+		[Tooltip("일회성 흔들기에 적용할 곡선")]
 		public AnimationCurve OneTimeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		[MMInspectorButton("OneTime")]
 		/// a test button for the one time shake
-		[Tooltip("a test button for the one time shake")]
+		[Tooltip("일회성 흔들림을 위한 테스트 버튼")]
 		public bool OneTimeButton;
 		/// whether or not this controller should go back to sleep after a OneTime
-		[Tooltip("whether or not this controller should go back to sleep after a OneTime")]
+		[Tooltip("이 컨트롤러가 OneTime 이후에 다시 절전 모드로 전환되어야 하는지 여부")]
 		public bool DisableAfterOneTime = false;
 		/// whether or not this controller should go back to sleep after a OneTime
-		[Tooltip("whether or not this controller should go back to sleep after a OneTime")]
+		[Tooltip("이 컨트롤러가 OneTime 이후에 다시 절전 모드로 전환되어야 하는지 여부")]
 		public bool DisableGameObjectAfterOneTime = false;
 
 		[Header("AudioAnalyzer")]
 		/// the bound audio analyzer used to drive this controller
-		[Tooltip("the bound audio analyzer used to drive this controller")]
+		[Tooltip("이 컨트롤러를 구동하는 데 사용되는 바운드 오디오 분석기")]
 		public MMAudioAnalyzer AudioAnalyzer;
 		/// the ID of the selected beat on the analyzer
-		[Tooltip("the ID of the selected beat on the analyzer")]
+		[Tooltip("분석기에서 선택한 비트의 ID")]
 		public int BeatID;
 		/// the multiplier to apply to the value out of the analyzer
-		[Tooltip("the multiplier to apply to the value out of the analyzer")]
+		[Tooltip("분석기의 값에 적용할 승수")]
 		public float AudioAnalyzerMultiplier = 1f;
 		/// the offset to apply to the value out of the analyzer
-		[Tooltip("the offset to apply to the value out of the analyzer")]
+		[Tooltip("분석기의 값에 적용할 오프셋")]
 		public float AudioAnalyzerOffset = 0f;
 		/// the speed at which to lerp the value
-		[Tooltip("the speed at which to lerp the value")]
+		[Tooltip("값을 lerp하는 속도")]
 		public float AudioAnalyzerLerp = 60f;
 
 		[Header("ToDestination")]
 		/// the value to go to when in ToDestination mode
-		[Tooltip("the value to go to when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 이동할 값")]
 		public float ToDestinationValue = 1f;
 		/// the duration of the ToDestination tween
-		[Tooltip("the duration of the ToDestination tween")]
+		[Tooltip("ToDestination 트윈의 지속 시간")]
 		public float ToDestinationDuration = 1f;
 		/// the curve to use to tween to the ToDestination value
-		[Tooltip("the curve to use to tween to the ToDestination value")]
+		[Tooltip("ToDestination 값으로 트위닝하는 데 사용할 곡선")]
 		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 0.6f), new Keyframe(1f, 1f));
 		/// a test button for the one time shake
-		[Tooltip("a test button for the one time shake")]
+		[Tooltip("일회성 흔들림을 위한 테스트 버튼")]
 		[MMInspectorButton("ToDestination")]
 		public bool ToDestinationButton;
 		/// whether or not this controller should go back to sleep after a OneTime
-		[Tooltip("whether or not this controller should go back to sleep after a OneTime")]
+		[Tooltip("이 컨트롤러가 OneTime 이후에 다시 절전 모드로 전환되어야 하는지 여부")]
 		public bool DisableAfterToDestination = false;
 
 		[Header("Debug")]
 		/// the initial value of the controlled float
-		[Tooltip("the initial value of the controlled float")]
+		[Tooltip("제어되는 플로트의 초기값")]
 		[MMReadOnly]
 		public float InitialValue;
 		/// the current value of the controlled float
-		[Tooltip("the current value of the controlled float")]
+		[Tooltip("제어되는 플로트의 현재 값")]
 		[MMReadOnly]
 		public float CurrentValue;
 		/// the current value of the controlled float, normalized
-		[Tooltip("the current value of the controlled float, normalized")]
+		[Tooltip("제어된 플로트의 현재 값, 정규화됨")]
 		[MMReadOnly]
 		public float CurrentValueNormalized = 0f;
 		/// the current value of the controlled float	
-		[Tooltip("the current value of the controlled float")]
+		[Tooltip("제어되는 플로트의 현재 값")]
 		[MMReadOnly]
 		public Color InitialColor;
 
 		/// the ID of the property
-		[Tooltip("the ID of the property")]
+		[Tooltip("부동산의 ID")]
 		[MMReadOnly]
 		public int PropertyID;
 		/// whether or not the property got found
-		[Tooltip("whether or not the property got found")]
+		[Tooltip("부동산이 발견되었는지 여부")]
 		[MMReadOnly]
 		public bool PropertyFound = false;
 		/// the target material

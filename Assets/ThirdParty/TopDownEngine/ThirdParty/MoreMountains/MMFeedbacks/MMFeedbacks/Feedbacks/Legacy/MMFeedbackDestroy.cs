@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback allows you to destroy a target gameobject, either via Destroy, DestroyImmediate, or SetActive:False
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to destroy a target gameobject, either via Destroy, DestroyImmediate, or SetActive:False")]
+    /// <summary>
+    /// 이 피드백을 사용하면 Destroy, DestroyImmediate 또는 SetActive:False를 통해 대상 게임 개체를 파괴할 수 있습니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 Destroy, DestroyImmediate 또는 SetActive:False를 통해 대상 게임 개체를 파괴할 수 있습니다.")]
 	[FeedbackPath("GameObject/Destroy")]
 	public class MMFeedbackDestroy : MMFeedback
 	{
@@ -24,10 +24,10 @@ namespace MoreMountains.Feedbacks
 
 		[Header("Destroy")]
 		/// the gameobject we want to change the active state of
-		[Tooltip("the gameobject we want to change the active state of")]
+		[Tooltip("활성 상태를 변경하려는 게임 개체")]
 		public GameObject TargetGameObject;
 		/// the selected destruction mode 
-		[Tooltip("the selected destruction mode")]
+		[Tooltip("선택한 파괴 모드")]
 		public Modes Mode;
 
 		/// <summary>

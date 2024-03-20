@@ -1,9 +1,9 @@
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// Interface for player respawn
-	/// </summary>
-	public interface Respawnable
+{
+    /// <summary>
+    /// 플레이어 부활을 위한 인터페이스
+    /// </summary>
+    public interface Respawnable
 	{
 		void OnPlayerRespawn(CheckPoint checkpoint, Character player);
 	}

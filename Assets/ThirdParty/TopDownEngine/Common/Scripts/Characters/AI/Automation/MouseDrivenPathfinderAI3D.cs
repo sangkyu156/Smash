@@ -4,19 +4,19 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class to add on a CharacterPathfinder3D equipped character.
-	/// It will allow you to click anywhere on screen, which will determine a new target and the character will pathfind its way to it
-	/// </summary>
-	[AddComponentMenu("TopDown Engine/Character/AI/Automation/MouseDrivenPathfinderAI3D")]
+    /// <summary>
+    /// CharacterPathfinder3D 장착 캐릭터에 추가하는 클래스입니다.
+    /// 화면의 아무 곳이나 클릭하면 새로운 목표가 결정되고 캐릭터는 그 길을 찾아갑니다.
+    /// </summary>
+    [AddComponentMenu("TopDown Engine/Character/AI/Automation/MouseDrivenPathfinderAI3D")]
 	public class MouseDrivenPathfinderAI3D : TopDownMonoBehaviour 
 	{
 		[Header("Testing")]
 		/// the camera we'll use to determine the destination from
-		[Tooltip("the camera we'll use to determine the destination from")]
+		[Tooltip("목적지를 결정하는 데 사용할 카메라")]
 		public Camera Cam;
 		/// a gameobject used to show the destination
-		[Tooltip("a gameobject used to show the destination")]
+		[Tooltip("목적지를 표시하는 데 사용되는 게임오브젝트")]
 		public GameObject Destination;
 
 		protected CharacterPathfinder3D _characterPathfinder3D;

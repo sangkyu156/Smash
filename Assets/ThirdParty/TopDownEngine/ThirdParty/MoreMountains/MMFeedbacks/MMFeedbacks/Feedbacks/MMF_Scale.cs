@@ -7,12 +7,12 @@ using UnityEngine.Serialization;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will animate the scale of the target object over time when played
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백은 재생 시 시간이 지남에 따라 대상 개체의 크기에 애니메이션을 적용합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Transform/Scale")]
-	[FeedbackHelp("This feedback will animate the target's scale on the 3 specified animation curves, for the specified duration (in seconds). You can apply a multiplier, that will multiply each animation curve value.")]
+	[FeedbackHelp("이 피드백은 지정된 기간(초) 동안 지정된 3개의 애니메이션 곡선에서 대상의 크기를 애니메이션화합니다. 각 애니메이션 곡선 값을 곱하는 승수를 적용할 수 있습니다.")]
 	public class MMF_Scale : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -33,14 +33,14 @@ namespace MoreMountains.Feedbacks
 		protected override void AutomateTargetAcquisition() => AnimateScaleTarget = FindAutomatedTarget<Transform>();
 
 		[MMFInspectorGroup("Scale Mode", true, 12, true)]
-		/// the mode this feedback should operate on
-		/// Absolute : follows the curve
-		/// Additive : adds to the current scale of the target
-		/// ToDestination : sets the scale to the destination target, whatever the current scale is
-		[Tooltip("the mode this feedback should operate on" +
-		         "Absolute : follows the curve" +
-		         "Additive : adds to the current scale of the target" +
-		         "ToDestination : sets the scale to the destination target, whatever the current scale is")]
+        /// 이 피드백이 작동해야 하는 모드
+        /// 절대 : 곡선을 따릅니다.
+        /// Additive : 타겟의 현재 스케일에 추가합니다.
+        /// ToDestination : 현재 스케일이 무엇이든 대상 대상으로 스케일을 설정합니다.
+        [Tooltip("이 피드백이 작동해야 하는 모드" +
+                 "Absolute : 곡선을 따릅니다." +
+                 "Additive : 타겟의 현재 스케일에 추가합니다." +
+                 "ToDestination : 현재 스케일이 무엇이든 대상 대상으로 스케일을 설정합니다.")]
 		public Modes Mode = Modes.Absolute;
 		/// the object to animate
 		[Tooltip("the object to animate")]
@@ -58,40 +58,40 @@ namespace MoreMountains.Feedbacks
 		[FormerlySerializedAs("Multiplier")]
 		public float RemapCurveOne = 2f;
 		/// how much should be added to the curve
-		[Tooltip("how much should be added to the curve")]
+		[Tooltip("곡선에 얼마나 추가해야 할까요?")]
 		public float Offset = 0f;
 		/// if this is true, should animate the X scale value
-		[Tooltip("if this is true, should animate the X scale value")]
+		[Tooltip("이것이 사실이라면 X 스케일 값에 애니메이션을 적용해야 합니다.")]
 		public bool AnimateX = true;
 		/// the x scale animation definition
-		[Tooltip("the x scale animation definition")]
+		[Tooltip("x 스케일 애니메이션 정의")]
 		[MMFCondition("AnimateX", true)]
 		public MMTweenType AnimateScaleTweenX = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Y scale value
-		[Tooltip("if this is true, should animate the Y scale value")]
+		[Tooltip("이것이 사실이라면 Y 스케일 값에 애니메이션을 적용해야 합니다.")]
 		public bool AnimateY = true;
 		/// the y scale animation definition
 		[Tooltip("the y scale animation definition")]
 		[MMFCondition("AnimateY", true)]
 		public MMTweenType AnimateScaleTweenY = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, should animate the z scale value
-		[Tooltip("if this is true, should animate the z scale value")]
+		[Tooltip("이것이 사실이라면 z 스케일 값에 애니메이션을 적용해야 합니다.")]
 		public bool AnimateZ = true;
 		/// the z scale animation definition
-		[Tooltip("the z scale animation definition")]
+		[Tooltip("Z 스케일 애니메이션 정의")]
 		[MMFCondition("AnimateZ", true)]
 		public MMTweenType AnimateScaleTweenZ = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, the AnimateX curve only will be used, and applied to all axis
-		[Tooltip("if this is true, the AnimateX curve only will be used, and applied to all axis")] 
+		[Tooltip("이것이 사실이라면 AnimateX 곡선만 사용되며 모든 축에 적용됩니다.")] 
 		public bool UniformScaling = false;
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
-		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
+		[Tooltip("이것이 사실이라면 피드백이 진행 중이더라도 해당 피드백을 호출하면 트리거됩니다. 거짓인 경우 현재 재생이 끝날 때까지 새로운 재생이 금지됩니다.")] 
 		public bool AllowAdditivePlays = false;
 		/// if this is true, initial and destination scales will be recomputed on every play
-		[Tooltip("if this is true, initial and destination scales will be recomputed on every play")]
+		[Tooltip("이것이 사실이라면 매 플레이마다 초기 및 대상 스케일이 다시 계산됩니다.")]
 		public bool DetermineScaleOnPlay = false;
 		/// the scale to reach when in ToDestination mode
-		[Tooltip("the scale to reach when in ToDestination mode")]
+		[Tooltip("ToDestination 모드에 있을 때 도달할 스케일")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
 		public Vector3 DestinationScale = new Vector3(0.5f, 0.5f, 0.5f);
 

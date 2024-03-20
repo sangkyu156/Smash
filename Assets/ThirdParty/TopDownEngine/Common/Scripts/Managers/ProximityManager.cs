@@ -6,38 +6,38 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// A class that looks for objects with a ProximityManaged class on them, and enables/disables them based on their settings.
-    /// This class is meant as an example of how you can deal with large scenes with a lot of objects, disabling the ones that are far 
-    /// away from the action to save on performance.
-    /// Note that there are many ways to do it, this one is simple and generic, there may be better choices for your specific use case.
+    /// ProximityManaged 클래스가 있는 개체를 찾고 해당 설정에 따라 개체를 활성화/비활성화하는 클래스입니다.
+    /// 이 클래스는 객체가 많은 큰 장면을 처리하고 멀리 있는 객체를 비활성화하는 방법의 예를 보여줍니다.
+    /// 성능을 절약하기 위해 작업에서 벗어났습니다.
+    /// 이를 수행하는 방법은 여러 가지가 있습니다. 이 방법은 간단하고 일반적이므로 특정 사용 사례에 더 나은 선택이 있을 수 있습니다.
     /// </summary>
     public class ProximityManager : MMSingleton<ProximityManager>, MMEventListener<TopDownEngineEvent>
     {
         [Header("Target")]
 
         /// whether or not to automatically grab the player from the LevelManager once the scene loads
-        [Tooltip("whether or not to automatically grab the player from the LevelManager once the scene loads")]
+        [Tooltip("장면이 로드되면 LevelManager에서 플레이어를 자동으로 가져올지 여부")]
         public bool AutomaticallySetPlayerAsTarget = true;
         /// the target to detect proximity with
-        [Tooltip("the target to detect proximity with")]
+        [Tooltip("근접성을 감지할 대상")]
         public Transform ProximityTarget;
         /// in this mode, if there's no ProximityTarget, proximity managed objects will be disabled  
-        [Tooltip("in this mode, if there's no ProximityTarget, proximity managed objects will be disabled")]
+        [Tooltip("이 모드에서 ProximityTarget이 없으면 근접성 관리 개체가 비활성화됩니다.")]
         public bool RequireProximityTarget = true;
 
         [Header("EnableDisable")]
 
         /// whether or not to automatically grab all ProximityManaged objects in the scene
-        [Tooltip("whether or not to automatically grab all ProximityManaged objects in the scene")]
+        [Tooltip("장면의 모든 ProximityManaged 개체를 자동으로 가져올지 여부")]
         public bool AutomaticallyGrabControlledObjects = true;
         /// the list of objects to check proximity with
-        [Tooltip("the list of objects to check proximity with")]
+        [Tooltip("근접성을 확인할 객체 목록")]
         public List<ProximityManaged> ControlledObjects;
         
         [Header("Tick")]
 
         /// the frequency, in seconds, at which to evaluate distances and enable/disable stuff
-        [Tooltip("the frequency, in seconds, at which to evaluate distances and enable/disable stuff")]
+        [Tooltip("거리를 평가하고 항목을 활성화/비활성화하는 빈도(초)")]
         public float EvaluationFrequency = 0.5f;
 
         protected float _lastEvaluationAt = 0f;

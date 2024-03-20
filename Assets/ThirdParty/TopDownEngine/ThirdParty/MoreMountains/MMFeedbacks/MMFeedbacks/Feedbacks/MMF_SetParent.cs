@@ -2,11 +2,11 @@
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A feedback used to change the parent of a transform
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback lets you change the parent of a transform.")]
+    /// <summary>
+    /// 변환의 상위를 변경하는 데 사용되는 피드백
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 통해 변환의 상위를 변경할 수 있습니다.")]
 	[FeedbackPath("Transform/Set Parent")]
 	public class MMF_SetParent : MMF_Feedback 
 	{
@@ -26,13 +26,13 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Parenting", true, 12, true)]
 		/// the object we want to change the parent of
-		[Tooltip("the object we want to change the parent of")]
+		[Tooltip("부모를 변경하려는 객체")]
 		public Transform ObjectToParent;
 		/// the object ObjectToParent should now be parented to after playing this feedback
-		[Tooltip("the object ObjectToParent should now be parented to after playing this feedback")]
+		[Tooltip("이제 이 피드백을 재생한 후 ObjectToParent 개체의 부모가 되어야 합니다.")]
 		public Transform NewParent;
 		/// if true, the parent-relative position, scale and rotation are modified such that the object keeps the same world space position, rotation and scale as before
-		[Tooltip("if true, the parent-relative position, scale and rotation are modified such that the object keeps the same world space position, rotation and scale as before")]
+		[Tooltip("true인 경우 상위 상대 위치, 스케일 및 회전은 객체가 이전과 동일한 월드 공간 위치, 회전 및 스케일을 유지하도록 수정됩니다.")]
 		public bool WorldPositionStays = true;
 
 		/// <summary>

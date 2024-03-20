@@ -10,10 +10,10 @@ using Object = UnityEngine.Object;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// A helper class to copy and paste feedback properties
-	/// </summary>
-	static class MMF_PlayerCopy
+    /// <summary>
+    /// 피드백 속성을 복사하여 붙여넣는 도우미 클래스
+    /// </summary>
+    static class MMF_PlayerCopy
 	{
 		// Single Copy --------------------------------------------------------------------
 

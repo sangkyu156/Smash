@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback lets you control the distortion level of a distortion filter. You'll need a MMAudioFilterDistortionShaker on the filter.
-	/// </summary>
-	[AddComponentMenu("")]
+    /// <summary>
+    /// 이 피드백을 사용하면 왜곡 필터의 왜곡 레벨을 제어할 수 있습니다. 필터에는 MMAudioFilterDistortionShaker가 필요합니다.
+    /// </summary>
+    [AddComponentMenu("")]
 	[FeedbackPath("Audio/Audio Filter Distortion")]
-	[FeedbackHelp("This feedback lets you control a distortion audio filter over time. You'll need a MMAudioFilterDistortionShaker on the filter.")]
+	[FeedbackHelp("이 피드백을 사용하면 왜곡 필터의 왜곡 레벨을 제어할 수 있습니다. 필터에는 MMAudioFilterDistortionShaker가 필요합니다.")]
 	public class MMF_AudioFilterDistortion : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once
@@ -27,7 +27,7 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Distortion Filter", true, 28)]
 		/// the duration of the shake, in seconds
-		[Tooltip("the duration of the shake, in seconds")]
+		[Tooltip("흔들림의 지속 시간(초)")]
 		public float Duration = 2f;
 		/// whether or not to reset shaker values after shake
 		[Tooltip("whether or not to reset shaker values after shake")]
@@ -36,10 +36,10 @@ namespace MoreMountains.Feedbacks
 		[Tooltip("whether or not to reset the target's values after shake")]
 		public bool ResetTargetValuesAfterShake = true;
 		/// whether or not to add to the initial value
-		[Tooltip("whether or not to add to the initial value")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeDistortion = false;
 		/// the curve used to animate the intensity value on
-		[Tooltip("the curve used to animate the intensity value on")]
+		[Tooltip("강도 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeDistortion = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]

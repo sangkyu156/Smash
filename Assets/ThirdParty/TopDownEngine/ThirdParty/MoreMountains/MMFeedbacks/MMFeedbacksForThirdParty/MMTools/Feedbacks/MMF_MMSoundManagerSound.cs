@@ -7,14 +7,14 @@ using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
-{    
-	/// <summary>
-	/// This feedback will let you play a sound via the MMSoundManager. You will need a game object in your scene with a MMSoundManager object on it for this to work.
-	/// </summary>
-	[ExecuteAlways]
+{
+    /// <summary>
+    /// 이 피드백을 사용하면 MMSoundManager를 통해 사운드를 재생할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager 개체가 있는 게임 개체가 필요합니다.
+    /// </summary>
+    [ExecuteAlways]
 	[AddComponentMenu("")]
 	[FeedbackPath("Audio/MMSoundManager Sound")]
-	[FeedbackHelp("This feedback will let you play a sound via the MMSoundManager. You will need a game object in your scene with a MMSoundManager object on it for this to work.")]
+	[FeedbackHelp("이 피드백을 사용하면 MMSoundManager를 통해 사운드를 재생할 수 있습니다. 이 작업을 수행하려면 장면에 MMSoundManager 개체가 있는 게임 개체가 필요합니다.")]
 	public class MMF_MMSoundManagerSound : MMF_Feedback
 	{
 		/// a static bool used to disable all feedbacks of this type at once

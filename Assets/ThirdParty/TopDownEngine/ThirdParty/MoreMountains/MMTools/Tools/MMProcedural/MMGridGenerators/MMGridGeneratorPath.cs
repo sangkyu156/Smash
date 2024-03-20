@@ -6,10 +6,10 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Generates a grid with a path in the specified direction
-	/// </summary>
-	public class MMGridGeneratorPath : MMGridGenerator 
+    /// <summary>
+    /// 지정된 방향의 경로가 있는 그리드를 생성합니다.
+    /// </summary>
+    public class MMGridGeneratorPath : MMGridGenerator 
 	{
 		public enum Directions { TopToBottom, BottomToTop, LeftToRight, RightToLeft }
         

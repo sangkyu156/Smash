@@ -5,15 +5,15 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
-	/// <summary>
-	/// This feedback allows you to control depth of field focus distance, aperture and focal length over time. 
-	/// It requires you have in your scene an object with a PostProcessVolume 
-	/// with Depth of Field active, and a MMDepthOfFieldShaker component.
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback allows you to control depth of field focus distance, aperture and focal length over time. " +
-	              "It requires you have in your scene an object with a PostProcessVolume " +
-	              "with Depth of Field active, and a MMDepthOfFieldShaker component.")]
+    /// <summary>
+    /// 이 피드백을 사용하면 시간이 지남에 따라 피사계 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다.
+    /// 장면에 PostProcessVolume이 있는 객체가 있어야 합니다.
+    /// 심도가 활성화되고 MMDepthOfFieldShaker 구성 요소가 있는 경우.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 피사계 심도 초점 거리, 조리개 및 초점 거리를 제어할 수 있습니다. " +
+"장면에 PostProcessVolume이 있는 객체가 있어야 합니다." +
+"Depth of Field가 활성화되어 있고 MMDepthOfFieldShaker 구성 요소가 있습니다.")]
 	#if MM_POSTPROCESSING
 	[FeedbackPath("PostProcess/Depth Of Field")]
 	#endif
@@ -37,18 +37,18 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Tooltip("the duration of the shake, in seconds")]
 		public float ShakeDuration = 2f;
 		/// whether or not to add to the initial values
-		[Tooltip("whether or not to add to the initial values")]
+		[Tooltip("초기값에 추가할지 여부")]
 		public bool RelativeValues = true;
 		/// whether or not to reset shaker values after shake
-		[Tooltip("whether or not to reset shaker values after shake")]
+		[Tooltip("흔들기 후 셰이커 값을 재설정할지 여부")]
 		public bool ResetShakerValuesAfterShake = true;
 		/// whether or not to reset the target's values after shake
-		[Tooltip("whether or not to reset the target's values after shake")]
+		[Tooltip("흔들기 후 대상의 값을 재설정할지 여부")]
 		public bool ResetTargetValuesAfterShake = true;
 
 		[MMFInspectorGroup("Focus Distance", true, 52)]
 		/// the curve used to animate the focus distance value on
-		[Tooltip("the curve used to animate the focus distance value on")]
+		[Tooltip("초점 거리 값을 애니메이션하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFocusDistance = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -59,7 +59,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Aperture", true, 53)]
 		/// the curve used to animate the aperture value on
-		[Tooltip("the curve used to animate the aperture value on")]
+		[Tooltip("조리개 값에 애니메이션을 적용하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeAperture = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
@@ -72,7 +72,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		[MMFInspectorGroup("Focal Length", true, 54)]
 		/// the curve used to animate the focal length value on
-		[Tooltip("the curve used to animate the focal length value on")]
+		[Tooltip("초점 거리 값을 애니메이션화하는 데 사용되는 곡선")]
 		public AnimationCurve ShakeFocalLength = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]

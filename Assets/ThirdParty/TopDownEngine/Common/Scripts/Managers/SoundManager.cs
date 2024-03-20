@@ -8,20 +8,20 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// a class to save sound settings (music on or off, sfx on or off)
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 사운드 설정을 저장하는 클래스(음악 켜기 또는 끄기, SFX 켜기 또는 끄기)
+    /// </summary>
+    [Serializable]
 	public class SoundSettings
 	{
 		public bool MusicOn = true;
 		public bool SfxOn = true;
 	}
 
-	/// <summary>
-	/// This persistent singleton handles sound playing
-	/// </summary>
-	[System.Obsolete("This SoundManager is now obsolete, and has been replaced by the bigger, better, faster MMSoundManager. It will be removed definitely in an upcoming update. You should remove this one from this scene, and add a MMSoundManager in its place.")]
+    /// <summary>
+    /// 이 영구 싱글톤은 사운드 재생을 처리합니다.
+    /// </summary>
+    [System.Obsolete("This SoundManager is now obsolete, and has been replaced by the bigger, better, faster MMSoundManager. It will be removed definitely in an upcoming update. You should remove this one from this scene, and add a MMSoundManager in its place.")]
 	public class SoundManager : MMPersistentSingleton<SoundManager>, MMEventListener<TopDownEngineEvent>, MMEventListener<MMGameEvent>
 	{
 		[Header("Settings")]

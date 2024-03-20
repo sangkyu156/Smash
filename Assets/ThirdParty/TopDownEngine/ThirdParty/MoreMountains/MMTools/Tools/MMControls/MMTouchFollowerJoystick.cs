@@ -6,11 +6,11 @@ using UnityEditor;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// Add this component to a UI rectangle and it'll act as a detection zone for a follower joystick.
-	/// Note that this component extends the MMTouchJoystick class so you don't need to add another joystick to it. It's both the detection zone and the stick itself.
-	/// </summary>
-	[AddComponentMenu("More Mountains/Tools/Controls/MMTouchFollowerJoystick")]
+    /// <summary>
+    /// 이 구성 요소를 UI 직사각형에 추가하면 팔로어 조이스틱의 감지 영역 역할을 합니다.
+    /// 이 구성 요소는 MMTouchJoystick 클래스를 확장하므로 다른 조이스틱을 추가할 필요가 없습니다. 감지 영역이자 스틱 자체입니다.
+    /// </summary>
+    [AddComponentMenu("More Mountains/Tools/Controls/MMTouchFollowerJoystick")]
 	public class MMTouchFollowerJoystick : MMTouchJoystick
 	{
 		[MMInspectorGroup("Follower Joystick", true, 23)]

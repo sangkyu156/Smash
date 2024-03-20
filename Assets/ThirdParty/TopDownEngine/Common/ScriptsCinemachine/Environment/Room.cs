@@ -9,14 +9,14 @@ using UnityEngine.Events;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// This class lets you define the boundaries of rooms in your level.
-	/// Rooms are useful if you want to cut your level into portions (think Super Metroid or Hollow Knight for example).
-	/// These rooms will require their own virtual camera, and a confiner to define their size. 
-	/// Note that the confiner is different from the collider that defines the room.
-	/// You can see an example of rooms in action in the KoalaRooms demo scene.
-	/// </summary>
-	public class Room : TopDownMonoBehaviour, MMEventListener<TopDownEngineEvent>
+    /// <summary>
+    /// 이 클래스를 사용하면 레벨에 있는 방의 경계를 정의할 수 있습니다.
+    /// 룸은 레벨을 여러 부분으로 나누고 싶을 때 유용합니다(예를 들어 Super Metroid 또는 Hollow Knight를 생각해 보세요).
+    /// 이 방에는 자체 가상 카메라와 크기를 정의하는 제한 장치가 필요합니다.
+    /// 제한자는 방을 정의하는 충돌체와 다르다는 점에 유의하세요.
+    /// KoalaRooms 데모 장면에서 실행 중인 방의 예를 볼 수 있습니다.
+    /// </summary>
+    public class Room : TopDownMonoBehaviour, MMEventListener<TopDownEngineEvent>
 	{
 		public enum Modes { TwoD, ThreeD }
 
@@ -68,54 +68,54 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Mode")]
 		/// whether this room is intended to work in 2D or 3D mode
-		[Tooltip("whether this room is intended to work in 2D or 3D mode")]
+		[Tooltip("이 방이 2D 또는 3D 모드에서 작동하도록 되어 있는지 여부")]
 		public Modes Mode = Modes.TwoD;
 
 		#if MM_CINEMACHINE
 		[Header("Camera")]
 		/// the virtual camera associated to this room
-		[Tooltip("the virtual camera associated to this room")]
+		[Tooltip("이 방에 연결된 가상 카메라")]
 		public CinemachineVirtualCamera VirtualCamera;
 		/// the confiner for this room, that will constrain the virtual camera, usually placed on a child object of the Room
-		[Tooltip("the confiner for this room, that will constrain the virtual camera, usually placed on a child object of the Room")]
+		[Tooltip("가상 카메라를 제한하는 이 방의 제한 장치로 일반적으로 Room의 하위 객체에 배치됩니다.")]
 		public BoxCollider Confiner;
 		/// the confiner component of the virtual camera
-		[Tooltip("the confiner component of the virtual camera")]
+		[Tooltip("가상 카메라의 제한 구성요소")]
 		public CinemachineConfiner CinemachineCameraConfiner;
 		#endif
 		/// whether or not the confiner should be auto resized on start to match the camera's size and ratio
-		[Tooltip("whether or not the confiner should be auto resized on start to match the camera's size and ratio")]
+		[Tooltip("카메라의 크기와 비율에 맞게 시작 시 제한자의 크기를 자동으로 조정해야 하는지 여부")]
 		public bool ResizeConfinerAutomatically = true;
 		/// whether or not this Room should look at the level's start position and declare itself the current room on start or not
-		[Tooltip("whether or not this Room should look at the level's start position and declare itself the current room on start or not")]
+		[Tooltip("이 룸이 레벨의 시작 위치를 확인하고 시작 시 자신을 현재 룸으로 선언해야 하는지 여부")]
 		public bool AutoDetectFirstRoomOnStart = true;
 		/// the depth of the room (used to resize the z value of the confiner
 		[MMEnumCondition("Mode", (int)Modes.TwoD)]
-		[Tooltip("the depth of the room (used to resize the z value of the confiner")]
+		[Tooltip("방의 깊이(제한자의 z 값 크기를 조정하는 데 사용됨)")]
 		public float RoomDepth = 100f;
 
 		[Header("State")]
 		/// whether this room is the current room or not
-		[Tooltip("whether this room is the current room or not")]
+		[Tooltip("이 방이 현재 방인지 아닌지")]
 		public bool CurrentRoom = false;
 		/// whether this room has already been visited or not
-		[Tooltip("whether this room has already been visited or not")]
+		[Tooltip("이 방을 이미 방문한 적이 있는지 여부")]
 		public bool RoomVisited = false;
 
 		[Header("Actions")]
 		/// the event to trigger when the player enters the room for the first time
-		[Tooltip("the event to trigger when the player enters the room for the first time")]
+		[Tooltip("플레이어가 처음으로 방에 들어갈 때 트리거되는 이벤트")]
 		public UnityEvent OnPlayerEntersRoomForTheFirstTime;
 		/// the event to trigger everytime the player enters the room
-		[Tooltip("the event to trigger everytime the player enters the room")]
+		[Tooltip("플레이어가 방에 들어갈 때마다 트리거되는 이벤트")]
 		public UnityEvent OnPlayerEntersRoom;
 		/// the event to trigger everytime the player exits the room
-		[Tooltip("the event to trigger everytime the player exits the room")]
+		[Tooltip("플레이어가 방을 나갈 때마다 트리거되는 이벤트")]
 		public UnityEvent OnPlayerExitsRoom;
 
 		[Header("Activation")]
 		/// a list of gameobjects to enable when entering the room, and disable when exiting it
-		[Tooltip("a list of gameobjects to enable when entering the room, and disable when exiting it")]
+		[Tooltip("방에 들어갈 때 활성화하고 나갈 때 비활성화할 게임 개체 목록")]
 		public List<GameObject> ActivationList;
 
 		protected Collider _roomCollider;

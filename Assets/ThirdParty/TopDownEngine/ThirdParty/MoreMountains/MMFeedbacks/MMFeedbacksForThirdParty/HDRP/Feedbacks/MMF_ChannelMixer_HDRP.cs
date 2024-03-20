@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;	
 using MoreMountains.Feedbacks;	
 namespace MoreMountains.FeedbacksForThirdParty	
-{	
-	/// <summary>	
-	/// This feedback allows you to control channel mixer's red, green and blue over time.	
-	/// It requires you have in your scene an object with a Volume 	
-	/// with Channel Mixer active, and a MMChannelMixerShaker_HDRP component.	
-	/// </summary>	
-	[AddComponentMenu("")]	
+{
+    /// <summary>	
+    /// 이 피드백을 사용하면 시간이 지남에 따라 채널 믹서의 빨간색, 녹색 및 파란색을 제어할 수 있습니다.
+    /// 장면에 볼륨이 있는 객체가 있어야 합니다.
+    /// 채널 믹서가 활성화되어 있고 MMChannelMixerShaker_HDRP 구성 요소가 있는 상태입니다.	
+    /// </summary>	
+    [AddComponentMenu("")]	
 	#if MM_HDRP
 	[FeedbackPath("PostProcess/Channel Mixer HDRP")]
 	#endif
-	[FeedbackHelp("This feedback allows you to control channel mixer's red, green and blue over time." +
-	              "It requires you have in your scene an object with a Volume" +
-	              "with Channel Mixer active, and a MM Channel Mixer HDRP component.")]
+	[FeedbackHelp("이 피드백을 사용하면 시간이 지남에 따라 채널 믹서의 빨간색, 녹색 및 파란색을 제어할 수 있습니다." +
+"장면에 볼륨이 있는 객체가 있어야 합니다." +
+"채널 믹서가 활성화되어 있고 MM 채널 믹서 HDRP 구성 요소가 있습니다.")]
 	public class MMF_ChannelMixer_HDRP : MMF_Feedback	
 	{	
 		/// a static bool used to disable all feedbacks of this type at once	

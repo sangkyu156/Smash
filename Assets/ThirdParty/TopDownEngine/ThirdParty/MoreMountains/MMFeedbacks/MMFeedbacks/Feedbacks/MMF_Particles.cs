@@ -7,11 +7,11 @@ using Random = UnityEngine.Random;
 
 namespace MoreMountains.Feedbacks
 {
-	/// <summary>
-	/// This feedback will play the associated particles system on play, and stop it on stop
-	/// </summary>
-	[AddComponentMenu("")]
-	[FeedbackHelp("This feedback will simply play the specified ParticleSystem (from your scene) when played.")]
+    /// <summary>
+    /// 이 피드백은 재생 시 관련 입자 시스템을 재생하고 중지 시 중지합니다.
+    /// </summary>
+    [AddComponentMenu("")]
+	[FeedbackHelp("이 피드백은 재생 시 지정된 ParticleSystem(장면에서)을 재생합니다.")]
 	[FeedbackPath("Particles/Particles Play")]
 	public class MMF_Particles : MMF_Feedback
 	{
@@ -32,33 +32,33 @@ namespace MoreMountains.Feedbacks
 
 		[MMFInspectorGroup("Bound Particles", true, 41, true)]
 		/// whether to Play, Stop or Pause the target particle system when that feedback is played
-		[Tooltip("whether to Play, Stop or Pause the target particle system when that feedback is played")]
+		[Tooltip("해당 피드백이 재생될 때 대상 입자 시스템을 재생, 중지 또는 일시 중지할지 여부")]
 		public Modes Mode = Modes.Play;
 		/// the particle system to play with this feedback
-		[Tooltip("the particle system to play with this feedback")]
+		[Tooltip("이 피드백을 다룰 파티클 시스템")]
 		public ParticleSystem BoundParticleSystem;
 		/// a list of (optional) particle systems 
-		[Tooltip("a list of (optional) particle systems")]
+		[Tooltip("(선택적) 입자 시스템 목록")]
 		public List<ParticleSystem> RandomParticleSystems;
 		/// if this is true, the particles will be moved to the position passed in parameters
-		[Tooltip("if this is true, the particles will be moved to the position passed in parameters")]
+		[Tooltip("이것이 사실이라면 입자는 매개변수에 전달된 위치로 이동됩니다.")]
 		public bool MoveToPosition = false;
 		/// if this is true, the particle system's object will be set active on play
-		[Tooltip("if this is true, the particle system's object will be set active on play")]
+		[Tooltip("이것이 사실이라면 입자 시스템의 객체는 플레이 시 활성 상태로 설정됩니다.")]
 		public bool ActivateOnPlay = false;
 		/// if this is true, the particle system will be stopped on initialization
-		[Tooltip("if this is true, the particle system will be stopped on initialization")]
+		[Tooltip("이것이 사실이라면 초기화 시 파티클 시스템이 중지됩니다.")]
 		public bool StopSystemOnInit = true;
 		/// the duration for the player to consider. This won't impact your particle system, but is a way to communicate to the MMF Player the duration of this feedback. Usually you'll want it to match your actual particle system, and setting it can be useful to have this feedback work with holding pauses.
-		[Tooltip("the duration for the player to consider. This won't impact your particle system, but is a way to communicate to the MMF Player the duration of this feedback. Usually you'll want it to match your actual particle system, and setting it can be useful to have this feedback work with holding pauses.")]
+		[Tooltip("플레이어가 고려해야 할 기간. 이는 입자 시스템에 영향을 주지 않지만 이 피드백 기간을 MMF 플레이어에 전달하는 방법입니다. 일반적으로 실제 입자 시스템과 일치하도록 설정하고 일시 중지를 유지하면서 이 피드백이 작동하도록 설정하는 것이 유용할 수 있습니다.")]
 		public float DeclaredDuration = 0f;
 
 		[MMFInspectorGroup("Simulation Speed", true, 43, false)]
 		/// whether or not to force a specific simulation speed on the target particle system(s)
-		[Tooltip("whether or not to force a specific simulation speed on the target particle system(s)")]
+		[Tooltip("대상 입자 시스템에 특정 시뮬레이션 속도를 강제할지 여부")]
 		public bool ForceSimulationSpeed = false;
 		/// The min and max values at which to randomize the simulation speed, if ForceSimulationSpeed is true. A new value will be randomized every time this feedback plays
-		[Tooltip("The min and max values at which to randomize the simulation speed, if ForceSimulationSpeed is true. A new value will be randomized every time this feedback plays")]
+		[Tooltip("ForceSimulationSpeed가 true인 경우 시뮬레이션 속도를 무작위화할 최소 및 최대 값입니다. 이 피드백이 재생될 때마다 새로운 값이 무작위로 지정됩니다.")]
 		[MMFCondition("ForceSimulationSpeed", true)]
 		public Vector2 ForcedSimulationSpeed = new Vector2(0.1f,1f);
 
