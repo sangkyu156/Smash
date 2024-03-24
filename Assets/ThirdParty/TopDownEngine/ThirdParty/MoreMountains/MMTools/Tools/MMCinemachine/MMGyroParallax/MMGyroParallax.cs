@@ -9,10 +9,10 @@ using UnityEngine;
 
 namespace MoreMountains.Tools
 {
-	/// <summary>
-	/// A class used to store gyro properties per camera
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// 카메라당 자이로 속성을 저장하는 데 사용되는 클래스
+    /// </summary>
+    [Serializable]
 	[AddComponentMenu("More Mountains/Tools/Cinemachine/MMGyroCam")]
 	public class MMGyroCam
 	{

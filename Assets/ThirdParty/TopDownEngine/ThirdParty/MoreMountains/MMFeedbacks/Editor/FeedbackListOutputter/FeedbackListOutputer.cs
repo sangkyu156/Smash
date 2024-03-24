@@ -15,10 +15,10 @@ namespace MoreMountains.Feedbacks
     /// </summary>
     public static class FeedbackListOutputer 
 	{
-		/// <summary>
-		/// Outputs a list of all MMFeedbacks to the console (there's only one target user for this and it's me hello!)
-		/// </summary>
-		[MenuItem("Tools/More Mountains/MMFeedbacks/Output MMFeedbacks list", false, 704)]
+        /// <summary>
+        /// 모든 MMFeedback 목록을 콘솔에 출력합니다. (이 경우 대상 사용자는 단 한 명이며 저는 안녕하세요!)
+        /// </summary>
+        [MenuItem("Tools/More Mountains/MMFeedbacks/Output MMFeedbacks list", false, 704)]
 		public static void OutputFeedbacksList()
 		{
 			// Retrieve available feedbacks
@@ -73,11 +73,11 @@ namespace MoreMountains.Feedbacks
 			}
 			Debug.Log(builder.ToString());
 		}
-        
-		/// <summary>
-		/// Outputs a list of all MMFeedbacks to the console (there's only one target user for this and it's me hello!)
-		/// </summary>
-		[MenuItem("Tools/More Mountains/MMFeedbacks/Output MMF_Feedbacks list", false, 705)]
+
+        /// <summary>
+        /// 모든 MMFeedback 목록을 콘솔에 출력합니다. (이 경우 대상 사용자는 단 한 명이며 저는 안녕하세요!)
+        /// </summary>
+        [MenuItem("Tools/More Mountains/MMFeedbacks/Output MMF_Feedbacks list", false, 705)]
 		public static void OutputIFeedbacksList()
 		{
 			// Retrieve available feedbacks

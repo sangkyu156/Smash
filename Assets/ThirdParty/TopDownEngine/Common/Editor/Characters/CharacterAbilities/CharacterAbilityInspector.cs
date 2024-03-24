@@ -11,7 +11,7 @@ namespace MoreMountains.TopDownEngine
 	[CanEditMultipleObjects]
 
     /// <summary>
-    /// 문자 관리자에 사용자 정의 레이블을 추가합니다.
+    /// 캐릭터 관리자에 사용자 정의 레이블을 추가합니다.
     /// </summary>
 
     public class CharacterAbilityInspector : Editor 

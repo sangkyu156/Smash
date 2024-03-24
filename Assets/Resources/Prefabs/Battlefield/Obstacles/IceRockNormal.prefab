@@ -20021,7 +20021,7 @@ GameObject:
   - component: {fileID: 7701961755893434432}
   - component: {fileID: 3662614863961734041}
   - component: {fileID: 5148916288780721843}
-  - component: {fileID: 3566534812515780801}
+  - component: {fileID: 5479191876335884501}
   m_Layer: 23
   m_Name: IceRockNormal
   m_TagString: Untagged
@@ -25092,7 +25092,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.1835594
   m_Center: {x: 0.0032024384, y: 0, z: 0.043849003}
---- !u!114 &3566534812515780801
+--- !u!114 &5479191876335884501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -20,10 +20,10 @@ namespace MoreMountains.TopDownEngine
 		protected CharacterPathfinder3D _characterPathfinder3D;
 		protected float _lastSetNewDestinationAt = -Single.MaxValue;
 
-		/// <summary>
-		/// On init we grab our CharacterMovement ability
-		/// </summary>
-		public override void Initialization()
+        /// <summary>
+        /// 초기화 시 CharacterMovement 기능을 확보합니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();

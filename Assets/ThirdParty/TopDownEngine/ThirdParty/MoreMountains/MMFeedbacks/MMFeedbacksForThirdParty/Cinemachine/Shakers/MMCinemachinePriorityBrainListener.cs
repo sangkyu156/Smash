@@ -37,16 +37,16 @@ namespace MoreMountains.FeedbacksForThirdParty
 			_brain = this.gameObject.GetComponent<CinemachineBrain>();
 		}
 
-		/// <summary>
-		/// When getting an event we change our default transition if needed
-		/// </summary>
-		/// <param name="channel"></param>
-		/// <param name="forceMaxPriority"></param>
-		/// <param name="newPriority"></param>
-		/// <param name="forceTransition"></param>
-		/// <param name="blendDefinition"></param>
-		/// <param name="resetValuesAfterTransition"></param>
-		public virtual void OnMMCinemachinePriorityEvent(MMChannelData channelData, bool forceMaxPriority, int newPriority, bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode, bool restore = false)
+        /// <summary>
+        /// 이벤트를 받을 때 필요한 경우 기본 전환을 변경합니다.
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <param name="forceMaxPriority"></param>
+        /// <param name="newPriority"></param>
+        /// <param name="forceTransition"></param>
+        /// <param name="blendDefinition"></param>
+        /// <param name="resetValuesAfterTransition"></param>
+        public virtual void OnMMCinemachinePriorityEvent(MMChannelData channelData, bool forceMaxPriority, int newPriority, bool forceTransition, CinemachineBlendDefinition blendDefinition, bool resetValuesAfterTransition, TimescaleModes timescaleMode, bool restore = false)
 		{
 			if (forceTransition)
 			{
@@ -64,12 +64,12 @@ namespace MoreMountains.FeedbacksForThirdParty
 			}
 		}
 
-		/// <summary>
-		/// a coroutine used to reset the default transition to its initial value
-		/// </summary>
-		/// <param name="delay"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator ResetBlendDefinition(float delay)
+        /// <summary>
+        /// 기본 전환을 초기 값으로 재설정하는 데 사용되는 코루틴
+        /// </summary>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator ResetBlendDefinition(float delay)
 		{
 			for (float timer = 0; timer < delay; timer += GetDeltaTime())
 			{

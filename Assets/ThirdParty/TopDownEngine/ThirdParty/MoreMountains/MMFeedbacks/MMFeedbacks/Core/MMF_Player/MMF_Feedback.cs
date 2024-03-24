@@ -856,12 +856,12 @@ namespace MoreMountains.Feedbacks
 			_randomDurationMultiplier = Random.Range(RandomDurationMultiplier.x, RandomDurationMultiplier.y);
 		}
 
-		/// <summary>
-		/// Applies the host MMFeedbacks' time multiplier to this feedback
-		/// </summary>
-		/// <param name="duration"></param>
-		/// <returns></returns>
-		protected virtual float ApplyTimeMultiplier(float duration)
+        /// <summary>
+        /// 이 피드백에 호스트 MMFeedbacks의 시간 승수를 적용합니다.
+        /// </summary>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        protected virtual float ApplyTimeMultiplier(float duration)
 		{
 			if (Owner == null)
 			{
@@ -966,10 +966,10 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		/// <summary>
-		/// Returns true if this feedback should play in the current parent MMFeedbacks direction, according to its MMFeedbacksDirectionCondition setting
-		/// </summary>
-		public virtual bool ShouldPlayInThisSequenceDirection
+        /// <summary>
+        /// 이 피드백이 MMFeedbacksDirectionCondition 설정에 따라 현재 상위 MMFeedbacks 방향으로 재생되어야 하는 경우 true를 반환합니다.
+        /// </summary>
+        public virtual bool ShouldPlayInThisSequenceDirection
 		{
 			get
 			{

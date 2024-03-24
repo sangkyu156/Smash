@@ -15,18 +15,18 @@ namespace MoreMountains.TopDownEngine
     [InitializeOnLoad]
 	public class TopDownEngineDefineSymbols
 	{
-		/// <summary>
-		/// A list of all the symbols you want added to the build settings
-		/// </summary>
-		public static readonly string[] Symbols = new string[]
+        /// <summary>
+        /// 빌드 설정에 추가하려는 모든 기호 목록
+        /// </summary>
+        public static readonly string[] Symbols = new string[]
 		{
 			"MOREMOUNTAINS_TOPDOWNENGINE"
 		};
 
-		/// <summary>
-		/// As soon as this class has finished compiling, adds the specified define symbols to the build settings
-		/// </summary>
-		static TopDownEngineDefineSymbols()
+        /// <summary>
+        /// 이 클래스의 컴파일이 완료되자마자 지정된 정의 기호를 빌드 설정에 추가합니다.
+        /// </summary>
+        static TopDownEngineDefineSymbols()
 		{
 			string scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
 			List<string> scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();

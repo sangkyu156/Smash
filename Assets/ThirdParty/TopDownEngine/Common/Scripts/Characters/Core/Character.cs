@@ -97,8 +97,8 @@ namespace MoreMountains.TopDownEngine
 		public CharacterOrientation2D Orientation2D { get; protected set; }
 		/// this character's orientation 3D ability
 		public CharacterOrientation3D Orientation3D { get; protected set; }
-		/// an object to use as the camera's point of focus and follow target
-		public GameObject CameraTarget { get; set; }
+        /// 카메라의 초점으로 사용하고 대상을 따라갈 개체
+        public GameObject CameraTarget { get; set; }
 		/// the direction of the camera associated to this character
 		public Vector3 CameraDirection { get; protected set; }
 
@@ -212,11 +212,11 @@ namespace MoreMountains.TopDownEngine
 				}
 			}            
 		}
-		
-		/// <summary>
-		/// Caches abilities if necessary
-		/// </summary>
-		protected virtual void CacheAbilitiesAtInit()
+
+        /// <summary>
+        /// 필요한 경우 능력을 캐시합니다.
+        /// </summary>
+        protected virtual void CacheAbilitiesAtInit()
 		{
 			if (_abilitiesCachedOnce)
 			{
@@ -283,12 +283,12 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// A method to check whether a Character has a certain ability or not
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <returns></returns>
-		public T FindAbility<T>() where T:CharacterAbility
+        /// <summary>
+        /// 캐릭터가 특정 능력을 가지고 있는지 확인하는 방법
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T FindAbility<T>() where T:CharacterAbility
 		{
 			CacheAbilitiesAtInit();
 

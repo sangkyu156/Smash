@@ -17,7 +17,7 @@ namespace MoreMountains.Feedbacks
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
 		public override bool EvaluateRequiresSetup() { return (TargetAudioSource == null); }
 		public override string RequiredTargetText { get { return TargetAudioSource != null ? TargetAudioSource.name : "";  } }
-		public override string RequiresSetupText { get { return "This feedback requires that a TargetAudioSource be set to be able to work properly. You can set one below."; } }
+		public override string RequiresSetupText { get { return "이 피드백을 사용하려면 제대로 작동하려면 TargetAudioSource를 설정해야 합니다. 아래에서 하나를 설정할 수 있습니다."; } }
 		#endif
 		public override bool HasRandomness => true;
 		public override bool HasAutomatedTargetAcquisition => true;

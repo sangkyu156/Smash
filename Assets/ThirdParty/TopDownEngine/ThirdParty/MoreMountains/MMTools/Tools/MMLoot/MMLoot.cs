@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace  MoreMountains.Tools
 {
-	/// <summary>
-	/// A class defining the contents of a MMLootTable
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class MMLoot<T>
+    /// <summary>
+    /// MMLootTable의 내용을 정의하는 클래스
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class MMLoot<T>
 	{
 		/// the object to return
 		public T Loot;
-		/// the weight attributed to this specific object in the table
-		public float Weight = 1f;
-		/// the chance percentage to display for this object to be looted. ChancePercentages are meant to be computed by the MMLootTable class
-		[MMReadOnly] 
+        /// 테이블에 있는 특정 개체에 부여된 무게
+        public float Weight = 1f;
+        /// 이 개체가 약탈될 확률이 표시됩니다. ChancePercentages는 MMLootTable 클래스에 의해 계산됩니다.
+        [MMReadOnly] 
 		public float ChancePercentage;
         
 		/// the computed low bound of this object's range

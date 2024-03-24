@@ -8,10 +8,10 @@ namespace MoreMountains.TopDownEngine
 {	
 	[CreateAssetMenu(fileName = "InventoryEngineHealth", menuName = "MoreMountains/TopDownEngine/InventoryEngineHealth", order = 1)]
 	[Serializable]
-	/// <summary>
-	/// Pickable health item
-	/// </summary>
-	public class InventoryEngineHealth : InventoryItem 
+    /// <summary>
+    /// 선택 가능한 건강 아이템
+    /// </summary>
+    public class InventoryEngineHealth : InventoryItem 
 	{
 		[Header("Health")]
 		[MMInformation("여기에서 이 아이템을 사용할 때 얻는 체력의 양을 지정해야 합니다.", MMInformationAttribute.InformationType.Info,false)]

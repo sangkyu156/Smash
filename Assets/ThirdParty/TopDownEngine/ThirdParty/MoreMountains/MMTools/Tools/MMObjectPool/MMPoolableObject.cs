@@ -16,31 +16,34 @@ namespace MoreMountains.Tools
 		
 		public delegate void Events();
 		public event Events OnSpawnComplete;
+        public bool isFirstCreated = false; // false 이면 처음 생성된거임
 
-		[Header("Poolable Object")]
-		/// The life time, in seconds, of the object. If set to 0 it'll live forever, if set to any positive value it'll be set inactive after that time.
-		public float LifeTime = 0f;
+        [Header("Poolable Object")]
+        /// 객체의 수명(초)입니다. 0으로 설정하면 영원히 유지되고, 양수로 설정하면 해당 시간 이후에는 비활성화됩니다.
+        public float LifeTime = 0f;
 
-		/// <summary>
-		/// Turns the instance inactive, in order to eventually reuse it.
-		/// </summary>
-		public virtual void Destroy()
+        private void Awake()
+        {
+            isFirstCreated = false;
+        }
+
+        protected virtual void Update()
+        {
+            
+        }
+
+        /// <summary>
+        /// 결국 재사용하기 위해 인스턴스를 비활성화합니다.
+        /// </summary>
+        public virtual void Destroy()
 		{
 			gameObject.SetActive(false);
 		}
 
-		/// <summary>
-		/// Called every frame
-		/// </summary>
-		protected virtual void Update()
-		{
-
-		}
-
-		/// <summary>
-		/// When the objects get enabled (usually after having been pooled from an ObjectPooler, we initiate its death countdown.
-		/// </summary>
-		protected virtual void OnEnable()
+        /// <summary>
+        /// 객체가 활성화되면(보통 ObjectPooler에서 풀링된 후) 종료 카운트다운이 시작됩니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			Size = GetBounds().extents * 2;
 			if (LifeTime > 0f)
@@ -50,19 +53,19 @@ namespace MoreMountains.Tools
 			ExecuteOnEnable?.Invoke();
 		}
 
-		/// <summary>
-		/// When the object gets disabled (maybe it got out of bounds), we cancel its programmed death
-		/// </summary>
-		protected virtual void OnDisable()
+        /// <summary>
+        /// 객체가 비활성화되면(아마도 범위를 벗어났을 수도 있음) 프로그래밍된 종료를 취소합니다.
+        /// </summary>
+        protected virtual void OnDisable()
 		{
 			ExecuteOnDisable?.Invoke();
 			CancelInvoke();
 		}
 
-		/// <summary>
-		/// Triggers the on spawn complete event
-		/// </summary>
-		public virtual void TriggerOnSpawnComplete()
+        /// <summary>
+        /// 생성 완료 이벤트를 트리거합니다.
+        /// </summary>
+        public virtual void TriggerOnSpawnComplete()
 		{
 			OnSpawnComplete?.Invoke();
 		}

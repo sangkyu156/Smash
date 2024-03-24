@@ -11,11 +11,11 @@ namespace MoreMountains.TopDownEngine
 	[CustomEditor (typeof(Character), true)]
 	[CanEditMultipleObjects]
 
-	/// <summary>
-	/// Adds custom labels to the Character inspector
-	/// </summary>
+    /// <summary>
+    /// 캐릭터 관리자에 사용자 정의 레이블을 추가합니다.
+    /// </summary>
 
-	public class CharacterInspector : Editor 
+    public class CharacterInspector : Editor 
 	{		
 		public enum Modes { TwoD, ThreeD }
 
@@ -65,7 +65,7 @@ namespace MoreMountains.TopDownEngine
 
 			EditorGUILayout.Space();
 			EditorGUILayout.LabelField("Autobuild", EditorStyles.boldLabel);
-			EditorGUILayout.HelpBox("The Character Autobuild button will automatically add all the components needed for a functioning Character, and set their settings, layer, tags. Be careful, if you've already customized your character, this will reset its settings!", MessageType.Warning, true);
+			EditorGUILayout.HelpBox("Character Autobuild 버튼은 작동하는 캐릭터에 필요한 모든 구성 요소를 자동으로 추가하고 해당 설정, 레이어, 태그를 설정합니다. 이미 캐릭터를 맞춤 설정한 경우 설정이 재설정되므로 주의하세요!", MessageType.Warning, true);
 			if (GUILayout.Button("AutoBuild Player Character 2D"))
 			{
 				GenerateCharacter(Character.CharacterTypes.Player, Modes.TwoD);

@@ -9,7 +9,6 @@ namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// 3D 캐릭터에 이 기능을 추가하면 대시(지정된 시간에 지정된 거리를 이동)할 수 있습니다.
-    ///
     /// Animation parameters :
     /// Dashing : 캐릭터가 현재 돌진 중이면 true
     /// DashStarted : 대시가 시작되면 true

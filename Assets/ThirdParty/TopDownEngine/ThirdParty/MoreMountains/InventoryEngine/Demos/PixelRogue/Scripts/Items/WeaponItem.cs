@@ -7,10 +7,10 @@ namespace MoreMountains.InventoryEngine
 {	
 	[CreateAssetMenu(fileName = "WeaponItem", menuName = "MoreMountains/InventoryEngine/WeaponItem", order = 2)]
 	[Serializable]
-	/// <summary>
-	/// Demo class for a weapon item
-	/// </summary>
-	public class WeaponItem : InventoryItem 
+    /// <summary>
+    /// 무기 아이템의 데모 클래스
+    /// </summary>
+    public class WeaponItem : InventoryItem 
 	{
 		[Header("Weapon")]
 		/// the sprite to use to show the weapon when equipped

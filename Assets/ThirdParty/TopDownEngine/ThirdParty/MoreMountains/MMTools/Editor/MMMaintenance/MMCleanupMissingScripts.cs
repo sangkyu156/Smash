@@ -10,10 +10,10 @@ namespace MoreMountains.Tools
     /// </summary>
     public class MMCleanupMissingScripts : MonoBehaviour
 	{
-		/// <summary>
-		/// Processes the cleaning of gameobjects for all missing scripts on them
-		/// </summary>
-		[MenuItem("Tools/More Mountains/Cleanup missing scripts on selected GameObjects", false, 504)]
+        /// <summary>
+        /// 누락된 모든 스크립트에 대해 게임 개체 정리를 처리합니다.
+        /// </summary>
+        [MenuItem("Tools/More Mountains/Cleanup missing scripts on selected GameObjects", false, 504)]
 		protected static void CleanupMissingScripts()
 		{
 			Object[] collectedDeepHierarchy = EditorUtility.CollectDeepHierarchy(Selection.gameObjects);

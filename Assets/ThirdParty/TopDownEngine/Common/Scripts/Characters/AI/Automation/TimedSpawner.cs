@@ -2,6 +2,8 @@
 using System.Collections;
 using MoreMountains.Tools;
 using System;
+using Random = UnityEngine.Random;
+using UnityEngine.Pool;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -31,13 +33,21 @@ namespace MoreMountains.TopDownEngine
 		/// a test button to spawn an object
 		public bool CanSpawnButton;
 
-		protected float _lastSpawnTimestamp = 0f;
+        protected float _lastSpawnTimestamp = 0f;
 		protected float _nextFrequency = 0f;
 
-		/// <summary>
-		/// On Start we initialize our spawner
-		/// </summary>
-		protected virtual void Start()
+        static TimedSpawner c_instance; // 유일성이 보장된다       
+        static public TimedSpawner Instance { get { return c_instance; } } // 유일한 매니저를 갖고온다
+
+        private void Awake()
+        {
+            c_instance = this.GetComponent<TimedSpawner>();
+        }
+
+        /// <summary>
+        /// On Start we initialize our spawner
+        /// </summary>
+        protected virtual void Start()
 		{
 			Initialization ();
 		}
@@ -74,44 +84,49 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Spawns an object out of the pool if there's one available.
-		/// If it's an object with Health, revives it too.
-		/// </summary>
-		protected virtual void Spawn()
+        /// <summary>
+        /// 사용 가능한 개체가 있는 경우 풀에서 개체를 생성합니다.
+        /// 체력이 있는 개체인 경우 해당 개체도 부활시킵니다.
+        /// </summary>
+        protected virtual void Spawn()
 		{
 			GameObject nextGameObject = ObjectPooler.GetPooledGameObject();
 
-			// mandatory checks
-			if (nextGameObject==null) { return; }
+            // 필수 점검
+            if (nextGameObject==null) { return; }
 			if (nextGameObject.GetComponent<MMPoolableObject>()==null)
 			{
-				throw new Exception(gameObject.name+" is trying to spawn objects that don't have a PoolableObject component.");		
-			}	
+				throw new Exception(gameObject.name+ " PoolableObject 구성 요소가 없는 개체를 생성하려고 합니다.");		
+			}
 
-			// we activate the object
-			nextGameObject.gameObject.SetActive(true);
-			nextGameObject.gameObject.MMGetComponentNoAlloc<MMPoolableObject>().TriggerOnSpawnComplete();
+            // 우리는 반대 확인을 활성화해야 합니다
+            nextGameObject.gameObject.SetActive(true);
+            if (nextGameObject.gameObject.GetComponent<MMPoolableObject>().isFirstCreated == true)//처음생성된게 아니라면
+                nextGameObject.GetComponent<CharacterHandleWeapon>().CurrentWeapon.gameObject.SetActive(true);
 
-			// we check if our object has an Health component, and if yes, we revive our character
-			Health objectHealth = nextGameObject.gameObject.MMGetComponentNoAlloc<Health> ();
+            nextGameObject.gameObject.GetComponent<MMPoolableObject>().isFirstCreated = true;
+            nextGameObject.gameObject.MMGetComponentNoAlloc<MMPoolableObject>().TriggerOnSpawnComplete();
+
+            // 개체에 Health 구성 요소가 있는지 확인하고, 그렇다면 캐릭터를 되살립니다.
+            Health objectHealth = nextGameObject.gameObject.MMGetComponentNoAlloc<Health> ();
 			if (objectHealth != null) 
 			{
 				objectHealth.Revive ();
 			}
 
-			// we position the object
-			nextGameObject.transform.position = this.transform.position;
+            // 우리는 물체를 배치합니다
+            //nextGameObject.transform.position = this.transform.position;
+            //SetRandomPosition(nextGameObject);
 
-			// we reset our timer and determine the next frequency
-			_lastSpawnTimestamp = Time.time;
+            // 타이머를 재설정하고 다음 주파수를 결정합니다
+            _lastSpawnTimestamp = Time.time;
 			DetermineNextFrequency ();
 		}
 
-		/// <summary>
-		/// Determines the next frequency by randomizing a value between the two specified in the inspector.
-		/// </summary>
-		protected virtual void DetermineNextFrequency()
+        /// <summary>
+        /// 인스펙터에 지정된 두 값 사이의 값을 무작위로 추출하여 다음 주파수를 결정합니다.
+        /// </summary>
+        protected virtual void DetermineNextFrequency()
 		{
 			_nextFrequency = UnityEngine.Random.Range (MinFrequency, MaxFrequency);
 		}

@@ -6,7 +6,9 @@ using UnityEngine;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// 이 결정은 TargetLayer 레이어 마스크의 개체가 시선에 들어오면 true를 반환합니다. 또한 뇌의 대상을 해당 개체로 설정합니다. 광선 모드를 선택할 수 있습니다. 이 경우 시야선은 실제 선(레이캐스트)이 되거나 더 넓어집니다(이 경우 스피어캐스트를 사용함). 광선 원점에 대한 오프셋과 이를 차단하는 장애물 레이어 마스크를 지정할 수도 있습니다.
+    /// 이 결정은 TargetLayer 레이어 마스크의 개체가 시선에 들어오면 true를 반환합니다. 또한 뇌의 대상을 해당 개체로 설정합니다.
+	/// 광선 모드를 선택할 수 있습니다. 이 경우 시야선은 실제 선(레이캐스트)이 되거나 더 넓어집니다(이 경우 스피어캐스트를 사용함). 
+	/// 광선 원점에 대한 오프셋과 이를 차단하는 장애물 레이어 마스크를 지정할 수도 있습니다.
     /// </summary>
     [AddComponentMenu("TopDown Engine/Character/AI/Decisions/AIDecisionDetectTargetLine2D")]
 	//[RequireComponent(typeof(Character))]

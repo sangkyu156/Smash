@@ -34,19 +34,19 @@ namespace MoreMountains.Tools
 
 		protected AIBrain _brain;
 
-		/// <summary>
-		/// Sets this state's brain to the one specified in parameters
-		/// </summary>
-		/// <param name="brain"></param>
-		public virtual void SetBrain(AIBrain brain)
+        /// <summary>
+        /// 이 상태의 브레인을 매개변수에 지정된 상태로 설정합니다.
+        /// </summary>
+        /// <param name="brain"></param>
+        public virtual void SetBrain(AIBrain brain)
 		{
 			_brain = brain;
 		}
-                	
-		/// <summary>
-		/// On enter state we pass that info to our actions and decisions
-		/// </summary>
-		public virtual void EnterState()
+
+        /// <summary>
+        /// Enter 상태에서 해당 정보를 행동과 결정에 전달합니다.
+        /// </summary>
+        public virtual void EnterState()
 		{
 			foreach (AIAction action in Actions)
 			{
@@ -98,10 +98,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Tests this state's transitions
-		/// </summary>
-		public virtual void EvaluateTransitions()
+        /// <summary>
+        /// 이 상태의 전환을 테스트합니다.
+        /// </summary>
+        public virtual void EvaluateTransitions()
 		{
 			if (Transitions.Count == 0) { return; }
 			for (int i = 0; i < Transitions.Count; i++) 

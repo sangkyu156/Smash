@@ -19,7 +19,7 @@ namespace MoreMountains.Feedbacks
 		public override bool HasCustomInspectors { get { return true; } }
 		public override bool EvaluateRequiresSetup() => (TargetBlink == null);
 		public override string RequiredTargetText => TargetBlink != null ? TargetBlink.name : "";
-		public override string RequiresSetupText => "This feedback requires that a TargetBlink be set to be able to work properly. You can set one below.";
+		public override string RequiresSetupText => "이 피드백을 사용하려면 TargetBlink가 제대로 작동하도록 설정되어야 합니다. 아래에서 하나를 설정할 수 있습니다.";
 		#endif
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(Duration); } set { Duration = value; } }
 		public override bool HasAutomatedTargetAcquisition => true;

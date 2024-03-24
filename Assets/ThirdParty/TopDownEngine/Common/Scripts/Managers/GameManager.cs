@@ -4,6 +4,7 @@ using MoreMountains.Tools;
 using System.Collections.Generic;
 using MoreMountains.InventoryEngine;
 using MoreMountains.Feedbacks;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -206,8 +207,9 @@ namespace MoreMountains.TopDownEngine
         protected override void Awake()
 		{
 			base.Awake ();
-			//PlayerDataManager.PlayerSetting();
-			PlayerDataManager.TEST();
+            //PlayerDataManager.PlayerSetting();
+            if (SceneManager.GetActiveScene().name != "LevelSelect2")
+                PlayerDataManager.TEST();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
         }
 

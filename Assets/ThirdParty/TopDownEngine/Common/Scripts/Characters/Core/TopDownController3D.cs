@@ -21,7 +21,7 @@ namespace MoreMountains.TopDownEngine
 
         /// 이 문자로 보낸 현재 입력
         [MMReadOnly]
-		[Tooltip("이 문자로 보낸 현재 입력")]
+		[Tooltip("이 캐릭터로 보낸 현재 입력")]
 		public Vector3 InputMoveDirection = Vector3.zero;
 
         /// 가능한 다양한 업데이트 모드
@@ -851,7 +851,7 @@ namespace MoreMountains.TopDownEngine
 		}
 
         /// <summary>
-        /// 장애물을 피하려고 할 때 이 문자를 지정된 위치로 이동합니다
+        /// 장애물을 피하려고 할 때 이 캐릭터를 지정된 위치로 이동합니다
         /// </summary>
         /// <param name="newPosition"></param>
         public override void MovePosition(Vector3 newPosition)

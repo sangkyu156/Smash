@@ -18,7 +18,7 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("이것이 사실이라면 이 구성요소는 하위 항목에서 발견된 피해 저항 목록을 자동으로 채우려고 시도합니다.")]
 		public bool AutoFillDamageResistanceList = true;
 		/// If this is true, disabled resistances will be ignored by the auto fill 
-		[Tooltip("이것이 사실이라면 비활성화된 저항은 자동 채우기에 의해 무시됩니다.\r\n")]
+		[Tooltip("이것이 사실이라면 비활성화된 저항은 자동 채우기에 의해 무시됩니다.")]
 		public bool IgnoreDisabledResistances = true;
 		/// If this is true, damage from damage types that this processor has no resistance for will be ignored
 		[Tooltip("이것이 사실이라면 이 프로세서에 저항이 없는 손상 유형으로 인한 손상은 무시됩니다.")]

@@ -9,10 +9,10 @@ namespace MoreMountains.TopDownEngine
     /// </summary>
     public abstract class WeaponPreventShooting : TopDownMonoBehaviour
 	{
-		/// <summary>
-		/// Override this method to define shooting conditions
-		/// </summary>
-		/// <returns></returns>
-		public abstract bool ShootingAllowed();
+        /// <summary>
+        /// 발사 조건을 정의하려면 이 메서드를 재정의하세요.
+        /// </summary>
+        /// <returns></returns>
+        public abstract bool ShootingAllowed();
 	}
 }

@@ -4,10 +4,10 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// A class to handle the display of levels in the Deadline demo level selector
-	/// </summary>
-	public class DeadlineLevelSelectionButton : TopDownMonoBehaviour 
+    /// <summary>
+    /// Deadline 데모 레벨 선택기의 레벨 표시를 처리하는 클래스
+    /// </summary>
+    public class DeadlineLevelSelectionButton : TopDownMonoBehaviour 
 	{
 		/// the name of the scene to bind to this element
 		[Tooltip("the name of the scene to bind to this element")]

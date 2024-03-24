@@ -14,21 +14,21 @@ namespace MoreMountains.Tools
 	{
 		/// singleton pattern
 		public static MMObjectPooler Instance;
-		/// if this is true, the pool will try not to create a new waiting pool if it finds one with the same name.
-		public bool MutualizeWaitingPools = false;
-		/// if this is true, all waiting and active objects will be regrouped under an empty game object. Otherwise they'll just be at top level in the hierarchy
-		public bool NestWaitingPool = true;
-		/// if this is true, the waiting pool will be nested under this object
-		[MMCondition("NestWaitingPool", true)] 
+        /// 이것이 사실인 경우 풀은 동일한 이름을 가진 대기 풀을 찾으면 새 대기 풀을 만들지 않으려고 시도합니다.
+        public bool MutualizeWaitingPools = false;
+        /// 이것이 사실이라면 대기 중인 모든 활성 개체는 빈 게임 개체 아래에 다시 그룹화됩니다. 그렇지 않으면 계층 구조의 최상위 수준에 있게 됩니다.
+        public bool NestWaitingPool = true;
+        /// 이것이 사실이라면 대기 풀은 이 개체 아래에 중첩됩니다.
+        [MMCondition("NestWaitingPool", true)] 
 		public bool NestUnderThis = false;
 
-		/// this object is just used to group the pooled objects
-		protected GameObject _waitingPool = null;
+        /// 이 개체는 풀링된 개체를 그룹화하는 데 사용됩니다.
+        protected GameObject _waitingPool = null;
 		protected MMObjectPool _objectPool;
 		protected const int _initialPoolsListCapacity = 5;
 		protected bool _onSceneLoadedRegistered = false;
-        
-		public static List<MMObjectPool> _pools = new List<MMObjectPool>(_initialPoolsListCapacity);
+
+        public static List<MMObjectPool> _pools = new List<MMObjectPool>(_initialPoolsListCapacity);
 
 		/// <summary>
 		/// Adds a pooler to the static list if needed
@@ -61,8 +61,7 @@ namespace MoreMountains.Tools
 		protected virtual void Awake()
 		{
 			Instance = this;
-			FillObjectPool();
-			
+            FillObjectPool();			
 		}
 
         /// <summary>
@@ -159,11 +158,11 @@ namespace MoreMountains.Tools
 			return ;
 		}
 
-		/// <summary>
-		/// Implement this method to return a gameobject
-		/// </summary>
-		/// <returns>The pooled game object.</returns>
-		public virtual GameObject GetPooledGameObject()
+        /// <summary>
+        /// 게임 객체를 반환하려면 이 메서드를 구현하세요.
+        /// </summary>
+        /// <returns>풀링된 게임 개체입니다.</returns>
+        public virtual GameObject GetPooledGameObject()
 		{
 			return null;
 		}

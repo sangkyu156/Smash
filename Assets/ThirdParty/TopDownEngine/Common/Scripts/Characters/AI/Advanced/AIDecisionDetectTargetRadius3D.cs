@@ -45,10 +45,10 @@ namespace MoreMountains.TopDownEngine
 		protected bool _lastReturnValue = false;
 		protected List<Transform> _potentialTargets;
 
-		/// <summary>
-		/// On init we grab our Character component
-		/// </summary>
-		public override void Initialization()
+        /// <summary>
+        /// 초기화 시 Character 구성 요소를 가져옵니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			_lastTargetCheckTimestamp = 0f;
 			_potentialTargets = new List<Transform>();

@@ -48,7 +48,9 @@ namespace MoreMountains.TopDownEngine
             {
                 createTime = 0;
                 if (GameManager.Instance.stage == Define.Stage.Stage01)
-                    SlimeSpawn();
+                {
+                    //SlimeSpawn();
+                }
             }
 
             //에너미 5마리 잡을때마다 20%확률로 랜덤하게 버프 생성

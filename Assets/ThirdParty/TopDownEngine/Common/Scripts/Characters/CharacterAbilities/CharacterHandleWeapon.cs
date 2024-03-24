@@ -14,7 +14,7 @@ namespace MoreMountains.TopDownEngine
 	public class CharacterHandleWeapon : CharacterAbility
 	{
 		/// This method is only used to display a helpbox text at the beginning of the ability's inspector
-		public override string HelpBoxText() { return "This component will allow your character to pickup and use weapons. What the weapon will do is defined in the Weapon classes. This just describes the behaviour of the 'hand' holding the weapon, not the weapon itself. Here you can set an initial weapon for your character to start with, allow weapon pickup, and specify a weapon attachment (a transform inside of your character, could be just an empty child gameobject, or a subpart of your model."; }
+		public override string HelpBoxText() { return "이 구성 요소를 사용하면 캐릭터가 무기를 집어 들고 사용할 수 있습니다. 무기가 수행할 작업은 Weapon 클래스에 정의되어 있습니다. 이는 무기 자체가 아니라 무기를 쥐고 있는 '손'의 동작을 설명할 뿐입니다. 여기서는 캐릭터가 시작할 초기 무기를 설정하고, 무기 픽업을 허용하고, 무기 부착물을 지정할 수 있습니다(캐릭터 내부 변환은 단지 빈 하위 게임 객체일 수도 있고 모델의 하위 부분일 수도 있음)."; }
 
 		[Header("Weapon")]
 
@@ -70,7 +70,7 @@ namespace MoreMountains.TopDownEngine
 
 		[Header("Buffering")]
         /// 공격 입력을 버퍼링해야 하는지 여부를 통해 다른 공격이 수행되는 동안 공격을 준비할 수 있어 공격 연결이 더 쉬워집니다.
-        [Tooltip("공격 입력을 버퍼링해야 하는지 여부를 통해 다른 공격이 수행되는 동안 공격을 준비할 수 있어 공격 연결이 더 쉬워집니다.")]
+        [Tooltip("NewInputExtendsBuffer시간 동안 선입력 해두면 계속해서 공격할지 정하는거")]
 		public bool BufferInput;
         /// 이것이 사실이라면 모든 새로운 입력은 버퍼를 연장시킵니다.
         [MMCondition("BufferInput", true)]
@@ -305,24 +305,24 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Causes the character to start shooting
-		/// </summary>
-		public virtual void ShootStart()
+        /// <summary>
+        /// 캐릭터가 총격을 시작하게 만듭니다.
+        /// </summary>
+        public virtual void ShootStart()
 		{
-			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing.  If the player is dead we do nothing.
-			if (!AbilityAuthorized
+            // 권한에서 촬영 작업이 활성화되어 있으면 계속 진행하고, 그렇지 않으면 아무 작업도 수행하지 않습니다. 플레이어가 죽으면 우리는 아무것도 하지 않습니다.
+            if (!AbilityAuthorized
 			    || (CurrentWeapon == null)
 			    || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal))
 			{
 				return;
 			}
 
-			//  if we've decided to buffer input, and if the weapon is in use right now
-			if (BufferInput && (CurrentWeapon.WeaponState.CurrentState != Weapon.WeaponStates.WeaponIdle))
+            //  입력을 버퍼링하기로 결정했고 무기가 지금 사용 중이라면
+            if (BufferInput && (CurrentWeapon.WeaponState.CurrentState != Weapon.WeaponStates.WeaponIdle))
 			{
-				// if we're not already buffering, or if each new input extends the buffer, we turn our buffering state to true
-				ExtendBuffer();
+                // 아직 버퍼링 중이 아니거나 각각의 새 입력이 버퍼를 확장하는 경우 버퍼링 상태를 true로 설정합니다.
+                ExtendBuffer();
 			}
 
 			if (BufferInput && RequiresPerfectTile && (_characterGridMovement != null))            
@@ -419,14 +419,14 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Changes the character's current weapon to the one passed as a parameter
-		/// </summary>
-		/// <param name="newWeapon">The new weapon.</param>
-		public virtual void ChangeWeapon(Weapon newWeapon, string weaponID, bool combo = false)
+        /// <summary>
+        /// 캐릭터의 현재 무기를 매개변수로 전달된 무기로 변경합니다.
+        /// </summary>
+        /// <param name="newWeapon">The new weapon.</param>
+        public virtual void ChangeWeapon(Weapon newWeapon, string weaponID, bool combo = false)
 		{
-			// if the character already has a weapon, we make it stop shooting
-			if (CurrentWeapon != null)
+            // 캐릭터가 이미 무기를 가지고 있다면, 총격을 멈추게 합니다.
+            if (CurrentWeapon != null)
 			{
 				CurrentWeapon.TurnWeaponOff();
 				if (!combo)
@@ -445,8 +445,10 @@ namespace MoreMountains.TopDownEngine
 							}
 						}
 					}
-					Destroy(CurrentWeapon.gameObject);
-				}
+					//오브젝트가 죽었을때 무기를 없애길래 안없애고 무기만 꺼줌
+					CurrentWeapon.gameObject.SetActive(false);
+                    //Destroy(CurrentWeapon.gameObject);
+                }
 			}
 
 			if (newWeapon != null)
@@ -455,7 +457,7 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-				CurrentWeapon = null;
+				//CurrentWeapon = null;
 			}
 
 			if (OnWeaponChange != null)
@@ -474,8 +476,11 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (!combo)
 			{
-				CurrentWeapon = (Weapon)Instantiate(newWeapon, WeaponAttachment.transform.position + newWeapon.WeaponAttachmentOffset, WeaponAttachment.transform.rotation);
-			}
+				if(CurrentWeapon == null)
+                    CurrentWeapon = (Weapon)Instantiate(newWeapon, WeaponAttachment.transform.position + newWeapon.WeaponAttachmentOffset, WeaponAttachment.transform.rotation);
+				else
+					CurrentWeapon.gameObject.SetActive(true);
+            }
 
 			CurrentWeapon.name = newWeapon.name;
 			CurrentWeapon.transform.parent = WeaponAttachment.transform;

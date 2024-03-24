@@ -265,8 +265,8 @@ namespace MoreMountains.Feedbacks
 
 			if (MMFeedbacksConfiguration.Instance.ShowInspectorTips)
 			{
-				EditorGUILayout.HelpBox("The MMFeedbacks component is getting replaced by the new and improved MMF_Player, which will improve performance, let you keep runtime changes, and much more! The MMF_Player works just like MMFeedbacks. " +
-				                        "Consider using it instead, and don't hesitate to check the documentation to learn all about it.", MessageType.Warning);    
+				EditorGUILayout.HelpBox("MMFeedbacks 구성 요소는 새롭고 향상된 MMF_Player로 대체됩니다. 이를 통해 성능이 향상되고 런타임 변경 사항을 유지할 수 있습니다. MMF_Player는 MMFeedbacks처럼 작동합니다. " +
+"대신 사용을 고려하고, 이에 대한 모든 내용을 알아보려면 주저하지 말고 문서를 확인하세요.", MessageType.Warning);    
 			}
 
 			Rect helpBoxRect = GUILayoutUtility.GetLastRect();

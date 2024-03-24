@@ -6,7 +6,7 @@ namespace MoreMountains.Feedbacks
 {
     /// <summary>
     /// MMFeedbacks 데모에 사용하기 위한 이 클래스는 요구 사항을 확인하고
-    /// error message if necessary.
+    /// 필요한 경우 오류 메시지.
     /// </summary>
     public class DemoPackageTester : MonoBehaviour
 	{

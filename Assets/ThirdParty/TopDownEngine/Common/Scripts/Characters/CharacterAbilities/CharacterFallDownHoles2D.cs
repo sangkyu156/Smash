@@ -6,10 +6,10 @@ using MoreMountains.Feedbacks;
 
 namespace MoreMountains.TopDownEngine
 {
-	/// <summary>
-	/// Add this component to a character and it'll make your character fall down holes in 2D
-	/// </summary>
-	[MMHiddenProperties("AbilityStartFeedbacks")]
+    /// <summary>
+    /// 이 구성 요소를 캐릭터에 추가하면 캐릭터가 2D의 구멍 아래로 떨어지게 됩니다.
+    /// </summary>
+    [MMHiddenProperties("AbilityStartFeedbacks")]
 	//[RequireComponent(typeof(TopDownController2D))]
 	[AddComponentMenu("TopDown Engine/Character/Abilities/Character Fall Down Holes 2D")]
 	public class CharacterFallDownHoles2D : CharacterAbility

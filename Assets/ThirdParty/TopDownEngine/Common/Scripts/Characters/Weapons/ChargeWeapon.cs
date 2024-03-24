@@ -42,7 +42,8 @@ namespace MoreMountains.TopDownEngine
 	}
 
     /// <summary>
-    /// 이 구성 요소를 개체에 추가하면 각각 고유한 무기를 트리거하는 일련의 충전 단계를 정의할 수 있으며, 입력 모드 또는 조건부 릴리스, 모든 단계에 대한 후크 등과 같은 옵션이 완비됩니다. Megaman이나 Zelda와 같은 충전 무기에 유용합니다.
+    /// 이 구성 요소를 개체에 추가하면 각각 고유한 무기를 트리거하는 일련의 충전 단계를 정의할 수 있으며, 입력 모드 또는 조건부 릴리스, 모든 단계에 대한 후크 등과 같은 옵션이 완비됩니다.
+	/// Megaman이나 Zelda와 같은 충전 무기에 유용합니다.
     /// </summary>
     [AddComponentMenu("TopDown Engine/Weapons/Charge Weapon")]
 	public class ChargeWeapon : Weapon

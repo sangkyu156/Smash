@@ -43,18 +43,18 @@ namespace MoreMountains.Tools
 			_brain = this.gameObject.GetComponentInParent<AIBrain>();
 		}
 
-		/// <summary>
-		/// Initializes the action. Meant to be overridden
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// 작업을 초기화합니다. 재정의됨을 의미함
+        /// </summary>
+        public virtual void Initialization()
 		{
 			_initialized = true;
 		}
 
-		/// <summary>
-		/// Describes what happens when the brain enters the state this action is in. Meant to be overridden.
-		/// </summary>
-		public virtual void OnEnterState()
+        /// <summary>
+        /// 두뇌가 이 작업의 상태에 들어갈 때 무슨 일이 일어나는지 설명합니다. 재정의됨을 의미합니다.
+        /// </summary>
+        public virtual void OnEnterState()
 		{
 			ActionInProgress = true;
 		}

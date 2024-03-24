@@ -4,7 +4,8 @@ using MoreMountains.Tools;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// 이 구성 요소를 장면의 빈 개체에 추가하고 SwitchCharacter 버튼(기본적으로 P는 Unity의 InputManager 설정에서 변경)을 누르면 주인공이 이 항목에 설정된 목록의 프리팹 중 하나로 대체됩니다. 요소. 순서(순차적 또는 무작위)를 결정하고 원하는 만큼 가질 수 있습니다.
+    /// 이 구성 요소를 장면의 빈 개체에 추가하고 SwitchCharacter 버튼(기본적으로 P는 Unity의 InputManager 설정에서 변경)을 누르면 주인공이 이 항목에 설정된 목록의 프리팹 중 하나로 
+	/// 대체됩니다. 요소. 순서(순차적 또는 무작위)를 결정하고 원하는 만큼 가질 수 있습니다.
     /// 이는 시각적 요소뿐만 아니라 전체 프리팹을 변경한다는 점에 유의하세요.
     /// 시각적 변화가 발생한 직후라면 CharacterSwitchModel 기능을 살펴보세요.
     /// 한 장면 내에서 여러 캐릭터 간에 캐릭터를 교환하려면 CharacterSwap 기능과 CharacterSwapManager를 살펴보세요.

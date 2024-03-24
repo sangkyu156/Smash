@@ -6,7 +6,8 @@ using MoreMountains.Tools;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// 현재 장착된 무기를 사용하여 사격하는 Action입니다. 무기가 자동 모드인 경우 해당 상태를 종료할 때까지 발사되고 반자동 모드에서는 한 번만 발사됩니다. 선택적으로 캐릭터가 대상을 향하게 하고(왼쪽/오른쪽) 이를 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
+    /// 현재 장착된 무기를 사용하여 사격하는 Action입니다. 무기가 자동 모드인 경우 해당 상태를 종료할 때까지 발사되고 반자동 모드에서는 한 번만 발사됩니다.
+	/// 선택적으로 캐릭터가 대상을 향하게 하고(왼쪽/오른쪽) 이를 조준할 수 있습니다(무기에 WeaponAim 구성 요소가 있는 경우).
     /// </summary>
     [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionShoot2D")]
 	//[RequireComponent(typeof(CharacterOrientation2D))]

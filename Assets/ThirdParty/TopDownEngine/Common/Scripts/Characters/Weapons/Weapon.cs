@@ -41,7 +41,7 @@ namespace MoreMountains.TopDownEngine
 		[Tooltip("촬영 버튼을 놓아 사용 전 지연을 중단할 수 있는지 여부(참인 경우 버튼을 놓으면 지연된 촬영이 취소됩니다)")]
 		public bool DelayBeforeUseReleaseInterruption = true;
 		/// the time (in seconds) between two shots		
-		[Tooltip("the time (in seconds) between two shots")]
+		[Tooltip("두 샷 사이의 시간(초)")]
 		public float TimeBetweenUses = 1f;
 		/// whether or not the time between uses can be interrupted by releasing the shoot button (if true, releasing the button will cancel the time between uses)
 		[Tooltip("촬영 버튼을 놓아 사용 사이의 시간을 중단할 수 있는지 여부(참인 경우 버튼을 놓으면 사용 사이의 시간이 취소됩니다)")]
@@ -375,10 +375,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Called by input, turns the weapon on
-		/// </summary>
-		public virtual void WeaponInputStart()
+        /// <summary>
+        /// 입력에 의해 호출되어 무기를 켭니다.
+        /// </summary>
+        public virtual void WeaponInputStart()
 		{
 			if (_reloading)
 			{
@@ -400,10 +400,10 @@ namespace MoreMountains.TopDownEngine
 			
 		}
 
-		/// <summary>
-		/// Describes what happens when the weapon starts
-		/// </summary>
-		public virtual void TurnWeaponOn()
+        /// <summary>
+        /// 무기가 시작되면 어떤 일이 일어나는지 설명합니다.
+        /// </summary>
+        public virtual void TurnWeaponOn()
 		{
 			if (!InputAuthorized && (Time.time - _lastTurnWeaponOnAt < TimeBetweenUses))
 			{

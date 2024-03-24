@@ -11,7 +11,7 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/Spawn/Auto Respawn")]
 	public class AutoRespawn : TopDownMonoBehaviour, Respawnable 
 	{
-		[Header("Respawn when the player respawns")]
+		[Header("플레이어가 리스폰되면 리스폰됩니다.")]
         /// 이것이 사실이라면 이 개체는 플레이어가 부활할 때 마지막 위치에서 다시 생성됩니다.
         [Tooltip("이것이 사실이라면 이 개체는 플레이어가 부활할 때 마지막 위치에서 다시 생성됩니다.")]
 		public bool RespawnOnPlayerRespawn = true;

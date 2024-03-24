@@ -55,14 +55,14 @@ MonoBehaviour:
   TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 1
   UseBurstMode: 0
-  BurstLength: 3
+  BurstLength: 1
   BurstTimeBetweenShots: 0.1
   MagazineBased: 0
   MagazineSize: 30
   AutoReload: 0
   NoInputReload: 0
   ReloadTime: 2
-  AmmoConsumedPerShot: 1
+  AmmoConsumedPerShot: 0
   AutoDestroyWhenEmpty: 0
   AutoDestroyWhenEmptyDelay: 1
   PreventReloadIfAmmoEmpty: 0
@@ -77,8 +77,8 @@ MonoBehaviour:
   RightHandHandle: {fileID: 0}
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
-  PreventAllMovementWhileInUse: 0
-  PreventAllAimWhileInUse: 0
+  PreventAllMovementWhileInUse: 1
+  PreventAllAimWhileInUse: 1
   RecoilForce: 0
   Animators: []
   PerformAnimatorSanityChecks: 0
@@ -120,8 +120,8 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  MinDamageCaused: 10
-  MaxDamageCaused: 10
+  MinDamageCaused: 5
+  MaxDamageCaused: 5
   Knockback: 0
   KnockbackForce: {x: 10, y: 2, z: 0}
   KnockbackDirection: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0514d297deadac74fb15a7b7326ff0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AimControl: 2
+  AimControl: 4
   AimControlActive: 1
   RotationMode: 0
   WeaponRotationSpeed: 100
@@ -184,7 +184,7 @@ MonoBehaviour:
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 256
-  ScanRadius: 5
+  ScanRadius: 10
   LineOfFireBoxcastSize: {x: 0.1, y: 0.1}
   DurationBetweenScans: 1
   DetectionOriginOffset: {x: 0, y: 0, z: 0}

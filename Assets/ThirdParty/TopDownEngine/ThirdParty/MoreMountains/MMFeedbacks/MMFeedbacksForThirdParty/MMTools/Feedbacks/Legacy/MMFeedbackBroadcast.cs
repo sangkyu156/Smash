@@ -4,10 +4,10 @@ using UnityEngine;
 namespace MoreMountains.Feedbacks
 {
     /// <summary>
-    /// 이 피드백을 사용하면 MMRadio 시스템에 부동 소수점 값을 브로드캐스트할 수 있습니다.
+    /// 이 피드백을 사용하면 MMRadio 시스템에 float값을 브로드캐스트할 수 있습니다.
     /// </summary>
     [AddComponentMenu("")]
-	[FeedbackHelp("이 피드백을 사용하면 부동 소수점 값을 MMRadio 시스템에 브로드캐스트할 수 있습니다.")]
+	[FeedbackHelp("이 피드백을 사용하면 float값을 MMRadio 시스템에 브로드캐스트할 수 있습니다.")]
 	[FeedbackPath("GameObject/Broadcast")]
 	public class MMFeedbackBroadcast : MMFeedbackBase
 	{

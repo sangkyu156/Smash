@@ -114,11 +114,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When one of the weapons get used we turn our countdown off
-		/// </summary>
-		/// <param name="weaponThatStarted"></param>
-		public virtual void WeaponStarted(Weapon weaponThatStarted)
+        /// <summary>
+        /// 무기 중 하나가 사용되면 카운트다운을 끕니다.
+        /// </summary>
+        /// <param name="weaponThatStarted"></param>
+        public virtual void WeaponStarted(Weapon weaponThatStarted)
 		{
 			_countdownActive = false;
 		}

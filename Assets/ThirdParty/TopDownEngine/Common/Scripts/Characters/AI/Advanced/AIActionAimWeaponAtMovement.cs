@@ -20,10 +20,10 @@ namespace MoreMountains.TopDownEngine
 		protected AIActionShoot3D _aiActionShoot3D;
 		protected Vector3 _weaponAimDirection;
 
-		/// <summary>
-		/// On init we grab our components
-		/// </summary>
-		public override void Initialization()
+        /// <summary>
+        /// 초기화 시 구성 요소를 가져옵니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();
@@ -86,10 +86,10 @@ namespace MoreMountains.TopDownEngine
 			}            
 		}
 
-		/// <summary>
-		/// When entering the state we grab our weapon
-		/// </summary>
-		public override void OnEnterState()
+        /// <summary>
+        /// 상태에 들어갈 때 우리는 무기를 잡습니다
+        /// </summary>
+        public override void OnEnterState()
 		{
 			base.OnEnterState();
 			GrabWeaponAim();

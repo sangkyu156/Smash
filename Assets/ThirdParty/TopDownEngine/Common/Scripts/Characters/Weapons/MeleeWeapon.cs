@@ -12,8 +12,8 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/Weapons/Melee Weapon")]
 	public class MeleeWeapon : Weapon
 	{
-		/// the possible shapes for the melee weapon's damage area
-		public enum MeleeDamageAreaShapes { Rectangle, Circle, Box, Sphere }
+        /// 근접 무기의 피해 영역에 대한 가능한 모양
+        public enum MeleeDamageAreaShapes { Rectangle, Circle, Box, Sphere }
 		public enum MeleeDamageAreaModes { Generated, Existing }
 
 		[MMInspectorGroup("Damage Area", true, 22)]
@@ -104,6 +104,12 @@ namespace MoreMountains.TopDownEngine
         private void Awake()
         {
 
+        }
+
+        private void OnEnable()
+        {
+			//에너미가 죽었다 살아나면 처음 공격을 이상하게 해서 공격 한번 허공에 하게만듬
+            StartCoroutine(MeleeWeaponAttack());
         }
 
         protected override void Start()

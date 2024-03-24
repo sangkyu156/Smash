@@ -5,6 +5,7 @@ using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 using UnityEditor.EditorTools;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -98,7 +99,7 @@ namespace MoreMountains.TopDownEngine
 
 		[MMInspectorGroup("Death", true, 53)]
 
-		[MMInformation("여기서는 개체가 죽을 때 인스턴스화할 효과, 개체에 적용할 힘(하향식 컨트롤러 필요), 게임 점수에 추가할 포인트 수, 캐릭터가 다시 생성되어야 하는 위치(비플레이어 캐릭터에만 해당)를 설정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
+		[MMInformation("여기서는 개체가 죽을 때 인스턴스화할 효과, 개체에 적용할 힘(topdown controller 필요), 게임 점수에 추가할 포인트 수, 캐릭터가 다시 생성되어야 하는 위치(비플레이어 캐릭터에만 해당)를 설정할 수 있습니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info, false)]
         /// 이 개체가 사망 시 파괴되어야 하는지 여부
         [Tooltip("이 개체가 사망 시 파괴되어야 하는지 여부")]
 		public bool DestroyOnDeath = true;
@@ -127,7 +128,7 @@ namespace MoreMountains.TopDownEngine
         [Tooltip("이 객체가 사망 시 레이어를 변경해야 하는지 여부")]
 		public bool ChangeLayerOnDeath = false;
         /// 이 객체가 사망 시 레이어를 변경해야 하는지 여부
-        [Tooltip("이 객체가 사망 시 레이어를 변경해야 하는지 여부")]
+        [Tooltip("이 객체가 사망 시 레이어를 재귀적으로 변경해야 하는지 여부")]
 		public bool ChangeLayersRecursivelyOnDeath = false;
         /// 이 캐릭터가 죽을 때 이동해야 하는 레이어
         [Tooltip("이 캐릭터가 죽을 때 이동해야 하는 레이어")]
@@ -201,6 +202,7 @@ namespace MoreMountains.TopDownEngine
 		int thisLayer;
         int invincibilityCount;//무적버프 중복으로 먹은 횟수
         PlayerEffectsController playerParticle;
+		AIBrain _brain;
         protected class InterruptiblesDamageOverTimeCoroutine
 		{
 			public Coroutine DamageOverTimeCoroutine;
@@ -223,6 +225,7 @@ namespace MoreMountains.TopDownEngine
                 MaximumHealth = PlayerDataManager.GetHealth();
                 playerParticle = GetComponent<PlayerEffectsController>();
             }
+            _brain = GetComponentInChildren<AIBrain>();
             Initialization();
 			InitializeCurrentHealth();
         }
@@ -875,6 +878,8 @@ namespace MoreMountains.TopDownEngine
 			else
 			{
                 // 마침내 우리는 그 물체를 파괴한다
+				if(_brain != null)
+                    _brain.BrainActive = false;
                 DestroyObject();	
 			}
 		}
@@ -970,7 +975,7 @@ namespace MoreMountains.TopDownEngine
 				{
 					//오브젝트 회수
 					if (thisLayer == 13)
-						TagCheckReturnPool();
+                        gameObject.SetActive(false);
                 }
 			}
 			else

@@ -57,7 +57,7 @@ namespace MoreMountains.Tools
 		protected float _lastDecisionsUpdate = 0f;
 		protected AIState _initialState;
 
-		public virtual AIAction[] GetAttachedActions()
+        public virtual AIAction[] GetAttachedActions()
 		{
 			AIAction[] actions = this.gameObject.GetComponentsInChildren<AIAction>();
 			return actions;
@@ -106,10 +106,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Every frame we update our current state
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 매 프레임마다 현재 상태를 업데이트합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			if (!BrainActive || (CurrentState == null) || (Time.timeScale == 0f))
 			{
@@ -137,12 +137,12 @@ namespace MoreMountains.Tools
 
 			StoreLastKnownPosition();
 		}
-        
-		/// <summary>
-		/// Transitions to the specified state, trigger exit and enter states events
-		/// </summary>
-		/// <param name="newStateName"></param>
-		public virtual void TransitionToState(string newStateName)
+
+        /// <summary>
+        /// 지정된 상태로 전환하고, 종료 및 상태 입력 이벤트를 트리거합니다.
+        /// </summary>
+        /// <param name="newStateName"></param>
+        public virtual void TransitionToState(string newStateName)
 		{
 			if (CurrentState == null)
 			{
@@ -174,10 +174,10 @@ namespace MoreMountains.Tools
 			TimeInThisState = 0f;
 		}
 
-		/// <summary>
-		/// Initializes all decisions
-		/// </summary>
-		protected virtual void InitializeDecisions()
+        /// <summary>
+        /// 모든 결정을 초기화합니다.
+        /// </summary>
+        protected virtual void InitializeDecisions()
 		{
 			if (_decisions == null)
 			{
@@ -189,10 +189,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Initializes all actions
-		/// </summary>
-		protected virtual void InitializeActions()
+        /// <summary>
+        /// 모든 작업을 초기화합니다.
+        /// </summary>
+        protected virtual void InitializeActions()
 		{
 			if (_actions == null)
 			{
@@ -236,10 +236,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Resets the brain, forcing it to enter its first state
-		/// </summary>
-		public virtual void ResetBrain()
+        /// <summary>
+        /// 뇌를 재설정하여 강제로 첫 번째 상태로 전환합니다.
+        /// </summary>
+        public virtual void ResetBrain()
 		{
 			InitializeDecisions();
 			InitializeActions();

@@ -514,12 +514,12 @@ namespace MoreMountains.Tools
 		//public static MMConsole _console;
 		public static MMDebugOnScreenConsole _console;
 		private const string _debugConsolePrefabPath = "MMDebugOnScreenConsole";
-                
-		/// <summary>
-		/// Instantiates a MMConsole if there isn't one already, and adds the message in parameter to it.
-		/// </summary>
-		/// <param name="message">Message.</param>
-		public static void DebugOnScreen(string message)
+
+        /// <summary>
+        /// MMConsole이 아직 없으면 인스턴스화하고 매개변수에 메시지를 추가합니다.
+        /// </summary>
+        /// <param name="message">Message.</param>
+        public static void DebugOnScreen(string message)
 		{
 			if (!DebugLogsEnabled)
 			{

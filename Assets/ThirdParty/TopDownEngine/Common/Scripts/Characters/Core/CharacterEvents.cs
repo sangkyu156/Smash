@@ -3,20 +3,20 @@ using System.Collections;
 using MoreMountains.Tools;
 
 namespace MoreMountains.TopDownEngine
-{	
-	/// <summary>
-	/// A list of possible events used by the character
-	/// </summary>
-	public enum MMCharacterEventTypes
+{
+    /// <summary>
+    /// 캐릭터가 사용할 수 있는 이벤트 목록
+    /// </summary>
+    public enum MMCharacterEventTypes
 	{
 		ButtonActivation,
 		Jump
 	}
 
-	/// <summary>
-	/// MMCharacterEvents are used in addition to the events triggered by the character's state machine, to signal stuff happening that is not necessarily linked to a change of state
-	/// </summary>
-	public struct MMCharacterEvent
+    /// <summary>
+    /// MMCharacterEvents는 캐릭터의 상태 머신에 의해 트리거된 이벤트 외에도 상태 변경과 반드시 ​​연결되지 않은 일이 발생했음을 알리는 데 사용됩니다.
+    /// </summary>
+    public struct MMCharacterEvent
 	{
 		public Character TargetCharacter;
 		public MMCharacterEventTypes EventType;

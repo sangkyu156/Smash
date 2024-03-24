@@ -355,19 +355,19 @@ namespace MoreMountains.Feedbacks
 				}                
 			}
 		}
-        
-		/// <summary>
-		/// On enable, initializes blink properties
-		/// </summary>
-		protected virtual void OnEnable()
+
+        /// <summary>
+        /// 활성화 시 깜박임 속성을 초기화합니다.
+        /// </summary>
+        protected virtual void OnEnable()
 		{
 			InitializeBlinkProperties();            
 		}
 
-		/// <summary>
-		/// Resets counters and grabs properties and initial colors
-		/// </summary>
-		protected virtual void InitializeBlinkProperties()
+        /// <summary>
+        /// 카운터를 재설정하고 속성과 초기 색상을 가져옵니다.
+        /// </summary>
+        protected virtual void InitializeBlinkProperties()
 		{
 			if (Phases.Count == 0)
 			{

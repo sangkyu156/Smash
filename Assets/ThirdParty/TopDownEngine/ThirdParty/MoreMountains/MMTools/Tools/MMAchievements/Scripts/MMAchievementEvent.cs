@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MoreMountains.Tools
 {
     /// <summary>
-    /// 업적이 잠금 해제되었다는 사실을 알리는 데 사용되는 이벤트 유형
+    /// 업적이 잠금 해제되었다는 사실을 알리는 데 사용되는 이벤트 유형 (Achievement = 업적)
     /// </summary>
     public struct MMAchievementUnlockedEvent
 	{

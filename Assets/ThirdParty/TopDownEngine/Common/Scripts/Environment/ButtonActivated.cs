@@ -53,7 +53,7 @@ namespace MoreMountains.TopDownEngine
         [Tooltip("false로 설정하면 접지되지 않은 동안에는 구역이 활성화되지 않습니다.")]
 		public bool CanOnlyActivateIfGrounded = false;
         /// CharacterBehaviorState가 플레이어의 영역 진입에 대한 알림을 받도록 하려면 이를 true로 설정합니다.
-        [Tooltip("CharacterBehaviorState가 플레이어의 영역 진입에 대한 알림을 받도록 하려면 이를 true로 설정합니다.")]
+        [Tooltip("캐릭터 행동 상태가 플레이어의 영역 진입에 대한 알림을 받도록 하려면 이를 true로 설정합니다.")]
 		public bool ShouldUpdateState = true;
         /// 이것이 true인 경우, 다른 개체가 들어오면 Enter가 다시 트리거되지 않으며 마지막 개체가 나갈 때만 Exit가 트리거됩니다.
         [Tooltip("이것이 true인 경우, 다른 개체가 들어오면 Enter가 다시 트리거되지 않으며 마지막 개체가 나갈 때만 Exit가 트리거됩니다.")]

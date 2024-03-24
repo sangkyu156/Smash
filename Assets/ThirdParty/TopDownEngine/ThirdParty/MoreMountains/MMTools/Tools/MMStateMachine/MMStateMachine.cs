@@ -103,13 +103,13 @@ namespace MoreMountains.Tools
 		{
 			this.Target = target;
 			this.TriggerEvents = triggerEvents;
-		} 
+		}
 
-		/// <summary>
-		/// Changes the current movement state to the one specified in the parameters, and triggers exit and enter events if needed
-		/// </summary>
-		/// <param name="newState">New state.</param>
-		public virtual void ChangeState(T newState)
+        /// <summary>
+        /// 현재 이동 상태를 매개변수에 지정된 상태로 변경하고 필요한 경우 종료 및 입력 이벤트를 트리거합니다.
+        /// </summary>
+        /// <param name="newState">New state.</param>
+        public virtual void ChangeState(T newState)
 		{
 			// if the "new state" is the current one, we do nothing and exit
 			if (EqualityComparer<T>.Default.Equals(newState, CurrentState))

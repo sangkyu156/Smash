@@ -19,10 +19,10 @@ namespace MoreMountains.Tools
 		public bool Enabled = true;
 	}
 
-	/// <summary>
-	/// The various methods you can pull objects from the pool with
-	/// </summary>
-	public enum MMPoolingMethods { OriginalOrder, OriginalOrderSequential, RandomBetweenObjects, RandomPoolSizeBased }
+    /// <summary>
+    /// 풀에서 개체를 가져올 수 있는 다양한 방법
+    /// </summary>
+    public enum MMPoolingMethods { OriginalOrder, OriginalOrderSequential, RandomBetweenObjects, RandomPoolSizeBased }
 
     /// <summary>
     /// 이 클래스를 사용하면 풀링할 다양한 개체의 풀을 가질 수 있습니다.
@@ -30,31 +30,31 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Object Pool/MMMultipleObjectPooler")]
 	public class MMMultipleObjectPooler : MMObjectPooler
 	{
-		/// the list of objects to pool
-		public List<MMMultipleObjectPoolerObject> Pool;
-		[MMInformation("A MultipleObjectPooler is a reserve of objects, to be used by a Spawner. When asked, it will return an object from the pool (ideally an inactive one) chosen based on the pooling method you've chosen.\n- OriginalOrder will spawn objects in the order you've set them in the inspector (from top to bottom)\n- OriginalOrderSequential will do the same, but will empty each pool before moving to the next object\n- RandomBetweenObjects will pick one object from the pool, at random, but ignoring its pool size, each object has equal chances to get picked\n- PoolSizeBased randomly choses one object from the pool, based on its pool size probability (the larger the pool size, the higher the chances it'll get picked)'...",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// the chosen pooling method
-		public MMPoolingMethods PoolingMethod = MMPoolingMethods.RandomPoolSizeBased;
-		[MMInformation("If you set CanPoolSameObjectTwice to false, the Pooler will try to prevent the same object from being pooled twice to avoid repetition. This will only affect random pooling methods, not ordered pooling.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
-		/// whether or not the same object can be pooled twice in a row. If you set CanPoolSameObjectTwice to false, the Pooler will try to prevent the same object from being pooled twice to avoid repetition. This will only affect random pooling methods, not ordered pooling.
-		public bool CanPoolSameObjectTwice=true;
-		/// a unique name that should match on all MMMultipleObjectPoolers you want to use together
-		[MMCondition("MutualizeWaitingPools", true)]
+        /// 풀링할 개체 목록
+        public List<MMMultipleObjectPoolerObject> Pool;
+		[MMInformation("MultipleObjectPooler는 Spawner가 사용할 객체의 예비입니다. 요청을 받으면 선택한 풀링 방법에 따라 선택된 풀(이상적으로는 비활성 개체)에서 개체를 반환합니다.\n- OriginalOrder는 검사기에서 설정한 순서대로(위에서 위쪽으로) 개체를 생성합니다. 하단)\n- OriginalOrderSequential은 동일한 작업을 수행하지만 다음 객체로 이동하기 전에 각 풀을 비웁니다.\n- RandomBetweenObjects는 풀에서 객체 하나를 무작위로 선택하지만 풀 크기를 무시하고 각 객체는 객체를 얻을 수 있는 동일한 기회를 갖습니다. 선택됨\n- PoolSizeBased는 풀 크기 확률에 따라 풀에서 객체 하나를 무작위로 선택합니다(풀 크기가 클수록 선택될 확률이 높아집니다)'...", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 선택한 풀링 방법
+        public MMPoolingMethods PoolingMethod = MMPoolingMethods.RandomPoolSizeBased;
+		[MMInformation("CanPoolSameObjectTwice를 false로 설정하면 풀러는 반복을 피하기 위해 동일한 개체가 두 번 풀링되는 것을 방지하려고 합니다. 이는 순서 풀링이 아닌 무작위 풀링 방법에만 영향을 미칩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
+        /// 동일한 객체를 연속으로 두 번 풀링할 수 있는지 여부입니다. CanPoolSameObjectTwice를 false로 설정하면 풀러는 반복을 피하기 위해 동일한 개체가 두 번 풀링되는 것을 방지하려고 합니다. 이는 순서 풀링이 아닌 무작위 풀링 방법에만 영향을 미칩니다.
+        public bool CanPoolSameObjectTwice=true;
+        /// 함께 사용하려는 모든 MMMultipleObjectPoolers에서 일치해야 하는 고유한 이름
+        [MMCondition("MutualizeWaitingPools", true)]
 		public string MutualizedPoolName = "";
 		
 		public List<MMMultipleObjectPooler> Owner { get; set; }
 		private void OnDestroy() { Owner?.Remove(this); }
-		
-		/// the actual object pool
-		protected GameObject _lastPooledObject;
+
+        /// 실제 개체 풀
+        protected GameObject _lastPooledObject;
 		protected int _currentIndex = 0;
 		protected int _currentIndexCounter = 0;
-		
-		/// <summary>
-		/// Determines the name of the object pool.
-		/// </summary>
-		/// <returns>The object pool name.</returns>
-		protected override string DetermineObjectPoolName()
+
+        /// <summary>
+        /// 개체 풀의 이름을 결정합니다.
+        /// </summary>
+        /// <returns>개체 풀 이름입니다.</returns>
+        protected override string DetermineObjectPoolName()
 		{
 			if ((MutualizedPoolName == null) || (MutualizedPoolName == ""))
 			{
@@ -66,24 +66,24 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Fills the object pool with the amount of objects you specified in the inspector.
-		/// </summary>
-		public override void FillObjectPool()
+        /// <summary>
+        /// 검사기에서 지정한 개체 수로 개체 풀을 채웁니다.
+        /// </summary>
+        public override void FillObjectPool()
 		{
 			if ((Pool == null) || (Pool.Count == 0))
 			{
 				return;
 			}
 
-			// we create a waiting pool, if one already exists, no need to fill anything
-			if (!CreateWaitingPool())
+            // 대기 풀을 만듭니다. 이미 존재하는 경우 아무것도 채울 필요가 없습니다.
+            if (!CreateWaitingPool())
 			{
 				return;
 			}
-            
-			// if there's only one item in the Pool, we force CanPoolSameObjectTwice to true
-			if (Pool.Count <= 1)
+
+            // 풀에 항목이 하나만 있으면 CanPoolSameObjectTwice를 true로 설정합니다.
+            if (Pool.Count <= 1)
 			{
 				CanPoolSameObjectTwice=true;
 			}
@@ -91,20 +91,20 @@ namespace MoreMountains.Tools
 			bool stillObjectsToPool;
 			int[] poolSizes;
 
-			// if we're gonna pool in the original inspector order
-			switch (PoolingMethod)
+            // 우리가 원래 검사관 명령에 따라 합산한다면
+            switch (PoolingMethod)
 			{
 				case MMPoolingMethods.OriginalOrder:
 					stillObjectsToPool = true;
-					// we store our poolsizes in a temp array so it doesn't impact the inspector
-					poolSizes = new int[Pool.Count];
+                    // 검사기에 영향을 주지 않도록 풀 크기를 임시 배열에 저장합니다.
+                    poolSizes = new int[Pool.Count];
 					for (int i = 0; i < Pool.Count; i++)
 					{
 						poolSizes[i] = Pool[i].PoolSize;
 					}
 
-					// we go through our objects in the order they were in the inspector, and fill the pool while we find objects to add
-					while (stillObjectsToPool)
+                    // 인스펙터에 있는 순서대로 개체를 살펴보고 추가할 개체를 찾는 동안 풀을 채웁니다.
+                    while (stillObjectsToPool)
 					{
 						stillObjectsToPool = false;
 						for (int i = 0; i < Pool.Count; i++)
@@ -119,8 +119,8 @@ namespace MoreMountains.Tools
 					}
 					break;
 				case MMPoolingMethods.OriginalOrderSequential:
-					// we store our poolsizes in a temp array so it doesn't impact the inspector
-					foreach (MMMultipleObjectPoolerObject pooledGameObject in Pool)
+                    // 검사기에 영향을 주지 않도록 풀 크기를 임시 배열에 저장합니다.
+                    foreach (MMMultipleObjectPoolerObject pooledGameObject in Pool)
 					{
 						for (int i = 0; i < pooledGameObject.PoolSize ; i++ )
 						{
@@ -130,14 +130,14 @@ namespace MoreMountains.Tools
 					break;
 				default:
 					int k = 0;
-					// for each type of object specified in the inspector
-					foreach (MMMultipleObjectPoolerObject pooledGameObject in Pool)
+                    // 인스펙터에 지정된 각 유형의 객체에 대해
+                    foreach (MMMultipleObjectPoolerObject pooledGameObject in Pool)
 					{
-						// if there's no specified number of objects to pool for that type of object, we do nothing and exit
-						if (k > Pool.Count) { return; }
+                        // 해당 유형의 개체에 대해 풀링할 개체 수가 지정되지 않은 경우 아무 작업도 수행하지 않고 종료합니다.
+                        if (k > Pool.Count) { return; }
 
-						// we add, one by one, the number of objects of that type, as specified in the inspector
-						for (int j = 0; j < Pool[k].PoolSize; j++)
+                        // 검사기에 지정된 대로 해당 유형의 객체 수를 하나씩 추가합니다.
+                        for (int j = 0; j < Pool[k].PoolSize; j++)
 						{
 							AddOneObjectToThePool(pooledGameObject.GameObjectToPool);
 						}
@@ -147,12 +147,12 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Adds one object of the specified type to the object pool.
-		/// </summary>
-		/// <returns>The object that just got added.</returns>
-		/// <param name="typeOfObject">The type of object to add to the pool.</param>
-		protected virtual GameObject AddOneObjectToThePool(GameObject typeOfObject)
+        /// <summary>
+        /// 지정된 유형의 개체 하나를 개체 풀에 추가합니다.
+        /// </summary>
+        /// <returns>방금 추가된 개체입니다.</returns>
+        /// <param name="typeOfObject">The type of object to add to the pool.</param>
+        protected virtual GameObject AddOneObjectToThePool(GameObject typeOfObject)
 		{
 			if (typeOfObject == null)
 			{
@@ -173,11 +173,11 @@ namespace MoreMountains.Tools
 			return newGameObject;
 		}
 
-		/// <summary>
-		/// Gets a random object from the pool.
-		/// </summary>
-		/// <returns>The pooled game object.</returns>
-		public override GameObject GetPooledGameObject()
+        /// <summary>
+        /// 풀에서 임의의 개체를 가져옵니다.
+        /// </summary>
+        /// <returns>풀링된 게임 개체입니다.</returns>
+        public override GameObject GetPooledGameObject()
 		{
 			GameObject pooledGameObject;
 			switch (PoolingMethod)
@@ -209,15 +209,15 @@ namespace MoreMountains.Tools
 			return pooledGameObject;
 		}
 
-		/// <summary>
-		/// Tries to find a gameobject in the pool according to the order the list has been setup in (one of each, no matter how big their respective pool sizes)
-		/// </summary>
-		/// <returns>The pooled game object original order.</returns>
-		protected virtual GameObject GetPooledGameObjectOriginalOrder()
+        /// <summary>
+        /// 목록이 설정된 순서에 따라 풀에서 게임 개체를 찾으려고 시도합니다(각각의 풀 크기에 관계없이 하나씩).
+        /// </summary>
+        /// <returns>풀링된 게임 개체의 원래 순서.</returns>
+        protected virtual GameObject GetPooledGameObjectOriginalOrder()
 		{
 			int newIndex;
-			// if we've reached the end of our list, we start again from the beginning
-			if (_currentIndex >= Pool.Count)
+            // 목록의 끝에 도달하면 처음부터 다시 시작합니다.
+            if (_currentIndex >= Pool.Count)
 			{
 				ResetCurrentIndex ();
 			}
@@ -227,8 +227,8 @@ namespace MoreMountains.Tools
 			if (_currentIndex >= _objectPool.PooledGameObjects.Count) { return null; }
 			if (!searchedObject.Enabled) { _currentIndex++; return null; }
 
-			// if the object is already active, we need to find another one
-			if (_objectPool.PooledGameObjects[_currentIndex].gameObject.activeInHierarchy)
+            // 개체가 이미 활성화되어 있으면 다른 개체를 찾아야 합니다.
+            if (_objectPool.PooledGameObjects[_currentIndex].gameObject.activeInHierarchy)
 			{
 				GameObject findObject = FindInactiveObject(_objectPool.PooledGameObjects[_currentIndex].gameObject.name,_objectPool.PooledGameObjects);
 				if (findObject != null)
@@ -237,22 +237,22 @@ namespace MoreMountains.Tools
 					return findObject;
 				}
 
-				// if its pool can expand, we create a new one
-				if (searchedObject.PoolCanExpand)
+                // 풀을 확장할 수 있으면 새 풀을 만듭니다.
+                if (searchedObject.PoolCanExpand)
 				{
 					_currentIndex++;
 					return AddOneObjectToThePool(searchedObject.GameObjectToPool);	
 				}
 				else
 				{
-					// if it can't expand we return nothing
-					return null;					
+                    // 확장할 수 없으면 아무것도 반환하지 않습니다.
+                    return null;					
 				}
 			}
 			else
 			{
-				// if the object is inactive, we return it
-				newIndex = _currentIndex;
+                // 객체가 비활성 상태이면 반환합니다.
+                newIndex = _currentIndex;
 				_currentIndex++;
 				return _objectPool.PooledGameObjects[newIndex]; 
 			}
@@ -260,14 +260,14 @@ namespace MoreMountains.Tools
 
 		protected int _currentCount = 0;
 
-		/// <summary>
-		/// Tries to find a gameobject in the pool according to the order the list has been setup in (one of each, no matter how big their respective pool sizes)
-		/// </summary>
-		/// <returns>The pooled game object original order.</returns>
-		protected virtual GameObject GetPooledGameObjectOriginalOrderSequential()
+        /// <summary>
+        /// 목록이 설정된 순서에 따라 풀에서 게임 개체를 찾으려고 시도합니다(각각의 풀 크기에 관계없이 하나씩).
+        /// </summary>
+        /// <returns>풀링된 게임 개체의 원래 순서입니다.</returns>
+        protected virtual GameObject GetPooledGameObjectOriginalOrderSequential()
 		{
-			// if we've reached the end of our list, we start again from the beginning
-			if (_currentIndex >= Pool.Count)
+            // 목록의 끝에 도달하면 처음부터 다시 시작합니다.
+            if (_currentIndex >= Pool.Count)
 			{
 				_currentCount = 0;
 				ResetCurrentIndex ();
@@ -279,8 +279,8 @@ namespace MoreMountains.Tools
 			if (!searchedObject.Enabled) { _currentIndex++; _currentCount = 0; return null; }
 
 
-			// if the object is already active, we need to find another one
-			if (_objectPool.PooledGameObjects[_currentIndex].gameObject.activeInHierarchy)
+            // 개체가 이미 활성화되어 있으면 다른 개체를 찾아야 합니다.
+            if (_objectPool.PooledGameObjects[_currentIndex].gameObject.activeInHierarchy)
 			{
 				GameObject findObject = FindInactiveObject(Pool[_currentIndex].GameObjectToPool.name, _objectPool.PooledGameObjects);
 				if (findObject != null)
@@ -290,8 +290,8 @@ namespace MoreMountains.Tools
 					return findObject;
 				}
 
-				// if its pool can expand, we create a new one
-				if (searchedObject.PoolCanExpand)
+                // 풀을 확장할 수 있으면 새 풀을 만듭니다.
+                if (searchedObject.PoolCanExpand)
 				{
 					_currentCount++;
 					OrderSequentialResetCounter(searchedObject);
@@ -299,16 +299,16 @@ namespace MoreMountains.Tools
 				}
 				else
 				{
-					// if it can't expand we return nothing
-					_currentIndex++;
+                    // 확장할 수 없으면 아무것도 반환하지 않습니다.
+                    _currentIndex++;
 					_currentCount = 0;
 					return null;					
 				}
 			}
 			else
 			{
-				// if the object is inactive, we return it
-				_currentCount++;
+                // 객체가 비활성 상태이면 반환합니다.
+                _currentCount++;
 				OrderSequentialResetCounter(searchedObject);
 				return _objectPool.PooledGameObjects[_currentIndex]; 
 			}
@@ -323,19 +323,19 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Randomly choses one object from the pool, based on its pool size probability (the larger the pool size, the higher the chances it'll get picked)
-		/// </summary>
-		/// <returns>The pooled game object pool size based.</returns>
-		protected virtual GameObject GetPooledGameObjectPoolSizeBased()
+        /// <summary>
+        /// 풀 크기 확률에 따라 풀에서 개체 하나를 무작위로 선택합니다(풀 크기가 클수록 선택될 확률이 높아짐).
+        /// </summary>
+        /// <returns>풀링된 게임 개체 풀 크기는 기반입니다.</returns>
+        protected virtual GameObject GetPooledGameObjectPoolSizeBased()
 		{
-			// we get a random index 
-			int randomIndex = UnityEngine.Random.Range(0, _objectPool.PooledGameObjects.Count);
+            // 우리는 무작위 인덱스를 얻습니다
+            int randomIndex = UnityEngine.Random.Range(0, _objectPool.PooledGameObjects.Count);
 
 			int overflowCounter=0;
 
-			// we check to see if that object is enabled, if it's not we loop
-			while (!PoolObjectEnabled(_objectPool.PooledGameObjects[randomIndex]) && overflowCounter < _objectPool.PooledGameObjects.Count)
+            // 해당 객체가 활성화되어 있는지 확인하고 그렇지 않은 경우 루프를 반복합니다.
+            while (!PoolObjectEnabled(_objectPool.PooledGameObjects[randomIndex]) && overflowCounter < _objectPool.PooledGameObjects.Count)
 			{
 				randomIndex = UnityEngine.Random.Range(0, _objectPool.PooledGameObjects.Count);
 				overflowCounter++;
@@ -345,8 +345,8 @@ namespace MoreMountains.Tools
 				return null; 
 			}
 
-			// if we can't pool the same object twice, we'll loop for a while to try and get another one
-			overflowCounter = 0;
+            // 동일한 객체를 두 번 풀링할 수 없으면 잠시 동안 루프를 반복하여 다른 객체를 얻으려고 합니다.
+            overflowCounter = 0;
 			while (!CanPoolSameObjectTwice 
 			       && _objectPool.PooledGameObjects[randomIndex] == _lastPooledObject 
 			       && overflowCounter < _objectPool.PooledGameObjects.Count)
@@ -355,55 +355,55 @@ namespace MoreMountains.Tools
 				overflowCounter++;
 			}
 
-			//  if the item we've picked is active
-			if (_objectPool.PooledGameObjects[randomIndex].gameObject.activeInHierarchy)
-			{	
-				// we try to find another inactive object of the same type
-				GameObject pulledObject = FindInactiveObject(_objectPool.PooledGameObjects[randomIndex].gameObject.name,_objectPool.PooledGameObjects);
+            //  우리가 선택한 항목이 활성화된 경우
+            if (_objectPool.PooledGameObjects[randomIndex].gameObject.activeInHierarchy)
+			{
+                // 동일한 유형의 다른 비활성 개체를 찾으려고 합니다.
+                GameObject pulledObject = FindInactiveObject(_objectPool.PooledGameObjects[randomIndex].gameObject.name,_objectPool.PooledGameObjects);
 				if (pulledObject!=null)
 				{
 					return pulledObject;
 				}
 				else
 				{
-					// if we couldn't find an inactive object of this type, we see if it can expand
-					MMMultipleObjectPoolerObject searchedObject = GetPoolObject(_objectPool.PooledGameObjects[randomIndex].gameObject);
+                    // 이 유형의 비활성 개체를 찾을 수 없으면 확장할 수 있는지 확인합니다.
+                    MMMultipleObjectPoolerObject searchedObject = GetPoolObject(_objectPool.PooledGameObjects[randomIndex].gameObject);
 					if (searchedObject==null)
 					{
 						return null; 
 					}
-					// if the pool for this object is allowed to grow (this is set in the inspector if you're wondering)
-					if (searchedObject.PoolCanExpand)
+                    // 이 개체에 대한 풀의 확장이 허용되는지 여부(궁금하신 경우 검사기에서 설정됩니다)
+                    if (searchedObject.PoolCanExpand)
 					{						
 						return AddOneObjectToThePool(searchedObject.GameObjectToPool);						 	
 					}
 					else
 					{
-						// if it's not allowed to grow, we return nothing.
-						return null;
+                        // 성장이 허용되지 않으면 아무것도 반환하지 않습니다.
+                        return null;
 					}
 				}
 			}
 			else
-			{			
-				// if the pool wasn't empty, we return the random object we've found.
-				return _objectPool.PooledGameObjects[randomIndex];   
+			{
+                // 풀이 비어 있지 않으면 찾은 임의의 개체를 반환합니다.
+                return _objectPool.PooledGameObjects[randomIndex];   
 			}
 		}
 
-		/// <summary>
-		/// Gets one object from the pool, at random, but ignoring its pool size, each object has equal chances to get picked
-		/// </summary>
-		/// <returns>The pooled game object random between objects.</returns>
-		protected virtual GameObject GetPooledGameObjectRandomBetweenObjects()
+        /// <summary>
+        /// 풀에서 하나의 개체를 무작위로 가져오지만 풀 크기를 무시하면 각 개체가 선택될 확률이 동일합니다.
+        /// </summary>
+        /// <returns>개체 간에 무작위로 풀링된 게임 개체입니다.</returns>
+        protected virtual GameObject GetPooledGameObjectRandomBetweenObjects()
 		{
-			// we pick one of the objects in the original pool at random
-			int randomIndex = UnityEngine.Random.Range(0, Pool.Count);
+            // 원래 풀에 있는 개체 중 하나를 무작위로 선택합니다.
+            int randomIndex = UnityEngine.Random.Range(0, Pool.Count);
 			
 			int overflowCounter=0;
 
-			// if we can't pool the same object twice, we'll loop for a while to try and get another one
-			while (!CanPoolSameObjectTwice && Pool[randomIndex].GameObjectToPool == _lastPooledObject && overflowCounter < _objectPool.PooledGameObjects.Count )
+            // 동일한 객체를 두 번 풀링할 수 없으면 잠시 동안 루프를 반복하여 다른 객체를 얻으려고 합니다.
+            while (!CanPoolSameObjectTwice && Pool[randomIndex].GameObjectToPool == _lastPooledObject && overflowCounter < _objectPool.PooledGameObjects.Count )
 			{
 				randomIndex = UnityEngine.Random.Range(0, Pool.Count);
 				overflowCounter++;
@@ -411,15 +411,15 @@ namespace MoreMountains.Tools
 			int originalRandomIndex = randomIndex+1;
 
 			bool objectFound = false;
-			
-			// while we haven't found an object to return, and while we haven't gone through all the different object types, we keep going
-			overflowCounter=0;
+
+            // 반환할 개체를 찾지 못했고 다양한 개체 유형을 모두 살펴보지 않았지만 계속 진행합니다.
+            overflowCounter = 0;
 			while (!objectFound 
 			       && randomIndex != originalRandomIndex 
 			       && overflowCounter < _objectPool.PooledGameObjects.Count)
 			{
-				// if our index is at the end, we reset it
-				if (randomIndex >= Pool.Count)
+                // 인덱스가 끝에 있으면 재설정합니다.
+                if (randomIndex >= Pool.Count)
 				{
 					randomIndex=0;
 				}
@@ -431,8 +431,8 @@ namespace MoreMountains.Tools
 					continue;
 				}
 
-				// we try to find an inactive object of that type in the pool
-				GameObject newGameObject = FindInactiveObject(Pool[randomIndex].GameObjectToPool.name, _objectPool.PooledGameObjects);
+                // 풀에서 해당 유형의 비활성 개체를 찾으려고 합니다.
+                GameObject newGameObject = FindInactiveObject(Pool[randomIndex].GameObjectToPool.name, _objectPool.PooledGameObjects);
 				if (newGameObject!=null)
 				{
 					objectFound=true;
@@ -440,8 +440,8 @@ namespace MoreMountains.Tools
 				}
 				else
 				{
-					// if there's none and if we can expand, we expand
-					if (Pool[randomIndex].PoolCanExpand)
+                    // 아무것도 없고 확장할 수 있으면 확장합니다.
+                    if (Pool[randomIndex].PoolCanExpand)
 					{
 						return AddOneObjectToThePool(Pool[randomIndex].GameObjectToPool);	
 					}
@@ -453,15 +453,15 @@ namespace MoreMountains.Tools
 		}
 
 		protected string _tempSearchedName;
-		
-		/// <summary>
-		/// Gets an object of the type at the specified index in the Pool.
-		/// Note that the whole point of this multiple object pooler is to abstract the various pools and handle
-		/// the picking based on the selected mode. If you plan on just picking from different pools yourself,
-		/// consider simply having multiple single object poolers.
-		/// </summary>
-		/// <param name="index"></param>
-		public virtual GameObject GetPooledGamObjectAtIndex(int index)
+
+        /// <summary>
+        ///풀의 지정된 인덱스에 있는 유형의 개체를 가져옵니다.
+        /// 이 다중 객체 풀러의 요점은 다양한 풀을 추상화하고 처리하는 것입니다.
+        /// 선택한 모드에 따라 선택합니다. 다양한 풀 중에서 직접 선택할 계획이라면,
+        /// 단순히 여러 개의 단일 객체 풀러를 갖는 것을 고려해보세요.
+        /// </summary>
+        /// <param name="index"></param>
+        public virtual GameObject GetPooledGamObjectAtIndex(int index)
 		{
 			if ((index < 0) || (index >= Pool.Count))
 			{
@@ -472,15 +472,15 @@ namespace MoreMountains.Tools
 			return GetPooledGameObjectOfType(_tempSearchedName);
 		}
 
-		/// <summary>
-		/// Gets an object of the specified name from the pool
-		/// Note that the whole point of this multiple object pooler is to abstract the various pools and handle
-		/// the picking based on the selected mode. If you plan on just picking from different pools yourself,
-		/// consider simply having multiple single object poolers.
-		/// </summary>
-		/// <returns>The pooled game object of type.</returns>
-		/// <param name="type">Type.</param>
-		public virtual GameObject GetPooledGameObjectOfType(string searchedName)
+        /// <summary>
+        ///풀에서 지정된 이름의 개체를 가져옵니다.
+        /// 이 다중 객체 풀러의 요점은 다양한 풀을 추상화하고 처리하는 것입니다.
+        /// 선택한 모드에 따라 선택합니다. 다양한 풀 중에서 직접 선택할 계획이라면,
+        /// 단순히 여러 개의 단일 객체 풀러를 갖는 것을 고려해보세요.
+        /// </summary>
+        /// <returns>유형의 풀링된 게임 개체입니다.</returns>
+        /// <param name="type">Type.</param>
+        public virtual GameObject GetPooledGameObjectOfType(string searchedName)
 		{
 			GameObject newObject = FindInactiveObject(searchedName,_objectPool.PooledGameObjects);
 
@@ -490,9 +490,9 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
-				// if we've not returned the object, that means the pool is empty (at least it means it doesn't contain any object of that specific type)
-				// so if the pool is allowed to expand
-				GameObject searchedObject = FindObject(searchedName,_objectPool.PooledGameObjects);
+                // 객체를 반환하지 않았다면 풀이 비어 있다는 의미입니다(적어도 해당 특정 유형의 객체가 포함되어 있지 않다는 의미입니다).
+                // 풀 확장이 허용되는 경우
+                GameObject searchedObject = FindObject(searchedName,_objectPool.PooledGameObjects);
 				if (searchedObject == null) 
 				{
 					return null;
@@ -504,28 +504,28 @@ namespace MoreMountains.Tools
 				}
 			}
 
-			// if the pool was empty for that object and not allowed to expand, we return nothing.
-			return null;
+            // 해당 객체에 대한 풀이 비어 있고 확장이 허용되지 않으면 아무것도 반환하지 않습니다.
+            return null;
 		}
 
-		/// <summary>
-		/// Finds an inactive object in the pool based on its name.
-		/// Returns null if no inactive object by that name were found in the pool
-		/// </summary>
-		/// <returns>The inactive object.</returns>
-		/// <param name="searchedName">Searched name.</param>
-		protected virtual GameObject FindInactiveObject(string searchedName, List<GameObject> list)
+        /// <summary>
+        /// 이름을 기준으로 풀에서 비활성 개체를 찾습니다.
+        /// 해당 이름의 비활성 객체가 풀에서 발견되지 않은 경우 null을 반환합니다.
+        /// </summary>
+        /// <returns>The inactive object.</returns>
+        /// <param name="searchedName">Searched name.</param>
+        protected virtual GameObject FindInactiveObject(string searchedName, List<GameObject> list)
 		{
 			for (int i = 0; i < list.Count; i++)
 			{
-				// if we find an object inside the pool that matches the asked type
-				if (list[i].name.Equals(searchedName))
+                // 풀 안에서 요청된 유형과 일치하는 객체를 찾은 경우
+                if (list[i].name.Equals(searchedName))
 				{
-					// and if that object is inactive right now
-					if (!list[i].gameObject.activeInHierarchy)
+                    // 해당 객체가 지금 비활성 상태인 경우
+                    if (!list[i].gameObject.activeInHierarchy)
 					{
-						// we return it
-						return list[i];
+                        // 우리는 그것을 반환
+                        return list[i];
 					}
 				}            
 			}
@@ -536,43 +536,43 @@ namespace MoreMountains.Tools
 		{
 			for (int i = 0; i < list.Count; i++)
 			{
-				// and if that object is inactive right now
-				if (!list[i].gameObject.activeInHierarchy)
+                // 해당 객체가 지금 비활성 상태인 경우
+                if (!list[i].gameObject.activeInHierarchy)
 				{
-					// we return it
-					return list[i];
+                    // 우리는 그것을 반환
+                    return list[i];
 				}                        
 			}
 			return null;
 		}
 
-		/// <summary>
-		/// Finds an object in the pool based on its name, active or inactive
-		/// Returns null if there's no object by that name in the pool
-		/// </summary>
-		/// <returns>The object.</returns>
-		/// <param name="searchedName">Searched name.</param>
-		protected virtual GameObject FindObject(string searchedName,List<GameObject> list)
+        /// <summary>
+        /// 활성 또는 비활성 이름을 기준으로 풀에서 개체를 찾습니다.
+        /// 풀에 해당 이름의 개체가 없으면 null을 반환합니다.
+        /// </summary>
+        /// <returns>The object.</returns>
+        /// <param name="searchedName">Searched name.</param>
+        protected virtual GameObject FindObject(string searchedName,List<GameObject> list)
 		{
 			for (int i = 0; i < list.Count; i++)
 			{
-				// if we find an object inside the pool that matches the asked type
-				if (list[i].name.Equals(searchedName))
+                // 풀 안에서 요청된 유형과 일치하는 객체를 찾은 경우
+                if (list[i].name.Equals(searchedName))
 				{
-					// and if that object is inactive right now
-					return list[i];
+                    // 해당 객체가 지금 비활성 상태인 경우
+                    return list[i];
 				}            
 			}
 			return null;
 		}
 
-		/// <summary>
-		/// Returns (if it exists) the MultipleObjectPoolerObject from the original Pool based on a GameObject.
-		/// Note that this is name based.
-		/// </summary>
-		/// <returns>The pool object.</returns>
-		/// <param name="testedObject">Tested object.</param>
-		protected virtual MMMultipleObjectPoolerObject GetPoolObject(GameObject testedObject)
+        /// <summary>
+        /// GameObject를 기반으로 원래 풀에서 MultipleObjectPoolerObject를 반환합니다(존재하는 경우).
+        /// 이는 이름 기반이라는 점에 유의하세요.
+        /// </summary>
+        /// <returns>The pool object.</returns>
+        /// <param name="testedObject">Tested object.</param>
+        protected virtual MMMultipleObjectPoolerObject GetPoolObject(GameObject testedObject)
 		{
 			if (testedObject==null)
 			{

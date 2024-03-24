@@ -25,18 +25,18 @@ namespace MoreMountains.Tools
 			_brain = this.gameObject.GetComponentInParent<AIBrain>();
 		}
 
-		/// <summary>
-		/// Meant to be overridden, called when the game starts
-		/// </summary>
-		public virtual void Initialization()
+        /// <summary>
+        /// 재정의되어야 하며 게임이 시작될 때 호출됩니다.
+        /// </summary>
+        public virtual void Initialization()
 		{
 
 		}
 
-		/// <summary>
-		/// Meant to be overridden, called when the Brain enters a State this Decision is in
-		/// </summary>
-		public virtual void OnEnterState()
+        /// <summary>
+        /// 재정의되어야 하며, 뇌가 이 결정이 있는 상태에 들어갈 때 호출됩니다.
+        /// </summary>
+        public virtual void OnEnterState()
 		{
 			DecisionInProgress = true;
 		}

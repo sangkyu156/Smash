@@ -21,7 +21,7 @@ namespace MoreMountains.Feedbacks
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.AnimationColor; } }
 		public override bool EvaluateRequiresSetup() { return (BoundAnimator == null); }
 		public override string RequiredTargetText { get { return BoundAnimator != null ? BoundAnimator.name : "";  } }
-		public override string RequiresSetupText { get { return "This feedback requires that a BoundAnimator be set to be able to work properly. You can set one below."; } }
+		public override string RequiresSetupText { get { return "이 피드백을 위해서는 BoundAnimator가 제대로 작동할 수 있도록 설정되어야 합니다. 아래에서 하나를 설정할 수 있습니다."; } }
 		#endif
 		public override bool HasRandomness => true;
 		public override bool HasAutomatedTargetAcquisition => true;

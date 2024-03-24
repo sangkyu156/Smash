@@ -16,20 +16,20 @@ namespace MoreMountains.Tools
 
 		public Vector3 Size { get; set; }
 
-		/// <summary>
-		/// When this component is added we define its bounds.
-		/// </summary>
-		protected virtual void Reset() 
+        /// <summary>
+        /// 이 구성 요소가 추가되면 해당 범위를 정의합니다.
+        /// </summary>
+        protected virtual void Reset() 
 		{
 			DefineBoundsChoice();
 		}
 
-		/// <summary>
-		/// Tries to determine automatically what the bounds should be based on.
-		/// In this order, it'll keep the last found of these : Collider2D, Collider or Renderer.
-		/// If none of these is found, it'll be set as Undefined.
-		/// </summary>
-		protected virtual void DefineBoundsChoice()
+        /// <summary>
+        /// 경계의 기반이 무엇인지 자동으로 결정하려고 합니다.
+        /// 이 순서대로 Collider2D, Collider 또는 Renderer 중 마지막으로 발견된 항목을 유지합니다.
+        /// 이들 중 어느 것도 발견되지 않으면 정의되지 않음으로 설정됩니다.
+        /// </summary>
+        protected virtual void DefineBoundsChoice()
 		{
 			BoundsBasedOn = WaysToDetermineBounds.Undefined;
 			if (GetComponent<Renderer>()!=null)
@@ -46,10 +46,10 @@ namespace MoreMountains.Tools
 			}
 		}
 
-		/// <summary>
-		/// Returns the bounds of the object, based on what has been defined
-		/// </summary>
-		public virtual Bounds GetBounds()
+        /// <summary>
+        /// 정의된 내용을 기반으로 객체의 경계를 반환합니다.
+        /// </summary>
+        public virtual Bounds GetBounds()
 		{
 			if (BoundsBasedOn==WaysToDetermineBounds.Renderer)
 			{

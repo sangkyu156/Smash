@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 namespace MoreMountains.TopDownEngine
 {
     /// <summary>
-    /// 이 클래스를 장면의 빈 구성 요소에 추가하면 SwapButton(기본적으로 P)을 누를 때 장면의 문자를 바꿀 수 있습니다.
+    /// 이 클래스를 장면의 빈 구성 요소에 추가하면 SwapButton(기본적으로 P)을 누를 때 장면의 캐릭터를 바꿀 수 있습니다.
     /// 장면의 각 캐릭터에는 CharacterSwap 클래스와 해당 PlayerID가 있어야 합니다.
     /// MinimalCharacterSwap 데모 장면에서 이러한 설정의 예를 볼 수 있습니다.
     /// </summary>

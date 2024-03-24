@@ -9,7 +9,6 @@ namespace MoreMountains.TopDownEngine
 {
     /// <summary>
     /// 캐릭터에 이 능력을 추가하면 특정 기간 동안 특정 거리를 이동하면서 2D로 돌진할 수 있습니다.
-    ///
     /// Animation parameters :
     /// Dashing : 캐릭터가 현재 돌진 중이면 true
     /// DashingDirectionX : 정규화된 대시 방향의 x 구성요소

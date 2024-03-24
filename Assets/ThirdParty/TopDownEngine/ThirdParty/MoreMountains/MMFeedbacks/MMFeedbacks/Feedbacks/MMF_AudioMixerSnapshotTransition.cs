@@ -19,7 +19,7 @@ namespace MoreMountains.Feedbacks
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.UIColor; } }
 		public override bool EvaluateRequiresSetup() { return ((TargetSnapshot == null) || (OriginalSnapshot == null)); }
 		public override string RequiredTargetText { get { return ((TargetSnapshot != null) && (OriginalSnapshot != null)) ? TargetSnapshot.name + " to "+ OriginalSnapshot.name : "";  } }
-		public override string RequiresSetupText { get { return "This feedback requires that both a OriginalSnapshot and TargetSnapshot be set to be able to work properly. You can set these below."; } }
+		public override string RequiresSetupText { get { return "이 피드백을 위해서는 OriginalSnapshot과 TargetSnapshot이 모두 제대로 작동할 수 있도록 설정되어야 합니다. 아래에서 설정할 수 있습니다."; } }
 		#endif
         
 		[MMFInspectorGroup("AudioMixer Snapshot", true, 44)]

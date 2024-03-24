@@ -48,7 +48,7 @@ namespace MoreMountains.Feedbacks
         #region INITIALIZATION
 
         /// <summary>
-        /// Awake에서 자동 모드에 있으면 피드백을 초기화합니다.
+        /// Awake에서 자동 모드에 있으면 피드백을 초기화합니다.'
         /// </summary>
         protected override void Awake()
 		{

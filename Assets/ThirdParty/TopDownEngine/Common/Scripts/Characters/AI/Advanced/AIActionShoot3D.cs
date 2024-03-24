@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
+using UnityEditorInternal;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -37,6 +38,7 @@ namespace MoreMountains.TopDownEngine
 
 		protected CharacterOrientation3D _orientation3D;
 		protected Character _character;
+		
 		protected WeaponAim _weaponAim;
 		protected ProjectileWeapon _projectileWeapon;
 		protected Vector3 _weaponAimDirection;
@@ -51,7 +53,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();
-			_character = GetComponentInParent<Character>();
+            _character = GetComponentInParent<Character>();
 			_orientation3D = _character?.FindAbility<CharacterOrientation3D>();
 			if (TargetHandleWeaponAbility == null)
 			{
@@ -66,7 +68,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			MakeChangesToTheWeapon();
 			TestAimAtTarget();
-			Shoot();
+            Shoot();
 		}
 
         /// <summary>
@@ -157,9 +159,9 @@ namespace MoreMountains.TopDownEngine
 			}
 
 			if ((_targetWeapon == null) || (TargetHandleWeaponAbility.CurrentWeapon != _targetWeapon))
-			{
-				OnEnterState();
-			}
+            {
+                    OnEnterState();
+            }
 		}
 
         /// <summary>
