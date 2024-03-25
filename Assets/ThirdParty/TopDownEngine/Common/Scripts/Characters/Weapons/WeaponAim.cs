@@ -197,11 +197,11 @@ namespace MoreMountains.TopDownEngine
 			DetermineWeaponRotation();
 		}
 
-		/// <summary>
-		/// Aims the weapon towards a new point
-		/// </summary>
-		/// <param name="newAim">New aim.</param>
-		public virtual void SetCurrentAim(Vector3 newAim, bool setAimAsLastNonNullMovement = false)
+        /// <summary>
+        /// 새로운 지점을 향해 무기를 조준합니다.
+        /// </summary>
+        /// <param name="newAim">New aim.</param>
+        public virtual void SetCurrentAim(Vector3 newAim, bool setAimAsLastNonNullMovement = false)
 		{
 			_currentAim = newAim;
 		}

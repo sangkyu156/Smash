@@ -430,11 +430,11 @@ namespace MoreMountains.Feedbacks
 			CustomInitialization(owner);
 		}
 
-		/// <summary>
-		/// Lets you specify at what index this feedback is in the list - use carefully (or don't use at all)
-		/// </summary>
-		/// <param name="index"></param>
-		public virtual void SetIndexInFeedbacksList(int index)
+        /// <summary>
+        /// 이 피드백이 목록에 있는 인덱스를 지정할 수 있습니다. 주의해서 사용하세요(또는 전혀 사용하지 마세요).
+        /// </summary>
+        /// <param name="index"></param>
+        public virtual void SetIndexInFeedbacksList(int index)
 		{
 			_indexInOwnerFeedbackList = index;
 		}

@@ -250,10 +250,10 @@ namespace MoreMountains.TopDownEngine
 			_projectileSpawnTransform = newSpawnTransform;
 		}
 
-		/// <summary>
-		/// Determines the spawn position based on the spawn offset and whether or not the weapon is flipped
-		/// </summary>
-		public virtual void DetermineSpawnPosition()
+        /// <summary>
+        /// 스폰 오프셋과 무기 뒤집기 여부를 기반으로 스폰 위치를 결정합니다.
+        /// </summary>
+        public virtual void DetermineSpawnPosition()
 		{
 			if (Flipped)
 			{

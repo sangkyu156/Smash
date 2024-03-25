@@ -203,4 +203,4 @@ MonoBehaviour:
   NoMoreTargetsFeedback: {fileID: 0}
   Target: {fileID: 0}
   DrawDebugRadius: 1
-  OverlapMaximum: 10
+  OverlapMaximum: 3

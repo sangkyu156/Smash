@@ -12,8 +12,8 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/Character/Abilities/Character Direction Marker")]
 	public class CharacterDirectionMarker : CharacterAbility
 	{
-		/// the possible modes rotation can be based on
-		public enum Modes { MovementDirection, AimDirection, None }
+        /// 가능한 모드 회전은 다음을 기반으로 할 수 있습니다.
+        public enum Modes { MovementDirection, AimDirection, None }
         
 		[Header("Direction Marker")]
         /// 회전할 객체

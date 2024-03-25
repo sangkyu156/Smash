@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 using UnityEditorInternal;
+using DG.Tweening;
+using PolygonArsenal;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -35,6 +37,9 @@ namespace MoreMountains.TopDownEngine
         /// 이것이 true로 설정되면 수직 조준이 수평을 유지하도록 잠깁니다.
         [Tooltip("이것이 true로 설정되면 수직 조준이 수평을 유지하도록 잠깁니다.")]
 		public bool LockVerticalAim = false;
+
+		//플레이어 정보를 넘겨줄 스크립트
+		public PolygonBeamStatic DirectionMarker;
 
 		protected CharacterOrientation3D _orientation3D;
 		protected Character _character;
@@ -88,19 +93,22 @@ namespace MoreMountains.TopDownEngine
         protected virtual void Update()
 		{
 			if (TargetHandleWeaponAbility.CurrentWeapon != null)
-			{
+            {
 				if (_weaponAim != null)
 				{
 					if (_shooting)
 					{
-						if (LockVerticalAim)
+						if(DirectionMarker != null && DirectionMarker.gameObject.activeSelf)
+                            PassingPlayerInformation();
+
+                        if (LockVerticalAim)
 						{
 							_weaponAimDirection.y = 0;
 						}
 
 						if (AimAtTarget)
 						{
-							_weaponAim.SetCurrentAim(_weaponAimDirection);    
+							_weaponAim.SetCurrentAim(_weaponAimDirection);
 						}
 					}
 				}
@@ -163,6 +171,12 @@ namespace MoreMountains.TopDownEngine
                     OnEnterState();
             }
 		}
+
+		//플레이어 위치를 다른스크립트에 넘겨준다.
+		void PassingPlayerInformation()
+		{
+			DirectionMarker.DirectionMarker = _brain.Target;
+        }
 
         /// <summary>
         /// 상태에 들어가면 사격 카운터를 재설정하고 무기를 잡습니다.

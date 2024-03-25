@@ -13,10 +13,10 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/Character/AI/Actions/AIActionAimObject")]
 	public class AIActionAimObject : AIAction
 	{
-		/// the possible directions we can aim the target object at
-		public enum Modes { Movement, WeaponAim }
-		/// the axis to aim at the movement or weapon aim direction
-		public enum PossibleAxis { Right, Forward }
+        /// 목표 물체를 겨냥할 수 있는 가능한 방향
+        public enum Modes { Movement, WeaponAim }
+        /// 이동을 목표로 하는 축 또는 무기 조준 방향
+        public enum PossibleAxis { Right, Forward }
         
 		[Header("Aim Object")]
         /// 목표로 삼는 대상
@@ -42,11 +42,11 @@ namespace MoreMountains.TopDownEngine
 		protected WeaponAim _weaponAim;
 		protected TopDownController _controller;
 		protected Vector3 _newAim;
-        
-		/// <summary>
-		/// On init we grab our components
-		/// </summary>
-		public override void Initialization()
+
+        /// <summary>
+        /// 초기화 시 구성 요소를 가져옵니다.
+        /// </summary>
+        public override void Initialization()
 		{
 			if(!ShouldInitialize) return;
 			base.Initialization();
@@ -59,10 +59,10 @@ namespace MoreMountains.TopDownEngine
 			AimObject();
 		}
 
-		/// <summary>
-		/// Aims the object at either movement or weapon aim if possible
-		/// </summary>
-		protected virtual void AimObject()
+        /// <summary>
+        /// 가능하다면 물체를 움직임이나 무기 조준으로 조준합니다.
+        /// </summary>
+        protected virtual void AimObject()
 		{
 			if (GameObjectToAim == null)
 			{
@@ -87,11 +87,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Rotates the target object, interpolating the rotation if needed
-		/// </summary>
-		/// <param name="direction"></param>
-		protected virtual void AimAt(Vector3 direction)
+        /// <summary>
+        /// 필요한 경우 회전을 보간하여 대상 객체를 회전합니다.
+        /// </summary>
+        /// <param name="direction"></param>
+        protected virtual void AimAt(Vector3 direction)
 		{
 			if (Interpolate)
 			{
@@ -112,22 +112,22 @@ namespace MoreMountains.TopDownEngine
 					break;
 			}
 		}
-        
-		/// <summary>
-		/// Caches the weapon aim comp
-		/// </summary>
-		protected virtual void GrabWeaponAim()
+
+        /// <summary>
+        /// 무기 조준 구성 요소를 캐시합니다.
+        /// </summary>
+        protected virtual void GrabWeaponAim()
 		{
 			if ((_characterHandleWeapon != null) && (_characterHandleWeapon.CurrentWeapon != null))
 			{
 				_weaponAim = _characterHandleWeapon.CurrentWeapon.gameObject.MMGetComponentNoAlloc<WeaponAim>();
 			}            
 		}
-        
-		/// <summary>
-		/// On entry we grab the weapon aim and cache it
-		/// </summary>
-		public override void OnEnterState()
+
+        /// <summary>
+        /// 입장 시 무기 조준을 잡고 캐시합니다.
+        /// </summary>
+        public override void OnEnterState()
 		{
 			base.OnEnterState();
 			GrabWeaponAim();

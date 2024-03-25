@@ -24,7 +24,7 @@ public class ParticleController : MonoBehaviour
 
     private void Update()
     {
-        if(!subParticle.main.loop)
+        if(!subParticle.main.loop && subParticle != null)
         {
             particleCycle += Time.deltaTime;
 
