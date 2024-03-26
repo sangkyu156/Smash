@@ -545,6 +545,7 @@ MonoBehaviour:
     true \uBC18\uD658"
   ComparisonMode: 1
   Distance: 2.2
+  TargetHandleWeaponAbility: {fileID: 0}
 --- !u!114 &4527816289882702527
 MonoBehaviour:
   m_ObjectHideFlags: 0

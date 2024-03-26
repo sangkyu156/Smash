@@ -19,6 +19,8 @@ namespace MoreMountains.TopDownEngine
         /// 비교할 거리
         [Tooltip("비교할 거리")]
 		public float Distance;
+        [Tooltip("무기 (등록해야함)")]
+        public CharacterHandleWeapon TargetHandleWeaponAbility;
 
         /// <summary>
         /// Decide에서 목표까지의 거리를 확인합니다.
@@ -26,7 +28,10 @@ namespace MoreMountains.TopDownEngine
         /// <returns></returns>
         public override bool Decide()
 		{
-			return EvaluateDistance();
+			if(EvaluateDistance() == false)
+                TargetHandleWeaponAbility?.ForceStop();
+
+            return EvaluateDistance();
 		}
 
         /// <summary>
@@ -48,7 +53,7 @@ namespace MoreMountains.TopDownEngine
 			}
 			if (ComparisonMode == ComparisonModes.LowerThan)
 			{
-				return (distance <= Distance);
+                return (distance <= Distance);
 			}
 			if (ComparisonMode == ComparisonModes.Equals)
 			{
@@ -62,7 +67,8 @@ namespace MoreMountains.TopDownEngine
 			{
 				return (distance > Distance);
 			}
-			return false;
+
+            return false;
 		}
 	}
 }

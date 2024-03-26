@@ -26908,6 +26908,8 @@ GameObject:
   - component: {fileID: 7225957995539992288}
   - component: {fileID: 4652989682646209540}
   - component: {fileID: 7144620407116640738}
+  - component: {fileID: 4599525086625698309}
+  - component: {fileID: 1011712709989704475}
   m_Layer: 13
   m_Name: AIBrain
   m_TagString: Untagged
@@ -26947,11 +26949,20 @@ MonoBehaviour:
   - StateName: "\uAC10\uC9C0\uC911"
     Actions:
       array:
+      - {fileID: 4599525086625698309}
+    Transitions:
+      array:
+      - Decision: {fileID: 1011712709989704475}
+        TrueState: "\uC774\uB3D9\uC911"
+        FalseState: "\uBA4D\uB54C\uB9AC\uAE30"
+  - StateName: "\uBA4D\uB54C\uB9AC\uAE30"
+    Actions:
+      array:
       - {fileID: 7562668928337940591}
     Transitions:
       array:
-      - Decision: {fileID: 2362246212428126173}
-        TrueState: "\uC774\uB3D9\uC911"
+      - Decision: {fileID: 6960272152027864533}
+        TrueState: "\uAC10\uC9C0\uC911"
         FalseState: 
   - StateName: "\uC774\uB3D9\uC911"
     Actions:
@@ -26960,12 +26971,9 @@ MonoBehaviour:
       - {fileID: 7144620407116640738}
     Transitions:
       array:
-      - Decision: {fileID: 2362246212428126173}
-        TrueState: 
-        FalseState: "\uAC10\uC9C0\uC911"
       - Decision: {fileID: 6960272152027864533}
         TrueState: 
-        FalseState: "\uAC10\uC9C0\uC911"
+        FalseState: "\uBA4D\uB54C\uB9AC\uAE30"
       - Decision: {fileID: 7225957995539992288}
         TrueState: "\uACF5\uACA9\uC911"
         FalseState: 
@@ -26977,7 +26985,7 @@ MonoBehaviour:
       array:
       - Decision: {fileID: 7225957995539992288}
         TrueState: 
-        FalseState: "\uAC10\uC9C0\uC911"
+        FalseState: "\uC774\uB3D9\uC911"
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -27072,6 +27080,7 @@ MonoBehaviour:
     true \uBC18\uD658"
   ComparisonMode: 1
   Distance: 10
+  TargetHandleWeaponAbility: {fileID: 670187355974032677}
 --- !u!114 &4652989682646209540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27106,6 +27115,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: "\uBB34\uAE30 \uC870\uC900\uC744 \uC774\uB3D9 \uBC29\uD5A5\uC73C\uB85C \uAC15\uC81C\uD558\uAE30"
+--- !u!114 &4599525086625698309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348704561131213237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f11b4fea1cac9d43860e5c5e194c852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 1
+  Label: "\uD50C\uB808\uC774\uC5B4\uB97C \uC9C0\uC815\uD55C\uB2E4."
+  OnlyRunOnce: 1
+--- !u!114 &1011712709989704475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348704561131213237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f21b170839d044b8b9bf160d1be05b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: "\uC0B4\uC544\uC788\uB294\uC9C0 \uD655\uC778\uD55C\uB2E4."
 --- !u!1 &7655184910255332192
 GameObject:
   m_ObjectHideFlags: 0
