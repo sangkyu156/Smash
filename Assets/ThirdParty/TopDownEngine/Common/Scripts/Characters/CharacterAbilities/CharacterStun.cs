@@ -57,8 +57,8 @@ namespace MoreMountains.TopDownEngine
 			} 		
 			_condition.ChangeState(CharacterStates.CharacterConditions.Stunned);
 			_controller.SetMovement(Vector3.zero);
-			AbilityStartFeedbacks?.PlayFeedbacks();
-			DetachIK();
+			AbilityStartFeedbacks?.PlayFeedbacks();//스턴능력이 시작될때 = 스털걸렸을때 그래서 스타트피드백 실행하는거
+            DetachIK();
 		}
         
 		/// <summary>

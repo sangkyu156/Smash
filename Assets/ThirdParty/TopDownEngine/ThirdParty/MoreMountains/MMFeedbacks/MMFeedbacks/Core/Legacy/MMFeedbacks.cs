@@ -410,39 +410,39 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected virtual void PlayFeedbacksInternal(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
-			if (!CanPlay)
+            if (!CanPlay)
 			{
-				return;
+                return;
 			}
 			
 			if (IsPlaying && !CanPlayWhileAlreadyPlaying)
 			{
-				return;
+                return;
 			}
 
 			if (!EvaluateChance())
 			{
-				return;
+                return;
 			}
 
-			// if we have a cooldown we prevent execution if needed
-			if (CooldownDuration > 0f)
+            // 쿨다운이 있으면 필요한 경우 실행을 방지합니다.
+            if (CooldownDuration > 0f)
 			{
 				if (GetTime() - _lastStartAt < CooldownDuration)
 				{
-					return;
+                    return;
 				}
 			}
 
-			// if all MMFeedbacks are disabled globally, we stop and don't play
-			if (!GlobalMMFeedbacksActive)
+            // 모든 MMFeedback이 전역적으로 비활성화되면 중지하고 재생하지 않습니다.
+            if (!GlobalMMFeedbacksActive)
 			{
-				return;
+                return;
 			}
 
 			if (!this.gameObject.activeInHierarchy)
 			{
-				return;
+                return;
 			}
             
 			if (ShouldRevertOnNextPlay)
@@ -467,7 +467,7 @@ namespace MoreMountains.Feedbacks
             
 			if (InitialDelay > 0f)
 			{
-				StartCoroutine(HandleInitialDelayCo(position, feedbacksIntensity, forceRevert));
+                StartCoroutine(HandleInitialDelayCo(position, feedbacksIntensity, forceRevert));
 			}
 			else
 			{
@@ -477,19 +477,19 @@ namespace MoreMountains.Feedbacks
 
 		protected virtual void PreparePlay(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
-			Events.TriggerOnPlay(this);
+            Events.TriggerOnPlay(this);
 
 			_holdingMax = 0f;
 			CheckForPauses();
 			
 			if (!_pauseFound)
 			{
-				PlayAllFeedbacks(position, feedbacksIntensity, forceRevert);
+                PlayAllFeedbacks(position, feedbacksIntensity, forceRevert);
 			}
 			else
 			{
-				// if at least one pause was found
-				StartCoroutine(PausedFeedbacksCo(position, feedbacksIntensity));
+                // 일시 중지가 하나 이상 발견된 경우
+                StartCoroutine(PausedFeedbacksCo(position, feedbacksIntensity));
 			}
 		}
 
@@ -514,19 +514,20 @@ namespace MoreMountains.Feedbacks
 
 		protected virtual void PlayAllFeedbacks(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
-			// if no pause was found, we just play all feedbacks at once
-			for (int i = 0; i < Feedbacks.Count; i++)
+            // 일시 중지가 발견되지 않으면 모든 피드백을 한 번에 재생합니다.
+            for (int i = 0; i < Feedbacks.Count; i++)
 			{
 				if (FeedbackCanPlay(Feedbacks[i]))
 				{
-					Feedbacks[i].Play(position, feedbacksIntensity);
+                    Feedbacks[i].Play(position, feedbacksIntensity);
 				}
 			}
 		}
 
 		protected virtual IEnumerator HandleInitialDelayCo(Vector3 position, float feedbacksIntensity, bool forceRevert = false)
 		{
-			IsPlaying = true;
+            Debug.Log("9");
+            IsPlaying = true;
 			yield return MMFeedbacksCoroutine.WaitFor(InitialDelay);
 			PreparePlay(position, feedbacksIntensity, forceRevert);
 		}

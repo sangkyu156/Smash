@@ -163,7 +163,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				_targetWeapon = TargetHandleWeaponAbility.CurrentWeapon;
 				TargetHandleWeaponAbility.ShootStart();
-				_numberOfShoots++;
+                _numberOfShoots++;
 			}
 
 			if ((_targetWeapon == null) || (TargetHandleWeaponAbility.CurrentWeapon != _targetWeapon))
@@ -175,7 +175,7 @@ namespace MoreMountains.TopDownEngine
 		//플레이어 위치를 다른스크립트에 넘겨준다.
 		void PassingPlayerInformation()
 		{
-			DirectionMarker.DirectionMarker = _brain.Target;
+			DirectionMarker.target = _brain.Target;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
 ﻿using MoreMountains.Tools;
+using PolygonArsenal;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,11 @@ namespace MoreMountains.TopDownEngine
 		/// the maximum amount of targets the overlap detection can acquire
 		[Tooltip("중첩 감지가 획득할 수 있는 최대 대상 수")]
 		public int OverlapMaximum = 10;
-        
-		protected Vector3 _aimDirection;
+
+		//플레이어 정보를 넘겨줄 스크립트
+		public PolygonBeamStatic beamscript;
+
+        protected Vector3 _aimDirection;
 		protected Collider[] _hits;
 		protected Vector3 _raycastDirection;
 		protected Collider _potentialHit;
@@ -39,10 +43,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On init we grab our orientation to be able to detect facing direction
-		/// </summary>
-		protected override void Initialization()
+        /// <summary>
+        /// On init we grab our orientation to be able to detect facing direction
+        /// </summary>
+        protected override void Initialization()
 		{
 			base.Initialization();
 			_potentialTargets = new List<Transform>();
@@ -53,11 +57,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Scans for targets by performing an overlap detection, then verifying line of fire with a boxcast
-		/// </summary>
-		/// <returns></returns>
-		protected override bool ScanForTargets()
+        /// <summary>
+        /// 중첩 감지를 수행한 후 박스캐스트로 사선을 확인하여 표적을 스캔합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected override bool ScanForTargets()
 		{
 			Target = null;
             
@@ -69,9 +73,9 @@ namespace MoreMountains.TopDownEngine
 			}
             
 			_potentialTargets.Clear();
-            
-			// we go through each collider found
-			int min = Mathf.Min(OverlapMaximum, numberOfHits);
+
+            // 우리는 발견된 각 collider를 살펴봅니다.
+            int min = Mathf.Min(OverlapMaximum, numberOfHits);
 			for (int i = 0; i < min; i++)
 			{
 				if (_hits[i] == null)
@@ -85,33 +89,41 @@ namespace MoreMountains.TopDownEngine
                 
 				_potentialTargets.Add(_hits[i].gameObject.transform);
 			}
-            
-			// we sort our targets by distance
-			_potentialTargets.Sort(delegate(Transform a, Transform b)
+
+            // 우리는 거리에 따라 목표를 정렬합니다
+            _potentialTargets.Sort(delegate(Transform a, Transform b)
 			{return Vector3.Distance(this.transform.position,a.transform.position)
 				.CompareTo(
 					Vector3.Distance(this.transform.position,b.transform.position) );
 			});
-            
-			// we return the first unobscured target
-			foreach (Transform t in _potentialTargets)
+
+            // 우리는 가려지지 않은 첫 번째 타겟을 반환합니다.
+            foreach (Transform t in _potentialTargets)
 			{
 				_raycastDirection = t.position - _raycastOrigin;
 				RaycastHit hit = MMDebug.Raycast3D(_raycastOrigin, _raycastDirection, _raycastDirection.magnitude, ObstacleMask.value, Color.yellow, true);
 				if ((hit.collider == null) && CanAcquireNewTargets())
 				{
 					Target = t;
-					return true;
+					PassingPlayerInformation();//레이저 쏘려고 별짓다함 ㅋㅋ(플레이어 위치 넘김)
+                    return true;
 				}
 			}
 
-			return false;
+			//_weapon.CharacterHandleWeapon.ForceStop();//타겟이 없으면 강제로 무기 정지
+            return false;
 		}
 
-		/// <summary>
-		/// Sets the aim to the relative direction of the target
-		/// </summary>
-		protected override void SetAim()
+		public void PassingPlayerInformation()
+		{
+			if (beamscript != null)
+				beamscript.target = Target;
+        }
+
+        /// <summary>
+        /// Sets the aim to the relative direction of the target
+        /// </summary>
+        protected override void SetAim()
 		{
 			_aimDirection = (Target.transform.position - _raycastOrigin).normalized;
 			_weaponAim.SetCurrentAim(_aimDirection, ApplyAutoAimAsLastDirection);

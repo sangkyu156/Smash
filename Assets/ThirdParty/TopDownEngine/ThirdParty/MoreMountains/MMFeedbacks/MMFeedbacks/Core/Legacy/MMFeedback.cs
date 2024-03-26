@@ -213,14 +213,14 @@ namespace MoreMountains.Feedbacks
 				RegularPlay(position, feedbacksIntensity);
 			}  
 		}
-        
-		/// <summary>
-		/// An internal coroutine delaying the initial play of the feedback
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator PlayCoroutine(Vector3 position, float feedbacksIntensity = 1.0f)
+
+        /// <summary>
+        /// 피드백의 초기 재생을 지연시키는 내부 코루틴
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator PlayCoroutine(Vector3 position, float feedbacksIntensity = 1.0f)
 		{
 			if (Timing.TimescaleMode == TimescaleModes.Scaled)
 			{
@@ -234,12 +234,12 @@ namespace MoreMountains.Feedbacks
 			RegularPlay(position, feedbacksIntensity);
 		}
 
-		/// <summary>
-		/// Triggers delaying coroutines if needed
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		protected virtual void RegularPlay(Vector3 position, float feedbacksIntensity = 1.0f)
+        /// <summary>
+        /// 필요한 경우 코루틴 지연을 트리거합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        protected virtual void RegularPlay(Vector3 position, float feedbacksIntensity = 1.0f)
 		{
 			if (Chance == 0f)
 			{
@@ -284,13 +284,13 @@ namespace MoreMountains.Feedbacks
             
 		}
 
-		/// <summary>
-		/// Internal coroutine used for repeated play without end
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		/// <returns></returns>
-		protected virtual IEnumerator InfinitePlay(Vector3 position, float feedbacksIntensity = 1.0f)
+        /// <summary>
+        /// 끝이 없는 반복 재생에 사용되는 내부 코루틴
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        /// <returns></returns>
+        protected virtual IEnumerator InfinitePlay(Vector3 position, float feedbacksIntensity = 1.0f)
 		{
 			while (true)
 			{
@@ -576,12 +576,12 @@ namespace MoreMountains.Feedbacks
 		/// <param name="owner"></param>
 		protected virtual void CustomInitialization(GameObject owner) { }
 
-		/// <summary>
-		/// This method describes what happens when the feedback gets played
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="feedbacksIntensity"></param>
-		protected abstract void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f);
+        /// <summary>
+        /// 이 방법은 피드백이 재생될 때 어떤 일이 발생하는지 설명합니다.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="feedbacksIntensity"></param>
+        protected abstract void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f);
 
 		/// <summary>
 		/// This method describes what happens when the feedback gets stopped

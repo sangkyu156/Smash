@@ -55,11 +55,11 @@ namespace MoreMountains.TopDownEngine
 		{
 			_weapon = newWeapon;
 		}
-        
-		/// <summary>
-		/// On Update we handle auto shoot
-		/// </summary>
-		protected virtual void LateUpdate()
+
+        /// <summary>
+        /// 업데이트 시 자동 Shoot을 처리합니다.
+        /// </summary>
+        protected virtual void LateUpdate()
 		{
 			HandleAutoShoot();
 		}
@@ -86,10 +86,10 @@ namespace MoreMountains.TopDownEngine
 			return true;
 		}
 
-		/// <summary>
-		/// Checks if we have a target for enough time, and shoots if needed
-		/// </summary>
-		protected virtual void HandleAutoShoot()
+        /// <summary>
+        /// 충분한 시간 동안 목표물이 있는지 확인하고 필요한 경우 Shoot합니다.
+        /// </summary>
+        protected virtual void HandleAutoShoot()
 		{
 			if (!CanAutoShoot())
 			{

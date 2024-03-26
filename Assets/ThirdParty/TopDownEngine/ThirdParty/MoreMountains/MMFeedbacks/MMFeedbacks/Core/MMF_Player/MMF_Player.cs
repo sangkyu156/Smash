@@ -56,9 +56,9 @@ namespace MoreMountains.Feedbacks
 			{
 				InitializationMode = InitializationModes.Awake;
 			}
-			
-			// if our MMFeedbacks is in AutoPlayOnEnable mode, we add a little helper to it that will re-enable it if needed if the parent game object gets turned off and on again
-			if (AutoPlayOnEnable)
+
+            // MMFeedbacks가 AutoPlayOnEnable 모드에 있으면 상위 게임 개체가 꺼졌다가 다시 켜지는 경우 필요한 경우 이를 다시 활성화하는 작은 도우미를 추가합니다.
+            if (AutoPlayOnEnable)
 			{
 				MMF_PlayerEnabler playerEnabler = GetComponent<MMF_PlayerEnabler>(); 
 				if (playerEnabler == null)
@@ -182,6 +182,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksOwner"></param>
         public override void Initialization()
 		{
+			//qweqwe
 			SkippingToTheEnd = false;
 			IsPlaying = false;
 			_lastStartAt = -float.MaxValue;

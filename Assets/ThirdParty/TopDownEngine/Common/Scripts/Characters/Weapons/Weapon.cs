@@ -236,8 +236,8 @@ namespace MoreMountains.TopDownEngine
 		public bool Flipped;
 		/// the WeaponAmmo component optionnally associated to this weapon
 		public WeaponAmmo WeaponAmmo { get; protected set; }
-		/// the weapon's state machine
-		public MMStateMachine<WeaponStates> WeaponState;
+        /// 무기의 상태 머신
+        public MMStateMachine<WeaponStates> WeaponState;
 
 		protected SpriteRenderer _spriteRenderer;
 		protected WeaponAim _weaponAim;
@@ -283,19 +283,26 @@ namespace MoreMountains.TopDownEngine
 		protected int _equippedAnimationParameter;
 		protected float _lastShootRequestAt = -float.MaxValue;
 		protected float _lastTurnWeaponOnAt = -float.MaxValue;
+
+		//내가만든함수
         protected float attackComboTime = 0.3f;
 		protected float exitTime = 0.84f;
-        protected Animator animator;
+        //protected Animator animator;
+
+        private void Awake()
+        {
+            if (InitializeOnStart)
+            {
+                Initialization();
+            }
+        }
 
         /// <summary>
         /// On start we initialize our weapon
         /// </summary>
         protected virtual void Start()
 		{
-			if (InitializeOnStart)
-			{
-				Initialization();
-			}
+
 		}
 
 		/// <summary>
@@ -443,18 +450,19 @@ namespace MoreMountains.TopDownEngine
 			ApplyOffset();
 		}
 
-		/// <summary>
-		/// On LateUpdate, processes the weapon state
-		/// </summary>
-		protected virtual void LateUpdate()
-		{     
-			ProcessWeaponState();
-		}
+        /// <summary>
+        /// LateUpdate에서 무기 상태를 처리합니다.
+        /// </summary>
+        protected virtual void LateUpdate()
+		{
+            //if(gameObject.tag != "Enemy")
+            ProcessWeaponState();
+        }
 
-		/// <summary>
-		/// Called every lastUpdate, processes the weapon's state machine
-		/// </summary>
-		protected virtual void ProcessWeaponState()
+        /// <summary>
+        /// lastUpdate마다 호출되어 무기의 상태 시스템을 처리합니다.
+        /// </summary>
+        protected virtual void ProcessWeaponState()
 		{
 			if (WeaponState == null) { return; }
 			
@@ -521,7 +529,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void CaseWeaponStart()
 		{
-            StartCoroutine(CheckAnimationState());
+            //StartCoroutine(CheckAnimationState());
 
             if (DelayBeforeUse > 0)
 			{
@@ -542,64 +550,64 @@ namespace MoreMountains.TopDownEngine
         }
 
         //콤보 파라미터 변경
-        public virtual void ComboChange()
-		{
-            switch (animator.GetInteger("Combo"))
-            {
-                case 0: animator.SetInteger("Combo", 1); attackComboTime = 0.3f; break;
-                case 1: animator.SetInteger("Combo", 2); break;
-                case 2: animator.SetInteger("Combo", 0); break;
-            }
+  //      public virtual void ComboChange()
+		//{
+  //          switch (animator.GetInteger("Combo"))
+  //          {
+  //              case 0: animator.SetInteger("Combo", 1); attackComboTime = 0.3f; break;
+  //              case 1: animator.SetInteger("Combo", 2); break;
+  //              case 2: animator.SetInteger("Combo", 0); break;
+  //          }
 
-            AttackAllow();
-        }
+  //          AttackAllow();
+  //      }
 
-		public virtual IEnumerator CheckAnimationState()
-		{
-            while (animator.GetInteger("Combo") == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
-			{
-                InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.78f);
-                animator.SetInteger("Combo", 1);
-                InputAuthorized = true;
-                yield return new WaitForSecondsRealtime(0.3f);
-                animator.SetInteger("Combo", 0);
-				yield break;
-            }
+		//public virtual IEnumerator CheckAnimationState()
+		//{
+  //          while (animator.GetInteger("Combo") == 0 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack01"))
+		//	{
+  //              InputAuthorized = false;
+  //              yield return new WaitForSecondsRealtime(0.78f);
+  //              animator.SetInteger("Combo", 1);
+  //              InputAuthorized = true;
+  //              yield return new WaitForSecondsRealtime(0.3f);
+  //              animator.SetInteger("Combo", 0);
+		//		yield break;
+  //          }
 
-			while (animator.GetInteger("Combo") == 1 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack02_1"))
-			{
-                InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.78f);
-                animator.SetInteger("Combo", 2);
-                InputAuthorized = true;
-                yield return new WaitForSecondsRealtime(0.3f);
-                animator.SetInteger("Combo", 0);
-                yield break;
-            }
+		//	while (animator.GetInteger("Combo") == 1 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack02_1"))
+		//	{
+  //              InputAuthorized = false;
+  //              yield return new WaitForSecondsRealtime(0.78f);
+  //              animator.SetInteger("Combo", 2);
+  //              InputAuthorized = true;
+  //              yield return new WaitForSecondsRealtime(0.3f);
+  //              animator.SetInteger("Combo", 0);
+  //              yield break;
+  //          }
 
-			while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
-			{
-				switch (PlayerDataManager.GetThirdAttack().ToString())
-				{
-					case "Holy": CreateManager.Instance.ThirdAttack_HolySpawn(); break;
-					case "Ice": CreateManager.Instance.ThirdAttack_IceSpawn(); break;
-                }				
-                InputAuthorized = false;
-                yield return new WaitForSecondsRealtime(0.78f);
-                animator.SetInteger("Combo", 0);
-                InputAuthorized = true;
-                yield break;
-            }
+		//	while (animator.GetInteger("Combo") == 2 && !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
+		//	{
+		//		switch (PlayerDataManager.GetThirdAttack().ToString())
+		//		{
+		//			case "Holy": CreateManager.Instance.ThirdAttack_HolySpawn(); break;
+		//			case "Ice": CreateManager.Instance.ThirdAttack_IceSpawn(); break;
+  //              }				
+  //              InputAuthorized = false;
+  //              yield return new WaitForSecondsRealtime(0.78f);
+  //              animator.SetInteger("Combo", 0);
+  //              InputAuthorized = true;
+  //              yield break;
+  //          }
 
-			//while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < exitTime)
-			//{
-			//             //애니메이션 재생 중 실행되는 부분
-			//             yield return null;
-			//}
+		//	//while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < exitTime)
+		//	//{
+		//	//             //애니메이션 재생 중 실행되는 부분
+		//	//             yield return null;
+		//	//}
 
-			//애니메이션 완료 후 실행되는 부분
-		}
+		//	//애니메이션 완료 후 실행되는 부분
+		//}
 
 
             /// <summary>
@@ -649,10 +657,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On weapon stop, we switch to idle
-		/// </summary>
-		public virtual void CaseWeaponStop()
+        /// <summary>
+        /// 무기 정지시 유휴 상태로 전환
+        /// </summary>
+        public virtual void CaseWeaponStop()
 		{
 			WeaponState.ChangeState(WeaponStates.WeaponIdle);
         }
@@ -879,10 +887,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Turns the weapon off.
-		/// </summary>
-		public virtual void TurnWeaponOff()
+        /// <summary>
+        /// 무기를 끕니다.
+        /// </summary>
+        public virtual void TurnWeaponOff()
 		{
 			if ((WeaponState.CurrentState == WeaponStates.WeaponIdle || WeaponState.CurrentState == WeaponStates.WeaponStop))
 			{
@@ -1090,8 +1098,8 @@ namespace MoreMountains.TopDownEngine
 		/// </summary>
 		protected virtual void TriggerWeaponStartFeedback()
 		{
-			WeaponStartMMFeedback?.PlayFeedbacks(this.transform.position);
-		}
+            WeaponStartMMFeedback?.PlayFeedbacks(this.transform.position);
+        }
 
 		/// <summary>
 		/// Plays the weapon's used sound
@@ -1200,11 +1208,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Override this to send parameters to the character's animator. This is called once per cycle, by the Character
-		/// class, after Early, normal and Late process().
-		/// </summary>
-		public virtual void UpdateAnimator()
+        /// <summary>
+        /// 캐릭터의 애니메이터에 매개변수를 보내려면 이를 재정의합니다. 이는 캐릭터에 의해 사이클당 한 번씩 호출됩니다.
+        /// Early, Normal 및 Late process() 이후의 클래스입니다.
+        /// </summary>
+        public virtual void UpdateAnimator()
 		{
 			for (int i = 0; i < Animators.Count; i++)
 			{

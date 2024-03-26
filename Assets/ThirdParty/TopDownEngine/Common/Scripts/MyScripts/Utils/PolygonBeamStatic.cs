@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MoreMountains.TopDownEngine;
+using UnityEngine;
 
 namespace PolygonArsenal
 {
@@ -11,7 +12,7 @@ namespace PolygonArsenal
         public GameObject beamStartPrefab; //이는 빔의 시작 부분에 배치되는 프리팹입니다.
         public GameObject beamEndPrefab; //빔 끝에 조립식을 배치합니다.
 
-        public Transform DirectionMarker;//쏠곳
+        public Transform target;//쏠곳
 
         private GameObject beamStart;
         private GameObject beamEnd;
@@ -27,11 +28,6 @@ namespace PolygonArsenal
         public float textureScrollSpeed = 0f; //텍스처가 빔을 따라 스크롤하는 속도는 음수 또는 양수일 수 있습니다.
         public float textureLengthScale = 1f;   //수직을 기준으로 텍스처의 수평 길이로 설정합니다.
                                                 //예: 텍스처가 높이 200픽셀, 길이 600픽셀인 경우 이를 3으로 설정합니다.
-
-        private void Awake()
-        {
-
-        }
 
         void Start()
         {
@@ -53,50 +49,48 @@ namespace PolygonArsenal
         {
             if (beam) //빔을 업데이트합니다.
             {
-                line.SetPosition(0, transform.position);
-
-
-                //충돌한 물체
-                RaycastHit hit;
-                if (beamCollides && Physics.Raycast(transform.position, DirectionMarker.position, out hit)) //충돌 확인
-                {
-                    //레이케스트 쏘는 방향 정할수 있는지 확인해야함
-                    if(hit.collider.tag == "Player")
-                    {
-                        end = DirectionMarker.position;
-                        Debug.Log("1");
-                    }
-                    else
-                    {
-                        end = hit.transform.position;
-                        Debug.Log("2");
-                    }
-                }
-                else
-                {
-                    end = transform.position + (transform.forward * beamLength);
-                    Debug.Log("3");
-                }
-
-                //end = DirectionMarker.position;
-
-                line.SetPosition(1, end);
-
-                if (beamStart)
-                {
-                    beamStart.transform.position = transform.position;
-                    beamStart.transform.LookAt(end);
-                }
-                if (beamEnd)
-                {
-                    beamEnd.transform.position = end + new Vector3(0, 0.5f, 0);
-                    beamEnd.transform.LookAt(beamStart.transform.position );
-                }
-
-                float distance = Vector3.Distance(transform.position, end);
-                line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1); //텍스처의 크기를 설정하여 늘어나 보이지 않게 합니다.
-                line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0); //0으로 설정되지 않은 경우 빔을 따라 텍스처를 스크롤합니다.
+                if(target !=  null)
+                    ShootLaser(this.transform.position, GetDirection(transform.position, target.position + new Vector3(0, 0.5f, 0)));
             }
+        }
+
+        void ShootLaser(Vector3 startPos, Vector3 direction)
+        {
+            Ray ray = new Ray(startPos, direction);
+            RaycastHit hitInfo;
+            line.SetPosition(0, startPos);
+            // 레이저를 발사하고 충돌 여부를 확인합니다.
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                // 레이저가 어떤 물체와 충돌했을 때 처리할 내용을 작성합니다.
+                //Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
+
+                // 여기서 추가적인 처리를 할 수 있습니다. 예를 들어, 충돌 지점에 파티클을 생성하거나 피격 효과를 재생할 수 있습니다.
+            }
+
+            // 레이저 시각화를 위해 LineRenderer를 사용합니다.
+            line.SetPosition(1, hitInfo.point);
+
+            if (beamStart)
+            {
+                beamStart.transform.position = transform.position;
+                beamStart.transform.LookAt(hitInfo.point);
+            }
+            if (beamEnd)
+            {
+                beamEnd.transform.position = hitInfo.point + new Vector3(0, 0.5f, 0);
+                beamEnd.transform.LookAt(beamStart.transform.position);
+            }
+
+            float distance = Vector3.Distance(transform.position, hitInfo.point);
+            line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1);
+            line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0);
+        }
+
+        Vector3 GetDirection(Vector3 from, Vector3 to)
+        {
+            // from에서 to까지의 방향을 반환합니다.
+            return (to - from).normalized;
         }
 
         public void SpawnBeam() //이 함수는 linerenderer를 사용하여 프리팹을 생성합니다.

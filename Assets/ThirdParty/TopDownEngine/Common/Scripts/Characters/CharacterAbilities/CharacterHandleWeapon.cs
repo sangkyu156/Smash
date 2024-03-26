@@ -25,7 +25,7 @@ namespace MoreMountains.TopDownEngine
         [Tooltip("true로 설정되면 캐릭터가 PickableWeapons를 집을 수 있습니다.")]
 		public bool CanPickupWeapons = true;
 
-		[Header("Feedbacks")]
+        [Header("Feedbacks")]
         /// 무기를 사용할 때마다 캐릭터 수준에서 트리거되는 피드백
         [Tooltip("무기를 사용할 때마다 캐릭터 수준에서 트리거되는 피드백")]
 		public MMFeedbacks WeaponUseFeedback;
@@ -105,7 +105,7 @@ namespace MoreMountains.TopDownEngine
 		/// a delegate you can hook to, to be notified of weapon changes
 		public OnWeaponChangeDelegate OnWeaponChange;
 
-		protected float _fireTimer = 0f;
+        protected float _fireTimer = 0f;
 		protected float _secondaryHorizontalMovement;
 		protected float _secondaryVerticalMovement;
 		protected WeaponAim _weaponAim;
@@ -143,10 +143,10 @@ namespace MoreMountains.TopDownEngine
 			Setup();
 		}
 
-		/// <summary>
-		/// Grabs various components and inits stuff
-		/// </summary>
-		public virtual void Setup()
+        /// <summary>
+        /// 다양한 구성 요소를 잡고 물건을 초기화합니다.
+        /// </summary>
+        public virtual void Setup()
 		{
 			_character = this.gameObject.GetComponentInParent<Character>();
 			_characterGridMovement = _character?.FindAbility<CharacterGridMovement>();
@@ -310,7 +310,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void ShootStart()
 		{
-            // 권한에서 촬영 작업이 활성화되어 있으면 계속 진행하고, 그렇지 않으면 아무 작업도 수행하지 않습니다. 플레이어가 죽으면 우리는 아무것도 하지 않습니다.
+            // 권한에서 Shoot 작업이 활성화되어 있으면 계속 진행하고, 그렇지 않으면 아무 작업도 수행하지 않습니다. 플레이어가 죽으면 우리는 아무것도 하지 않습니다.
             if (!AbilityAuthorized
 			    || (CurrentWeapon == null)
 			    || (_condition.CurrentState != CharacterStates.CharacterConditions.Normal))
@@ -325,7 +325,7 @@ namespace MoreMountains.TopDownEngine
                 ExtendBuffer();
 			}
 
-			if (BufferInput && RequiresPerfectTile && (_characterGridMovement != null))            
+            if (BufferInput && RequiresPerfectTile && (_characterGridMovement != null))            
 			{
 				if (!_characterGridMovement.PerfectTile)
 				{
@@ -337,8 +337,8 @@ namespace MoreMountains.TopDownEngine
 					_buffering = false;
 				}
 			}
-			PlayAbilityStartFeedbacks();
-			CurrentWeapon.WeaponInputStart();
+            PlayAbilityStartFeedbacks();
+            CurrentWeapon.WeaponInputStart();
 		}
 
 		/// <summary>
@@ -353,13 +353,13 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Causes the character to stop shooting
-		/// </summary>
-		public virtual void ShootStop()
+        /// <summary>
+        /// 캐릭터의 Shoot이 중단됩니다
+        /// </summary>
+        public virtual void ShootStop()
 		{
-			// if the Shoot action is enabled in the permissions, we continue, if not we do nothing
-			if (!AbilityAuthorized
+            // 권한에서 Shoot 작업이 활성화되어 있으면 계속 진행하고 그렇지 않으면 아무 작업도 수행하지 않습니다.
+            if (!AbilityAuthorized
 			    || (CurrentWeapon == null))
 			{
 				return;
@@ -395,10 +395,10 @@ namespace MoreMountains.TopDownEngine
 			ForceStop();
 		}
 
-		/// <summary>
-		/// Forces the weapon to stop 
-		/// </summary>
-		public virtual void ForceStop()
+        /// <summary>
+        /// 무기를 강제로 정지시킵니다.
+        /// </summary>
+        public virtual void ForceStop()
 		{
 			StopStartFeedbacks();
 			PlayAbilityStopFeedbacks();
@@ -466,18 +466,20 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Instantiates the specified weapon
-		/// </summary>
-		/// <param name="newWeapon"></param>
-		/// <param name="weaponID"></param>
-		/// <param name="combo"></param>
-		protected virtual void InstantiateWeapon(Weapon newWeapon, string weaponID, bool combo = false)
+        /// <summary>
+        /// 지정된 무기를 인스턴스화합니다.
+        /// </summary>
+        /// <param name="newWeapon"></param>
+        /// <param name="weaponID"></param>
+        /// <param name="combo"></param>
+        protected virtual void InstantiateWeapon(Weapon newWeapon, string weaponID, bool combo = false)
 		{
 			if (!combo)
 			{
 				if(CurrentWeapon == null)
+				{
                     CurrentWeapon = (Weapon)Instantiate(newWeapon, WeaponAttachment.transform.position + newWeapon.WeaponAttachmentOffset, WeaponAttachment.transform.rotation);
+				}
 				else
 					CurrentWeapon.gameObject.SetActive(true);
             }

@@ -12,8 +12,8 @@ namespace MoreMountains.TopDownEngine
 {
 	public class HitscanWeapon : Weapon
 	{
-		/// the possible modes this weapon laser sight can run on, 3D by default
-		public enum Modes { TwoD, ThreeD }
+        /// 이 무기 레이저 조준경을 실행할 수 있는 가능한 모드, 기본적으로 3D
+        public enum Modes { TwoD, ThreeD }
 
 		[MMInspectorGroup("Hitscan Spawn", true, 23)]
 		/// the offset position at which the projectile will spawn

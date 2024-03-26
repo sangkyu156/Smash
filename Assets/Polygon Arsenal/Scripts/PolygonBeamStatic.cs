@@ -49,9 +49,9 @@ namespace PolygonArsenal
             {
                 line.SetPosition(0, transform.position);
 
-                Vector3 end = DirectionMarker.position;
+                Vector3 end;
                 RaycastHit hit;
-                if (beamCollides && Physics.Raycast(transform.position, transform.forward, out hit)) //충돌 확인
+                if (beamCollides && Physics.Raycast(transform.position, transform.forward, out hit)) //Checks for collision
                     end = hit.point - (transform.forward * beamEndOffset);
                 else
                     end = transform.position + (transform.forward * beamLength);
@@ -70,8 +70,8 @@ namespace PolygonArsenal
                 }
 
                 float distance = Vector3.Distance(transform.position, end);
-                line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1); //텍스처의 크기를 설정하여 늘어나 보이지 않게 합니다.
-                line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0); //0으로 설정되지 않은 경우 빔을 따라 텍스처를 스크롤합니다.
+                line.material.mainTextureScale = new Vector2(distance / textureLengthScale, 1); 
+                line.material.mainTextureOffset -= new Vector2(Time.deltaTime * textureScrollSpeed, 0); 
             }
         }
 

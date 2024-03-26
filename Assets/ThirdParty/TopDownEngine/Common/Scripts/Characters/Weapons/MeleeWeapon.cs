@@ -115,7 +115,7 @@ namespace MoreMountains.TopDownEngine
         protected override void Start()
         {
             findObject = transform.parent.gameObject.transform.parent.gameObject;
-            animator = findObject.GetComponentInChildren<Animator>();
+            //animator = findObject.GetComponentInChildren<Animator>();
         }
 
         /// <summary>
@@ -269,19 +269,28 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void EnableDamageArea()
 		{
-            //현제 실행되고 있는 에니메이션 이름이 "Attack03_1"이 아닐때만 피해 지역 활성화 (3타 때문)
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
-			{
-                if (_damageAreaCollider2D != null)
-                {
-                    _damageAreaCollider2D.enabled = true;
-                }
-                if (_damageAreaCollider != null)
-                {
-                    _damageAreaCollider.enabled = true;
-                }
+   //         //현제 실행되고 있는 에니메이션 이름이 "Attack03_1"이 아닐때만 피해 지역 활성화 (3타 때문)
+   //         if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack03_1"))
+			//{
+   //             if (_damageAreaCollider2D != null)
+   //             {
+   //                 _damageAreaCollider2D.enabled = true;
+   //             }
+   //             if (_damageAreaCollider != null)
+   //             {
+   //                 _damageAreaCollider.enabled = true;
+   //             }
+   //         }
+
+            if (_damageAreaCollider2D != null)
+            {
+                _damageAreaCollider2D.enabled = true;
             }
-		}
+            if (_damageAreaCollider != null)
+            {
+                _damageAreaCollider.enabled = true;
+            }
+        }
 
 
 		/// <summary>

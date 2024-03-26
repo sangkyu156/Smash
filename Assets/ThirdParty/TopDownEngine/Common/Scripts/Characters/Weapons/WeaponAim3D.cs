@@ -38,7 +38,7 @@ namespace MoreMountains.TopDownEngine
 
 		protected Vector2 _inputMovement;
 		protected Vector3 _slopeTargetPosition;
-		protected Vector3 _weaponAimCurrentAim;
+		public Vector3 _weaponAimCurrentAim;
 
 		protected override void Initialization()
 		{

@@ -25,10 +25,10 @@ namespace MoreMountains.TopDownEngine
 		public AudioClip AbilityStopSfx;
 
         /// 능력이 시작될 때 플레이할 피드백
-        [Tooltip("능력이 시작될 때 플레이할 피드백")]
+        [Tooltip("능력이 시작될 때 플레이할 피드백(CharacterAbility)")]
 		public MMFeedbacks AbilityStartFeedbacks;
         /// 능력이 중지될 때 재생할 피드백
-        [Tooltip("능력이 중지될 때 재생할 피드백")]
+        [Tooltip("능력이 중지될 때 재생할 피드백(CharacterAbility)")]
 		public MMFeedbacks AbilityStopFeedbacks;
                 
 		[Header("Permission")]
@@ -376,24 +376,24 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         public virtual void PlayAbilityStartFeedbacks()
 		{
-			AbilityStartFeedbacks?.PlayFeedbacks(this.transform.position);
-			_startFeedbackIsPlaying = true;
+            AbilityStartFeedbacks?.PlayFeedbacks(this.transform.position);
+            _startFeedbackIsPlaying = true;
 			OnAbilityStart?.Invoke();
 		}
 
-		/// <summary>
-		/// Stops the ability used sound effect
-		/// </summary>
-		public virtual void StopStartFeedbacks()
+        /// <summary>
+        /// 능력 사용 음향 효과를 중지합니다.
+        /// </summary>
+        public virtual void StopStartFeedbacks()
 		{
-			AbilityStartFeedbacks?.StopFeedbacks();
-			_startFeedbackIsPlaying = false;
+            AbilityStartFeedbacks?.StopFeedbacks();
+            _startFeedbackIsPlaying = false;
 		}
 
-		/// <summary>
-		/// Plays the ability stop sound effect
-		/// </summary>
-		public virtual void PlayAbilityStopFeedbacks()
+        /// <summary>
+        /// 능력 정지 음향 효과를 재생합니다.
+        /// </summary>
+        public virtual void PlayAbilityStopFeedbacks()
 		{
 			AbilityStopFeedbacks?.PlayFeedbacks();
 			OnAbilityStop?.Invoke();
