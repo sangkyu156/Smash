@@ -32,7 +32,7 @@ namespace EPOOutline
 
             var infoPosition = drawingPosition;
             infoPosition.height = EditorGUIUtility.singleLineHeight * 3.0f + EditorGUIUtility.standardVerticalSpacing * 2.0f;
-            EditorGUI.HelpBox(infoPosition, "Changing dilate and blur settings will enable info buffer which will increase draw calls and will have some performance impact. Use Outliner settings if you don't need per object settings.", MessageType.Warning);
+            EditorGUI.HelpBox(infoPosition, "dilate(팽창) 및 blur(흐림) 설정을 변경하면 정보 버퍼가 활성화되어 그리기 호출이 늘어나고 성능에 어느 정도 영향을 미칩니다. 개체별 설정이 필요하지 않은 경우 아웃라이너 설정을 사용하세요.", MessageType.Warning);
 
             NewLine(ref drawingPosition);
             NewLine(ref drawingPosition);

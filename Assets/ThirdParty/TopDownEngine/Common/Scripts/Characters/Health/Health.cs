@@ -974,7 +974,7 @@ namespace MoreMountains.TopDownEngine
 				if (DestroyOnDeath)
 				{
 					//오브젝트 회수
-					if (thisLayer == 13)
+					if (thisLayer == 13 || thisLayer == 14)//13 - 에너미, 14 - 공중에너미
                         gameObject.SetActive(false);
                 }
 			}

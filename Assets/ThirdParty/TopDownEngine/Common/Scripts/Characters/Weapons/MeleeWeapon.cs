@@ -212,16 +212,18 @@ namespace MoreMountains.TopDownEngine
 			_damageOnTouch.SetGizmoSize(AreaSize);
 			_damageOnTouch.SetGizmoOffset(AreaOffset);
 			_damageOnTouch.TargetLayerMask = TargetLayerMask;
-            if (gameObject.tag == "Player")
+            //_damageOnTouch.MinDamageCaused = MinDamageCaused;
+            //_damageOnTouch.MaxDamageCaused = MaxDamageCaused;
+			if (gameObject.tag == "Player")
 			{
-                _damageOnTouch.MinDamageCaused = PlayerDataManager.GetPower();
-                _damageOnTouch.MaxDamageCaused = PlayerDataManager.GetPower();
-            }
+				_damageOnTouch.MinDamageCaused = PlayerDataManager.GetPower();
+				_damageOnTouch.MaxDamageCaused = PlayerDataManager.GetPower();
+			}
 			else
 			{
-                _damageOnTouch.MinDamageCaused = MinDamageCaused;
-                _damageOnTouch.MaxDamageCaused = MaxDamageCaused;
-            }
+				_damageOnTouch.MinDamageCaused = MinDamageCaused;
+				_damageOnTouch.MaxDamageCaused = MaxDamageCaused;
+			}
 			_damageOnTouch.DamageDirectionMode = DamageOnTouch.DamageDirections.BasedOnOwnerPosition;
 			_damageOnTouch.DamageCausedKnockbackType = Knockback;
 			_damageOnTouch.DamageCausedKnockbackForce = KnockbackForce;
@@ -257,7 +259,7 @@ namespace MoreMountains.TopDownEngine
 			if (_attackInProgress) { yield break; }
 
             _attackInProgress = true;
-			yield return new WaitForSeconds(InitialDelay);
+            yield return new WaitForSeconds(InitialDelay);
 			EnableDamageArea();
 			yield return new WaitForSeconds(ActiveDuration);
 			DisableDamageArea();
@@ -293,10 +295,10 @@ namespace MoreMountains.TopDownEngine
         }
 
 
-		/// <summary>
-		/// Disables the damage area.
-		/// </summary>
-		protected virtual void DisableDamageArea()
+        /// <summary>
+        /// 피해 지역을 비활성화합니다.
+        /// </summary>
+        protected virtual void DisableDamageArea()
 		{
 			if (_damageAreaCollider2D != null)
 			{

@@ -16,8 +16,10 @@ namespace MoreMountains.TopDownEngine
         /// 캐릭터에 가능한 회전 모드
         public enum Movements { Free, Strict2DirectionsHorizontal, Strict2DirectionsVertical, Strict4Directions, Strict8Directions }
 
-        /// 현재 기준 이동 속도
-        public float MovementSpeed { get; set; }
+
+		/// 현재 기준 이동 속도
+		[SerializeField]
+		public float MovementSpeed { get; set; }
         /// 이것이 사실이라면 이동이 금지됩니다(뒤집기 포함).
         public bool MovementForbidden { get; set; }
 
@@ -51,7 +53,7 @@ namespace MoreMountains.TopDownEngine
         [Tooltip("캐릭터가 더 이상 유휴 상태로 간주되지 않는 속도 임계값")]
 		public float IdleThreshold = 0.05f;
 
-		[Header("Acceleration")]
+        [Header("Acceleration")]
 
         /// 현재 속도에 적용할 가속도 / 0f : 가속도 없음, 순간 최고 속도
         [Tooltip("현재 속도에 적용할 가속도 / 0f : 가속도 없음, 순간 최고 속도")]
@@ -115,7 +117,7 @@ namespace MoreMountains.TopDownEngine
 		}
 
         /// <summary>
-        /// 문자 이동 상태 및 속도를 재설정합니다
+        /// 캐릭터 이동 상태 및 속도를 재설정합니다
         /// </summary>
         public override void ResetAbility()
         {
@@ -490,7 +492,7 @@ namespace MoreMountains.TopDownEngine
 			}
 			else
 			{
-				_movementSpeed = MovementSpeed * MovementSpeedMultiplier * ContextSpeedMultiplier;
+                _movementSpeed = MovementSpeed * MovementSpeedMultiplier * ContextSpeedMultiplier;
 			}
 
 			_movementVector *= _movementSpeed;
@@ -503,10 +505,10 @@ namespace MoreMountains.TopDownEngine
 			if ((_currentInput.magnitude <= IdleThreshold) && (_controller.CurrentMovement.magnitude < IdleThreshold))
 			{
 				_movementVector = Vector3.zero;
-			}
-            
+            }
+
 			_controller.SetMovement (_movementVector);
-		}
+        }
 
         /// <summary>
         /// 매 프레임마다 방금 땅에 닿았는지 확인하고, 그렇다면 상태를 변경하고 입자 효과를 트리거합니다.
@@ -580,20 +582,20 @@ namespace MoreMountains.TopDownEngine
 		}
 
         /// <summary>
-        /// 이 문자의 속도를 재설정합니다
+        /// 이 캐릭터의 속도를 재설정합니다 (달리다가 걸을때 등등)
         /// </summary>
         public virtual void ResetSpeed()
 		{
-            if (gameObject.tag == "Player")
-            {
-                MovementSpeed = PlayerDataManager.GetSpeed();
-            }
-            else
-            {
-                MovementSpeed = WalkSpeed;
-            }
-            //MovementSpeed = WalkSpeed;
-        }
+			if (gameObject.tag == "Player")
+			{
+				MovementSpeed = PlayerDataManager.GetSpeed();
+			}
+			else
+			{
+				MovementSpeed = WalkSpeed;
+			}
+			//MovementSpeed = WalkSpeed;
+		}
 
         /// <summary>
         /// Respawn에서 속도를 재설정합니다

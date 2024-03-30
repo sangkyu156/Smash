@@ -43,7 +43,7 @@ namespace MoreMountains.TopDownEngine
 
         public void SetAbility()
         {
-            this.transform.position = GameManager.Instance.skillPostion.transform.position;
+            //this.transform.position = GameManager.Instance.skillPostion.transform.position;
 
             // 메인 카메라로부터 화면 중심으로 Ray를 쏘기 위해 사용될 변수 선언
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

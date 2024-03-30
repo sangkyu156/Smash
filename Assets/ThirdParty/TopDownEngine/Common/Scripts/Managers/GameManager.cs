@@ -193,7 +193,6 @@ namespace MoreMountains.TopDownEngine
 
 		//내가 만든 변수
 		public GameObject player_GameObject;
-		public Transform skillPostion;
 		public Transform uiCanvas;
         public Define.Stage stage = Define.Stage.Stage00;
 
@@ -585,18 +584,13 @@ namespace MoreMountains.TopDownEngine
 		public void playerTypeChange(Character player)
 		{
 			player_GameObject = player.transform.gameObject;
-			Transform ch1 = player.gameObject.transform.Find("LionModel");
-            Transform skillPosition_ = ch1.gameObject.transform.Find("SkillPos");
-			if(skillPosition_ != null)
-			{
-				skillPostion = skillPosition_;
-            }
+			Transform ch1 = player.gameObject.transform.Find("DogModel");
         }
 
         //스킬,아이템 활성화 직전에 skillPostion 자리움겨놓기
 		public void SetSkillPostion()
 		{
-            skillPostion.position = player_GameObject.transform.position;
+            //skillPostion.position = player_GameObject.transform.position;
         }
 
 		public void SetCurrentStage(Define.Stage stage_)

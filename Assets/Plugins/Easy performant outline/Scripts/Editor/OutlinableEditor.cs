@@ -17,7 +17,7 @@ namespace EPOOutline
             {
                 targetsList = new UnityEditorInternal.ReorderableList(serializedObject, targets);
 
-                targetsList.drawHeaderCallback = position => EditorGUI.LabelField(position, "Renderers. All renderers that will be included to outline rendering should be in the list.");
+                targetsList.drawHeaderCallback = position => EditorGUI.LabelField(position, "렌더러. 아웃라인 렌더링에 포함될 모든 렌더러가 목록에 있어야 합니다.");
 
                 targetsList.drawElementCallback = (position, item, isActive, isFocused) =>
                     {

@@ -9802,7 +9802,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17a676c665574aa0a9e35976eb6cd674, type: 2}
+  - {fileID: 2100000, guid: ac57352efc4cb9e4aa25a36935d4fd20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24998,6 +24998,7 @@ MonoBehaviour:
     true \uBC18\uD658"
   ComparisonMode: 1
   Distance: 2
+  TargetHandleWeaponAbility: {fileID: 0}
 --- !u!114 &2712753543448313507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25017,6 +25018,7 @@ MonoBehaviour:
   AimOrigin: 0
   ShootOffset: {x: 0, y: 0, z: 0}
   LockVerticalAim: 1
+  DirectionMarker: {fileID: 0}
 --- !u!114 &4399593138763869418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25850,7 +25852,7 @@ MonoBehaviour:
   ForceAlwaysShoot: 0
   BufferInput: 0
   NewInputExtendsBuffer: 0
-  MaximumBufferDuration: 0.25
+  MaximumBufferDuration: 1
   RequiresPerfectTile: 0
   CurrentWeapon: {fileID: 0}
 --- !u!114 &1226444822513324875

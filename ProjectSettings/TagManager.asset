@@ -36,7 +36,7 @@ TagManager:
   - ObstaclesDoors
   - NoPathfinding
   - Enemies
-  - NoCollisions
+  - MidairEnemies
   - Hole
   - MovingPlatform
   - FallingPlatform

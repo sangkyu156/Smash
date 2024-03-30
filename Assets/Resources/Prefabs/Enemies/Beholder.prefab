@@ -21918,7 +21918,7 @@ MonoBehaviour:
   TargetRenderer: {fileID: 49047212617547965}
   ShaderPropertyName: _Color06Power
   OffValue: 5
-  OnValue: 25
+  OnValue: 50
   LerpValue: 1
   Curve:
     serializedVersion: 2

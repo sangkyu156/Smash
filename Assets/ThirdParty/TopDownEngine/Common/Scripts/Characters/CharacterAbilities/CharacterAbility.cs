@@ -166,10 +166,10 @@ namespace MoreMountains.TopDownEngine
 			BindAnimator();
 		}
 
-		/// <summary>
-		/// Gets and stores components for further use
-		/// </summary>
-		protected virtual void Initialization()
+        /// <summary>
+        /// 추가 사용을 위해 구성 요소를 가져오고 저장합니다.
+        /// </summary>
+        protected virtual void Initialization()
 		{
 			BindAnimator();
 			_controller = this.gameObject.GetComponentInParent<TopDownController>();

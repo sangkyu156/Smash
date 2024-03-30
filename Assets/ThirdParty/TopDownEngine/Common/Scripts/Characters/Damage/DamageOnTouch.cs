@@ -201,11 +201,10 @@ namespace MoreMountains.TopDownEngine
         protected virtual void Awake()
 		{
 			Initialization();
-
-			if (gameObject.tag == "Player")
+			if(transform.parent.gameObject.tag == "Player") //1,2타 상관없이 3타 데미지 넣어주는거임
 			{
-				MinDamageCaused = PlayerDataManager.GetPower(); //3타 데미지를 더 쌔게할지 더 약하게 할지는 추후에 결정
-				MaxDamageCaused = PlayerDataManager.GetPower();
+				MinDamageCaused = PlayerDataManager.GetPower() * 0.5f;
+				MaxDamageCaused = PlayerDataManager.GetPower() * 0.5f;
 			}
         }
 
@@ -261,7 +260,7 @@ namespace MoreMountains.TopDownEngine
 			{
 				SetGizmoOffset(_boxCollider.center);
 				_boxCollider.isTrigger = true;
-			}
+            }
 
 			if (_sphereCollider != null)
 			{

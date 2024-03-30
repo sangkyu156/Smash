@@ -78,7 +78,7 @@ MonoBehaviour:
   ModifyMovementWhileAttacking: 0
   MovementMultiplier: 0
   PreventAllMovementWhileInUse: 1
-  PreventAllAimWhileInUse: 1
+  PreventAllAimWhileInUse: 0
   RecoilForce: 0
   Animators: []
   PerformAnimatorSanityChecks: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   IdleAnimationParameter: 
   StartAnimationParameter: MushroomAttack
   DelayBeforeUseAnimationParameter: 
-  SingleUseAnimationParameter: 
+  SingleUseAnimationParameter: MushroomAttack
   UseAnimationParameter: 
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
@@ -166,6 +166,7 @@ MonoBehaviour:
     m_Bits: 9
   MaximumSlopeElevation: 50
   AvoidNullAim: 1
+  _weaponAimCurrentAim: {x: 0, y: 0, z: 0}
 --- !u!114 &874073237614127141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +205,4 @@ MonoBehaviour:
   Target: {fileID: 0}
   DrawDebugRadius: 1
   OverlapMaximum: 3
+  beamscript: {fileID: 0}

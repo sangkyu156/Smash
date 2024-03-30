@@ -33,6 +33,13 @@ namespace MoreMountains.TopDownEngine
 		protected int _runningAnimationParameter;
 		protected bool _runningStarted = false;
 
+        protected override void Start()
+        {
+			base.Start();
+            if (gameObject.tag == "Player")
+                RunSpeed = PlayerDataManager.GetSpeed() * 1.5f;;
+        }
+
         private void Update()
         {
             if(gameObject.tag == "Player")
@@ -158,16 +165,9 @@ namespace MoreMountains.TopDownEngine
 
             //플레이어가 실행 버튼을 누르고 우리가 땅에 있고 웅크리지 않고 자유롭게 움직일 수 있다면 컨트롤러의 매개변수에서 이동 속도를 변경합니다.
             if (_characterMovement != null)
-			{
-				if(gameObject.tag == "Player")
-				{
-                    _characterMovement.MovementSpeed = PlayerDataManager.GetSpeed() * 1.5f;
-                }
-				else
-				{
-                    _characterMovement.MovementSpeed = RunSpeed;
-                }
-			}
+            {
+                _characterMovement.MovementSpeed = RunSpeed;
+            }
 
             // 아직 실행 중이 아니면 소리를 트리거합니다.
             if (_movement.CurrentState != CharacterStates.MovementStates.Running)

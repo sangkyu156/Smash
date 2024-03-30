@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &765334146851653415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2590415091188043487}
+  - component: {fileID: 8206781405544776144}
+  - component: {fileID: -3476248517491054168}
+  - component: {fileID: 874073237614127141}
+  m_Layer: 0
+  m_Name: SkeletonAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2590415091188043487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765334146851653415}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8206781405544776144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765334146851653415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a557e2b93323f4831a62221b200348c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName: SkeletonAttack
+  WeaponCurrentlyActive: 1
+  InputAuthorized: 1
+  TriggerMode: 1
+  DelayBeforeUse: 0
+  DelayBeforeUseReleaseInterruption: 1
+  TimeBetweenUses: 1
+  TimeBetweenUsesReleaseInterruption: 1
+  UseBurstMode: 0
+  BurstLength: 1
+  BurstTimeBetweenShots: 0.1
+  MagazineBased: 0
+  MagazineSize: 30
+  AutoReload: 0
+  NoInputReload: 0
+  ReloadTime: 2
+  AmmoConsumedPerShot: 0
+  AutoDestroyWhenEmpty: 0
+  AutoDestroyWhenEmptyDelay: 1
+  PreventReloadIfAmmoEmpty: 0
+  CurrentAmmoLoaded: 0
+  WeaponAttachmentOffset: {x: 0, y: 0, z: 0}
+  FlipWeaponOnCharacterFlip: 1
+  RightFacingFlipValue: {x: 1, y: 1, z: 1}
+  LeftFacingFlipValue: {x: -1, y: 1, z: 1}
+  WeaponUseTransform: {fileID: 0}
+  WeaponShouldFlip: 1
+  LeftHandHandle: {fileID: 0}
+  RightHandHandle: {fileID: 0}
+  ModifyMovementWhileAttacking: 0
+  MovementMultiplier: 0
+  PreventAllMovementWhileInUse: 1
+  PreventAllAimWhileInUse: 0
+  RecoilForce: 0
+  Animators: []
+  PerformAnimatorSanityChecks: 0
+  MirrorCharacterAnimatorParameters: 0
+  WeaponAnimationID: 0
+  IdleAnimationParameter: 
+  StartAnimationParameter: SkeletonAttack
+  DelayBeforeUseAnimationParameter: 
+  SingleUseAnimationParameter: SkeletonAttack
+  UseAnimationParameter: 
+  DelayBetweenUsesAnimationParameter: 
+  StopAnimationParameter: 
+  ReloadStartAnimationParameter: 
+  ReloadAnimationParameter: 
+  ReloadStopAnimationParameter: 
+  WeaponAngleAnimationParameter: 
+  WeaponAngleRelativeAnimationParameter: 
+  EquippedAnimationParameter: 
+  WeaponStartMMFeedback: {fileID: 0}
+  WeaponUsedMMFeedback: {fileID: 0}
+  WeaponUsedMMFeedbackAlt: {fileID: 0}
+  WeaponStopMMFeedback: {fileID: 0}
+  WeaponReloadMMFeedback: {fileID: 0}
+  WeaponReloadNeededMMFeedback: {fileID: 0}
+  WeaponReloadImpossibleMMFeedback: {fileID: 0}
+  InitializeOnStart: 0
+  Interruptable: 0
+  Flipped: 0
+  MeleeDamageAreaMode: 0
+  DamageAreaShape: 2
+  AreaOffset: {x: 0, y: 0, z: 1}
+  AreaSize: {x: 1, y: 1, z: 3}
+  TriggerFilter: 1
+  HitDamageableFeedback: {fileID: 0}
+  HitNonDamageableFeedback: {fileID: 0}
+  ExistingDamageArea: {fileID: 0}
+  InitialDelay: 0.4
+  ActiveDuration: 0.2
+  TargetLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  MinDamageCaused: 10
+  MaxDamageCaused: 10
+  Knockback: 0
+  KnockbackForce: {x: 10, y: 2, z: 0}
+  KnockbackDirection: 0
+  InvincibilityDuration: 0.5
+  CanDamageOwner: 0
+--- !u!114 &-3476248517491054168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765334146851653415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0514d297deadac74fb15a7b7326ff0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimControl: 4
+  AimControlActive: 1
+  RotationMode: 0
+  WeaponRotationSpeed: 100
+  MinimumAngle: -180
+  MaximumAngle: 180
+  MinimumMagnitude: 0.2
+  ReticleType: 0
+  Reticle: {fileID: 1373789777524232, guid: 65207112181da7b41bee2bb13af8b883, type: 3}
+  ReticleDistance: 0
+  ReticleHeight: 0
+  ReticleAtMousePosition: 0
+  RotateReticle: 0
+  ReplaceMousePointer: 1
+  MouseDeadZoneRadius: 0.5
+  DisplayReticle: 1
+  MoveCameraTargetTowardsReticle: 0
+  CameraTargetOffset: 0.3
+  CameraTargetMaxDistance: 10
+  CameraTargetSpeed: 5
+  Unrestricted3DAim: 0
+  ReticleMovesWithSlopes: 0
+  ReticleObstacleMask:
+    serializedVersion: 2
+    m_Bits: 9
+  MaximumSlopeElevation: 50
+  AvoidNullAim: 1
+  _weaponAimCurrentAim: {x: 0, y: 0, z: 0}
+--- !u!114 &874073237614127141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765334146851653415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917bba013df402b42b7581f687f6c802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetsMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  ScanRadius: 10
+  LineOfFireBoxcastSize: {x: 0.1, y: 0.1}
+  DurationBetweenScans: 1
+  DetectionOriginOffset: {x: 0, y: 0, z: 0}
+  OnlyAcquireTargetsIfOwnerIsIdle: 0
+  RotationMode: 0
+  ApplyAutoAimAsLastDirection: 1
+  MoveCameraTarget: 1
+  CameraTargetDistance: 0.5
+  CameraTargetMaxDistance: 10
+  CameraTargetSpeed: 5
+  MoveCameraToCharacterIfNoTarget: 0
+  AimMarkerPrefab: {fileID: 0}
+  DestroyAimMarkerOnWeaponDestroy: 1
+  FirstTargetFoundFeedback: {fileID: 0}
+  NewTargetFoundFeedback: {fileID: 0}
+  NoMoreTargetsFeedback: {fileID: 0}
+  Target: {fileID: 0}
+  DrawDebugRadius: 1
+  OverlapMaximum: 3
+  beamscript: {fileID: 0}

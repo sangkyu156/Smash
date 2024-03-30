@@ -9761,7 +9761,7 @@ MonoBehaviour:
   TargetRenderer: {fileID: 5694253579157900989}
   ShaderPropertyName: _Color02Power
   OffValue: 14
-  OnValue: 42
+  OnValue: 60
   LerpValue: 1
   Curve:
     serializedVersion: 2
@@ -10226,6 +10226,7 @@ GameObject:
   - component: {fileID: 7301746033904988798}
   - component: {fileID: 7251953383352430404}
   - component: {fileID: 3741115246670007743}
+  - component: {fileID: 1286566217398781145}
   m_Layer: 13
   m_Name: AIBrain
   m_TagString: Untagged
@@ -10274,7 +10275,7 @@ MonoBehaviour:
   - StateName: "\uC774\uB3D9\uC911"
     Actions:
       array:
-      - {fileID: 2459734130750616660}
+      - {fileID: 1286566217398781145}
       - {fileID: 3741115246670007743}
     Transitions:
       array:
@@ -10359,7 +10360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitializationMode: 0
-  Label: "\uD50C\uB808\uC774\uC5B4\uD55C\uD14C \uC774\uB3D9"
+  Label: "\uD50C\uB808\uC774\uC5B4\uD55C\uD14C \uC774\uB3D9 (\uBA4D\uCCAD)"
   MinimumDistance: 0.5
 --- !u!114 &3562731167182035396
 MonoBehaviour:
@@ -10425,6 +10426,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializationMode: 0
   Label: "\uBB34\uAE30 \uC870\uC900\uC744 \uC774\uB3D9 \uBC29\uD5A5\uC73C\uB85C \uAC15\uC81C\uD558\uAE30"
+--- !u!114 &1286566217398781145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676398388529954675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3320c9b468b2c8a4692e20ae1e813732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: "\uD50C\uB808\uC774\uC5B4\uD55C\uD14C \uC774\uB3D9 (\uB611\uB611)"
+  MinimumDelayBeforeUpdatingTarget: 0.5
 --- !u!1 &2984738129780800425
 GameObject:
   m_ObjectHideFlags: 0

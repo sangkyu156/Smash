@@ -622,10 +622,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// On weapon use we use our weapon then switch to delay between uses
-		/// </summary>
-		public virtual void CaseWeaponUse()
+        /// <summary>
+        /// 무기를 사용할 때 무기를 사용한 다음 사용 사이에 지연으로 전환합니다.
+        /// </summary>
+        public virtual void CaseWeaponUse()
 		{
 			WeaponUse();
 			_delayBetweenUsesCounter = TimeBetweenUses;
@@ -842,10 +842,10 @@ namespace MoreMountains.TopDownEngine
 			TriggerWeaponUsedFeedback();
 		}
 
-		/// <summary>
-		/// Applies recoil if necessary
-		/// </summary>
-		protected virtual void ApplyRecoil()
+        /// <summary>
+        /// 필요한 경우 반동을 적용합니다.
+        /// </summary>
+        protected virtual void ApplyRecoil()
 		{
 			if ((RecoilForce != 0f) && (_controller != null))
 			{
@@ -1051,10 +1051,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Applies the offset specified in the inspector
-		/// </summary>
-		public virtual void ApplyOffset()
+        /// <summary>
+        /// 인스펙터에 지정된 오프셋을 적용합니다.
+        /// </summary>
+        public virtual void ApplyOffset()
 		{
 
 			if (!WeaponCurrentlyActive)
@@ -1101,10 +1101,10 @@ namespace MoreMountains.TopDownEngine
             WeaponStartMMFeedback?.PlayFeedbacks(this.transform.position);
         }
 
-		/// <summary>
-		/// Plays the weapon's used sound
-		/// </summary>
-		protected virtual void TriggerWeaponUsedFeedback()
+        /// <summary>
+        /// 무기의 사용 소리를 재생합니다
+        /// </summary>
+        protected virtual void TriggerWeaponUsedFeedback()
 		{
 			if (WeaponUsedMMFeedbackAlt != null)
 			{

@@ -255,7 +255,7 @@ namespace MoreMountains.TopDownEngine
 					_newMovementQuaternion = Quaternion.Slerp(MovementRotatingModel.transform.rotation, _tmpRotation, Time.deltaTime * RotateToFaceMovementDirectionSpeed);
 				}
 			}
-            
+
 			ModelDirection = MovementRotatingModel.transform.forward.normalized;
 			ModelAngles = MovementRotatingModel.transform.eulerAngles;
 		}
@@ -365,15 +365,15 @@ namespace MoreMountains.TopDownEngine
 			float maxSpeed = 0f;
 			if (_characterMovement != null)
 			{
-                if (gameObject.tag == "Player")
-                {
-                    maxSpeed = PlayerDataManager.GetSpeed();
-                }
-                else
-                {
-                    maxSpeed = _characterMovement.WalkSpeed;
-                }
-                //maxSpeed = _characterMovement.WalkSpeed;
+                //if (gameObject.tag == "Player")
+                //{
+                //    maxSpeed = PlayerDataManager.GetSpeed();
+                //}
+                //else
+                //{
+                //    maxSpeed = _characterMovement.WalkSpeed;
+                //}
+                maxSpeed = _characterMovement.WalkSpeed;
             }
 			if (_characterRun != null)
 			{

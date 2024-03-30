@@ -25571,6 +25571,7 @@ MonoBehaviour:
     true \uBC18\uD658"
   ComparisonMode: 1
   Distance: 3
+  TargetHandleWeaponAbility: {fileID: 0}
 --- !u!114 &478548772423251721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25590,6 +25591,7 @@ MonoBehaviour:
   AimOrigin: 0
   ShootOffset: {x: 0, y: 0, z: 0}
   LockVerticalAim: 1
+  DirectionMarker: {fileID: 0}
 --- !u!114 &5458574075735254711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36586,7 +36588,7 @@ MonoBehaviour:
   TargetRenderer: {fileID: 7963049116542223906}
   ShaderPropertyName: _Color02Power
   OffValue: 9.5
-  OnValue: 28.5
+  OnValue: 50
   LerpValue: 1
   Curve:
     serializedVersion: 2
