@@ -166,6 +166,7 @@ MonoBehaviour:
     m_Bits: 9
   MaximumSlopeElevation: 50
   AvoidNullAim: 1
+  _weaponAimCurrentAim: {x: 0, y: 0, z: 0}
 --- !u!114 &874073237614127141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ MonoBehaviour:
     m_Bits: 1024
   ObstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   ScanRadius: 10
   LineOfFireBoxcastSize: {x: 0.1, y: 0.1}
   DurationBetweenScans: 1
@@ -204,3 +205,4 @@ MonoBehaviour:
   Target: {fileID: 0}
   DrawDebugRadius: 1
   OverlapMaximum: 3
+  beamscript: {fileID: 0}

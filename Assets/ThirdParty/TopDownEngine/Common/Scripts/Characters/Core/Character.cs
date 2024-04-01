@@ -91,8 +91,8 @@ namespace MoreMountains.TopDownEngine
         public InputManager LinkedInputManager { get; protected set; }
         /// 이 캐릭터와 관련된 애니메이터
         public Animator _animator { get; protected set; }
-		/// a list of animator parameters
-		public HashSet<int> _animatorParameters { get; set; }
+        /// 애니메이터 매개변수 목록
+        public HashSet<int> _animatorParameters { get; set; }
 		/// this character's orientation 2D ability
 		public CharacterOrientation2D Orientation2D { get; protected set; }
 		/// this character's orientation 3D ability
@@ -178,8 +178,9 @@ namespace MoreMountains.TopDownEngine
 			CacheAbilitiesAtInit();
 			if (CharacterBrain == null)
 			{
-				CharacterBrain = this.gameObject.GetComponent<AIBrain>(); 
-			}
+				CharacterBrain = this.gameObject.GetComponent<AIBrain>();
+
+            }
 
 			if (CharacterBrain != null)
 			{
@@ -764,12 +765,22 @@ namespace MoreMountains.TopDownEngine
 			this.enabled = false;
 			_controller.enabled = false;			
 		}
-        
-		/// <summary>
-		/// Called when the Character dies. 
-		/// Calls every abilities' Reset() method, so you can restore settings to their original value if needed
-		/// </summary>
-		public virtual void Reset()
+
+		public void Provoked(GameObject provocateur)
+		{
+			CharacterBrain.Target = provocateur.transform;
+        }
+
+		public void ProvocationEnd()
+		{
+			CharacterBrain.Target = LevelManager.Instance.Players[0].transform;
+        }
+
+        /// <summary>
+        /// Called when the Character dies. 
+        /// Calls every abilities' Reset() method, so you can restore settings to their original value if needed
+        /// </summary>
+        public virtual void Reset()
 		{
 			_spawnDirectionForced = false;
 			if (_characterAbilities == null)

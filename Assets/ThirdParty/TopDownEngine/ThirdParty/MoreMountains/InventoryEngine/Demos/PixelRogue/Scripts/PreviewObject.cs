@@ -41,8 +41,6 @@ public class PreviewObject : MonoBehaviour
         // 캡슐 콜라이더와 겹치는 오브젝트 찾기
         Collider[] colliders = Physics.OverlapCapsule(startPoint, endPoint, capsuleCollider.radius * 15);
 
-        //Collider[] colliders = Physics.OverlapSphere(transform.position, colliderSize);
-
         // 모든 찾은 Collider들을 순회하면서 처리합니다.
         foreach (Collider collider in colliders)
         {

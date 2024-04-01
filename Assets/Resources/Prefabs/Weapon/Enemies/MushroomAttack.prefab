@@ -119,7 +119,7 @@ MonoBehaviour:
   ActiveDuration: 0.2
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 134218752
   MinDamageCaused: 6
   MaxDamageCaused: 6
   Knockback: 0
@@ -181,10 +181,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetsMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 134218752
   ObstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   ScanRadius: 10
   LineOfFireBoxcastSize: {x: 0.1, y: 0.1}
   DurationBetweenScans: 1

@@ -26949,10 +26949,10 @@ MonoBehaviour:
   - StateName: "\uAC10\uC9C0\uC911"
     Actions:
       array:
-      - {fileID: 4599525086625698309}
+      - {fileID: 7562668928337940591}
     Transitions:
       array:
-      - Decision: {fileID: 1011712709989704475}
+      - Decision: {fileID: 2362246212428126173}
         TrueState: "\uC774\uB3D9\uC911"
         FalseState: "\uBA4D\uB54C\uB9AC\uAE30"
   - StateName: "\uBA4D\uB54C\uB9AC\uAE30"
@@ -26961,6 +26961,9 @@ MonoBehaviour:
       - {fileID: 7562668928337940591}
     Transitions:
       array:
+      - Decision: {fileID: 2362246212428126173}
+        TrueState: 
+        FalseState: "\uAC10\uC9C0\uC911"
       - Decision: {fileID: 6960272152027864533}
         TrueState: "\uAC10\uC9C0\uC911"
         FalseState: 
@@ -26974,6 +26977,9 @@ MonoBehaviour:
       - Decision: {fileID: 6960272152027864533}
         TrueState: 
         FalseState: "\uBA4D\uB54C\uB9AC\uAE30"
+      - Decision: {fileID: 2362246212428126173}
+        TrueState: 
+        FalseState: "\uAC10\uC9C0\uC911"
       - Decision: {fileID: 7225957995539992288}
         TrueState: "\uACF5\uACA9\uC911"
         FalseState: 
@@ -26983,6 +26989,9 @@ MonoBehaviour:
       - {fileID: 4652989682646209540}
     Transitions:
       array:
+      - Decision: {fileID: 2362246212428126173}
+        TrueState: 
+        FalseState: "\uAC10\uC9C0\uC911"
       - Decision: {fileID: 7225957995539992288}
         TrueState: 
         FalseState: "\uC774\uB3D9\uC911"
@@ -27029,13 +27038,13 @@ MonoBehaviour:
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 134218752
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 0
   TargetCheckFrequency: 1
   CanTargetSelf: 0
-  OverlapMaximum: 3
+  OverlapMaximum: 10
 --- !u!114 &7832941286824813448
 MonoBehaviour:
   m_ObjectHideFlags: 0

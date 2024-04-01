@@ -1,4 +1,5 @@
 using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class RockNormal : InventoryItem
     {
         base.Installation(playerID);
         Debug.Log($"{ItemID}을 설치중입니다.");
+        //MMGameEvent.Trigger("Installing");//이벤트 뿌리기 (구독중인 오브젝트는 자신의 스퀘어콜라이더 이즈트리거 켜라)
         Time.timeScale = 0;
         craftManual = Instantiate(Resources.Load<GameObject>("Prefabs/Object/CraftManual"));
         craftManual.GetComponent<CraftManual>().go_Preview = Resources.Load<GameObject>("Prefabs/Battlefield/Preview/RockPreview");
@@ -38,6 +40,7 @@ public class RockNormal : InventoryItem
     {
         base.InstallationCancel(playerID);
         Debug.Log($"{ItemID}을 설치를 취소했습니다.");
+        //설치 취소시 자신의 콜라이더 킨사람 끄라고 이벤트 뿌리기
         craftManual.GetComponent<CraftManual>().BuildCancel();
         return true;
     }
@@ -46,6 +49,7 @@ public class RockNormal : InventoryItem
     {
         base.Use(playerID);
         Debug.Log($"{ItemID}을 사용했습니다.");
+        //설치 완료시 자신의 콜라이더 킨사람 끄라고 이벤트 뿌리기 (완료는 빌드()함수에서 MMGameEvent.Trigger("Installed"); 하고있음)
         craftManual.GetComponent<CraftManual>().Build();
 
         return true;

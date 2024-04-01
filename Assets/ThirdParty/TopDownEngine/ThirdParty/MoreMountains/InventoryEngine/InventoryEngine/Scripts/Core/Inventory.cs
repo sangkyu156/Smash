@@ -885,6 +885,7 @@ namespace MoreMountains.InventoryEngine
             //아이템 설치 모드 실행
             if (item.Installation(PlayerID))
             {
+                MMGameEvent.Trigger("Installing");//이벤트 뿌리기 (구독중인 오브젝트는 자신의 스퀘어콜라이더 이즈트리거 켜라)
                 //설치류 아이템을 사용했기 때문에 설치중(isInstalling)을 true로 바꿔준다.
                 if (item.isInstallable)
                     isInstalling = true;
@@ -1131,6 +1132,8 @@ namespace MoreMountains.InventoryEngine
                 else if (InventoryItems[i].ItemID == "RockRare")
                     ItemsToInclude = InventoryItems[i];
                 else if (InventoryItems[i].ItemID == "RockUnique")
+                    ItemsToInclude = InventoryItems[i];
+                else if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
                     ItemsToInclude = InventoryItems[i];
 
                 AddItem(ItemsToInclude, 1);

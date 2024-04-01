@@ -227,11 +227,26 @@ namespace MoreMountains.InventoryEngine
 			if (!SlotEnabled) { return; }
 			if(ParentInventoryDisplay.TargetInventory.Content[Index].IsInstallable) //설치류 아이템이면
 			{
-				if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>().isInstallable)
+                PreviewObject previewObjectComponent = ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>();
+                PreviewObject2 previewObjectComponent2 = ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject2>();
+
+				if(previewObjectComponent == null)
 				{
-					Debug.Log("설치할수 없습니다.");
-					return;				
-				}
+                    if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject2>().isInstallable)
+                    {
+                        Debug.Log("설치할수 없습니다.");
+                        return;
+                    }
+                }
+
+				if(previewObjectComponent2 == null)
+				{
+                    if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>().isInstallable)
+                    {
+                        Debug.Log("설치할수 없습니다.");
+                        return;
+                    }
+                }
             }
 			MMInventoryEvent.Trigger(MMInventoryEventType.UseRequest, this, ParentInventoryDisplay.TargetInventoryName, ParentInventoryDisplay.TargetInventory.Content[Index], 0, Index, ParentInventoryDisplay.PlayerID);
 		}

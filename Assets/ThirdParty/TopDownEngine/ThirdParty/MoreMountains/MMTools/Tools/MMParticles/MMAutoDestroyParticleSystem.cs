@@ -10,20 +10,20 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Particles/MMAutoDestroyParticleSystem")]
 	public class MMAutoDestroyParticleSystem : MonoBehaviour 
 	{
-		/// True if the ParticleSystem should also destroy its parent
-		public bool DestroyParent = false;
+        /// ParticleSystem이 상위 요소도 파괴해야 하는 경우 True입니다.
+        public bool DestroyParent = false;
 
-		/// If for some reason your particles don't get destroyed automatically at the end of the emission, you can force a destroy after a delay. Leave it at zero otherwise.
-		public float DestroyDelay = 0f;
+        /// 어떤 이유로 방출이 끝날 때 입자가 자동으로 파괴되지 않는 경우 지연 후 강제로 파괴할 수 있습니다. 그렇지 않으면 0으로 두십시오.
+        public float DestroyDelay = 0f;
 		
 		protected ParticleSystem _particleSystem;
 		protected float _startTime;
 		protected bool _started = false;
-		
-		/// <summary>
-		/// Initialization, we get the ParticleSystem component
-		/// </summary>
-		protected virtual void Start()
+
+        /// <summary>
+        /// 초기화하면 ParticleSystem 구성 요소를 얻습니다.
+        /// </summary>
+        protected virtual void Start()
 		{
 			_started = false;
 			_particleSystem = GetComponent<ParticleSystem>();
@@ -32,11 +32,11 @@ namespace MoreMountains.Tools
 				_startTime = Time.time;
 			}
 		}
-		
-		/// <summary>
-		/// When the ParticleSystem stops playing, we destroy it.
-		/// </summary>
-		protected virtual void Update()
+
+        /// <summary>
+        /// ParticleSystem이 재생을 멈추면 이를 파괴합니다.
+        /// </summary>
+        protected virtual void Update()
 		{	
 			if ( (DestroyDelay != 0) && (Time.time - _startTime > DestroyDelay) )
 			{
@@ -52,10 +52,10 @@ namespace MoreMountains.Tools
 			DestroyParticleSystem();
 		}
 
-		/// <summary>
-		/// Destroys the particle system.
-		/// </summary>
-		protected virtual void DestroyParticleSystem()
+        /// <summary>
+        /// 파티클 시스템을 파괴합니다.
+        /// </summary>
+        protected virtual void DestroyParticleSystem()
 		{
 			if (!_started)
 			{
@@ -64,11 +64,11 @@ namespace MoreMountains.Tools
 			if (transform.parent!=null)
 			{
 				if(DestroyParent)
-				{	
-					Destroy(transform.parent.gameObject);	
-				}
-			}					
-			Destroy (gameObject);
-		}
+				{
+                    transform.parent.gameObject.SetActive(false);
+                }
+			}
+            gameObject.SetActive(false);
+        }
 	}
 }

@@ -350,7 +350,7 @@ namespace MoreMountains.TopDownEngine
 		}
 
         /// <summary>
-        /// 계산된 _motion을 기준으로 문자 컨트롤러를 이동합니다
+        /// 계산된 _motion을 기준으로 캐릭터 컨트롤러를 이동합니다
         /// </summary>
         protected virtual void MoveCharacterController()
 		{

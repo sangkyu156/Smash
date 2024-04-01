@@ -1,4 +1,5 @@
 using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class HealRockNormal : InventoryItem
     {
         base.Installation(playerID);
         Debug.Log($"{ItemID}을 설치중입니다.");
+        //MMGameEvent.Trigger("Installing");//이벤트 뿌리기 (구독중인 오브젝트는 자신의 스퀘어콜라이더 이즈트리거 켜라)
         Time.timeScale = 0;
         craftManual = Instantiate(Resources.Load<GameObject>("Prefabs/Object/CraftManual"));
         craftManual.GetComponent<CraftManual>().go_Preview = Resources.Load<GameObject>("Prefabs/Battlefield/Preview/HealRockPreview");

@@ -69,32 +69,34 @@ namespace MoreMountains.TopDownEngine
 			return DetectTarget();
 		}
 
-		/// <summary>
-		/// Returns true if a target is found within the circle
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool DetectTarget()
+        /// <summary>
+        /// 원 내에서 대상을 찾으면 true를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool DetectTarget()
 		{
-			// we check if there's a need to detect a new target
-			if (Time.time - _lastTargetCheckTimestamp < TargetCheckFrequency)
+            Debug.Log("0");
+            // 새로운 표적을 탐지할 필요가 있는지 확인합니다
+            if (Time.time - _lastTargetCheckTimestamp < TargetCheckFrequency)
 			{
 				return _lastReturnValue;
 			}
 			_potentialTargets.Clear();
-
+			Debug.Log("1");
 			_lastTargetCheckTimestamp = Time.time;
 			_raycastOrigin = _collider.bounds.center + DetectionOriginOffset / 2;
 			int numberOfCollidersFound = Physics.OverlapSphereNonAlloc(_raycastOrigin, Radius, _hits, TargetLayerMask);
 
-			// if there are no targets around, we exit
-			if (numberOfCollidersFound == 0)
+            // 주변에 목표가 없으면 종료합니다.
+            if (numberOfCollidersFound == 0)
 			{
 				_lastReturnValue = false;
 				return false;
 			}
-            
-			// we go through each collider found
-			int min = Mathf.Min(OverlapMaximum, numberOfCollidersFound);
+
+            Debug.Log("2");
+            // 우리는 발견된 각 충돌체를 살펴봅니다.
+            int min = Mathf.Min(OverlapMaximum, numberOfCollidersFound);
 			for (int i = 0; i < min; i++)
 			{
 				if (_hits[i] == null)
@@ -112,16 +114,18 @@ namespace MoreMountains.TopDownEngine
                 
 				_potentialTargets.Add(_hits[i].gameObject.transform);
 			}
-            
-			// we sort our targets by distance
-			_potentialTargets.Sort(delegate(Transform a, Transform b)
+
+            Debug.Log("3");
+            // 우리는 거리에 따라 목표를 정렬합니다
+            _potentialTargets.Sort(delegate(Transform a, Transform b)
 			{return Vector3.Distance(this.transform.position,a.transform.position)
 				.CompareTo(
 					Vector3.Distance(this.transform.position,b.transform.position) );
 			});
-            
-			// we return the first unobscured target
-			foreach (Transform t in _potentialTargets)
+
+            Debug.Log("4");
+            // 우리는 가려지지 않은 첫 번째 타겟을 반환합니다.
+            foreach (Transform t in _potentialTargets)
 			{
 				_raycastDirection = t.position - _raycastOrigin;
 				RaycastHit hit = MMDebug.Raycast3D(_raycastOrigin, _raycastDirection, _raycastDirection.magnitude, ObstacleMask.value, Color.yellow, true);
@@ -132,8 +136,9 @@ namespace MoreMountains.TopDownEngine
 					return true;
 				}
 			}
+            Debug.Log("5");
 
-			_lastReturnValue = false;
+            _lastReturnValue = false;
 			return false;
 		}
 

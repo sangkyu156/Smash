@@ -225,10 +225,10 @@ namespace MoreMountains.Tools
 			return null;
 		}
 
-		/// <summary>
-		/// Stores the last known position of the target
-		/// </summary>
-		protected virtual void StoreLastKnownPosition()
+        /// <summary>
+        /// 대상의 마지막으로 알려진 위치를 저장합니다.
+        /// </summary>
+        protected virtual void StoreLastKnownPosition()
 		{
 			if (Target != null)
 			{

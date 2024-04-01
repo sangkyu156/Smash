@@ -25,10 +25,10 @@ namespace MoreMountains.TopDownEngine
 			_alreadyRan = false;
 		}
 
-		/// <summary>
-		/// Sets a new target
-		/// </summary>
-		public override void PerformAction()
+        /// <summary>
+        /// 새로운 목표를 설정하다
+        /// </summary>
+        public override void PerformAction()
 		{
 			if (OnlyRunOnce && _alreadyRan)
 			{

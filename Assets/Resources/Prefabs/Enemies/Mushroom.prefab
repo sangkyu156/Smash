@@ -494,7 +494,7 @@ MonoBehaviour:
   DetectionOriginOffset: {x: 0, y: 0, z: 0}
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 134218752
   ObstacleMask:
     serializedVersion: 2
     m_Bits: 0

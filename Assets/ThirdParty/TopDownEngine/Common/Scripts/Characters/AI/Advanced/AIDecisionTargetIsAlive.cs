@@ -12,21 +12,21 @@ namespace MoreMountains.TopDownEngine
 	public class AIDecisionTargetIsAlive : AIDecision
 	{
 		protected Character _character;
-        
-		/// <summary>
-		/// On Decide we check whether the Target is alive or dead
-		/// </summary>
-		/// <returns></returns>
-		public override bool Decide()
+
+        /// <summary>
+        /// 결정(Decide)에서는 대상이 살아 있는지 죽었는지 확인합니다.
+        /// </summary>
+        /// <returns></returns>
+        public override bool Decide()
 		{
 			return CheckIfTargetIsAlive();
 		}
 
-		/// <summary>
-		/// Returns true if the Brain's Target is alive, false otherwise
-		/// </summary>
-		/// <returns></returns>
-		protected virtual bool CheckIfTargetIsAlive()
+        /// <summary>
+        /// 뇌의 대상이 살아 있으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool CheckIfTargetIsAlive()
 		{
 			if (_brain.Target == null)
 			{
