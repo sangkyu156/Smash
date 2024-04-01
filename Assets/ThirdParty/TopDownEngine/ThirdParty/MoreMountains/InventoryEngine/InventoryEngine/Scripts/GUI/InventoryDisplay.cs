@@ -879,7 +879,7 @@ namespace MoreMountains.InventoryEngine
         public virtual void UseQuickSlotItem(int curInstallingItem)
         {
             //배틀필드가 아니면 리턴
-            if (SceneManager.GetActiveScene().name == "Village" || SceneManager.GetActiveScene().name == "LevelSelect")
+            if (SceneManager.GetActiveScene().name == "Village" || SceneManager.GetActiveScene().name == "LevelSelect2")
                 return;
 
             if (InstallInfoText != null)

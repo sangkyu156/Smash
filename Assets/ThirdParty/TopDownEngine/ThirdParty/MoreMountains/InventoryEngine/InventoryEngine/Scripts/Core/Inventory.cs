@@ -1135,6 +1135,8 @@ namespace MoreMountains.InventoryEngine
                     ItemsToInclude = InventoryItems[i];
                 else if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
                     ItemsToInclude = InventoryItems[i];
+                else if (InventoryItems[i].ItemID == "DragonflyPet")
+                    ItemsToInclude = InventoryItems[i];
 
                 AddItem(ItemsToInclude, 1);
             }

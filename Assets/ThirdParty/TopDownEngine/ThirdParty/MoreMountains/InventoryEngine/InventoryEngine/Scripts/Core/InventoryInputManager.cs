@@ -624,7 +624,7 @@ namespace MoreMountains.InventoryEngine
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
                 }
 
-                //설치중이라면 'esc'버튼 빼고 전부 입력안되게
+                //설치중이라면 'esc'버튼 빼고 전부 입력안되게 (밑으로 못가게)
                 if (QuickSlots.isInstalling)
                     return;
             }
@@ -664,6 +664,23 @@ namespace MoreMountains.InventoryEngine
             {
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha6);
                 currentlySelectedSlot = 5;
+            }
+
+            //소모품 아이템 사용
+            if(Overlay.alpha == 0)
+            {
+                if (_quickSlot1 && QuickSlots.Content[0] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                if (_quickSlot2 && QuickSlots.Content[1] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                if (_quickSlot3 && QuickSlots.Content[2] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                if (_quickSlot4 && QuickSlots.Content[3] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                if (_quickSlot5 && QuickSlots.Content[4] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
+                if (_quickSlot6 && QuickSlots.Content[5] != null)
+                    QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
             }
 
             // 사용자가 '인벤토리 전환' 키를 누르면

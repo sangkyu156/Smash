@@ -1,13 +1,14 @@
+using MoreMountains.Tools;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
-    public class CreateManager : MonoBehaviour
+    public class CreateManager : MonoBehaviour, MMEventListener<MMGameEvent>
     {
         PoolManager poolManager; //오브젝트 풀링 매니져
-        public GameObject level; //Battlefield 씬 맵(입장시 돌맹이 만다는데 필요)
+        public GameObject level; //Battlefield 씬 맵(입장시 돌맹이 만드는데 필요)
         public GameObject bfManager; //BattlefieldManager
         public GameObject player;
         public GameObject clearSplash;
@@ -27,7 +28,16 @@ namespace MoreMountains.TopDownEngine
             poolManager = GetComponent<PoolManager>();
         }
 
-        void Start()
+        void OnEnable()
+        {
+        	this.MMEventStartListening<MMGameEvent>();
+        }
+        void OnDisable()
+        {
+        	this.MMEventStopListening<MMGameEvent>();
+        }
+
+    void Start()
         {
             clearTime = 0;
             curEnemyCount = 0;
@@ -312,6 +322,25 @@ namespace MoreMountains.TopDownEngine
             Destroy(oj);
         }
 
+        //버터플라이 생성 함수
+        public void DragonflySummon()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+
+            // 랜덤한 위치를 생성하기 위해 랜덤한 방향과 거리를 생성합니다.
+            Vector2 randomDirection = Random.insideUnitCircle.normalized * 3f;
+
+            // 랜덤한 위치를 계산합니다.
+            Vector3 spawnPosition = playerPosition + new Vector3(randomDirection.x, 0f, randomDirection.y);
+
+            GameObject dragonFly = Instantiate("Pet/Dragonfly");
+
+            dragonFly.transform.position = spawnPosition;
+
+            //Instantiate(dragonFly, spawnPosition, Quaternion.identity);
+        }
+
         //↓오브젝트 생성 함수들
 
         //3번째 공격
@@ -347,6 +376,12 @@ namespace MoreMountains.TopDownEngine
             poolManager.TakeToPool<Slime>(clone.idName, clone);
             curEnemyCount--;
             enemyKillCount++;
+        }
+
+        public void OnMMEvent(MMGameEvent gameEvent)
+        {
+            if (gameEvent.EventName == "DragonflySummon")
+                DragonflySummon();
         }
     }
 }

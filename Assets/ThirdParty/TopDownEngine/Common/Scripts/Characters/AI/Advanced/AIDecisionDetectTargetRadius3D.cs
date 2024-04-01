@@ -75,14 +75,13 @@ namespace MoreMountains.TopDownEngine
         /// <returns></returns>
         protected virtual bool DetectTarget()
 		{
-            Debug.Log("0");
             // 새로운 표적을 탐지할 필요가 있는지 확인합니다
             if (Time.time - _lastTargetCheckTimestamp < TargetCheckFrequency)
 			{
 				return _lastReturnValue;
 			}
 			_potentialTargets.Clear();
-			Debug.Log("1");
+
 			_lastTargetCheckTimestamp = Time.time;
 			_raycastOrigin = _collider.bounds.center + DetectionOriginOffset / 2;
 			int numberOfCollidersFound = Physics.OverlapSphereNonAlloc(_raycastOrigin, Radius, _hits, TargetLayerMask);
@@ -94,7 +93,6 @@ namespace MoreMountains.TopDownEngine
 				return false;
 			}
 
-            Debug.Log("2");
             // 우리는 발견된 각 충돌체를 살펴봅니다.
             int min = Mathf.Min(OverlapMaximum, numberOfCollidersFound);
 			for (int i = 0; i < min; i++)
@@ -115,7 +113,6 @@ namespace MoreMountains.TopDownEngine
 				_potentialTargets.Add(_hits[i].gameObject.transform);
 			}
 
-            Debug.Log("3");
             // 우리는 거리에 따라 목표를 정렬합니다
             _potentialTargets.Sort(delegate(Transform a, Transform b)
 			{return Vector3.Distance(this.transform.position,a.transform.position)
@@ -123,7 +120,6 @@ namespace MoreMountains.TopDownEngine
 					Vector3.Distance(this.transform.position,b.transform.position) );
 			});
 
-            Debug.Log("4");
             // 우리는 가려지지 않은 첫 번째 타겟을 반환합니다.
             foreach (Transform t in _potentialTargets)
 			{
@@ -136,7 +132,6 @@ namespace MoreMountains.TopDownEngine
 					return true;
 				}
 			}
-            Debug.Log("5");
 
             _lastReturnValue = false;
 			return false;
