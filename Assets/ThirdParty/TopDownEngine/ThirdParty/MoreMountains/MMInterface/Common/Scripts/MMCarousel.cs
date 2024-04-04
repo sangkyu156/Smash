@@ -14,34 +14,34 @@ namespace MoreMountains.MMInterface
     public class MMCarousel : MonoBehaviour
 	{
 		[Header("Binding")]
-		/// the layout group that contains all carousel's elements
-		public HorizontalLayoutGroup Content;
+        /// 캐러셀의 모든 요소를 ​​포함하는 레이아웃 그룹
+        public HorizontalLayoutGroup Content;
 
 		public Camera UICamera;
 
 		[Header("Optional Buttons Binding")]
-		/// the button that moves the carousel to the left
-		public MMTouchButton LeftButton;
-		/// the button that moves the carousel to the right
-		public MMTouchButton RightButton;
+        /// 캐러셀을 왼쪽으로 이동시키는 버튼
+        public MMTouchButton LeftButton;
+        /// 캐러셀을 오른쪽으로 이동시키는 버튼
+        public MMTouchButton RightButton;
 
 		[Header("Carousel Setup")]
-		/// the initial and current index
-		public int CurrentIndex = 0;
-		/// the number of items in the carousel that should be moved every time
-		public int Pagination = 1;
-		/// the percentage of distance that, when reached, will stop movement
-		public float ThresholdInPercent = 1f;
+        /// 초기 및 현재 인덱스
+        public int CurrentIndex = 0;
+        /// 매번 이동해야 하는 캐러셀의 항목 수
+        public int Pagination = 1;
+        /// 도달했을 때 움직임이 멈추는 거리의 비율
+        public float ThresholdInPercent = 1f;
 
 		[Header("Speed")]
-		/// the duration (in seconds) of the carousel's movement 
-		public float MoveDuration = 0.05f;
+        /// 캐러셀의 이동 지속 시간(초)
+        public float MoveDuration = 0.05f;
 
 		[Header("Focus")]
-		/// Bind here the carousel item that should have focus initially
-		public GameObject InitialFocus;
-		/// if this is true, the mouse will be forced back on Start
-		public bool ForceMouseVisible = true;
+        /// 처음에 포커스가 있어야 하는 캐러셀 항목을 여기에 바인딩합니다.
+        public GameObject InitialFocus;
+        /// 이것이 사실이라면 마우스는 시작 시 강제로 다시 돌아옵니다.
+        public bool ForceMouseVisible = true;
 
 		[Header("Keyboard/Gamepad")]
 		/// the number 
@@ -60,18 +60,20 @@ namespace MoreMountains.MMInterface
 		protected Vector2 _startPosition;
 		protected Vector2 _targetPosition;
 
-		/// <summary>
-		/// On Start we initialize our carousel
-		/// </summary>
-		protected virtual void Start()
+        private float currentTime = 0.0f;
+
+        /// <summary>
+        /// On Start we initialize our carousel
+        /// </summary>
+        protected virtual void Start()
 		{
 			Initialization ();
 		}
 
-		/// <summary>
-		/// Initializes the carousel, grabs the rect transform, computes the elements' dimensions, and inits position
-		/// </summary>
-		protected virtual void Initialization()
+        /// <summary>
+        /// 캐러셀을 초기화하고, 직사각형 변환을 가져오고, 요소의 크기를 계산하고, 위치를 초기화합니다.
+        /// </summary>
+        protected virtual void Initialization()
 		{
 			_rectTransform = Content.gameObject.GetComponent<RectTransform> ();
 			_initialPosition = _rectTransform.anchoredPosition;
@@ -99,10 +101,10 @@ namespace MoreMountains.MMInterface
 			}
 		}
 
-		/// <summary>
-		/// Moves the carousel to the left.
-		/// </summary>
-		public virtual void MoveLeft()
+        /// <summary>
+        /// 캐러셀을 왼쪽으로 이동합니다.
+        /// </summary>
+        public virtual void MoveLeft()
 		{
 			if (!CanMoveLeft())
 			{
@@ -115,10 +117,10 @@ namespace MoreMountains.MMInterface
 			}
 		}
 
-		/// <summary>
-		/// Moves the carousel to the right.
-		/// </summary>
-		public virtual void MoveRight()
+        /// <summary>
+        /// 캐러셀을 오른쪽으로 이동합니다.
+        /// </summary>
+        public virtual void MoveRight()
 		{
 			if (!CanMoveRight())
 			{
@@ -131,10 +133,10 @@ namespace MoreMountains.MMInterface
 			}
 		}
 
-		/// <summary>
-		/// Initiates movement to the current index
-		/// </summary>
-		protected virtual void MoveToCurrentIndex ()
+        /// <summary>
+        /// 현재 인덱스로 이동을 시작합니다.
+        /// </summary>
+        protected virtual void MoveToCurrentIndex ()
 		{
 			_startPosition = _rectTransform.anchoredPosition;
 			_targetPosition = DeterminePosition ();
@@ -142,11 +144,11 @@ namespace MoreMountains.MMInterface
 			_lerpStartedTimestamp = Time.time;
 		}
 
-		/// <summary>
-		/// Determines the target position based on the current index value.
-		/// </summary>
-		/// <returns>The position.</returns>
-		protected virtual Vector2 DeterminePosition()
+        /// <summary>
+        /// 현재 인덱스 값을 기준으로 목표 위치를 결정합니다.
+        /// </summary>
+        /// <returns>The position.</returns>
+        protected virtual Vector2 DeterminePosition()
 		{
 			return _initialPosition - (Vector2.right * CurrentIndex * (_elementWidth + _spacing));
 		}
@@ -157,19 +159,19 @@ namespace MoreMountains.MMInterface
 				
 		}
 
-		/// <summary>
-		/// Determines whether this carousel can move right.
-		/// </summary>
-		/// <returns><c>true</c> if this instance can move right; otherwise, <c>false</c>.</returns>
-		public virtual bool CanMoveRight()
+        /// <summary>
+        /// 이 캐러셀이 오른쪽으로 이동할 수 있는지 여부를 결정합니다.
+        /// </summary>
+        /// <returns><c>true</c> if this instance can move right; otherwise, <c>false</c>.</returns>
+        public virtual bool CanMoveRight()
 		{
 			return (CurrentIndex + Pagination < _contentLength);
 		}
 
-		/// <summary>
-		/// On Update we move the carousel if required, and handles button states
-		/// </summary>
-		protected virtual void Update()
+        /// <summary>
+        /// 업데이트 시 필요한 경우 캐러셀을 이동하고 버튼 상태를 처리합니다.
+        /// </summary>
+        protected virtual void Update()
 		{
 			if (_lerping)
 			{
@@ -197,10 +199,10 @@ namespace MoreMountains.MMInterface
 			}
 		}
 
-		/// <summary>
-		/// Handles the buttons, enabling and disabling them if needed
-		/// </summary>
-		protected virtual void HandleButtons()
+        /// <summary>
+        /// 버튼을 처리하고 필요한 경우 버튼을 활성화 및 비활성화합니다.
+        /// </summary>
+        protected virtual void HandleButtons()
 		{
 			if (LeftButton != null) 
 			{ 
@@ -226,21 +228,36 @@ namespace MoreMountains.MMInterface
 			}
 		}
 
-		/// <summary>
-		/// Lerps the carousel's position.
-		/// </summary>
-		protected virtual void LerpPosition()
+        /// <summary>
+        /// 캐러셀의 위치를 ​​Lerps합니다.
+        /// </summary>
+        protected virtual void LerpPosition()
 		{
-			float timeSinceStarted = Time.time - _lerpStartedTimestamp;
-			float percentageComplete = timeSinceStarted / MoveDuration;
+            // 현재 시간을 업데이트합니다.
+            currentTime += Time.unscaledDeltaTime;
 
-			_rectTransform.anchoredPosition = Vector2.Lerp (_startPosition, _targetPosition, percentageComplete);
+			float percentageComplete = currentTime / MoveDuration;
 
-			//When we've completed the lerp, we set _isLerping to false
-			if(percentageComplete >= ThresholdInPercent)
-			{
-				_lerping = false;
-			}
+            // 시작 위치에서 끝 위치로 선형 보간합니다.
+            _rectTransform.anchoredPosition = Vector2.Lerp(_startPosition, _targetPosition, currentTime / MoveDuration);
+
+            //Lerp를 완료하면 _isLerping을 false로 설정합니다.
+            if (percentageComplete >= ThresholdInPercent)
+            {
+				currentTime = 0;
+                _lerping = false;
+            }
+
+   //         float timeSinceStarted = Time.time - _lerpStartedTimestamp;
+			//float percentageComplete = timeSinceStarted / MoveDuration;
+
+			//_rectTransform.anchoredPosition = Vector2.Lerp (_startPosition, _targetPosition, percentageComplete);
+
+            //Lerp를 완료하면 _isLerping을 false로 설정합니다.
+   //         if (percentageComplete >= ThresholdInPercent)
+			//{
+			//	_lerping = false;
+			//}
 		}
 	}
 }

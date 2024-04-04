@@ -113,10 +113,10 @@ namespace MoreMountains.TopDownEngine
 			_inactiveTimeWFS = new WaitForSeconds(InactiveTime);
 		}
 
-		/// <summary>
-		/// When the button is pressed we start the dialogue
-		/// </summary>
-		public override void TriggerButtonAction()
+        /// <summary>
+        /// 버튼을 누르면 대화가 시작됩니다
+        /// </summary>
+        public override void TriggerButtonAction()
 		{
 			if (!CheckNumberOfUses())
 			{
@@ -281,8 +281,8 @@ namespace MoreMountains.TopDownEngine
 
 			_currentIndex++;
 
-			// if the zone is not button handled, we start a coroutine to autoplay the next dialogue
-			if (!ButtonHandled)
+            // 영역이 버튼으로 처리되지 않으면 코루틴을 시작하여 다음 대화를 자동 재생합니다.
+            if (!ButtonHandled)
 			{
 				StartCoroutine(AutoNextDialogue());
 			}

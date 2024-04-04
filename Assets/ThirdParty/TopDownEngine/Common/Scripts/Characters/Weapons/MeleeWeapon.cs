@@ -216,8 +216,8 @@ namespace MoreMountains.TopDownEngine
             //_damageOnTouch.MaxDamageCaused = MaxDamageCaused;
 			if (gameObject.tag == "Player")
 			{
-				_damageOnTouch.MinDamageCaused = PlayerDataManager.GetPower();
-				_damageOnTouch.MaxDamageCaused = PlayerDataManager.GetPower();
+				_damageOnTouch.MinDamageCaused = DataManager.Instance.datas.Power;
+				_damageOnTouch.MaxDamageCaused = DataManager.Instance.datas.Power;
 			}
 			else
 			{

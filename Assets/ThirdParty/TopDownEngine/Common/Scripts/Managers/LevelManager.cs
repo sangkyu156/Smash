@@ -25,9 +25,9 @@ namespace MoreMountains.TopDownEngine
 		public bool AutoAttributePlayerIDs = true;
         /// 인스턴스화할 플레이어 프리팹 목록
         [Tooltip("이 레벨 관리자가 시작 시 인스턴스화할 플레이어 프리팹 목록")]
-		public Character[] PlayerPrefabs ;
+		public Character[] PlayerPrefabs;//실제로 인게임 안에 있는 플레이어 아님! 프리펩일뿐
 
-		[Header("이미 장면에 등장하는 캐릭터")]
+        [Header("이미 장면에 등장하는 캐릭터")]
 		[MMInformation("LevelManager가 캐릭터를 인스턴스화하도록 하는 것이 권장되지만, 대신 장면에 이미 존재하도록 하려면 아래 목록에 바인딩하기만 하면 됩니다.", MMInformationAttribute.InformationType.Info, false)]
         /// 런타임 전에 장면에 이미 존재하는 캐릭터 목록입니다. 이 목록이 채워지면 PlayerPrefabs가 무시됩니다.
         [Tooltip("런타임 전에 장면에 이미 존재하는 캐릭터 목록입니다. 이 목록이 채워지면 PlayerPrefabs가 무시됩니다.")]
@@ -104,7 +104,7 @@ namespace MoreMountains.TopDownEngine
 
         // 개인적인 물건
         public List<CheckPoint> Checkpoints { get; protected set; }
-		public List<Character> Players { get; protected set; }
+		public List<Character> Players { get; protected set; }//실제로 인게임 안에 있는 플레이어
 
 		protected DateTime _started;
 		protected int _savedPoints;

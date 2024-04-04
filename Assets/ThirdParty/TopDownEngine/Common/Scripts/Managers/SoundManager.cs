@@ -426,11 +426,11 @@ namespace MoreMountains.TopDownEngine
 			{
 				if (gameEvent.EventName == "inventoryOpens")
 				{
-					MuteAllSfx();
+					//MuteAllSfx();
 				}
 				if (gameEvent.EventName == "inventoryCloses")
 				{
-					UnmuteAllSfx();
+					//UnmuteAllSfx();
 				}
 			}
 		}

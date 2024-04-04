@@ -206,9 +206,6 @@ namespace MoreMountains.TopDownEngine
         protected override void Awake()
 		{
 			base.Awake ();
-            //PlayerDataManager.PlayerSetting();
-            if (SceneManager.GetActiveScene().name != "LevelSelect2")
-                PlayerDataManager.TEST();
 			PointsOfEntry = new List<PointsOfEntryStorage> ();
         }
 

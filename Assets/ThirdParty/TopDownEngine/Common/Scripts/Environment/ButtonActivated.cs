@@ -267,10 +267,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// When the input button is pressed, we check whether or not the zone can be activated, and if yes, trigger ZoneActivated
-		/// </summary>
-		public virtual void TriggerButtonAction()
+        /// <summary>
+        /// 입력 버튼을 누르면 구역이 활성화될 수 있는지 확인하고, 활성화되면 ZoneActivated를 트리거합니다.
+        /// </summary>
+        public virtual void TriggerButtonAction()
 		{
 			if (!CheckNumberOfUses())
 			{
@@ -332,10 +332,10 @@ namespace MoreMountains.TopDownEngine
             }
         }
 
-		/// <summary>
-		/// Activates the zone
-		/// </summary>
-		protected virtual void ActivateZone()
+        /// <summary>
+        /// 영역을 활성화합니다
+        /// </summary>
+        protected virtual void ActivateZone()
 		{
 			if (OnActivation != null)
 			{

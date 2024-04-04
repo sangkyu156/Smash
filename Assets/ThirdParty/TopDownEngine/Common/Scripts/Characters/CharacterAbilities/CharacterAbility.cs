@@ -188,8 +188,9 @@ namespace MoreMountains.TopDownEngine
 
             if (_character.gameObject.tag == "Player")
 			{
-                currentStamina = PlayerDataManager.GetStamina();
-				maxStamina = PlayerDataManager.GetStamina();
+                currentStamina = DataManager.Instance.datas.Stamina;
+				maxStamina = DataManager.Instance.datas.Stamina;
+				Debug.Log($"스테미나 초기화됨 = {maxStamina}");
 			}
         }
 
@@ -449,6 +450,12 @@ namespace MoreMountains.TopDownEngine
 		{
 			currentStamina = maxStamina;
 		}
+
+		public void StaminaChange()
+		{
+            maxStamina = DataManager.Instance.datas.Stamina;
+            currentStamina = DataManager.Instance.datas.Stamina;
+        }
 
 		/// <summary>
 		/// On enable, we bind our respawn delegate

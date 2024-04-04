@@ -3,11 +3,15 @@ using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing;
 
 public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
 {
     public GameObject buyPopup;
     public GameObject sellPopup;
+    public GameObject skillBuyPopup;
+    public GameObject skillResetPopup;
+    public SkillDetails skillDetails;
     public ItemStore itemStore;
     public Inventory inventory;
     public InventoryDisplay inventoryDisplay;
@@ -22,6 +26,8 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     {
         OffBuyPopup();
         OffSellPopup();
+        OffSkillBuyPopup();
+        OffSkillResetPopup();
         InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
     }
 
@@ -36,12 +42,28 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
 
     public void OffSellPopup()
     { sellPopup.SetActive(false); }
+    public void OnSkillBuyPopup()
+    {
+        if (skillDetails.curSkill == null) 
+            return;
+        skillBuyPopup.SetActive(true); 
+    }
+    public void OffSkillBuyPopup()
+    { skillBuyPopup.SetActive(false); }
+    public void OnSkillResetPopup()
+    {
+        if (skillDetails.curSkill == null) 
+            return; 
+        skillResetPopup.SetActive(true); 
+    }
+    public void OffSkillResetPopup()
+    { skillResetPopup.SetActive(false); }
 
     //여기다 OK 버튼 누르면 실행되는 메소드 만들어야함
     public void BuyItem()
     {
         curQuantity = itemStore.quantity;
-        PlayerDataManager.BuyItem(curItem, curQuantity);
+        DataManager.Instance.datas.CurPlayerGold -= (curItem.price * curQuantity);
         itemStore.SetPlayerGold();
         newItemName = curItem.ItemID.Replace("_npc", "");
         //구매중인 아이템 찾아서 인벤에 넣어주기
@@ -53,6 +75,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
             }
         }
         inventory.SaveInventory();
+        DataManager.Instance.DataSave();
 
         OffBuyPopup();
     }
@@ -60,15 +83,23 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     public void SellItem()
     {
         curQuantity = itemStore.quantity;
-        PlayerDataManager.SellItem(curItem, curQuantity);
+        DataManager.Instance.datas.CurPlayerGold += (int)Mathf.Round((curItem.price * curQuantity) * 0.8f);
         itemStore.SetPlayerGold();
         inventory.RemoveItem(curSolt.Index, curQuantity);
         inventory.SaveInventory();
+        DataManager.Instance.DataSave();
         inventoryDisplay.RedrawInventoryDisplay();
         inventoryDisplay.Focus();
         inventoryDetails.DisplayDetails(null);
 
         OffSellPopup();
+    }
+
+    public void BuySkill()
+    {
+        if (skillDetails.curSkill == null) return;
+        skillDetails.SkillBuyButton();
+        OffSkillBuyPopup();
     }
 
     public void OnMMEvent(MMInventoryEvent inventoryEvent)

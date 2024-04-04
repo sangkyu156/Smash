@@ -18,7 +18,7 @@ namespace MoreMountains.Tools
     [MMRequiresConstantRepaint]
 	[AddComponentMenu("More Mountains/Tools/GUI/MMProgressBar")]
 	public class MMProgressBar : MMMonoBehaviour
-	{
+    {
 		public enum MMProgressBarStates {Idle, Decreasing, Increasing, InDecreasingDelay, InIncreasingDelay }
         /// 가능한 채우기 모드
         public enum FillModes { LocalScale, FillAmount, Width, Height, Anchor }
@@ -460,7 +460,7 @@ namespace MoreMountains.Tools
 
 		protected virtual void OnEnable()
 		{
-			if (!_initialized)
+            if (!_initialized)
 			{
 				return;
 			}
@@ -468,7 +468,7 @@ namespace MoreMountains.Tools
 			StoreInitialColor();
 		}
 
-		public virtual void Initialization()
+        public virtual void Initialization()
 		{
 			_isForegroundBarNotNull = ForegroundBar != null;
 			_isDelayedBarDecreasingNotNull = DelayedBarDecreasing != null;
@@ -956,7 +956,7 @@ namespace MoreMountains.Tools
 			this.gameObject.SetActive(false);
 		}
 
-		#endregion ShowHide
-		
-	}
+
+        #endregion ShowHide
+    }
 }

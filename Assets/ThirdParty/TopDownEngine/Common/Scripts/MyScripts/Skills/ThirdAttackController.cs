@@ -8,10 +8,10 @@ public class ThirdAttackController : MonoBehaviour
 
     private void OnEnable()
     {
-        switch (PlayerDataManager.GetThirdAttack())
+        switch (DataManager.Instance.datas.curThirdAttack)
         {
-            case PlayerDataManager.ThirdAttack.Holy: ThirdAttacks[0].SetActive(true); break;
-            case PlayerDataManager.ThirdAttack.Ice: ThirdAttacks[1].SetActive(true); break;
+            case ThirdAttack.Holy: ThirdAttacks[0].SetActive(true); break;
+            case ThirdAttack.Ice: ThirdAttacks[1].SetActive(true); break;
             default:
                 break;
         }

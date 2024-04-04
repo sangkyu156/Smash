@@ -203,8 +203,8 @@ namespace MoreMountains.TopDownEngine
 			Initialization();
 			if(transform.parent.gameObject.tag == "Player") //1,2타 상관없이 3타 데미지 넣어주는거임
 			{
-				MinDamageCaused = PlayerDataManager.GetPower() * 0.5f;
-				MaxDamageCaused = PlayerDataManager.GetPower() * 0.5f;
+				MinDamageCaused = DataManager.Instance.datas.Power * 0.5f;
+				MaxDamageCaused = DataManager.Instance.datas.Power * 0.5f;
 			}
         }
 

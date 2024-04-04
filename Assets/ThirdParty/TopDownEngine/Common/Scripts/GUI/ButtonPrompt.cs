@@ -75,8 +75,13 @@ namespace MoreMountains.TopDownEngine
 			{
 				_NPCInventory = GameObject.FindWithTag("InventoryCanvas");
             }
-            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen = true;
-		}
+
+			if(this.transform.parent.transform.parent.gameObject.name == "ItemStoreNPC")
+                _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen_item = true;
+
+            if (this.transform.parent.transform.parent.gameObject.name == "SkillStoreNPC")
+                _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen_skill = true;
+        }
 
 		public virtual void Hide()
 		{
@@ -85,7 +90,8 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 			_hideCoroutine = StartCoroutine(HideCo());
-            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen = false;
+            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen_item = false;
+            _NPCInventory.GetComponent<InventoryInputManager>().ButtonPromptIsOpen_skill = false;
         }
 
 		protected virtual IEnumerator HideCo()

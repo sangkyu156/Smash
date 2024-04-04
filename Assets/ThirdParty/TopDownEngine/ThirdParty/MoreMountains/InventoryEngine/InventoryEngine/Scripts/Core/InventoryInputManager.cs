@@ -1,5 +1,6 @@
 ﻿using DG.Tweening.Core.Easing;
 using MoreMountains.Tools;
+using NPOI.SS.Formula.Functions;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,6 +27,8 @@ namespace MoreMountains.InventoryEngine
         // 내가만든 변수
         // 플레이어가 NPC근처가서 'E'키 누르면 나오는 상점
         public CanvasGroup NPC_InventoryContainer;
+
+        public CanvasGroup SkillStoreContainer;
         // 플레이어가 NPC근처가서 'E'키 루느면 나오는 플레이어 인벤토리
         public CanvasGroup Player_InventoryContainer;
         // 퀵슬롯 인벤토리
@@ -233,8 +236,10 @@ namespace MoreMountains.InventoryEngine
         /// 이것이 사실이면 관련 인벤토리가 열려 있고, 그렇지 않으면 닫혀 있습니다.
         [MMReadOnly]
         public bool InventoryIsOpen;
-        public bool NPCInventoryIsOpen; //내가만든 변수
-        public bool ButtonPromptIsOpen; //내가만든 변수
+        public bool ItemStoreInventoryIsOpen; //내가만든 변수
+        public bool SkillStoreInventoryIsOpen;
+        public bool ButtonPromptIsOpen_item; //내가만든 변수
+        public bool ButtonPromptIsOpen_skill; //내가만든 변수
 
         protected CanvasGroup _canvasGroup;
         protected GameObject _currentSelection;
@@ -284,8 +289,14 @@ namespace MoreMountains.InventoryEngine
             _isEquipUseButtonNotNull = EquipUseButton != null;
             _currentInventoryDisplay = TargetInventoryDisplay;
             InventoryIsOpen = false;
-            NPCInventoryIsOpen = false;
-            ButtonPromptIsOpen = false;
+            ItemStoreInventoryIsOpen = false;
+            SkillStoreInventoryIsOpen = false;
+            ButtonPromptIsOpen_item = false;
+            ButtonPromptIsOpen_skill = false;
+            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            SkillStoreContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
             _targetInventoryHotbars = new List<InventoryHotbar>();
             _canvasGroup = GetComponent<CanvasGroup>();
             foreach (InventoryHotbar go in FindObjectsOfType(typeof(InventoryHotbar)) as InventoryHotbar[])
@@ -297,6 +308,7 @@ namespace MoreMountains.InventoryEngine
                 if (TargetInventoryContainer != null) { TargetInventoryContainer.alpha = 0; }
                 if (NPC_InventoryContainer != null) { NPC_InventoryContainer.alpha = 0; }
                 if (Player_InventoryContainer != null) { Player_InventoryContainer.alpha = 0; }
+                if (SkillStoreContainer != null) { SkillStoreContainer.alpha = 0; }
                 if (Overlay != null) { Overlay.alpha = OverlayInactiveOpacity; }
                 EventSystem.current.sendNavigationEvents = false;
                 if (_canvasGroup != null)
@@ -415,16 +427,29 @@ namespace MoreMountains.InventoryEngine
             }
         }
 
-        //NPC 인벤토리 패널을 열거나 닫는다
-        public virtual void NPCToggleInventory()
+        //ItemStore 패널을 열거나 닫는다.
+        public virtual void ItemStoreInventoryToggle()
         {
-            if (NPCInventoryIsOpen)
+            if (ItemStoreInventoryIsOpen)
             {
                 CloseNPCInventory();
             }
             else
             {
                 OpenNPCInventory();
+            }
+        }
+
+        //SkillStore 패널을 열거나 닫는다.
+        public virtual void SkillStoreInventoryToggle()
+        {
+            if(SkillStoreInventoryIsOpen)
+            {
+                CloseSkillStore();
+            }
+            else
+            {
+                OpenSkillStore();
             }
         }
 
@@ -454,18 +479,14 @@ namespace MoreMountains.InventoryEngine
             StartCoroutine(MMFade.FadeCanvasGroup(TargetInventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
 
-            //다른 인벤토리 슬롯창 클릭 안되도록
-            if(SceneManager.GetActiveScene().name == "Village")
-            {
-                NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-                Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            }            
+            //클릭 가능하도록
+            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
             //첫번째 슬롯 가리키기
             TargetInventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
         }
 
-        // 상점 패널을 엽니다.
+        //아이템 상점 패널을 엽니다.
         public virtual void OpenNPCInventory()
         {
             if (CloseList.Count > 0)
@@ -483,17 +504,18 @@ namespace MoreMountains.InventoryEngine
 
             MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
             MMGameEvent.Trigger("inventoryOpens");
-            NPCInventoryIsOpen = true;
+            ItemStoreInventoryIsOpen = true;
 
             StartCoroutine(MMFade.FadeCanvasGroup(NPC_InventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Player_InventoryContainer, 0.2f, 1f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
 
+            //클릭 가능하도록
+            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+
             //현재 플레이어가 가지고 있는돈 업데이트 하기
 
-
-            //다른 인벤토리 슬롯창 클릭 안되도록
-            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
             //첫번째 슬롯 가리키기
             NPC_InventoryContainer.GetComponentInChildren<InventoryDisplay>().Focus();
@@ -506,6 +528,33 @@ namespace MoreMountains.InventoryEngine
                     NPC_InventoryContainer.transform.GetChild(i).GetComponent<InventoryDetails>().DisplayDetailsHidden();
                 }
             }
+        }
+
+        //스킬상점 팝업을 엽니다.
+        public void OpenSkillStore()
+        {
+            if (CloseList.Count > 0)
+            {
+                foreach (string playerID in CloseList)
+                {
+                    MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloseRequest, null, "", null, 0, 0, playerID); //다른 팝업창 다닫기
+                }
+            }
+
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.blocksRaycasts = true; //클릭시 반응 하게 만들기
+            }
+
+            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryOpens, null, TargetInventoryDisplay.TargetInventoryName, TargetInventoryDisplay.TargetInventory.Content[0], 0, 0, TargetInventoryDisplay.PlayerID);
+            MMGameEvent.Trigger("inventoryOpens");
+            MMGameEvent.Trigger("SkillPopupOpens");
+            SkillStoreInventoryIsOpen = true;
+
+            StartCoroutine(MMFade.FadeCanvasGroup(SkillStoreContainer, 0.2f, 1f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayActiveOpacity));
+
+            SkillStoreContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
 
         /// <summary>
@@ -522,20 +571,15 @@ namespace MoreMountains.InventoryEngine
             MMGameEvent.Trigger("inventoryCloses");
             InventoryIsOpen = false;
 
+            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
             StartCoroutine(MMFade.FadeCanvasGroup(TargetInventoryContainer, 0.2f, 0f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
-
-            //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
-            if (SceneManager.GetActiveScene().name == "Village")
-            {
-                NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            }
 
             Time.timeScale = 1f;
         }
 
-        //상점 패널을 닫습니다.
+        //아이템 상점 패널을 닫습니다.
         public virtual void CloseNPCInventory()
         {
             if (_canvasGroup != null)
@@ -545,26 +589,39 @@ namespace MoreMountains.InventoryEngine
             // we close our inventory
             MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloses, null, TargetInventoryDisplay.TargetInventoryName, null, 0, 0, TargetInventoryDisplay.PlayerID);
             MMGameEvent.Trigger("inventoryCloses");
-            NPCInventoryIsOpen = false;
+            ItemStoreInventoryIsOpen = false;
+
+            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
 
             StartCoroutine(MMFade.FadeCanvasGroup(NPC_InventoryContainer, 0.2f, 0f));
             StartCoroutine(MMFade.FadeCanvasGroup(Player_InventoryContainer, 0.2f, 0f));
             StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
 
-            //다른 인벤토리 슬롯창 클릭 안되도록 했던거 원래대로 돌리기
-            TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            Time.timeScale = 1f;
+        }
+
+        //스킬상점 팝업을 닫습니다.
+        public void CloseSkillStore()
+        {
+            if (_canvasGroup != null)
+            {
+                _canvasGroup.blocksRaycasts = false;
+            }
+
+            MMInventoryEvent.Trigger(MMInventoryEventType.InventoryCloses, null, TargetInventoryDisplay.TargetInventoryName, null, 0, 0, TargetInventoryDisplay.PlayerID);
+            MMGameEvent.Trigger("inventoryCloses");
+
+            SkillStoreInventoryIsOpen = false;
+
+            SkillStoreContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+            StartCoroutine(MMFade.FadeCanvasGroup(SkillStoreContainer, 0.2f, 0f));
+            StartCoroutine(MMFade.FadeCanvasGroup(Overlay, 0.2f, OverlayInactiveOpacity));
 
             Time.timeScale = 1f;
         }
 
-        //퀵슬롯을 눌렀을때 호출되는 함수
-        //public virtual void CheckCurrentlySelectedQuickSlot(KeyCode key)
-        //{
-        //    if (SceneManager.GetActiveScene().name != "Village" || SceneManager.GetActiveScene().name != "LevelSelect")
-        //    {
-        //        QuickSlotsDisplay.SelectQuickSlot(key);
-        //    }
-        //}
 
         /// <summary>
         /// 재고 관련 입력을 처리하고 이에 따라 조치를 취합니다.
@@ -686,7 +743,7 @@ namespace MoreMountains.InventoryEngine
             // 사용자가 '인벤토리 전환' 키를 누르면
             if (SceneManager.GetActiveScene().name == "Village")
             {
-                if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0)
+                if (_toggleInventoryKeyPressed && Player_InventoryContainer.alpha == 0 && SkillStoreContainer.alpha == 0)
                 {
                     ToggleInventory();
                 }
@@ -699,9 +756,14 @@ namespace MoreMountains.InventoryEngine
                 }
             }
 
-            if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen && TargetInventoryContainer.alpha == 0)
+            if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen_item && TargetInventoryContainer.alpha == 0)
             {
-                NPCToggleInventory();
+                ItemStoreInventoryToggle();
+            }
+
+            if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen_skill && TargetInventoryContainer.alpha == 0)
+            {
+                SkillStoreInventoryToggle();
             }
 
             if (_openInventoryKeyPressed)
@@ -720,9 +782,13 @@ namespace MoreMountains.InventoryEngine
                 {
                     CloseInventory();
                 }
-                if (NPCInventoryIsOpen)
+                if (ItemStoreInventoryIsOpen)
                 {
                     CloseNPCInventory();
+                }
+                if(SkillStoreInventoryIsOpen)
+                {
+                    CloseSkillStore();
                 }
             }
 

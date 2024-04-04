@@ -37,7 +37,7 @@ namespace MoreMountains.TopDownEngine
         {
 			base.Start();
             if (gameObject.tag == "Player")
-                RunSpeed = PlayerDataManager.GetSpeed() * 1.5f;;
+                RunSpeed = DataManager.Instance.datas.Speed * 1.5f;;
         }
 
         private void Update()
@@ -53,6 +53,7 @@ namespace MoreMountains.TopDownEngine
                         currentStamina = 0f;
 						RunStop();
                     }
+					Debug.Log($"스테미나 다는중 = {currentStamina}");
                 }
                 else
                 {
@@ -62,6 +63,7 @@ namespace MoreMountains.TopDownEngine
                         currentStamina += (staminaDecreaseRate / 2f) * Time.deltaTime;
                         // 최대 스테미나를 초과하지 않도록 함
                         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
+                        Debug.Log($"스테미나 차는중 = {currentStamina}");
                     }
                 }
 
@@ -236,5 +238,5 @@ namespace MoreMountains.TopDownEngine
 		{
 			MMAnimatorExtensions.UpdateAnimatorBool(_animator, _runningAnimationParameter, (_movement.CurrentState == CharacterStates.MovementStates.Running),_character._animatorParameters, _character.RunAnimatorSanityChecks);
 		}
-	}
+    }
 }

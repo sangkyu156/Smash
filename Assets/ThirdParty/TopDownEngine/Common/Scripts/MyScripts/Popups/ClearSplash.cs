@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ public class ClearSplash : MonoBehaviour
     {
         switch (GameManager.Instance.stage)
         {
-            case Define.Stage.Stage01: string _rewars = "70"; rewards.text = _rewars; PlayerDataManager.StageRewards(_rewars); break;
+            case Define.Stage.Stage01: string _rewars = "70"; rewards.text = _rewars; StageRewards(_rewars); break;
             case Define.Stage.Stage02: break;
             case Define.Stage.Stage03: break;
             case Define.Stage.Stage04: break;
@@ -77,6 +78,14 @@ public class ClearSplash : MonoBehaviour
             case Define.Stage.Stage49: break;
             case Define.Stage.Stage50: break;
         }
+
+        MMGameEvent.Trigger("StageClear");
+    }
+
+    public void StageRewards(string rewards)
+    {
+        DataManager.Instance.datas.CurPlayerGold += int.Parse(rewards);
+        DataManager.Instance.DataSave();
     }
 
     public void GoToVillage_Clear()

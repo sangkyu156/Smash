@@ -6,6 +6,7 @@ using MoreMountains.Feedbacks;
 using UnityEditor.EditorTools;
 using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine.Rendering.PostProcessing;
+using System.Diagnostics.Tracing;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -37,7 +38,7 @@ namespace MoreMountains.TopDownEngine
     /// </summary>
     [AddComponentMenu("TopDown Engine/Character/Core/Health")] 
 	public class Health : MMMonoBehaviour
-	{
+    {
         [MMInspectorGroup("Bindings", true, 3)]
 
         /// 비활성화할 모델(그렇게 설정된 경우)
@@ -221,8 +222,8 @@ namespace MoreMountains.TopDownEngine
 		{
             if(gameObject.tag == "Player")
 			{
-                InitialHealth = PlayerDataManager.GetHealth();
-                MaximumHealth = PlayerDataManager.GetHealth();
+                InitialHealth = DataManager.Instance.datas.Heath;
+                MaximumHealth = DataManager.Instance.datas.Heath;
                 playerParticle = GetComponent<PlayerEffectsController>();
             }
             _brain = GetComponentInChildren<AIBrain>();
@@ -388,7 +389,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void OnEnable()
 		{
-			if (ResetHealthOnEnable)
+            if (ResetHealthOnEnable)
 			{
 				InitializeCurrentHealth();
 			}
@@ -404,7 +405,7 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void OnDisable()
 		{
-			CancelInvoke();
+            CancelInvoke();
 		}
 
         #endregion
@@ -1017,11 +1018,11 @@ namespace MoreMountains.TopDownEngine
             // 이 기능은 캐릭터의 체력에 체력을 추가하고 최대 체력(MaxHealth)을 초과하는 것을 방지합니다.
             if (MasterHealth != null)
 			{
-				MasterHealth.SetHealth(Mathf.Min (CurrentHealth + health,MaximumHealth));	
+				MasterHealth.SetHealth(Mathf.Min(CurrentHealth + health, MaximumHealth));
 			}
 			else
 			{
-				SetHealth(Mathf.Min (CurrentHealth + health,MaximumHealth));	
+				SetHealth(Mathf.Min(CurrentHealth + health, MaximumHealth));
 			}
 
             UpdateHealthBar(true);
@@ -1073,6 +1074,14 @@ namespace MoreMountains.TopDownEngine
             UpdateHealthBar(true);
         }
 
+		//최대체력, 현재체력을 초기화 합니다.
+		public virtual void UpdateMaxHealth()
+		{
+			MaximumHealth = DataManager.Instance.datas.Heath;
+			CurrentHealth = DataManager.Instance.datas.Heath;
+			UpdateHealthBar(true);
+        }
+
         #endregion
 
         #region DamageDisablingAPIs
@@ -1113,6 +1122,6 @@ namespace MoreMountains.TopDownEngine
                 Invulnerable = false;
         }
 
-		#endregion
-	}
+        #endregion
+    }
 }

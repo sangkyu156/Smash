@@ -124,7 +124,7 @@ namespace MoreMountains.TopDownEngine
 	        base.ResetAbility();
             if (gameObject.tag == "Player" && SceneManager.GetActiveScene().name != "LevelSelect2")
             {
-                MovementSpeed = PlayerDataManager.GetSpeed();
+                MovementSpeed = DataManager.Instance.datas.Speed;
             }
             else
             {
@@ -588,7 +588,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			if (gameObject.tag == "Player")
 			{
-				MovementSpeed = PlayerDataManager.GetSpeed();
+				MovementSpeed = DataManager.Instance.datas.Speed;
 			}
 			else
 			{
