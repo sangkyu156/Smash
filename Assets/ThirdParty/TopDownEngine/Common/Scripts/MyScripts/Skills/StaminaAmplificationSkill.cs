@@ -50,6 +50,8 @@ public class StaminaAmplificationSkill : Skillbase, MMEventListener<MMGameEvent>
     {
         SkillLevel = DataManager.Instance.datas.S_Stamina;
         skillLevel.text = SkillLevel.ToString();
+        if (SkillLevel == maxLevel)
+            skillLevel.color = Color.red;
     }
 
     public void OnMMEvent(MMGameEvent gameEvent)

@@ -21,6 +21,8 @@ TagManager:
   - GameManager
   - Slime
   - Mushroom
+  - UITarget
+  - UICanvas
   layers:
   - Default
   - TransparentFX

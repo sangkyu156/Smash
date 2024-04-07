@@ -12,6 +12,7 @@ namespace MoreMountains.TopDownEngine
         public GameObject bfManager; //BattlefieldManager
         public GameObject player;
         public GameObject clearSplash;
+        public GameObject quickSlotsDisplay;
 
         static CreateManager c_instance; // 유일성이 보장된다       
         static public CreateManager Instance { get { return c_instance; } } // 유일한 매니저를 갖고온다

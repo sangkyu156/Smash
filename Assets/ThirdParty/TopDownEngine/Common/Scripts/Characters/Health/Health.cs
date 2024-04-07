@@ -220,15 +220,10 @@ namespace MoreMountains.TopDownEngine
         /// </summary>
         protected virtual void Awake()
 		{
-            if(gameObject.tag == "Player")
-			{
-                InitialHealth = DataManager.Instance.datas.Heath;
-                MaximumHealth = DataManager.Instance.datas.Heath;
-                playerParticle = GetComponent<PlayerEffectsController>();
-            }
-            _brain = GetComponentInChildren<AIBrain>();
             Initialization();
 			InitializeCurrentHealth();
+            _brain = GetComponentInChildren<AIBrain>();
+
         }
 
         /// <summary>
@@ -239,7 +234,13 @@ namespace MoreMountains.TopDownEngine
             thisTag = this.gameObject.tag;
             thisLayer = this.gameObject.layer;
             GrabAnimator();
-		}
+            if (gameObject.tag == "Player")
+            {
+                CurrentHealth = DataManager.Instance.datas.Heath;
+                MaximumHealth = DataManager.Instance.datas.Heath;
+                playerParticle = GetComponent<PlayerEffectsController>();
+            }
+        }
 
         /// <summary>
         /// 유용한 구성 요소를 잡고 손상을 입히고 초기 색상을 얻습니다.
@@ -1077,7 +1078,8 @@ namespace MoreMountains.TopDownEngine
 		//최대체력, 현재체력을 초기화 합니다.
 		public virtual void UpdateMaxHealth()
 		{
-			MaximumHealth = DataManager.Instance.datas.Heath;
+            InitialHealth = DataManager.Instance.datas.Heath;
+            MaximumHealth = DataManager.Instance.datas.Heath;
 			CurrentHealth = DataManager.Instance.datas.Heath;
 			UpdateHealthBar(true);
         }

@@ -487,6 +487,69 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
+		//스테이지에 따라 리워드 골드 세팅
+		public int SetRewardGold()
+		{
+			int rewardGold = 0;
+
+            switch (stage)
+			{
+				case Define.Stage.Stage00: rewardGold = 70; break;
+                case Define.Stage.Stage01:rewardGold = 100; break;
+                case Define.Stage.Stage02:rewardGold = 100; break;
+                case Define.Stage.Stage03:rewardGold = 100; break;
+                case Define.Stage.Stage04:rewardGold = 100; break;
+                case Define.Stage.Stage05:rewardGold = 100; break;
+                case Define.Stage.Stage06:rewardGold = 100; break;
+                case Define.Stage.Stage07:rewardGold = 100; break;
+                case Define.Stage.Stage08:rewardGold = 100; break;
+                case Define.Stage.Stage09:rewardGold = 100; break;
+                case Define.Stage.Stage10:rewardGold = 100; break;
+                case Define.Stage.Stage11:rewardGold = 100; break;
+                case Define.Stage.Stage12:rewardGold = 100; break;
+                case Define.Stage.Stage13:rewardGold = 100; break;
+                case Define.Stage.Stage14:rewardGold = 100; break;
+                case Define.Stage.Stage15:rewardGold = 100; break;
+                case Define.Stage.Stage16:rewardGold = 100; break;
+                case Define.Stage.Stage17:rewardGold = 100; break;
+                case Define.Stage.Stage18:rewardGold = 100; break;
+                case Define.Stage.Stage19:rewardGold = 100; break;
+                case Define.Stage.Stage20:rewardGold = 100; break;
+                case Define.Stage.Stage21:rewardGold = 100; break;
+                case Define.Stage.Stage22:rewardGold = 100; break;
+                case Define.Stage.Stage23:rewardGold = 100; break;
+                case Define.Stage.Stage24:rewardGold = 100; break;
+                case Define.Stage.Stage25:rewardGold = 800; break;
+                case Define.Stage.Stage26:rewardGold = 100; break;
+                case Define.Stage.Stage27:rewardGold = 100; break;
+                case Define.Stage.Stage28:rewardGold = 100; break;
+                case Define.Stage.Stage29:rewardGold = 100; break;
+                case Define.Stage.Stage30:rewardGold = 100; break;
+                case Define.Stage.Stage31:rewardGold = 100; break;
+                case Define.Stage.Stage32:rewardGold = 100; break;
+                case Define.Stage.Stage33:rewardGold = 100; break;
+                case Define.Stage.Stage34:rewardGold = 100; break;
+                case Define.Stage.Stage35:rewardGold = 100; break;
+                case Define.Stage.Stage36:rewardGold = 100; break;
+                case Define.Stage.Stage37:rewardGold = 100; break;
+                case Define.Stage.Stage38:rewardGold = 100; break;
+                case Define.Stage.Stage39:rewardGold = 100; break;
+                case Define.Stage.Stage40:rewardGold = 100; break;
+                case Define.Stage.Stage41:rewardGold = 100; break;
+                case Define.Stage.Stage42:rewardGold = 100; break;
+                case Define.Stage.Stage43:rewardGold = 100; break;
+                case Define.Stage.Stage44:rewardGold = 100; break;
+                case Define.Stage.Stage45:rewardGold = 100; break;
+                case Define.Stage.Stage46:rewardGold = 100; break;
+                case Define.Stage.Stage47:rewardGold = 100; break;
+                case Define.Stage.Stage48:rewardGold = 100; break;
+                case Define.Stage.Stage49:rewardGold = 100; break;
+                case Define.Stage.Stage50:rewardGold = 100;  break;
+            }
+
+			return rewardGold;
+        }
+
         /// <summary>
         /// MMGameEvents를 포착하고 그에 따라 작동하여 해당 사운드를 재생합니다.
         /// </summary>

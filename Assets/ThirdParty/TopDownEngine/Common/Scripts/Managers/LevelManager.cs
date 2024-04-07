@@ -181,7 +181,10 @@ namespace MoreMountains.TopDownEngine
 			MMCameraEvent.Trigger(MMCameraEventTypes.SetTargetCharacter, Players[0]);
 			MMCameraEvent.Trigger(MMCameraEventTypes.StartFollowing);
 			MMGameEvent.Trigger("CameraBound");
-		}
+
+            if (SceneManager.GetActiveScene().name != "LevelSelect2")
+                DataManager.Instance.PlayerRefresh();
+        }
 
         /// <summary>
         /// 캐릭터 생성 방법을 설명하기 위해 각 멀티플레이어 레벨 관리자가 재정의하는 방법입니다.

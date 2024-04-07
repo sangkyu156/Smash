@@ -5,6 +5,7 @@ using MoreMountains.Tools;
 using MoreMountains.Feedbacks;
 using System.Linq;
 using static MoreMountains.TopDownEngine.Character;
+using UnityEngine.SceneManagement;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -155,7 +156,9 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Start () 
 		{
 			Initialization();
-		}
+            if (SceneManager.GetActiveScene().name != "LevelSelect2")
+                DataManager.Instance.PlayerRefresh();
+        }
 
 		/// <summary>
 		/// A method you can override to have an initialization before the actual initialization

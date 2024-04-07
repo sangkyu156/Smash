@@ -294,9 +294,12 @@ namespace MoreMountains.InventoryEngine
             ButtonPromptIsOpen_item = false;
             ButtonPromptIsOpen_skill = false;
             TargetInventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
-            SkillStoreContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if(SceneManager.GetActiveScene().name == "Village")
+            {
+                NPC_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                Player_InventoryContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                SkillStoreContainer.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }            
             _targetInventoryHotbars = new List<InventoryHotbar>();
             _canvasGroup = GetComponent<CanvasGroup>();
             foreach (InventoryHotbar go in FindObjectsOfType(typeof(InventoryHotbar)) as InventoryHotbar[])
@@ -726,17 +729,17 @@ namespace MoreMountains.InventoryEngine
             //소모품 아이템 사용
             if(Overlay.alpha == 0)
             {
-                if (_quickSlot1 && QuickSlots.Content[0] != null)
+                if (_quickSlot1 && QuickSlots.Content[0] != null && QuickSlots.Content[0].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
-                if (_quickSlot2 && QuickSlots.Content[1] != null)
+                if (_quickSlot2 && QuickSlots.Content[1] != null && QuickSlots.Content[1].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
-                if (_quickSlot3 && QuickSlots.Content[2] != null)
+                if (_quickSlot3 && QuickSlots.Content[2] != null && QuickSlots.Content[2].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
-                if (_quickSlot4 && QuickSlots.Content[3] != null)
+                if (_quickSlot4 && QuickSlots.Content[3] != null && QuickSlots.Content[3].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
-                if (_quickSlot5 && QuickSlots.Content[4] != null)
+                if (_quickSlot5 && QuickSlots.Content[4] != null && QuickSlots.Content[4].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
-                if (_quickSlot6 && QuickSlots.Content[5] != null)
+                if (_quickSlot6 && QuickSlots.Content[5] != null && QuickSlots.Content[5].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
             }
 

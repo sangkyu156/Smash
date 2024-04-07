@@ -44,6 +44,8 @@ public class RewardBoosterSkill : Skillbase, MMEventListener<MMGameEvent>
     {
         SkillLevel = DataManager.Instance.datas.S_ClearReward;
         skillLevel.text = SkillLevel.ToString();
+        if (SkillLevel == maxLevel)
+            skillLevel.color = Color.red;
     }
 
     public void OnMMEvent(MMGameEvent gameEvent)

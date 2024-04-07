@@ -10,18 +10,18 @@ public class ClearZone : MonoBehaviour
 
     private void Awake()
     {
-        if (player == null)
-            player = CreateManager.Instance.player;
+        clearZoneArrow = CreateManager.Instantiate("Battlefield/ClearZoneArrow");
     }
 
     private void Start()
     {
-        clearZoneArrow = CreateManager.Instantiate("Battlefield/ClearZoneArrow");
+        Invoke("asdqwq", 1f);
     }
 
     void Update()
     {
-        PlayerFollow();
+        if(player != null)
+            PlayerFollow();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +31,11 @@ public class ClearZone : MonoBehaviour
             StageClear();
             StartCoroutine(ClearSplashOn());
         }
+    }
+
+    public void asdqwq()
+    {
+        player = LevelManager.Instance.Players[0].gameObject;
     }
 
     void StageClear()
@@ -57,5 +62,6 @@ public class ClearZone : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2.7f); // 3√  ¥Î±‚
         CreateManager.Instance.clearSplash.SetActive(true);
+        CreateManager.Instance.quickSlotsDisplay.SetActive(false);
     }
 }

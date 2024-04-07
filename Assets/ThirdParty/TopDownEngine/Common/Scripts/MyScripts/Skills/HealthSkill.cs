@@ -43,6 +43,8 @@ public class HealthSkill : Skillbase, MMEventListener<MMGameEvent>
     {
         SkillLevel = DataManager.Instance.datas.S_Health;
         skillLevel.text = SkillLevel.ToString();
+        if (SkillLevel == maxLevel)
+            skillLevel.color = Color.red;
     }
 
     public void OnMMEvent(MMGameEvent gameEvent)

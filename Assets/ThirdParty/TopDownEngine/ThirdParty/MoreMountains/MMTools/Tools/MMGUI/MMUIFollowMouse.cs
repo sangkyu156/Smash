@@ -13,8 +13,14 @@ namespace MoreMountains.Tools
 		public Canvas TargetCanvas { get; set; }
 		protected Vector2 _newPosition;
 		protected Vector2 _mousePosition;
-        
-		protected virtual void LateUpdate()
+
+        private void Awake()
+        {
+            //UICanvas
+            TargetCanvas = GameObject.FindWithTag("UICanvas").gameObject.GetComponent<Canvas>();
+        }
+
+        protected virtual void LateUpdate()
 		{
 			#if !ENABLE_INPUT_SYSTEM || ENABLE_LEGACY_INPUT_MANAGER
 			_mousePosition = Input.mousePosition;
@@ -22,7 +28,7 @@ namespace MoreMountains.Tools
 			_mousePosition = Mouse.current.position.ReadValue();
 			#endif
 			RectTransformUtility.ScreenPointToLocalPointInRectangle(TargetCanvas.transform as RectTransform, _mousePosition, TargetCanvas.worldCamera, out _newPosition);
-			transform.position = TargetCanvas.transform.TransformPoint(_newPosition);
+			transform.position = TargetCanvas.transform.TransformPoint(_newPosition + new Vector2(280f, 190f));
 		}
 	}
 }
