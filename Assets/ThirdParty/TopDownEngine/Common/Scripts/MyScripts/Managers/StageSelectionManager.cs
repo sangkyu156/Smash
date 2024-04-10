@@ -47,6 +47,10 @@ public class StageSelectionManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, targetLayer) && Input.GetMouseButtonDown(0))
         {
             Debug.Log("스테이지 클릭함");
+            //클릭했을때 'StageZone'컴포넌트 안에 bool값 확인해서 false면 아직 도전할 수 없는거니까 리턴때려
+            if (hit.collider.gameObject.GetComponent<StageZone>().isChallenge == false)
+                return;
+
             string stageNumber = hit.collider.gameObject.name;
 
             stagePopups[GetCurrentStage(stageNumber)].SetActive(true);

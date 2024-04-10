@@ -44,19 +44,19 @@ namespace MoreMountains.TopDownEngine
         
 		protected List<Respawnable> _listeners;
 
-		/// <summary>
-		/// Initializes the list of listeners
-		/// </summary>
-		protected virtual void Awake () 
+        /// <summary>
+        /// 리스너 목록을 초기화합니다.
+        /// </summary>
+        protected virtual void Awake () 
 		{
 			_listeners = new List<Respawnable>();
 		}
-				
-		/// <summary>
-		/// Spawns the player at the checkpoint.
-		/// </summary>
-		/// <param name="player">Player.</param>
-		public virtual void SpawnPlayer(Character player)
+
+        /// <summary>
+        /// 체크포인트에서 플레이어를 생성합니다.	
+        /// </summary>
+        /// <param name="player">Player.</param>
+        public virtual void SpawnPlayer(Character player)
 		{
 			player.RespawnAt(transform, FacingDirection);
 			

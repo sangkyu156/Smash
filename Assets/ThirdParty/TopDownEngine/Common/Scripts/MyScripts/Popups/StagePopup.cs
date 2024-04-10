@@ -9,13 +9,12 @@ using MoreMountains.Tools;
 public class StagePopup : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
-    public TextMeshProUGUI missionText; //이걸 없애고 에너미 사진이랑 몇kill해야하는지 나와야함
 
     void Start()
     {
         Time.timeScale = 0f;
 
-        SetText();
+        //SetText();
     }
 
     public void PopupClose()

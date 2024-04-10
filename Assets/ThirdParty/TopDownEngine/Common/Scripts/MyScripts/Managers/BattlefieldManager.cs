@@ -61,10 +61,10 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
         {
             case Define.Stage.Stage01: mis = CreateManager.Instantiate("Mission/01", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break;
             case Define.Stage.Stage02: mis = CreateManager.Instantiate("Mission/02", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
-                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); break;
-            case Define.Stage.Stage03: break;
-            case Define.Stage.Stage04: break;
-            case Define.Stage.Stage05: break;
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break;
+            case Define.Stage.Stage03: mis = CreateManager.Instantiate("Mission/03", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break; break;
+            case Define.Stage.Stage04: mis = CreateManager.Instantiate("Mission/04", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break; break;
+            case Define.Stage.Stage05: mis = CreateManager.Instantiate("Mission/05", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break; break;
             case Define.Stage.Stage06: break;
             case Define.Stage.Stage07: break;
             case Define.Stage.Stage08: break;

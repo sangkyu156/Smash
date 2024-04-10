@@ -6711,7 +6711,7 @@ MonoBehaviour:
   isValid: 1
   target: {fileID: 847034402}
   animationType: 7
-  targetType: 3
+  targetType: 15
   forcedTargetType: 0
   autoPlay: 1
   useTargetAsV3: 0
@@ -25224,7 +25224,7 @@ Transform:
   m_GameObject: {fileID: 1243818282187889}
   serializedVersion: 2
   m_LocalRotation: {x: 0.45841685, y: -0, z: -0, w: 0.8887373}
-  m_LocalPosition: {x: -9.52, y: 20.91, z: -33.71}
+  m_LocalPosition: {x: -6.58, y: 20.91, z: -33.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25269,7 +25269,7 @@ Transform:
   m_GameObject: {fileID: 1272038264671929}
   serializedVersion: 2
   m_LocalRotation: {x: 0.45841685, y: -0, z: -0, w: 0.8887373}
-  m_LocalPosition: {x: -9.52, y: 20.91, z: -33.71}
+  m_LocalPosition: {x: -6.58, y: 20.91, z: -33.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

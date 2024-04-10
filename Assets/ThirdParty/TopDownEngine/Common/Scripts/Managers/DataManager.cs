@@ -87,6 +87,11 @@ public class DataManager : MMPersistentSingleton<DataManager>
     private string KeyName = "Datas";
     private string FileName = "SaveFile.es3";
 
+    private void OnEnable()
+    {
+        DataLoad();
+    }
+
     void Start()
     {
         DataLoad();
@@ -119,7 +124,7 @@ public class DataManager : MMPersistentSingleton<DataManager>
         int baseStamina = 30;
         datas.Stamina = baseStamina + bounsStamina;
         LevelManager.Instance.Players[0].gameObject.GetComponent<Health>().UpdateMaxHealth();
-        LevelManager.Instance.Players[0].gameObject.GetComponent<CharacterAbility>().StaminaChange();
+        LevelManager.Instance.Players[0].gameObject.GetComponent<CharacterRun>().StaminaChange();
         Debug.Log("PlayerRefresh«‘");
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
@@ -60,5 +61,15 @@ public class ClearSplash : MonoBehaviour
         {
             particle[i].GetComponent<ScaleAndSparkle>().ScaleUPandDownOff();
         }
+    }
+
+    private void OnDisable()
+    {
+        DOTween.KillAll();
+    }
+
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 }

@@ -10,53 +10,53 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Camera/MMOrbitalCamera")]
 	public class MMOrbitalCamera : MonoBehaviour
 	{
-		/// the possible input modes for this camera
-		public enum Modes { Mouse, Touch }
+        /// 이 카메라에 가능한 입력 모드
+        public enum Modes { Mouse, Touch }
 
 		[Header("Setup")]
-		/// the selected input mode
-		public Modes Mode = Modes.Touch;
-		/// the object to orbit around
-		public Transform Target;
-		/// the offset to apply while orbiting
-		public Vector3 TargetOffset;
-		/// the current distance to target
-		[MMReadOnly]        
+        /// 선택한 입력 모드
+        public Modes Mode = Modes.Touch;
+        /// 주위를 공전할 물체
+        public Transform Target;
+        /// 궤도를 선회하는 동안 적용할 오프셋
+        public Vector3 TargetOffset;
+        /// 현재 목표까지의 거리
+        [MMReadOnly]        
 		public float DistanceToTarget = 5f;
 
 		[Header("Rotation")]
-		/// whether or not rotation is enabled
-		public bool RotationEnabled = true;
-		/// the speed of the rotation
-		public Vector2 RotationSpeed = new Vector2(200f, 200f);
-		/// the minimum vertical angle limit
-		public int MinVerticalAngleLimit = -80;
-		/// the maximum vertical angle limit
-		public int MaxVerticalAngleLimit = 80;
+        /// 회전 활성화 여부
+        public bool RotationEnabled = true;
+        /// 회전 속도
+        public Vector2 RotationSpeed = new Vector2(200f, 200f);
+        /// 최소 수직 각도 제한
+        public int MinVerticalAngleLimit = -80;
+        /// 최대 수직 각도 제한
+        public int MaxVerticalAngleLimit = 80;
 
 		[Header("Zoom")]
-		/// whether or not zoom is enabled
-		public bool ZoomEnabled = true;
-		/// the minimum distance at which the user can zoom in
-		public float MinimumZoomDistance = 0.6f;
-		/// the max distance at which the user can zoom out
-		public float MaximumZoomDistance = 20;
-		/// the speed of the zoom interpolation
-		public int ZoomSpeed = 40;
-		/// the dampening to apply to the zoom
-		public float ZoomDampening = 5f;
+        /// 확대/축소 활성화 여부
+        public bool ZoomEnabled = true;
+        /// 사용자가 확대할 수 있는 최소 거리
+        public float MinimumZoomDistance = 0.6f;
+        /// 사용자가 축소할 수 있는 최대 거리
+        public float MaximumZoomDistance = 20;
+        /// 줌 보간 속도
+        public int ZoomSpeed = 40;
+        /// 확대/축소에 적용할 감쇠
+        public float ZoomDampening = 5f;
 
 		[Header("Mouse Zoom")]
-		/// the speed at which scrolling the mouse wheel will zoom
-		public float MouseWheelSpeed = 10f;
-		/// the max value at which to clamp the mouse wheel
-		public float MaxMouseWheelClamp = 10f;
+        /// 마우스 휠을 스크롤하여 확대/축소되는 속도
+        public float MouseWheelSpeed = 10f;
+        /// 마우스 휠을 고정할 최대 값
+        public float MaxMouseWheelClamp = 10f;
 
 		[Header("Steps")]
-		/// the distance after which to trigger a step
-		public float StepThreshold = 1;
-		/// an event to trigger when a step is met
-		public UnityEvent StepFeedback;
+        /// 단계를 트리거하기까지의 거리
+        public float StepThreshold = 1;
+        /// 단계가 충족될 때 트리거되는 이벤트
+        public UnityEvent StepFeedback;
 
 		protected float _angleX = 0f;
 		protected float _angleY = 0f;

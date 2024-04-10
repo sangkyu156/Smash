@@ -192,13 +192,13 @@ namespace MoreMountains.TopDownEngine
 		protected int _initialCurrentLives;
 
 		//내가 만든 변수
-		public GameObject player_GameObject;
-		public Transform uiCanvas;
+		//public GameObject player_GameObject;
+		//public Transform uiCanvas;
         public Define.Stage stage = Define.Stage.Stage00;
 
-        ResourceManager _resource = new ResourceManager();
+        //ResourceManager _resource = new ResourceManager();
 
-        public static ResourceManager Resource { get { return Instance._resource; } }
+        //public static ResourceManager Resource { get { return Instance._resource; } }
 
         /// <summary>
         /// On Awake we initialize our list of points of entry
@@ -384,12 +384,12 @@ namespace MoreMountains.TopDownEngine
 			PointsOfEntry.Add (new PointsOfEntryStorage (levelName, entryIndex, facingDirection));
 		}
 
-		/// <summary>
-		/// Gets point of entry info for the level whose scene name you pass as a parameter
-		/// </summary>
-		/// <returns>The points of entry.</returns>
-		/// <param name="levelName">Level name.</param>
-		public virtual PointsOfEntryStorage GetPointsOfEntry(string levelName)
+        /// <summary>
+        /// 매개변수로 전달한 씬 이름이 있는 레벨에 대한 진입점 정보를 가져옵니다.
+        /// </summary>
+        /// <returns>The points of entry.</returns>
+        /// <param name="levelName">Level name.</param>
+        public virtual PointsOfEntryStorage GetPointsOfEntry(string levelName)
 		{
 			if (PointsOfEntry.Count > 0)
 			{
@@ -404,11 +404,11 @@ namespace MoreMountains.TopDownEngine
 			return null;
 		}
 
-		/// <summary>
-		/// Clears the stored point of entry infos for the level whose name you pass as a parameter
-		/// </summary>
-		/// <param name="levelName">Level name.</param>
-		public virtual void ClearPointOfEntry(string levelName)
+        /// <summary>
+        /// 이름을 매개변수로 전달한 레벨에 대한 저장된 진입점 정보를 지웁니다.
+        /// </summary>
+        /// <param name="levelName">Level name.</param>
+        public virtual void ClearPointOfEntry(string levelName)
 		{
 			if (PointsOfEntry.Count > 0)
 			{
@@ -641,11 +641,11 @@ namespace MoreMountains.TopDownEngine
 		}
 
 		//레벨매니져한테 캐릭터형 받아와서 오브젝트형으로 바꾸기
-		public void playerTypeChange(Character player)
-		{
-			player_GameObject = player.transform.gameObject;
-			Transform ch1 = player.gameObject.transform.Find("DogModel");
-        }
+		//public void playerTypeChange(Character player)
+		//{
+		//	player_GameObject = player.transform.gameObject;
+		//	Transform ch1 = player.gameObject.transform.Find("DogModel");
+  //      }
 
         //스킬,아이템 활성화 직전에 skillPostion 자리움겨놓기
 		public void SetSkillPostion()

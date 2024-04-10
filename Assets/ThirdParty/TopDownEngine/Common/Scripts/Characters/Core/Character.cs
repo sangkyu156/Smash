@@ -655,11 +655,11 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Makes the player respawn at the location passed in parameters
-		/// </summary>
-		/// <param name="spawnPoint">The location of the respawn.</param>
-		public virtual void RespawnAt(Transform spawnPoint, FacingDirections facingDirection)
+        /// <summary>
+        /// 매개변수에 전달된 위치에서 플레이어가 다시 생성되도록 합니다.
+        /// </summary>
+        /// <param name="spawnPoint">The location of the respawn.</param>
+        public virtual void RespawnAt(Transform spawnPoint, FacingDirections facingDirection)
 		{
 			RespawnAt(spawnPoint.position, facingDirection);
 		}

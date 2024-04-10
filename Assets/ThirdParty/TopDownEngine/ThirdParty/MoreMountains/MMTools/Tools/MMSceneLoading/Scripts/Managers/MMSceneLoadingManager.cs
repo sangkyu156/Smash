@@ -92,7 +92,7 @@ namespace MoreMountains.Tools
         /// <param name="sceneToLoad">Level name.</param>
         public static void LoadScene(string sceneToLoad, string loadingSceneName)
 		{
-			_sceneToLoad = sceneToLoad;					
+			_sceneToLoad = sceneToLoad;
 			Application.backgroundLoadingPriority = ThreadPriority.High;
 			SceneManager.LoadScene(loadingSceneName);
 		}

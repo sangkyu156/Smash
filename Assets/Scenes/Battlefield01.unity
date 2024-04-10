@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.147
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1015704716}
-  m_IndirectSpecularColor: {r: 0.027422901, g: 0.06080262, b: 0.11036408, a: 0.147}
+  m_IndirectSpecularColor: {r: 0.02650189, g: 0.033180267, b: 0.045117863, a: 0.147}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -98,7 +98,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 025d717bffd7add4eb2995cfda97a736,
+  m_LightingDataAsset: {fileID: 112000000, guid: 0f79116e75e37f6498fa242a29bd32e2,
     type: 2}
   m_LightingSettings: {fileID: 251508782}
 --- !u!196 &5
@@ -118553,7 +118553,7 @@ MonoBehaviour:
   _bursts:
   - time: 0
     count: 100
-    used: 1
+    used: 0
   _particleTrailRenderer: {fileID: 4599706217805273078}
   _trailModule:
     enabled: 1
@@ -118749,8 +118749,8 @@ MonoBehaviour:
       m_Calls: []
   moduleEmitterFoldout: 1
   moduleParticleFoldout: 1
-  moduleMovementFoldout: 0
-  moduleEventsFoldout: 0
+  moduleMovementFoldout: 1
+  moduleEventsFoldout: 1
   moduleAdvancedFoldout: 0
   m_Sprite: {fileID: 0}
   m_Texture: {fileID: 0}
@@ -119987,7 +119987,7 @@ MonoBehaviour:
   _bursts:
   - time: 0
     count: 100
-    used: 1
+    used: 0
   _particleTrailRenderer: {fileID: 3800805417637927699}
   _trailModule:
     enabled: 1
