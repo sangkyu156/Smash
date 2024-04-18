@@ -634,6 +634,7 @@ namespace MoreMountains.InventoryEngine
             // 현재 재고 표시가 없으면 아무것도 하지 않고 종료합니다.
             if (_currentInventoryDisplay == null)
             {
+                Debug.Log("123123124");
                 return;
             }
 
@@ -688,7 +689,6 @@ namespace MoreMountains.InventoryEngine
                 if (QuickSlots.isInstalling)
                     return;
             }
-
             //아이템 설치중
             if (_quickSlot1 && Overlay.alpha == 0 && QuickSlotsDisplay != null && QuickSlots.isInstalling == false)
             {
@@ -725,9 +725,8 @@ namespace MoreMountains.InventoryEngine
                 QuickSlotsDisplay.InstallationQuickSlotItem(KeyCode.Alpha6);
                 currentlySelectedSlot = 5;
             }
-
             //소모품 아이템 사용
-            if(Overlay.alpha == 0)
+            if (Overlay.alpha == 0)
             {
                 if (_quickSlot1 && QuickSlots.Content[0] != null && QuickSlots.Content[0].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
@@ -742,7 +741,6 @@ namespace MoreMountains.InventoryEngine
                 if (_quickSlot6 && QuickSlots.Content[5] != null && QuickSlots.Content[5].isInstallable == false)
                     QuickSlotsDisplay.UseQuickSlotItem(currentlySelectedSlot);
             }
-
             // 사용자가 '인벤토리 전환' 키를 누르면
             if (SceneManager.GetActiveScene().name == "Village")
             {
@@ -758,27 +756,22 @@ namespace MoreMountains.InventoryEngine
                     ToggleInventory();
                 }
             }
-
             if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen_item && TargetInventoryContainer.alpha == 0)
             {
                 ItemStoreInventoryToggle();
             }
-
             if (_toggleNPCInventoryKeyPressed && ButtonPromptIsOpen_skill && TargetInventoryContainer.alpha == 0)
             {
                 SkillStoreInventoryToggle();
             }
-
             if (_openInventoryKeyPressed)
             {
                 OpenInventory();
             }
-
             if (_closeInventoryKeyPressed)
             {
                 CloseInventory();
             }
-
             if (_cancelKeyPressed)
             {
                 if (InventoryIsOpen)

@@ -87,10 +87,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Saves to the game manager a reference to our character
-		/// </summary>
-		protected virtual void SaveCharacter()
+        /// <summary>
+        /// 캐릭터에 대한 참조를 게임 관리자에 저장합니다.
+        /// </summary>
+        protected virtual void SaveCharacter()
 		{
 			if (!AbilityAuthorized)
 			{

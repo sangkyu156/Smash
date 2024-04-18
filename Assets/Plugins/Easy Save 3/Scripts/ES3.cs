@@ -970,20 +970,20 @@ public class ES3
         return ES3Settings.defaultSettings.encoding.GetString(DecompressBytes(Convert.FromBase64String(str)));
     }
 
-    /// <summary>Deletes the default file.</summary>
+    /// <summary>기본 파일을 삭제합니다.</summary>
     public static void DeleteFile()
     {
         DeleteFile(new ES3Settings());
     }
 
-    /// <summary>Deletes the file at the given path using the default settings.</summary>
+    /// <summary>기본 설정을 사용하여 지정된 경로의 파일을 삭제합니다.</summary>
     /// <param name="filePath">The relative or absolute path of the file we wish to delete.</param>
     public static void DeleteFile(string filePath)
     {
         DeleteFile(new ES3Settings(filePath));
     }
 
-    /// <summary>Deletes the file at the given path using the settings provided.</summary>
+    /// <summary>제공된 설정을 사용하여 지정된 경로의 파일을 삭제합니다.</summary>
     /// <param name="filePath">The relative or absolute path of the file we wish to delete.</param>
     /// <param name="settings">The settings we want to use to override the default settings.</param>
     public static void DeleteFile(string filePath, ES3Settings settings)
@@ -991,7 +991,7 @@ public class ES3
         DeleteFile(new ES3Settings(filePath, settings));
     }
 
-    /// <summary>Deletes the file specified by the ES3Settings object provided as a parameter.</summary>
+    /// <summary>파라미터로 제공되는 ES3Settings 객체에 지정된 파일을 삭제합니다.</summary>
     /// <param name="settings">The settings we want to use to override the default settings.</param>
     public static void DeleteFile(ES3Settings settings)
     {
@@ -1304,7 +1304,7 @@ public class ES3
 
     /// <summary>Checks whether a file exists.</summary>
     /// <param name="filePath">The relative or absolute path of the file we want to check the existence of.</param>
-    /// <returns>True if the file exists, otherwise False.</returns>
+    /// <returns>파일이 존재하면 True이고, 그렇지 않으면 False입니다.</returns>
     public static bool FileExists(string filePath)
     {
         return FileExists(new ES3Settings(filePath));

@@ -156,7 +156,7 @@ namespace MoreMountains.TopDownEngine
 		protected virtual void Start () 
 		{
 			Initialization();
-            if (SceneManager.GetActiveScene().name != "LevelSelect2")
+			if (SceneManager.GetActiveScene().name != "LevelSelect2" && gameObject.tag == "Player")
                 DataManager.Instance.PlayerRefresh();
         }
 

@@ -620,11 +620,11 @@ namespace MoreMountains.TopDownEngine
 			return true;            
 		}
 
-		/// <summary>
-		/// Checks the remaining number of uses and eventual delay between uses and returns true if the zone can be activated.
-		/// </summary>
-		/// <returns><c>true</c>, if number of uses was checked, <c>false</c> otherwise.</returns>
-		public virtual bool CheckNumberOfUses()
+        /// <summary>
+        /// 남은 사용 횟수와 사용 사이의 최종 지연을 확인하고 영역을 활성화할 수 있으면 true를 반환합니다.
+        /// </summary>
+        /// <returns><c>true</c>, 사용횟수를 확인했다면 <c>false</c> 그렇지 않으면.</returns>
+        public virtual bool CheckNumberOfUses()
 		{
 			if (!Activable)
 			{

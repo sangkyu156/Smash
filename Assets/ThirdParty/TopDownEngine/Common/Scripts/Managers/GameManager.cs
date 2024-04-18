@@ -176,13 +176,13 @@ namespace MoreMountains.TopDownEngine
 		public bool StoredLevelMapPosition{ get; set; }
 		/// the current player
 		public Vector2 LevelMapPosition { get; set; }
-		/// the stored selected character
-		public Character PersistentCharacter { get; set; }
+        /// 저장된 선택된 캐릭터
+        public Character PersistentCharacter { get; set; }
 		/// the list of points of entry and exit
 		[Tooltip("출입 지점 목록")]
 		public List<PointsOfEntryStorage> PointsOfEntry;
-		/// the stored selected character
-		public Character StoredCharacter { get; set; }
+        /// 저장된 선택된 캐릭터
+        public Character StoredCharacter { get; set; }
 
 		// storage
 		protected bool _inventoryOpen = false;
@@ -322,7 +322,7 @@ namespace MoreMountains.TopDownEngine
 				Instance.Paused=true;
 				if ((GUIManager.HasInstance) && (pauseMethod == PauseMethods.PauseMenu))
 				{
-					GUIManager.Instance.SetPauseScreen(true);	
+					GUIManager.Instance.SetPauseScreen(true);
 					_pauseMenuOpen = true;
 					SetActiveInventoryInputManager (false);
 				}
@@ -593,8 +593,16 @@ namespace MoreMountains.TopDownEngine
 					}
 					break;
 				case TopDownEngineEventTypes.Pause:
-					Pause ();
-					break;
+					if(GUIManager.Instance.HelperScreen != null)
+					{
+						if (GUIManager.Instance.HelperScreen.HelperPopupIsOpen == true)
+							GUIManager.Instance.HelperScreen.OffHelperPopup();
+						else
+							Pause();
+                    }
+					else
+                        Pause();
+                    break;
 
 				case TopDownEngineEventTypes.UnPause:
 					UnPause ();

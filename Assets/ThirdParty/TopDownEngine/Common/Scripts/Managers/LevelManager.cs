@@ -113,6 +113,7 @@ namespace MoreMountains.TopDownEngine
 
 		//내가만든 변수
 		public bool isClear = false;
+		public GameObject startGuide;
 
         /// <summary>
         /// Awake시 플레이어를 인스턴스화합니다.
@@ -131,6 +132,26 @@ namespace MoreMountains.TopDownEngine
 		{
 			isClear = false;
             StartCoroutine(InitializationCoroutine());
+
+            if (SceneManager.GetActiveScene().name == "Village" && DataManager.Instance.datas.firstVillage == false)
+            {
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
+                DataManager.Instance.datas.firstVillage = true;
+                DataManager.Instance.DataSave();
+            }
+            else if (SceneManager.GetActiveScene().name == "LevelSelect2" && DataManager.Instance.datas.firstLevelSelect == false)
+            {
+                //InputManager.Instance.InputDetectionActive = false;
+                DataManager.Instance.datas.firstLevelSelect = true;
+                DataManager.Instance.DataSave();
+            }
+            else if (SceneManager.GetActiveScene().name == "Battlefield01" && DataManager.Instance.datas.firstBattlefield == false)
+            {
+                //InputManager.Instance.InputDetectionActive = false;
+                DataManager.Instance.datas.firstBattlefield = true;
+                DataManager.Instance.DataSave();
+            }
         }
 
 		protected virtual IEnumerator InitializationCoroutine()
@@ -207,7 +228,7 @@ namespace MoreMountains.TopDownEngine
 				return;
 			}
 
-            // 게임 관리자에 인스턴스화해야 할 저장된 캐릭터가 있는지 확인합니다.
+            // 게임 매니져에 인스턴스화해야 할 저장된 캐릭터가 있는지 확인합니다.
             if (GameManager.Instance.StoredCharacter != null)
 			{
 				Character newPlayer = Instantiate(GameManager.Instance.StoredCharacter, _initialSpawnPointPosition, Quaternion.identity);

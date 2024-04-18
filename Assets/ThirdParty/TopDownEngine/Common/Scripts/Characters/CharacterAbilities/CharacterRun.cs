@@ -63,7 +63,6 @@ namespace MoreMountains.TopDownEngine
                         currentStamina += (staminaDecreaseRate / 2f) * Time.deltaTime;
                         // 최대 스테미나를 초과하지 않도록 함
                         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
-                        Debug.Log($"스테미나 차는중 = {currentStamina}");
                     }
                 }
 

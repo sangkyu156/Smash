@@ -12,6 +12,8 @@ namespace MoreMountains.Tools
 		[Header("Debug")]
 		[MMInspectorButton("Quit")] 
 		public bool QuitButton;
+
+		public GameObject ExitPopup;
         
 		/// <summary>
 		/// Forces the application to quit
@@ -24,5 +26,16 @@ namespace MoreMountains.Tools
                 Application.Quit();
 			#endif
 		}
-	}
+
+        public void ExitPopupOn()
+        {
+            ExitPopup.SetActive(true);
+        }
+
+        public void ExitPopupOff()
+		{
+            ExitPopup.SetActive(false);
+        }
+
+    }
 }

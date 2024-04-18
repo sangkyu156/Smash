@@ -12224,8 +12224,6 @@ MonoBehaviour:
   GameOverScene: 
   Points: 0
   PauseGameWhenInventoryOpens: 1
-  player_GameObject: {fileID: 0}
-  uiCanvas: {fileID: 0}
   stage: 25
 --- !u!4 &598334959
 Transform:
@@ -118553,7 +118551,7 @@ MonoBehaviour:
   _bursts:
   - time: 0
     count: 100
-    used: 0
+    used: 1
   _particleTrailRenderer: {fileID: 4599706217805273078}
   _trailModule:
     enabled: 1
@@ -119987,7 +119985,7 @@ MonoBehaviour:
   _bursts:
   - time: 0
     count: 100
-    used: 0
+    used: 1
   _particleTrailRenderer: {fileID: 3800805417637927699}
   _trailModule:
     enabled: 1

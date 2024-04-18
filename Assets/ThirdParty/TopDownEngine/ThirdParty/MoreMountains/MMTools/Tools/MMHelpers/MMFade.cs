@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using TMPro;
 
 namespace MoreMountains.Tools
 {
@@ -59,13 +60,31 @@ namespace MoreMountains.Tools
 			}			
 			target.color=color;
 		}
-		/// <summary>
-		/// Fades the specified image to the target opacity and duration.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <param name="opacity">Opacity.</param>
-		/// <param name="duration">Duration.</param>
-		public static IEnumerator FadeSprite(SpriteRenderer target, float duration, Color color)
+
+        public static IEnumerator FadeText(TextMeshProUGUI target, float duration, Color color)
+        {
+            if (target == null)
+                yield break;
+
+            float alpha = target.color.a;
+
+            for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
+            {
+                if (target == null)
+                    yield break;
+                Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+                target.color = newColor;
+                yield return null;
+            }
+            target.color = color;
+        }
+        /// <summary>
+        /// Fades the specified image to the target opacity and duration.
+        /// </summary>
+        /// <param name="target">Target.</param>
+        /// <param name="opacity">Opacity.</param>
+        /// <param name="duration">Duration.</param>
+        public static IEnumerator FadeSprite(SpriteRenderer target, float duration, Color color)
 		{
 			if (target==null)
 				yield break;

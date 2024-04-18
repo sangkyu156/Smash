@@ -91,8 +91,8 @@ namespace MoreMountains.TopDownEngine
         [Tooltip("대사")]
 		public DialogueElement[] Dialogue;
 
-		/// private variables
-		protected DialogueBox _dialogueBox;
+        /// 개인 변수
+        protected DialogueBox _dialogueBox;
 		protected bool _activated = false;
 		protected bool _playing = false;
 		protected int _currentIndex;
@@ -101,10 +101,10 @@ namespace MoreMountains.TopDownEngine
 		protected WaitForSeconds _messageDurationWFS;
 		protected WaitForSeconds _inactiveTimeWFS;
 
-		/// <summary>
-		/// Initializes the dialogue zone
-		/// </summary>
-		protected override void OnEnable()
+        /// <summary>
+        /// 대화 영역을 초기화합니다.
+        /// </summary>
+        protected override void OnEnable()
 		{
 			base.OnEnable();
 			_currentIndex = 0;
@@ -130,31 +130,31 @@ namespace MoreMountains.TopDownEngine
 			StartDialogue();
 		}
 
-		/// <summary>
-		/// When triggered, either by button press or simply entering the zone, starts the dialogue
-		/// </summary>
-		public virtual void StartDialogue()
+        /// <summary>
+        /// 버튼을 누르거나 단순히 영역에 들어가면 트리거되면 대화가 시작됩니다.
+        /// </summary>
+        public virtual void StartDialogue()
 		{
-			// if the dialogue zone has no box collider, we do nothing and exit
-			if ((_collider == null) && (_collider2D == null))
+            // 대화 영역에 상자 충돌체가 없으면 아무것도 하지 않고 종료합니다.
+            if ((_collider == null) && (_collider2D == null))
 			{
 				return;
 			}
 
-			// if the zone has already been activated and can't be activated more than once.
-			if (_activated && !ActivableMoreThanOnce)
+            // 영역이 이미 활성화되어 두 번 이상 활성화할 수 없는 경우.
+            if (_activated && !ActivableMoreThanOnce)
 			{
 				return;
 			}
 
-			// if the zone is not activable, we do nothing and exit
-			if (!_activable)
+            // 영역이 활성화되지 않으면 아무것도 하지 않고 종료됩니다.
+            if (!_activable)
 			{
 				return;
 			}
 
-			// if the player can't move while talking, we notify the game manager
-			if (!CanMoveWhileTalking)
+            // 플레이어가 대화하는 동안 움직일 수 없으면 게임 관리자에게 알립니다.
+            if (!CanMoveWhileTalking)
 			{
 				LevelManager.Instance.FreezeCharacters();
 				if (ShouldUpdateState && (_characterButtonActivation != null))
@@ -163,13 +163,13 @@ namespace MoreMountains.TopDownEngine
 				}
 			}
 
-			// if it's not already playing, we'll initialize the dialogue box
-			if (!_playing)
+            // 아직 재생 중이 아닌 경우 대화 상자를 초기화합니다.
+            if (!_playing)
 			{
-				// we instantiate the dialogue box
-				_dialogueBox = Instantiate(DialogueBoxPrefab);
-				// we set its position
-				if (_collider2D != null)
+                // 대화 상자를 인스턴스화합니다.
+                _dialogueBox = Instantiate(DialogueBoxPrefab);
+                // 우리는 그 위치를 설정
+                if (_collider2D != null)
 				{
 					_dialogueBox.transform.position = _collider2D.bounds.center + Offset;
 				}
@@ -177,13 +177,13 @@ namespace MoreMountains.TopDownEngine
 				{
 					_dialogueBox.transform.position = _collider.bounds.center + Offset;
 				}
-				// we set the color's and background's colors
-				_dialogueBox.ChangeColor(TextBackgroundColor, TextColor);
-				// if it's a button handled dialogue, we turn the A prompt on
-				_dialogueBox.ButtonActive(ButtonHandled);
+                // 색상과 배경색을 설정합니다.
+                _dialogueBox.ChangeColor(TextBackgroundColor, TextColor);
+                // 버튼 처리 대화상자인 경우 A 프롬프트를 켭니다.
+                _dialogueBox.ButtonActive(ButtonHandled);
 
-				// if font settings have been specified, we set them
-				if (BoxesFollowZone)
+                // 글꼴 설정이 지정된 경우 이를 설정합니다.
+                if (BoxesFollowZone)
 				{
 					_dialogueBox.transform.SetParent(this.gameObject.transform);
 				}
@@ -197,18 +197,18 @@ namespace MoreMountains.TopDownEngine
 				}
 				_dialogueBox.DialogueText.alignment = Alignment;
 
-				// the dialogue is now playing
-				_playing = true;
+                // 지금 대화가 재생되고 있어요
+                _playing = true;
 			}
-			// we start the next dialogue
-			StartCoroutine(PlayNextDialogue());
+            // 다음 대화를 시작하자
+            StartCoroutine(PlayNextDialogue());
 		}
 
-		/// <summary>
-		/// Turns collider on or off
-		/// </summary>
-		/// <param name="status"></param>
-		protected virtual void EnableCollider(bool status)
+        /// <summary>
+        /// 충돌체를 켜거나 끕니다.
+        /// </summary>
+        /// <param name="status"></param>
+        protected virtual void EnableCollider(bool status)
 		{
 			if (_collider2D != null)
 			{
@@ -220,34 +220,34 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Plays the next dialogue in the queue
-		/// </summary>
-		protected virtual IEnumerator PlayNextDialogue()
+        /// <summary>
+        /// 대기열의 다음 대화를 재생합니다.
+        /// </summary>
+        protected virtual IEnumerator PlayNextDialogue()
 		{
-			// we check that the dialogue box still exists
-			if (_dialogueBox == null)
+            // 대화 상자가 여전히 존재하는지 확인합니다.
+            if (_dialogueBox == null)
 			{
 				yield break;
 			}
-			// if this is not the first message
-			if (_currentIndex != 0)
+            // 이것이 첫 번째 메시지가 아닌 경우
+            if (_currentIndex != 0)
 			{
-				// we turn the message off
-				_dialogueBox.FadeOut(FadeDuration);
-				// we wait for the specified transition time before playing the next dialogue
-				yield return _transitionTimeWFS;
+                // 우리는 메시지를 꺼
+                _dialogueBox.FadeOut(FadeDuration);
+                // 다음 대화를 재생하기 전에 지정된 전환 시간을 기다립니다.
+                yield return _transitionTimeWFS;
 			}
-			// if we've reached the last dialogue line, we exit
-			if (_currentIndex >= Dialogue.Length)
+            // 마지막 대화 줄에 도달했다면 종료합니다.
+            if (_currentIndex >= Dialogue.Length)
 			{
 				_currentIndex = 0;
 				Destroy(_dialogueBox.gameObject);
 				EnableCollider(false);
-				// we set activated to true as the dialogue zone has now been turned on		
-				_activated = true;
-				// we let the player move again
-				if (!CanMoveWhileTalking)
+                // 이제 대화 영역이 켜져 있으므로 활성화를 true로 설정했습니다.
+                _activated = true;
+                // 플레이어를 다시 움직이게 합니다
+                if (!CanMoveWhileTalking)
 				{
 					LevelManager.Instance.UnFreezeCharacters();
 				}
@@ -256,8 +256,8 @@ namespace MoreMountains.TopDownEngine
 					_characterButtonActivation.InButtonActivatedZone = false;
 					_characterButtonActivation.ButtonActivatedZone = null;
 				}
-				// we turn the zone inactive for a while
-				if (ActivableMoreThanOnce)
+                // 잠시 동안 영역을 비활성화합니다.
+                if (ActivableMoreThanOnce)
 				{
 					_activable = false;
 					_playing = false;
@@ -270,13 +270,13 @@ namespace MoreMountains.TopDownEngine
 				yield break;
 			}
 
-			// we check that the dialogue box still exists
-			if (_dialogueBox.DialogueText != null)
+            // 대화 상자가 여전히 존재하는지 확인합니다.
+            if (_dialogueBox.DialogueText != null)
 			{
-				// every dialogue box starts with it fading in
-				_dialogueBox.FadeIn(FadeDuration);
-				// then we set the box's text with the current dialogue
-				_dialogueBox.DialogueText.text = Dialogue[_currentIndex].DialogueLine;
+                // 모든 대화 상자는 페이드 인으로 시작됩니다.
+                _dialogueBox.FadeIn(FadeDuration);
+                // 그런 다음 현재 대화 상자의 텍스트를 설정합니다.
+                _dialogueBox.DialogueText.text = Dialogue[_currentIndex].DialogueLine;
 			}
 
 			_currentIndex++;
@@ -288,21 +288,21 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Automatically goes to the next dialogue line
-		/// </summary>
-		/// <returns>The next dialogue.</returns>
-		protected virtual IEnumerator AutoNextDialogue()
+        /// <summary>
+        /// 자동으로 다음 대화 줄로 이동합니다.
+        /// </summary>
+        /// <returns>다음 대화.</returns>
+        protected virtual IEnumerator AutoNextDialogue()
 		{
-			// we wait for the duration of the message
-			yield return _messageDurationWFS;
+            // 우리는 메시지가 지속되는 동안 기다립니다
+            yield return _messageDurationWFS;
 			StartCoroutine(PlayNextDialogue());
 		}
 
-		/// <summary>
-		/// Reactivate the dialogue zone
-		/// </summary>
-		protected virtual IEnumerator Reactivate()
+        /// <summary>
+        /// 대화 영역을 다시 활성화하세요
+        /// </summary>
+        protected virtual IEnumerator Reactivate()
 		{
 			yield return _inactiveTimeWFS;
 			EnableCollider(true);

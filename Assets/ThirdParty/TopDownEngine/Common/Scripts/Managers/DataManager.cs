@@ -24,6 +24,9 @@ public class Datas
     public float Heath = 100;
     public float Stamina = 30;
     public ThirdAttack curThirdAttack = ThirdAttack.Holy;
+    public bool firstVillage = false;
+    public bool firstLevelSelect = false;
+    public bool firstBattlefield = false;
     public int S_Health = 0; //스킬넘버 0
     public int S_ClearReward = 0; //스킬넘버 1
     public int S_Stamina = 0; //스킬넘버 2
@@ -100,7 +103,6 @@ public class DataManager : MMPersistentSingleton<DataManager>
     public void DataSave()
     {
         ES3.Save(KeyName, datas);
-        Debug.Log($"S_Health = {datas.S_Health},S_ClearReward = {datas.S_ClearReward},S_Stamina = {datas.S_Stamina}");
     }
 
     public void DataLoad()

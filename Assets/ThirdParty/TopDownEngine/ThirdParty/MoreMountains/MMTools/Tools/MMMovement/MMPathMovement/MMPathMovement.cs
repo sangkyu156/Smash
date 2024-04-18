@@ -13,16 +13,16 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Movement/MMPathMovement")]
 	public class MMPathMovement : MonoBehaviour 
 	{
-		/// the possible movement types
-		public enum PossibleAccelerationType { ConstantSpeed, EaseOut, AnimationCurve }
-		/// the possible cycle options
-		public enum CycleOptions { BackAndForth, Loop, OnlyOnce, StopAtBounds, Random }
-		/// the possible movement directions
-		public enum MovementDirection { Ascending, Descending }
-		/// whether progress on the pass should be made at update, fixed update or late update
-		public enum UpdateModes { Update, FixedUpdate, LateUpdate }
-		/// whether to align the path on nothing, this object's rotation, or this object's parent's rotation
-		public enum AlignmentModes { None, ThisRotation, ParentRotation }
+        /// 가능한 이동 유형
+        public enum PossibleAccelerationType { ConstantSpeed, EaseOut, AnimationCurve }
+        /// 가능한 사이클 옵션
+        public enum CycleOptions { BackAndForth, Loop, OnlyOnce, StopAtBounds, Random }
+        /// 가능한 이동 방향
+        public enum MovementDirection { Ascending, Descending }
+        /// 업데이트, 고정 업데이트 또는 늦은 업데이트 시 패스 진행 여부를 결정합니다.
+        public enum UpdateModes { Update, FixedUpdate, LateUpdate }
+        /// 아무것도 없는 위치, 이 객체의 회전 또는 이 객체의 부모 회전에 경로를 정렬할지 여부
+        public enum AlignmentModes { None, ThisRotation, ParentRotation }
 
 		[Header("Path")]
 		[MMInformation("여기에서 '<b>주기 옵션</b>'을 선택할 수 있습니다. 앞뒤로 개체가 끝까지 경로를 따라 갔다가 원래 지점으로 돌아갑니다. 루프를 선택하면 경로가 닫히고 달리 지정될 때까지 개체가 경로를 따라 이동합니다. 한 번만 선택하면 개체는 첫 번째 지점에서 마지막 지점까지 경로를 따라 이동하고 해당 위치에 영원히 유지됩니다.", MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
@@ -46,8 +46,8 @@ namespace MoreMountains.Tools
 		/// the movement speed
 		[Tooltip("the movement speed")]
 		public float MovementSpeed = 1;
-		/// returns the current speed at which the object is traveling
-		public Vector3 CurrentSpeed { get; protected set; }
+        /// 물체가 이동하는 현재 속도를 반환합니다.
+        public Vector3 CurrentSpeed { get; protected set; }
 		/// the movement type of the object
 		[Tooltip("물체의 이동 유형")]
 		public PossibleAccelerationType AccelerationType = PossibleAccelerationType.ConstantSpeed;
@@ -66,8 +66,8 @@ namespace MoreMountains.Tools
 		/// the original position of the transform, hidden and shouldn't be accessed
 		[Tooltip("변환의 원래 위치는 숨겨져 있으며 접근하면 안 됩니다.")]
 		protected Vector3 _originalTransformPosition;
-		/// if this is true, the object can move along the path
-		public virtual bool CanMove { get; set; }
+        /// 이것이 사실이라면 물체는 경로를 따라 움직일 수 있습니다
+        public virtual bool CanMove { get; set; }
         
 		protected bool _originalTransformPositionStatus = false;
 		protected bool _active=false;
