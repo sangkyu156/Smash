@@ -30,7 +30,7 @@ public class NEWGAME : MonoBehaviour
     {
         MMSaveLoadManager.DeleteSave("RogueMainInventory_Player1.inventory");
         ES3.DeleteFile();
-
+        
         LevelManager.Instance.GotoLevel("StartCutScene");
     }
 

@@ -1,14 +1,13 @@
 ﻿using MoreMountains.Tools;
-using NPOI.SS.Formula.Functions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static DG.DemiEditor.DeEditorUtils;
 
 
 namespace MoreMountains.InventoryEngine
@@ -169,6 +168,17 @@ namespace MoreMountains.InventoryEngine
         public bool isInstalling = false;
         //메인 인벤토리
         public Inventory mainInventory;
+        //스테이지 클리어 확인변수
+        public bool isStage1 = false;
+        public bool isStage2 = false;
+        public bool isStage3 = false;
+        public bool isStage4 = false;
+        public bool isStage5 = false;
+        public bool isStage6 = false;
+        public bool isStage7 = false;
+        public bool isStage8 = false;
+        public bool isStage9 = false;
+        public bool isStage10 = false;
 
 
         /// <summary>
@@ -187,8 +197,8 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Start()
         {
             //파일 있는지 체크하고(해당 컴퓨터에서 처음 실행하는지 확인하고) 파일이 있으면 로드하고 없으면 초기값 넣어서 저장하고 불러온다
-            if (PlayerID == "Player1")
-                IsStartSetup();
+            //if (PlayerID == "Player1")
+            //    IsStartSetup();//여기서 안넣고 VillagePopupManager가 이벤트 받아서 넣어주는걸로 바꿈
 
             if (PlayerID == "NPC1")
                 StoreItemSeting();
@@ -1128,18 +1138,134 @@ namespace MoreMountains.InventoryEngine
             for (int i = 0; i < InventoryItems.Length; i++)
             {
                 if (InventoryItems[i].ItemID == "RockNormal")
+                {
                     ItemsToInclude = InventoryItems[i];
-                else if (InventoryItems[i].ItemID == "RockRare")
-                    ItemsToInclude = InventoryItems[i];
-                else if (InventoryItems[i].ItemID == "RockUnique")
-                    ItemsToInclude = InventoryItems[i];
-                else if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
-                    ItemsToInclude = InventoryItems[i];
-                else if (InventoryItems[i].ItemID == "DragonflyPet")
-                    ItemsToInclude = InventoryItems[i];
-
-                AddItem(ItemsToInclude, 1);
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
             }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "RockRare")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "RockUnique")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "HealRockNormal")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "HealRockRare")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "HealRockUnique")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "IceRockNormal")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "IceRockRare")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < InventoryItems.Length; i++)
+            {
+                if (InventoryItems[i].ItemID == "IceRockUnique")
+                {
+                    ItemsToInclude = InventoryItems[i];
+                    AddItem(ItemsToInclude, 1);
+                    break;
+                }
+            }
+
+            if(isStage1 == true)
+            {
+                for (int i = 0; i < InventoryItems.Length; i++)
+                {
+                    if (InventoryItems[i].ItemID == "DragonflyPet")
+                    {
+                        ItemsToInclude = InventoryItems[i];
+                        AddItem(ItemsToInclude, 1);
+                        break;
+                    }
+                }
+            }
+
+            if(isStage2 == true)
+            {
+                for (int i = 0; i < InventoryItems.Length; i++)
+                {
+                    if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
+                    {
+                        ItemsToInclude = InventoryItems[i];
+                        AddItem(ItemsToInclude, 1);
+                        break;
+                    }
+                }
+            }
+
+            //for (int i = 0; i < InventoryItems.Length; i++)
+            //{
+            //    if (InventoryItems[i].ItemID == "RockNormal")
+            //        ItemsToInclude = InventoryItems[i];
+            //    else if (InventoryItems[i].ItemID == "RockRare")
+            //        ItemsToInclude = InventoryItems[i];
+            //    else if (InventoryItems[i].ItemID == "RockUnique")
+            //        ItemsToInclude = InventoryItems[i];
+            //    else if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
+            //        ItemsToInclude = InventoryItems[i];
+            //    else if (InventoryItems[i].ItemID == "DragonflyPet")
+            //        ItemsToInclude = InventoryItems[i];
+
+            //    AddItem(ItemsToInclude, 1);
+            //}
         }
 
         //퀵슬롯 아이템 전부 삭제

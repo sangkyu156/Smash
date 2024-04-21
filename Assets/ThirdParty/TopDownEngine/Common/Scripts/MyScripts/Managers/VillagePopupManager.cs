@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing;
 
-public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEvent>
+public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEventListener<MMGameEvent>
 {
     public GameObject buyPopup;
     public GameObject sellPopup;
@@ -22,13 +22,17 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     InventorySlot curSolt;
     public InventoryItem[] InventoryItems = new InventoryItem[50];
 
+    private void Awake()
+    {
+        InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
+    }
+
     private void Start()
     {
         OffBuyPopup();
         OffSellPopup();
         OffSkillBuyPopup();
         OffSkillResetPopup();
-        InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
     }
 
     public void OnBuyPopup()
@@ -62,6 +66,9 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     //여기다 OK 버튼 누르면 실행되는 메소드 만들어야함
     public void BuyItem()
     {
+        if (DataManager.Instance.datas.CurPlayerGold < curItem.price * curQuantity)
+            return;
+
         curQuantity = itemStore.quantity;
         DataManager.Instance.datas.CurPlayerGold -= (curItem.price * curQuantity);
         itemStore.SetPlayerGold();
@@ -76,6 +83,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
         }
         inventory.SaveInventory();
         DataManager.Instance.DataSave();
+        inventoryDetails.DisplayDetails(null);
 
         OffBuyPopup();
     }
@@ -157,6 +165,7 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     protected virtual void OnEnable()
     {
         this.MMEventStartListening<MMInventoryEvent>();
+        this.MMEventStartListening<MMGameEvent>();
     }
 
     /// <summary>
@@ -165,5 +174,57 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
     protected virtual void OnDisable()
     {
         this.MMEventStopListening<MMInventoryEvent>();
+        this.MMEventStopListening<MMGameEvent>();
+    }
+
+    public void OnMMEvent(MMGameEvent gameEvent)
+    {
+        //inventory.ResetSavedInventory();//인벤토리 내용 지우기
+
+        //inventory.SaveInventory();//인벤토리 새로 만들기
+        //inventory.LoadSavedInventory();//인벤토리 불러오기
+
+        if (gameEvent.EventName == "StartItemAdd")
+        {
+            Debug.Log("초기 아이템 채우려함");
+            foreach (InventoryItem item in InventoryItems)
+            {
+                if (item.ItemID == "RockNormal")
+                {
+                    inventory.AddItem(item, 5);
+                    break;
+                }
+            }
+
+            foreach (InventoryItem item in InventoryItems)
+            {
+                if (item.ItemID == "HealRockNormal")
+                {
+                    inventory.AddItem(item, 2);
+                    break;
+                }
+            }
+
+            foreach (InventoryItem item in InventoryItems)
+            {
+                if (item.ItemID == "IceRockNormal")
+                {
+                    inventory.AddItem(item, 2);
+                    break;
+                }
+            }
+
+            //테스트
+            //foreach (InventoryItem item in InventoryItems)
+            //{
+            //    if (item.ItemID == "DragonflyPet")
+            //    {
+            //        inventory.AddItem(item, 10);
+            //        break;
+            //    }
+            //}
+
+            inventory.SaveInventory();
+        }
     }
 }

@@ -496,9 +496,9 @@ namespace MoreMountains.TopDownEngine
 			{
 				case Define.Stage.Stage00: rewardGold = 70; break;
                 case Define.Stage.Stage01:rewardGold = 100; break;
-                case Define.Stage.Stage02:rewardGold = 100; break;
-                case Define.Stage.Stage03:rewardGold = 100; break;
-                case Define.Stage.Stage04:rewardGold = 100; break;
+                case Define.Stage.Stage02:rewardGold = 130; break;
+                case Define.Stage.Stage03:rewardGold = 170; break;
+                case Define.Stage.Stage04:rewardGold = 220; break;
                 case Define.Stage.Stage05:rewardGold = 100; break;
                 case Define.Stage.Stage06:rewardGold = 100; break;
                 case Define.Stage.Stage07:rewardGold = 100; break;

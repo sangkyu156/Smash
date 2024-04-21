@@ -1,7 +1,6 @@
 // Version: 1.2.0
 using System.Collections.Generic;
 using AssetKits.ParticleImage.Enumerations;
-using log4net.Util;
 using Unity.Collections;
 using Unity.Mathematics;
 using UnityEngine;

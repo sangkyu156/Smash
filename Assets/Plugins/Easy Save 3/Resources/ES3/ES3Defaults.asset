@@ -51,6 +51,8 @@ MonoBehaviour:
     - MoreMountains.TopDownEngine
     - Nova
     - Nova.UIControls
+    - OccaSoftware.SuperSimpleSkybox.Demo
+    - OccaSoftware.SuperSimpleSkybox.Runtime
     - ParticleImage
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

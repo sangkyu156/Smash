@@ -10561,7 +10561,7 @@ GameObject:
   - component: {fileID: 3632823746825874679}
   m_Layer: 13
   m_Name: Cactus
-  m_TagString: Slime
+  m_TagString: Cactus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10807,7 +10807,7 @@ MonoBehaviour:
   InputAuthorized: 0
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 3
+  WalkSpeed: 4
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -11020,7 +11020,7 @@ MonoBehaviour:
   Billboard: 1
   InstantiatedOnDeath: {fileID: 0}
   HealthBarOffset: {x: 0, y: 2.1, z: 0}
-  AlwaysVisible: 1
+  AlwaysVisible: 0
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 1
@@ -11040,8 +11040,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 120
-  MaximumHealth: 120
+  InitialHealth: 39.7
+  MaximumHealth: 39.7
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 8600034992143065493}

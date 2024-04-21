@@ -23,6 +23,11 @@ TagManager:
   - Mushroom
   - UITarget
   - UICanvas
+  - Cactus
+  - DataManager
+  - Spider
+  - Skeleton
+  - Beholder
   layers:
   - Default
   - TransparentFX

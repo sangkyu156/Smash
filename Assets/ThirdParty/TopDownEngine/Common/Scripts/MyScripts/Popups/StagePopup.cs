@@ -56,4 +56,9 @@ public class StagePopup : MonoBehaviour
             case Define.Stage.Stage10: break;
         }
     }
+
+    public void GoToVillge()
+    {
+        MMSceneLoadingManager.LoadScene("Village");
+    }
 }

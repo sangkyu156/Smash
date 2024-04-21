@@ -10631,7 +10631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5999446253040713583}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.03626567, w: 0.9993422}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10641,7 +10641,7 @@ Transform:
   - {fileID: 1973063514138739907}
   - {fileID: 2006571548971959929}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -4.157}
 --- !u!143 &9099393691391271866
 CharacterController:
   m_ObjectHideFlags: 0
@@ -11077,7 +11077,7 @@ MonoBehaviour:
   Billboard: 1
   InstantiatedOnDeath: {fileID: 0}
   HealthBarOffset: {x: 0, y: 1.8, z: 0}
-  AlwaysVisible: 1
+  AlwaysVisible: 0
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 1
@@ -11097,8 +11097,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 100
-  MaximumHealth: 100
+  InitialHealth: 34.5
+  MaximumHealth: 34.5
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 663329513979215472}

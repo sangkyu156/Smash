@@ -6,18 +6,23 @@ using DG.Tweening;
 
 public class qweqweqw : MonoBehaviour
 {
-    TextMeshProUGUI textMeshProUGUI;
-    Transform qwe;
-    // Start is called before the first frame update
     void Start()
     {
-        ParticleDestroy.Destroy(this);
-        //textMeshProUGUI.DOText
+        Sexgood();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Sexgood()
     {
-        
+        for (int i = 0; i < 5; i++)
+        {
+            if(i == 2)
+            {
+                Debug.Log($"{i}");
+                //break;
+                return;
+            }
+        }
+
+        Debug.Log("qwe");
     }
 }

@@ -36,6 +36,7 @@ public class StageZone : MonoBehaviour
     {
         switch (curStage)
         {
+            case "00": isChallenge = true; break;
             case "01": isChallenge = true; break;
             case "02": isChallenge = DataManager.Instance.datas.stage1; break;
             case "03": isChallenge = DataManager.Instance.datas.stage2; break;

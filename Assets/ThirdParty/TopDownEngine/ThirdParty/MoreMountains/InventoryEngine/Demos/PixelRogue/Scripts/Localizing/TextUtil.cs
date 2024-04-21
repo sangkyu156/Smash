@@ -7,7 +7,7 @@ public class TextUtil : MonoBehaviour
 {
     static Dictionary<string, TextDB.Data> textIDBaseData = new Dictionary<string, TextDB.Data>();
     static public TextUtil instance;
-    static public int languageNumber = 2;//한글,영어 설정
+    static public int languageNumber = 0;//한글,영어 설정
 
     private void Awake()
     {

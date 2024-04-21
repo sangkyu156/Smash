@@ -34,7 +34,7 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 50
+  price: 110
   ItemName: "\uC7A0\uC790\uB9AC \uD3AB"
   grade: 0
   ShortDescription: "\uC18C\uBAA8\uD488"

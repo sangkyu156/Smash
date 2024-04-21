@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
 using System.IO;
+using MoreMountains.InventoryEngine;
 
 
 namespace MoreMountains.TopDownEngine
@@ -139,16 +140,20 @@ namespace MoreMountains.TopDownEngine
                 startGuide.SetActive(true);
                 DataManager.Instance.datas.firstVillage = true;
                 DataManager.Instance.DataSave();
+				//초기 아이템 넣어주는 이벤트 발생
+				MMGameEvent.Trigger("StartItemAdd");
             }
             else if (SceneManager.GetActiveScene().name == "LevelSelect2" && DataManager.Instance.datas.firstLevelSelect == false)
             {
-                //InputManager.Instance.InputDetectionActive = false;
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
                 DataManager.Instance.datas.firstLevelSelect = true;
                 DataManager.Instance.DataSave();
             }
             else if (SceneManager.GetActiveScene().name == "Battlefield01" && DataManager.Instance.datas.firstBattlefield == false)
             {
-                //InputManager.Instance.InputDetectionActive = false;
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
                 DataManager.Instance.datas.firstBattlefield = true;
                 DataManager.Instance.DataSave();
             }
@@ -664,7 +669,12 @@ namespace MoreMountains.TopDownEngine
         protected virtual void OnEnable()
 		{
 			this.MMEventStartListening<TopDownEngineEvent>();
-		}
+            if (SceneManager.GetActiveScene().name == "Village")
+			{
+				DataManager.Instance.FindSetStore();
+            }
+
+        }
 
         /// <summary>
         /// OnDisable을 사용하면 이벤트 수신이 중지됩니다.

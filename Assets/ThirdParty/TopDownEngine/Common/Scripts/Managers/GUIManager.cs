@@ -331,7 +331,7 @@ namespace MoreMountains.TopDownEngine
 
         public void UpdateHealthBarText(float currentHealth, float maxHealth)
 		{
-			string text = currentHealth.ToString() + " / " + maxHealth.ToString();
+			string text = currentHealth.ToString("F1") + " / " + maxHealth.ToString("F1");
 
             foreach (MMProgressBar healthBar in HealthBars)
             {

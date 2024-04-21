@@ -1,10 +1,8 @@
-﻿using DG.DemiEditor;
-using MoreMountains.Tools;
+﻿using MoreMountains.Tools;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Codice.CM.Common.CmCallContext;
 
 namespace MoreMountains.InventoryEngine
 {

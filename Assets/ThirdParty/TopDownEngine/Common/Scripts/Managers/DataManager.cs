@@ -1,9 +1,11 @@
+using MoreMountains.InventoryEngine;
 using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public enum ThirdAttack
 {
@@ -18,11 +20,11 @@ public enum Skills
 [System.Serializable]
 public class Datas
 {
-    public int CurPlayerGold = 77777;
-    public int Power = 50;
-    public float Speed = 10;
+    public int CurPlayerGold = 100;
+    public int Power = 10;
+    public float Speed = 8;
     public float Heath = 100;
-    public float Stamina = 30;
+    public float Stamina = 15;
     public ThirdAttack curThirdAttack = ThirdAttack.Holy;
     public bool firstVillage = false;
     public bool firstLevelSelect = false;
@@ -86,6 +88,7 @@ public class Datas
 public class DataManager : MMPersistentSingleton<DataManager>
 {
     public Datas datas;
+    GameObject inventory;
 
     private string KeyName = "Datas";
     private string FileName = "SaveFile.es3";
@@ -120,13 +123,32 @@ public class DataManager : MMPersistentSingleton<DataManager>
     public void PlayerRefresh()
     {
         int bounsHealth = datas.S_Health * 10;
-        int baseHealth = 100;
+        float baseHealth = 100;
         datas.Heath = baseHealth + bounsHealth;
         int bounsStamina = datas.S_Stamina * 5;
-        int baseStamina = 30;
+        float baseStamina = 15;
         datas.Stamina = baseStamina + bounsStamina;
         LevelManager.Instance.Players[0].gameObject.GetComponent<Health>().UpdateMaxHealth();
         LevelManager.Instance.Players[0].gameObject.GetComponent<CharacterRun>().StaminaChange();
         Debug.Log("PlayerRefresh«‘");
+    }
+
+    public void FindSetStore()
+    {
+        Debug.Log("asdzxc2");
+        inventory = GameObject.FindGameObjectWithTag("NPCInventory");
+        Debug.Log($"inventory = {inventory.gameObject.name}");
+        Debug.Log($"datas.stage1 = {datas.stage1}");
+        Debug.Log($"datas.stage2 = {datas.stage2}");
+        inventory.GetComponent<Inventory>().isStage1 = datas.stage1;
+        inventory.GetComponent<Inventory>().isStage2 = datas.stage2;
+        inventory.GetComponent<Inventory>().isStage3 = datas.stage3;
+        inventory.GetComponent<Inventory>().isStage4 = datas.stage4;
+        inventory.GetComponent<Inventory>().isStage5 = datas.stage5;
+        inventory.GetComponent<Inventory>().isStage6 = datas.stage6;
+        inventory.GetComponent<Inventory>().isStage7 = datas.stage7;
+        inventory.GetComponent<Inventory>().isStage8 = datas.stage8;
+        inventory.GetComponent<Inventory>().isStage9 = datas.stage9;
+        inventory.GetComponent<Inventory>().isStage10 = datas.stage10;
     }
 }

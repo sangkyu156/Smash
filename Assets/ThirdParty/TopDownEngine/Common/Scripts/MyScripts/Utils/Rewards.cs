@@ -18,7 +18,6 @@ public class Rewards : MonoBehaviour
         if (DataManager.Instance.datas.S_ClearReward > 0)
             CreateManager.Instantiate("Rewards/RewardBonusGold", this.transform);
 
-        CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform);//테스트
         int curStage = (int)GameManager.Instance.stage;
         if(isFirstClear(curStage) == false)//처음 클리어하는 스테이지면 false반환
         {
@@ -26,9 +25,8 @@ public class Rewards : MonoBehaviour
 
             switch (curStage)
             {
-                case 0: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform); break; //테스트
-                case 1: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform);break; //테스트
-                case 2:
+                case 1: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform);break;
+                case 2: CreateManager.Instantiate("Rewards/ScarecrowBotAvailable", this.transform); break;
                 case 3:
                 case 4:
                 case 5:
@@ -51,7 +49,7 @@ public class Rewards : MonoBehaviour
                 case 22:
                 case 23:
                 case 24:
-                case 25: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform); break; //테스트
+                case 25: 
                 case 26:
                 case 27:
                 case 28:
@@ -76,7 +74,7 @@ public class Rewards : MonoBehaviour
                 case 47:
                 case 48:
                 case 49:
-                case 50: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform); break; //테스트
+                case 50: break;
             }
         }
     }

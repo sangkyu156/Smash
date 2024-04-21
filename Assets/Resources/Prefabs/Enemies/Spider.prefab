@@ -25923,7 +25923,7 @@ GameObject:
   - component: {fileID: 7339785985402529146}
   m_Layer: 13
   m_Name: Spider
-  m_TagString: Slime
+  m_TagString: Spider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26382,7 +26382,7 @@ MonoBehaviour:
   Billboard: 1
   InstantiatedOnDeath: {fileID: 0}
   HealthBarOffset: {x: 0, y: 1.8, z: 0}
-  AlwaysVisible: 1
+  AlwaysVisible: 0
   DisplayDurationOnHit: 1
   HideBarAtZero: 1
   HideBarAtZeroDelay: 1
@@ -26402,8 +26402,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 150
-  MaximumHealth: 150
+  InitialHealth: 45.6
+  MaximumHealth: 45.6
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 794184634353564541}

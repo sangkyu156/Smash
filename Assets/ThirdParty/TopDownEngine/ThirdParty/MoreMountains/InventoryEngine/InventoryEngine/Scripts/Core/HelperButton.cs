@@ -11,6 +11,7 @@ public class HelperButton : MonoBehaviour
 
     public void OnHelperPopup()
     {
+        Time.timeScale = 0;
         if(TextUtil.languageNumber == 0)
         {
             HelperPopupIsOpen = true;
@@ -25,6 +26,7 @@ public class HelperButton : MonoBehaviour
 
     public void OffHelperPopup()
     {
+        Time.timeScale = 1;
         HelperPopupIsOpen = false;
         helperPopup_KR.SetActive(false);
         helperPopup_EN.SetActive(false);

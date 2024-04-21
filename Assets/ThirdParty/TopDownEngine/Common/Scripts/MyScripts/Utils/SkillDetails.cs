@@ -185,4 +185,9 @@ public class SkillDetails : MonoBehaviour
         DisplaySkillDetails(curSkill);
         DataManager.Instance.DataSave();
     }
+
+    public void LockSkill()
+    {
+        buyButton.interactable = false;
+    }
 }
