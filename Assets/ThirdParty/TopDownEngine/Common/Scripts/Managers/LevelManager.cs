@@ -115,6 +115,7 @@ namespace MoreMountains.TopDownEngine
 		//내가만든 변수
 		public bool isClear = false;
 		public GameObject startGuide;
+        public bool HelperPopupIsOpen = false;
 
         /// <summary>
         /// Awake시 플레이어를 인스턴스화합니다.
@@ -138,6 +139,7 @@ namespace MoreMountains.TopDownEngine
             {
                 InputManager.Instance.InputDetectionActive = false;
                 startGuide.SetActive(true);
+				HelperPopupIsOpen = true;
                 DataManager.Instance.datas.firstVillage = true;
                 DataManager.Instance.DataSave();
 				//초기 아이템 넣어주는 이벤트 발생
@@ -154,6 +156,7 @@ namespace MoreMountains.TopDownEngine
             {
                 InputManager.Instance.InputDetectionActive = false;
                 startGuide.SetActive(true);
+                HelperPopupIsOpen = true;
                 DataManager.Instance.datas.firstBattlefield = true;
                 DataManager.Instance.DataSave();
             }

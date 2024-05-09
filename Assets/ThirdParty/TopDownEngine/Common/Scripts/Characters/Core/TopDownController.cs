@@ -180,13 +180,13 @@ namespace MoreMountains.TopDownEngine
 			JustGotGrounded = (!_groundedLastFrame && Grounded);
 			_groundedLastFrame = Grounded;
 		}
-        
-		/// <summary>
-		/// Use this to apply an impact to a controller, moving it in the specified direction at the specified force
-		/// </summary>
-		/// <param name="direction"></param>
-		/// <param name="force"></param>
-		public virtual void Impact(Vector3 direction, float force)
+
+        /// <summary>
+        /// 이를 사용하여 컨트롤러에 충격을 가하고 지정된 힘으로 지정된 방향으로 이동합니다.
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <param name="force"></param>
+        public virtual void Impact(Vector3 direction, float force)
 		{
 
 		}

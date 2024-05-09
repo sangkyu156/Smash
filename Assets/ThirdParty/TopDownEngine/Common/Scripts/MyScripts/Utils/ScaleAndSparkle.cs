@@ -1,12 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
-using System;
+using UnityEngine;
 using UnityEngine.UI;
-using DG.DemiEditor;
-using DG.DOTweenEditor.UI;
-using DG.Tweening.Core;
 
 public class ScaleAndSparkle : MonoBehaviour
 {
@@ -40,6 +34,6 @@ public class ScaleAndSparkle : MonoBehaviour
     void SparkleUPandDown(float ranNum2)
     {
         //안됨(아직 필요없어서 수정안함)
-        DOTween.To(() => newColor, x => newColor = x, new Color(1, 1, 1, 0), ranNum2).SetOptions(true).SetLoops(-1, LoopType.Yoyo).OnStart(() => {});
+        DOTween.To(() => newColor, x => newColor = x, new Color(1, 1, 1, 0), ranNum2).SetOptions(true).SetLoops(-1, LoopType.Yoyo).OnStart(() => { });
     }
 }

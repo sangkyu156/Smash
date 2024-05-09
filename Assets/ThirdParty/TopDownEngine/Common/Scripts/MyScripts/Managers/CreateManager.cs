@@ -20,7 +20,7 @@ namespace MoreMountains.TopDownEngine
         float createTime = 0;
         float clearTime = 0;
         int curEnemyCount = 0;//현재 필드에 나와있는 에너미 숫자
-        int enemyKillCount = 0;//에너미 죽일때 올라가는 숫자 (5마리 죽이면 다시 0으로됨)
+        public int enemyKillCount = 0;//에너미 죽일때 올라가는 숫자 (5마리 죽이면 다시 0으로됨)
         GameObject buff;
 
         private void Awake()
@@ -275,17 +275,17 @@ namespace MoreMountains.TopDownEngine
         {
             int randomValue = Random.Range(1, 11);
 
-            if (randomValue <= 2)
+            if (randomValue <= 3)
             {
                 int randomValue2 = Random.Range(1, 7);
                 switch (randomValue2)
                 {
-                    case 1: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
-                    case 2: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 1: buff = Instantiate("Battlefield/Buff/BuffHealth"); break;
+                    case 2: buff = Instantiate("Battlefield/Buff/BuffHeart"); break;
                     case 3: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
-                    case 4: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 4: buff = Instantiate("Battlefield/Buff/BuffRandom"); break;
                     case 5: buff = Instantiate("Battlefield/Buff/BuffSpeedup"); break;
-                    case 6: buff = Instantiate("Battlefield/Buff/BuffInvincibility"); break;
+                    case 6: buff = Instantiate("Battlefield/Buff/BuffStamina"); break;
                 }
 
                 SetRandomPosition(buff);
@@ -338,8 +338,78 @@ namespace MoreMountains.TopDownEngine
             GameObject dragonFly = Instantiate("Pet/Dragonfly");
 
             dragonFly.transform.position = spawnPosition;
+        }
 
-            //Instantiate(dragonFly, spawnPosition, Quaternion.identity);
+        public void HealthPotionNormalUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/HealthPotionNormal");
+            potion.transform.position = playerPosition;
+        }
+
+        public void HealthPotionRareUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/HealthPotionRare");
+            potion.transform.position = playerPosition;
+        }
+
+        public void HealthPotionUniqueUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/HealthPotionUnique");
+            potion.transform.position = playerPosition;
+        }
+
+        public void InvincibilityPotionNormalUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/InvincibilityPotionNormal");
+            potion.transform.position = playerPosition;
+        }
+
+        public void InvincibilityPotionRareUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/InvincibilityPotionRare");
+            potion.transform.position = playerPosition;
+        }
+
+        public void InvincibilityPotionUniqueUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/InvincibilityPotionUnique");
+            potion.transform.position = playerPosition;
+        }
+
+        public void SpeedPotionNormalUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/SpeedPotionNormal");
+            potion.transform.position = playerPosition;
+        }
+
+        public void SpeedPotionRareUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/SpeedPotionRare");
+            potion.transform.position = playerPosition;
+        }
+
+        public void SpeedPotionUniqueUse()
+        {
+            // 플레이어의 현재 위치를 가져옵니다.
+            Vector3 playerPosition = player.transform.position;
+            GameObject potion = Instantiate("Potions/SpeedPotionUnique");
+            potion.transform.position = playerPosition;
         }
 
         //↓오브젝트 생성 함수들
@@ -375,14 +445,32 @@ namespace MoreMountains.TopDownEngine
         public void ReturnPool(Slime clone)
         {
             poolManager.TakeToPool<Slime>(clone.idName, clone);
-            curEnemyCount--;
-            enemyKillCount++;
         }
 
         public void OnMMEvent(MMGameEvent gameEvent)
         {
             if (gameEvent.EventName == "DragonflySummon")
                 DragonflySummon();
+            if (gameEvent.EventName == "HealthPotionNormal")
+                HealthPotionNormalUse();
+            if (gameEvent.EventName == "HealthPotionRare")
+                HealthPotionRareUse();
+            if (gameEvent.EventName == "HealthPotionUnique")
+                HealthPotionUniqueUse();
+            if (gameEvent.EventName == "InvincibilityPotionNormal")
+                InvincibilityPotionNormalUse();
+            if (gameEvent.EventName == "InvincibilityPotionRare")
+                InvincibilityPotionRareUse();
+            if (gameEvent.EventName == "InvincibilityPotionUnique")
+                InvincibilityPotionUniqueUse();
+            if (gameEvent.EventName == "SpeedPotionNormal")
+                SpeedPotionNormalUse();
+            if (gameEvent.EventName == "SpeedPotionRare")
+                SpeedPotionRareUse();
+            if (gameEvent.EventName == "SpeedPotionUnique")
+                SpeedPotionUniqueUse();
+            if (gameEvent.EventName == "FirestormNormal")
+                SpeedPotionUniqueUse();
         }
     }
 }

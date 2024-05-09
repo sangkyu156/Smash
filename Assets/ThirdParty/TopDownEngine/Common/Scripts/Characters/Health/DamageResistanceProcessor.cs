@@ -284,20 +284,20 @@ namespace MoreMountains.TopDownEngine
 			return false;
 		}
 
-		/// <summary>
-		/// Processes the input knockback force through the various resistances
-		/// </summary>
-		/// <param name="knockback"></param>
-		/// <param name="typedDamages"></param>
-		/// <returns></returns>
-		public virtual Vector3 ProcessKnockbackForce(Vector3 knockback, List<TypedDamage> typedDamages)
+        /// <summary>
+        /// 다양한 저항을 통해 입력된 넉백력을 처리합니다.
+        /// </summary>
+        /// <param name="knockback"></param>
+        /// <param name="typedDamages"></param>
+        /// <returns></returns>
+        public virtual Vector3 ProcessKnockbackForce(Vector3 knockback, List<TypedDamage> typedDamages)
 		{
-			if (DamageResistanceList.Count == 0) // if we don't have resistances, we output raw knockback value
-			{
+			if (DamageResistanceList.Count == 0) // 저항이 없으면 원시 넉백 값을 출력합니다.
+            {
 				return knockback;
 			}
-			else // if we do have resistances
-			{
+            else // 저항이 있다면
+            {
 				foreach (DamageResistance resistance in DamageResistanceList)
 				{
 					knockback = resistance.ProcessKnockback(knockback, null);

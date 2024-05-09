@@ -57,10 +57,10 @@ namespace MoreMountains.TopDownEngine
 			}
 		}
 
-		/// <summary>
-		/// Restarts the current level, without reloading the whole scene
-		/// </summary>
-		public virtual void RestartLevel()
+        /// <summary>
+        /// 전체 장면을 다시 로드하지 않고 현재 레벨을 다시 시작합니다.
+        /// </summary>
+        public virtual void RestartLevel()
 		{
 			if (GameManager.Instance.Paused)
 			{
@@ -69,13 +69,13 @@ namespace MoreMountains.TopDownEngine
 			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.RespawnStarted, null);
 		}
 
-		/// <summary>
-		/// Reloads the current level
-		/// </summary>
-		public virtual void ReloadLevel()
+        /// <summary>
+        /// 현재 레벨을 다시 로드합니다.
+        /// </summary>
+        public virtual void ReloadLevel()
 		{
-			// we trigger an unPause event for the GameManager (and potentially other classes)
-			TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
+            // GameManager(및 잠재적으로 다른 클래스)에 대해 unPause 이벤트를 트리거합니다.
+            TopDownEngineEvent.Trigger(TopDownEngineEventTypes.UnPause, null);
 			LoadScene(SceneManager.GetActiveScene().name);
 		}
 		

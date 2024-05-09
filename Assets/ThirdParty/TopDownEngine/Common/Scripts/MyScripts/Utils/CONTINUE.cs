@@ -10,7 +10,6 @@ public class CONTINUE : MonoBehaviour
     public TextMeshProUGUI text;
     Button button;
 
-    private string KeyName = "Datas";
     private string FileName = "SaveFile.es3";
 
     private void Awake()

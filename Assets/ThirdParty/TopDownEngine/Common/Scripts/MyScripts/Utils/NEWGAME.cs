@@ -10,7 +10,6 @@ public class NEWGAME : MonoBehaviour
 {
     public GameObject newstartPopup;
 
-    private string KeyName = "Datas";
     private string FileName = "SaveFile.es3";
 
 

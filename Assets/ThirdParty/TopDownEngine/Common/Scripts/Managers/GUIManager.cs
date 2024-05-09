@@ -32,8 +32,8 @@ namespace MoreMountains.TopDownEngine
 		/// the pause screen game object
 		[Tooltip("일시정지 화면 게임 객체")]
 		public GameObject PauseScreen;
-        [Tooltip("도움말 화면 객체")]
-        public HelperButton HelperScreen;
+        [Tooltip("팝업 부모 객체")]
+        public GameObject PopupParents;
         /// the death screen
         [Tooltip("죽음 화면")]
 		public GameObject DeathScreen;

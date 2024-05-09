@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using MoreMountains.TopDownEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,11 @@ using UnityEngine;
 public class EnemyBase2 : MonoBehaviour
 {
     CharacterHandleWeapon weapon;
+
+    protected Vector3 my_relativePosition, _knockbackForce;
+    protected Health _colliderHealth;
+    protected TopDownController _colliderTopDownController;
+    public GameObject Owner;
 
     private void Awake()
     {
@@ -47,7 +53,7 @@ public class EnemyBase2 : MonoBehaviour
         }
 
         this.gameObject.transform.localPosition = pos;
-        Debug.Log($"포지션 = {this.gameObject.transform.position}");
+        //Debug.Log($"포지션 = {this.gameObject.transform.position}");
     }
 
     //플레이어 위치에 따른 랜덤값 반환 함수
@@ -90,5 +96,22 @@ public class EnemyBase2 : MonoBehaviour
         }
         else
             return Random.Range(1, 21);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 13)
+        {
+            Debug.Log("충돌에 가해진 힘: " + collision.impulse.magnitude);
+        }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.layer == 13 && hit.controller.velocity.magnitude > 2f)
+        {
+            _colliderTopDownController = hit.gameObject.MMGetComponentNoAlloc<TopDownController3D>();
+            _colliderTopDownController.Impact(-hit.normal, hit.controller.velocity.magnitude * 0.4f);
+        }
     }
 }

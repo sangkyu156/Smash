@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using MoreMountains.InventoryEngine;
 using MoreMountains.Feedbacks;
 using UnityEngine.SceneManagement;
+using NPOI.POIFS.Properties;
 
 namespace MoreMountains.TopDownEngine
 {
@@ -593,10 +594,16 @@ namespace MoreMountains.TopDownEngine
 					}
 					break;
 				case TopDownEngineEventTypes.Pause:
-					if(GUIManager.Instance.HelperScreen != null)
+					if(GUIManager.Instance.PopupParents != null)
 					{
-						if (GUIManager.Instance.HelperScreen.HelperPopupIsOpen == true)
-							GUIManager.Instance.HelperScreen.OffHelperPopup();
+						if (CheckChildActivation(GUIManager.Instance.PopupParents) == true)
+						{
+							if(LevelManager.Instance.HelperPopupIsOpen == true)
+							{
+								Time.timeScale = 1;
+								LevelManager.Instance.HelperPopupIsOpen = false;
+							}
+						}
 						else
 							Pause();
                     }
@@ -605,16 +612,47 @@ namespace MoreMountains.TopDownEngine
                     break;
 
 				case TopDownEngineEventTypes.UnPause:
-					UnPause ();
-					break;
+                    if (GUIManager.Instance.PopupParents != null)
+                    {
+                        if (CheckChildActivation(GUIManager.Instance.PopupParents) == true)
+                        {
+                            if (LevelManager.Instance.HelperPopupIsOpen == true)
+                            {
+                                Time.timeScale = 1;
+                                LevelManager.Instance.HelperPopupIsOpen = false;
+                            }
+                        }
+                        else
+                            UnPause();
+                    }
+                    else
+                        UnPause();
+                    break;
 			}
 		}
 
-		/// <summary>
-		/// Catches TopDownEnginePointsEvents and acts on them, playing the corresponding sounds
-		/// </summary>
-		/// <param name="pointEvent">TopDownEnginePointEvent event.</param>
-		public virtual void OnMMEvent(TopDownEnginePointEvent pointEvent)
+        //특정 오브젝트의 자식들이 활성화 된것이 있는지 확인하고 활성화된 자식이 있으면 비활성화 하는 함수
+		bool CheckChildActivation(GameObject checkOb)
+		{
+			bool active = false;
+
+			for (int i = 0; i < checkOb.transform.childCount; i++)
+			{
+                if(checkOb.transform.GetChild(i).gameObject.activeSelf == true)
+				{
+					active = true;
+					checkOb.transform.GetChild(i).gameObject.SetActive(false);
+                }
+            }
+
+			return active;
+		}
+
+        /// <summary>
+        /// Catches TopDownEnginePointsEvents and acts on them, playing the corresponding sounds
+        /// </summary>
+        /// <param name="pointEvent">TopDownEnginePointEvent event.</param>
+        public virtual void OnMMEvent(TopDownEnginePointEvent pointEvent)
 		{
 			switch (pointEvent.PointsMethod)
 			{

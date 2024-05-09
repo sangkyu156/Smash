@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using MoreMountains.TopDownEngine;
+using static UnityEngine.UI.GridLayoutGroup;
+using Unity.Burst.CompilerServices;
 
 public class qweqweqw : MonoBehaviour
 {
@@ -13,16 +16,15 @@ public class qweqweqw : MonoBehaviour
 
     void Sexgood()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            if(i == 2)
-            {
-                Debug.Log($"{i}");
-                //break;
-                return;
-            }
-        }
+        //_knockbackForce = DamageCausedKnockbackForce * _colliderHealth.KnockbackForceMultiplier;
+        //_knockbackForce = _colliderHealth.ComputeKnockbackForce(_knockbackForce, typedDamages);
+        //_relativePosition = _colliderTopDownController.transform.position - Owner.transform.position;
+        //_knockbackForce = Quaternion.LookRotation(_relativePosition) * _knockbackForce;
 
-        Debug.Log("qwe");
+
+        //_knockbackForce = hit.controller.velocity * _colliderHealth.KnockbackForceMultiplier;
+        //_knockbackForce = _colliderHealth.ComputeKnockbackForce(_knockbackForce);
+        //my_relativePosition = _colliderTopDownController.transform.position - Owner.transform.position;
+        //_knockbackForce = Quaternion.LookRotation(my_relativePosition) * _knockbackForce;
     }
 }

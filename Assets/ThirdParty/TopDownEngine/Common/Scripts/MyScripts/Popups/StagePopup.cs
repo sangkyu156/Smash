@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Codice.CM.SEIDInfo;
 using MoreMountains.TopDownEngine;
 using MoreMountains.Tools;
 

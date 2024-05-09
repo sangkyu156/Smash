@@ -228,8 +228,17 @@ namespace MoreMountains.InventoryEngine
 			{
                 PreviewObject previewObjectComponent = ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>();
                 PreviewObject2 previewObjectComponent2 = ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject2>();
+                PreviewObject3 previewObjectComponent3 = ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject3>();
 
-				if(previewObjectComponent == null)
+                if (previewObjectComponent != null)
+				{
+                    if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>().isInstallable)
+                    {
+                        Debug.Log("설치할수 없습니다.");
+                        return;
+                    }
+                }
+				else if(previewObjectComponent2 != null)
 				{
                     if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject2>().isInstallable)
                     {
@@ -237,10 +246,9 @@ namespace MoreMountains.InventoryEngine
                         return;
                     }
                 }
-
-				if(previewObjectComponent2 == null)
-				{
-                    if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject>().isInstallable)
+                else if (previewObjectComponent3 != null)
+                {
+                    if (!ParentInventoryDisplay.TargetInventory.ParentPreviewObjects.GetComponentInChildren<PreviewObject3>().isInstallable)
                     {
                         Debug.Log("설치할수 없습니다.");
                         return;

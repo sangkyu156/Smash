@@ -7,7 +7,6 @@ using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static ICSharpCode.SharpZipLib.Zip.ZipEntryFactory;
 
 public class ClearSplash : MonoBehaviour
 {

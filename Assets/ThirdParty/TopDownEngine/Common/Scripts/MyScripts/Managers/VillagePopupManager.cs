@@ -215,14 +215,14 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
             }
 
             //Å×½ºÆ®
-            //foreach (InventoryItem item in InventoryItems)
-            //{
-            //    if (item.ItemID == "DragonflyPet")
-            //    {
-            //        inventory.AddItem(item, 10);
-            //        break;
-            //    }
-            //}
+            foreach (InventoryItem item in InventoryItems)
+            {
+                if (item.ItemID == "DragonflyPet")
+                {
+                    inventory.AddItem(item, 5);
+                    break;
+                }
+            }
 
             inventory.SaveInventory();
         }

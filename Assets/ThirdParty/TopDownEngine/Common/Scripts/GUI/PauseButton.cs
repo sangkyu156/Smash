@@ -10,10 +10,10 @@ namespace MoreMountains.TopDownEngine
     [AddComponentMenu("TopDown Engine/GUI/PauseButton")]
 	public class PauseButton : TopDownMonoBehaviour
 	{
-		/// <summary>
-		/// Triggers a pause event
-		/// </summary>
-		public virtual void PauseButtonAction()
+        /// <summary>
+        /// 일시 중지 이벤트를 트리거합니다.
+        /// </summary>
+        public virtual void PauseButtonAction()
 		{
             // GameManager 및 이를 수신할 수 있는 다른 클래스에 대해 Pause 이벤트를 트리거합니다.
             StartCoroutine(PauseButtonCo());

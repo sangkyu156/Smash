@@ -198,6 +198,7 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void EnemyCount1()
     {
+        CreateManager.Instance.enemyKillCount++; //에너미 5마리 잡을때마다 30%확률로 랜덤하게 버프 생성
         enemy1++;
         if(enemy1 <= satisfactionCount1)
         {
@@ -217,6 +218,7 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void EnemyCount2()
     {
+        CreateManager.Instance.enemyKillCount++; //에너미 5마리 잡을때마다 30%확률로 랜덤하게 버프 생성
         enemy2++;
         if (enemy2 <= satisfactionCount2)
         {

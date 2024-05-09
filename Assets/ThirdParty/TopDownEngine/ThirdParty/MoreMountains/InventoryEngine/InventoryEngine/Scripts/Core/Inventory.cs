@@ -161,6 +161,7 @@ namespace MoreMountains.InventoryEngine
         public GameObject ParentPreviewObjects;
         InventoryItem ItemsToInclude;
         public InventoryItem[] InventoryItems = new InventoryItem[50];
+        public Dictionary<string, InventoryItem> InventoryItemsDictionary = new Dictionary<string, InventoryItem>();
         bool isRemove;
         int quickSlotTargetIndex = -1; //퀵슬롯 몇번째에 먹은아이템이 등록되어있는지
         int quickSlotTargetQuantity = -1; // 퀵슬롯에 먹은 아이템이 몇개로 등록되어있는지 (인벤토리에서 같은개수찾아야해서 필요)
@@ -189,7 +190,14 @@ namespace MoreMountains.InventoryEngine
             ItemsToInclude = (InventoryItem)ScriptableObject.CreateInstance("InventoryItem");
             if (PlayerID == "NPC1")
             {
-                InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
+                InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");//Value
+                string[] lines = new string[InventoryItems.Length];
+
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i] = InventoryItems[i].name.ToString();
+                    InventoryItemsDictionary.Add(lines[i], InventoryItems[i]);
+                }
             }
             RegisterInventory();
         }
@@ -1135,137 +1143,74 @@ namespace MoreMountains.InventoryEngine
         /// </summary>
 		public void StoreItemSeting()
         {
-            for (int i = 0; i < InventoryItems.Length; i++)
+            ItemsToInclude = InventoryItemsDictionary["RockNormal"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["RockRare"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["RockUnique"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["HealRockNormal"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["HealRockRare"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["HealRockUnique"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["IceRockNormal"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["IceRockRare"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["IceRockUnique"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["HealthPotionNormal"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["HealthPotionRare"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["HealthPotionUnique"];
+            AddItem(ItemsToInclude, 1);                    
+                                                           
+            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionNormal"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionRare"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionUnique"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["SpeedPotionNormal"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["SpeedPotionRare"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["SpeedPotionUnique"];
+            AddItem(ItemsToInclude, 1);
+
+            ItemsToInclude = InventoryItemsDictionary["FirestormNormal"];
+            AddItem(ItemsToInclude, 1);
+
+            if (isStage1 == true)
             {
-                if (InventoryItems[i].ItemID == "RockNormal")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
+                ItemsToInclude = InventoryItemsDictionary["DragonflyPet"];
+                AddItem(ItemsToInclude, 1);
             }
 
-            for (int i = 0; i < InventoryItems.Length; i++)
+            if (isStage2 == true)
             {
-                if (InventoryItems[i].ItemID == "RockRare")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
+                ItemsToInclude = InventoryItemsDictionary["ScarecrowBotNormal"];
+                AddItem(ItemsToInclude, 1);
             }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "RockUnique")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "HealRockNormal")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "HealRockRare")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "HealRockUnique")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "IceRockNormal")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "IceRockRare")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            for (int i = 0; i < InventoryItems.Length; i++)
-            {
-                if (InventoryItems[i].ItemID == "IceRockUnique")
-                {
-                    ItemsToInclude = InventoryItems[i];
-                    AddItem(ItemsToInclude, 1);
-                    break;
-                }
-            }
-
-            if(isStage1 == true)
-            {
-                for (int i = 0; i < InventoryItems.Length; i++)
-                {
-                    if (InventoryItems[i].ItemID == "DragonflyPet")
-                    {
-                        ItemsToInclude = InventoryItems[i];
-                        AddItem(ItemsToInclude, 1);
-                        break;
-                    }
-                }
-            }
-
-            if(isStage2 == true)
-            {
-                for (int i = 0; i < InventoryItems.Length; i++)
-                {
-                    if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
-                    {
-                        ItemsToInclude = InventoryItems[i];
-                        AddItem(ItemsToInclude, 1);
-                        break;
-                    }
-                }
-            }
-
-            //for (int i = 0; i < InventoryItems.Length; i++)
-            //{
-            //    if (InventoryItems[i].ItemID == "RockNormal")
-            //        ItemsToInclude = InventoryItems[i];
-            //    else if (InventoryItems[i].ItemID == "RockRare")
-            //        ItemsToInclude = InventoryItems[i];
-            //    else if (InventoryItems[i].ItemID == "RockUnique")
-            //        ItemsToInclude = InventoryItems[i];
-            //    else if (InventoryItems[i].ItemID == "ScarecrowBotNormal")
-            //        ItemsToInclude = InventoryItems[i];
-            //    else if (InventoryItems[i].ItemID == "DragonflyPet")
-            //        ItemsToInclude = InventoryItems[i];
-
-            //    AddItem(ItemsToInclude, 1);
-            //}
         }
 
         //퀵슬롯 아이템 전부 삭제

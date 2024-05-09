@@ -14882,10 +14882,10 @@ MonoBehaviour:
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 24576
-  MinDamageCaused: 10
-  MaxDamageCaused: 10
+  MinDamageCaused: 1
+  MaxDamageCaused: 1
   Knockback: 1
-  KnockbackForce: {x: 0, y: 2, z: 5}
+  KnockbackForce: {x: 0, y: 2, z: 50}
   KnockbackDirection: 0
   InvincibilityDuration: 0.3
   CanDamageOwner: 0
@@ -15071,7 +15071,7 @@ MonoBehaviour:
   MinDamageCaused: 10
   MaxDamageCaused: 10
   Knockback: 1
-  KnockbackForce: {x: 0, y: 2, z: 5}
+  KnockbackForce: {x: 0, y: 2, z: 50}
   KnockbackDirection: 0
   InvincibilityDuration: 0.3
   CanDamageOwner: 0

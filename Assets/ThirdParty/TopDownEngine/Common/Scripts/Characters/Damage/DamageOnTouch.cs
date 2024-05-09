@@ -201,11 +201,14 @@ namespace MoreMountains.TopDownEngine
         protected virtual void Awake()
 		{
 			Initialization();
-			if(transform.parent.gameObject.tag == "Player") //1,2타 상관없이 3타 데미지 넣어주는거임
+            if (transform.parent != null)
 			{
-				MinDamageCaused = DataManager.Instance.datas.Power * 0.5f;
-				MaxDamageCaused = DataManager.Instance.datas.Power * 0.5f;
-			}
+                if (transform.parent.gameObject.tag == "Player") //1,2타 상관없이 3타 데미지 넣어주는거임
+                {
+                    MinDamageCaused = DataManager.Instance.datas.Power * 0.5f;
+                    MaxDamageCaused = DataManager.Instance.datas.Power * 0.5f;
+                }
+            }
         }
 
         /// <summary>
@@ -766,7 +769,9 @@ namespace MoreMountains.TopDownEngine
 					}
 					_relativePosition = _colliderTopDownController.transform.position - Owner.transform.position;
 					_knockbackForce = Quaternion.LookRotation(_relativePosition) * _knockbackForce;
-					break;
+					Debug.Log($"_colliderTopDownController 주인 = [{_colliderTopDownController.gameObject.name}], Owner 주인 = [{Owner.name}]");					
+                    Debug.Log($"_knockbackForce = {_knockbackForce}");
+                    break;
 				case KnockbackDirections.BasedOnDirection:
 					var direction = transform.position - _positionLastFrame;
 					_knockbackForce = direction * _knockbackForce.magnitude;
