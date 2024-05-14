@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: IceRockRare
   m_EditorClassIdentifier: 
   ItemID: IceRockRare
+  ItemNumber: 7
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 30
+  price: 20
   ItemName: "\uC544\uC774\uC2A4 \uC2A4\uD1A4"
   grade: 1
   ShortDescription: "\uC124\uCE58 \uAC00\uB2A5"
@@ -89,7 +90,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

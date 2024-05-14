@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static NPOI.HSSF.Util.HSSFColor;
 
 public class PreviewObject3 : MonoBehaviour
 {

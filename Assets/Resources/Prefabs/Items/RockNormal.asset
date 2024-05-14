@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RockNormal
   m_EditorClassIdentifier: 
   ItemID: RockNormal
+  ItemNumber: 0
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -35,12 +36,13 @@ MonoBehaviour:
     DisplayUnequipButton: 1
   Quantity: 1
   price: 5
-  ItemName: "\uBC14\uC704"
+  ItemName: Stone
   grade: 0
-  ShortDescription: "\uC124\uCE58 \uAC00\uB2A5"
-  Description: "\uC801\uC758 \uC774\uB3D9\uACFC \uACF5\uACA9\uC744 \uB9C9\uC544\uC8FC\uB294
-    '\uBC14\uC704'\uB97C \uC6D0\uD558\uB294 \uC9C0\uC5ED\uC5D0 \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C
-    \uBC14\uC704\uB294 '1\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4."
+  ShortDescription: Installable
+  Description: 'Installs a ''rock'' in the desired area to block enemy movement and
+    attacks.
+
+    The installed rock disappears after ''1 minute''.'
   Icon: {fileID: 21300000, guid: f1d3519f01eb03a4b9234bb54a5e028b, type: 3}
   Prefab: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1, type: 3}
   ForcePrefabDropQuantity: 0
@@ -86,7 +88,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

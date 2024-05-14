@@ -536,6 +536,8 @@ namespace MoreMountains.TopDownEngine
                 case "Spider": MMGameEvent.Trigger("SpiderDie"); break;
                 case "Skeleton": MMGameEvent.Trigger("SkeletonDie"); break;
                 case "Beholder": MMGameEvent.Trigger("BeholderDie"); break;
+                case "Bat": MMGameEvent.Trigger("BatDie"); break;
+                case "BattleBee": MMGameEvent.Trigger("BattleBeeDie"); break;
             }
         }
 

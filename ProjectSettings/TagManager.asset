@@ -28,6 +28,8 @@ TagManager:
   - Spider
   - Skeleton
   - Beholder
+  - Bat
+  - BattleBee
   layers:
   - Default
   - TransparentFX

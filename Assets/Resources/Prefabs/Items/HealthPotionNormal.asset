@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealthPotionNormal
   m_EditorClassIdentifier: 
   ItemID: HealthPotionNormal
+  ItemNumber: 9
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -35,11 +36,10 @@ MonoBehaviour:
     DisplayUnequipButton: 1
   Quantity: 1
   price: 30
-  ItemName: "HP\uD3EC\uC158"
+  ItemName: HP potion
   grade: 0
-  ShortDescription: "\uC18C\uBAA8\uD488"
-  Description: "\uD50C\uB808\uC774\uC5B4 \uCD5C\uB300 \uCCB4\uB825\uC758 '10%'\uB97C
-    \uC989\uC2DC \uD68C\uBCF5\uC2DC\uD0B5\uB2C8\uB2E4."
+  ShortDescription: Consumable
+  Description: It immediately restores '10%' of the player's maximum health.
   Icon: {fileID: 21300000, guid: dbe7e1a382b054a4682a5cc6d56eb9aa, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0

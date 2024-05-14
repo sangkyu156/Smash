@@ -21,6 +21,8 @@ public class NEWGAME : MonoBehaviour
         }
         else
         {
+            MMSaveLoadManager.DeleteSave("RogueMainInventory_Player1.inventory");
+            ES3.DeleteFile();
             LevelManager.Instance.GotoLevel("StartCutScene");
         }
     }

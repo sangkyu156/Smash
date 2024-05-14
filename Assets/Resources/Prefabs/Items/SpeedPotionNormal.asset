@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpeedPotionNormal
   m_EditorClassIdentifier: 
   ItemID: SpeedPotionNormal
+  ItemNumber: 12
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,12 +35,12 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 30
-  ItemName: "\uBB34\uC801 \uD3EC\uC158"
+  price: 20
+  ItemName: "\uC2A4\uD53C\uB4DC \uD3EC\uC158"
   grade: 0
   ShortDescription: "\uC18C\uBAA8\uD488"
-  Description: "\uD50C\uB808\uC774\uC5B4\uC5D0\uAC8C '3\uCD08' \uB3D9\uC548 \uBB34\uC801
-    \uC0C1\uD0DC\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4!"
+  Description: "\uD50C\uB808\uC774\uC5B4\uC758 \uC18D\uB3C4\uAC00 '10\uCD08' \uB3D9\uC548
+    \uB450 \uBC30\uB85C \uC99D\uAC00\uD569\uB2C8\uB2E4."
   Icon: {fileID: 21300000, guid: a8e287b0af7430c49b43c0d5eb03478a, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0

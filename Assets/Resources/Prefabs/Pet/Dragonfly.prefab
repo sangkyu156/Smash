@@ -15400,7 +15400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeDestructionMode: 1
-  TimeBeforeDestruction: 62
+  TimeBeforeDestruction: 20
 --- !u!114 &1743669192728352361
 MonoBehaviour:
   m_ObjectHideFlags: 0

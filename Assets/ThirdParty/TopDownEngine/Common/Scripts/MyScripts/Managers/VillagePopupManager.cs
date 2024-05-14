@@ -224,6 +224,15 @@ public class VillagePopupManager : MonoBehaviour, MMEventListener<MMInventoryEve
                 }
             }
 
+            foreach (InventoryItem item in InventoryItems)
+            {
+                if (item.ItemID == "FirestormNormal")
+                {
+                    inventory.AddItem(item, 1);
+                    break;
+                }
+            }
+
             inventory.SaveInventory();
         }
     }

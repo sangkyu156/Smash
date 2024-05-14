@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: IceRockNormal
   m_EditorClassIdentifier: 
   ItemID: IceRockNormal
+  ItemNumber: 6
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,15 +35,16 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 10
-  ItemName: "\uD790\uB9C1 \uC2A4\uD1A4"
+  price: 15
+  ItemName: "\uC544\uC774\uC2A4 \uC2A4\uD1A4"
   grade: 0
   ShortDescription: "\uC124\uCE58 \uAC00\uB2A5"
   Description: "\uC801\uC758 \uC774\uB3D9\uACFC \uACF5\uACA9\uC744 \uB9C9\uC544\uC8FC\uBA70
-    \uADFC\uCC98\uC5D0 \uC788\uB294 \uD50C\uB808\uC774\uC5B4 \uCCB4\uB825\uC744 \uD68C\uBCF5\uD574
-    \uC8FC\uB294 '\uD790\uB9C1 \uC2A4\uD1A4'\uC744 \uC6D0\uD558\uB294 \uC9C0\uC5ED\uC5D0
-    \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C \uD790\uB9C1 \uC2A4\uD1A4\uC740
-    '1\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4.\n(\uD68C\uBCF5\uB7C9 3)"
+    \uADFC\uCC98\uC5D0 \uC788\uB294 \uC801\uB4E4\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C
+    \uAC10\uC18C\uC2DC\uD0A4\uB294 '\uC544\uC774\uC2A4 \uC2A4\uD1A4'\uC744 \uC6D0\uD558\uB294
+    \uC9C0\uC5ED\uC5D0 \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C \uC544\uC774\uC2A4
+    \uC2A4\uD1A4\uC740 '1\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4.\n(\uAC10\uC18C\uB7C9
+    50%)"
   Icon: {fileID: 21300000, guid: 7326c73cdfed8d8489fa1557ebf36cc9, type: 3}
   Prefab: {fileID: 2299797054593825260, guid: 3127a7dae4f50384e81b40d3a76dda40, type: 3}
   ForcePrefabDropQuantity: 0
@@ -88,7 +90,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

@@ -11,7 +11,7 @@ public class IceRock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies") || other.gameObject.layer == LayerMask.NameToLayer("MidairEnemise"))
         {
             other.gameObject.GetComponent<CharacterMovement>().MovementSpeed = other.gameObject.GetComponent<CharacterMovement>().WalkSpeed * 0.5f;
         }
@@ -19,7 +19,7 @@ public class IceRock : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemies") || other.gameObject.layer == LayerMask.NameToLayer("MidairEnemise"))
         {
             other.gameObject.GetComponent<CharacterMovement>().MovementSpeed = other.gameObject.GetComponent<CharacterMovement>().WalkSpeed;
         }

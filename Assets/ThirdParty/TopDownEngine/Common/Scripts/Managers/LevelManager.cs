@@ -134,32 +134,7 @@ namespace MoreMountains.TopDownEngine
 		{
 			isClear = false;
             StartCoroutine(InitializationCoroutine());
-
-            if (SceneManager.GetActiveScene().name == "Village" && DataManager.Instance.datas.firstVillage == false)
-            {
-                InputManager.Instance.InputDetectionActive = false;
-                startGuide.SetActive(true);
-				HelperPopupIsOpen = true;
-                DataManager.Instance.datas.firstVillage = true;
-                DataManager.Instance.DataSave();
-				//초기 아이템 넣어주는 이벤트 발생
-				MMGameEvent.Trigger("StartItemAdd");
-            }
-            else if (SceneManager.GetActiveScene().name == "LevelSelect2" && DataManager.Instance.datas.firstLevelSelect == false)
-            {
-                InputManager.Instance.InputDetectionActive = false;
-                startGuide.SetActive(true);
-                DataManager.Instance.datas.firstLevelSelect = true;
-                DataManager.Instance.DataSave();
-            }
-            else if (SceneManager.GetActiveScene().name == "Battlefield01" && DataManager.Instance.datas.firstBattlefield == false)
-            {
-                InputManager.Instance.InputDetectionActive = false;
-                startGuide.SetActive(true);
-                HelperPopupIsOpen = true;
-                DataManager.Instance.datas.firstBattlefield = true;
-                DataManager.Instance.DataSave();
-            }
+			StartCoroutine(FirstStart());
         }
 
 		protected virtual IEnumerator InitializationCoroutine()
@@ -213,6 +188,37 @@ namespace MoreMountains.TopDownEngine
 
             if (SceneManager.GetActiveScene().name != "LevelSelect2")
                 DataManager.Instance.PlayerRefresh();
+        }
+
+		protected virtual IEnumerator FirstStart()
+		{
+            yield return new WaitForSeconds(0.2f);
+
+            if (SceneManager.GetActiveScene().name == "Village" && DataManager.Instance.datas.firstVillage == false)
+            {
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
+                HelperPopupIsOpen = true;
+                DataManager.Instance.datas.firstVillage = true;
+                DataManager.Instance.DataSave();
+                //초기 아이템 넣어주는 이벤트 발생
+                MMGameEvent.Trigger("StartItemAdd");
+            }
+            else if (SceneManager.GetActiveScene().name == "LevelSelect2" && DataManager.Instance.datas.firstLevelSelect == false)
+            {
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
+                DataManager.Instance.datas.firstLevelSelect = true;
+                DataManager.Instance.DataSave();
+            }
+            else if (SceneManager.GetActiveScene().name == "Battlefield01" && DataManager.Instance.datas.firstBattlefield == false)
+            {
+                InputManager.Instance.InputDetectionActive = false;
+                startGuide.SetActive(true);
+                HelperPopupIsOpen = true;
+                DataManager.Instance.datas.firstBattlefield = true;
+                DataManager.Instance.DataSave();
+            }
         }
 
         /// <summary>

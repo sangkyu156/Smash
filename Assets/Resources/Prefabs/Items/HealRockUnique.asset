@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealRockUnique
   m_EditorClassIdentifier: 
   ItemID: HealRockUnique
+  ItemNumber: 5
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 120
+  price: 45
   ItemName: "\uD790\uB9C1 \uC2A4\uD1A4"
   grade: 2
   ShortDescription: "\uC124\uCE58 \uAC00\uB2A5"
@@ -42,7 +43,7 @@ MonoBehaviour:
     \uADFC\uCC98\uC5D0 \uC788\uB294 \uD50C\uB808\uC774\uC5B4 \uCCB4\uB825\uC744 \uD68C\uBCF5\uD574
     \uC8FC\uB294 '\uD790\uB9C1 \uC2A4\uD1A4'\uC744 \uC6D0\uD558\uB294 \uC9C0\uC5ED\uC5D0
     \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C \uD790\uB9C1 \uC2A4\uD1A4\uC740
-    '3\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4.\n(\uD68C\uBCF5\uB7C9 4)"
+    '10\uBD84'\uB4A4\uC5D0 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4.\n(\uD68C\uBCF5\uB7C9 5)"
   Icon: {fileID: 21300000, guid: dad1959cdd21b9f40aa34d63d29ccf77, type: 3}
   Prefab: {fileID: 2570376141631362808, guid: aabc5d4952f9e5041a72f23f0ed58a4d, type: 3}
   ForcePrefabDropQuantity: 0
@@ -88,7 +89,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

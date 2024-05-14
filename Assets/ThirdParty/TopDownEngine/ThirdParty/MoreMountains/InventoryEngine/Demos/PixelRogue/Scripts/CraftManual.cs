@@ -1,16 +1,12 @@
-﻿using Codice.Client.BaseCommands.BranchExplorer;
-using MoreMountains.InventoryEngine;
+﻿using MoreMountains.InventoryEngine;
 using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CraftManual : MonoBehaviour
 {
-    private bool isPreviewActivated = false; 
+    private bool isPreviewActivated = false;
 
-    public GameObject go_Preview; 
+    public GameObject go_Preview;
     public GameObject go_Prefab;
     public Inventory inventory;
 
@@ -73,7 +69,7 @@ public class CraftManual : MonoBehaviour
             {
                 newRotation.x = 0;
             }
-            else if(previewObjectComponent3 != null)
+            else if (previewObjectComponent3 != null)
             {
                 newRotation.x = -90;
                 newPosition.y = newPosition.y + 0.1f;
@@ -87,7 +83,7 @@ public class CraftManual : MonoBehaviour
     {
         int randomAngleY = Random.Range(0, 180);
         Vector3 addY = new Vector3(0, 0, 0);
-        Quaternion randomRotation = new Quaternion(0,0,0,0);
+        Quaternion randomRotation = new Quaternion(0, 0, 0, 0);
 
         if (previewObjectComponent != null)
         {

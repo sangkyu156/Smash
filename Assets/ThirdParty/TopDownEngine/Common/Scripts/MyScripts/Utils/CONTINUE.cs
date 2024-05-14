@@ -54,6 +54,7 @@ public class CONTINUE : MonoBehaviour
 
     public void ContinueButton()
     {
+        DataManager.Instance.DataLoad();
         LevelManager.Instance.GotoLevel("Village");
     }
 }

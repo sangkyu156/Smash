@@ -26,6 +26,7 @@ namespace MoreMountains.InventoryEngine
         /// 항목의 (고유) ID
         [Tooltip("항목의 (고유) ID")]
 		public string ItemID;
+        public int ItemNumber;
         /// 이 아이템이 저장될 인벤토리 이름
         [Tooltip("이 아이템이 저장될 인벤토리 이름")]
 		public string TargetInventoryName = "MainInventory";

@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: StoneBarrier
   m_EditorClassIdentifier: 
   ItemID: StoneBarrier
+  ItemNumber: 99
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 1
-  Consumable: 1
   isInstallable: 1
+  Consumable: 1
   ConsumeQuantity: 1
   Equippable: 0
   EquippableIfInventoryIsFull: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
   Quantity: 1
   price: 5
   ItemName: Rock1
+  grade: 0
   ShortDescription: Obstacles_Rock1
   Description: Obstacles_Rock1
   Icon: {fileID: 21300000, guid: 29eccc7fe3c73d34ab5abfde5ce191ef, type: 3}
@@ -83,7 +85,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

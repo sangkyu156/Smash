@@ -16069,8 +16069,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 35
-  MaximumHealth: 35
+  InitialHealth: 52.4
+  MaximumHealth: 52.4
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 5508226054445105171}
@@ -16120,11 +16120,11 @@ MonoBehaviour:
       ChancePercentage: 0
     - Loot: {fileID: 8156648605230441292, guid: e8ebc2d7fc18cca4fa43f9736932946e,
         type: 3}
-      Weight: 7
+      Weight: 10
       ChancePercentage: 0
-    - Loot: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1,
+    - Loot: {fileID: 1608861427868016307, guid: 845663db32233814ebdf18cd92dcb1c9,
         type: 3}
-      Weight: 7
+      Weight: 10
       ChancePercentage: 0
     WeightsTotal: 0
   LootTableSO: {fileID: 0}

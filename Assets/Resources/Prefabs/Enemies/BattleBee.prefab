@@ -20712,7 +20712,7 @@ GameObject:
   - component: {fileID: 7094951308449352731}
   m_Layer: 14
   m_Name: BattleBee
-  m_TagString: Slime
+  m_TagString: BattleBee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20958,7 +20958,7 @@ MonoBehaviour:
   InputAuthorized: 0
   AnalogInput: 0
   ScriptDrivenInput: 0
-  WalkSpeed: 3
+  WalkSpeed: 4.7
   ShouldSetMovement: 1
   IdleThreshold: 0.05
   Acceleration: 10
@@ -21191,8 +21191,8 @@ MonoBehaviour:
   enemy: {fileID: 0}
   CurrentHealth: 0
   Invulnerable: 0
-  InitialHealth: 45
-  MaximumHealth: 45
+  InitialHealth: 79.8
+  MaximumHealth: 79.8
   ResetHealthOnEnable: 1
   ImmuneToDamage: 0
   DamageMMFeedbacks: {fileID: 4165336776733223581}
@@ -21242,11 +21242,15 @@ MonoBehaviour:
       ChancePercentage: 0
     - Loot: {fileID: 8156648605230441292, guid: e8ebc2d7fc18cca4fa43f9736932946e,
         type: 3}
-      Weight: 3
+      Weight: 20
       ChancePercentage: 0
-    - Loot: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1,
+    - Loot: {fileID: 1608861427868016307, guid: 845663db32233814ebdf18cd92dcb1c9,
         type: 3}
-      Weight: 3
+      Weight: 10
+      ChancePercentage: 0
+    - Loot: {fileID: 7820248261724447700, guid: 2cb58d429fddb804aa885db8fe1dedfa,
+        type: 3}
+      Weight: 5
       ChancePercentage: 0
     WeightsTotal: 0
   LootTableSO: {fileID: 0}

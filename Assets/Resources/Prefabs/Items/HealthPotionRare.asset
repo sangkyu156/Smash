@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealthPotionRare
   m_EditorClassIdentifier: 
   ItemID: HealthPotionRare
+  ItemNumber: 10
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,7 +35,7 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 35
+  price: 40
   ItemName: "HP\uD3EC\uC158"
   grade: 1
   ShortDescription: "\uC18C\uBAA8\uD488"

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SpeedPotionRare
   m_EditorClassIdentifier: 
   ItemID: SpeedPotionRare
+  ItemNumber: 13
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -35,10 +36,10 @@ MonoBehaviour:
     DisplayUnequipButton: 1
   Quantity: 1
   price: 30
-  ItemName: "\uBE44\uC5B4\uC788\uC74C"
+  ItemName: Speed Potion
   grade: 1
-  ShortDescription: "\uC18C\uBAA8\uD488"
-  Description: "\uBE44\uC5B4\uC788\uC74C"
+  ShortDescription: Consumable
+  Description: The player's speed is doubled for '20 seconds'.
   Icon: {fileID: 21300000, guid: f233b0b6280df8c47a99a71808fcbe20, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0

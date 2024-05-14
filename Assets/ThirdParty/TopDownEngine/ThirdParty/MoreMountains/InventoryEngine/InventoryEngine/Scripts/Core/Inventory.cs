@@ -2,9 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -180,6 +178,16 @@ namespace MoreMountains.InventoryEngine
         public bool isStage8 = false;
         public bool isStage9 = false;
         public bool isStage10 = false;
+        public bool isStage11 = false;
+        public bool isStage12 = false;
+        public bool isStage13 = false;
+        public bool isStage14 = false;
+        public bool isStage15 = false;
+        public bool isStage16 = false;
+        public bool isStage17 = false;
+        public bool isStage18 = false;
+        public bool isStage19 = false;
+        public bool isStage20 = false;
 
 
         /// <summary>
@@ -188,16 +196,13 @@ namespace MoreMountains.InventoryEngine
         protected virtual void Awake()
         {
             ItemsToInclude = (InventoryItem)ScriptableObject.CreateInstance("InventoryItem");
-            if (PlayerID == "NPC1")
-            {
-                InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");//Value
-                string[] lines = new string[InventoryItems.Length];
+            InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
+            string[] lines = new string[InventoryItems.Length];
 
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    lines[i] = InventoryItems[i].name.ToString();
-                    InventoryItemsDictionary.Add(lines[i], InventoryItems[i]);
-                }
+            for (int i = 0; i < lines.Length; i++)
+            {
+                lines[i] = InventoryItems[i].name.ToString();
+                AddIfNotExists(InventoryItemsDictionary, lines[i], InventoryItems[i]);
             }
             RegisterInventory();
         }
@@ -209,7 +214,9 @@ namespace MoreMountains.InventoryEngine
             //    IsStartSetup();//여기서 안넣고 VillagePopupManager가 이벤트 받아서 넣어주는걸로 바꿈
 
             if (PlayerID == "NPC1")
+            {
                 StoreItemSeting();
+            }
 
             QuickSlotsReset();
         }
@@ -532,7 +539,7 @@ namespace MoreMountains.InventoryEngine
         }
 
         //지정한 아이템ID와 지정한 아이템수량이 같은 아이템을 찾아 item.ConsumeQuantity만큼 제거합니다. 제거했는데 아이템 남은수량이 0이라면 아이템을 삭제합니다.
-        public virtual bool RemoveItemByIDandQuantity(string itemID,int itemQuantity, int RemoveQuantity)
+        public virtual bool RemoveItemByIDandQuantity(string itemID, int itemQuantity, int RemoveQuantity)
         {
             if (RemoveQuantity < 1)
             {
@@ -553,7 +560,7 @@ namespace MoreMountains.InventoryEngine
             isRemove = false;
             for (int i = 0; i < list.Count; i++)
             {
-                if(isRemove == false)
+                if (isRemove == false)
                 {
                     int quantityAtIndex = Content[list[i]].Quantity;
                     Debug.Log($"인벤토리에 들어있는 [{list[i]}]번째 아이템 수량 = [{Content[list[i]].Quantity}]");
@@ -1143,73 +1150,225 @@ namespace MoreMountains.InventoryEngine
         /// </summary>
 		public void StoreItemSeting()
         {
-            ItemsToInclude = InventoryItemsDictionary["RockNormal"];
+            ItemsToInclude = InventoryItemsDictionary["RockNormal"];//0
             AddItem(ItemsToInclude, 1);
 
-            ItemsToInclude = InventoryItemsDictionary["RockRare"];
+            ItemsToInclude = InventoryItemsDictionary["RockRare"];//1
             AddItem(ItemsToInclude, 1);
 
-            ItemsToInclude = InventoryItemsDictionary["RockUnique"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["HealRockNormal"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["HealRockRare"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["HealRockUnique"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["IceRockNormal"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["IceRockRare"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["IceRockUnique"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["HealthPotionNormal"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["HealthPotionRare"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["HealthPotionUnique"];
-            AddItem(ItemsToInclude, 1);                    
-                                                           
-            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionNormal"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionRare"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionUnique"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["SpeedPotionNormal"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["SpeedPotionRare"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["SpeedPotionUnique"];
-            AddItem(ItemsToInclude, 1);
-
-            ItemsToInclude = InventoryItemsDictionary["FirestormNormal"];
+            ItemsToInclude = InventoryItemsDictionary["RockUnique"];//2
             AddItem(ItemsToInclude, 1);
 
             if (isStage1 == true)
             {
-                ItemsToInclude = InventoryItemsDictionary["DragonflyPet"];
+                ItemsToInclude = InventoryItemsDictionary["HealRockNormal"];//3
+                AddItem(ItemsToInclude, 1);
+                //임시
+                ItemsToInclude = InventoryItemsDictionary["ScarecrowBotNormal"];//11
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["SpeedPotionRare"];//12
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["HealRockUnique"];//13
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["IceRockUnique"];//14
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["FirestormNormal"];//17
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["HealthPotionUnique"];//18
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionNormal"];//19
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionRare"];//20
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionUnique"];//21
                 AddItem(ItemsToInclude, 1);
             }
 
             if (isStage2 == true)
             {
-                ItemsToInclude = InventoryItemsDictionary["ScarecrowBotNormal"];
+                ItemsToInclude = InventoryItemsDictionary["IceRockNormal"];//4
                 AddItem(ItemsToInclude, 1);
+            }
+
+            if (isStage3 == true)
+            {
+                ItemsToInclude = InventoryItemsDictionary["HealRockRare"];//5
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["HealthPotionNormal"];//6
+                AddItem(ItemsToInclude, 1);
+            }
+
+            if (isStage4 == true)
+            {
+                ItemsToInclude = InventoryItemsDictionary["IceRockRare"];//7
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["SpeedPotionNormal"];//8
+                AddItem(ItemsToInclude, 1);
+            }
+
+            if (isStage5 == true)
+            {
+                ItemsToInclude = InventoryItemsDictionary["DragonflyPet"];//9
+                AddItem(ItemsToInclude, 1);
+                ItemsToInclude = InventoryItemsDictionary["HealthPotionRare"];//10
+                AddItem(ItemsToInclude, 1);
+            }
+
+            //if (isStage6 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["ScarecrowBotNormal"];//11
+            //    AddItem(ItemsToInclude, 1);
+            //    ItemsToInclude = InventoryItemsDictionary["SpeedPotionRare"];//12
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage7 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["HealRockUnique"];//13
+            //    AddItem(ItemsToInclude, 1);
+            //    ItemsToInclude = InventoryItemsDictionary["IceRockUnique"];//14
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage7 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["HealRockUnique"];//15
+            //    AddItem(ItemsToInclude, 1);
+            //    ItemsToInclude = InventoryItemsDictionary["IceRockUnique"];//16
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage8 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["FirestormNormal"];//17
+            //    AddItem(ItemsToInclude, 1);
+            //    ItemsToInclude = InventoryItemsDictionary["HealthPotionUnique"];//18
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage9 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionNormal"];//19
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage10 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionRare"];//20
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            //if (isStage11 == true)
+            //{
+            //    ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionUnique"];//21
+            //    AddItem(ItemsToInclude, 1);
+            //}
+
+            StoreItemSort();
+        }
+
+        //아이템 정렬
+        public void StoreItemSort()
+        {
+            //아이템 마다 넘버를 가지고 있다.
+
+            List<int> itemNum = new List<int>();
+            List<int> itemQuantity = new List<int>();
+
+            itemNum.Clear();
+            itemQuantity.Clear();
+
+            //인벤토리에 있는 아이템을 모두 아이템넘버따로 아이템개수 따로 저장시켜둔다.
+            for (int i = 0; i < Content.Length; i++)
+            {
+                if (InventoryItem.IsNull(Content[i]))
+                {
+                    continue;
+                }
+                else
+                {
+                    itemNum.Add(Content[i].ItemNumber);
+                    itemQuantity.Add(Content[i].Quantity);
+                }
+            }
+            //인벤토리를 초기화 시킨다.
+            EmptyInventory();
+
+            //아이템넘버를 내림차순으로 정리하고 이때 아이템 개수도 같이 순서를 이동시켜준다.
+            SelectionSortDescending(ref itemNum, ref itemQuantity);
+
+            //슬롯 0번째 인덱스부터 리스트에 정리해둔 아이템순서대로 아이템을 추가시켜준다. 이때 아이템개수도 같이 추가시킨다.
+            //if(PlayerID != "NPC1")
+            //{
+            //    InventoryItems = Resources.LoadAll<InventoryItem>($"Prefabs/Items");
+            //    string[] lines = new string[InventoryItems.Length];
+
+            //    for (int i = 0; i < lines.Length; i++)
+            //    {
+            //        lines[i] = InventoryItems[i].name.ToString();
+            //        InventoryItemsDictionary.Add(lines[i], InventoryItems[i]);
+            //    }
+            //}
+
+            for (int i = itemNum.Count - 1; 0 <= i; i--)
+            {
+                switch (itemNum[i])
+                {
+                    case 0: ItemsToInclude = InventoryItemsDictionary["RockNormal"]; break;
+                    case 1: ItemsToInclude = InventoryItemsDictionary["RockRare"]; break;
+                    case 2: ItemsToInclude = InventoryItemsDictionary["RockUnique"]; break;
+                    case 3: ItemsToInclude = InventoryItemsDictionary["HealRockNormal"]; break;
+                    case 4: ItemsToInclude = InventoryItemsDictionary["HealRockRare"]; break;
+                    case 5: ItemsToInclude = InventoryItemsDictionary["HealRockUnique"]; break;
+                    case 6: ItemsToInclude = InventoryItemsDictionary["IceRockNormal"]; break;
+                    case 7: ItemsToInclude = InventoryItemsDictionary["IceRockRare"]; break;
+                    case 8: ItemsToInclude = InventoryItemsDictionary["IceRockUnique"]; break;
+                    case 9: ItemsToInclude = InventoryItemsDictionary["HealthPotionNormal"]; break;
+                    case 10: ItemsToInclude = InventoryItemsDictionary["HealthPotionRare"]; break;
+                    case 11: ItemsToInclude = InventoryItemsDictionary["HealthPotionUnique"]; break;
+                    case 12: ItemsToInclude = InventoryItemsDictionary["SpeedPotionNormal"]; break;
+                    case 13: ItemsToInclude = InventoryItemsDictionary["SpeedPotionRare"]; break;
+                    case 14: ItemsToInclude = InventoryItemsDictionary["SpeedPotionUnique"]; break;
+                    case 15: ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionNormal"]; break;
+                    case 16: ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionRare"]; break;
+                    case 17: ItemsToInclude = InventoryItemsDictionary["InvincibilityPotionUnique"]; break;
+                    case 18: ItemsToInclude = InventoryItemsDictionary["DragonflyPet"]; break;
+                    case 19: ItemsToInclude = InventoryItemsDictionary["ScarecrowBotNormal"]; break;
+                    case 20: ItemsToInclude = InventoryItemsDictionary["FirestormNormal"]; break;
+                    case 50: ItemsToInclude = InventoryItemsDictionary["BronzeIngot"]; break;
+                    case 51: ItemsToInclude = InventoryItemsDictionary["SilverIngot"]; break;
+                    case 52: ItemsToInclude = InventoryItemsDictionary["GoldIngot"]; break;
+                    default: ItemsToInclude = InventoryItemsDictionary["BronzeIngot"]; break;
+                }
+
+                AddItem(ItemsToInclude, itemQuantity[i]);
+            }
+        }
+
+        //내림차순으로 정리
+        void SelectionSortDescending(ref List<int> itemNum_, ref List<int> itemQuantity_)
+        {
+            for (int i = 0; i < itemNum_.Count - 1; i++)
+            {
+                int maxIndex = i;
+                for (int j = i + 1; j < itemNum_.Count; j++)
+                {
+                    if (itemNum_[j] > itemNum_[maxIndex])
+                    {
+                        maxIndex = j;
+                    }
+                }
+                if (maxIndex != i)
+                {
+                    // Swap
+                    int temp = itemNum_[i];
+                    itemNum_[i] = itemNum_[maxIndex];
+                    itemNum_[maxIndex] = temp;
+
+                    int temp2 = itemQuantity_[i];
+                    itemQuantity_[i] = itemQuantity_[maxIndex];
+                    itemQuantity_[maxIndex] = temp2;
+                }
             }
         }
 
@@ -1261,6 +1420,15 @@ namespace MoreMountains.InventoryEngine
         public int GetQuickSlotTargetQuantity()
         {
             return quickSlotTargetQuantity;
+        }
+
+        //이미 존재하는 키를 가진 항목을 추가하지 않도록 하는 역할
+        void AddIfNotExists<TKey, TValue>(Dictionary<TKey, TValue> dict, TKey key, TValue value)
+        {
+            if (!dict.ContainsKey(key))
+            {
+                dict.Add(key, value);
+            }
         }
 
         /// <summary>

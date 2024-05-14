@@ -34,6 +34,9 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
     void Start()
     {
         CreateMission(GameManager.Instance.stage);
+
+        //ÀÓ½Ã
+        //CreateManager.Instance.SetRandomPosition(CreateManager.Instantiate("Battlefield/ClearZone"));
     }
 
     public void NavMeshBake()
@@ -58,17 +61,23 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
             case Define.Stage.Stage01: mis = CreateManager.Instantiate("Mission/01", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                                                                                                missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break;
             case Define.Stage.Stage02: mis = CreateManager.Instantiate("Mission/02", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); 
-                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break;
-            case Define.Stage.Stage03: mis = CreateManager.Instantiate("Mission/03", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                                                                                                missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings2(); break;
-            case Define.Stage.Stage04: mis = CreateManager.Instantiate("Mission/04", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            case Define.Stage.Stage03: mis = CreateManager.Instantiate("Mission/03", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
                                                                                                missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings3(); break;
-            case Define.Stage.Stage05: mis = CreateManager.Instantiate("Mission/05", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>(); MissionSettings1(); break;
-            case Define.Stage.Stage06: break;
-            case Define.Stage.Stage07: break;
-            case Define.Stage.Stage08: break;
-            case Define.Stage.Stage09: break;
-            case Define.Stage.Stage10: break;
+            case Define.Stage.Stage04: mis = CreateManager.Instantiate("Mission/04", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings4(); break;
+            case Define.Stage.Stage05: mis = CreateManager.Instantiate("Mission/05", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings5(); break;
+            case Define.Stage.Stage06: mis = CreateManager.Instantiate("Mission/06", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings6(); break;
+            case Define.Stage.Stage07: mis = CreateManager.Instantiate("Mission/07", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings7(); break;
+            case Define.Stage.Stage08: mis = CreateManager.Instantiate("Mission/08", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings8(); break;
+            case Define.Stage.Stage09: mis = CreateManager.Instantiate("Mission/09", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings5(); break;
+            case Define.Stage.Stage10: mis = CreateManager.Instantiate("Mission/10", mission); missionText1 = mis.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+                                                                                               missionText2 = mis.transform.GetChild(1).GetComponent<TextMeshProUGUI>(); MissionSettings5(); break;
             case Define.Stage.Stage11: break;
             case Define.Stage.Stage12: break;
             case Define.Stage.Stage13: break;
@@ -126,11 +135,16 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
     void SetRespawnManager()
     {
         switch(GameManager.Instance.stage)
-        {//0 - ½½¶óÀÓ, 1 - ¹ö¼¸, 2 - ¼±ÀÎÀå, 3 - °Å¹Ì, 4 - ÇØÆÄ¸®, 5 - ÇØ°ñ
+        {//0 - ½½¶óÀÓ, 1 - ¹ö¼¸, 2 - ¼±ÀÎÀå, 3 - °Å¹Ì, 4 - ÇØÆÄ¸®, 5 - ÇØ°ñ, 6 - ¹ÚÁã, 7 - ¹ú, 8 - Å·Å©·¦
             case Define.Stage.Stage01: objectPooler.Pool[0].Enabled = true; objectPooler.Pool[1].Enabled = true; break;//½½¶óÀÓ, ¹ö¼¸
             case Define.Stage.Stage02: objectPooler.Pool[1].Enabled = true; objectPooler.Pool[2].Enabled = true; break;//¹ö¼¸, ¼±ÀÎÀå
-            case Define.Stage.Stage03: objectPooler.Pool[3].Enabled = true; objectPooler.Pool[5].Enabled = true; break;//°Å¹Ì, ÇØ°ñ
-            case Define.Stage.Stage04: objectPooler.Pool[4].Enabled = true; objectPooler.Pool[5].Enabled = true; break;//ÇØÆÄ¸®, ÇØ°ñ
+            case Define.Stage.Stage03: objectPooler.Pool[2].Enabled = true; objectPooler.Pool[3].Enabled = true; break;//¼±ÀÎÀå, °Å¹Ì
+            case Define.Stage.Stage04: objectPooler.Pool[3].Enabled = true; objectPooler.Pool[5].Enabled = true; break;//°Å¹Ì, ÇØ°ñ
+            case Define.Stage.Stage05: objectPooler.Pool[5].Enabled = true; objectPooler.Pool[4].Enabled = true; break;//ÇØ°ñ, ÇØÆÄ¸®
+            case Define.Stage.Stage06: objectPooler.Pool[6].Enabled = true; objectPooler.Pool[4].Enabled = true; break;//¹ÚÁã, ÇØÆÄ¸®
+            case Define.Stage.Stage07: objectPooler.Pool[6].Enabled = true; objectPooler.Pool[7].Enabled = true; break;//¹ÚÁã, ¹ú
+            case Define.Stage.Stage08: objectPooler.Pool[7].Enabled = true; objectPooler.Pool[4].Enabled = true; break;//¹ú, ÇØÆÄ¸®
+            case Define.Stage.Stage09: objectPooler.Pool[3].Enabled = true; objectPooler.Pool[5].Enabled = true; break;//°Å¹Ì, ÇØ°ñ
         }
     }
 
@@ -147,10 +161,14 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
                                                                                                           mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
             case Define.Stage.Stage04: mis_d = CreateManager.Instantiate("Mission/04Defeat", deathPopup); mis_d.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = missionText1.text;
                                                                                                           mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
-            case Define.Stage.Stage05: break;
-            case Define.Stage.Stage06: break;
-            case Define.Stage.Stage07: break;
-            case Define.Stage.Stage08: break;
+            case Define.Stage.Stage05: mis_d = CreateManager.Instantiate("Mission/05Defeat", deathPopup); mis_d.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = missionText1.text;
+                                                                                                          mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
+            case Define.Stage.Stage06: mis_d = CreateManager.Instantiate("Mission/06Defeat", deathPopup); mis_d.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = missionText1.text;
+                                                                                                          mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
+            case Define.Stage.Stage07: mis_d = CreateManager.Instantiate("Mission/07Defeat", deathPopup); mis_d.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = missionText1.text;
+                                                                                                          mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
+            case Define.Stage.Stage08: mis_d = CreateManager.Instantiate("Mission/08Defeat", deathPopup); mis_d.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = missionText1.text;
+                                                                                                          mis_d.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = missionText2.text; break;
             case Define.Stage.Stage09: break;
             case Define.Stage.Stage10: break;
             case Define.Stage.Stage11: break;
@@ -238,8 +256,8 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void MissionSettings1()
     {
-        satisfactionCount1 = 15;
-        satisfactionCount2 = 10;
+        satisfactionCount1 = 20;
+        satisfactionCount2 = 15;
         satisfactionCount3 = 0;
         satisfactionCount4 = 0;
         satisfactionCount5 = 0;
@@ -247,16 +265,56 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
 
     void MissionSettings2()
     {
-        satisfactionCount1 = 7;
-        satisfactionCount2 = 5;
+        satisfactionCount1 = 15;
+        satisfactionCount2 = 10;
         satisfactionCount3 = 0;
         satisfactionCount4 = 0;
         satisfactionCount5 = 0;
     }
     void MissionSettings3()
     {
-        satisfactionCount1 = 5;
+        satisfactionCount1 = 15;
         satisfactionCount2 = 10;
+        satisfactionCount3 = 0;
+        satisfactionCount4 = 0;
+        satisfactionCount5 = 0;
+    }
+    void MissionSettings4()
+    {
+        satisfactionCount1 = 10;
+        satisfactionCount2 = 8;
+        satisfactionCount3 = 0;
+        satisfactionCount4 = 0;
+        satisfactionCount5 = 0;
+    }
+    void MissionSettings5()
+    {
+        satisfactionCount1 = 10;
+        satisfactionCount2 = 3;
+        satisfactionCount3 = 0;
+        satisfactionCount4 = 0;
+        satisfactionCount5 = 0;
+    }
+    void MissionSettings6()
+    {
+        satisfactionCount1 = 10;
+        satisfactionCount2 = 5;
+        satisfactionCount3 = 0;
+        satisfactionCount4 = 0;
+        satisfactionCount5 = 0;
+    }
+    void MissionSettings7()
+    {
+        satisfactionCount1 = 15;
+        satisfactionCount2 = 10;
+        satisfactionCount3 = 0;
+        satisfactionCount4 = 0;
+        satisfactionCount5 = 0;
+    }
+    void MissionSettings8()
+    {
+        satisfactionCount1 = 10;
+        satisfactionCount2 = 5;
         satisfactionCount3 = 0;
         satisfactionCount4 = 0;
         satisfactionCount5 = 0;
@@ -307,19 +365,52 @@ public class BattlefieldManager : MonoBehaviour, MMEventListener<MMGameEvent>
         }
         if (gameEvent.EventName == "CactusDie")
         {
-            EnemyCount2();
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage02: EnemyCount2(); break;
+                case Define.Stage.Stage03: EnemyCount1(); break;
+            }
         }
         if (gameEvent.EventName == "SpiderDie")
         {
-            EnemyCount1();
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage03: EnemyCount2(); break;
+                case Define.Stage.Stage04: EnemyCount1(); break;
+            }
         }
         if (gameEvent.EventName == "SkeletonDie")
         {
-            EnemyCount2();
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage04: EnemyCount2(); break;
+                case Define.Stage.Stage05: EnemyCount1(); break;
+            }
         }
         if (gameEvent.EventName == "BeholderDie")
         {
-            EnemyCount1();
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage05: EnemyCount2(); break;
+                case Define.Stage.Stage06: EnemyCount2(); break;
+                case Define.Stage.Stage08: EnemyCount2(); break;
+            }
+        }
+        if (gameEvent.EventName == "BatDie")
+        {
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage06: EnemyCount1(); break;
+                case Define.Stage.Stage07: EnemyCount1(); break;
+            }
+        }
+        if (gameEvent.EventName == "BattleBeeDie")
+        {
+            switch (GameManager.Instance.stage)
+            {
+                case Define.Stage.Stage07: EnemyCount2(); break;
+                case Define.Stage.Stage08: EnemyCount1(); break;
+            }
         }
     }
 

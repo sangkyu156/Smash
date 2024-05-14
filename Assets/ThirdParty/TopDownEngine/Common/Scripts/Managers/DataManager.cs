@@ -21,7 +21,7 @@ public enum Skills
 public class Datas
 {
     public int CurPlayerGold = 100;
-    public int Power = 10;
+    public int Power = 15;
     public float Speed = 8;
     public float Heath = 100;
     public float Stamina = 15;
@@ -95,12 +95,14 @@ public class DataManager : MMPersistentSingleton<DataManager>
 
     private void OnEnable()
     {
-        DataLoad();
+        if(SceneManager.GetActiveScene().name != "TitleScene")
+            DataLoad();
     }
 
     void Start()
     {
-        DataLoad();
+        if (SceneManager.GetActiveScene().name != "TitleScene")
+            DataLoad();
     }
 
     public void DataSave()

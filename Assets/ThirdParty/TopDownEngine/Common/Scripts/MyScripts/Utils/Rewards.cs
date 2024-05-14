@@ -25,15 +25,15 @@ public class Rewards : MonoBehaviour
 
             switch (curStage)
             {
-                case 1: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform);break;
-                case 2: CreateManager.Instantiate("Rewards/ScarecrowBotAvailable", this.transform); break;
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
+                case 1: CreateManager.Instantiate("Rewards/HealRockNormalAvailable", this.transform);break;
+                case 2: CreateManager.Instantiate("Rewards/IceRockNormalAvailable", this.transform); break;
+                case 3: CreateManager.Instantiate("Rewards/HealRockRareAvailable", this.transform); CreateManager.Instantiate("Rewards/HealthPotionNormalAvailable", this.transform); break;
+                case 4: CreateManager.Instantiate("Rewards/IceRockRareAvailable", this.transform); CreateManager.Instantiate("Rewards/SpeedPotionNormalAvailable", this.transform); break;
+                case 5: CreateManager.Instantiate("Rewards/DragonflyAvailable", this.transform); CreateManager.Instantiate("Rewards/HealthPotionRareAvailable", this.transform); break;
+                case 6: CreateManager.Instantiate("Rewards/ScarecrowBotAvailable", this.transform); CreateManager.Instantiate("Rewards/SpeedPotionRareAvailable", this.transform); break;
+                case 7: CreateManager.Instantiate("Rewards/HealRockUniqueAvailable", this.transform); CreateManager.Instantiate("Rewards/IceRockUniqueAvailable", this.transform); break;
+                case 8: CreateManager.Instantiate("Rewards/FirestormNormalAvailable", this.transform); CreateManager.Instantiate("Rewards/HealthPotionUniqueAvailable", this.transform); break;
+                case 9: CreateManager.Instantiate("Rewards/InvincibilityPotionNormalAvailable", this.transform); break;
                 case 10:
                 case 11:
                 case 12:

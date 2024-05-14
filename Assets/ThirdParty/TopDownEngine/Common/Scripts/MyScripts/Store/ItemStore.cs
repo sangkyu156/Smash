@@ -22,7 +22,7 @@ public class ItemStore : MonoBehaviour, MMEventListener<MMInventoryEvent>, MMEve
 
     public void SetPlayerGold()
     {
-        if(GameManager.Instance.stage == Define.Stage.Stage00)
+        if(SceneManager.GetActiveScene().name == "Village")
         {
             playerGold.text = DataManager.Instance.datas.CurPlayerGold.ToString();
             playerGold2.text = DataManager.Instance.datas.CurPlayerGold.ToString();

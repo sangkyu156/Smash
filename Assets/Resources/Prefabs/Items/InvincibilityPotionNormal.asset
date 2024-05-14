@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: InvincibilityPotionNormal
   m_EditorClassIdentifier: 
   ItemID: InvincibilityPotionNormal
+  ItemNumber: 15
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -35,10 +36,10 @@ MonoBehaviour:
     DisplayUnequipButton: 1
   Quantity: 1
   price: 30
-  ItemName: "\uBE44\uC5B4\uC788\uC74C"
+  ItemName: Invincibility Potion
   grade: 0
-  ShortDescription: "\uC18C\uBAA8\uD488"
-  Description: "\uBE44\uC5B4\uC788\uC74C"
+  ShortDescription: Consumable
+  Description: Grant the player invincibility for '3 seconds'!
   Icon: {fileID: 21300000, guid: 028edce1f56059a468ded1f5a3423b04, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0

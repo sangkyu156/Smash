@@ -26451,11 +26451,11 @@ MonoBehaviour:
     - Loot: {fileID: 0}
       Weight: 100
       ChancePercentage: 0
-    - Loot: {fileID: 8156648605230441292, guid: e8ebc2d7fc18cca4fa43f9736932946e,
+    - Loot: {fileID: 1608861427868016307, guid: 845663db32233814ebdf18cd92dcb1c9,
         type: 3}
       Weight: 6
       ChancePercentage: 0
-    - Loot: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1,
+    - Loot: {fileID: 5450364241485022616, guid: d2450a40f2b36d842a9f3bec184096e5,
         type: 3}
       Weight: 6
       ChancePercentage: 0

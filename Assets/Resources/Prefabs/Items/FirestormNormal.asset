@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FirestormNormal
   m_EditorClassIdentifier: 
   ItemID: FirestormNormal
+  ItemNumber: 20
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,16 +35,13 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 75
-  ItemName: "\uD5C8\uC218\uC544\uBE44 \uB85C\uBD07"
+  price: 185
+  ItemName: "\uD654\uC5FC \uD3ED\uD48D"
   grade: 0
-  ShortDescription: "\uC124\uCE58 \uAC00\uB2A5"
-  Description: "\uADFC\uCC98\uC758 \uC801\uB4E4\uC744 \uB3C4\uBC1C\uD558\uC5EC \uC790\uC2E0\uC744
-    \uACF5\uACA9\uD558\uAC8C \uB9CC\uB4DC\uB294 '\uD5C8\uC218\uC544\uBE44'\uB97C
-    \uC124\uCE58\uD569\uB2C8\uB2E4.\n\uC124\uCE58\uD55C \uD5C8\uC218\uC544\uBE44
-    \uC8FC\uBCC0\uC5D0\uB294 \uC2A4\uD1A4\uC744 \uC124\uCE58\uD560 \uC218 \uC5C6\uC73C\uBA70,
-    \uCCB4\uB825\uC774 0\uC774 \uB418\uBA74 \uC5C6\uC5B4\uC9D1\uB2C8\uB2E4.\n(\uD5C8\uC218\uC544\uBE44
-    \uCCB4\uB825 : 200)"
+  ShortDescription: "\uC18C\uBAA8\uD488"
+  Description: "\uC6D0\uD558\uB294 \uC704\uCE58\uC5D0 '30\uCD08' \uB3D9\uC548 \uD654\uC5FC
+    \uD3ED\uD48D\uC744 \uC0DD\uC131\uD569\uB2C8\uB2E4.\n\uD654\uC5FC \uD3ED\uD48D\uC740
+    \uD50C\uB808\uC774\uC5B4\uC640 \uC801 \uBAA8\uB450\uB97C \uACF5\uACA9\uD569\uB2C8\uB2E4."
   Icon: {fileID: 21300000, guid: 632c15fce1c9a4048b0f93d192fe7fd2, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0
@@ -89,7 +87,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 10
+  MaximumStack: 99
   ItemClass: 5
   TargetEquipmentInventoryName: 
   EquippedSound: {fileID: 0}

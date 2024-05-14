@@ -5055,7 +5055,6 @@ GameObject:
   - component: {fileID: 8606113835982905471}
   - component: {fileID: 8108905190271879238}
   - component: {fileID: 5218966290724432218}
-  - component: {fileID: 1806128518807927565}
   m_Layer: 13
   m_Name: BloodBoneExplosionSimpleG
   m_TagString: Untagged
@@ -9965,23 +9964,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1806128518807927565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064012555938692548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5c1e37409a9344a344c0468db383d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSound: {fileID: 1297775994297274, guid: 486c77be812473f48b99442f16049de9,
-    type: 3}
-  destroyWhenDone: 1
-  soundPrefabIsChild: 0
-  pitchRandomMultiplier: 1.2
 --- !u!1 &2505250102671649404
 GameObject:
   m_ObjectHideFlags: 0
@@ -26365,13 +26347,17 @@ MonoBehaviour:
     - Loot: {fileID: 0}
       Weight: 100
       ChancePercentage: 0
-    - Loot: {fileID: 8156648605230441292, guid: e8ebc2d7fc18cca4fa43f9736932946e,
+    - Loot: {fileID: 1608861427868016307, guid: 845663db32233814ebdf18cd92dcb1c9,
         type: 3}
       Weight: 5
       ChancePercentage: 0
-    - Loot: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1,
+    - Loot: {fileID: 5450364241485022616, guid: d2450a40f2b36d842a9f3bec184096e5,
         type: 3}
       Weight: 5
+      ChancePercentage: 0
+    - Loot: {fileID: 7820248261724447700, guid: 2cb58d429fddb804aa885db8fe1dedfa,
+        type: 3}
+      Weight: 1
       ChancePercentage: 0
     WeightsTotal: 0
   LootTableSO: {fileID: 0}

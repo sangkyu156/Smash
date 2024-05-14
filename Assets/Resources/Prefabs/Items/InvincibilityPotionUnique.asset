@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: InvincibilityPotionUnique
   m_EditorClassIdentifier: 
   ItemID: InvincibilityPotionUnique
+  ItemNumber: 17
   TargetInventoryName: RogueMainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
@@ -34,11 +35,12 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  price: 30
-  ItemName: "\uBE44\uC5B4\uC788\uC74C"
+  price: 75
+  ItemName: "\uBB34\uC801 \uD3EC\uC158"
   grade: 2
   ShortDescription: "\uC18C\uBAA8\uD488"
-  Description: "\uBE44\uC5B4\uC788\uC74C"
+  Description: "\uD50C\uB808\uC774\uC5B4\uC5D0\uAC8C '10\uCD08' \uB3D9\uC548 \uBB34\uC801
+    \uC0C1\uD0DC\uB97C \uBD80\uC5EC\uD569\uB2C8\uB2E4!"
   Icon: {fileID: 21300000, guid: 557932fae67bcc541a61ed3d37cd217e, type: 3}
   Prefab: {fileID: 0}
   ForcePrefabDropQuantity: 0

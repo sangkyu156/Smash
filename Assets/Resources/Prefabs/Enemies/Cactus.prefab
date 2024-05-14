@@ -11093,7 +11093,7 @@ MonoBehaviour:
         type: 3}
       Weight: 5
       ChancePercentage: 0
-    - Loot: {fileID: 8247368653233330422, guid: 40b98975fe7277347ae8cff2c5bba6d1,
+    - Loot: {fileID: 2299797054593825260, guid: 3127a7dae4f50384e81b40d3a76dda40,
         type: 3}
       Weight: 5
       ChancePercentage: 0
